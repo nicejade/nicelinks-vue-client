@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none !important;
+}
+body, html {
+  height: 100%;
+}
+body {
+  font: normal 14px/1 'Lantinghei SC', 'Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', STHeiti, SimSun, Arial, sans-serif;
+  background-image: url(./../images/index/jade-blog-01.jpg);
+  background-size: 100% 100%;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+em {
+  font-style: normal;
+}
+strong {
+  font-weight: normal;
+}
+textarea {
+  resize: vertical;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  th{
+    font-weight: normal;
+  }
+}
+label {
+  font-weight: normal;
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}

@@ -2,7 +2,6 @@
 import Vue from 'vue'
 
 export default {
-  // 后端返回 msg多语言
   resMsg (res) {
     let key = {
       zh: 'Chinese',
@@ -16,13 +15,14 @@ export default {
       return res && res.Message
     }
   },
-  // 标题多语言
+
   titleLang (zhStr, enStr) {
     return {
       zh: zhStr,
       en: enStr
     }
   },
+
   query (search) {
     let str = search || window.location.search
     let objURL = {}

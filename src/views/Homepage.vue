@@ -1,7 +1,6 @@
 <template>
   <div class="homepage">
-    dfasdfasfadfadfasdfa
-    <p>{{ title }}</p>
+    <h1>{{ title }}</h1>
   </div>
 </template>
 

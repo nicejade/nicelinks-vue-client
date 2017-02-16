@@ -1,26 +1,16 @@
 <template>
-  <div class="homepage">
-    <h1><a href="http://www.jeffjade.com" class="main-site">{{ title }}</a></h1>
-    <links></links>
+<div class="content">
+  <header-nav></header-nav>
+  <div class="page-wrapper">
+    <h1><a href="http://www.jeffjade.com" class="main-site" :title="title"></a></h1>
+    <contact></contact>
   </div>
+</div>
 </template>
 
-<style>
-  .homepage{
-    position: absolute;
-    top: 61.8%;
-    left: 61.8%;
-    text-align: center;
-  }
-  .main-site{
-    color: #fafafa;
-    font-size: 1em;
-    text-decoration: none;
-  }
-</style>
-
 <script>
-import Links from './../components/Links'
+import HeaderNav from './../components/HeaderNav'
+import Contact from './../components/Contact'
 
 export default {
   name: 'homepage',
@@ -30,7 +20,20 @@ export default {
     }
   },
   components: {
-    Links
+    HeaderNav,
+    Contact
   }
 }
 </script>
+
+<style>
+.main-site{
+  color: #fafafa;
+  display: block;
+  background: url('./../assets/images/jade_blog_title.png');
+  background-size: 100% 100%;
+  width: 8.563em;
+  height: 2em;
+  text-decoration: none;
+}
+</style>

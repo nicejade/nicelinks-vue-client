@@ -42,3 +42,21 @@ table {
 label {
   font-weight: normal;
 }
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.flex-box{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}

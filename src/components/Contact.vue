@@ -1,7 +1,7 @@
 <template>
   <div class="social-links">
-    <a v-for="item in linksArray"
-      :href="item.path"
+    <a v-for="item in contactArray"
+      :href="item.path + item.name"
       :title="item.title"
       :class="item.class"
       target="_blank"
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import linksConfig from './../config/linksConfig'
+import contactConfig from './../config/contactConfig'
 
 export default {
-  name: 'links',
+  name: 'contract',
   data () {
     return {
-      linksArray: linksConfig
+      contactArray: contactConfig
     }
   }
 }

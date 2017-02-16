@@ -5,7 +5,8 @@
 </template>
 
 <script>
-require('./assets/scss/style.scss')
+import './assets/css/font-awesome.css'
+import './assets/scss/style.scss'
 
 export default {
   name: 'app'

@@ -1,12 +1,13 @@
 .social-links .fa{
   text-decoration: none;
   margin: .5em;
+  vertical-align: middle;
 }
 .fa-weibo{
   color: #FF3300;
 }
 .fa-github{
-  color: #f2f2f2;
+  color: #555555;
 }
 .fa-twitter{
   color: #47a5ed;
@@ -16,4 +17,43 @@
 }
 .fa-telegram{
   color: #2196f3;
+}
+.fa-weixin{
+  color: #26cb2f;
+}
+.fa-jianshu:before{
+  content: "";
+  display: inline-block;
+  background-image: url('./../svg/jianshu.svg');
+  background-size: cover;
+  width: 1em;
+  height: .9em;
+  vertical-align: middle;
+}
+.fa-blog:before{
+  content: "";
+  display: inline-block;
+  background-image: url('./../svg/blog.svg');
+  background-size: cover;
+  width: .9em;
+  height: .9em;
+  vertical-align: middle;
+}
+.fa-zhihu:before{
+  content: "";
+  display: inline-block;
+  background-image: url('./../svg/zhihu.svg');
+  background-size: cover;
+  width: .9em;
+  height: .9em;
+  vertical-align: middle;
+}
+.fa-douban:before{
+  content: "";
+  display: inline-block;
+  background-image: url('./../svg/douban.svg');
+  background-size: cover;
+  width: .9em;
+  height: .9em;
+  vertical-align: middle;
 }

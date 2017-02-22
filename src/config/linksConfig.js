@@ -8,7 +8,7 @@ export default [
   {
     path: 'http://www.cnblogs.com/jadeboy/',
     name: '博客园',
-    class: 'fa fa-weixin',
+    class: 'fa fa-fa-blog',
     title: '云轩奕鹤'
   }
 ]

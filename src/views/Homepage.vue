@@ -1,6 +1,6 @@
 <template>
 <div class="content">
-  <header-nav></header-nav>
+  <!-- <header-nav></header-nav> -->
   <div class="page-wrapper">
     <h1><a href="http://www.jeffjade.com" class="main-site" :title="title"></a></h1>
     <contact></contact>

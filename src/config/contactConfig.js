@@ -24,6 +24,18 @@ export default [
     title: '简书'
   },
   {
+    path: 'https://www.zhihu.com/people/',
+    name: 'yang-qiong-pu',
+    class: 'fa fa-zhihu',
+    title: '知乎'
+  },
+  {
+    path: 'http://www.cnblogs.com/jadeboy/',
+    name: '博客园',
+    class: 'fa fa-blog',
+    title: '云轩奕鹤'
+  },
+  {
     path: 'https://twitter.com/',
     name: 'jeffjade2',
     class: 'fa fa-twitter',
@@ -36,22 +48,10 @@ export default [
     title: 'Facebook'
   },
   {
-    path: 'https://www.zhihu.com/people/',
-    name: 'yang-qiong-pu',
-    class: 'fa fa-zhihu',
-    title: '知乎'
-  },
-  {
     path: 'https://www.douban.com/people/',
     name: '125966439',
     class: 'fa fa-douban',
     title: '豆瓣'
-  },
-  {
-    path: 'http://www.cnblogs.com/jadeboy/',
-    name: '博客园',
-    class: 'fa fa-blog',
-    title: '云轩奕鹤'
   },
   {
     path: 'mailto:',

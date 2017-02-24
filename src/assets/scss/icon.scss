@@ -7,7 +7,7 @@
   color: #FF3300;
 }
 .fa-github{
-  color: #555555;
+  color: #fafafa;
 }
 .fa-twitter{
   color: #47a5ed;
@@ -21,39 +21,29 @@
 .fa-weixin{
   color: #26cb2f;
 }
-.fa-jianshu:before{
-  content: "";
-  display: inline-block;
-  background-image: url('./../svg/jianshu.svg');
-  background-size: cover;
-  width: 1em;
-  height: .9em;
-  vertical-align: middle;
-}
-.fa-blog:before{
-  content: "";
-  display: inline-block;
-  background-image: url('./../svg/blog.svg');
-  background-size: cover;
-  width: .9em;
-  height: .9em;
-  vertical-align: middle;
-}
-.fa-zhihu:before{
-  content: "";
-  display: inline-block;
-  background-image: url('./../svg/zhihu.svg');
-  background-size: cover;
-  width: .9em;
-  height: .9em;
-  vertical-align: middle;
-}
+.fa-jianshu:before,
+.fa-blog:before,
+.fa-zhihu:before,
 .fa-douban:before{
   content: "";
   display: inline-block;
-  background-image: url('./../svg/douban.svg');
   background-size: cover;
-  width: .9em;
-  height: .9em;
+  width: .93em;
+  height: .93em;
   vertical-align: middle;
+}
+.fa-jianshu:before{
+  width: 1em;
+  background-image: url('./../svg/jianshu.svg');
+}
+.fa-blog:before{
+  width: 1em;
+  height: 1em;
+  background-image: url('./../svg/blog.svg');
+}
+.fa-zhihu:before{
+  background-image: url('./../svg/zhihu.svg');
+}
+.fa-douban:before{
+  background-image: url('./../svg/douban.svg');
 }

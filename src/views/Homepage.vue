@@ -35,5 +35,6 @@ export default {
   width: 8.563em;
   height: 2em;
   text-decoration: none;
+  margin: auto;
 }
 </style>

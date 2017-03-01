@@ -7,20 +7,22 @@
   color: #FF3300;
 }
 .fa-github{
-  color: #fafafa;
+  color: #333333;
 }
 .fa-twitter{
   color: #47a5ed;
 }
-.fa-facebook-square{
+.fa-facebook{
   color: #00b0ff;
 }
-.fa-telegram{
+.fa-paper-plane-o{
   color: #2196f3;
 }
 .fa-weixin{
+  background-color: #fafafa;
   color: #26cb2f;
 }
+
 .fa-jianshu:before,
 .fa-blog:before,
 .fa-zhihu:before,
@@ -28,8 +30,8 @@
   content: "";
   display: inline-block;
   background-size: cover;
-  width: .93em;
-  height: .93em;
+  width: 1em;
+  height: 1em;
   vertical-align: middle;
 }
 .fa-jianshu:before{
@@ -37,13 +39,15 @@
   background-image: url('./../svg/jianshu.svg');
 }
 .fa-blog:before{
-  width: 1em;
-  height: 1em;
   background-image: url('./../svg/blog.svg');
 }
 .fa-zhihu:before{
+  width: .93em;
+  height: .93em;
   background-image: url('./../svg/zhihu.svg');
 }
 .fa-douban:before{
+  color: #000;
+  // background-color: #22aa2a;
   background-image: url('./../svg/douban.svg');
 }

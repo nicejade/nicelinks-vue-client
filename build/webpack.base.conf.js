@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var svgoConfig = require('../config/svgo-config.json')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -36,6 +37,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        enforce: "pre",
+        loader: 'svgo-loader?' + JSON.stringify(svgoConfig)
+      },
+      {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: "pre",
@@ -55,8 +61,14 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: /assets\/icons/
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        exclude: /assets\/icons/,
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')

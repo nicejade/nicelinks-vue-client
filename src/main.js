@@ -14,6 +14,9 @@ const router = new VueRouter({
   routes: Routes
 })
 
+import Icon from 'components/Icon/Icon.vue'
+Vue.component('icon', Icon)
+
 /* eslint-disable no-new */
 new Vue({
   router,

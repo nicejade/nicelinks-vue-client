@@ -2,15 +2,14 @@
   <div class="wrapper">
     <div class="container">
       <a href="javascript:;" class="button" @click="onContactMeClick">Contact Me</a>
-      <div class="social-links">
-        <a v-for="item in contactArray"
-          :href="item.path + item.name"
-          :title="item.title"
-          :class="item.class"
-          target="_blank"
-          class="fa fa-2x social-btn">
-        </a>
-      </div>
+      <a v-for="item in contactArray"
+        :href="item.path + item.name"
+        :title="item.title"
+        target="_blank"
+        :class="item.class"
+        class="social-btn">
+        <icon class="icons" :name="item.class">item.class</icon>
+      </a>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -51,8 +50,9 @@ export default {
 }
 </script>
 
-<style media="screen">
+<style lang="scss" media="screen">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
+  @import './../assets/scss/mixins.scss';
   .container {
     display:flex;
     justify-content: center;
@@ -61,8 +61,11 @@ export default {
     filter:url('#goo');
   }
   .button{
-    z-index: 99;
+    // @include absolute-center;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,22 +78,27 @@ export default {
     letter-spacing: 1px;
     font-weight: 200;
   }
-  .social-links{
-    height: 8vh;
-  }
   .social-btn{
     opacity: 0;
-    position: absolute;
+    position: relative;;
     border-radius: 100%;
-    width: 1em;
-    height: 1em;
-    /*color: #ccc;*/
     text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
   }
   .clicked {
     opacity: 1 !important;
-    position: relative;
     transition: .6s all ease;
     transform: translateY(56px);
+  }
+  @media only screen and (max-width: 412px) and (max-width: 768px){
+    .social-btn{
+      margin: 0 -.2em;
+    }
+  }
+  @media only screen and (max-width: 412px) {
+    .social-btn{
+      margin: 0 -.5em;
+    }
   }
 </style>

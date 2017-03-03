@@ -1,8 +1,3 @@
-.social-links .fa{
-  text-decoration: none;
-  margin: .5em;
-  vertical-align: middle;
-}
 .fa-weibo{
   color: #FF3300;
 }
@@ -23,31 +18,8 @@
   color: #26cb2f;
 }
 
-.fa-jianshu:before,
-.fa-blog:before,
-.fa-zhihu:before,
-.fa-douban:before{
-  content: "";
-  display: inline-block;
-  background-size: cover;
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-}
-.fa-jianshu:before{
-  width: 1em;
-  background-image: url('./../svg/jianshu.svg');
-}
-.fa-blog:before{
-  background-image: url('./../svg/blog.svg');
-}
-.fa-zhihu:before{
-  width: .93em;
-  height: .93em;
-  background-image: url('./../svg/zhihu.svg');
-}
-.fa-douban:before{
-  color: #000;
-  // background-color: #22aa2a;
-  background-image: url('./../svg/douban.svg');
+.icons{
+  width: 2.2em;
+  height: 2.2em;
+  margin: 0 .5em;
 }

@@ -21,18 +21,25 @@
   }
 }
 
+@mixin absolute-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 // Responsive image
 // Keep images from scaling beyond the width of their parents.
 @mixin img-responsive($display: block) {
   display: $display;
-  max-width: 100%; // Part 1: Set a maximum relative to the parent
-  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+  max-width: 100%;
+  height: auto;
 }
 
 // Resize anything
 @mixin resizable($direction) {
-  resize: $direction; // Options: horizontal, vertical, both
-  overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+  resize: $direction;
+  overflow: auto;
 }
 
 // Text overflow

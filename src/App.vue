@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import './assets/css/font-awesome.css'
 import './assets/scss/style.scss'
 
 export default {

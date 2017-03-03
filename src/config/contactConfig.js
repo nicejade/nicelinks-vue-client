@@ -30,10 +30,10 @@ export default [
     title: '知乎'
   },
   {
-    path: 'http://www.cnblogs.com/jadeboy/',
-    name: '博客园',
+    path: 'http://www.cnblogs.com/',
+    name: 'jadeboy',
     class: 'blog',
-    title: '云轩奕鹤'
+    title: '博客园'
   },
   {
     path: 'https://twitter.com/',

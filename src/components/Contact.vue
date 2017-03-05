@@ -8,7 +8,7 @@
         target="_blank"
         :class="item.class"
         class="social-btn">
-        <icon class="icons" :name="item.class">item.class</icon>
+        <icon class="icons" :name="item.class"></icon>
       </a>
     </div>
 
@@ -50,34 +50,19 @@ export default {
 }
 </script>
 
-<style lang="scss" media="screen">
+<style lang="scss" media="screen" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
   @import './../assets/scss/mixins.scss';
   #svg-goo{
     height: 0;
   }
+  .button{
+    position: absolute;
+  }
   .container {
     @include flex-box-center;
     height: 20vh;
     filter:url('#goo');
-  }
-  .button{
-    // @include absolute-center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    z-index: 99;
-    width: 200px;
-    height: 40px;
-    line-height: 40px;
-    background: linear-gradient(45deg, #B388EB, #8093F1);
-    border-radius: 20px;
-    color: #FFF;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-weight: 200;
-    @include flex-box-center;
   }
   .social-btn{
     opacity: 0;

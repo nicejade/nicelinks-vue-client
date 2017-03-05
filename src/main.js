@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import Routes from './router.js'
+import { Radio } from 'element-ui'
+Vue.use(Radio)
 
 // Router
 Vue.use(VueRouter)

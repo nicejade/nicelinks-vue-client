@@ -4,6 +4,7 @@
   <div class="page-wrapper">
     <h1><a href="http://www.jeffjade.com" class="main-site" :title="title"></a></h1>
     <contact></contact>
+    <reward-me></reward-me>
   </div>
 </div>
 </template>
@@ -11,6 +12,7 @@
 <script>
 import HeaderNav from './../components/HeaderNav'
 import Contact from './../components/Contact'
+import RewardMe from './../components/RewardMe'
 
 export default {
   name: 'homepage',
@@ -21,7 +23,8 @@ export default {
   },
   components: {
     HeaderNav,
-    Contact
+    Contact,
+    RewardMe
   }
 }
 </script>

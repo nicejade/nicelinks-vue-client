@@ -1,0 +1,85 @@
+#reward-me{
+  width: 300px;
+  height: 300px;
+  position: relative;
+  top: -300px;
+  display: none;
+  opacity: 0;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid #CCC;
+  -webkit-perspective:800px;
+     -moz-perspective:800px;
+       -o-perspective:800px;
+          perspective:800px;
+}
+#reward {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition:-webkit-transform 1s;
+     -moz-transition:-moz-transform 1s;
+       -o-transition:-o-transform 1s;
+          transition:transform 1s;
+  -webkit-transform-style:preserve-3d;
+     -moz-transform-style:preserve-3d;
+       -o-transform-style:preserve-3d;
+          transform-style:preserve-3d;
+  -webkit-transform-origin:left center;
+     -moz-transform-origin:left center;
+       -o-transform-origin:left center;
+          transform-origin:left center;
+}
+#reward div{
+  height: 100%;
+  width: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140px;
+  position: absolute;
+  -webkit-backface-visibility:hidden;
+     -moz-backface-visibility:hidden;
+       -o-backface-visibility:hidden;
+          backface-visibility:hidden;
+}
+#reward .front {
+  background-image: url(./../images/encourage.png);
+  background-size: cover;
+}
+#reward .back {
+  background-image: url(./../images/encourage.jpeg);
+  background-size: contain;
+}
+#reward .back {
+  background-color:#3498db;
+  -webkit-transform:rotateY(180deg);
+     -moz-transform:rotateY(180deg);
+       -o-transform:rotateY(180deg);
+          transform:rotateY(180deg);
+}
+#reward.flipped {
+  -webkit-transform:translateX(100%) rotateY(180deg);
+     -moz-transform:translateX(100%) rotateY(180deg);
+       -o-transform:translateX(100%) rotateY(180deg);
+          transform:translateX(100%) rotateY(180deg);
+}
+#reward-me.show{
+  top: 0px;
+  opacity: 1;
+  transition: 1s all ease;
+}
+.reward-select {
+  position: absolute;
+  top: 320px;
+  margin: auto;
+  width: 100%;
+  label: {
+    margin: auto 10px;
+  }
+  input{
+    display: inline-block;
+    height: 40px;
+  }
+}

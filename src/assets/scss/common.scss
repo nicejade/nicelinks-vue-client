@@ -61,3 +61,22 @@ a{
   -webkit-justify-content: center;
   justify-content: center;
 }
+
+.button{
+  // @include absolute-center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 99;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  background: linear-gradient(45deg, #B388EB, #8093F1);
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  @include flex-box-center;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>晚晴幽草轩</title>
+    <meta name="description" content="杨琼璞个人博客">
+    <meta name="keywords" content="个人博客, 效率至上, 追求极致">
+    <meta name="viewport" content="user-scalable=no, width=device-width,initial-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <% if (htmlWebpackPlugin.options.env !== 'development') { %>
+      <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        <% if (htmlWebpackPlugin.options.env === 'testing') { %>
+        ga('create', 'UA-93070088-1', 'auto');
+        <% } %>
+        <% if (htmlWebpackPlugin.options.env === 'production') { %>
+        ga('create', 'UA-93042170-1', 'auto');
+        <% } %>
+        ga('require', 'eventTracker');
+        ga('require', 'outboundLinkTracker');
+        ga('require', 'pageVisibilityTracker');
+        ga('require', 'urlChangeTracker');
+        ga('send', 'pageview');
+      </script>
+      <script async src="https://www.google-analytics.com/analytics.js"></script>
+      <script async src="<%= webpackConfig.output.publicPath %>static/js/autotrack.js"></script>
+    <% } %>
+  </head>
+
+  <style type="text/css">
+  .modal-browser {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .modal-browser #browser-modal-cover {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #111;
+    opacity: .5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    z-index: -1
+  }
+
+  .modal-browser .modal-dialog {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 30px;
+    padding-top: 20px
+  }
+
+  .modal-browser .modal-content {
+    width: 50%;
+    min-width: 600px;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    margin: auto;
+    background-color: #fafafa;
+  }
+
+  .modal-browser .modal-content .index-header {
+    text-align: center
+  }
+
+  .modal-browser .modal-content .dji-logo img{
+    display: block;
+    width: 8.563em;
+    height: 2em;
+    margin: 10px auto;
+    background-repeat: no-repeat
+  }
+
+  .modal-browser .modal-content .h2-grey {
+    text-transform: uppercase;
+    text-align: center
+  }
+
+  .modal-browser .modal-content p {
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center
+  }
+
+  .modal-browser .modal-content .item-container {
+    width: 600px;
+    background-color: #fafafa;
+    margin: 40px auto;
+    height: 160px
+  }
+
+  .modal-browser .modal-content .item-container .item {
+    float: left;
+    width: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .modal-browser .modal-content .item-container .item .pic {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-repeat: no-repeat
+  }
+
+  .modal-browser .modal-content .item-container .item a {
+    color: #44a8f2;
+    cursor: pointer;
+    display: block
+  }
+
+  .modal-browser .modal-content .item-container .item a img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100px;
+    width: 100px;
+    height: 100px
+  }
+
+  .modal-browser .modal-content .item-container .item a h4 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700
+  }
+  </style>
+
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <div id="browser-modal" tabindex="-1" class="modal modal-browser modal-account" style="display: none;">
+      <div id="browser-modal-cover"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <header class="text-center index-header">
+            <div class="dji-logo"><div class="pic"><img src="<%= webpackConfig.output.publicPath %>static/modal/logo.png"></div></div>
+            <h3 class="h2-grey">请升级浏览器版本</h3>
+            <p>你正在使用旧版本浏览器。请升级浏览器以获得更好的体验。</p>
+          </header>
+          <div class="modal-body">
+            <div class="item-container">
+              <div class="item">
+                <a href="http://www.google.com/chrome" target="_blank">
+                  <div class="pic"><img src="<%= webpackConfig.output.publicPath %>static/modal/chrome-d23b7c037c9c8ac731117d93c1e90d6d.jpg"></div>
+                  <h4>Chrome</h4></a>
+              </div>
+              <div class="item">
+                <a href="http://www.firefox.com/" target="_blank">
+                  <div class="pic"><img src="<%= webpackConfig.output.publicPath %>static/modal/firefox-17e96a20da2c3e1370d3b52f2b24a3fd.jpg"></div>
+                  <h4>Firefox</h4></a>
+              </div>
+              <div class="item">
+                <a href="http://www.apple.com/safari/" target="_blank">
+                  <div class="pic"><img src="<%= webpackConfig.output.publicPath %>static/modal/safari-ae900d6c60a68cc580b6948bd4ce46e9.jpg"></div>
+                  <h4>Safari</h4></a>
+              </div>
+              <div class="item">
+                <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">
+                  <div class="pic"><img src="<%= webpackConfig.output.publicPath %>static/modal/edge-64dd3b586d18984d250c93fd994c491b.jpg"></div>
+                  <h4>Edge</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js"></script>
+    <script>
+      (function() {
+        var isIE = navigator.userAgent.toLocaleLowerCase().indexOf('msie') !== -1;
+        var isIE10plus = isIE && (function() {
+          "use strict";
+          return !this;
+        }())
+        document.getElementById('browser-modal-cover').onclick = function(e) {
+          document.getElementById('browser-modal').style.display = 'none';
+        };
+        if(isIE && !isIE10plus) {
+          document.getElementById('browser-modal').style.display = 'block';
+        }
+      })()
+    </script>
+  </body>
+</html>

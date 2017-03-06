@@ -1,0 +1,21 @@
+{
+  "name": "vendor_library",
+  "content": {
+    "./node_modules/process/browser.js": {
+      "id": 0,
+      "meta": {}
+    },
+    "./node_modules/vue-router/dist/vue-router.common.js": {
+      "id": 1,
+      "meta": {}
+    },
+    "./node_modules/vue/dist/vue.runtime.common.js": {
+      "id": 2,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/global.js": {
+      "id": 3,
+      "meta": {}
+    }
+  }
+}

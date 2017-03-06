@@ -1,12 +1,21 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
+var webpack = require('webpack')
+var autoprefixer = require('autoprefixer');
 var vueLoaderConfig = require('./vue-loader.conf')
 var svgoConfig = require('../config/svgo-config.json')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+
+var env = process.env.NODE_ENV
+// check env & config/index.js to decide weither to enable CSS Sourcemaps for the
+// various preprocessor loaders added to vue-loader at the end of this file
+var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
+var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
+var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
   entry: {
@@ -83,5 +92,20 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, '..'),
+      manifest: require('./vendor-manifest.json')
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({
+            browsers: ['last 2 version']
+          })
+        ]
+      }
+    })
+  ]
 }

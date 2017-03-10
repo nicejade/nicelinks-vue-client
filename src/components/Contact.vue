@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import contactConfig from 'config/contactConfig'
+import { $config } from 'config'
 import { $document } from 'helper'
 
 export default {
   name: 'contract',
   data () {
     return {
-      contactArray: contactConfig
+      contactArray: $config.contact
     }
   },
 

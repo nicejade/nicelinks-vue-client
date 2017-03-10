@@ -33,8 +33,11 @@
   // background-color: rgba(255, 255, 255, .618)
 }
 .page-wrapper{
+  // @include absolute-center;
   width: 100%;
-  @include absolute-center;
+  height: 90%;
+  @include flex-box-center;
+  flex-direction: column;
   text-align: center;
 }
 

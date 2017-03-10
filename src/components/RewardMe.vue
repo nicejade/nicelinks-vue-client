@@ -3,8 +3,8 @@
     <a href="javascript:;" class="button" @click="onRewardMeClick">Reward Me</a>
     <div id="reward-me">
       <div id="reward" @click="onTurnClick">
-        <div class="front"></div>
-        <div class="back"></div>
+        <div class="front"><img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText"></div>
+        <div class="back"><img class="reward-img" :src="rewardArr[1].imgPath" :alt="rewardArr[1].altText"></div>
       </div>
       <div class="reward-select">
         <el-radio class="radio" v-model="payWay" label="weixin">
@@ -20,13 +20,15 @@
 
 <script>
 import { $document } from 'helper'
+import { $config } from 'config'
 
 export default {
   name: 'rewardMe',
   data () {
     return {
       title: '晚晴幽草轩',
-      payWay: 'weixin'
+      payWay: 'weixin',
+      rewardArr: $config.reward
     }
   },
 

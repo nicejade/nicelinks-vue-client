@@ -12,13 +12,11 @@
 </template>
 
 <script>
-import linksConfig from './../config/linksConfig'
-
 export default {
   name: 'links',
   data () {
     return {
-      linksArray: linksConfig
+      linksArray: []
     }
   }
 }

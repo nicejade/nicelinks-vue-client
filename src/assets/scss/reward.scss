@@ -1,9 +1,7 @@
 #reward-me{
   width: 300px;
-  height: 300px;
+  height: 0px;
   position: relative;
-  top: -300px;
-  display: none;
   opacity: 0;
   margin: auto;
   margin-top: 20px;
@@ -16,7 +14,6 @@
 #reward {
   width: 100%;
   height: 100%;
-  position: absolute;
   -webkit-transition:-webkit-transform 1s;
      -moz-transition:-moz-transform 1s;
        -o-transition:-o-transform 1s;
@@ -30,30 +27,27 @@
        -o-transform-origin:left center;
           transform-origin:left center;
 }
-#reward div{
+#reward .front, #reward .back{
   height: 100%;
   width: 100%;
+  position: absolute;
   line-height: 260px;
   color: white;
   text-align: center;
   font-weight: bold;
   font-size: 140px;
-  position: absolute;
   -webkit-backface-visibility:hidden;
      -moz-backface-visibility:hidden;
        -o-backface-visibility:hidden;
           backface-visibility:hidden;
 }
-#reward .front {
-  background-image: url(./../images/encourage.png);
-  background-size: cover;
+#reward .front .reward-img{
+  width: 100%;
+}
+#reward .back .reward-img{
+  width: 100%;
 }
 #reward .back {
-  background-image: url(./../images/encourage.jpeg);
-  background-size: contain;
-}
-#reward .back {
-  background-color:#3498db;
   -webkit-transform:rotateY(180deg);
      -moz-transform:rotateY(180deg);
        -o-transform:rotateY(180deg);
@@ -66,19 +60,19 @@
           transform:translateX(100%) rotateY(180deg);
 }
 #reward-me.show{
-  top: 0px;
+  width: 300px;
+  height: 300px;
   opacity: 1;
-  transition: 1s all ease;
+  // transition: 1s all ease;
+  transition: height 1s, opacity 2s;
 }
 .reward-select {
-  position: absolute;
-  top: 320px;
-  margin: auto;
+  margin: 10px auto;
   width: 100%;
-  label: {
+  .el-radio {
     margin: auto 10px;
   }
-  input{
+  input {
     display: inline-block;
     height: 40px;
   }

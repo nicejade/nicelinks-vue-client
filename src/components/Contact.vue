@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <a href="javascript:;" class="button" @click="onContactMeClick">Contact Me</a>
       <a v-for="item in contactArray"
         :href="item.path + item.name"
         :title="item.title"
@@ -10,6 +9,8 @@
         class="social-btn">
         <icon class="icons" :name="item.class"></icon>
       </a>
+      <a href="javascript:;" class="button"
+        @click="onContactMeClick">Contact Me</a>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg-goo">

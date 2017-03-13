@@ -28,6 +28,13 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin absolute-fixed-center() {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @mixin flex-box-center(){
   display: -webkit-box;
   display: -moz-box;

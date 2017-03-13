@@ -1,11 +1,11 @@
 <template>
-<div class="content">
+<div class="content theme-color-grey-blue">
   <!-- <header-nav></header-nav> -->
   <div class="page-wrapper">
     <h1><a href="http://www.jeffjade.com" class="main-site" :title="title"></a></h1>
-    <div class="container">
+    <!-- <div class="container">
       <a href="javascript:;" class="button" @click="onContactMeClick">Contact Me</a>
-    </div>
+    </div> -->
     <contact></contact>
     <reward-me></reward-me>
   </div>

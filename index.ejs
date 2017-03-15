@@ -13,8 +13,7 @@
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         <% if (htmlWebpackPlugin.options.env === 'testing') { %>
         ga('create', 'UA-93070088-1', 'auto');
-        <% } %>
-        <% if (htmlWebpackPlugin.options.env === 'production') { %>
+        <% } else {%>
         ga('create', 'UA-93042170-1', 'auto');
         <% } %>
         ga('require', 'eventTracker');

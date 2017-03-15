@@ -33,18 +33,27 @@ export default {
   name: 'contract',
   data () {
     return {
-      contactArray: $config.contact
+      contactArray: this.filterEntryInMobile($config.contact)
     }
   },
 
   methods: {
     onContactMeClick () {
+      console.log(this.contactArray)
       this.contactArray.forEach((element, index, array) => {
         ((ele, idx) => {
           setTimeout(() => {
             $document.toggleClass(document.getElementsByClassName(ele.class)[0], 'clicked')
           }, idx * 128)
         })(element, index)
+      })
+    },
+
+    // Filter the specified entry link on the phone(innerWidth <= 768)
+    filterEntryInMobile (sourceData) {
+      let isMobile = window.innerWidth <= 768
+      return sourceData.filter((element) => {
+        return isMobile ? !element['notInMobile'] : true
       })
     }
   }

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import Routes from './router.js'
+import Filters from './filters'
 import { Radio } from 'element-ui'
 Vue.use(Radio)
 
@@ -18,6 +19,11 @@ const router = new VueRouter({
 
 import Icon from 'components/Icon/Icon.vue'
 Vue.component('icon', Icon)
+
+// Public Filter
+for (let key in Filters) {
+  Vue.filter(key, Filters[key])
+}
 
 /* eslint-disable no-new */
 new Vue({

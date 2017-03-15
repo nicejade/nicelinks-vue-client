@@ -7,7 +7,7 @@ export default [
   },
   {
     path: 'http://weibo.com/',
-    name: '3235949794',
+    name: 'jeffjade',
     class: 'weibo',
     title: '微博'
   },
@@ -39,13 +39,15 @@ export default [
     path: 'https://twitter.com/',
     name: 'jeffjade2',
     class: 'twitter',
-    title: 'Twitter'
+    title: 'Twitter',
+    notInMobile: true
   },
   {
     path: 'https://www.facebook.com/',
     name: '100006379368522',
     class: 'facebook',
-    title: 'Facebook'
+    title: 'Facebook',
+    notInMobile: true
   },
   {
     path: 'https://www.douban.com/people/',

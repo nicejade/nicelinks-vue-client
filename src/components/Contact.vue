@@ -11,7 +11,7 @@
         :ga-event-action="'social-' + item.class">
         <icon class="icons" :name="item.class"></icon>
       </a>
-      <a href="javascript:;" class="button"
+      <a href="javascript:;" class="button color-gradient-1"
         ga-on="click"  ga-event-category="contact-me"  ga-event-action="contact-me"
         @click="onContactMeClick">Contact Me</a>
     </div>

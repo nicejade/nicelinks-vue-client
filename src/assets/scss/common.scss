@@ -68,12 +68,13 @@ a{
   left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
+  // background: linear-gradient(45deg, #B388EB, #8093F1);
+  background: linear-gradient(to left, #abbaab , #ffffff);
   width: 200px;
   height: 40px;
   line-height: 40px;
-  background: linear-gradient(45deg, #B388EB, #8093F1);
   border-radius: 20px;
-  color: #FFF;
+  color: #000;
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: 200;

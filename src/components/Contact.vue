@@ -6,10 +6,13 @@
         :title="item.title"
         target="_blank"
         :class="item.class"
-        class="social-btn">
+        class="social-btn"
+        ga-on="click"  ga-event-category="contact-me-icon"
+        :ga-event-action="'social-' + item.class">
         <icon class="icons" :name="item.class"></icon>
       </a>
       <a href="javascript:;" class="button"
+        ga-on="click"  ga-event-category="contact-me"  ga-event-action="contact-me"
         @click="onContactMeClick">Contact Me</a>
     </div>
 
@@ -71,7 +74,7 @@ export default {
   }
   .container {
     @include flex-box-center;
-    height: 20vh;
+    height: 21.99vh;
     filter:url('#goo');
   }
   .social-btn{

@@ -1,8 +1,10 @@
 <template>
-<div class="content theme-color-grey-blue">
+<div class="content theme-jade-color">
   <!-- <header-nav></header-nav> -->
   <div class="page-wrapper">
-    <h1><a href="http://www.jeffjade.com" class="main-site" :title="title"></a></h1>
+    <h1><a href="http://www.jeffjade.com" class="main-site" :title="title">
+      <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">
+    </a></h1>
     <!-- <div class="container">
       <a href="javascript:;" class="button" @click="onContactMeClick">Contact Me</a>
     </div> -->
@@ -36,11 +38,12 @@ export default {
 .main-site{
   color: #fafafa;
   display: block;
-  background: url('./../assets/images/jade_blog_title.png');
-  background-size: 100% 100%;
   width: 12.8445em;
   height: 3em;
   text-decoration: none;
   margin: auto;
+}
+.main-site-img{
+  width: 100%;
 }
 </style>

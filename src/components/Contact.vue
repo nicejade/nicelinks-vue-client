@@ -9,14 +9,8 @@
         class="social-btn">
         <icon class="icons" :name="item.class"></icon>
       </a>
-<<<<<<< HEAD
-      <a href="javascript:;" class="button"
-        ga-on="click"  ga-event-action="click" ga-event-category="contact-me"  ga-event-label="contact me button"
-=======
-      <a href="javascript:;" class="button color-gradient-1"
-        ga-on="click"  ga-event-category="contact-me"  ga-event-action="contact-me"
->>>>>>> 1f71d400104e3eeb3039564d4b7e2e0cbc314ec0
-        @click="onContactMeClick">Contact Me</a>
+      <a ga-on="click"  ga-event-action="click" ga-event-category="contact-me"  ga-event-label="contact me button"
+        href="javascript:;" class="button" @click="onContactMeClick">Contact Me</a>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg-goo">

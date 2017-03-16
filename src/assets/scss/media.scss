@@ -1,0 +1,25 @@
+.theme-jade-color{
+  background-color: #313538;
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #555a5f 0%, #1c1e20 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #555a5f 0%, #1c1e20 100%)
+}
+.button{
+  background: linear-gradient(to left, #abbaab , #ffffff);
+}
+
+@media screen and (max-width:768px) {
+  .icons{
+    width: 2em;
+    height: 2em;
+    margin: 0 .77em;
+  }
+  .button{
+    color: #111;
+    background-image: radial-gradient(circle farthest-corner at center, #eee 20%, #ccc 68%)
+  }
+  .theme-jade-color {
+    background-color: #dddddd;
+    background-image: -webkit-radial-gradient(center, circle farthest-corner, #fff 0%, #ddd 100%);
+    background-image: radial-gradient(circle farthest-corner at center, #fff 0%, #ddd 100%)
+  }
+}

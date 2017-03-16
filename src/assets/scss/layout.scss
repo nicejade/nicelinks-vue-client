@@ -8,12 +8,6 @@
   height: 100%;
 }
 
-.theme-color-grey-blue {
-  background-color: #313538;
-  background-image: -webkit-radial-gradient(center, circle farthest-corner, #555a5f 0%, #1c1e20 100%);
-  background-image: radial-gradient(circle farthest-corner at center, #555a5f 0%, #1c1e20 100%)
-}
-
 .header{
   position: fixed;
   float: right;
@@ -36,7 +30,6 @@
   background-color: rgba(255, 255, 255, 0.2);
   margin: auto;
   position: relative;
-  // background-color: rgba(255, 255, 255, .618)
 }
 .page-wrapper{
   // @include absolute-center;

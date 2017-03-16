@@ -6,13 +6,11 @@
         :title="item.title"
         target="_blank"
         :class="item.class"
-        class="social-btn"
-        ga-on="click"  ga-event-category="contact-me-icon"
-        :ga-event-action="'social-' + item.class">
+        class="social-btn">
         <icon class="icons" :name="item.class"></icon>
       </a>
       <a href="javascript:;" class="button"
-        ga-on="click"  ga-event-category="contact-me"  ga-event-action="contact-me"
+        ga-on="click"  ga-event-action="click" ga-event-category="contact-me"  ga-event-label="contact me button"
         @click="onContactMeClick">Contact Me</a>
     </div>
 

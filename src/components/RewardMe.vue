@@ -4,17 +4,17 @@
     <div id="loved-reward">
       <div class="reward-modal-shadow" @click.stop="onCloseClick"></div>
       <div id="reward-me">
-        <div id="reward" @click="onTurnClick" ga-on="click"  ga-event-category="reward-me"  ga-event-action="turn-reward">
+        <div id="reward" @click="onTurnClick" ga-on="click"  ga-event-category="reward-me" ga-event-action="click" ga-event-label="turn reward card">
           <div class="front"><img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText"></div>
           <div class="back"><img class="reward-img" :src="rewardArr[1].imgPath" :alt="rewardArr[1].altText"></div>
         </div>
         <div class="reward-select">
           <el-radio class="radio" v-model="payWay" label="weixin"
-            ga-on="click"  ga-event-category="reward-me"  ga-event-action="switch-2-weixin">
+            ga-on="click"  ga-event-category="reward-me" ga-event-action="click" ga-event-label="switch pay to weixin">
             <icon class="icons" name="pay-weixin"></icon>
           </el-radio>
           <el-radio class="radio" v-model="payWay" label="zhifubao"
-            ga-on="click"  ga-event-category="reward-me"  ga-event-action="switch-2-zhifubao">
+            ga-on="click"  ga-event-category="reward-me" ga-event-action="click" ga-event-label="switch pay to zhifubao">
             <icon class="icons" name="pay-zhifubao"></icon>
           </el-radio>
         </div>

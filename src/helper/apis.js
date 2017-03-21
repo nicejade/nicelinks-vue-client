@@ -10,6 +10,7 @@ export default {
   },
 
   addNewBlog (data) {
+    console.log(data)
     return $ajax.post(requestUrl('addNewBlog'), data)
   }
 }

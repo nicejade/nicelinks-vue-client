@@ -5,8 +5,9 @@ import App from './App'
 import VueRouter from 'vue-router'
 import Routes from './router.js'
 import Filters from './filters'
-import { Radio } from 'element-ui'
-Vue.use(Radio)
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+Vue.use(ElementUI)
 
 // Router
 Vue.use(VueRouter)

@@ -1,5 +1,11 @@
 import Vue from 'vue'
 
+if (typeof String.prototype.startsWith !== 'function') {
+  Window.String.prototype.startsWith = function (prefix) {
+    return this.slice(0, prefix.length) === prefix
+  }
+}
+
 export default {
   resMsg (res) {
     let key = {
@@ -41,5 +47,19 @@ export default {
       str.push(key + '=' + query[key])
     }
     return url + '?' + str.join('&')
+  },
+
+  isLegalUrl (str) {
+    if (str.length < 4 || str.startsWith('http')) {
+      return str.length >= 6
+    }
+
+    let pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+    '(\\#[-a-z\\d_]*)?$', 'i') // fragment locator
+    return pattern.test(str)
   }
 }

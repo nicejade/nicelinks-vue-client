@@ -1,26 +1,33 @@
 <template>
-<div class="content theme-jade-color">
-  <div class="wrapper">
-    <ul class="entry-list">
-      <li v-for="item in niceBlogArr" class="item">
-        <div class="entry">
-          <a href="item.url_path" class="enter-link">
-            <div class="conetnt-box">
-              <div class="info">
-                <a :href="item.url_path" target="_black">{{ item.title }}</a>
-              </div>
-              <div>{{ item.desc }}</div>
-            </div>
-          </a>
-        </div>
-      </li>
-    </ul>
+  <div class="content theme-jade-color">
+    <div class="wrapper">
+      <inject-blog></inject-blog>
+      <div class="entry-list">
+        <template>
+          <el-table :data="niceBlogArr" style="width: 100%">
+            <el-table-column prop="url_path" label="博客地址" width="180">
+              <template scope="scope">
+                <a class="enter-link" :href="scope.row.url_path" target="_blank">{{ scope.row.title }}</a>
+              </template>
+            </el-table-column>
+            <el-table-column prop="desc" label="相关描述" width="180">
+            </el-table-column>
+            <el-table-column prop="tags" label="标签" width="180">
+            </el-table-column>
+            <el-table-column prop="created" label="创建日期" width="180">
+            </el-table-column>
+            <el-table-column prop="like" label="欢喜程度">
+            </el-table-column>
+          </el-table>
+        </template>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import { $apis } from 'helper'
+import InjectBlog from 'components/InjectBlog'
 
 export default {
   name: 'bloglinks',
@@ -38,6 +45,7 @@ export default {
   },
 
   components: {
+    InjectBlog
   },
 
   methods: {
@@ -50,19 +58,9 @@ export default {
 @import "./../assets/scss/mixins.scss";
 
 .entry-list{
-  padding: 1rem 1.5rem;
-  .item{
-    .entry{
-      .enter-link{
-        color: $color-enter-link;
-        .conetnt-box{
-          display: flex;
-          -webkit-box-align: center;
-          align-items: center;
-          padding: .5rem 0;
-        }
-      }
-    }
+  margin: auto;
+  .enter-link{
+    color: $color-enter-link;
   }
 }
 </style>

@@ -6,6 +6,7 @@
 
 <script>
 import './assets/scss/style.scss'
+import 'mixins/globalMixin'
 
 export default {
   name: 'app',

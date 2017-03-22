@@ -5,12 +5,11 @@ function requestUrl (path) {
 }
 
 export default {
-  getNiceBlog () {
-    return $ajax.get(requestUrl('getNiceBlog'))
+  getNiceLinks () {
+    return $ajax.get(requestUrl('getNiceLinks'))
   },
 
-  addNewBlog (data) {
-    console.log(data)
-    return $ajax.post(requestUrl('addNewBlog'), data)
+  addNiceLinks (data) {
+    return $ajax.post(requestUrl('addNiceLinks'), data)
   }
 }

@@ -6,9 +6,9 @@ function setTitleLang (zhStr, enStr) {
 }
 
 export default {
-  path: '/bloglinks',
+  path: '/nicelinks',
   meta: {
     title: setTitleLang('晚晴幽草轩', 'Nice Home Blog')
   },
-  component: resolve => require(['./../views/Bloglinks'], resolve)
+  component: resolve => require(['./../views/Nicelinks'], resolve)
 }

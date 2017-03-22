@@ -79,3 +79,10 @@ a{
   font-weight: 200;
   @include flex-box-center;
 }
+
+.form-group{
+  text-align: left;
+  .control-label{
+    text-align: right;
+  }
+}

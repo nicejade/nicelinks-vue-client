@@ -1,7 +1,7 @@
 <template>
   <div class="content theme-jade-color">
     <div class="wrapper">
-      <inject-blog></inject-blog>
+      <inject-links></inject-links>
       <div class="entry-list">
         <template>
           <el-table :data="niceBlogArr" style="width: 100%">
@@ -17,6 +17,9 @@
             <el-table-column prop="created" label="创建日期" width="180">
             </el-table-column>
             <el-table-column prop="like" label="欢喜程度">
+              <template scope="scope">
+                <p>{{ scope.row.like || 0 }}</p>
+              </template>
             </el-table-column>
           </el-table>
         </template>
@@ -27,7 +30,7 @@
 
 <script>
 import { $apis } from 'helper'
-import InjectBlog from 'components/InjectBlog'
+import InjectLinks from 'components/InjectLinks'
 
 export default {
   name: 'bloglinks',
@@ -38,14 +41,14 @@ export default {
   },
 
   mounted () {
-    $apis.getNiceBlog().then(result => {
+    $apis.getNiceLinks().then(result => {
       console.log(result)
       this.niceBlogArr = result
     })
   },
 
   components: {
-    InjectBlog
+    InjectLinks
   },
 
   methods: {

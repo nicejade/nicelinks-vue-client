@@ -1,8 +1,7 @@
 <template>
   <div id="inject-links">
-    <el-button type="primary" icon="plus" size="small" @click="isShowDlgFlag = true">注入新博客</el-button>
-
-    <el-dialog stripe title="注入新博客" v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
+    <el-dialog stripe title="注入链接"
+      v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
@@ -102,6 +101,23 @@ export default {
           { required: true, message: '请选择分类', trigger: 'change,blur' }
         ]
       }
+    }
+  },
+
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  watch: {
+    value (val) {
+      console.log(val)
+      this.isShowDlgFlag = val
+    },
+    isShowDlgFlag (val) {
+      this.$emit('input', val)
     }
   },
 

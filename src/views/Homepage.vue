@@ -1,5 +1,5 @@
 <template>
-<div class="content theme-jade-color">
+<div class="wrapper theme-jade-color">
   <div class="home-wrapper">
     <h1><a href="http://www.jeffjade.com" class="main-site" :title="title">
       <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">

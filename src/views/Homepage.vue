@@ -1,6 +1,5 @@
 <template>
 <div class="content theme-jade-color">
-  <!-- <header-nav></header-nav> -->
   <div class="home-wrapper">
     <h1><a href="http://www.jeffjade.com" class="main-site" :title="title">
       <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">
@@ -15,7 +14,6 @@
 </template>
 
 <script>
-import HeaderNav from 'components/HeaderNav'
 import Contact from 'components/Contact'
 import RewardMe from 'components/RewardMe'
 
@@ -28,14 +26,13 @@ export default {
   },
 
   components: {
-    HeaderNav,
     Contact,
     RewardMe
   },
 
   methods: {
     onBlogLinksClick () {
-      this.$router.push({path: 'bloglinks'})
+      this.$router.push({path: 'nicelinks'})
     }
   }
 }

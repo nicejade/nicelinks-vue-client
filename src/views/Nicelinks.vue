@@ -1,6 +1,6 @@
 <template>
   <div class="content theme-jade-color">
-    <div class="wrapper">
+    <div class="page-module">
       <inject-links></inject-links>
       <div class="entry-list">
         <template>
@@ -58,7 +58,6 @@ export default {
 
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
-@import "./../assets/scss/mixins.scss";
 
 .entry-list{
   margin: auto;

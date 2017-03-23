@@ -21,6 +21,11 @@
   }
 }
 
+@mixin height-center($header-height){
+  height: $header-height;
+  line-height: $header-height;
+}
+
 @mixin absolute-center() {
   position: absolute;
   top: 50%;

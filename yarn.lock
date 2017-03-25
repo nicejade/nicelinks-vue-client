@@ -748,6 +748,14 @@ babel-plugin-transform-strict-mode@^6.22.0:
     babel-runtime "^6.22.0"
     babel-types "^6.22.0"
 
+babel-polyfill@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
+  dependencies:
+    babel-runtime "^6.22.0"
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
 babel-preset-es2015@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.22.0.tgz#af5a98ecb35eb8af764ad8a5a05eb36dc4386835"
@@ -3212,6 +3220,10 @@ js-beautify@^1.6.3:
     editorconfig "^0.13.2"
     mkdirp "~0.5.0"
     nopt "~3.0.1"
+
+js-cookie@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.1.3.tgz#48071625217ac9ecfab8c343a13d42ec09ff0526"
 
 js-tokens@^3.0.0:
   version "3.0.1"
@@ -5783,6 +5795,10 @@ void-elements@^2.0.0:
 vue-hot-reload-api@^2.0.1:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.8.tgz#b3ba6a9a443d561b14f2785c8ea056618cb2faa3"
+
+vue-i18n@^6.0.0-beta.1:
+  version "6.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-6.0.0-beta.1.tgz#299c6f3d15c9459d4c63af13073a8bffc25a8b80"
 
 vue-loader@^10.3.0:
   version "10.3.0"

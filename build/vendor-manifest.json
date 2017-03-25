@@ -1,11 +1,11 @@
 {
   "name": "vendor_library",
   "content": {
-    "./node_modules/superagent/lib/is-object.js": {
+    "./node_modules/process/browser.js": {
       "id": 0,
       "meta": {}
     },
-    "./node_modules/process/browser.js": {
+    "./node_modules/superagent/lib/is-object.js": {
       "id": 1,
       "meta": {}
     },
@@ -13,48 +13,56 @@
       "id": 2,
       "meta": {}
     },
-    "./node_modules/lodash/lodash.js": {
+    "./node_modules/js-cookie/src/js.cookie.js": {
       "id": 3,
       "meta": {}
     },
-    "./node_modules/superagent/lib/client.js": {
+    "./node_modules/lodash/lodash.js": {
       "id": 4,
       "meta": {}
     },
-    "./node_modules/vue-router/dist/vue-router.common.js": {
+    "./node_modules/superagent/lib/client.js": {
       "id": 5,
       "meta": {}
     },
-    "./node_modules/vue/dist/vue.common.js": {
+    "./node_modules/vue-i18n/dist/vue-i18n.common.js": {
       "id": 6,
       "meta": {}
     },
-    "./node_modules/component-emitter/index.js": {
+    "./node_modules/vue-router/dist/vue-router.common.js": {
       "id": 7,
       "meta": {}
     },
-    "./node_modules/superagent/lib/is-function.js": {
+    "./node_modules/vue/dist/vue.common.js": {
       "id": 8,
       "meta": {}
     },
-    "./node_modules/superagent/lib/request-base.js": {
+    "./node_modules/component-emitter/index.js": {
       "id": 9,
       "meta": {}
     },
-    "./node_modules/superagent/lib/response-base.js": {
+    "./node_modules/superagent/lib/is-function.js": {
       "id": 10,
       "meta": {}
     },
-    "./node_modules/superagent/lib/should-retry.js": {
+    "./node_modules/superagent/lib/request-base.js": {
       "id": 11,
       "meta": {}
     },
-    "./node_modules/superagent/lib/utils.js": {
+    "./node_modules/superagent/lib/response-base.js": {
       "id": 12,
       "meta": {}
     },
-    "./node_modules/webpack/buildin/module.js": {
+    "./node_modules/superagent/lib/should-retry.js": {
       "id": 13,
+      "meta": {}
+    },
+    "./node_modules/superagent/lib/utils.js": {
+      "id": 14,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/module.js": {
+      "id": 15,
       "meta": {}
     }
   }

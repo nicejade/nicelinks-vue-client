@@ -4,13 +4,15 @@
     <nav class="nav">
       <div class="nav-left col-sm-10 col-md-8 col-lg-7">
         <div class="header-logo">
-          <h1><a  class="header-logo-a" href="/">Nice Links</a></h1>
+          <h1><a  class="header-logo-a" href="/">
+            <img src="./../assets/images/nice_links.png" alt="">
+          </a></h1>
         </div>
         <el-button
           type="primary"
           icon="plus"
           size="small"
-          @click="isShowDlgFlag = true">注入链接</el-button>
+          @click="isShowDlgFlag = true">{{ $t('injectLinks') }}</el-button>
       </div>
     </nav>
   </header>
@@ -49,13 +51,13 @@ export default {
   transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   .nav{
     height: 100%;
-    width: 100%;
     .nav-left{
-      width: 100%;
       height: 100%;
       padding: 0;
+      text-align: left;
       .header-logo{
         display: inline-block;
+        margin: auto 15px;
         .header-logo-a{
           @include height-center($header-height);
           color: #333;

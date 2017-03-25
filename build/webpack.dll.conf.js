@@ -6,15 +6,13 @@ module.exports = {
   entry: {
     vendor: [
       // 加入 element-ui 会报错
-      // 'js-cookie',
+      'js-cookie',
       'lodash',
-      // 'moment',
-      // 'q',
       'superagent',
-      // 'vue',
       'vue/dist/vue.common.js',
-      'vue-router'
-      // 'vue-i18n',
+      'vue-router',
+      'vue-i18n'
+      // 'moment',
       // 'vuex'
     ]
   },

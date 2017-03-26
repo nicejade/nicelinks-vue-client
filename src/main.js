@@ -20,9 +20,6 @@ const browserLanguage = (window.navigator.language || window.navigator.browserLa
 const lang = Cookies.get('lang') || (browserLanguage in locales ? browserLanguage : 'en')
 Vue.config.lang = lang
 Object.keys(locales).forEach(lang => {
-  console.log(lang, locales[lang])
-  console.log(Vue.locale)
-  console.log(Vue)
   Vue.locale(lang, locales[lang])
 })
 

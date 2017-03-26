@@ -9,7 +9,8 @@ module.exports = {
       'js-cookie',
       'lodash',
       'superagent',
-      'vue/dist/vue.common.js',
+      // 'vue/dist/vue.common.js',
+      'vue',
       'vue-router',
       'vue-i18n'
       // 'moment',

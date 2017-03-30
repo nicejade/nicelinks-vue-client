@@ -1,6 +1,6 @@
 <template>
   <div id="inject-links">
-    <el-dialog stripe title="注入链接"
+    <el-dialog stripe :title="$t('injectLinks')"
       v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">

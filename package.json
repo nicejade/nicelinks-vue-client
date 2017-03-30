@@ -14,13 +14,26 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "lint-staged": "lint-staged",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "analyz": "NODE_ENV=production  npm_config_report=true npm run build"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,vue}": "eslint -f ./node_modules/eslint-friendly-formatter"
+    }
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "element-ui": "^1.2.3",
     "js-cookie": "^2.1.3",
+    "lint-staged": "^3.4.0",
     "lodash": "^4.17.4",
+    "pre-commit": "^1.2.2",
     "q": "^1.4.1",
     "superagent": "^3.5.1",
     "vue": "^2.1.10",

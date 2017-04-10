@@ -11,5 +11,9 @@ export default {
 
   addNiceLinks (data) {
     return $ajax.post(requestUrl('addNiceLinks'), data)
+  },
+
+  dispatchAction (data) {
+    return $ajax.post(requestUrl('dispatchAction'), data)
   }
 }

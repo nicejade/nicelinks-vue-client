@@ -86,16 +86,17 @@ export default {
         desc: '追求极致、极客',
         classify: '',
         tagsArr: [],
-        tags: ''
+        tags: '',
+        like: 0,
+        dislike: 0
       },
-      tagsList: $config.tags,
       classifyList: $config.classify,
       rules: {
         url_path: [
           { required: true, validator: this.$verifyUrl, trigger: 'change,blur' }
         ],
         title: [
-          { required: true, message: '请输入博客名称', trigger: 'change,blur' }
+          { required: true, message: '请输入链接名称', trigger: 'change,blur' }
         ],
         classify: [
           { required: true, message: '请选择分类', trigger: 'change,blur' }
@@ -108,6 +109,12 @@ export default {
     value: {
       type: Boolean,
       default: false
+    }
+  },
+
+  computed: {
+    tagsList () {
+      return $config.tags[this.fillForm.classify]
     }
   },
 
@@ -131,18 +138,13 @@ export default {
             console.log(result)
             this.isLoading = false
             this.isShowDlgFlag = false
-            this.$notify({
-              title: '温馨提示',
-              message: '很好，你已成功添加该博客',
+            this.$message({
+              message: '很好，你已成功添加该链接',
               type: 'success'
             })
           }).catch((error) => {
             this.isLoading = false
-            this.$notify({
-              title: '温馨提示',
-              message: `${error}`,
-              type: 'error'
-            })
+            this.$message.error(`${error}`)
           })
         }
       })

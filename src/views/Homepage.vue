@@ -5,7 +5,7 @@
       <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">
     </a></h1>
     <div class="container">
-      <a href="javascript:;" class="button" @click="onBlogLinksClick">Contact Me</a>
+      <a href="javascript:;" class="button" @click="onBlogLinksClick">Nice Links</a>
     </div>
     <contact></contact>
     <reward-me></reward-me>

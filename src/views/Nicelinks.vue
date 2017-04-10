@@ -7,7 +7,12 @@
             <el-table :data="niceLinksArr" style="width: 100%">
               <el-table-column prop="like" :label="$t('beLikedStr')" min-width="100">
                 <template scope="scope">
-                  <p>{{ scope.row.like || 0 }}</p>
+                  <el-badge :value="scope.row.like || 0" class="liked-num">
+                    <el-button type="text" size="small" @click="onLikeClick(scope.row)">
+                      <icon class="icons" name="like">Like</icon></el-button>
+                    <el-button type="text" size="small" @click="onDislikeClick(scope.row)">
+                      <icon class="icons" name="dislike">Dislike</icon></el-button>
+                  </el-badge>
                 </template>
               </el-table-column>
               <el-table-column prop="url_path" :label="$t('niceLinkStr')" width="180">
@@ -16,17 +21,20 @@
                 </template>
               </el-table-column>
               <el-table-column prop="classify" :label="$t('linkClassifyStr')" min-width="100">
-              </el-table-column>
-              <el-table-column prop="tags" :label="$t('linkTagsStr')" width="180">
                 <template scope="scope">
-                  <el-tag type="gray" v-for="item in scope.row.tags">{{ item }}</el-tag>
+                  <span> {{ classifyList[scope.row.classify].key }} </span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="tags" :label="$t('linkTagsStr')" min-width="200">
+                <template scope="scope">
+                  <el-tag type="gray" v-for="item in scope.row.tags.split(';')">{{ item }}</el-tag>
                 </template>
               </el-table-column>
               <el-table-column prop="desc" :label="$t('linkDescStr')" width="180">
               </el-table-column>
               <el-table-column :label="$t('createdDateStr')" width="180">
                 <template scope="scope">
-                  <span>{{ scope.row.created_at  }}</span>
+                  <span>{{ scope.row.created | dateConvert }}</span>
                 </template>
               </el-table-column>
             </el-table>
@@ -39,12 +47,14 @@
 
 <script>
 import { $apis } from 'helper'
+import { $config } from 'config'
 
 export default {
   name: 'nicelinks',
   data () {
     return {
-      niceLinksArr: []
+      niceLinksArr: [],
+      classifyList: $config.classify
     }
   },
 
@@ -56,12 +66,37 @@ export default {
   },
 
   methods: {
+    dispatchAction (params) {
+      $apis.dispatchAction(params).then(result => {
+        console.log(result)
+      }).catch((error) => {
+        this.isLoading = false
+        this.$message.error(`${error}`)
+      })
+    },
+
+    onLikeClick (row) {
+      let params = {
+        id: row._id,
+        action: 'like'
+      }
+      this.dispatchAction(params)
+    },
+
+    onDislikeClick (row) {
+      let params = {
+        id: row._id,
+        action: 'dislike'
+      }
+      this.dispatchAction(params)
+    }
   }
 }
 </script>
 
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
+
 .nice-links-moulde{
   background-color: #f0f0f4;
   position: absolute;
@@ -71,6 +106,14 @@ export default {
     margin: auto;
     .enter-link{
       color: $color-enter-link;
+    }
+    .liked-num{
+      margin-right: 10px;
+      .icons{
+        width: 22px;
+        height: 22px;
+        margin: 0;
+      }
     }
   }
 }

@@ -2,100 +2,94 @@ export default [
   // 0: 技术客栈
   [
     {
-      key: '程序员', value: '0'
+      key: '程序员', value: 'Programmer'
     },
     {
-      key: '前端', value: '1'
+      key: '前端', value: 'Frontend'
     },
     {
-      key: '后端', value: '3'
+      key: '后端', value: 'Backend'
     },
     {
-      key: 'Android', value: '4'
+      key: 'Android', value: 'Android'
     },
     {
-      key: 'Ios', value: '5'
+      key: 'Ios', value: 'Ios'
     },
     {
-      key: '算法', value: '6'
+      key: '算法', value: 'Algorithm'
     },
     {
-      key: '设计', value: '7'
+      key: '设计', value: 'Design'
     },
     {
-      key: '安全', value: '8'
+      key: '安全', value: 'Security'
     },
     {
-      key: '工具', value: '9'
+      key: '产品', value: 'Product'
     },
     {
-      key: '产品', value: '10'
-    },
-    {
-      key: '运维', value: '11'
+      key: '运维', value: 'Operation'
     }
   ],
   // 1: 资源之家
   [
     {
-      key: '利器', value: '0'
+      key: '利器', value: 'Tools'
     },
     {
-      key: '书籍', value: '1'
+      key: '书籍', value: 'Books'
     },
     {
-      key: '论坛', value: '2'
+      key: '论坛', value: 'Forum'
     },
     {
-      key: '官网', value: '3'
+      key: '官网', value: 'OfficialWebsite'
     },
     {
-      key: '美图', value: '4'
+      key: '美图', value: 'Picture'
     },
     {
-      key: '图标', value: '5'
+      key: '图标', value: 'Icons'
     },
     {
-      key: '字体', value: '6'
+      key: '字体', value: 'Typeface'
     }
   ],
   // 2. 写意人生
   [
     {
-      key: '有趣', value: '0'
+      key: '有趣', value: 'Interesting'
     },
     {
-      key: '好玩', value: '1'
+      key: '旅行', value: 'Travel'
     },
     {
-      key: '旅行', value: '2'
+      key: '感记', value: 'Diary'
     },
     {
-      key: '感记', value: '3'
-    },
-    {
-      key: '发现', value: '3'
+      key: '发现', value: 'Find'
     }
   ],
   // 3. 信息快讯
   [
     {
-      key: '科技', value: '0'
+      key: '科技', value: 'Technology'
     },
     {
-      key: '教育', value: '1'
+      key: '教育', value: 'Education'
     },
     {
-      key: '历史', value: '2'
+      key: '历史', value: 'History'
     },
     {
-      key: '人文', value: '3'
+      key: '人文', value: 'Humanity'
     },
     {
-      key: '娱乐', value: '4'
+      key: '娱乐', value: 'Entertainment'
     },
     {
-      key: '宗教', value: '5'
+      key: '宗教', value: 'Religion'
     }
   ]
 ]

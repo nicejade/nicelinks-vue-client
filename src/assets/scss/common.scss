@@ -94,4 +94,14 @@ a{
   .el-tag{
     margin: auto 5px;
   }
+  .el-table td, .el-table th{
+    height: 60px;
+  }
+  .el-table .cell{
+    line-height: 60px;
+    height: 60px;
+  }
+  .el-badge__content.is-fixed{
+    top: 8px;
+  }
 }

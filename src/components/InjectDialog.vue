@@ -86,9 +86,7 @@ export default {
         desc: '追求极致、极客',
         classify: '',
         tagsArr: [],
-        tags: '',
-        like: 0,
-        dislike: 0
+        tags: ''
       },
       classifyList: $config.classify,
       rules: {
@@ -120,7 +118,6 @@ export default {
 
   watch: {
     value (val) {
-      console.log(val)
       this.isShowDlgFlag = val
     },
     isShowDlgFlag (val) {
@@ -135,7 +132,6 @@ export default {
           this.isLoading = true
           this.fillForm.tags = this.fillForm.tagsArr.join(';')
           $apis.addNiceLinks(this.fillForm).then(result => {
-            console.log(result)
             this.isLoading = false
             this.isShowDlgFlag = false
             this.$message({
@@ -143,6 +139,7 @@ export default {
               type: 'success'
             })
           }).catch((error) => {
+            console.log(error)
             this.isLoading = false
             this.$message.error(`${error}`)
           })

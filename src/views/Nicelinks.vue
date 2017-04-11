@@ -5,11 +5,13 @@
         <div class="entry-list">
           <template>
             <el-table :data="niceLinksArr" style="width: 100%">
-              <el-table-column prop="like" :label="$t('beLikedStr')" min-width="100">
+              <el-table-column prop="like" :label="$t('beLikedStr')" min-width="180">
                 <template scope="scope">
                   <el-badge :value="scope.row.like || 0" class="liked-num">
                     <el-button type="text" size="small" @click="onLikeClick(scope.row)">
                       <icon class="icons" name="like">Like</icon></el-button>
+                  </el-badge>
+                  <el-badge :value="scope.row.dislike || 0" class="liked-num">
                     <el-button type="text" size="small" @click="onDislikeClick(scope.row)">
                       <icon class="icons" name="dislike">Dislike</icon></el-button>
                   </el-badge>
@@ -48,14 +50,24 @@
 <script>
 import { $apis } from 'helper'
 import { $config } from 'config'
+import { Fingerprint2 } from 'assets/js/fingerprint2.min'
+// let Fingerprint2 = require('assets/js/fingerprint2.min')
+console.log(Fingerprint2)
 
 export default {
   name: 'nicelinks',
   data () {
     return {
       niceLinksArr: [],
-      classifyList: $config.classify
+      classifyList: $config.classify,
+      fingerprint: null
     }
+  },
+
+  created () {
+    new Fingerprint2().get((result, components) => {
+      this.fingerprint = result
+    })
   },
 
   mounted () {
@@ -66,9 +78,14 @@ export default {
   },
 
   methods: {
-    dispatchAction (params) {
+    dispatchAction (row, action) {
+      let params = {
+        'fingerprint': this.fingerprint,
+        '_id': row._id,
+        'action': action
+      }
       $apis.dispatchAction(params).then(result => {
-        console.log(result)
+        row[action] = result.likeNum
       }).catch((error) => {
         this.isLoading = false
         this.$message.error(`${error}`)
@@ -76,19 +93,11 @@ export default {
     },
 
     onLikeClick (row) {
-      let params = {
-        id: row._id,
-        action: 'like'
-      }
-      this.dispatchAction(params)
+      this.dispatchAction(row, 'like')
     },
 
     onDislikeClick (row) {
-      let params = {
-        id: row._id,
-        action: 'dislike'
-      }
-      this.dispatchAction(params)
+      this.dispatchAction(row, 'dislike')
     }
   }
 }
@@ -108,7 +117,7 @@ export default {
       color: $color-enter-link;
     }
     .liked-num{
-      margin-right: 10px;
+      margin-right: 20px;
       .icons{
         width: 22px;
         height: 22px;

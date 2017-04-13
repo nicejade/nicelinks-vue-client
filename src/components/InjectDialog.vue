@@ -26,7 +26,7 @@
             <label class="col-sm-3 control-label"> 选择分类 <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="classify">
-                <el-select v-model="fillForm.classify" placeholder="请选择分类">
+                <el-select class="wrap-block" v-model="fillForm.classify" placeholder="请选择分类">
                   <el-option
                     v-for="item in classifyList"
                     :label="item.key"
@@ -41,7 +41,7 @@
             <label class="col-sm-3 control-label"> 选择标签 <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="tagsArr">
-                <el-select v-model="fillForm.tagsArr" placeholder="请选择标签" multiple>
+                <el-select class="wrap-block" v-model="fillForm.tagsArr" placeholder="请选择标签" multiple :multiple-limit="3">
                   <el-option
                     v-for="item in tagsList"
                     :label="item.key"
@@ -53,10 +53,10 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 博客描述 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> 链接描述 <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="desc">
-                <el-input placeholder="请输入博客描述" v-model="fillForm.desc"></el-input>
+                <el-input placeholder="请输入链接描述" v-model="fillForm.desc"></el-input>
               </el-form-item>
             </div>
           </div>
@@ -74,6 +74,7 @@
 <script>
 import { $apis } from 'helper'
 import { $config } from 'config'
+import _ from 'lodash'
 
 export default {
   data () {
@@ -81,7 +82,7 @@ export default {
       isShowDlgFlag: false,
       isLoading: false,
       fillForm: {
-        url_path: 'jeffjade.com',
+        url_path: 'http://jeffjade.com',
         title: '晚晴幽草轩',
         desc: '追求极致、极客',
         classify: '',
@@ -97,7 +98,7 @@ export default {
           { required: true, message: '请输入链接名称', trigger: 'change,blur' }
         ],
         classify: [
-          { required: true, message: '请选择分类', trigger: 'change,blur' }
+          { required: true, message: '请选择链接分类', trigger: 'change,blur' }
         ]
       }
     }
@@ -131,13 +132,18 @@ export default {
         if (valid) {
           this.isLoading = true
           this.fillForm.tags = this.fillForm.tagsArr.join(';')
-          $apis.addNiceLinks(this.fillForm).then(result => {
+
+          let params = _.clone(this.fillForm, true)
+          delete params.tagsArr
+
+          $apis.addNiceLinks(params).then(result => {
             this.isLoading = false
             this.isShowDlgFlag = false
             this.$message({
               message: '很好，你已成功添加该链接',
               type: 'success'
             })
+            this.$bus.emit('inject-success')
           }).catch((error) => {
             console.log(error)
             this.isLoading = false

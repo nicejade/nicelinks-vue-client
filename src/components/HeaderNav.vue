@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="">
   <header class="header">
     <nav class="nav">
       <div class="nav-left col-sm-10 col-md-8 col-lg-7">
@@ -8,11 +8,20 @@
             <img src="./../assets/images/nice_links.png" alt="">
           </a></h1>
         </div>
-        <el-button
-          type="primary"
-          icon="plus"
-          size="small"
-          @click="isShowDlgFlag = true">{{ $t('injectLinks') }}</el-button>
+
+        <div class="nav-link">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane v-for="item in navList"
+              :key="item.value" :label="item.key" :name="item.value">
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+
+        <div class="header-btn">
+          <el-button type="primary" icon="plus" size="small"
+            @click="isShowDlgFlag = true">{{ $t('injectLinks') }}
+          </el-button>
+        </div>
       </div>
     </nav>
   </header>
@@ -22,17 +31,26 @@
 
 <script>
 import InjectDialog from 'components/InjectDialog'
+import { $config } from 'config'
 
 export default {
   name: 'HeaderNav',
   data () {
     return {
-      isShowDlgFlag: false
+      isShowDlgFlag: false,
+      activeName: '0',
+      navList: $config.classify
     }
   },
 
   components: {
     InjectDialog
+  },
+
+  methods: {
+    handleClick (tab) {
+      this.$bus.emit('switch-nav', tab.name)
+    }
   }
 }
 </script>
@@ -57,11 +75,22 @@ export default {
       text-align: left;
       .header-logo{
         display: inline-block;
+        float: left;
         margin: auto 15px;
+        width: 200px;
+        margin-top: $header-height / 4;
         .header-logo-a{
-          @include height-center($header-height);
+          height: $header-height / 2;
           color: #333;
         }
+      }
+      .nav-link{
+        display: inline-block;
+        float: left;
+      }
+      .header-btn{
+        display: inline-block;
+        float: right;
       }
     }
   }

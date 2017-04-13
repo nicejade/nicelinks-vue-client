@@ -12,7 +12,7 @@ export default {
   children: [{
     path: '/nicelinks',
     meta: {
-      title: setTitleLang('晚晴幽草轩', 'Nice Home Blog')
+      title: setTitleLang('晚晴幽草轩', 'Nice Links')
     },
     component: resolve => require(['./../views/Nicelinks'], resolve)
   }]

@@ -10,10 +10,12 @@ import VueI18n from 'vue-i18n'
 import ElementUI from 'element-ui'
 import locales from './locales'
 import Cookies from 'js-cookie'
+import VueBus from 'vue-bus'
 
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(VueI18n)
 Vue.use(ElementUI)
+Vue.use(VueBus)
 
 // i18n
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]

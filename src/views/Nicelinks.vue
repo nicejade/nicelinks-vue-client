@@ -51,8 +51,6 @@
 import { $apis } from 'helper'
 import { $config } from 'config'
 import { Fingerprint2 } from 'assets/js/fingerprint2.min'
-// let Fingerprint2 = require('assets/js/fingerprint2.min')
-console.log(Fingerprint2)
 
 export default {
   name: 'nicelinks',
@@ -68,16 +66,25 @@ export default {
     new Fingerprint2().get((result, components) => {
       this.fingerprint = result
     })
+
+    this.$bus.on('inject-success', this.initFetch)
+    this.$bus.on('switch-nav', this.switchNav)
   },
 
   mounted () {
-    $apis.getNiceLinks().then(result => {
-      console.log(result)
-      this.niceLinksArr = result
-    })
+    this.initFetch()
   },
 
   methods: {
+    initFetch () {
+      $apis.getNiceLinks().then(result => {
+        this.niceLinksArr = result
+      })
+    },
+
+    switchNav (index) {
+    },
+
     dispatchAction (row, action) {
       let params = {
         'fingerprint': this.fingerprint,

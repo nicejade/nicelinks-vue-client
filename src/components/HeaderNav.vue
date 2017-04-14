@@ -49,6 +49,7 @@ export default {
 
   methods: {
     handleClick (tab) {
+      console.log(tab)
       this.$bus.emit('switch-nav', tab.name)
     }
   }

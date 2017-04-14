@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="panel-default nice-links-moulde">
+    <div class="panel-default nice-links-moulde" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="entry-list">
           <template>
@@ -56,6 +56,7 @@ export default {
   name: 'nicelinks',
   data () {
     return {
+      isLoading: false,
       niceLinksArr: [],
       classifyList: $config.classify,
       fingerprint: null
@@ -76,13 +77,25 @@ export default {
   },
 
   methods: {
-    initFetch () {
-      $apis.getNiceLinks().then(result => {
+    initFetch (params = {}) {
+      console.log(params)
+      this.isLoading = true
+      $apis.getNiceLinks(params).then(result => {
+        this.isLoading = false
         this.niceLinksArr = result
+      }).catch((error) => {
+        console.log(error)
+        this.isLoading = false
+        this.$message.error(`${error}`)
       })
     },
 
-    switchNav (index) {
+    switchNav (target) {
+      console.log(typeof target)
+      let params = {
+        'classify': target
+      }
+      this.initFetch(params)
     },
 
     dispatchAction (row, action) {

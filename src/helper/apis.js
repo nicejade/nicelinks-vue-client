@@ -5,8 +5,8 @@ function requestUrl (path) {
 }
 
 export default {
-  getNiceLinks () {
-    return $ajax.get(requestUrl('getNiceLinks'))
+  getNiceLinks (data) {
+    return $ajax.get(requestUrl('getNiceLinks'), data)
   },
 
   addNiceLinks (data) {

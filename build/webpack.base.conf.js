@@ -5,6 +5,8 @@ var webpack = require('webpack')
 var autoprefixer = require('autoprefixer');
 var vueLoaderConfig = require('./vue-loader.conf')
 var svgoConfig = require('../config/svgo-config.json')
+var chalk = require('chalk')
+var ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -87,6 +89,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new ProgressBarPlugin({
+      format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
+    }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '..'),
       manifest: require('./vendor-manifest.json')

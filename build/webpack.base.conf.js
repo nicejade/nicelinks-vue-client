@@ -7,10 +7,35 @@ var vueLoaderConfig = require('./vue-loader.conf')
 var svgoConfig = require('../config/svgo-config.json')
 var chalk = require('chalk')
 var ProgressBarPlugin = require('progress-bar-webpack-plugin')
+var HappyPack = require('happypack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var happyThreadPool = HappyPack.ThreadPool({ size: 5 })
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+
+var cssLoader = ExtractTextPlugin.extract({
+  use: [{
+    loader: 'happypack/loader?id=happycss'
+  }],
+  fallback: 'vue-style-loader'
+})
+
+var sassLoader = ExtractTextPlugin.extract({
+  use: [
+    'happypack/loader?id=happycss',
+    'happypack/loader?id=happysass'
+  ],
+  fallback: 'vue-style-loader'
+})
+
+// Merge the config into vueLoaderConfig
+Object.assign(vueLoaderConfig.loaders, {
+  css: cssLoader,
+  scss: sassLoader,
+  js: 'happypack/loader?id=happybabel'
+})
 
 module.exports = {
   entry: {
@@ -57,12 +82,19 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: vueLoaderConfig,
+        exclude: /node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/
       },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   include: [resolve('src'), resolve('test')]
+      // },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        test: /\.js[x]?$/,
+        include: [resolve('src')],
+        exclude: /node_modules/,
+        loader: 'happypack/loader?id=happybabel'
       },
       {
         test: /\.svg$/,
@@ -104,6 +136,23 @@ module.exports = {
           })
         ]
       }
+    }),
+    new HappyPack({
+      id: 'happybabel',
+      loaders: ['babel-loader?cacheDirectory=true'],
+      threadPool: happyThreadPool,
+      cache: true,
+      verbose: true
+    }),
+    new HappyPack({
+      id: 'happycss',
+      cache: true,
+      loaders: [ 'css-loader?mportLoaders=1' ]
+    }),
+    new HappyPack({
+      id: 'happysass',
+      cache: true,
+      loaders: [ 'sass-loader' ]
     })
   ]
 }

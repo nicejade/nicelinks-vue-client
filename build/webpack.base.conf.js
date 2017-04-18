@@ -9,33 +9,25 @@ var chalk = require('chalk')
 var ProgressBarPlugin = require('progress-bar-webpack-plugin')
 var HappyPack = require('happypack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var happyThreadPool = HappyPack.ThreadPool({ size: 5 })
+// var happyThreadPool = HappyPack.ThreadPool({ size: 3 })
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-var cssLoader = ExtractTextPlugin.extract({
-  use: [{
-    loader: 'happypack/loader?id=happycss'
-  }],
-  fallback: 'vue-style-loader'
-})
+function createHappyPlugin(id, loaders) {
+  return new HappyPack({
+    id: id,
+    loaders: loaders,
+    // threadPool: happyThreadPool,
 
-var sassLoader = ExtractTextPlugin.extract({
-  use: [
-    'happypack/loader?id=happycss',
-    'happypack/loader?id=happysass'
-  ],
-  fallback: 'vue-style-loader'
-})
+    // disable happy caching with HAPPY_CACHE=0
+    cache: process.env.HAPPY_CACHE !== '0',
 
-// Merge the config into vueLoaderConfig
-Object.assign(vueLoaderConfig.loaders, {
-  css: cssLoader,
-  scss: sassLoader,
-  js: 'happypack/loader?id=happybabel'
-})
+    // make happy more verbose with HAPPY_VERBOSE=1
+    verbose: process.env.HAPPY_VERBOSE === '1',
+  })
+}
 
 module.exports = {
   entry: {
@@ -98,7 +90,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
+        loader: 'happypack/loader?id=happysvg',
         include: /assets\/icons/
       },
       {
@@ -117,6 +109,12 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.scss$/,
+        include: [resolve('src/assets')],
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'happypack/loader?id=happysass'})
       }
     ]
   },
@@ -140,19 +138,23 @@ module.exports = {
     new HappyPack({
       id: 'happybabel',
       loaders: ['babel-loader?cacheDirectory=true'],
-      threadPool: happyThreadPool,
+      // threadPool: happyThreadPool,
       cache: true,
       verbose: true
     }),
+    createHappyPlugin('happysvg', ['svg-sprite-loader']),
+    // createHappyPlugin('happyurl', ['url-loader']),
+    createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
     new HappyPack({
-      id: 'happycss',
-      cache: true,
-      loaders: [ 'css-loader?mportLoaders=1' ]
-    }),
-    new HappyPack({
-      id: 'happysass',
-      cache: true,
-      loaders: [ 'sass-loader' ]
+      loaders: [{
+        path: 'vue-loader',
+        query: {
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+            js: 'happypack/loader?id=happybabel'
+          }
+        }
+      }]
     })
   ]
 }

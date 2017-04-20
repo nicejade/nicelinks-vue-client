@@ -5,5 +5,6 @@ export default {
   linkClassifyStr: 'Links Classify',
   linkTagsStr: 'Links Tags',
   createdDateStr: 'Created Date',
-  beLikedStr: 'Like Degree'
+  beLikedStr: 'Like Degree',
+  beDisikedStr: 'Dislike Degree'
 }

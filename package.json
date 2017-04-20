@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "commit": "git add . && git commit -a && git pull && git push",
+    "commit": "git add . && git cz && git pull && git push",
     "deploy": "git pull && npm run build && node build/deploy.js",
     "build": "node build/build.js",
     "build:dll": "webpack --config build/webpack.dll.conf.js",

@@ -56,6 +56,7 @@ module.exports = {
     }
   },
   module: {
+    noParse: /node_modules\/(element-ui\.js)/,
     rules: [
       {
         test: /\.svg$/,
@@ -77,11 +78,6 @@ module.exports = {
         options: vueLoaderConfig,
         exclude: /node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/
       },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   include: [resolve('src'), resolve('test')]
-      // },
       {
         test: /\.js[x]?$/,
         include: [resolve('src')],
@@ -109,13 +105,13 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.scss$/,
-        include: [resolve('src/assets')],
-        exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'happypack/loader?id=happysass'})
       }
+      // {
+      //   test: /\.scss$/,
+      //   include: [resolve('src/assets')],
+      //   exclude: /node_modules/,
+      //   loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'happypack/loader?id=happysass'})
+      // }
     ]
   },
   plugins: [
@@ -143,8 +139,7 @@ module.exports = {
       verbose: true
     }),
     createHappyPlugin('happysvg', ['svg-sprite-loader']),
-    // createHappyPlugin('happyurl', ['url-loader']),
-    createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
+    // createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
     new HappyPack({
       loaders: [{
         path: 'vue-loader',

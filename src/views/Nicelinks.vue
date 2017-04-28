@@ -48,6 +48,7 @@
             </el-table>
           </template>
         </div>
+        <links-list :pdata="niceLinksArr"></links-list>
         <div class="page-responsive" v-show="niceLinksArr.length">
           <el-pagination
             @size-change="handleSizeChange"
@@ -61,12 +62,15 @@
         </div>
       </div>
     </div>
+    <inject-dialog v-model="isShowDlgFlag"></inject-dialog>
   </div>
 </template>
 
 <script>
 import { $apis } from 'helper'
 import { $config } from 'config'
+import InjectDialog from 'components/InjectDialog'
+import LinksList from 'components/LinksList'
 import { Fingerprint2 } from 'assets/js/fingerprint2.min'
 
 export default {
@@ -74,6 +78,7 @@ export default {
   data () {
     return {
       isLoading: false,
+      isShowDlgFlag: false,
       niceLinksArr: [],
       classifyList: $config.classify,
       fingerprint: null,
@@ -94,10 +99,18 @@ export default {
 
     this.$bus.on('inject-success', this.fetchSearch)
     this.$bus.on('switch-nav', this.switchNav)
+    this.$bus.on('activate-inject-dlg', () => {
+      this.isShowDlgFlag = true
+    })
   },
 
   mounted () {
     this.fetchSearch()
+  },
+
+  components: {
+    InjectDialog,
+    LinksList
   },
 
   methods: {

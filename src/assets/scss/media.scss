@@ -7,7 +7,7 @@
   background: linear-gradient(to left, #abbaab , #ffffff);
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 960px) {
   .icons{
     width: 2em;
     height: 2em;
@@ -21,5 +21,43 @@
     background-color: #dddddd;
     background-image: -webkit-radial-gradient(center, circle farthest-corner, #fff 0%, #ddd 100%);
     background-image: radial-gradient(circle farthest-corner at center, #fff 0%, #ddd 100%)
+  }
+  #app .header{
+    .nav{
+      .header-logo{
+        float: none !important;
+        text-align: center;
+      }
+      .menu{
+        display: block;
+      }
+      .operate-link{
+        display: none;
+      }
+      .inject-btn{
+        display: none;
+      }
+    }
+  }
+  #app .menu-expand{
+    .menu{
+    }
+    .sidenav {
+      display: block !important;
+    }
+  }
+
+  #app .el-dialog--small{
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  #app .menu-expand{
+    .menu{
+    }
+    .sidenav {
+      display: none;
+    }
   }
 }

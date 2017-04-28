@@ -52,7 +52,9 @@ module.exports = {
       'assets': resolve('src/assets'),
       'components': resolve('src/components'),
       'config': resolve('src/config'),
-      'helper': resolve('src/helper')
+      'helper': resolve('src/helper'),
+      'views': resolve('src/views'),
+      'partials': resolve('src/partials')
     }
   },
   module: {

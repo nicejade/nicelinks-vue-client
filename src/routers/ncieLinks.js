@@ -5,15 +5,17 @@ function setTitleLang (zhStr, enStr) {
   }
 }
 
-import Frame from './../views/Frame'
+import Frame from 'partials/Frame'
+
 export default {
   path: '/',
   component: Frame,
   children: [{
-    path: '/nicelinks',
+    path: 'nicelinks',
+    alias: '/',
     meta: {
       title: setTitleLang('晚晴幽草轩', 'Nice Links')
     },
-    component: resolve => require(['./../views/Nicelinks'], resolve)
+    component: resolve => require(['views/Nicelinks'], resolve)
   }]
 }

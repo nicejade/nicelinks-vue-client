@@ -2,7 +2,7 @@
 <div class="">
   <header class="header">
     <nav class="nav">
-      <div class="col-sm-10 col-md-8 col-lg-7">
+      <div class="col-sm-10">
         <div class="header-logo">
           <h1><a  class="header-logo-a" href="/">
             <img src="./../assets/images/nice_links.png" alt="">

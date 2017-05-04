@@ -1,65 +1,27 @@
 <template>
-  <div class="wrapper">
-    <div class="panel-default nice-links-moulde" v-loading.body="isLoading">
+  <div class="wrapper" id="nice-links">
+    <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
-        <div class="entry-list">
-          <template>
-            <el-table :data="niceLinksArr" @sort-change="handleSortChange">
-              <el-table-column prop="like" :label="$t('beLikedStr')" width="180" sortable="custom">
-                <template scope="scope">
-                  <el-badge :value="scope.row.like || 0" class="liked-num">
-                    <el-button type="text" size="small" @click="onLikeClick(scope.row)">
-                      <icon class="icons" name="like">Like</icon>
-                    </el-button>
-                  </el-badge>
-                </template>
-              </el-table-column>
-              <el-table-column prop="url_path" :label="$t('niceLinkStr')" width="180">
-                <template scope="scope">
-                  <a class="enter-link" :href="scope.row.url_path" target="_blank">{{ scope.row.title }}</a>
-                </template>
-              </el-table-column>
-              <!-- <el-table-column prop="classify" :label="$t('linkClassifyStr')" min-width="100">
-                <template scope="scope">
-                  <span> {{ classifyList[scope.row.classify].key }} </span>
-                </template>
-              </el-table-column> -->
-              <el-table-column prop="tags" :label="$t('linkTagsStr')" min-width="180">
-                <template scope="scope">
-                  <el-tag type="gray" v-for="item in scope.row.tags.split(';')">{{ item }}</el-tag>
-                </template>
-              </el-table-column>
-              <el-table-column prop="desc" :label="$t('linkDescStr')" min-width="180">
-              </el-table-column>
-              <el-table-column :label="$t('createdDateStr')" width="180">
-                <template scope="scope">
-                  <span>{{ scope.row.created | dateConvert }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column prop="like" :label="$t('beDisikedStr')" width="180" sortable="custom">
-                <template scope="scope">
-                  <el-badge :value="scope.row.dislike || 0" class="liked-num">
-                    <el-button type="text" size="small" @click="onDislikeClick(scope.row)">
-                      <icon class="icons" name="dislike">Dislike</icon>
-                    </el-button>
-                  </el-badge>
-                </template>
-              </el-table-column>
-            </el-table>
-          </template>
+        <div class="main-container">
+          <div class="entry-list">
+            <links-list :pdata="niceLinksArr"></links-list>
+            <div class="page-responsive" v-show="niceLinksArr.length">
+              <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="tableControl.pageCount"
+                :page-sizes="[20, 50, 100]"
+                :page-size="tableControl.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="pageTotal">
+              </el-pagination>
+            </div>
+          </div>
+          <aside class="aside-list">
+            <ads-position></ads-position>
+          </aside>
         </div>
-        <links-list :pdata="niceLinksArr"></links-list>
-        <div class="page-responsive" v-show="niceLinksArr.length">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="tableControl.pageCount"
-            :page-sizes="[20, 50, 100]"
-            :page-size="tableControl.pageSize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="pageTotal">
-          </el-pagination>
-        </div>
+        <br>
       </div>
     </div>
     <inject-dialog v-model="isShowDlgFlag"></inject-dialog>
@@ -69,8 +31,11 @@
 <script>
 import { $apis } from 'helper'
 import { $config } from 'config'
-import InjectDialog from 'components/InjectDialog'
+
 import LinksList from 'components/LinksList'
+import AdsPosition from 'components/AdsPosition'
+import InjectDialog from 'components/InjectDialog'
+
 import { Fingerprint2 } from 'assets/js/fingerprint2.min'
 
 export default {
@@ -92,6 +57,12 @@ export default {
     }
   },
 
+  components: {
+    InjectDialog,
+    LinksList,
+    AdsPosition
+  },
+
   created () {
     new Fingerprint2().get((result, components) => {
       this.fingerprint = result
@@ -106,11 +77,6 @@ export default {
 
   mounted () {
     this.fetchSearch()
-  },
-
-  components: {
-    InjectDialog,
-    LinksList
   },
 
   methods: {
@@ -134,20 +100,6 @@ export default {
       this.fetchSearch(params)
     },
 
-    dispatchAction (row, action) {
-      let params = {
-        'fingerprint': this.fingerprint,
-        '_id': row._id,
-        'action': action
-      }
-      $apis.dispatchAction(params).then(result => {
-        row[action] = result.count
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      })
-    },
-
     handleSortChange (obj) {
       console.log(obj)
       this.tableControl.sortTarget = obj.prop
@@ -163,14 +115,6 @@ export default {
     handleCurrentChange (val) {
       this.tableControl.pageCount = val
       this.fetchSearch()
-    },
-
-    onLikeClick (row) {
-      this.dispatchAction(row, 'like')
-    },
-
-    onDislikeClick (row) {
-      this.dispatchAction(row, 'dislike')
     }
   }
 }
@@ -179,22 +123,29 @@ export default {
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
 
-.nice-links-moulde{
-  background-color: #f0f0f4;
+.wrapper{
   position: absolute;
-  width: 100%;
   margin-top: $header-height;
-  .entry-list{
-    margin: auto;
-    .enter-link{
-      color: $color-enter-link;
-    }
-    .liked-num{
-      margin-right: 20px;
-      .icons{
-        width: 22px;
-        height: 22px;
-        margin: 0;
+  height: 100%;
+  position: absolute;
+  .panel-body{
+    background-color: #f0f0f4;
+    .main-container{
+      width: 100%;
+      max-width: 1280px;
+      margin: auto;
+      .entry-list{
+        display: inline-block;
+        float: left;
+        background-color: $entry-list-bg;
+        padding: auto 20px;
+        width: 60%;
+      }
+      .aside-list{
+        background-color: $entry-list-bg;
+        display: inline-block;
+        width: 36%;
+        float: right;
       }
     }
   }

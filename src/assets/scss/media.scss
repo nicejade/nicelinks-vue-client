@@ -50,6 +50,28 @@
   #app .el-dialog--small{
     width: 90%;
   }
+
+  #nice-links{
+    .panel-body{
+      padding: 0px;
+      .main-container{
+        .entry-list{
+          display: block;
+          width: 100%;
+          float: none;
+          .links-list .moudle{
+            margin: 0px;
+            padding: 1rem 1rem;
+          }
+        }
+        .aside-list{
+          display: block;
+          width: 100%;
+          float: none;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 960px) {

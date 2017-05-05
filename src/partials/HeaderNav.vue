@@ -4,7 +4,7 @@
     <nav class="nav">
       <div class="col-sm-10">
         <div class="header-logo">
-          <h1><a  class="header-logo-a" href="/">
+          <h1><a  class="header-logo-a" href="javascript:;" @click="onLogoClick">
             <img src="./../assets/images/nice_links.png" alt="">
           </a></h1>
         </div>
@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       isShowDlgFlag: false,
-      activeName: '0',
+      activeName: '-1',
       navList: $config.classify
     }
   },
@@ -51,6 +51,10 @@ export default {
   },
 
   methods: {
+    onLogoClick () {
+      this.$bus.emit('switch-nav')
+    },
+
     handleClick (tab) {
       this.$bus.emit('switch-nav', tab.name)
     },
@@ -75,7 +79,7 @@ export default {
   width: 100%;
   @include height-center($header-height);
   background-color: #fff;
-  border-bottom: solid 1px #d1d5da;
+  border-bottom: solid 1px $moudle-border-color;
   z-index: 999;
   transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   .nav{

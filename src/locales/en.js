@@ -1,6 +1,13 @@
 export default {
-  injectLinks: 'Inject New Links',
-  niceLinkStr: 'Nice Links',
+  // Common Part
+  pleaseEnter: 'Please Enter',
+  pleaseSelect: 'Please Select',
+  cancel: 'Cancel',
+  confirm: 'Confirm',
+
+  injectLinks: 'Inject New Link',
+  linkAddressStr: 'Address Link',
+  linkNameStr: 'Link Name',
   linkDescStr: 'Links Desc',
   linkClassifyStr: 'Links Classify',
   linkTagsStr: 'Links Tags',

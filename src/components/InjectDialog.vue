@@ -5,28 +5,33 @@
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 博客地址 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkAddressStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="url_path">
-                <el-input placeholder="请输入博客地址" v-model="fillForm.url_path"></el-input>
+                <el-input
+                  v-model="fillForm.url_path"
+                  :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"></el-input>
               </el-form-item>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 博客名称 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkNameStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="title">
-                <el-input placeholder="请输入博客名称" v-model="fillForm.title"></el-input>
+                <el-input
+                  v-model="fillForm.title"
+                  :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')"></el-input>
               </el-form-item>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 选择分类 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkClassifyStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="classify">
-                <el-select class="wrap-block" v-model="fillForm.classify" placeholder="请选择分类">
+                <el-select class="wrap-block" v-model="fillForm.classify"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')">
                   <el-option
                     v-for="item in classifyList"
                     :label="item.key"
@@ -38,10 +43,11 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 选择标签 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkTagsStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="tagsArr">
-                <el-select class="wrap-block" v-model="fillForm.tagsArr" placeholder="请选择标签" multiple :multiple-limit="3">
+                <el-select class="wrap-block" v-model="fillForm.tagsArr" multiple :multiple-limit="3"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')">
                   <el-option
                     v-for="item in tagsList"
                     :label="item.key"
@@ -53,10 +59,10 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> 链接描述 <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkDescStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="desc">
-                <el-input placeholder="请输入链接描述" v-model="fillForm.desc"></el-input>
+                <el-input :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')" v-model="fillForm.desc"></el-input>
               </el-form-item>
             </div>
           </div>
@@ -64,8 +70,8 @@
       </div>
 
       <div slot="footer" class="dialog-footer">
-        <el-button @click="isShowDlgFlag = false">取 消</el-button>
-        <el-button type="primary" @click="onCommitClick">确 定</el-button>
+        <el-button @click="isShowDlgFlag = false">{{ this.$t('cancel') }}</el-button>
+        <el-button type="primary" @click="onCommitClick">{{ this.$t('confirm') }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -82,9 +88,9 @@ export default {
       isShowDlgFlag: false,
       isLoading: false,
       fillForm: {
-        url_path: 'http://jeffjade.com',
-        title: '晚晴幽草轩',
-        desc: '追求极致、极客',
+        url_path: '',
+        title: '',
+        desc: '',
         classify: '',
         tagsArr: [],
         tags: ''
@@ -95,10 +101,10 @@ export default {
           { required: true, validator: this.$verifyUrl, trigger: 'change,blur' }
         ],
         title: [
-          { required: true, message: '请输入链接名称', trigger: 'change,blur' }
+          { required: true, message: this.$t('pleaseEnter') + this.$t('linkNameStr'), trigger: 'change,blur' }
         ],
         classify: [
-          { required: true, message: '请选择链接分类', trigger: 'change,blur' }
+          { required: true, message: this.$t('pleaseSelect') + this.$t('linkClassifyStr'), trigger: 'change,blur' }
         ]
       }
     }

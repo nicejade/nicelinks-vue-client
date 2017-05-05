@@ -3,11 +3,11 @@
   <div class="moudle" v-for="(item, index) in pdata">
     <div class="content">
       <div class="meta">
-        <span class="item classify">{{ classifyList[item.classify]['key'] }}</span>
+        <span class="item classify" @click="onClassifyClick(item.classify)">{{ classifyList[item.classify]['key'] }}</span>
         <span class="item"> user </span>
         <span class="item">{{ item.created | dateOffset }}</span>
-        <span class="tag" v-for="item in item.tags.split(';')">
-          {{ item }}
+        <span class="tag" v-for="item in queryTagsArr(item.classify, item.tags)" :key="item.value" @click="onTagClick(item.value)">
+          {{ item.key }}
         </span>
       </div>
       <h3 class="title">
@@ -36,7 +36,8 @@ export default {
   name: 'LinksList',
   data () {
     return {
-      classifyList: $config.classify
+      classifyList: $config.classify,
+      tagsList: $config.tags
     }
   },
 
@@ -65,6 +66,32 @@ export default {
       })
     },
 
+    queryTagsArr (classify, tags) {
+      let checkTagsArr = this.tagsList[classify]
+      let tagsArr = tags.split(';')
+      let resultArr = []
+      checkTagsArr.map(obj => {
+        tagsArr.map(item => {
+          if (item === obj.value) {
+            resultArr.push({
+              'key': obj.key,
+              'value': obj.value
+            })
+          }
+        })
+      })
+      return resultArr
+    },
+
+    onClassifyClick (classify) {
+      this.$bus.emit('fetch-search', {
+        'classify': classify
+      })
+    },
+
+    onTagClick (tag) {
+    },
+
     onLikeClick (row) {
       this.dispatchAction(row, 'like')
     },
@@ -85,7 +112,7 @@ export default {
     margin: 10px;
     padding: 1.5rem 2rem;
     text-align: left;
-    border-bottom: 1px solid $moudle-border-color;
+    border-bottom: 1px solid $item-border-color;
     .content{
       margin: 5px;
       .title{
@@ -102,17 +129,26 @@ export default {
         }
       }
       .meta{
+        font-size: 1rem;
+        color: $meta-item-color;
         .item{
+          cursor: pointer;
           &:after{
             content: "\B7";
             margin: 0 .4em;
           }
         }
         .tag{
-          margin: 0 .4em;
+          cursor: pointer;
+        }
+        .tag + .tag{
+          &:before{
+            margin: 0 .1em;
+            content: "/";
+          }
         }
         .classify{
-          color: $classify-color;
+          color: $meta-classify-color;
         }
       }
       .action-list{
@@ -124,7 +160,7 @@ export default {
           height: 100%;
           text-align: center;
           min-width: 3.6rem;
-          border: 1px solid $moudle-border-color;
+          border: 1px solid $item-border-color;
           .icons{
             width: 1.6rem;
             height: 1.6rem;

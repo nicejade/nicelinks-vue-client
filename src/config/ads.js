@@ -5,6 +5,6 @@ export default [
   },
   {
     path: 'http://click.dji.com/AKx2rc0IYJRdYSS4gR0?pm=ad_image',
-    image: 'https://u.djicdn.com/uploads/ad_image_file/file/173/mavic_300x250a.jpg'
+    image: 'https://u.djicdn.com/uploads/ad_image_file/file/175/mavic_250x250a.jpg'
   }
 ]

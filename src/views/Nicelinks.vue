@@ -69,6 +69,7 @@ export default {
     })
 
     this.$bus.on('inject-success', this.fetchSearch)
+    this.$bus.on('fetch-search', this.fetchSearch)
     this.$bus.on('switch-nav', this.switchNav)
     this.$bus.on('activate-inject-dlg', () => {
       this.isShowDlgFlag = true
@@ -80,7 +81,7 @@ export default {
   },
 
   methods: {
-    fetchSearch (params = { 'classify': '0' }) {
+    fetchSearch (params = {}) {
       this.isLoading = true
       Object.assign(params, this.tableControl)
       $apis.getNiceLinks(params).then(result => {
@@ -90,6 +91,7 @@ export default {
         console.log(error)
         this.isLoading = false
         this.$message.error(`${error}`)
+        this.niceLinksArr = $config.default
       })
     },
 
@@ -144,7 +146,7 @@ export default {
       .aside-list{
         background-color: $entry-list-bg;
         display: inline-block;
-        width: 36%;
+        width: 32%;
         float: right;
       }
     }

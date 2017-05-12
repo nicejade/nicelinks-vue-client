@@ -5,26 +5,26 @@
       <!-- <h1 class="heading">Nice Links</h1> -->
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="username">
-          <el-input v-model="account.username" placeholder="用户名" @keydown.enter.native="login"></el-input>
+          <el-input v-model="account.username" placeholder="用户名" @keydown.enter.native="onLoginClick"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="account.password" type="password" placeholder="密码" @keydown.enter.native="login"></el-input>
+          <el-input v-model="account.password" type="password" placeholder="密码" @keydown.enter.native="onLoginClick"></el-input>
         </el-form-item>
-        <el-button type="primary" :loading="isLoading" @click="login" size="large">登录</el-button>
+        <el-button type="primary" :loading="isLoading" @click="onLoginClick" size="large">登录</el-button>
       </el-form>
     </div>
   </div>
 </template>
 
 <script>
-  // import { $page } from 'helper'
+  import { $page } from 'helper'
   export default{
     data () {
       return {
         isLoading: false,
         account: {
-          username: 'ag-test001',
-          password: '@AgilePoint111'
+          username: '',
+          password: ''
         },
         rules: {
           username: [
@@ -55,9 +55,12 @@
     },
 
     methods: {
-      login () {
+      onLoginClick () {
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
+            let params = Object.assign({}, this.account)
+            $page.login(params).then(result => {
+            })
           } else {
             return false
           }

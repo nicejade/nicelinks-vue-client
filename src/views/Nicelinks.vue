@@ -146,6 +146,7 @@ export default {
       .aside-list{
         background-color: $entry-list-bg;
         display: inline-block;
+        max-width: 360px;
         width: 32%;
         float: right;
       }

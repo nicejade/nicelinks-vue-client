@@ -6,4 +6,4 @@ files.keys().forEach((key) => {
   moudles.push(files(key).default)
 })
 
-export const $Routers = moudles
+export default moudles

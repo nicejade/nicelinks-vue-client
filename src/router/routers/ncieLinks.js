@@ -12,6 +12,7 @@ export default {
   component: Frame,
   children: [{
     path: 'nicelinks',
+    needAuth: false,
     alias: '/',
     meta: {
       title: setTitleLang('晚晴幽草轩', 'Nice Links')

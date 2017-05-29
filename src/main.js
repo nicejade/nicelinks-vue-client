@@ -3,8 +3,7 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
-import VueRouter from 'vue-router'
-import Routes from './router.js'
+import router from './router'
 import Filters from './filters'
 import VueI18n from 'vue-i18n'
 import ElementUI from 'element-ui'
@@ -23,15 +22,6 @@ const lang = Cookies.get('lang') || (browserLanguage in locales ? browserLanguag
 Vue.config.lang = lang
 Object.keys(locales).forEach(lang => {
   Vue.locale(lang, locales[lang])
-})
-
-// Router
-Vue.use(VueRouter)
-const router = new VueRouter({
-  mode: 'history',
-  linkActiveClass: 'active',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: Routes
 })
 
 import Icon from 'components/Icon/Icon.vue'

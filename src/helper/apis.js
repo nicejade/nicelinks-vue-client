@@ -15,5 +15,9 @@ export default {
 
   dispatchAction (data) {
     return $ajax.post(requestUrl('dispatchAction'), data)
+  },
+
+  login (data) {
+    return $ajax.post(requestUrl('login'), data)
   }
 }

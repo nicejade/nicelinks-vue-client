@@ -82,7 +82,7 @@ export default {
 
   methods: {
     fetchSearch (params = {}) {
-      this.isLoading = true
+      // this.isLoading = true
       Object.assign(params, this.tableControl)
       $apis.getNiceLinks(params).then(result => {
         this.isLoading = false
@@ -92,6 +92,8 @@ export default {
         this.isLoading = false
         this.$message.error(`${error}`)
         this.niceLinksArr = $config.default
+      }).finally(() => {
+        this.isLoading = false
       })
     },
 

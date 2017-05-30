@@ -24,7 +24,7 @@ function requestHandle (url, method = 'get', params = {}, query = {}, op = {}) {
         // if (process.env.NODE_ENV === 'production') {
         //   Raven.captureException(err)
         // }
-        defer.reject(res || err)
+        defer.reject(res.text || err)
       } else if (res.type === 'application/x-msdownload') {
         redirectToIframe(res.req.url)
       } else if (res.body) {

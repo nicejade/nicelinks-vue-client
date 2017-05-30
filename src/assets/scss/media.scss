@@ -67,6 +67,8 @@
         .aside-list{
           display: block;
           width: 100%;
+          float: none;
+          margin: auto;
           border-bottom: 1px solid $moudle-border-color;
         }
       }

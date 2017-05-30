@@ -17,7 +17,15 @@ export default {
     return $ajax.post(requestUrl('dispatchAction'), data)
   },
 
+  signup (data) {
+    return $ajax.post(requestUrl('auth/signup'), data)
+  },
+
   login (data) {
-    return $ajax.post(requestUrl('login'), data)
+    return $ajax.post(requestUrl('auth/login'), data)
+  },
+
+  logout () {
+    return $ajax.post(requestUrl('auth/logout'))
   }
 }

@@ -4,33 +4,40 @@
       <img src="../assets/images/nice_links.png" alt="nice links logo">
       <!-- <h1 class="heading">Nice Links</h1> -->
       <el-form :model="account" :rules="rules" ref="validateForm">
-        <el-form-item prop="username">
-          <el-input v-model="account.username" placeholder="用户名" @keydown.enter.native="onLoginClick"></el-input>
+        <el-form-item prop="email">
+          <el-input v-model="account.email" placeholder="请输入邮箱"
+            @keydown.enter.native="onLoginClick"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="account.password" type="password" placeholder="密码" @keydown.enter.native="onLoginClick"></el-input>
+          <el-input v-model="account.password" type="password"
+            placeholder="密码" @keydown.enter.native="onLoginClick"></el-input>
         </el-form-item>
-        <el-button type="primary" :loading="isLoading" @click="onLoginClick" size="large">登录</el-button>
+        <el-button
+          type="primary" :loading="isLoading"
+          @click="onLoginClick" size="large">登录</el-button>
+        <el-button
+          :loading="isLoading"
+          @click="onRegisterClick" size="large">注册</el-button>
       </el-form>
     </div>
   </div>
 </template>
 
 <script>
-  import { $page } from 'helper'
+  import { $apis } from 'helper'
   export default{
     data () {
       return {
         isLoading: false,
         account: {
-          username: '',
+          email: 'yunjeff@163.com',
           password: ''
         },
         rules: {
-          username: [
+          email: [
             {
               required: true,
-              message: '请输入用户名',
+              message: '请输入邮箱',
               trigger: 'change,blur'
             }
           ],
@@ -59,7 +66,35 @@
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
             let params = Object.assign({}, this.account)
-            $page.login(params).then(result => {
+            this.isLoading = false
+            $apis.login(params).then(result => {
+              this.isLoading = false
+              this.$router.push('/')
+            }).catch((error) => {
+              console.log(error)
+              this.isLoading = false
+              this.$message.error(`${error}`)
+            })
+          } else {
+            return false
+          }
+        })
+      },
+
+      onRegisterClick () {
+        this.$refs['validateForm'].validate((valid) => {
+          if (valid) {
+            this.isLoading = false
+            let params = Object.assign({}, this.account)
+            $apis.signup(params).then(result => {
+              this.$message({
+                message: result.message,
+                type: 'success'
+              })
+            }).catch((error) => {
+              console.log(error)
+              this.isLoading = false
+              this.$message.error(`${error}`)
             })
           } else {
             return false
@@ -103,10 +138,11 @@
   .el-form-item{
     margin-bottom: 30px;
   }
-  .el-button--primary{
+  .el-button{
     display: block;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 30px;
   }
 }
 

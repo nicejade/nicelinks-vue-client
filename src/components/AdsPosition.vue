@@ -35,6 +35,7 @@ export default {
   .jade-ads-title{
     font-weight: 700;
     margin: 10px 0;
+    padding-top: 10px;
   }
   .ads-body{
     width: 100%;

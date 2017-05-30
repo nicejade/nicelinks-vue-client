@@ -29,18 +29,23 @@
         </el-button>
       </div>
 
-      <div class="account-dropdown">
+      <div class="account-dropdown" v-if="isLogin">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             <img class="avatar" src="https://secure.gravatar.com/avatar/aa70f832a1d99c89afcbfae9070f38d6?default=https%3A%2F%2Fcloud.digitalocean.com%2Favatars%2Fdefault42.png&secure=true" alt="">
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="a"><icon class="icons" name="main-page"></icon>我的主页</el-dropdown-item>
-            <el-dropdown-item command="b"><icon class="icons" name="setting"></icon>设置</el-dropdown-item>
-            <el-dropdown-item command="c" divided><icon class="icons" name="logout"></icon>登出</el-dropdown-item>
+            <el-dropdown-item command="MainPage"><icon class="icons" name="main-page"></icon>我的主页</el-dropdown-item>
+            <el-dropdown-item command="Setting"><icon class="icons" name="setting"></icon>设置</el-dropdown-item>
+            <el-dropdown-item command="Logout" divided><icon class="icons" name="logout"></icon>登出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+      </div>
+      <div v-else class="not-loggedin">
+        <el-button type="text" @click="onGotoLoginClick">登录</el-button>
+        <span>/</span>
+        <el-button type="text" @click="onGotoRegisterClick">注册</el-button>
       </div>
     </nav>
   </header>
@@ -49,38 +54,72 @@
 
 <script>
 import { $config } from 'config'
+import { $auth, $apis } from 'helper'
 
 export default {
   data () {
     return {
       isShowDlgFlag: false,
       activeName: '-1',
-      navList: $config.classify
+      navList: $config.classify,
+      isLogin: $auth.checkSession()
     }
   },
 
   components: {
   },
 
+  mounted () {
+    this.isLogin = $auth.checkSession()
+  },
+
   methods: {
-    onLogoClick () {
-      this.$bus.emit('switch-nav')
+    activateInjectDlg () {
+      this.$bus.emit('activate-inject-dlg')
     },
 
     handleClick (tab) {
       this.$bus.emit('switch-nav', tab.name)
     },
 
+    handleCommand (command) {
+      this['on' + command + 'Click']()
+    },
+
+    // -------------------------onClickEvent-------------------------Start
+    onLogoClick () {
+      this.$bus.emit('switch-nav')
+    },
+
     onToggleMenuClick () {
       this.$bus.$emit('trigger-sidenav')
     },
 
-    activateInjectDlg () {
-      this.$bus.emit('activate-inject-dlg')
+    onGotoLoginClick () {
+      this.$router.push('/login')
     },
 
-    handleCommand (command) {
-      this.$message('click on item ' + command)
+    onGotoRegisterClick () {
+      this.$router.push('/login')
+    },
+
+    onMainPageClick () {
+    },
+
+    onSettingClick () {
+    },
+
+    onLogoutClick () {
+      $apis.logout().then(result => {
+        this.$router.push('/login')
+        this.$message({
+          message: result.message,
+          type: 'success'
+        })
+      }).catch((error) => {
+        console.log(error)
+        this.$message.error(`${error}`)
+      })
     }
   }
 }
@@ -131,6 +170,10 @@ export default {
         position: relative;
         margin: 0;
       }
+    }
+    .not-loggedin{
+      display: inline-block;
+      float: right;
     }
   }
 }

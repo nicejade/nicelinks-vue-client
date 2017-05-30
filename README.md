@@ -1,12 +1,12 @@
-# jade-blog
+<h1 align='center'>nicelinks-vue-client</h1>
 
-> A Vue.js project
+> A website about assembling nice links created using Vue.js（webpack、es6、element-ui）.
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+npm install （npm i）
 
 # serve with hot reload at localhost:8080
 npm run dev

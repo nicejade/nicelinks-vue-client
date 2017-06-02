@@ -107,6 +107,7 @@ export default {
     },
 
     onSettingClick () {
+      this.$router.push('/setting')
     },
 
     onLogoutClick () {
@@ -117,7 +118,6 @@ export default {
           type: 'success'
         })
       }).catch((error) => {
-        console.log(error)
         this.$message.error(`${error}`)
       })
     }
@@ -180,6 +180,7 @@ export default {
 .el-dropdown-menu{
   min-width: 180px;
   .icons{
+    margin-left: 0;
     vertical-align: middle !important;
   }
 }

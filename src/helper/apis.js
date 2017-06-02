@@ -27,5 +27,9 @@ export default {
 
   logout () {
     return $ajax.post(requestUrl('auth/logout'))
+  },
+
+  logoff (data) {
+    return $ajax.post(requestUrl('auth/logoff'), data)
   }
 }

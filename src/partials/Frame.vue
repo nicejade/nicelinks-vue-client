@@ -17,7 +17,7 @@ export default {
   name: 'homepage',
   data () {
     return {
-      title: '晚晴幽草轩',
+      title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
       isShowSideNav: false
     }

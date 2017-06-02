@@ -3,7 +3,7 @@
     <div class="box">
       <div class="info">
         <h1>404</h1>
-        <el-button type="primary" @click.native="back"> 返回 </el-button>
+        <el-button type="primary" @click.native="onBackClick"> 返回 </el-button>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@ export default{
     }
   },
   methods: {
-    back () {
+    onBackClick () {
       this.$router.push('/')
     }
   },

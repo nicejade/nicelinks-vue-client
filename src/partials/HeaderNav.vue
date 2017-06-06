@@ -4,7 +4,7 @@
     <nav class="nav">
       <div class="header-logo">
         <h1><a  class="header-logo-a" href="javascript:;" @click="onLogoClick">
-          <img src="./../assets/images/nice_links.png" alt="">
+          <img class="header-logo-img" src="./../assets/images/nice_links.png" alt="">
         </a></h1>
       </div>
 
@@ -144,10 +144,13 @@ export default {
       display: inline-block;
       float: left;
       margin: 18px 20px 18px 0;
-      width: 200px;
+      width: 13em;
       .header-logo-a{
         height: $header-height / 2;
         color: #333;
+        .header-logo-img{
+          width: 100%;
+        }
       }
     }
     .operate-link{

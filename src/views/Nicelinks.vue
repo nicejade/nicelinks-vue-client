@@ -144,6 +144,9 @@ export default {
         background-color: $entry-list-bg;
         padding: auto 20px;
         width: 60%;
+        .page-responsive{
+          padding: 15px 0;
+        }
       }
       .aside-list{
         background-color: $entry-list-bg;

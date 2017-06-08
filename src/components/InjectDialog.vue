@@ -33,7 +33,7 @@
                 <el-select class="wrap-block" v-model="fillForm.classify"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')">
                   <el-option
-                    v-for="item in classifyList"
+                    v-for="item in classifyList" :key="item.key"
                     :label="item.key"
                     :value="item.value">
                   </el-option>
@@ -49,7 +49,7 @@
                 <el-select class="wrap-block" v-model="fillForm.tagsArr" multiple :multiple-limit="3"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')">
                   <el-option
-                    v-for="item in tagsList"
+                    v-for="item in tagsList" :key="item.key"
                     :label="item.key"
                     :value="item.value">
                   </el-option>

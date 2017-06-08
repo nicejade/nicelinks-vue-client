@@ -32,5 +32,12 @@ export default {
       title: setTitleLang('重设密码', 'Reset Password')
     },
     component: resolve => require(['views/ForgotPwd'], resolve)
+  }, {
+    path: 'account',
+    needAuth: false,
+    meta: {
+      title: setTitleLang('账户激活', 'Activate Account')
+    },
+    component: resolve => require(['views/Account'], resolve)
   }]
 }

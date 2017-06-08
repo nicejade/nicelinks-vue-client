@@ -6,9 +6,7 @@
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
       <template slot="title">Nice Links Nav</template>
-      <el-menu-item v-for="item in navList"
-        :key="item.value"
-        index="1-1">
+      <el-menu-item v-for="item in navList" :key="item.value" index="1-1">
         <span @click="handleClick(item.value)"> {{ item.key }} </span>
       </el-menu-item>
     </el-submenu>

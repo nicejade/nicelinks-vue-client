@@ -7,13 +7,13 @@
         <el-form-item prop="email">
           <el-input v-model="account.email" placeholder="请输入邮箱"
             @keydown.enter.native="onLoginClick">
-            <template slot="prepend"><icon class="icons" name="login-email"></template>
+            <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="account.password" type="password"
             placeholder="密码" @keydown.enter.native="onLoginClick">
-            <template slot="prepend"><icon class="icons" name="password"></template>
+            <template slot="prepend"><icon class="icons" name="password"></icon></template>
           </el-input>
         </el-form-item>
         <el-button type="primary" :loading="isLoading"

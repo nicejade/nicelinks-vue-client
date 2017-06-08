@@ -31,5 +31,9 @@ export default {
 
   logoff (data) {
     return $ajax.post(requestUrl('auth/logoff'), data)
+  },
+
+  active (data) {
+    return $ajax.post(requestUrl('auth/active'), data)
   }
 }

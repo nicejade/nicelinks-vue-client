@@ -3,8 +3,10 @@
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
+          <div class="entry-list setting">
+          </div>
+          <aside-list></aside-list>
         </div>
-        <br>
       </div>
     </div>
   </div>
@@ -21,9 +23,6 @@ export default{
     }
   },
   methods: {
-    back () {
-      this.$router.push('/')
-    }
   },
   locales: {
     en: {

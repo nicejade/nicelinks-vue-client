@@ -17,9 +17,7 @@
               </el-pagination>
             </div>
           </div>
-          <aside class="aside-list">
-            <ads-position></ads-position>
-          </aside>
+          <aside-list></aside-list>
         </div>
         <br>
       </div>
@@ -33,7 +31,6 @@ import { $apis } from 'helper'
 import { $config } from 'config'
 
 import LinksList from 'components/LinksList'
-import AdsPosition from 'components/AdsPosition'
 import InjectDialog from 'components/InjectDialog'
 
 import { Fingerprint2 } from 'assets/js/fingerprint2.min'
@@ -59,8 +56,7 @@ export default {
 
   components: {
     InjectDialog,
-    LinksList,
-    AdsPosition
+    LinksList
   },
 
   created () {
@@ -82,7 +78,7 @@ export default {
 
   methods: {
     fetchSearch (params = {}) {
-      // this.isLoading = true
+      this.isLoading = true
       Object.assign(params, this.tableControl)
       $apis.getNiceLinks(params).then(result => {
         this.isLoading = false
@@ -97,7 +93,7 @@ export default {
       })
     },
 
-    switchNav (target) {
+    switchNav (target = '') {
       let params = {
         'classify': target
       }
@@ -123,39 +119,3 @@ export default {
   }
 }
 </script>
-
-<style media="screen" lang="scss">
-@import "./../assets/scss/variables.scss";
-
-.wrapper{
-  position: absolute;
-  margin-top: $header-height;
-  height: 100%;
-  position: absolute;
-  .panel-body{
-    background-color: #f0f0f4;
-    .main-container{
-      width: 100%;
-      max-width: 1280px;
-      margin: auto;
-      .entry-list{
-        display: inline-block;
-        float: left;
-        background-color: $entry-list-bg;
-        padding: auto 20px;
-        width: 60%;
-        .page-responsive{
-          padding: 15px 0;
-        }
-      }
-      .aside-list{
-        background-color: $entry-list-bg;
-        display: inline-block;
-        max-width: 360px;
-        width: 32%;
-        float: right;
-      }
-    }
-  }
-}
-</style>

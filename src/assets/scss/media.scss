@@ -61,26 +61,24 @@
     width: 90%;
   }
 
-  #nice-links{
-    .panel-body{
-      padding: 0px;
-      .main-container{
-        .entry-list{
-          display: block;
-          width: 100%;
-          float: none;
-          .links-list .moudle{
-            margin: 0px;
-            padding: 1rem 1rem;
-          }
+  #app .wrapper .panel-body{
+    padding: 0px;
+    .main-container{
+      .entry-list{
+        display: block;
+        width: 100%;
+        float: none;
+        .links-list .moudle{
+          margin: 0px;
+          padding: 1rem 1rem;
         }
-        .aside-list{
-          display: block;
-          width: 100%;
-          float: none;
-          margin: auto;
-          border-bottom: 1px solid $moudle-border-color;
-        }
+      }
+      .aside-list{
+        display: block;
+        width: 100%;
+        float: none;
+        margin: auto;
+        border-bottom: 1px solid $moudle-border-color;
       }
     }
   }

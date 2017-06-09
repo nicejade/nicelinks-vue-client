@@ -79,6 +79,7 @@ export default {
     },
 
     handleClick (tab) {
+      this.$router.push('/')
       this.$bus.emit('switch-nav', tab.name)
     },
 
@@ -88,6 +89,7 @@ export default {
 
     // -------------------------onClickEvent-------------------------Start
     onLogoClick () {
+      this.$router.push('/')
       this.$bus.emit('switch-nav')
     },
 

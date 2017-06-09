@@ -27,6 +27,9 @@ Object.keys(locales).forEach(lang => {
 import Icon from 'components/Icon/Icon.vue'
 Vue.component('icon', Icon)
 
+import AsideList from 'components/AsideList'
+Vue.component('aside-list', AsideList)
+
 // Public Filter
 for (let key in Filters) {
   Vue.filter(key, Filters[key])

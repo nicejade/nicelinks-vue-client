@@ -9,11 +9,29 @@
 }
 
 .wrapper{
+  position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.2);
   padding-top: $header-height;
-  position: relative;
+  .panel-body{
+    background-color: #f0f0f4;
+    .main-container{
+      width: 100%;
+      max-width: 1280px;
+      margin: auto;
+      .entry-list{
+        display: inline-block;
+        float: left;
+        background-color: $entry-list-bg;
+        padding: auto 20px;
+        width: 60%;
+        .page-responsive{
+          padding: 15px 0;
+        }
+      }
+    }
+  }
 }
 
 .nav-menu-item{

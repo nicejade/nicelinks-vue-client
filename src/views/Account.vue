@@ -1,9 +1,18 @@
 <template>
 <div class="wrapper account">
   <div class="panel-default" v-loading.body="isLoading">
-    <div class="active-fail panel-body" v-show="failureMessage">
-      <h4 class="text-left">验证失败</h4>
-      <p class="failure-mesage" v-html="failureMessage"></p>
+    <div class="panel-body">
+      <div class="main-container">
+        <div class="entry-list active-fail" v-show="failureMessage">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <h4>验证失败</h4>
+            </div>
+            <div class="failure-mesage" v-html="failureMessage"></div>
+          </el-card>
+        </div>
+        <aside-list></aside-list>
+      </div>
     </div>
   </div>
 </div>
@@ -38,15 +47,15 @@ export default {
       }
       this.isLoading = true
       $apis.active(params).then(result => {
-        this.isLoading = false
         this.$message({
           message: result.message,
           type: 'success'
         })
 
         setTimeout(() => {
+          this.isLoading = false
           this.$router.push('/login')
-        }, 1000)
+        }, 600)
       }).catch(error => {
         this.isLoading = false
         this.failureMessage = error
@@ -56,7 +65,6 @@ export default {
 }
 </script>
 
-
 <style type="text/css" lang="scss">
 .active-fail{
   .failure-mesage{
@@ -65,6 +73,11 @@ export default {
     margin: 15px;
     a{
       color: #20a0ff;
+    }
+  }
+  .el-card{
+    .el-card__header{
+      text-align: left;
     }
   }
 }

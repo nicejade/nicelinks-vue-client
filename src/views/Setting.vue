@@ -6,29 +6,38 @@
           <div class="entry-list setting">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h4>{{ $t('accountSetting') }}</h4>
+              <el-breadcrumb separator="/">
+                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{ $t('accountSetting') }}</el-breadcrumb-item>
+                </el-breadcrumb>
               </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label">{{$t('setNickname')}}:</label>
-                <div class="col-sm-9">
-                  <el-input placeholder="" v-model="fillForm.nickname"></el-input>
-                </div>
+
+              <div class="form form-horizontal">
+                <el-form :model="fillForm" :rules="rules" ref="fillForm">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">{{$t('setNickname')}}:</label>
+                    <div class="col-sm-9">
+                      <el-input placeholder="" v-model="fillForm.nickname"></el-input>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
+                    <div class="col-sm-9">
+                      <el-input placeholder="" v-model="fillForm.website"></el-input>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
+                    <div class="col-sm-9">
+                      <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 6}"
+                        placeholder="" v-model="fillForm.profile"></el-input>
+                    </div>
+                  </div>
+                </el-form>
               </div>
+
               <div class="form-group">
-                <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
-                <div class="col-sm-9">
-                  <el-input placeholder="" v-model="fillForm.website"></el-input>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
-                <div class="col-sm-9">
-                  <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 6}"
-                    placeholder="" v-model="fillForm.profile"></el-input>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-9">
+                <div class="col-sm-offset-3 col-sm-9 no-padding">
                   <el-button type="primary" @click='onSaveClick'>{{$t('saveSeting')}}</el-button>
                 </div>
               </div>
@@ -55,7 +64,8 @@ export default{
         nickname: '',
         website: '',
         profile: ''
-      }
+      },
+      rules: {}
     }
   },
 
@@ -72,21 +82,3 @@ export default{
 }
 </script>
 
-<style type="text/css" lang="scss">
-.box-card{
-  .form-group{
-    width: 100%;
-  }
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  .clearfix:after {
-      clear: both
-  }
-  .el-input, .el-textarea{
-    max-width: 300px;
-  }
-}
-</style>

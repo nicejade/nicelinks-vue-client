@@ -85,7 +85,8 @@
 }
 
 @media screen and (max-width: 320px) {
-  #app .header .nav .not-loggedin{
+  #app .header .nav .not-loggedin,
+  #app .header .nav .el-dropdown{
     margin-right: 0;
   }
 }

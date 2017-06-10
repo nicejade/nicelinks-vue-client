@@ -17,6 +17,7 @@ export default {
 
   validateFailure: 'Verification Failed',
 
+  homePage: 'Home Page',
   accountSetting: 'Account Settings',
   setNickname: 'Set Nickname',
   personalWebsite: 'Personal Website',

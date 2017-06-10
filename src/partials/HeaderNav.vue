@@ -176,7 +176,7 @@ export default {
         margin: 0;
       }
     }
-    .not-loggedin{
+    .not-loggedin, .el-dropdown{
       display: inline-block;
       float: right;
       margin-right: 15px;

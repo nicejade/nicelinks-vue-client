@@ -25,4 +25,24 @@
       text-align: left;
     }
   }
+  .box-card{
+    .form-group{
+      width: 100%;
+      min-height: 36px;
+    }
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+    .clearfix:after {
+      clear: both
+    }
+    .el-input, .el-textarea{
+      max-width: 300px;
+    }
+    .el-breadcrumb{
+      font-size: 1.1em;
+    }
+  }
 }

@@ -82,7 +82,7 @@ a{
 
 .form-group{
   text-align: left;
-  margin-bottom: 60px;
+  margin-bottom: 25px;
   .control-label{
     text-align: right;
     font-weight: normal;
@@ -108,4 +108,8 @@ a{
 
 .wrap-block {
   width: 100%;
+}
+
+.no-padding{
+  padding: 0;
 }

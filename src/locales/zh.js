@@ -1,4 +1,10 @@
 export default {
+  // loign lang
+  signIn: '登录',
+  signUp: '注册',
+  signOut: '登出',
+  forgetPwd: '忘记了密码？',
+
   pleaseEnter: '请输入',
   pleaseSelect: '请选择',
   cancel: '取 消',

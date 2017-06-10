@@ -27,6 +27,7 @@ export default {
     component: resolve => require(['views/Setting'], resolve)
   }, {
     path: 'forgot-pwd',
+    alias: 'reset-pwd',
     needAuth: true,
     meta: {
       title: setTitleLang('重设密码', 'Reset Password')

@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import sha256 from 'crypto-js/sha256'
+import md5 from 'crypto-js/md5'
 
 if (typeof String.prototype.startsWith !== 'function') {
   Window.String.prototype.startsWith = function (prefix) {
@@ -32,6 +34,12 @@ window.Date.prototype.Format = function (fmt) {
 }
 
 export default {
+  encryptPwd (str) {
+    str = sha256(str).toString()
+    str = md5(str).toString()
+    return str
+  },
+
   resMsg (res) {
     let key = {
       zh: 'Chinese',

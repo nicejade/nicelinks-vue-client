@@ -12,9 +12,16 @@
                 </el-breadcrumb>
               </div>
               <div class="form-group">
+                <el-alert
+                  v-if="tipMessageObj.message"
+                  :title="tipMessageObj.message"
+                  :type="tipMessageObj.type">
+                </el-alert>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-3 control-label">{{$t('registeredMailbox')}}:</label>
                 <div class="col-sm-9">
-                  <el-input placeholder="" v-model="fillForm.email"></el-input>
+                  <el-input placeholder="" v-model.trim="fillForm.email"></el-input>
                 </div>
               </div>
               <div class="form-group">
@@ -32,6 +39,8 @@
 </template>
 
 <script>
+import { $apis } from 'helper'
+
 export default{
   name: 'setting',
 
@@ -42,14 +51,45 @@ export default{
     return {
       isLoading: false,
       fillForm: {
-        email: ''
+        email: '',
+        password: ''
+      },
+      tipMessageObj: {
+        message: '',
+        type: ''
+      },
+      operateFun: {
+        '/forgot-pwd': 'requestResetPwd',
+        '/reset-pwd': 'launchResetPwd'
       }
     }
   },
 
   methods: {
+    requestResetPwd () {
+      let params = {
+        email: this.fillForm.email
+      }
+      $apis.requestResetPwd(params).then(result => {
+        this.tipMessageObj = {
+          message: result.message,
+          type: 'success'
+        }
+      }).catch(error => {
+        this.isLoading = false
+        this.tipMessageObj = {
+          message: error,
+          type: 'error'
+        }
+      })
+    },
+
+    launchResetPwd () {
+      // $util.encryptPwd(this.account.password)
+    },
+
     onResetClick () {
-      this.$router.push('/')
+      this[this.operateFun[this.$route.path]]()
     }
   },
 

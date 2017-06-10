@@ -6,36 +6,35 @@
         <el-alert
           v-if="tipMessageObj.message"
           :title="tipMessageObj.message"
-          :type="tipMessageObj.type"></el-alert>
+          :type="tipMessageObj.type">
+        </el-alert>
       </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="email">
-          <el-input v-model="account.email" placeholder="请输入邮箱"
+          <el-input v-model="account.email" placeholder="Your email address"
             @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="account.password" type="password"
-            placeholder="密码" @keydown.enter.native="onLoginClick">
+            placeholder="Create a password" @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="password"></icon></template>
           </el-input>
         </el-form-item>
         <el-button type="primary" :loading="isLoading"
-          @click="onLoginClick" size="large">登录</el-button>
+          @click="onLoginClick" size="large">{{ $t('signIn') }}</el-button>
         <el-button :loading="isLoading"
-          @click="onSignupClick" size="large">注册</el-button>
+          @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
         <el-button type="text" :loading="isLoading"
-          @click="onForgotPwdClick" size="large">忘记了密码？</el-button>
+          @click="onForgotPwdClick" size="large">{{ $t('forgetPwd') }}</el-button>
       </el-form>
     </div>
   </div>
 </template>
 
 <script>
-  import { $apis } from 'helper'
-  import sha256 from 'crypto-js/sha256'
-  import md5 from 'crypto-js/md5'
+  import { $apis, $util } from 'helper'
 
   export default{
     data () {
@@ -75,16 +74,10 @@
     },
 
     methods: {
-      encryptPwd (str) {
-        str = sha256(str).toString()
-        str = md5(str).toString()
-        return str
-      },
-
       composeParams () {
         return {
           email: this.account.email,
-          password: this.encryptPwd(this.account.password)
+          password: $util.encryptPwd(this.account.password)
         }
       },
 

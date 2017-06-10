@@ -35,5 +35,9 @@ export default {
 
   active (data) {
     return $ajax.post(requestUrl('auth/active'), data)
+  },
+
+  requestResetPwd (data) {
+    return $ajax.post(requestUrl('auth/requestResetPwd'), data)
   }
 }

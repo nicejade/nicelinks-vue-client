@@ -1,4 +1,10 @@
 export default {
+  // loign lang
+  signIn: 'Sign In',
+  signUp: 'Sign Up',
+  signOut: 'Sign Out',
+  forgetPwd: 'Forgot Your Password?',
+
   // Common Part
   pleaseEnter: 'Please Enter',
   pleaseSelect: 'Please Select',

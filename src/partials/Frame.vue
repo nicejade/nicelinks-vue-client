@@ -38,7 +38,9 @@ export default {
 
   methods: {
     hideMenu () {
-      document.getElementById('app').className = ''
+      if (this.isShowSideNav) {
+        this.$bus.$emit('trigger-sidenav')
+      }
     }
   }
 }

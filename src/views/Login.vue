@@ -2,7 +2,12 @@
   <div class="login-wrap">
     <div class="login-box">
       <a href="/"><img src="../assets/images/nice_links.png" alt="nice links logo"></a>
-      <!-- <h1 class="heading">Nice Links</h1> -->
+      <div class="form-group">
+        <el-alert
+          v-if="tipMessageObj.message"
+          :title="tipMessageObj.message"
+          :type="tipMessageObj.type"></el-alert>
+      </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="email">
           <el-input v-model="account.email" placeholder="请输入邮箱"
@@ -36,6 +41,7 @@
     data () {
       return {
         isLoading: false,
+        tipMessageObj: {},
         account: {
           email: '',
           password: ''
@@ -92,7 +98,10 @@
               this.$router.push('/')
             }).catch(error => {
               this.isLoading = false
-              this.$message.error(error)
+              this.tipMessageObj = {
+                message: error,
+                type: 'error'
+              }
             })
           } else {
             return false
@@ -105,13 +114,16 @@
           if (valid) {
             this.isLoading = false
             $apis.signup(this.composeParams()).then(result => {
-              this.$message({
+              this.tipMessageObj = {
                 message: result.message,
                 type: 'success'
-              })
+              }
             }).catch((error) => {
               this.isLoading = false
-              this.$message.error(`${error}`)
+              this.tipMessageObj = {
+                message: error,
+                type: 'error'
+              }
             })
           } else {
             return false
@@ -176,7 +188,7 @@
   }
 }
 
-@media (max-width:320px) {
+@media (max-width: 500px) {
   .login-wrap {
     width: 100%;
     padding-top: 60px;

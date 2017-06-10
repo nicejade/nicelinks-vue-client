@@ -179,6 +179,7 @@ export default {
     .not-loggedin{
       display: inline-block;
       float: right;
+      margin-right: 15px;
     }
   }
 }

@@ -84,6 +84,12 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  #app .header .nav .not-loggedin{
+    margin-right: 0;
+  }
+}
+
 @media screen and (min-width: 960px) {
   #app .menu-expand{
     .menu{

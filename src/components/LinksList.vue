@@ -153,6 +153,7 @@ export default {
       }
       .action-list{
         display: inline-flex;
+        display: -webkit-flex;
         .action-item{
           @include flex-box-center();
           cursor: pointer;

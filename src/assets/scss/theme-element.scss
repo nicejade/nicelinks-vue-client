@@ -20,4 +20,9 @@
     border-radius: 0px;
     min-width: 60px;
   }
+  .el-card{
+    .el-card__header{
+      text-align: left;
+    }
+  }
 }

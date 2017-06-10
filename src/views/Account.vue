@@ -6,7 +6,7 @@
         <div class="entry-list active-fail" v-show="failureMessage">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
-              <h4>验证失败</h4>
+              <h4>{{ $t('validateFailure') }}</h4>
             </div>
             <div class="failure-mesage" v-html="failureMessage"></div>
           </el-card>
@@ -73,11 +73,6 @@ export default {
     margin: 15px;
     a{
       color: #20a0ff;
-    }
-  }
-  .el-card{
-    .el-card__header{
-      text-align: left;
     }
   }
 }

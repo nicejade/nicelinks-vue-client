@@ -82,8 +82,27 @@ a{
 
 .form-group{
   text-align: left;
+  margin-bottom: 60px;
   .control-label{
     text-align: right;
+    font-weight: normal;
+    padding-top: 10px;
+    em {
+      color: $red;
+      padding-right: 3px;
+    }
+  }
+}
+
+.form-group:before,
+.form-group:after{
+  content: " ";
+  display: table;
+}
+
+@media (max-height: 768px) {
+ .form-group {
+    margin-bottom: 15px;
   }
 }
 

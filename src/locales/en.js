@@ -13,5 +13,12 @@ export default {
   linkTagsStr: 'Links Tags',
   createdDateStr: 'Created Date',
   beLikedStr: 'Like Degree',
-  beDisikedStr: 'Dislike Degree'
+  beDisikedStr: 'Dislike Degree',
+
+  validateFailure: 'Verification Failed',
+
+  accountSetting: 'Account Settings',
+  setNickname: 'Set Nickname',
+  personalWebsite: 'Personal Website',
+  saveSeting: 'Save Seting'
 }

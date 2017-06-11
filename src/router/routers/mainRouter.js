@@ -40,5 +40,12 @@ export default {
       title: setTitleLang('账户激活', 'Activate Account')
     },
     component: resolve => require(['views/Account'], resolve)
+  }, {
+    path: 'member/:id',
+    needAuth: false,
+    meta: {
+      title: setTitleLang('我的主页', 'My Homepage')
+    },
+    component: resolve => require(['views/Homepage'], resolve)
   }]
 }

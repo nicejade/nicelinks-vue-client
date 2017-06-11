@@ -52,7 +52,7 @@
 
 <script>
 export default{
-  name: 'setting',
+  name: 'Setting',
 
   components: {
   },

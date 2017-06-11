@@ -1,64 +1,57 @@
 <template>
-<div class="wrapper theme-jade-color">
-  <div class="home-wrapper">
-    <h1><a href="http://www.jeffjade.com" class="main-site" :title="title">
-      <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">
-    </a></h1>
-    <div class="container">
-      <a href="javascript:;" class="button" @click="onBlogLinksClick">Nice Links</a>
+  <div class="wrapper" id="homepage">
+    <div class="panel-default" v-loading.body="isLoading">
+      <div class="panel-body">
+        <div class="main-container">
+          <div class="entry-list">
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+              <el-breadcrumb separator="/">
+                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{ $t('homepage') }}</el-breadcrumb-item>
+                </el-breadcrumb>
+              </div>
+
+              <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="我的发布" name="first"></el-tab-pane>
+                <el-tab-pane label="我的点赞" name="second"></el-tab-pane>
+              </el-tabs>
+            </el-card>
+          </div>
+          <aside-list></aside-list>
+        </div>
+      </div>
     </div>
-    <contact></contact>
-    <reward-me></reward-me>
   </div>
-</div>
 </template>
 
 <script>
-import Contact from 'components/Contact'
-import RewardMe from 'components/RewardMe'
+export default{
+  name: 'HomePage',
 
-export default {
-  name: 'homepage',
+  components: {
+  },
+
   data () {
     return {
-      title: 'Nice Links'
+      isLoading: false,
+      activeName: 'first',
+      fillForm: {
+      },
+      rules: {}
     }
   },
 
-  components: {
-    Contact,
-    RewardMe
+  methods: {
+    handleClick () {}
   },
 
-  methods: {
-    onBlogLinksClick () {
-      this.$router.push({path: 'nicelinks'})
+  locales: {
+    en: {
+    },
+    zh: {
     }
   }
 }
 </script>
 
-<style lang="scss">
-@import "./../assets/scss/mixins.scss";
-
-.main-site{
-  color: #fafafa;
-  display: block;
-  width: 12.8445em;
-  height: 3em;
-  text-decoration: none;
-  margin: auto;
-}
-
-.main-site-img{
-  width: 100%;
-}
-
-.home-wrapper{
-  @include flex-box-center;
-  width: 100%;
-  height: 90%;
-  flex-direction: column;
-  text-align: center;
-}
-</style>

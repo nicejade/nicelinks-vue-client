@@ -37,7 +37,7 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="MainPage"><icon class="icons" name="main-page"></icon>我的主页</el-dropdown-item>
-            <el-dropdown-item command="Setting"><icon class="icons" name="setting"></icon>设置</el-dropdown-item>
+            <el-dropdown-item command="Setting" divided><icon class="icons" name="setting"></icon>设置</el-dropdown-item>
             <el-dropdown-item command="Logout" divided><icon class="icons" name="logout"></icon>登出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -45,7 +45,7 @@
       <div v-else class="not-loggedin">
         <el-button type="text" @click="onGotoLoginClick">登录</el-button>
         <span>/</span>
-        <el-button type="text" @click="onGotoRegisterClick">注册</el-button>
+        <el-button type="text" @click="onGotoLoginClick">注册</el-button>
       </div>
     </nav>
   </header>
@@ -101,11 +101,8 @@ export default {
       this.$router.push('/login')
     },
 
-    onGotoRegisterClick () {
-      this.$router.push('/login')
-    },
-
     onMainPageClick () {
+      this.$router.push('/member/yunjeff@163.com')
     },
 
     onSettingClick () {
@@ -183,11 +180,14 @@ export default {
     }
   }
 }
+
 .el-dropdown-menu{
   min-width: 180px;
   .icons{
-    margin-left: 0;
-    vertical-align: middle !important;
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.1rem .5rem 0.1rem 0.1rem;
   }
 }
 </style>

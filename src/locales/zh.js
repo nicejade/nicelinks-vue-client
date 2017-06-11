@@ -22,7 +22,9 @@ export default {
 
   validateFailure: '验证失败',
 
+  homepage: '个人主页',
   homePage: '首页',
+
   accountSetting: '账号设置',
   setNickname: '账号昵称',
   personalWebsite: '个人网站',

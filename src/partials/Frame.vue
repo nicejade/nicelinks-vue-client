@@ -38,7 +38,7 @@ export default {
       this.isShowSideNav = !this.isShowSideNav
     })
 
-    this.$bus.on('setProfile', (params) => {
+    this.$bus.on('set-profile', (params) => {
       return new Promise((resolve, reject) => {
         $apis.setProfile(params).then(result => {
           resolve(result)
@@ -48,7 +48,7 @@ export default {
       })
     })
 
-    this.$bus.on('getProfile', (params) => {
+    this.$bus.on('get-profile', (params) => {
       if (_.isEmpty(this.userInfo)) {
         return new Promise((resolve, reject) => {
           $apis.getProfile().then(result => {

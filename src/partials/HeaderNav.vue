@@ -62,11 +62,18 @@ export default {
       isShowDlgFlag: false,
       activeName: '-1',
       navList: $config.classify,
-      isLogin: $auth.checkSession()
+      isLogin: $auth.checkSession(),
+      userInfo: {}
     }
   },
 
   components: {
+  },
+
+  watch: {
+    isLogin (newVal, oldVal) {
+      this.userInfo = this.$bus.$emit('get-profile')
+    }
   },
 
   mounted () {

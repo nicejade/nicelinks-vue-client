@@ -10,6 +10,7 @@ export default {
   pleaseSelect: 'Please Select',
   cancel: 'Cancel',
   confirm: 'Confirm',
+  warmReminder: 'Warm Reminder',
 
   injectLinks: 'Inject New Link',
   linkAddressStr: 'Address Link',

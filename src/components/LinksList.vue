@@ -1,6 +1,14 @@
 <template>
 <div class="links-list">
-  <div class="moudle" v-for="(item, index) in pdata">
+  <div v-if="pdata.length <= 0">
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <h4>{{ $t('warmReminder') }}</h4>
+      </div>
+      <div class="failure-mesage">暂未有相关数据</div>
+    </el-card>
+  </div>
+  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
     <div class="content">
       <div class="meta">
         <span class="item classify" @click="onClassifyClick(item.classify)">{{ classifyList[item.classify]['key'] }}</span>

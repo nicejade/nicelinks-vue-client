@@ -9,6 +9,7 @@ export default {
   pleaseSelect: '请选择',
   cancel: '取 消',
   confirm: '确 定',
+  warmReminder: '温馨提示',
 
   injectLinks: '注入新链接',
   linkAddressStr: '链接地址',

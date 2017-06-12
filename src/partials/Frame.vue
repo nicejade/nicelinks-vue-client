@@ -12,6 +12,8 @@
 <script>
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
+import { $apis } from 'helper'
+import _ from 'lodash'
 
 export default {
   name: 'homepage',
@@ -19,7 +21,8 @@ export default {
     return {
       title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
-      isShowSideNav: false
+      isShowSideNav: false,
+      userInfo: {}
     }
   },
 
@@ -33,6 +36,31 @@ export default {
       let app = document.getElementById('app')
       app.className = !app.className ? 'menu-expand' : ''
       this.isShowSideNav = !this.isShowSideNav
+    })
+
+    this.$bus.on('setProfile', (params) => {
+      return new Promise((resolve, reject) => {
+        $apis.setProfile(params).then(result => {
+          resolve(result)
+        }).catch(e => {
+          resolve(e)
+        })
+      })
+    })
+
+    this.$bus.on('getProfile', (params) => {
+      if (_.isEmpty(this.userInfo)) {
+        return new Promise((resolve, reject) => {
+          $apis.getProfile().then(result => {
+            this.userInfo = result
+            resolve(result)
+          }).catch(e => {
+            resolve(e)
+          })
+        })
+      } else {
+        return this.userInfo
+      }
     })
   },
 

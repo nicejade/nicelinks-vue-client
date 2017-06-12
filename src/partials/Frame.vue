@@ -12,8 +12,7 @@
 <script>
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
-import { $apis } from 'helper'
-import _ from 'lodash'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'homepage',
@@ -38,33 +37,14 @@ export default {
       this.isShowSideNav = !this.isShowSideNav
     })
 
-    this.$bus.on('set-profile', (params) => {
-      return new Promise((resolve, reject) => {
-        $apis.setProfile(params).then(result => {
-          resolve(result)
-        }).catch(e => {
-          resolve(e)
-        })
-      })
-    })
-
-    this.$bus.on('get-profile', (params) => {
-      if (_.isEmpty(this.userInfo)) {
-        return new Promise((resolve, reject) => {
-          $apis.getProfile().then(result => {
-            this.userInfo = result
-            resolve(result)
-          }).catch(e => {
-            resolve(e)
-          })
-        })
-      } else {
-        return this.userInfo
-      }
-    })
+    this.getUserInfo()
   },
 
   methods: {
+    ...mapActions([
+      'getUserInfo'
+    ]),
+
     hideMenu () {
       if (this.isShowSideNav) {
         this.$bus.$emit('trigger-sidenav')

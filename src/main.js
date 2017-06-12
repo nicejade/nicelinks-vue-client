@@ -4,6 +4,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/'
 import Filters from './filters'
 import VueI18n from 'vue-i18n'
 import ElementUI from 'element-ui'
@@ -38,5 +39,6 @@ for (let key in Filters) {
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

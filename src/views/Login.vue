@@ -35,6 +35,7 @@
 
 <script>
   import { $apis, $util } from 'helper'
+  import {mapState, mapActions} from 'vuex'
 
   export default{
     data () {
@@ -71,9 +72,16 @@
     },
 
     computed: {
+      ...mapState([
+        'userInfo'
+      ])
     },
 
     methods: {
+      ...mapActions([
+        'getUserInfo'
+      ]),
+
       composeParams () {
         return {
           email: this.account.email,
@@ -88,8 +96,14 @@
             this.isLoading = false
             $apis.login(this.composeParams()).then(result => {
               this.isLoading = false
+              // save user-id into vuex-state
+              this.$store.commit('RECORD_USERINFO', {_id: result._id})
+
+              this.getUserInfo({_id: result._id})
+
               this.$router.push('/')
             }).catch(error => {
+              console.log(error)
               this.isLoading = false
               this.tipMessageObj = {
                 message: error,

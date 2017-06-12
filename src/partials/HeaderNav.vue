@@ -33,6 +33,7 @@
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             <img class="avatar" src="https://secure.gravatar.com/avatar/aa70f832a1d99c89afcbfae9070f38d6?default=https%3A%2F%2Fcloud.digitalocean.com%2Favatars%2Fdefault42.png&secure=true" alt="">
+            <span>{{ userSign }} </span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
@@ -55,24 +56,31 @@
 <script>
 import { $config } from 'config'
 import { $auth, $apis } from 'helper'
+import {mapState} from 'vuex'
 
 export default {
   data () {
     return {
       isShowDlgFlag: false,
+      isMobile: window.innerWidth <= 960,
       activeName: '-1',
       navList: $config.classify,
-      isLogin: $auth.checkSession(),
-      userInfo: {}
+      isLogin: $auth.checkSession()
     }
   },
 
   components: {
   },
 
-  watch: {
-    isLogin (newVal, oldVal) {
-      this.userInfo = this.$bus.$emit('get-profile')
+  computed: {
+    ...mapState([
+      'userInfo'
+    ]),
+    userSign () {
+      let userInfo = this.userInfo
+      if (userInfo && !this.isMobile) {
+        return userInfo.profile && userInfo.profile.username || userInfo.email
+      }
     }
   },
 

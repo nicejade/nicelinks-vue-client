@@ -39,5 +39,13 @@ export default {
 
   requestResetPwd (data) {
     return $ajax.post(requestUrl('auth/requestResetPwd'), data)
+  },
+
+  getProfile (data) {
+    return $ajax.get(requestUrl('auth/getProfile'), data)
+  },
+
+  setProfile (data) {
+    return $ajax.post(requestUrl('auth/setProfile'), data)
   }
 }

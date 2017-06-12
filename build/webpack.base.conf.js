@@ -54,7 +54,8 @@ module.exports = {
       'config': resolve('src/config'),
       'helper': resolve('src/helper'),
       'views': resolve('src/views'),
-      'partials': resolve('src/partials')
+      'partials': resolve('src/partials'),
+      'store': resolve('src/store'),
     }
   },
   module: {

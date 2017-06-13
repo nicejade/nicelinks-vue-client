@@ -33,8 +33,6 @@ import { $config } from 'config'
 import LinksList from 'components/LinksList'
 import InjectDialog from 'components/InjectDialog'
 
-import { Fingerprint2 } from 'assets/js/fingerprint2.min'
-
 export default {
   name: 'nicelinks',
   data () {
@@ -43,7 +41,6 @@ export default {
       isShowDlgFlag: false,
       niceLinksArr: [],
       classifyList: $config.classify,
-      fingerprint: null,
       pageTotal: 0,
       tableControl: {
         pageCount: 1,
@@ -60,10 +57,6 @@ export default {
   },
 
   created () {
-    new Fingerprint2().get((result, components) => {
-      this.fingerprint = result
-    })
-
     this.$bus.on('inject-success', this.fetchSearch)
     this.$bus.on('fetch-search', this.fetchSearch)
     this.$bus.on('switch-nav', this.switchNav)

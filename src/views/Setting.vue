@@ -70,7 +70,9 @@ export default{
   },
 
   methods: {
-    onSaveClick () {}
+    onSaveClick () {
+      console.log('xx')
+    }
   },
 
   locales: {

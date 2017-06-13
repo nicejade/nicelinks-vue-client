@@ -4,11 +4,13 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
+import {$util} from 'helper'
 
 Vue.use(Vuex)
 
 const state = {
   isLogin: true,
+  userId: $util.getStorage('NiceLinksUserId') || '',
   userInfo: null
 }
 

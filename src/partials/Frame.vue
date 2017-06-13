@@ -37,6 +37,7 @@ export default {
       this.isShowSideNav = !this.isShowSideNav
     })
 
+    /* Annotation: Gets the latest UserInfo when the page is refreshed */
     this.getUserInfo()
   },
 

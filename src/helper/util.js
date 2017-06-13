@@ -94,5 +94,33 @@ export default {
     '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
     '(\\#[-a-z\\d_]*)?$', 'i') // fragment locator
     return pattern.test(str)
+  },
+
+  /* -----------------------------localStorage------------------------------------ */
+  /*
+   * set localStorage
+   */
+  setStorage (name, content) {
+    if (!name) return
+    if (typeof content !== 'string') {
+      content = JSON.stringify(content)
+    }
+    window.localStorage.setItem(name, content)
+  },
+
+  /**
+   * get localStorage
+   */
+  getStorage (name) {
+    if (!name) return
+    return window.localStorage.getItem(name)
+  },
+
+  /**
+   * delete localStorage
+   */
+  removeStorage (name) {
+    if (!name) return
+    window.localStorage.removeItem(name)
   }
 }

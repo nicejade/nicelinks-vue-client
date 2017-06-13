@@ -96,10 +96,9 @@
             this.isLoading = false
             $apis.login(this.composeParams()).then(result => {
               this.isLoading = false
-              // save user-id into vuex-state
-              this.$store.commit('RECORD_USERINFO', {_id: result._id})
 
-              this.getUserInfo({_id: result._id})
+              // save user-id into vuex-state(& localStorage)
+              this.$store.commit('RECORD_USERINFO', {_id: result._id})
 
               this.$router.push('/')
             }).catch(error => {

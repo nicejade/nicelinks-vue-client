@@ -27,6 +27,7 @@ export default {
   homePage: '首页',
 
   accountSetting: '账号设置',
+  setUsername: '用户名',
   setNickname: '账号昵称',
   personalWebsite: '个人网站',
   profile: '个人简介',

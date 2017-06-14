@@ -28,6 +28,7 @@ export default {
   homePage: 'Home Page',
 
   accountSetting: 'Account Settings',
+  setUsername: 'Set Username',
   setNickname: 'Set Nickname',
   personalWebsite: 'Personal Website',
   saveSeting: 'Save Seting'

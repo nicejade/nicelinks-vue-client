@@ -12,12 +12,18 @@ import locales from './locales'
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
 
+import { $apis, $util, $document, $auth } from 'helper'
+Vue.prototype.$apis = $apis
+Vue.prototype.$util = $util
+Vue.prototype.$auth = $auth
+Vue.prototype.$document = $document
+
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(VueI18n)
 Vue.use(ElementUI)
 Vue.use(VueBus)
 
-// i18n
+/* inject i18n */
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]
 const lang = Cookies.get('lang') || (browserLanguage in locales ? browserLanguage : 'en')
 Vue.config.lang = lang

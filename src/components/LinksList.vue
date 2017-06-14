@@ -24,11 +24,11 @@
       <div class="action-list">
         <div class="action-item" @click="onLikeClick(item)">
           <icon class="icons heart" name="heart"></icon>
-          <span class="item-num">{{ item.like }}</span>
+          <span class="item-num">{{ item.likes }}</span>
         </div>
         <div class="action-item" @click="onDislikeClick(item)">
           <icon class="icons heart" name="dislike"></icon>
-          <span class="item-num">{{ item.dislike }}</span>
+          <span class="item-num">{{ item.dislikes }}</span>
         </div>
       </div>
     </div>
@@ -38,7 +38,6 @@
 
 <script>
 import { $config } from 'config'
-import { $apis } from 'helper'
 
 export default {
   name: 'LinksList',
@@ -59,14 +58,17 @@ export default {
   components: {
   },
 
+  created () {
+  },
+
   methods: {
     dispatchAction (row, action) {
       let params = {
-        'fingerprint': this.fingerprint,
+        'fingerprint': this.getFingerPrint(),
         '_id': row._id,
         'action': action
       }
-      $apis.dispatchAction(params).then(result => {
+      this.$apis.dispatchAction(params).then(result => {
         row[action] = result.count
       }).catch((error) => {
         this.isLoading = false
@@ -101,11 +103,11 @@ export default {
     },
 
     onLikeClick (row) {
-      this.dispatchAction(row, 'like')
+      this.dispatchAction(row, 'likes')
     },
 
     onDislikeClick (row) {
-      this.dispatchAction(row, 'dislike')
+      this.dispatchAction(row, 'dislikes')
     }
   }
 }

@@ -38,7 +38,6 @@
 
 <script>
 import { $config } from 'config'
-import { $apis } from 'helper'
 
 export default {
   name: 'LinksList',
@@ -69,7 +68,7 @@ export default {
         '_id': row._id,
         'action': action
       }
-      $apis.dispatchAction(params).then(result => {
+      this.$apis.dispatchAction(params).then(result => {
         row[action] = result.count
       }).catch((error) => {
         this.isLoading = false

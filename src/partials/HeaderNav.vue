@@ -55,7 +55,6 @@
 
 <script>
 import { $config } from 'config'
-import { $auth, $apis } from 'helper'
 import {mapState} from 'vuex'
 
 export default {
@@ -65,7 +64,7 @@ export default {
       isMobile: window.innerWidth <= 960,
       activeName: '-1',
       navList: $config.classify,
-      isLogin: $auth.checkSession()
+      isLogin: this.$auth.checkSession()
     }
   },
 
@@ -85,7 +84,7 @@ export default {
   },
 
   mounted () {
-    this.isLogin = $auth.checkSession()
+    this.isLogin = this.$auth.checkSession()
   },
 
   methods: {
@@ -125,7 +124,7 @@ export default {
     },
 
     onLogoutClick () {
-      $apis.logout().then(result => {
+      this.$apis.logout().then(result => {
         this.$router.push('/login')
         this.$message({
           message: result.message,

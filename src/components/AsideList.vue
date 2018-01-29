@@ -9,13 +9,11 @@
         <reward-me></reward-me>
       </el-collapse-item>
     </el-collapse>
-    <visit-count v-if="isShowVisitCount"></visit-count>
   </aside>
 </template>
 
 <script>
 import AdsPosition from 'components/AdsPosition'
-import VisitCount from 'components/VisitCount'
 import FriendshipLinks from 'components/FriendshipLinks'
 import RewardMe from 'components/RewardMe'
 
@@ -23,7 +21,6 @@ export default {
   name: 'AsideList',
   data () {
     return {
-      isShowVisitCount: false,
       advertsList: [],
       activeNames: ['friendshipLinks']
     }
@@ -44,15 +41,11 @@ export default {
 
   components: {
     AdsPosition,
-    VisitCount,
     FriendshipLinks,
     RewardMe
   },
 
   mounted () {
-    setTimeout(() => {
-      this.isShowVisitCount = true
-    }, 1314)
   },
 
   methods: {

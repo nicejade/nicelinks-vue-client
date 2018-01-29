@@ -4,22 +4,22 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr" :is-loading="isLoading">
+            <links-list :pdata="niceLinksArray" :is-loading="isLoading">
               <div slot="link-keyword"
                 class="link-keyword"
-                v-if="niceLinksArr[0].keyword">
+                v-if="niceLinksDetail.keyword">
                 <strong>{{$t('keywordStr')}}</strong>
-                {{niceLinksArr[0].keyword}}
+                {{niceLinksDetail.keyword}}
               </div>
               <div
                 slot="link-desc"
                 class="link-desc"
-                v-html="obtainLinkDesc(niceLinksArr[0])">
+                v-html="this.obtainLinkDesc(niceLinksDetail)">
               </div>
               <social-share slot="link-share"
                 :share-url="currentPath"
-                :share-content="makeShareContent(niceLinksArr[0])"
-                :hashtags="makeShareTags(niceLinksArr[0])">
+                :share-content="makeShareContent(niceLinksDetail)"
+                :hashtags="makeShareTags(niceLinksDetail)">
               </social-share>
             </links-list>
           </div>
@@ -39,7 +39,8 @@ export default {
   data () {
     return {
       isLoading: true,
-      niceLinksArr: [],
+      niceLinksArray: [],
+      niceLinksDetail: {},
       currentPath: window.document.location.href,
       shareTitle: ''
     }
@@ -60,7 +61,12 @@ export default {
     params._id = this.$route.params.id
     params.userId = this.userInfo && this.userInfo._id || ''
     this.$apis.getNiceLinks(params).then(result => {
-      this.niceLinksArr = result
+      if (result[0]) {
+        this.niceLinksArray = result
+        this.niceLinksDetail = result[0]
+      } else {
+        this.$router.push('/404')
+      }
     }).catch((error) => {
       this.isLoading = false
       this.$message.error(`${error}`)

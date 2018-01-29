@@ -55,8 +55,8 @@ export default {
 <style lang="scss">
 @import "./../assets/scss/mixins.scss";
 #reward-me{
-  width: 300px;
-  height: 345px;
+  width: 100%;
+  height: 300px;
   opacity: 1;
   margin: auto;
   -webkit-perspective:800px;
@@ -66,8 +66,7 @@ export default {
 }
 #reward {
   width: 100%;
-  height: 300px;
-  border: 1px solid #CCC;
+  height: 266px;
   -webkit-transition:-webkit-transform 1s;
      -moz-transition:-moz-transform 1s;
        -o-transition:-o-transform 1s;
@@ -97,9 +96,11 @@ export default {
 }
 #reward .front .reward-img{
   width: 100%;
+  max-width: 256px;
 }
 #reward .back .reward-img{
   width: 100%;
+  max-width: 256px;
 }
 #reward .back {
   -webkit-transform:rotateY(180deg);
@@ -114,8 +115,8 @@ export default {
           transform:translateX(100%) rotateY(180deg);
 }
 #loved-reward #reward-me{
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 266px;
   opacity: 1;
   transition: height 1s, opacity 2s;
 }

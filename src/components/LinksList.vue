@@ -273,7 +273,7 @@ export default {
         width: 100%;
         margin-bottom: 1rem;
         font-size: 1.5rem;
-        color: $black-grey;
+        color: $silver-grey;
         line-height: 1.5;
         letter-spacing: .02rem;
       }

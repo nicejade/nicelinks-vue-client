@@ -99,7 +99,7 @@ export default {
 @import "./../assets/scss/variables.scss";
 
 .link-desc{
-  color: $black-grey;
+  color: $silver-grey;
   border-left: 2px solid #000000;
   margin: 15px auto;
   padding-left: 10px;

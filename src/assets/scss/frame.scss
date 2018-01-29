@@ -1,0 +1,43 @@
+.header{
+  font-weight: 500 !important;
+  .menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    width: $header-height;
+    height: $header-height;
+  }
+}
+
+// header menu
+.menu span:after, .menu span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+.menu span:after {
+    top: 18px;
+}
+.menu span {
+    position: relative;
+    display: block;
+}
+.menu span, .menu span:after, .menu span:before {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    -webkit-transition: all 0.3s;
+    backface-visibility: hidden;
+}
+.menu-expand .menu span {
+    background-color: transparent;
+}
+.menu-expand .menu span:before {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+.menu-expand .menu span:after {
+    transform: rotate(-45deg) translate(4px, -5px);
+}

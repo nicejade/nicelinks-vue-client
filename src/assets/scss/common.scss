@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none !important;
+}
+body, html {
+  height: 100%;
+}
+body {
+  font: normal 14px/1 'Lantinghei SC', 'Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', STHeiti, SimSun, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+em {
+  font-style: normal;
+}
+strong {
+  font-weight: normal;
+}
+textarea {
+  resize: vertical;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  th{
+    font-weight: normal;
+  }
+}
+label {
+  font-weight: normal;
+}
+a{
+  color: $brand;
+  text-decoration: none;
+}
+a:hover, a:visited, a:link{
+  color: $brand;
+  text-decoration: none;
+}
+
+input::-webkit-input-placeholder{
+  color: $border-grey !important;
+}
+input::-moz-placeholder{
+  color: $border-grey !important;
+}
+input:-moz-placeholder{
+  color: $border-grey !important;
+}
+input:-ms-input-placeholder{
+  color: $border-grey !important;
+}
+
+.flex-box{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.button{
+  // @include absolute-center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  // background: linear-gradient(45deg, #B388EB, #8093F1);
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  color: #000;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  @include flex-box-center;
+}
+
+.form-group{
+  text-align: left;
+  margin-bottom: 25px;
+  .control-label{
+    text-align: right;
+    font-weight: normal;
+    padding-top: 10px;
+    em {
+      color: $red;
+      padding-right: 3px;
+    }
+  }
+}
+
+.gray{
+  color: $text-grey;
+}
+
+.form-group:before,
+.form-group:after{
+  content: " ";
+  display: table;
+}
+
+@media (max-height: 768px) {
+ .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+.wrap-block {
+  width: 100%;
+}
+
+.radius-btn{
+  margin: .3em;
+  padding: .4rem 1rem;
+  background: #e6e6e6;
+  border-radius: 1rem;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.divider{
+  margin: 10px 0;
+}
+
+/* ----------------------title font define---------------------- Start*/
+.large-font {
+  font-size: 4.6rem;
+}
+.medium-font{
+  font-size: 3.8rem;
+}
+.small-font{
+  font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .large-font {
+    font-size: 3.8rem;
+  }
+  .medium-font{
+    font-size: 3rem;
+  }
+  .small-font{
+    font-size: 2.56rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .large-font {
+    font-size: 3.8rem;
+  }
+  .medium-font{
+    font-size: 2.88rem;
+  }
+  .small-font{
+    font-size: 2.56rem;
+  }
+}
+/* ----------------------title font define---------------------- End*/

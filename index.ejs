@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>倾城之链 | NICE LINKS</title>
+    <meta name="title" content="倾城之链 | NICE LINKS">
+    <meta name="keywords" content="nice links,awesome website,倾城之链,优秀网站;互联网;编程;技术;信息;资源;人生;艺术;">
+    <meta name="description" content="倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物(NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet; Here, you can easily find, learn, and share more useful or interesting things.)">
+    <meta property="og:title" content="倾城之链">
+    <meta property="og:keywords" content="nice links,awesome website,倾城之链,优秀网站;互联网;编程;技术;信息;资源;人生;艺术;">
+    <meta property="og:description" content="倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物(NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet; Here, you can easily find, learn, and share more useful or interesting things.)">
+    <meta name="viewport" content="user-scalable=no, width=device-width,initial-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <% if (htmlWebpackPlugin.options.env !== 'development') { %>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98631211-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-98631211-1');
+      </script>
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/static/img/favicons/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicons/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicons/favicon-16x16.png">
+      <!--[if IE]><link rel="shortcut icon" href="/static/img/favicons/favicon.ico"><![endif]-->
+      <link rel="manifest" href="/static/manifest.json">
+      <link rel="mask-icon" href="/static/img/favicons/safari-pinned-tab.svg" color="#27a0cf">
+      <meta name="theme-color" content="#ffffff">
+
+      <% for (var chunk of webpack.chunks) {
+      for (var file of chunk.files) {
+        if (file.match(/\.(css)$/)) { %>
+      <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+      <% }}} %>
+
+      <script async src="<%= webpackConfig.output.publicPath %>static/js/polyfill.min.js"></script>
+    <% } %>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v01-11"></script>
+    <!--[if lt IE 9]>
+      <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
+    <![endif]-->
+  </body>
+  <script>
+    console.log('Welcome To %cNICE LINKS', 'font-size:3em;background-color: #666666;-webkit-background-clip: text;-moz-background-clip: text;background-clip: text;color: transparent;text-shadow: rgba(255,255,255,0.9) 0px 1px 1px;')
+  </script>
+</html>

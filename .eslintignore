@@ -1,0 +1,4 @@
+src/assets/js/*.js
+build/*.js
+config/*.js
+src/components/UploadAvatar.vue

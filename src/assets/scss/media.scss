@@ -1,0 +1,84 @@
+.theme-jade-color{
+  background-color: #313538;
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #555a5f 0%, #1c1e20 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #555a5f 0%, #1c1e20 100%)
+}
+.button{
+  background: linear-gradient(to left, #abbaab , #ffffff);
+}
+
+@media screen and (max-width: $mobile-screen) {
+  .icons{
+    margin: 0 .66em;
+  }
+  .form-group{
+    margin-bottom: 10px;
+  }
+  .button{
+    color: #111;
+    background-image: radial-gradient(circle farthest-corner at center, #eee 20%, #ccc 68%)
+  }
+  .theme-jade-color {
+    background-color: #dddddd;
+    background-image: -webkit-radial-gradient(center, circle farthest-corner, #fff 0%, #ddd 100%);
+    background-image: radial-gradient(circle farthest-corner at center, #fff 0%, #ddd 100%)
+  }
+  .wrapper{
+    padding-top: $header-mobile-height;
+  }
+
+  #app .side-nav{
+    top: 0;
+    height: 100%;
+  }
+
+  #app .menu-expand{
+    .menu{
+    }
+    .sidenav {
+      display: block !important;
+    }
+  }
+
+  #app .el-dialog--small{
+    width: 90%;
+  }
+
+  #app .wrapper .panel-body{
+    padding: 0px;
+    .main-container{
+      .entry-list{
+        display: block;
+        width: 100%;
+        float: none;
+        .links-list .moudle{
+          margin: 0px;
+          padding: 2.1rem 1rem;
+        }
+      }
+      .aside-list{
+        display: block;
+        width: 100%;
+        float: none;
+        margin: auto;
+        border-bottom: 1px solid $moudle-border-color;
+      }
+      .page-responsive{
+        overflow: hidden;
+      }
+      .el-card__body{
+        padding: 15px 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mobile-screen) {
+  #app .menu-expand{
+    .menu{
+    }
+    .sidenav {
+      display: none;
+    }
+  }
+}

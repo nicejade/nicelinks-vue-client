@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["es2015", { "modules": false }],
+    "stage-2"
+  ],
+  "comments": false,
+  "plugins": ["transform-runtime", "lodash"],
+  "env": {
+    "test": {
+      "plugins": [ "istanbul" ]
+    }
+  }
+}

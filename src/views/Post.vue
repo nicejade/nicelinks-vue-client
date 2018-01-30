@@ -5,11 +5,11 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArray" :is-loading="isLoading">
-              <div slot="link-keyword"
-                class="link-keyword"
-                v-if="niceLinksDetail.keyword">
+              <div slot="link-keywords"
+                class="link-keywords"
+                v-if="niceLinksDetail.keywords">
                 <strong>{{$t('keywordStr')}}</strong>
-                {{niceLinksDetail.keyword}}
+                {{niceLinksDetail.keywords}}
               </div>
               <div
                 slot="link-desc"
@@ -108,9 +108,10 @@ export default {
   font-size: $font-small;
   word-spacing: 3px;
 }
-.link-keyword{
+.link-keywords{
   margin: 15px 0;
   color: $black-grey;
+  line-height: 1.8rem;
   strong{
     font-weight: 700;
     color: $link-title;

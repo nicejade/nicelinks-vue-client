@@ -78,10 +78,10 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('linkKeywordStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
-              <el-form-item prop="keyword">
+              <el-form-item prop="keywords">
                 <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 2, maxRows: 10}"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkKeywordStr')"
-                  v-model="fillForm.keyword">
+                  v-model="fillForm.keywords">
                 </el-input>
               </el-form-item>
             </div>

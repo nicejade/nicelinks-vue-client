@@ -29,7 +29,7 @@
       </div>
 
       <div class="find-more">
-        <el-dropdown @command="handleCommand" trigger="click">
+        <el-dropdown @command="handleCommand">
           <span class="el-dropdown-link">
             {{ $t('findMore') }}<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
@@ -42,6 +42,9 @@
             </el-dropdown-item>
             <el-dropdown-item command="SwitchLang">
               <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="AboutAuthor">
+              <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
             </el-dropdown-item>
             <el-dropdown-item v-if="isAdminFlag" command="Manage">
               <i class="vector-icon el-icon-setting"></i>{{ $t('management') }}
@@ -167,6 +170,10 @@ export default {
 
     onSwitchLangClick () {
       this.$switchLang()
+    },
+
+    onAboutAuthorClick () {
+      window.open('https://about.me/nicejade/')
     },
 
     onToggleMenuClick () {

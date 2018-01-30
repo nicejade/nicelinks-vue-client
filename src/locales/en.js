@@ -33,6 +33,7 @@ export default {
   tagsCollection: 'Tags Collections',
   management: 'Management',
   switchLang: 'Switch Lang',
+  aboutAuthor: 'About Author',
   manageLinks: 'Manage Links',
   manageUsers: 'Manage Users',
   manageAdverts: 'Manage Adverts',

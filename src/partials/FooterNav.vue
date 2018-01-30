@@ -86,7 +86,9 @@ export default {
     height: $footer-height;
     padding: 15px 20px;
     color: $footer-grey;
-    background-color: $footer-grey-bg;
+    background: #C9D6FF;
+    background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
+    background: linear-gradient(to top, #E2E2E2, #C9D6FF);
     .content{
       font-size: $font-medium;
       font-weight: 500;

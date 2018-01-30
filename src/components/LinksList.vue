@@ -38,7 +38,7 @@
         <div class="abstract" v-if="isAbstract">
           {{ item.abstract || $util.interceptString(item.desc) }}
         </div>
-        <slot name="link-keyword"></slot>
+        <slot name="link-keywords"></slot>
         <slot name="link-desc"></slot>
         <div class="action-list">
           <div class="action-item" @click.stop.prevent="onLikeClick(item)">
@@ -250,8 +250,7 @@ export default {
 
 .links-list{
   .moudle{
-    margin: 10px 0;
-    padding: 1.6rem 2rem;
+    padding: 2rem;
     text-align: left;
     border-bottom: 1px solid $item-border-color;
     .content{

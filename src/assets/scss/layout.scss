@@ -16,9 +16,8 @@
   .panel-default{
     .panel-body{
       min-height: calc(100vh - 280px);
-      background: #E0EAFC;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      // 天空的颜色(ColorsOfSky),参见：https://uigradients.com/#ColorsOfSky
+      @include get-gradient-background(#E0EAFC, #E0EAFC, top);
       .main-container{
         width: 100%;
         max-width: 960px;
@@ -66,13 +65,14 @@
   &:active,{
     color: $black;
   }
-  h1{
+  .title{
     margin: 0 1rem;
     font-size: 2rem;
     font-weight: 500;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
+    color: $black;
     &:hover,
     &:focus,
     &:link,

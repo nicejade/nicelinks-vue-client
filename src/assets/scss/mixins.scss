@@ -86,3 +86,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+// 根据参数声称渐变色：https://uigradients.com/#Moonrise
+@mixin get-gradient-background($front, $back, $direction: bottom) {
+  background: $front;
+  background: -webkit-linear-gradient(to $direction, $front, $back);
+  background: linear-gradient(to $direction, $front, $back);
+}

@@ -86,9 +86,8 @@ export default {
     height: $footer-height;
     padding: 15px 20px;
     color: $footer-grey;
-    background: #C9D6FF;
-    background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
-    background: linear-gradient(to top, #E2E2E2, #C9D6FF);
+    // 参见：https://uigradients.com/
+    @include get-gradient-background(#C9D6FF, #E2E2E2, bottom);
     .content{
       font-size: $font-medium;
       font-weight: 500;

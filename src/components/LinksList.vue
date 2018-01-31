@@ -253,6 +253,10 @@ export default {
     padding: 2rem;
     text-align: left;
     border-bottom: 1px solid $item-border-color;
+    &:hover{
+      // Moonrise(月出)参见: https://uigradients.com/#Moonrise
+      @include get-gradient-background(#dae2f8, #d6a4a4, top);
+    }
     .content{
       margin: 5px;
       .title{

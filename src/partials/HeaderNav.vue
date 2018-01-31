@@ -6,7 +6,7 @@
         <router-link to="/" class="header-logo-a nicelinks-logo">
           <img src="/static/img/favicons/safari-pinned-tab.svg"
             :alt="$t('niceLinksStr')">
-          <h1>{{ $t('niceLinksStr') }}</h1>
+          <h1 class="title">{{ $t('niceLinksStr') }}</h1>
         </router-link>
       </div>
 

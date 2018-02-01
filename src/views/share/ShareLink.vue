@@ -77,11 +77,11 @@
 
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <el-form-item prop="keyword">
+                    <el-form-item prop="keywords">
                       <el-input type="textarea"
                         :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
                         :placeholder="$t('linkKeywordStr')"
-                        v-model="fillForm.keyword">
+                        v-model="fillForm.keywords">
                       </el-input>
                     </el-form-item>
                   </div>
@@ -129,7 +129,7 @@ export default {
         urlPath: '',
         title: '',
         desc: '',
-        keyword: '',
+        keywords: '',
         classify: '',
         theme: '',
         tags: []
@@ -182,7 +182,7 @@ export default {
       this.$apis.crawlLinksInfo({url: this.fillForm.urlPath}).then(result => {
         this.fillForm.title = result.title
         this.fillForm.desc = result.desc
-        this.fillForm.keyword = result.keyword
+        this.fillForm.keywords = result.keywords
       }).catch((error) => {
         this.$message.error(`${error}`)
       })

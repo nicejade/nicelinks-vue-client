@@ -29,7 +29,7 @@
       </div>
 
       <div class="find-more">
-        <el-dropdown @command="handleCommand">
+        <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             {{ $t('findMore') }}<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
@@ -39,6 +39,8 @@
             </el-dropdown-item>
             <el-dropdown-item command="TagsCollection">
               <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="" divided>
             </el-dropdown-item>
             <el-dropdown-item command="SwitchLang">
               <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
@@ -53,14 +55,14 @@
         </el-dropdown>
       </div>
 
-      <div class="account-dropdown" v-if="$isLogin()">
+      <div class="user-account" v-if="$isLogin()">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             <img class="avatar" :src="userAvatar" alt="">
             <span>{{ userSign }} </span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown">
+          <el-dropdown-menu slot="dropdown" class="user-account-dropdown-menu">
             <el-dropdown-item command="MainPage">
               <icon class="icons" name="main-page"></icon>{{ $t('homepage') }}
             </el-dropdown-item>
@@ -251,7 +253,7 @@ export default {
       display: inline-block;
       float: left;
     }
-    .account-dropdown{
+    .user-account{
       cursor: pointer;
       display: inline-block;
       float: right;
@@ -273,7 +275,8 @@ export default {
 }
 
 .el-dropdown-menu{
-  min-width: 180px;
+  min-width: 150px;
+  margin: 0;
   .icons{
     vertical-align: middle;
     width: 2rem;
@@ -292,6 +295,18 @@ export default {
   .el-dropdown-menu__item{
     display: flex !important;
     align-items: center !important;
+    padding: 0 20px;
+  }
+}
+
+.find-more-dropdown-menu{
+  .el-dropdown-menu__item--divided{
+    margin: 6px 1px;
+    &:before{
+      height: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 

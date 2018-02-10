@@ -118,6 +118,15 @@ export default {
   }
 }
 
+
+@media (max-width: $mobile-screen) {
+  .hero-description {
+    br{
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .flower-container{
     .flower {

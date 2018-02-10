@@ -1,13 +1,5 @@
 <template>
 <div class="side-nav">
-  <router-link to="/explore/all" class="nicelinks-logo">
-    <img src="/static/img/favicons/safari-pinned-tab.svg"
-      :alt="$t('niceLinksStr')">
-    <h1>{{ $t('niceLinksStr') }}</h1>
-  </router-link>
-  <a href="javascript:;" class="side-nav-close" @click="onToggleMenuClick">
-    <i class="el-icon-close"></i>
-  </a>
   <el-menu :default-openeds="['1']" default-active="1" class="el-menu-vertical-demo"
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
@@ -109,10 +101,6 @@ export default {
       this.$bus.$emit('trigger-sidenav')
     },
 
-    onToggleMenuClick () {
-      this.$bus.$emit('trigger-sidenav')
-    },
-
     handleOpen () {
     },
 
@@ -127,14 +115,12 @@ export default {
   .side-nav{
     text-align: left;
     width: $side-nav-width;
-    height: calc(100% - 80px);
     position: fixed;
+    top: $header-mobile-height;
     overflow-y: scroll;
     overflow-x: hidden;
-    top: $header-height;
     z-index: 1000;
     background-color: $white;
-    box-shadow: 0 0 1000px 1000px rgba(0,0,0,.6);
     &::-webkit-scrollbar {
       background: transparent;
       width: 0px;

@@ -13,7 +13,7 @@
             </operate-tabs>
             <links-list
               :is-abstract="true"
-              :pdata="niceLinksArr"
+              :pdata="$niceLinksArray"
               :is-loading="isLoading">
             </links-list>
             <load-more></load-more>
@@ -66,7 +66,9 @@ export default {
       })
 
       if (currentItem && currentItem['value']) {
-        this.tableControl.classify = currentItem && currentItem['value']
+        this.$vuexSetRequestParamList({
+          classify: currentItem ? currentItem['value'] : ''
+        })
       }
       this.setThemeList()
     },
@@ -76,7 +78,7 @@ export default {
       $config.theme.map(item => {
         allThemeList = allThemeList.concat(item)
       })
-      let classify = this.tableControl.classify
+      let classify = this.$requestParamList.classify
       this.themeList = classify ? $config.theme[classify] : allThemeList
     }
   }

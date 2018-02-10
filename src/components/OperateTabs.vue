@@ -37,9 +37,11 @@ export default {
 
   watch: {
     activeName (val) {
+      debugger
       let currentItem = this.operateTabList.find(item => {
         return item.name === val
       })
+      debugger
       this.$emit('switch-tabs', currentItem)
     }
   },

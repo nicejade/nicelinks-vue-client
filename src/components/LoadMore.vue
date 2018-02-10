@@ -20,6 +20,12 @@ export default {
     }
   },
 
+  computed: {
+    isShowLoadMore () {
+      return this.$store && this.$store.state.isLoadMore
+    }
+  },
+
   watch: {
   },
 
@@ -34,7 +40,9 @@ export default {
 
   methods: {
     onLoadMoreClick () {
-      this.tableControl.pageCount += 1
+      this.$vuexSetRequestParamList({
+        pageCount: this.$requestParamList.pageCount + 1
+      })
       this.$fetchSearch({}, true)
     }
   },

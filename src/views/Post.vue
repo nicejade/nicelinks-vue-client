@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArray" :is-loading="isLoading">
+            <links-list :pdata="$niceLinksArrayay" :is-loading="isLoading">
               <div slot="link-keywords"
                 class="link-keywords"
                 v-if="niceLinksDetail.keywords">
@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       isLoading: true,
-      niceLinksArray: [],
+      $niceLinksArrayay: [],
       niceLinksDetail: {},
       currentPath: window.document.location.href,
       shareTitle: ''
@@ -62,7 +62,7 @@ export default {
     params.userId = this.userInfo && this.userInfo._id || ''
     this.$apis.getNiceLinks(params).then(result => {
       if (result[0]) {
-        this.niceLinksArray = result
+        this.$niceLinksArrayay = result
         this.niceLinksDetail = result[0]
       } else {
         this.$router.push('/404')

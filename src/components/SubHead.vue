@@ -47,7 +47,6 @@ export default {
       let navItem = subHeadNav.querySelectorAll('.nav-item')
       this.$document.addClass(navItem[index], 'is-active')
 
-      // this.tableControl.theme = value
       this.$emit('fetch-search', { theme: value })
     }
   },

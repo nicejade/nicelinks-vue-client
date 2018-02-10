@@ -11,31 +11,28 @@ const getValueByName = (source = [], name = '') => {
 export default {
   data () {
     return {
-      isLoading: false,
-      isShowLoadMore: true,
-      tableControl: {
-        pageCount: 1,
-        pageSize: 10,
-        sortType: -1,
-        sortTarget: 'likes'
-      }
+      isLoading: false
     }
   },
 
   computed: {
-    niceLinksArr () {
+    $niceLinksArray () {
       return this.$store && this.$store.state.nicelinksList || []
+    },
+    $requestParamList () {
+      return this.$store && this.$store.state.requestParamList || []
     }
   },
 
   methods: {
     ...mapMutations([
-      '$setNiceLinksList',
-      '$getNiceLinksList'
+      '$vuexSetNiceLinksList',
+      '$vuexSetRequestParamList',
+      '$vuexUpdateLoadMoreState'
     ]),
 
-    drawAjaxParams () {
-      let params = this.$_.cloneDeep(this.tableControl)
+    assembleAjaxParams () {
+      let params = this.$_.cloneDeep(this.$requestParamList)
       params.active = true
       params.userId = this.userInfo && this.userInfo._id || ''
 
@@ -56,29 +53,34 @@ export default {
     },
 
     $fetchSearch (params = {}, isLoadMore = false) {
-      Object.assign(this.tableControl, params)
+      // Update the LoadMore Button State(true);
+      this.$vuexUpdateLoadMoreState(true)
 
-      params = this.drawAjaxParams()
+      !isLoadMore ? params.pageCount = 1 : ''
+
+      this.$vuexSetRequestParamList(params)
+
+      params = this.assembleAjaxParams()
       let apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
 
       this.isLoading = true
       this.$apis[apiName](params).then(result => {
         if (!result || result.length <= 0) {
-          this.$setNiceLinksList({
+          this.$vuexSetNiceLinksList({
             data: [],
             isLoadMore
           })
-          this.isShowLoadMore = false
+          this.$vuexUpdateLoadMoreState(false)
           return
         } else {
-          this.$setNiceLinksList({
+          this.$vuexSetNiceLinksList({
             data: result,
             isLoadMore
           })
         }
       }).catch((error) => {
         this.$message.error(`${error}`)
-        this.$setNiceLinksList({
+        this.$vuexSetNiceLinksList({
           data: $config.default,
           isLoadMore
         })
@@ -88,9 +90,12 @@ export default {
     },
 
     $onSwitchTabs (item = {}) {
-      this.tableControl.pageCount = 1
-      this.tableControl.sortTarget = item.sortTarget
-      this.tableControl.sortType = item.sortType
+      const params = {
+        pageCount: 1,
+        sortTarget: item.sortTarget,
+        sortType: item.sortType
+      }
+      this.$vuexSetRequestParamList(params)
       this.$fetchSearch()
     }
   }

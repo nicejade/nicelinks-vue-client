@@ -17,7 +17,14 @@ Vue.use(Vuex)
 
 const state = {
   userInfo: $util.getSessionStorage('userInfo'),
-  nicelinksList: []
+  nicelinksList: [],
+  requestParamList: {
+    pageCount: 1,
+    pageSize: 10,
+    sortType: -1,
+    sortTarget: 'likes'
+  },
+  isLoadMore: true
 }
 
 const debug = process.env.NODE_ENV !== 'production'

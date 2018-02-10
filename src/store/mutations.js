@@ -6,9 +6,17 @@ export default {
     $util.setSessionStorage('userInfo', info)
   },
 
-  $setNiceLinksList (state, params = {}) {
+  $vuexSetNiceLinksList (state, params = {}) {
     let latestData = params.data || []
     let earlyData = state.nicelinksList
     state.nicelinksList = params.isLoadMore ? earlyData.concat(latestData) : latestData
+  },
+
+  $vuexSetRequestParamList (state, params = {}) {
+    Object.assign(state.requestParamList, params)
+  },
+
+  $vuexUpdateLoadMoreState (state, isLoadMore) {
+    state.isLoadMore = isLoadMore
   }
 }

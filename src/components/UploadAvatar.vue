@@ -782,7 +782,6 @@ export default {
           }
         }, (sts) => {
           if (that.value) {
-            debugger
             that.loading = 3
             that.reset()
             that.hasError = true

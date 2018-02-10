@@ -1,6 +1,6 @@
 <template>
 <div class="side-nav">
-  <el-menu :default-openeds="['1']" default-active="1" class="el-menu-vertical-demo"
+  <el-menu :default-openeds="['1']" default-active="1"
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
       <template slot="title">

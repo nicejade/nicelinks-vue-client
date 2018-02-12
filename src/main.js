@@ -12,7 +12,8 @@ Vue.config.devtools = process.env.NODE_ENV !== 'production'
 Vue.config.silent = process.env.NODE_ENV === 'production'
 
 /* Set this to false to prevent the production tip on Vue startup(2.2.0+). */
-Vue.config.productionTip = process.env.NODE_ENV !== 'production'
+// Vue.config.productionTip = process.env.NODE_ENV !== 'production'
+Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({

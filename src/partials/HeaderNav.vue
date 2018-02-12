@@ -89,8 +89,13 @@
 
 <script>
 import $config from 'config'
+import partsMixin from 'mixins/partsMixin.js'
 
 export default {
+  name: 'HeaderNav',
+
+  mixins: [partsMixin],
+
   data () {
     return {
       isShowDlgFlag: false,
@@ -144,8 +149,10 @@ export default {
 
     handleClick (item) {
       this.$switchRouteByExplore(item.name)
-      this.$bus.emit('fetch-search', {
-        'classify': item.value
+      // 当切换 classify 时候，要更新 vuex 中的 requestParamList;
+      this.$fetchSearch({
+        classify: item.value,
+        theme: null
       })
     },
 

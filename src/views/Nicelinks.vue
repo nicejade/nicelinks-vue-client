@@ -30,7 +30,7 @@ import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
 
 export default {
-  name: 'nicelinks',
+  name: 'NiceLinks',
 
   mixins: [partsMixin],
 
@@ -50,7 +50,6 @@ export default {
   },
 
   created () {
-    this.$bus.on('fetch-search', this.$fetchSearch)
   },
 
   mounted () {

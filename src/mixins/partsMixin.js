@@ -49,7 +49,8 @@ export default {
       if (this.$route.params.tags) {
         params.tags = decodeURIComponent(this.$route.params.tags)
       }
-      return params
+
+      return this.$util.updateAfterFilterEmptyValue(params)
     },
 
     $fetchSearch (params = {}, isLoadMore = false) {
@@ -57,7 +58,6 @@ export default {
       this.$vuexUpdateLoadMoreState(true)
 
       !isLoadMore ? params.pageCount = 1 : ''
-
       this.$vuexSetRequestParamList(params)
 
       params = this.assembleAjaxParams()

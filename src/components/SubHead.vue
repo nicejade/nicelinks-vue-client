@@ -48,6 +48,9 @@ export default {
       this.$document.addClass(navItem[index], 'is-active')
 
       this.$emit('fetch-search', { theme: value })
+
+      const parameters = {behavior: 'smooth', block: 'start', inline: 'start'}
+      document.getElementById('nice-links').scrollIntoView(parameters)
     }
   },
 

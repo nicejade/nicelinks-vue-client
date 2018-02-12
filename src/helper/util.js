@@ -170,6 +170,27 @@ export default {
     }
     return obj
   },
+
+  getElementOffsetTop (element) {
+    let actualTop = element.offsetTop
+    let current = element.offsetParent
+
+    while (current !== null) {
+      actualTop += current.offsetTop
+      current = current.offsetParent
+    }
+    return actualTop
+  },
+
+  isElementInViewport (elem) {
+    const rect = elem.getBoundingClientRect()
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    )
+  },
   /* -----------------------------localStorage------------------------------------ Start */
   /*
    * set localStorage

@@ -2,6 +2,7 @@
   <div class="countup-area">
     <h2 class="medium-font">{{ $t('countupText') }}</h2>
     <CountUp
+      id="countup-number"
       class="countup-number"
       :start="0"
       :end="theDisplayCount"
@@ -53,17 +54,17 @@ export default {
 
   methods: {
     handleDisplayCount () {
-      if (this.isMobile) {
-        this.theDisplayCount = this.totalLinksCount
-      } else {
-        window.addEventListener('scroll', this.handleScroll)
+      const countupNumberNode = document.getElementById('countup-number')
+      const handleScrollEvent = (element) => {
+        const isInViewport = this.$util.isElementInViewport(countupNumberNode)
+        if (isInViewport) {
+          this.theDisplayCount = this.totalLinksCount
+        } else {
+          this.theDisplayCount = 0
+        }
       }
-    },
 
-    handleScroll () {
-      if (window.scrollY >= 188 && window.scrollY <= 999) {
-        this.theDisplayCount = this.totalLinksCount
-      }
+      window.addEventListener('scroll', handleScrollEvent)
     },
 
     /* -----------------------on***Event----------------------- */

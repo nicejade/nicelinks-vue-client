@@ -149,11 +149,6 @@ export default {
 
     handleClick (item) {
       this.$switchRouteByExplore(item.name)
-      // 当切换 classify 时候，要更新 vuex 中的 requestParamList;
-      this.$fetchSearch({
-        classify: item.value,
-        theme: null
-      })
     },
 
     handleCommand (command) {

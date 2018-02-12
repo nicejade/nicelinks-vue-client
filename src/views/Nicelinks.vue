@@ -66,7 +66,12 @@ export default {
 
       if (currentItem && currentItem['value']) {
         this.$vuexSetRequestParamList({
-          classify: currentItem ? currentItem['value'] : ''
+          classify: currentItem ? currentItem['value'] : '',
+          // 当切换 classify 时候，要更新 requestParamList(vuex) 中的字段为初始值;
+          pageCount: 1,
+          sortType: -1,
+          sortTarget: 'likes',
+          theme: null
         })
       }
       this.setThemeList()

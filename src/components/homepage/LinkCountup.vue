@@ -59,8 +59,6 @@ export default {
         const isInViewport = this.$util.isElementInViewport(countupNumberNode)
         if (isInViewport) {
           this.theDisplayCount = this.totalLinksCount
-        } else {
-          this.theDisplayCount = 0
         }
       }
 

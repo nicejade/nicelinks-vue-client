@@ -25,6 +25,10 @@ Vue.prototype.$auth = $auth
 Vue.prototype.$document = $document
 Vue.prototype.$_ = $lodash
 
+// bootstrap & init Global site tag (gtag.js) - Google Analytics
+import bootstrapGtag from 'helper/bootstrapGtag'
+bootstrapGtag()
+
 /* inject i18n */
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]
 const lang = Cookies.get('lang') || (browserLanguage in locales ? browserLanguage : 'zh')

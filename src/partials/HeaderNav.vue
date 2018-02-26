@@ -182,6 +182,10 @@ export default {
 
     onToggleMenuClick () {
       this.$bus.$emit('trigger-sidenav')
+      this.$gtag('event', 'trigger-sidenav', {
+        'event_category': 'header',
+        'event_label': 'sidenav'
+      })
     },
 
     onGotoLoginClick () {

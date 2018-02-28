@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
-                  <div class="col-sm-6">
+                  <div class="col-sm-9">
                     <p class="text-padding gray" v-if="!mUserInfo.profile.website">
                       {{ $t('noFill') }}
                     </p>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
-                  <div class="col-sm-6">
+                  <div class="col-sm-9">
                     <p class="text-padding gray">
                       {{ mUserInfo.profile.description || $t('noFill') }}
                     </p>

@@ -47,7 +47,7 @@
                 </el-form>
               </div>
 
-              <div class="form-group">
+              <div class="form-group operation-area">
                 <div class="col-sm-offset-3 col-sm-9 no-padding">
                   <el-button :loading="isLoading" type="primary" @click='onSaveClick'>{{$t('saveSeting')}}</el-button>
                 </div>
@@ -243,6 +243,29 @@ export default{
   .preview-avatar{
     border: 1px solid #d1dbe5;
     border-radius: 50%;
+  }
+}
+
+.setting{
+  .form-group{
+    .el-input, .el-textarea{
+      max-width: 768px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .setting{
+    .form-horizontal{
+      .form-group{
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+    }
+    .operation-area{
+      margin-left: 15px;
+    }
   }
 }
 </style>

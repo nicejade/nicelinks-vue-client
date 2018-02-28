@@ -22,10 +22,16 @@
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
-        <el-form-item prop="email">
+        <el-form-item prop="email" v-if="isSignUpPage">
           <el-input v-model.trim="account.email"
             @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="userinfo" v-if="!isSignUpPage">
+          <el-input v-model.trim="account.userinfo"
+            @keydown.enter.native="onLoginClick">
+            <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -61,6 +67,7 @@
         account: {
           email: '',
           username: '',
+          userinfo: '',
           password: ''
         },
         isLegalUsername: false,
@@ -70,6 +77,9 @@
           ],
           email: [
             {required: true, validator: this.validateEmail, trigger: 'change,blur'}
+          ],
+          userinfo: [
+            {required: true, validator: this.validateUserinfo, trigger: 'change,blur'}
           ],
           password: [
             {required: true, validator: this.validatePassword, trigger: 'change,blur'}
@@ -94,14 +104,6 @@
     },
 
     methods: {
-      composeParams () {
-        return {
-          email: this.account.email,
-          username: this.account.username,
-          password: this.$util.encryptPwd(this.account.password)
-        }
-      },
-
       setMessageTip (msg, type = 'error') {
         this.tipMessageObj = {
           message: msg,
@@ -129,6 +131,14 @@
           return callback(new Error(this.$t('enterUsernameTip')))
         } else if (!this.$util.isLegalUsername(value)) {
           return callback(new Error(this.$t('enterLegalUsernameTip')))
+        } else {
+          callback()
+        }
+      },
+
+      validateUserinfo (rule, value, callback) {
+        if (!value || value.length <= 0) {
+          return callback(new Error(this.$t('enterUserinfoTip')))
         } else {
           callback()
         }
@@ -164,7 +174,13 @@
         this.isLoading = true
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
-            this.$apis.login(this.composeParams()).then(result => {
+            const isLegalEmail = this.$util.isLegalEmail(this.account.userinfo)
+            const params = {
+              email: isLegalEmail ? this.account.userinfo : '',
+              username: isLegalEmail ? '' : this.account.userinfo,
+              password: this.$util.encryptPwd(this.account.password)
+            }
+            this.$apis.login(params).then(result => {
               // save user-id into vuex-state(& localStorage)
               this.$store.commit('$vuexSetUserInfo', result)
 
@@ -185,7 +201,12 @@
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
             this.isLoading = false
-            this.$apis.signup(this.composeParams()).then(result => {
+            const params = {
+              email: this.account.email,
+              username: this.account.username,
+              password: this.$util.encryptPwd(this.account.password)
+            }
+            this.$apis.signup(params).then(result => {
               this.setMessageTip(result, 'success')
             }).catch((error) => {
               this.isLoading = false
@@ -212,8 +233,9 @@
 
     locales: {
       en: {
-        enterUsernameTip: 'Please Enter UserName(Only letters and numbers，3-16)',
-        enterLegalUsernameTip: 'Please Enter UserName(Only letters and numbers，3-16)',
+        enterUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
+        enterUserinfoTip: 'Please enter username Or email',
+        enterLegalUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
         enterEmailTip: 'Please Enter Email',
         enterLegalEmailTip: 'Please Enter A Valid Email Box',
         signupBottomTip: `Don't have an account ?`,
@@ -221,6 +243,7 @@
       },
       zh: {
         enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
+        enterUserinfoTip: '请输入用户名或邮箱',
         enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
         enterEmailTip: '请输入邮箱',
         enterLegalEmailTip: '请输入有效邮箱',

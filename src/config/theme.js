@@ -14,7 +14,7 @@ export default [
     {key: '利器', value: 'Tools'},
     {key: '书籍', value: 'Books'},
     {key: '论坛', value: 'Forum'},
-    {key: '官网', value: 'OfficialWebsite'},
+    {key: '产品', value: 'Product'},
     {key: '美图', value: 'Picture'},
     {key: '图标', value: 'Icons'},
     {key: '字体', value: 'Typeface'},

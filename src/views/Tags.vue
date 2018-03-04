@@ -5,7 +5,11 @@
         <div class="main-container">
           <div class="entry-list">
             <operate-tabs @switch-tabs="$onSwitchTabs"></operate-tabs>
-            <links-list :pdata="$niceLinksArray" :is-loading="isLoading"></links-list>
+            <links-list
+              :is-abstract="true"
+              :pdata="$niceLinksArray"
+              :is-loading="isLoading">
+            </links-list>
             <load-more></load-more>
           </div>
           <aside-list></aside-list>

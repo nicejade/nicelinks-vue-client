@@ -65,21 +65,25 @@ export default {
     onShareNewLinkClick () {
       this.triggerSideNav()
       this.$switchToShareLink()
+      this.$gtagTracking('share-new-link', 'sidebar', 'm-share-new-link')
     },
 
     onThemeClick () {
       this.$router.push('/collections/theme')
       this.triggerSideNav()
+      this.$gtagTracking('theme-collection', 'sidebar', 'm-theme-collection')
     },
 
     onTagsClick () {
       this.$router.push('/collections/tags')
       this.triggerSideNav()
+      this.$gtagTracking('tags-collection', 'sidebar', 'm-tags-collection')
     },
 
     onSwitchLangClick () {
       this.$switchLang()
       this.triggerSideNav()
+      this.$gtagTracking('switch-lang', 'sidebar', 'm-switch-lang')
     },
 
     onManageClick () {
@@ -88,6 +92,7 @@ export default {
     },
 
     handleClick (item) {
+      this.$gtagTracking(`explore-${item.name}`, 'sidebar', `m-explore-${item.name}`)
       this.$switchRouteByExplore(item.name)
       this.triggerSideNav()
     },
@@ -98,10 +103,11 @@ export default {
     },
 
     triggerSideNav () {
+      this.$gtagTracking('trigger-sidenav', 'sidebar', 'm-trigger-sidenav')
       this.$bus.$emit('trigger-sidenav')
     },
 
-    handleOpen () {
+    handleOpen (index) {
     },
 
     handleClose () {

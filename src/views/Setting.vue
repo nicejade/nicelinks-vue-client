@@ -188,6 +188,7 @@ export default{
     },
 
     onSaveClick () {
+      this.$gtagTracking('save-setting', 'setting', 'save-setting')
       this.$refs['fillForm'].validate((valid) => {
         if (valid) {
           this.isLoading = true
@@ -208,6 +209,7 @@ export default{
     },
 
     onUpdateAvatarClick () {
+      this.$gtagTracking('update-avatar', 'setting', 'update-avatar')
       this.isShowUploadAvatar = true
     },
 

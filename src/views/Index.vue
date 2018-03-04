@@ -13,9 +13,12 @@ import HomeLotus from 'components/homepage/HomeLotus'
 import NiceFantasy from 'components/homepage/NiceFantasy'
 import Introduction from 'components/homepage/Introduction'
 import LinkCountup from 'components/homepage/LinkCountup'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'Index',
+
+  mixins: [pageMixin],
 
   data () {
     return {

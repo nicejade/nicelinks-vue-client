@@ -20,7 +20,10 @@
           <h1 class="headline large-font">{{ $t('niceLinksStr') }}</h1>
           <section class="hero-description">
             <p v-html="$t('niceLinksDesc')"></p>
-            <router-link to="/explore/all">{{ $t('exploreNice') }}</router-link>
+            <router-link to="/explore/all" class="gtag-track"
+              data-action="mian-explore-all" data-category="index" data-label="explore-all">
+              {{ $t('exploreNice') }}
+            </router-link>
           </section>
         </div>
       </div>

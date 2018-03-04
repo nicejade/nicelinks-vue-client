@@ -1,7 +1,8 @@
 <template>
   <div class="login-wrap">
     <div class="login-box" v-loading.body="isLoading">
-      <a href="/explore/all" class="nicelinks-logo">
+      <a href="/explore/all" class="nicelinks-logo gtag-track"
+        data-action="login-logo-link" data-category="login" data-label="login-logo-link">
         <img src="/static/img/favicons/safari-pinned-tab.svg"
           :alt="$t('niceLinksStr')">
         <h1>{{ $t('niceLinksStr') }}</h1>
@@ -44,7 +45,7 @@
           @click="onLoginClick" size="large">{{ $t('signIn') }}</el-button>
         <el-button v-else
           @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
-        <el-button type="text"
+        <el-button type="text" v-if="!this.isSignUpPage"
           @click="onForgotPwdClick" size="large">{{ $t('forgetPwd') }}</el-button>
       </el-form>
     </div>
@@ -171,6 +172,7 @@
 
       // ----------------------------onClickEvent-----------------------------
       onLoginClick () {
+        this.$gtagTracking('signin', 'login', 'login-signin')
         this.isLoading = true
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
@@ -198,6 +200,7 @@
       },
 
       onSignupClick () {
+        this.$gtagTracking('signup', 'register', 'register-signup')
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
             this.isLoading = false
@@ -219,10 +222,15 @@
       },
 
       onForgotPwdClick () {
+        this.$gtagTracking('forgot-pwd', 'login', 'forgot-pwd')
         this.$router.push('/forgot-pwd')
       },
 
       onBottomClick () {
+        const registerPage = ['signin', 'register', 'register-signin']
+        const loginPage = ['register', 'login', 'login-register']
+        const params = this.isSignUpPage ? registerPage : loginPage
+        this.$gtagTracking(...params)
         this.$router.push(this.isSignUpPage ? '/login' : '/register')
       },
 

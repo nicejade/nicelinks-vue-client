@@ -24,7 +24,6 @@ Vue.prototype.$util = $util
 Vue.prototype.$auth = $auth
 Vue.prototype.$document = $document
 Vue.prototype.$_ = $lodash
-Vue.prototype.$gtag = window.gtag || {}
 
 /* inject i18n */
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]

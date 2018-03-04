@@ -3,7 +3,8 @@
   <header class="header">
     <nav class="nav">
       <div class="header-logo">
-        <router-link to="/" class="header-logo-a nicelinks-logo">
+        <router-link to="/" class="header-logo-a nicelinks-logo gtag-track"
+          data-action="header-logo-link" data-category="header" data-label="header-logo-link">
           <img src="/static/img/favicons/safari-pinned-tab.svg"
             :alt="$t('niceLinksStr')">
           <h1 class="title">{{ $t('niceLinksStr') }}</h1>
@@ -148,6 +149,7 @@ export default {
     },
 
     handleClick (item) {
+      this.$gtagTracking(`explore-${item.name}`, 'header', `p-explore-${item.name}`)
       this.$switchRouteByExplore(item.name)
     },
 
@@ -158,13 +160,16 @@ export default {
     // -------------------------onClickEvent-------------------------Start
     onShareNewLinkClick () {
       this.$switchToShareLink()
+      this.$gtagTracking('share-new-link', 'header', 'p-share-new-link')
     },
 
     onThemeCollectionClick () {
+      this.$gtagTracking('theme-collection', 'header', 'p-theme-collection')
       this.$router.push('/collections/theme')
     },
 
     onTagsCollectionClick () {
+      this.$gtagTracking('tags-collection', 'header', 'p-tags-collection')
       this.$router.push('/collections/tags')
     },
 
@@ -173,39 +178,43 @@ export default {
     },
 
     onSwitchLangClick () {
+      this.$gtagTracking('switch-lang', 'header', 'p-switch-lang')
       this.$switchLang()
     },
 
     onAboutAuthorClick () {
+      this.$gtagTracking('about-author', 'header', 'p-about-author')
       window.open('https://about.me/nicejade/')
     },
 
     onToggleMenuClick () {
+      this.$gtagTracking('trigger-sidenav', 'header', 'p-trigger-sidenav')
       this.$bus.$emit('trigger-sidenav')
-      this.$gtag('event', 'trigger-sidenav', {
-        'event_category': 'header',
-        'event_label': 'sidenav'
-      })
     },
 
     onGotoLoginClick () {
+      this.$gtagTracking('login', 'header', 'p-login')
       this.$router.push('/login')
     },
 
     onGotoSignUpClick () {
+      this.$gtagTracking('signup', 'header', 'p-signup')
       this.$router.push('/register')
     },
 
     onMainPageClick () {
+      this.$gtagTracking('personal-home-page', 'header', 'p-personal-home-page')
       let userName = this.userInfo.username || this.userInfo._id
       this.$router.push(`/member/${userName}`)
     },
 
     onSettingClick () {
+      this.$gtagTracking('personal-setting', 'header', 'p-personal-setting')
       this.$router.push('/setting')
     },
 
     onLogoutClick () {
+      this.$gtagTracking('personal-logout', 'header', 'p-personal-logout')
       this.$apis.logout().then(result => {
         this.$message({
           message: result,

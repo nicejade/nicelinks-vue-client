@@ -4,7 +4,6 @@ export default [
     {key: '程序', value: 'Program'},
     {key: '设计', value: 'Design'},
     {key: '安全', value: 'Security'},
-    {key: '产品', value: 'Product'},
     {key: '运维', value: 'Operation'},
     {key: '搜索', value: 'Search'},
     {key: '测试', value: 'Test'}

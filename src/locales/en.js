@@ -19,6 +19,7 @@ export default {
   save: 'Save',
   delete: 'Delete',
   keywordStr: 'Keyword: ',
+  reviewStr: 'Review: ',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'NICE LINKS',
 
@@ -41,7 +42,8 @@ export default {
 
   linkAddressStr: 'Address Link',
   linkNameStr: 'Link Name',
-  linkDescStr: 'Links Desc',
+  linkDescStr: 'Link Desc',
+  linkReviewStr: 'Published Review',
   linkKeywordStr: 'Links Keywords',
   linkClassifyStr: 'Links Classify',
   linkThemeStr: 'Links Theme',

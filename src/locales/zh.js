@@ -19,6 +19,7 @@ export default {
   save: '保存',
   delete: '删除',
   keywordStr: '关键字：',
+  reviewStr: '点评：',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 
@@ -42,6 +43,7 @@ export default {
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',
   linkDescStr: '链接描述',
+  linkReviewStr: '发表点评',
   linkKeywordStr: '链接关键字',
   linkClassifyStr: '链接分类',
   linkThemeStr: '链接主题',

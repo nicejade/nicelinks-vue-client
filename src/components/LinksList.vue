@@ -40,6 +40,7 @@
         </div>
         <slot name="link-keywords"></slot>
         <slot name="link-desc"></slot>
+        <slot name="link-review"></slot>
         <div class="action-list">
           <div class="action-item" @click.stop.prevent="onLikeClick(item)">
             <icon class="icons" :name="item.isLikes ? 'likes-down' : 'likes'"></icon>
@@ -138,7 +139,7 @@ export default {
   props: {
     pdata: {
       type: [Array, Object],
-      default: []
+      default: () => { return [] }
     },
     isLoading: {
       type: Boolean,

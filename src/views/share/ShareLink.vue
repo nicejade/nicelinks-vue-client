@@ -98,6 +98,18 @@
                     </el-form-item>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <el-form-item prop="review">
+                      <el-input type="textarea"
+                        :maxlength="360" :autosize="{ minRows: 5, maxRows: 10}"
+                        :placeholder="$t('linkReviewStr')"
+                        v-model="fillForm.review">
+                      </el-input>
+                    </el-form-item>
+                  </div>
+                </div>
               </el-form>
             </section>
             <div class="operate-area">
@@ -132,7 +144,8 @@ export default {
         keywords: '',
         classify: '',
         theme: '',
-        tags: []
+        tags: [],
+        review: ''
       },
       themeList: [],
       tagsList: $config.tags,

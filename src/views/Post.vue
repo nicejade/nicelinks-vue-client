@@ -4,17 +4,19 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="$niceLinksArrayay" :is-loading="isLoading">
+            <links-list :pdata="niceLinksArrayay" :is-loading="isLoading">
               <div slot="link-keywords"
                 class="link-keywords"
                 v-if="niceLinksDetail.keywords">
                 <strong>{{$t('keywordStr')}}</strong>
-                {{niceLinksDetail.keywords}}
+                {{ niceLinksDetail.keywords }}
               </div>
-              <div
-                slot="link-desc"
-                class="link-desc"
+              <div slot="link-desc" class="link-desc"
                 v-html="this.obtainLinkDesc(niceLinksDetail)">
+              </div>
+              <div slot="link-review" class="link-review">
+                <strong>{{ $t('reviewStr') }}</strong>
+                <span v-html="niceLinksDetail.review"></span>
               </div>
               <social-share slot="link-share"
                 :share-url="currentPath"
@@ -39,7 +41,7 @@ export default {
   data () {
     return {
       isLoading: true,
-      $niceLinksArrayay: [],
+      niceLinksArrayay: [],
       niceLinksDetail: {},
       currentPath: window.document.location.href,
       shareTitle: ''
@@ -62,7 +64,7 @@ export default {
     params.userId = this.userInfo && this.userInfo._id || ''
     this.$apis.getNiceLinks(params).then(result => {
       if (result[0]) {
-        this.$niceLinksArrayay = result
+        this.niceLinksArrayay = result
         this.niceLinksDetail = result[0]
       } else {
         this.$router.push('/404')
@@ -100,15 +102,16 @@ export default {
 
 .link-desc{
   color: $silver-grey;
-  border-left: 2px solid #000000;
   margin: 15px auto;
   padding-left: 10px;
   word-break: break-all;
   line-height: 1.8rem;
   font-size: $font-small;
   word-spacing: 3px;
+  border-left: 2px solid #000000;
 }
-.link-keywords{
+.link-keywords,
+.link-review{
   margin: 15px 0;
   color: $black-grey;
   line-height: 1.8rem;

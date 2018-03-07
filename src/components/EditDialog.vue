@@ -91,11 +91,21 @@
             <label class="col-sm-3 control-label"> {{ this.$t('linkDescStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="desc">
-                <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 2, maxRows: 10}"
+                <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')"
                   v-model="fillForm.desc">
                 </el-input>
               </el-form-item>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"> {{ this.$t('linkReviewStr') }} <em>*</em>：</label>
+            <div class="col-sm-8">
+              <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"
+                v-model="fillForm.review">
+              </el-input>
             </div>
           </div>
 
@@ -135,7 +145,8 @@ export default {
         desc: '',
         classify: '',
         theme: '',
-        tags: []
+        tags: [],
+        review: ''
       },
       themeList: [],
       tagsList: $config.tags,
@@ -220,7 +231,7 @@ export default {
       successAddTip: 'Well, you have successfully added the link'
     },
     zh: {
-      successAddTip: '很好，您已成功修改该链接'
+      successAddTip: '干的漂亮，您已成功修改该链接'
     }
   }
 }

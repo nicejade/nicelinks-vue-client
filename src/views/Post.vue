@@ -5,19 +5,6 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArrayay" :is-loading="isLoading">
-              <div slot="link-keywords" v-if="niceLinksDetail.keywords"
-                class="link-keywords">
-                <strong>{{$t('keywordStr')}}</strong>
-                {{ niceLinksDetail.keywords }}
-              </div>
-              <div slot="link-desc" class="link-desc"
-                v-html="this.obtainLinkDesc(niceLinksDetail)">
-              </div>
-              <div slot="link-review" v-if="niceLinksDetail.review"
-                class="link-review">
-                <strong>{{ $t('reviewStr') }}</strong>
-                <span v-html="niceLinksDetail.review"></span>
-              </div>
               <social-share slot="link-share"
                 :share-url="currentPath"
                 :share-content="makeShareContent(niceLinksDetail)"
@@ -95,10 +82,6 @@ export default {
     makeShareTags (item = {}) {
       let defaultTagsStr = 'Skill,Resource,Life,Information'
       return item.tags ? item.tags.join(',') : defaultTagsStr
-    },
-
-    obtainLinkDesc (item = {}) {
-      return item.desc ? item.desc.split('\n').join('<br>') : ''
     }
   }
 }

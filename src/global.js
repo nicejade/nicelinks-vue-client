@@ -41,7 +41,7 @@ Vue.component('icon', Icon)
 import AsideList from 'components/AsideList'
 Vue.component('aside-list', AsideList)
 
-import LinksList from 'components/LinksList'
+import LinksList from 'components/linksList/Index.vue'
 Vue.component('links-list', LinksList)
 
 import OperateTabs from 'components/OperateTabs'

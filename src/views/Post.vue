@@ -5,16 +5,16 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArrayay" :is-loading="isLoading">
-              <div slot="link-keywords"
-                class="link-keywords"
-                v-if="niceLinksDetail.keywords">
+              <div slot="link-keywords" v-if="niceLinksDetail.keywords"
+                class="link-keywords">
                 <strong>{{$t('keywordStr')}}</strong>
                 {{ niceLinksDetail.keywords }}
               </div>
               <div slot="link-desc" class="link-desc"
                 v-html="this.obtainLinkDesc(niceLinksDetail)">
               </div>
-              <div slot="link-review" class="link-review">
+              <div slot="link-review" v-if="niceLinksDetail.review"
+                class="link-review">
                 <strong>{{ $t('reviewStr') }}</strong>
                 <span v-html="niceLinksDetail.review"></span>
               </div>

@@ -12,6 +12,7 @@
               @switch-tabs="$onSwitchTabs">
             </operate-tabs>
             <links-list
+              :is-with-href="true"
               :is-abstract="true"
               :pdata="$niceLinksArray"
               :is-loading="isLoading">

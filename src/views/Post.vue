@@ -34,9 +34,12 @@
 
 <script>
 import SocialShare from 'components/SocialShare'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Post',
+
+  mixins: [metaMixin],
 
   data () {
     return {
@@ -66,6 +69,10 @@ export default {
       if (result[0]) {
         this.niceLinksArrayay = result
         this.niceLinksDetail = result[0]
+
+        this.title = result[0].title
+        result[0].keywords ? this.keywords = result[0].keywords : ''
+        this.description = result[0].desc
       } else {
         this.$router.push('/404')
       }

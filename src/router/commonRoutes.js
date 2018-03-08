@@ -6,7 +6,6 @@ let commonConf = [{
   path: '/login',
   alias: '/register',
   meta: {
-    title: $util.setTitleLang('登录', 'Login'),
     ignoreAuth: true
   },
   component: resolve => require(['partials/Login'], resolve)

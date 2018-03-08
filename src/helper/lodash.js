@@ -21,5 +21,6 @@ export default {
   isArray: _.isArray,
   isDate: _.isDate,
   endsWith: _.endsWith,
+  flatten: _.flatten,
   flattenDepth: _.flattenDepth
 }

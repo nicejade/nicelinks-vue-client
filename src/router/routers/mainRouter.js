@@ -76,7 +76,7 @@ export default {
     path: 'share-link',
     meta: {
       isNeedLogin: true,
-      title: $util.setTitleLang('分享链接', 'Share Nice')
+      title: $util.setTitleLang('分享链接', 'Share Links')
     },
     component: resolve => require(['views/share/ShareLink'], resolve)
   }]

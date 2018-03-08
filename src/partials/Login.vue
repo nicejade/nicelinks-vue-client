@@ -59,207 +59,225 @@
 </template>
 
 <script>
-  export default{
-    data () {
-      return {
-        isLoading: false,
-        checkLoading: false,
-        tipMessageObj: {},
-        account: {
-          email: '',
-          username: '',
-          userinfo: '',
-          password: ''
-        },
-        isLegalUsername: false,
-        rules: {
-          username: [
-            {required: true, validator: this.validateUsername, trigger: 'change,blur'}
-          ],
-          email: [
-            {required: true, validator: this.validateEmail, trigger: 'change,blur'}
-          ],
-          userinfo: [
-            {required: true, validator: this.validateUserinfo, trigger: 'change,blur'}
-          ],
-          password: [
-            {required: true, validator: this.validatePassword, trigger: 'change,blur'}
-          ]
-        }
-      }
-    },
+import metaMixin from 'mixins/metaMixin.js'
 
-    created () {
-    },
+export default{
+  name: 'Login',
 
-    mounted () {
-    },
-
-    components: {
-    },
-
-    computed: {
-      isSignUpPage () {
-        return this.$route.path === '/register'
-      }
-    },
-
-    methods: {
-      setMessageTip (msg, type = 'error') {
-        this.tipMessageObj = {
-          message: msg,
-          type: type
-        }
+  data () {
+    return {
+      isLoading: false,
+      checkLoading: false,
+      tipMessageObj: {},
+      account: {
+        email: '',
+        username: '',
+        userinfo: '',
+        password: ''
       },
-
-      queryUsername () {
-        this.checkLoading = true
-        let param = {username: this.account.username}
-        this.$apis.checkIsExisted(param).then(result => {
-          this.isLegalUsername = true
-          this.checkLoading = false
-          this.setMessageTip(null)
-        }).catch(error => {
-          this.checkLoading = false
-          this.isLegalUsername = false
-          this.setMessageTip(error)
-        })
-      },
-
-      /* **************************Validate Related************************** */
-      validateUsername (rule, value, callback) {
-        if (!value || value.length <= 0) {
-          return callback(new Error(this.$t('enterUsernameTip')))
-        } else if (!this.$util.isLegalUsername(value)) {
-          return callback(new Error(this.$t('enterLegalUsernameTip')))
-        } else {
-          callback()
-        }
-      },
-
-      validateUserinfo (rule, value, callback) {
-        if (!value || value.length <= 0) {
-          return callback(new Error(this.$t('enterUserinfoTip')))
-        } else {
-          callback()
-        }
-      },
-
-      validateEmail (rule, value, callback) {
-        if (!value || value.length <= 0) {
-          callback(new Error(this.$t('enterEmailTip')))
-        } else if (!this.$util.isLegalEmail(value)) {
-          callback(new Error(this.$t('enterLegalEmailTip')))
-        } else {
-          callback()
-        }
-      },
-
-      validatePassword (rule, value, callback) {
-        if (!this.isSignUpPage) {
-          callback()
-          return
-        }
-
-        if (!value || value.length <= 0) {
-          callback(new Error(this.$t('enterPwdTip')))
-        } else if (!this.$util.isLegalPassword(value)) {
-          callback(new Error(this.$t('enterLegalPwdTip')))
-        } else {
-          callback()
-        }
-      },
-
-      // ----------------------------onClickEvent-----------------------------
-      onLoginClick () {
-        this.$gtagTracking('signin', 'login', 'login-signin')
-        this.isLoading = true
-        this.$refs['validateForm'].validate((valid) => {
-          if (valid) {
-            const isLegalEmail = this.$util.isLegalEmail(this.account.userinfo)
-            const params = {
-              email: isLegalEmail ? this.account.userinfo : '',
-              username: isLegalEmail ? '' : this.account.userinfo,
-              password: this.$util.encryptPwd(this.account.password)
-            }
-            this.$apis.login(params).then(result => {
-              // save user-id into vuex-state(& localStorage)
-              this.$store.commit('$vuexSetUserInfo', result)
-
-              this.isLoading = false
-              this.$router.push('/')
-            }).catch(error => {
-              this.isLoading = false
-              this.setMessageTip(error)
-            })
-          } else {
-            this.isLoading = false
-            return false
-          }
-        })
-      },
-
-      onSignupClick () {
-        this.$gtagTracking('signup', 'register', 'register-signup')
-        this.$refs['validateForm'].validate((valid) => {
-          if (valid) {
-            this.isLoading = false
-            const params = {
-              email: this.account.email,
-              username: this.account.username,
-              password: this.$util.encryptPwd(this.account.password)
-            }
-            this.$apis.signup(params).then(result => {
-              this.setMessageTip(result, 'success')
-            }).catch((error) => {
-              this.isLoading = false
-              this.setMessageTip(error)
-            })
-          } else {
-            return false
-          }
-        })
-      },
-
-      onForgotPwdClick () {
-        this.$gtagTracking('forgot-pwd', 'login', 'forgot-pwd')
-        this.$router.push('/forgot-pwd')
-      },
-
-      onBottomClick () {
-        const registerPage = ['signin', 'register', 'register-signin']
-        const loginPage = ['register', 'login', 'login-register']
-        const params = this.isSignUpPage ? registerPage : loginPage
-        this.$gtagTracking(...params)
-        this.$router.push(this.isSignUpPage ? '/login' : '/register')
-      },
-
-      onBlurUsername () {
-        if (this.isSignUpPage) { this.queryUsername() }
-      }
-    },
-
-    locales: {
-      en: {
-        enterUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
-        enterUserinfoTip: 'Please enter username Or email',
-        enterLegalUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
-        enterEmailTip: 'Please Enter Email',
-        enterLegalEmailTip: 'Please Enter A Valid Email Box',
-        signupBottomTip: `Don't have an account ?`,
-        signinBottomTip: `Already have an account?`
-      },
-      zh: {
-        enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
-        enterUserinfoTip: '请输入用户名或邮箱',
-        enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
-        enterEmailTip: '请输入邮箱',
-        enterLegalEmailTip: '请输入有效邮箱',
-        signupBottomTip: `你已拥有一个账号？`,
-        signinBottomTip: `还未拥有一个账号？`
+      isLegalUsername: false,
+      rules: {
+        username: [
+          {required: true, validator: this.validateUsername, trigger: 'change,blur'}
+        ],
+        email: [
+          {required: true, validator: this.validateEmail, trigger: 'change,blur'}
+        ],
+        userinfo: [
+          {required: true, validator: this.validateUserinfo, trigger: 'change,blur'}
+        ],
+        password: [
+          {required: true, validator: this.validatePassword, trigger: 'change,blur'}
+        ]
       }
     }
+  },
+
+  mixins: [metaMixin],
+
+  created () {
+  },
+
+  mounted () {
+    this.updatePageTitle(this.isSignUpPage)
+  },
+
+  components: {
+  },
+
+  computed: {
+    isSignUpPage () {
+      return this.$route.path === '/register'
+    }
+  },
+
+  watch: {
+    isSignUpPage (val) {
+      this.updatePageTitle(val)
+    }
+  },
+
+  methods: {
+    updatePageTitle (val) {
+      const localeKey = val ? 'signUp' : 'signIn'
+      this.title = this.$t(localeKey)
+    },
+
+    setMessageTip (msg, type = 'error') {
+      this.tipMessageObj = {
+        message: msg,
+        type: type
+      }
+    },
+
+    queryUsername () {
+      this.checkLoading = true
+      let param = {username: this.account.username}
+      this.$apis.checkIsExisted(param).then(result => {
+        this.isLegalUsername = true
+        this.checkLoading = false
+        this.setMessageTip(null)
+      }).catch(error => {
+        this.checkLoading = false
+        this.isLegalUsername = false
+        this.setMessageTip(error)
+      })
+    },
+
+    /* **************************Validate Related************************** */
+    validateUsername (rule, value, callback) {
+      if (!value || value.length <= 0) {
+        return callback(new Error(this.$t('enterUsernameTip')))
+      } else if (!this.$util.isLegalUsername(value)) {
+        return callback(new Error(this.$t('enterLegalUsernameTip')))
+      } else {
+        callback()
+      }
+    },
+
+    validateUserinfo (rule, value, callback) {
+      if (!value || value.length <= 0) {
+        return callback(new Error(this.$t('enterUserinfoTip')))
+      } else {
+        callback()
+      }
+    },
+
+    validateEmail (rule, value, callback) {
+      if (!value || value.length <= 0) {
+        callback(new Error(this.$t('enterEmailTip')))
+      } else if (!this.$util.isLegalEmail(value)) {
+        callback(new Error(this.$t('enterLegalEmailTip')))
+      } else {
+        callback()
+      }
+    },
+
+    validatePassword (rule, value, callback) {
+      if (!this.isSignUpPage) {
+        callback()
+        return
+      }
+
+      if (!value || value.length <= 0) {
+        callback(new Error(this.$t('enterPwdTip')))
+      } else if (!this.$util.isLegalPassword(value)) {
+        callback(new Error(this.$t('enterLegalPwdTip')))
+      } else {
+        callback()
+      }
+    },
+
+    // ----------------------------onClickEvent-----------------------------
+    onLoginClick () {
+      this.$gtagTracking('signin', 'login', 'login-signin')
+      this.isLoading = true
+      this.$refs['validateForm'].validate((valid) => {
+        if (valid) {
+          const isLegalEmail = this.$util.isLegalEmail(this.account.userinfo)
+          const params = {
+            email: isLegalEmail ? this.account.userinfo : '',
+            username: isLegalEmail ? '' : this.account.userinfo,
+            password: this.$util.encryptPwd(this.account.password)
+          }
+          this.$apis.login(params).then(result => {
+            // save user-id into vuex-state(& localStorage)
+            this.$store.commit('$vuexSetUserInfo', result)
+
+            this.isLoading = false
+            this.$router.push('/')
+          }).catch(error => {
+            this.isLoading = false
+            this.setMessageTip(error)
+          })
+        } else {
+          this.isLoading = false
+          return false
+        }
+      })
+    },
+
+    onSignupClick () {
+      this.$gtagTracking('signup', 'register', 'register-signup')
+      this.$refs['validateForm'].validate((valid) => {
+        if (valid) {
+          this.isLoading = false
+          const params = {
+            email: this.account.email,
+            username: this.account.username,
+            password: this.$util.encryptPwd(this.account.password)
+          }
+          this.$apis.signup(params).then(result => {
+            this.setMessageTip(result, 'success')
+          }).catch((error) => {
+            this.isLoading = false
+            this.setMessageTip(error)
+          })
+        } else {
+          return false
+        }
+      })
+    },
+
+    onForgotPwdClick () {
+      this.$gtagTracking('forgot-pwd', 'login', 'forgot-pwd')
+      this.$router.push('/forgot-pwd')
+    },
+
+    onBottomClick () {
+      const registerPage = ['signin', 'register', 'register-signin']
+      const loginPage = ['register', 'login', 'login-register']
+      const params = this.isSignUpPage ? registerPage : loginPage
+      this.$gtagTracking(...params)
+      this.$router.push(this.isSignUpPage ? '/login' : '/register')
+    },
+
+    onBlurUsername () {
+      if (this.isSignUpPage) { this.queryUsername() }
+    }
+  },
+
+  locales: {
+    en: {
+      enterUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
+      enterUserinfoTip: 'Please enter username Or email',
+      enterLegalUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
+      enterEmailTip: 'Please Enter Email',
+      enterLegalEmailTip: 'Please Enter A Valid Email Box',
+      signupBottomTip: `Don't have an account ?`,
+      signinBottomTip: `Already have an account?`
+    },
+    zh: {
+      enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
+      enterUserinfoTip: '请输入用户名或邮箱',
+      enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
+      enterEmailTip: '请输入邮箱',
+      enterLegalEmailTip: '请输入有效邮箱',
+      signupBottomTip: `你已拥有一个账号？`,
+      signinBottomTip: `还未拥有一个账号？`
+    }
   }
+}
 </script>
 
 <style lang="scss">

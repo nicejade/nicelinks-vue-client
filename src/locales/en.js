@@ -1,5 +1,4 @@
 export default {
-  all: 'All',
   signIn: 'Sign In',
   signUp: 'Sign Up',
   signOut: 'Sign Out',
@@ -23,11 +22,13 @@ export default {
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'NICE LINKS',
 
+  all: 'All',
   skill: 'Technical Inn',
   resource: 'Resources',
   life: 'Life Art',
   info: 'Information',
 
+  exploreNice: 'Explore Nice',
   shareNewLink: 'Share New Link',
   findMore: 'Find More',
   themeCollection: 'Theme Collections',
@@ -75,5 +76,8 @@ export default {
 
   enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
   enterLegalPwdTip: 'Enter A Valid Password',
-  enterLegalUrl: 'Please enter a valid address'
+  enterLegalUrl: 'Please enter a valid address',
+
+  keywords: 'nice links,awesome website,优秀网站;互联网;编程;技术;信息;资源;人生;艺术;',
+  description: `NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet; Here, you can easily find, learn, and share more useful or interesting things.`
 }

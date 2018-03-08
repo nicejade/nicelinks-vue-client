@@ -28,11 +28,12 @@
 <script>
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'NiceLinks',
 
-  mixins: [partsMixin],
+  mixins: [partsMixin, metaMixin],
 
   data () {
     return {
@@ -53,11 +54,18 @@ export default {
   },
 
   mounted () {
+    this.updatePageTitle()
     this.setFetchData()
     this.$fetchSearch()
   },
 
   methods: {
+    updatePageTitle () {
+      const cClassify = this.$route.params.classify
+      const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
+      this.title = this.$t(localesKey)
+    },
+
     setFetchData () {
       let currentClassify = this.$route.params.classify
       let currentItem = $config.classify.find(item => {

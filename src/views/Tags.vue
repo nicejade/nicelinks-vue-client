@@ -21,11 +21,12 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Tags',
 
-  mixins: [partsMixin],
+  mixins: [partsMixin, metaMixin],
 
   data () {
     return {
@@ -43,6 +44,7 @@ export default {
   },
 
   mounted () {
+    this.title = this.$route.params.tags
   },
 
   methods: {

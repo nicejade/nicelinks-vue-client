@@ -130,12 +130,17 @@
 
 <script>
 import $config from 'config'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'ShareLink',
 
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('shareNewLink'),
       isLoading: false,
       fillForm: {
         urlPath: '',

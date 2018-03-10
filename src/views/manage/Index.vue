@@ -14,10 +14,17 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default {
   name: 'ManageIndex',
+
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('management')
     }
   },
 

@@ -50,14 +50,20 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default{
-  name: 'setting',
+  name: 'Setting',
+
+  mixins: [metaMixin],
 
   components: {
   },
 
   data () {
+    const vm = this
     return {
+      title: vm.$t('resetPwd'),
       isLoading: false,
       isShowFillPwd: false,
       fillForm: {

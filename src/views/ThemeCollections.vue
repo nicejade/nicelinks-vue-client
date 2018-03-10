@@ -21,12 +21,17 @@
 
 <script>
 import $config from 'config'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'ThemeCollections',
 
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('themeCollection'),
       isLoading: false,
       classifyList: $config.classify,
       themeList: $config.theme

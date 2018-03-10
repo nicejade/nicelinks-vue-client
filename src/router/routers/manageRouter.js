@@ -1,39 +1,33 @@
 import Frame from 'partials/Frame'
-import { $util } from 'helper'
 
 export default {
   path: '/manage',
   component: Frame,
   meta: {
-    isNeedAuth: true,
-    title: $util.setTitleLang('倾城管理', 'Management')
+    isNeedAuth: true
   },
   children: [{
     path: '/',
     meta: {
-      isNeedAuth: true,
-      title: $util.setTitleLang('倾城管理', 'Management')
+      isNeedAuth: true
     },
     component: resolve => require(['views/manage/Index'], resolve)
   }, {
     path: 'links',
     meta: {
-      isNeedAuth: true,
-      title: $util.setTitleLang('倾城站点', 'NICE SITE')
+      isNeedAuth: true
     },
     component: resolve => require(['views/manage/Links'], resolve)
   }, {
     path: 'users',
     meta: {
-      isNeedAuth: true,
-      title: $util.setTitleLang('倾城用户', 'NICE USER')
+      isNeedAuth: true
     },
     component: resolve => require(['views/manage/Users'], resolve)
   }, {
     path: 'adverts',
     meta: {
-      isNeedAuth: true,
-      title: $util.setTitleLang('倾城广告', 'NICE ADVERTS')
+      isNeedAuth: true
     },
     component: resolve => require(['views/manage/Adverts'], resolve)
   }]

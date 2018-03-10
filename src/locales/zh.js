@@ -62,6 +62,7 @@ export default {
   homePage: '首页',
 
   accountSetting: '账号设置',
+  accountActivation: '账号激活',
   setUsername: '用户名',
   setNickname: '账号昵称',
   personalWebsite: '个人网站',
@@ -78,6 +79,6 @@ export default {
   enterLegalPwdTip: '请输入合法密码',
   enterLegalUrl: '请输入合法地址',
 
-  keywords: 'nice links,awesome website,倾城之链,优秀网站;互联网;编程;技术;信息;资源;人生;艺术;',
+  keywords: '倾城之链,优秀网站,互联网,编程,技术,信息,资源,人生,艺术',
   description: `倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。`
 }

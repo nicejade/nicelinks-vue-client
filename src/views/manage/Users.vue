@@ -63,11 +63,17 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default{
   name: 'ManageUsers',
 
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('manageUsers'),
       isLoading: false,
       activeName: 'first',
       tableData: [],

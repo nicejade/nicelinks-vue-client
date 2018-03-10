@@ -72,14 +72,20 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default{
   name: 'HomePage',
+
+  mixins: [metaMixin],
 
   components: {
   },
 
   data () {
+    const vm = this
     return {
+      title: vm.$t('homepage'),
       isLoading: false,
       isShowBaseInfo: true,
       activeName: 'BaseInfo',

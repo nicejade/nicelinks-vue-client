@@ -20,11 +20,17 @@
 
 <script>
 import { $apis, $util } from 'helper'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Account',
+
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('accountActivation'),
       isLoading: false,
       failureMessage: ''
     }

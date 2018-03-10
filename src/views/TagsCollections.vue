@@ -17,11 +17,17 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default {
   name: 'TagsCollections',
 
+  mixins: [metaMixin],
+
   data () {
+    const vm = this
     return {
+      title: vm.$t('tagsCollection'),
       isLoading: false,
       tagsList: []
     }

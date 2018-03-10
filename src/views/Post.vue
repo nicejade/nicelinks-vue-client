@@ -57,9 +57,7 @@ export default {
         this.niceLinksArrayay = result
         this.niceLinksDetail = result[0]
 
-        this.title = result[0].title
-        result[0].keywords ? this.keywords = result[0].keywords : ''
-        this.description = result[0].desc
+        this.updatePageTitle(result[0])
       } else {
         this.$router.push('/404')
       }
@@ -72,8 +70,14 @@ export default {
   },
 
   methods: {
+    updatePageTitle (details) {
+      this.title = details.title
+      details.keywords ? this.keywords = details.keywords : ''
+      this.description = details.desc
+    },
+
     createShareContent (item = {}) {
-      let defaultStr = `我在 #倾城之链# 发现绝好网站 —— @NAME：@URL (@DESC)；欢迎前来围观、品评。`
+      let defaultStr = `我在 #倾城之链# 发现优质网站 —— @NAME：@URL (@DESC)；欢迎前来围观、品评。`
       let resultText = defaultStr.replace('@NAME', item.title || '')
       resultText = resultText.replace('@URL', item.urlPath || '')
       return resultText.replace('@DESC', item.desc || '')

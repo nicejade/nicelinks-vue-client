@@ -96,16 +96,21 @@
 
 <script>
 import UploadAvatar from 'components/UploadAvatar'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default{
   name: 'Setting',
+
+  mixins: [metaMixin],
 
   components: {
     UploadAvatar
   },
 
   data () {
+    const vm = this
     return {
+      title: vm.$t('accountSetting'),
       tipMessageObj: {},
       isLoading: false,
       fillForm: {

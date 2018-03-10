@@ -1,6 +1,5 @@
 import NotFound from 'partials/NotFound'
 import routesMap from './routers'
-import { $util } from 'helper'
 
 let commonConf = [{
   path: '/login',
@@ -15,7 +14,6 @@ let commonConf = [{
 }, {
   path: '*',
   meta: {
-    title: $util.setTitleLang('404', '404')
   },
   component: NotFound
 }]

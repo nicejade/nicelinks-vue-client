@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import './../../assets/css/flower.css'
-
 export default {
   name: 'HomeLotus',
 

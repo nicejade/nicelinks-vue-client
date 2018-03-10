@@ -14,15 +14,19 @@ export default {
   },
 
   metaInfo () {
+    const titleContent = this.createTitleContent(this.title)
     return {
       title: this.title,
       titleTemplate: (titleChunk) => {
-        return titleChunk ? `${titleChunk} - ${this.siteTitle}` : `${this.siteTitle}`
+        return this.createTitleContent(titleChunk)
       },
       meta: [
-        { name: 'title', content: this.title ? `${this.title} - ${this.siteTitle}` : `${this.siteTitle}` },
-        { name: 'keywords', content: this.keywords },
-        { vmid: 'description', name: 'description', content: this.description }
+        { vmid: 'title', name: 'title', content: titleContent },
+        { vmid: 'keywords', name: 'keywords', content: this.keywords },
+        { vmid: 'description', name: 'description', content: this.description },
+        { vmid: 'og:title', property: 'og:title', content: titleContent },
+        { vmid: 'og:keywords', name: 'og:keywords', content: this.keywords },
+        { vmid: 'og:description', property: 'og:description', content: this.description }
       ]
     }
   },
@@ -31,7 +35,8 @@ export default {
   },
 
   methods: {
-    updatePageTitle () {
+    createTitleContent (titleChunk) {
+      return titleChunk ? `${titleChunk} - ${this.siteTitle}` : `${this.siteTitle}`
     }
   }
 }

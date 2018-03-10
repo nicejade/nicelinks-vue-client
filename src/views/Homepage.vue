@@ -57,7 +57,11 @@
                   </div>
                 </div>
               </el-card>
-              <links-list v-else :pdata="myLinksList" :is-loading="isLoading"></links-list>
+              <links-list v-else
+                :pdata="myLinksList"
+                :is-abstract="true"
+                :is-loading="isLoading">
+              </links-list>
             </el-card>
           </div>
           <aside-list></aside-list>
@@ -207,32 +211,54 @@ export default{
 @import './../assets/scss/mixins.scss';
 
 .homepage{
-  .el-card__header{
-    padding: 10px 10px;
-  }
-  .base-info{
-    .avatar{
-      float: left;
-      border-radius: 50%;
-      height: 6rem;
-      width: 6rem;
-      box-shadow: 0 0 0 2px #fff;
-      position: relative;
+  .main-container{
+    .el-card__header{
+      padding: 10px 10px;
+    }
+    .el-card__body{
+      padding: 0;
+    }
+    .el-tabs__header{
       margin: 0;
     }
-    .info{
-      @include flex-box-center(column, space-around, left);
-      width: calc(100% - 7rem);
-      height: 6rem;
-      float: left;
-      margin-left: 1rem;
-      .username{
-        font-size: $font-large;
-        font-weight: 500;
+    .base-info{
+      padding: 2rem;
+      .avatar{
+        float: left;
+        border-radius: 50%;
+        height: 6rem;
+        width: 6rem;
+        box-shadow: 0 0 0 2px #fff;
+        position: relative;
+        margin: 0;
+      }
+      .info{
+        @include flex-box-center(column, space-around, left);
+        width: calc(100% - 7rem);
+        height: 6rem;
+        float: left;
+        margin-left: 1rem;
+        .username{
+          font-size: $font-large;
+          font-weight: 500;
+        }
+      }
+      .text-padding{
+        padding: 10px 0;
       }
     }
-    .text-padding{
-      padding: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #app .wrapper.homepage{
+    .main-container{
+      .el-card__body{
+        padding: 0;
+      }
+      .base-info{
+        padding: 1rem;
+      }
     }
   }
 }

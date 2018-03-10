@@ -7,8 +7,8 @@
             <links-list :pdata="niceLinksArrayay" :is-loading="isLoading">
               <social-share slot="link-share"
                 :share-url="currentPath"
-                :share-content="makeShareContent(niceLinksDetail)"
-                :hashtags="makeShareTags(niceLinksDetail)">
+                :share-content="createShareContent(niceLinksDetail)"
+                :hashtags="createShareTags(niceLinksDetail)">
               </social-share>
             </links-list>
           </div>
@@ -72,14 +72,14 @@ export default {
   },
 
   methods: {
-    makeShareContent (item = {}) {
+    createShareContent (item = {}) {
       let defaultStr = `我在 #倾城之链# 发现绝好网站 —— @NAME：@URL (@DESC)；欢迎前来围观、品评。`
       let resultText = defaultStr.replace('@NAME', item.title || '')
       resultText = resultText.replace('@URL', item.urlPath || '')
       return resultText.replace('@DESC', item.desc || '')
     },
 
-    makeShareTags (item = {}) {
+    createShareTags (item = {}) {
       let defaultTagsStr = 'Skill,Resource,Life,Information'
       return item.tags ? item.tags.join(',') : defaultTagsStr
     }

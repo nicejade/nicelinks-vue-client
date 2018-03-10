@@ -14,10 +14,13 @@
   </div>
 
   <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
-    <router-link :to="getAssembleRoute(item)" v-if="isWithHref">
-      <LinkItem :item="item" :is-abstract="isAbstract"></LinkItem>
+    <router-link :to="getAssembleRoute(item)" v-if="isAbstract">
+      <LinkItem :item="item" :is-abstract="isAbstract">
+      </LinkItem>
     </router-link>
-    <LinkItem  v-else :item="item" :is-abstract="isAbstract"></LinkItem>
+    <LinkItem v-else :item="item" :is-abstract="isAbstract">
+    </LinkItem>
+    <slot name="link-share"></slot>
   </div>
 </div>
 </template>
@@ -107,10 +110,6 @@ export default {
       default: false
     },
     isAbstract: {
-      type: Boolean,
-      default: false
-    },
-    isWithHref: {
       type: Boolean,
       default: false
     }

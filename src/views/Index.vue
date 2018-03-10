@@ -14,11 +14,12 @@ import NiceFantasy from 'components/homepage/NiceFantasy'
 import Introduction from 'components/homepage/Introduction'
 import LinkCountup from 'components/homepage/LinkCountup'
 import pageMixin from 'mixins/pageMixin.js'
+import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Index',
 
-  mixins: [pageMixin],
+  mixins: [pageMixin, metaMixin],
 
   data () {
     return {

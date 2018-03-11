@@ -24,11 +24,20 @@ export default {
     }
   },
 
+  watch: {
+    $route: function (to, from) {
+      if (from.path === '/explore/all' || to.path.includes('explore')) {
+        this.$vuexUpdateRequestParamList()
+      }
+    }
+  },
+
   methods: {
     ...mapMutations([
       '$vuexSetNiceLinksList',
       '$vuexSetRequestParamList',
-      '$vuexUpdateLoadMoreState'
+      '$vuexUpdateLoadMoreState',
+      '$vuexUpdateRequestParamList'
     ]),
 
     assembleAjaxParams () {

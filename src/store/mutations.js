@@ -16,6 +16,15 @@ export default {
     Object.assign(state.requestParamList, params)
   },
 
+  $vuexUpdateRequestParamList (state, params = {}) {
+    state.requestParamList = {
+      pageCount: 1,
+      pageSize: 10,
+      sortType: -1,
+      sortTarget: 'likes'
+    }
+  },
+
   $vuexUpdateLoadMoreState (state, isLoadMore) {
     state.isLoadMore = isLoadMore
   }

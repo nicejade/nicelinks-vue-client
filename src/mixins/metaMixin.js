@@ -14,19 +14,27 @@ export default {
   },
 
   metaInfo () {
-    const titleContent = this.createTitleContent(this.title)
+    const titleContent = this.title ? `${this.title} - ${this.siteTitle}` : `${this.siteTitle}`
     return {
       title: this.title,
       titleTemplate: (titleChunk) => {
-        return this.createTitleContent(titleChunk)
+        return titleChunk ? `${titleChunk} - ${this.siteTitle}` : `${this.siteTitle}`
       },
       meta: [
         { vmid: 'title', name: 'title', content: titleContent },
         { vmid: 'keywords', name: 'keywords', content: this.keywords },
         { vmid: 'description', name: 'description', content: this.description },
+        { vmid: 'og:type', property: 'og:type', content: 'website' },
         { vmid: 'og:title', property: 'og:title', content: titleContent },
-        { vmid: 'og:keywords', name: 'og:keywords', content: this.keywords },
-        { vmid: 'og:description', property: 'og:description', content: this.description }
+        { vmid: 'og:image', property: 'og:image', content: 'https://static.nicelinks.site/static/img/favicons/favicon.png' },
+        { vmid: 'og:keywords', property: 'og:keywords', content: this.keywords },
+        { vmid: 'og:description', property: 'og:description', content: this.description },
+        { vmid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { vmid: 'twitter:site', name: 'twitter:site', content: '@jeffjade2' },
+        { vmid: 'twitter:title', name: 'twitter:title', content: titleContent },
+        { vmid: 'twitter:image', property: 'og:image', content: 'https://static.nicelinks.site/static/img/favicons/favicon.png' },
+        { vmid: 'twitter:keywords', name: 'twitter:keywords', content: this.keywords },
+        { vmid: 'twitter:description', name: 'twitter:description', content: this.description }
       ]
     }
   },
@@ -35,8 +43,5 @@ export default {
   },
 
   methods: {
-    createTitleContent (titleChunk) {
-      return titleChunk ? `${titleChunk} - ${this.siteTitle}` : `${this.siteTitle}`
-    }
   }
 }

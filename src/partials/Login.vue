@@ -262,8 +262,6 @@ export default{
       enterUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
       enterUserinfoTip: 'Please enter username Or email',
       enterLegalUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
-      enterEmailTip: 'Please Enter Email',
-      enterLegalEmailTip: 'Please Enter A Valid Email Box',
       signupBottomTip: `Don't have an account ?`,
       signinBottomTip: `Already have an account?`
     },
@@ -271,8 +269,6 @@ export default{
       enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
       enterUserinfoTip: '请输入用户名或邮箱',
       enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
-      enterEmailTip: '请输入邮箱',
-      enterLegalEmailTip: '请输入有效邮箱',
       signupBottomTip: `你已拥有一个账号？`,
       signinBottomTip: `还未拥有一个账号？`
     }

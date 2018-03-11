@@ -30,8 +30,7 @@
       <div class="link-desc"
         v-html="this.obtainLinkDesc(item)">
       </div>
-      <div v-if="item.review"
-        class="link-review">
+      <div v-if="item.review" class="link-review">
         <strong>{{ $t('reviewStr') }}</strong>
         <span v-html="item.review"></span>
       </div>

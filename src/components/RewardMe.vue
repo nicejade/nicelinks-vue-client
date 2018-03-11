@@ -1,14 +1,14 @@
 <template>
   <div id="reward-me">
-    <div id="reward" @click="onTurnClick" ga-on="click" ga-event-category="reward-me" ga-event-action="click" ga-event-label="turn reward card">
+    <div id="reward" @click="onTurnClick">
       <div class="front"><img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText"></div>
       <div class="back"><img class="reward-img" :src="rewardArr[1].imgPath" :alt="rewardArr[1].altText"></div>
     </div>
     <div class="reward-select">
-      <el-radio class="radio" v-model="payWay" label="weixin" ga-event-category="reward-me" ga-event-action="click" ga-event-label="switch pay to weixin">
+      <el-radio class="radio" v-model="payWay" label="weixin">
         <icon class="icons" name="pay-weixin"></icon>
       </el-radio>
-      <el-radio class="radio" v-model="payWay" label="zhifubao" ga-event-category="reward-me" ga-event-action="click" ga-event-label="switch pay to zhifubao">
+      <el-radio class="radio" v-model="payWay" label="zhifubao">
         <icon class="icons" name="pay-zhifubao"></icon>
       </el-radio>
     </div>
@@ -18,9 +18,13 @@
 <script>
 import { $document } from 'helper'
 import $config from 'config'
+import partsMixin from 'mixins/partsMixin.js'
 
 export default {
   name: 'RewardMe',
+
+  mixins: [partsMixin],
+
   data () {
     return {
       payWay: 'weixin',
@@ -44,6 +48,8 @@ export default {
 
   methods: {
     onTurnClick () {
+      this.$gtagTracking('reward-turn-click', 'aside', 'reward-turn-click')
+
       this.payWay = (this.payWay === 'weixin') ? 'zhifubao' : 'weixin'
       let $reward = document.getElementById('reward')
       $document.toggleClass($reward, 'flipped')

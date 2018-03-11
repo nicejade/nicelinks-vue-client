@@ -101,7 +101,6 @@ export default{
         if (valid) {
           this.isLoading = false
           this.$apis.requestResetPwd(params).then(result => {
-            console.log(result)
             this.tipMessageObj = {
               message: result,
               type: 'success'
@@ -115,6 +114,16 @@ export default{
           })
         }
       })
+    },
+
+    validateEmail (rule, value, callback) {
+      if (!value || value.length <= 0) {
+        callback(new Error(this.$t('enterEmailTip')))
+      } else if (!this.$util.isLegalEmail(value)) {
+        callback(new Error(this.$t('enterLegalEmailTip')))
+      } else {
+        callback()
+      }
     },
 
     validatePassword (rule, value, callback) {
@@ -155,7 +164,7 @@ export default{
       resetNewPwd: '设新密码'
     },
     en: {
-      resetPwd: 'Reset Password  ',
+      resetPwd: 'Reset Password',
       registeredMailbox: 'Registered Mailbox',
       resetNewPwd: 'Reset New Password'
     }

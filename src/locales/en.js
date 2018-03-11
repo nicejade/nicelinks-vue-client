@@ -78,6 +78,8 @@ export default {
   enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
   enterLegalPwdTip: 'Enter A Valid Password',
   enterLegalUrl: 'Please enter a valid address',
+  enterEmailTip: 'Please Enter Email',
+  enterLegalEmailTip: 'Please Enter A Valid Email Box',
 
   keywords: 'nice links,awesome website,Internet,Programming,Technology,Information,Resources,Life,Art',
   description: `NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet; Here, you can easily find, learn, and share more useful or interesting things.`

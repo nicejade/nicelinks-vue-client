@@ -78,6 +78,8 @@ export default {
   enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
   enterLegalPwdTip: '请输入合法密码',
   enterLegalUrl: '请输入合法地址',
+  enterEmailTip: '请输入邮箱',
+  enterLegalEmailTip: '请输入有效邮箱',
 
   keywords: '倾城之链,优秀网站,互联网,编程,技术,信息,资源,人生,艺术',
   description: `倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。`

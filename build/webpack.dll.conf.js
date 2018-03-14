@@ -8,7 +8,7 @@ module.exports = {
       'js-cookie',
       'q',
       'axios',
-      'vue/dist/vue.common.js',
+      'vue/dist/vue.min.js',
       'vue-router',
       'vue-i18n',
       'vuex',

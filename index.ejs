@@ -5,6 +5,11 @@
     <title>倾城之链 | NICE LINKS</title>
     <meta name="viewport" content="user-scalable=no, width=device-width,initial-scale=1,minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@jeffjade2" />
+    <meta name="twitter:title" content="倾城之链 | NICE LINKS" />
+    <meta name="twitter:description" content="倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。" />
+    <meta name="twitter:image" content="https://static.nicelinks.site/static/img/favicons/favicon.png" />
 
     <% if (htmlWebpackPlugin.options.env !== 'development') { %>
       <!-- Global site tag (gtag.js) - Google Analytics Start-->
@@ -38,12 +43,12 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v02-10"></script>
+    <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v03-15"></script>
     <!--[if lt IE 9]>
       <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
     <![endif]-->
   </body>
   <script>
-    console.log('Welcome To %cNICE LINKS', 'font-size:3em;background-color: #666666;-webkit-background-clip: text;-moz-background-clip: text;background-clip: text;color: transparent;text-shadow: rgba(255,255,255,0.9) 0px 1px 1px;')
+    console.log('“倾心缔造，痴心为你”：%c倾城之链', 'font-weight: 600;color: #2c85ff')
   </script>
 </html>

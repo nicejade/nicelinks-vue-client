@@ -28,13 +28,7 @@ export default {
         { vmid: 'og:title', property: 'og:title', content: titleContent },
         { vmid: 'og:image', property: 'og:image', content: 'https://static.nicelinks.site/static/img/favicons/favicon.png' },
         { vmid: 'og:keywords', property: 'og:keywords', content: this.keywords },
-        { vmid: 'og:description', property: 'og:description', content: this.description },
-        { vmid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-        { vmid: 'twitter:site', name: 'twitter:site', content: '@jeffjade2' },
-        { vmid: 'twitter:title', name: 'twitter:title', content: titleContent },
-        { vmid: 'twitter:image', property: 'og:image', content: 'https://static.nicelinks.site/static/img/favicons/favicon.png' },
-        { vmid: 'twitter:keywords', name: 'twitter:keywords', content: this.keywords },
-        { vmid: 'twitter:description', name: 'twitter:description', content: this.description }
+        { vmid: 'og:description', property: 'og:description', content: this.description }
       ]
     }
   },

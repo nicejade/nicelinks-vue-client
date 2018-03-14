@@ -9,13 +9,13 @@ let commonConf = [{
   },
   component: resolve => require(['partials/Login'], resolve)
 }, {
-  path: '/index',
-  redirect: '/'
-}, {
-  path: '*',
+  path: '/404',
   meta: {
   },
   component: NotFound
+}, {
+  path: '*',
+  redirect: '/'
 }]
 
 export default routesMap.concat(commonConf)

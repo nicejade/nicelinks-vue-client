@@ -23,7 +23,7 @@ export default {
   niceLinksStr: 'NICE LINKS',
 
   all: 'All',
-  skill: 'Technical Inn',
+  skill: 'Technical',
   resource: 'Resources',
   life: 'Life Art',
   info: 'Information',

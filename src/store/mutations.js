@@ -16,7 +16,7 @@ export default {
     Object.assign(state.requestParamList, params)
   },
 
-  $vuexUpdateRequestParamList (state, params = {}) {
+  $vuexRecoverRequestParamList (state, params = {}) {
     state.requestParamList = {
       pageCount: 1,
       pageSize: 10,

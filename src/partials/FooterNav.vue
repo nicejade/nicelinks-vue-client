@@ -6,7 +6,7 @@
           <p>
             <a target="_blank" class="link gtag-track" href="/"
               data-action="footer-nicelinks" data-category="footer" data-label="footer-nicelinks">
-              {{ $t('niceLinks') }}
+              {{ $t('niceLinksStr') }}
             </a>
             : {{ $t('mySiteFunc') }}
           </p>
@@ -71,12 +71,10 @@ export default {
 
   locales: {
     zh: {
-      niceLinks: '倾城之链',
       mySiteFunc: '云集世间优秀站点',
       produced: '出品'
     },
     en: {
-      niceLinks: 'Nice Links',
       mySiteFunc: 'Gathered in the world excellent site',
       produced: 'Produced'
     }

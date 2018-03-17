@@ -25,11 +25,6 @@ export default {
   },
 
   watch: {
-    $route: function (to, from) {
-      if (from.path === '/explore/all' || to.path.includes('explore')) {
-        this.$vuexUpdateRequestParamList()
-      }
-    }
   },
 
   methods: {
@@ -37,7 +32,7 @@ export default {
       '$vuexSetNiceLinksList',
       '$vuexSetRequestParamList',
       '$vuexUpdateLoadMoreState',
-      '$vuexUpdateRequestParamList'
+      '$vuexRecoverRequestParamList'
     ]),
 
     assembleAjaxParams () {
@@ -63,6 +58,11 @@ export default {
     },
 
     $fetchSearch (params = {}, isLoadMore = false) {
+      const currentPath = this.$route.path
+      if (currentPath === '/explore/all' || !currentPath.includes('explore')) {
+        this.$vuexRecoverRequestParamList()
+      }
+
       // Update the LoadMore Button State(true);
       this.$vuexUpdateLoadMoreState(true)
 

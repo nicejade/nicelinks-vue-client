@@ -37,14 +37,14 @@ export default [
   },
   {
     path: '//twitter.com/',
-    name: 'jeffjade2',
+    name: 'nicejadeyang',
     class: 'twitter',
     title: 'Twitter',
     notInMobile: true
   },
   {
     path: '//www.facebook.com/',
-    name: '100006379368522',
+    name: 'nice.jade.yang',
     class: 'facebook',
     title: 'Facebook',
     notInMobile: true

@@ -201,6 +201,10 @@ export default{
             password: this.$util.encryptPwd(this.account.password)
           }
           this.$apis.login(params).then(result => {
+            if (!result.success) {
+              this.setMessageTip(result.message)
+              return
+            }
             // save user-id into vuex-state(& localStorage)
             this.$store.commit('$vuexSetUserInfo', result)
 

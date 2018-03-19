@@ -112,6 +112,7 @@ export default {
   watch: {
     $route: function (to, from) {
       this.updateNavActive()
+      this.hideSidenav()
     }
   },
 
@@ -146,6 +147,10 @@ export default {
     updateNavActive () {
       let tempPathArr = this.$route.path.split('/') || []
       this.activeName = tempPathArr[tempPathArr.length - 1]
+    },
+
+    hideSidenav () {
+      document.getElementById('app').className = ''
     },
 
     handleClick (item) {

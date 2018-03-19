@@ -118,15 +118,20 @@ export default {
 
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
+  .menu-expand .side-nav{
+    height: 100%;
+  }
   .side-nav{
-    text-align: left;
-    width: $side-nav-width;
     position: fixed;
     top: $header-mobile-height;
+    width: $side-nav-width;
+    height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    z-index: 1000;
     background-color: $white;
+    text-align: left;
+    z-index: 1000;
+    transition: all .5s ease;
     &::-webkit-scrollbar {
       background: transparent;
       width: 0px;

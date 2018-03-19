@@ -59,7 +59,7 @@ export default {
 
     $fetchSearch (params = {}, isLoadMore = false) {
       const currentPath = this.$route.path
-      if (currentPath === '/explore/all' || !currentPath.includes('explore')) {
+      if (currentPath === '/explore/all') {
         this.$vuexRecoverRequestParamList()
       }
 

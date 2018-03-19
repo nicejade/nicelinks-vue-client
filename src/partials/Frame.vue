@@ -1,12 +1,7 @@
 <template>
   <div class="page-wrap">
     <header-nav></header-nav>
-    <transition name="slide"
-      v-on:after-enter="afterEnter"
-      v-on:after-leave="afterLeave"
-    >
-      <side-nav ref="sideNav" v-if="isMobile && isShowSideNav"></side-nav>
-    </transition>
+    <side-nav v-if="isMobile"></side-nav>
     <main @click="hideMenu" class="main">
       <router-view  :key="$route.path"></router-view>
     </main>
@@ -24,7 +19,6 @@ export default {
   data () {
     return {
       isMobile: window.innerWidth <= 960,
-      isShowSideNav: false,
       isShowDlgFlag: false
     }
   },
@@ -36,9 +30,7 @@ export default {
   },
 
   created () {
-    this.$bus.on('trigger-sidenav', (isHide = false) => {
-      this.isShowSideNav = !isHide && !this.isShowSideNav
-
+    this.$bus.on('trigger-sidenav', () => {
       let app = document.getElementById('app')
       app.className = !app.className ? 'menu-expand' : ''
     })
@@ -68,24 +60,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import "../assets/scss/variables.scss";
-.slide-enter,
-.slide-leave-to{
-  background-color: #ffffff;
-  height: 0;
-}
-.slide-enter-active{
-  transition: background 0.38s linear,height 0.38s ease-in 200ms
-}
-.slide-leave-active{
-  background-color: #ffffff;
-  transition: background 0.21s linear,height 0.21s ease-in 200ms
-}
-.slide-enter-to,
-.slide-leave{
-  background-color: #ffffff;
-  height: calc(100% - 60px);
-}
-</style>

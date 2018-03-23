@@ -79,17 +79,17 @@
       </div>
     </div>
     <upload-avatar
-        field="image"
-        @crop-success="onCropSuccess"
-        @crop-upload-success="onCropUploadSuccess"
-        @crop-upload-fail="onCropUploadFail"
-        v-model="isShowUploadAvatar"
-        :width="100"
-        :height="100"
-        url="/api/uploadAvatar"
-        :params="params"
-        :headers="headers"
-        img-format="png">
+      field="image"
+      @crop-success="onCropSuccess"
+      @crop-upload-success="onCropUploadSuccess"
+      @crop-upload-fail="onCropUploadFail"
+      v-model="isShowUploadAvatar"
+      :width="100"
+      :height="100"
+      url="/api/uploadAvatar"
+      :params="params"
+      :headers="headers"
+      img-format="png">
     </upload-avatar>
   </div>
 </template>
@@ -150,7 +150,8 @@ export default{
 
   methods: {
     initFetch () {
-      this.$apis.getProfile({_id: this.userInfo._id}).then(result => {
+      const userInfoId = this.userInfo._id
+      this.$apis.getProfile({_id: userInfoId}).then(result => {
         Object.assign(this.fillForm, result)
         let currentDateStr = (new Date(this.$util.getCurrentDate())).Format('yyyy-MM-dd')
         let currentTimeHMS = this.$util.getCurrentDateHMS()
@@ -158,15 +159,15 @@ export default{
           this.imgDataUrl = `/api/avatar/${result.profile.avatar}`
         }
 
-        this.headers.imgname = [currentDateStr, currentTimeHMS, this.userInfo._id].join('-')
+        this.headers.imgname = [currentDateStr, currentTimeHMS, userInfoId].join('-')
         this.headers.username = this.userInfo.username || ''
       }).catch(error => {
-        this.errorAletTip(`Err: ${error}`, 'error')
+        this.errorAlertTip(`Err: ${error}`, 'error')
         this.isLoading = false
       })
     },
 
-    errorAletTip (message, type) {
+    errorAlertTip (message, type) {
       this.tipMessageObj = {
         message: message,
         type: type
@@ -204,8 +205,11 @@ export default{
               message: result,
               type: 'success'
             })
+
+            // ReUpdate UserInfo
+            this.$getUserInfo()
           }).catch(error => {
-            this.errorAletTip(error, 'error')
+            this.errorAlertTip(error, 'error')
           }).finally(() => {
             this.isLoading = false
           })
@@ -223,11 +227,13 @@ export default{
     },
 
     onCropUploadFail () {
-      console.log('onCropUploadFail')
+      console.log('Upload Avatar Fail.')
     },
 
     onCropUploadSuccess (imgPath) {
       this.imgDataUrl = `/api/avatar/${imgPath}`
+      // ReUpdate UserInfo
+      this.$getUserInfo()
     }
   },
 

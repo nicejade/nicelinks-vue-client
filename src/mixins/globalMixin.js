@@ -26,6 +26,7 @@ Vue.mixin({
     ]),
 
     ...mapMutations([
+      '$vuexSetUserInfo',
       '$vuexSaveLastPathUrl'
     ]),
 

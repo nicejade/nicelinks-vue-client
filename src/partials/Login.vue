@@ -202,7 +202,7 @@ export default{
           }
           this.$apis.login(params).then(result => {
             // save user-id into vuex-state(& localStorage)
-            this.$store.commit('$vuexSetUserInfo', result)
+            this.$vuexSetUserInfo(result)
 
             const lastPathUrl = this.$store && this.$store.state.lastPathUrl
             if (lastPathUrl) {

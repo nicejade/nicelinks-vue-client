@@ -119,7 +119,8 @@ export default {
   computed: {
     userSign () {
       if (this.userInfo && !this.isMobile) {
-        return this.userInfo.username || this.userInfo.email
+        const nickname = this.userInfo.profile.nickname
+        return nickname || this.userInfo.username || this.userInfo.email
       }
     },
     isAdminFlag () {
@@ -227,7 +228,7 @@ export default {
         })
 
         this.$switchToLogin()
-        this.$store.commit('$vuexSetUserInfo', {})
+        this.$vuexSetUserInfo({})
       }).catch((error) => {
         this.$message.error(`${error}`)
       })

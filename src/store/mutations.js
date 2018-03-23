@@ -32,6 +32,5 @@ export default {
   $vuexSaveLastPathUrl (state) {
     const currentHref = document.location.href
     state.lastPathUrl = currentHref
-    console.log(state)
   }
 }

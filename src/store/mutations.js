@@ -27,5 +27,11 @@ export default {
 
   $vuexUpdateLoadMoreState (state, isLoadMore) {
     state.isLoadMore = isLoadMore
+  },
+
+  $vuexSaveLastPathUrl (state) {
+    const currentHref = document.location.href
+    state.lastPathUrl = currentHref
+    console.log(state)
   }
 }

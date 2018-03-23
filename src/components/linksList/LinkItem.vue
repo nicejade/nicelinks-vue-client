@@ -93,7 +93,7 @@ export default {
   methods: {
     dispatchAction (row, action) {
       if (!this.$isLogin()) {
-        this.$router.push('/login')
+        this.$switchToLogin()
         return
       }
 

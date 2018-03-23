@@ -199,7 +199,7 @@ export default {
 
     onGotoLoginClick () {
       this.$gtagTracking('login', 'header', 'p-login')
-      this.$router.push('/login')
+      this.$switchToLogin()
     },
 
     onGotoSignUpClick () {
@@ -226,7 +226,7 @@ export default {
           type: 'success'
         })
 
-        this.$router.push('/login')
+        this.$switchToLogin()
         this.$store.commit('$vuexSetUserInfo', {})
       }).catch((error) => {
         this.$message.error(`${error}`)

@@ -24,7 +24,8 @@ const state = {
     sortType: -1,
     sortTarget: 'likes'
   },
-  isLoadMore: true
+  isLoadMore: true,
+  lastPathUrl: ''
 }
 
 const debug = process.env.NODE_ENV !== 'production'

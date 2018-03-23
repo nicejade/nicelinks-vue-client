@@ -204,7 +204,12 @@ export default{
             // save user-id into vuex-state(& localStorage)
             this.$store.commit('$vuexSetUserInfo', result)
 
-            this.$router.push('/')
+            const lastPathUrl = this.$store && this.$store.state.lastPathUrl
+            if (lastPathUrl) {
+              document.location.href = lastPathUrl
+            } else {
+              this.$router.push('/')
+            }
           }).catch(error => {
             this.isLoading = false
             this.setMessageTip(error)

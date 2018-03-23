@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Cookies from 'js-cookie'
 import { $util } from 'helper'
-import {mapActions} from 'vuex'
+import {mapActions, mapMutations} from 'vuex'
 
 Vue.mixin({
   data () {
@@ -23,6 +23,10 @@ Vue.mixin({
   methods: {
     ...mapActions([
       '$getUserInfo'
+    ]),
+
+    ...mapMutations([
+      '$vuexSaveLastPathUrl'
     ]),
 
     $isLogin () {
@@ -49,11 +53,16 @@ Vue.mixin({
       this.$router.push(`/theme/${theme.toLocaleLowerCase()}`)
     },
 
+    $switchToLogin () {
+      this.$vuexSaveLastPathUrl()
+      this.$router.push('/login')
+    },
+
     $switchToShareLink () {
       if (this.$isLogin()) {
         this.$router.push('/share-link')
       } else {
-        this.$router.push('/login')
+        this.$switchToLogin()
       }
     },
 

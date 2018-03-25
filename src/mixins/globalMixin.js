@@ -27,7 +27,8 @@ Vue.mixin({
 
     ...mapMutations([
       '$vuexSetUserInfo',
-      '$vuexSaveLastPathUrl'
+      '$vuexSaveLastPathUrl',
+      '$vuexRecoverRequestParamList'
     ]),
 
     $isLogin () {
@@ -57,6 +58,16 @@ Vue.mixin({
     $switchToLogin () {
       this.$vuexSaveLastPathUrl()
       this.$router.push('/login')
+    },
+
+    $switchToIndexPage () {
+      this.$vuexRecoverRequestParamList()
+      this.$router.push('/')
+    },
+
+    $switchToExploreAll () {
+      this.$vuexRecoverRequestParamList()
+      this.$router.push('/explore/all')
     },
 
     $switchToShareLink () {

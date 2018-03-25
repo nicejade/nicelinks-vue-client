@@ -3,12 +3,12 @@
   <header class="header">
     <nav class="nav">
       <div class="header-logo">
-        <router-link to="/" class="header-logo-a nicelinks-logo gtag-track"
-          data-action="header-logo-link" data-category="header" data-label="header-logo-link">
+        <a href="javascript:;" @click="onIndexPageClick"
+          class="header-logo-a nicelinks-logo">
           <img src="/static/img/favicons/safari-pinned-tab.svg"
             :alt="$t('niceLinksStr')">
           <h1 class="title">{{ $t('niceLinksStr') }}</h1>
-        </router-link>
+        </a>
       </div>
 
       <a href="javascript:;" class="menu" @click="onToggleMenuClick">
@@ -164,6 +164,11 @@ export default {
     },
 
     // -------------------------onClickEvent-------------------------Start
+    onIndexPageClick () {
+      this.$gtagTracking('header-logo-link', 'header', 'header-logo-link')
+      this.$switchToIndexPage()
+    },
+
     onShareNewLinkClick () {
       this.$switchToShareLink()
       this.$gtagTracking('share-new-link', 'header', 'p-share-new-link')

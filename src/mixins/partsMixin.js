@@ -31,8 +31,7 @@ export default {
     ...mapMutations([
       '$vuexSetNiceLinksList',
       '$vuexSetRequestParamList',
-      '$vuexUpdateLoadMoreState',
-      '$vuexRecoverRequestParamList'
+      '$vuexUpdateLoadMoreState'
     ]),
 
     assembleAjaxParams () {
@@ -58,11 +57,6 @@ export default {
     },
 
     $fetchSearch (params = {}, isLoadMore = false) {
-      const currentPath = this.$route.path
-      if (currentPath === '/explore/all') {
-        this.$vuexRecoverRequestParamList()
-      }
-
       // Update the LoadMore Button State(true);
       this.$vuexUpdateLoadMoreState(true)
 

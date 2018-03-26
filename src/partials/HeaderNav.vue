@@ -119,7 +119,7 @@ export default {
   computed: {
     userSign () {
       if (this.userInfo && !this.isMobile) {
-        const nickname = this.userInfo.profile.nickname
+        const nickname = this.userInfo.profile && this.userInfo.profile.nickname
         return nickname || this.userInfo.username || this.userInfo.email
       }
     },

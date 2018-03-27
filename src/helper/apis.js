@@ -105,6 +105,10 @@ export default {
   updateAvatar (data) {
     return $ajax.post(requestUrl('updateAvatar'), data)
   },
+
+  removeUserById (data) {
+    return $ajax.post(requestUrl('removeUserById'), data)
+  },
   // ---------------------Config-----------------------
   getSysConf (data) {
     return $ajax.get(requestUrl('getSysConf'), data)

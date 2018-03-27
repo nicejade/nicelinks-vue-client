@@ -34,9 +34,6 @@
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
                 <template scope="scope">
-                  <el-button size="small"
-                    @click="handleEdit(scope.row)">{{ $t('edit') }}
-                  </el-button>
                   <el-button size="small" type="danger"
                     @click="handleDelete(scope.row)">{{ $t('delete') }}
                   </el-button>
@@ -129,7 +126,6 @@ export default{
     },
 
     handleCurrentChange (val) {
-      console.log(val)
       this.tableControl.pageCount = val
       this.initFetch()
     },
@@ -144,7 +140,19 @@ export default{
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        // body
+        params.operatorId = this.userInfo && this.userInfo._id
+
+        this.isLoading = true
+        this.$apis.removeUserById(params).then(result => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
+        }).catch((error) => {
+          this.$message.error(`${error}`)
+        }).finally(() => {
+          this.isLoading = false
+        })
       }).catch(() => {
         this.$message({
           type: 'info',

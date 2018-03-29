@@ -19,12 +19,12 @@ export default {
         {
           name: '晚晴幽草轩',
           label: 'jeffjade',
-          path: 'http://jeffjade.com'
+          path: 'https://jeffjade.com'
         },
         {
           name: '天意人间舫',
           label: 'nicejade',
-          path: 'http://nicejade.github.io/'
+          path: 'https://blog.lovejade.cn'
         }
       ]
     }

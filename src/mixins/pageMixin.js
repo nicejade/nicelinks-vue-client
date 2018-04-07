@@ -7,6 +7,9 @@ export default {
   computed: {
   },
 
+  created () {
+  },
+
   mounted () {
     this.sendGtagEventTracking()
   },

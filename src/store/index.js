@@ -25,7 +25,13 @@ const state = {
     sortTarget: 'likes'
   },
   isLoadMore: true,
-  lastPathUrl: ''
+  lastPathUrl: '',
+  wechatApiSignature: {
+    appid: '',
+    nonceStr: '',
+    signature: '',
+    timestamp: ''
+  }
 }
 
 const debug = process.env.NODE_ENV !== 'production'

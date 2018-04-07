@@ -99,6 +99,35 @@ export default {
     return objURL
   },
 
+  loadScript (url, isAsyncFlag) {
+    return new Promise((resolve, reject) => {
+      var script = document.createElement('script')
+      script.type = 'text/javascript'
+
+      if (script.readyState) {
+        script.onreadystatechange = () => {
+          if (script.readyState === 'loaded' ||
+            script.readyState === 'complete') {
+            script.onreadystatechange = null
+            resolve('success: ' + url)
+          }
+        }
+      } else {
+        script.onload = () => {
+          resolve('success: ' + url)
+        }
+      }
+
+      script.onerror = () => {
+        reject(Error(url + 'load error!'))
+      }
+
+      script.src = url
+      script.async = isAsyncFlag
+      document.body.appendChild(script)
+    })
+  },
+
   queryString (url, query) {
     let str = []
     for (let key in query) {
@@ -132,6 +161,15 @@ export default {
   isLegalPassword (str) {
     let pattern = new RegExp('^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9!@#$%^&*]{6,18}$', 'g')
     return pattern.test(str)
+  },
+
+  isWechatBrowser () {
+    var ua = window.navigator.userAgent.toLowerCase()
+    if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+      return true
+    } else {
+      return false
+    }
   },
 
   setCurrentDate (date) {

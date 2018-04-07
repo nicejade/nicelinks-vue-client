@@ -98,10 +98,6 @@ export default {
     return $ajax.get(requestUrl('getUserInfo'), data)
   },
 
-  crawlLinksInfo (data) {
-    return $ajax.get(requestUrl('crawlLinksInfo'), data)
-  },
-
   updateAvatar (data) {
     return $ajax.post(requestUrl('updateAvatar'), data)
   },
@@ -109,6 +105,16 @@ export default {
   removeUserById (data) {
     return $ajax.post(requestUrl('removeUserById'), data)
   },
+
+  // ---------------------Help-------------------------start
+  crawlLinksInfo (data) {
+    return $ajax.get(requestUrl('crawlLinksInfo'), data)
+  },
+
+  getWechatApiSignature (data) {
+    return $ajax.get(requestUrl('getWechatApiSignature'), data)
+  },
+
   // ---------------------Config-----------------------
   getSysConf (data) {
     return $ajax.get(requestUrl('getSysConf'), data)

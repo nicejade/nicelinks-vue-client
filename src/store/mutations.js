@@ -32,5 +32,9 @@ export default {
   $vuexSaveLastPathUrl (state) {
     const currentHref = document.location.href
     state.lastPathUrl = currentHref
+  },
+
+  $setWechatApiSignature (state, result) {
+    Object.assign(state.wechatApiSignature, result)
   }
 }

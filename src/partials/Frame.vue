@@ -43,7 +43,8 @@ export default {
       }
     }
 
-    this.initWechatShare()
+    // Temporarily shut down the WeChat sharing function@04-07
+    // this.initWechatShare()
   },
 
   mounted () {
@@ -51,7 +52,7 @@ export default {
 
   watch: {
     $route: function (to, from) {
-      this.initWechatShare()
+      // this.initWechatShare()
     }
   },
 

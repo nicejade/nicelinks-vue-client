@@ -5,13 +5,13 @@ export default [
     {key: '设计', value: 'Design'},
     {key: '安全', value: 'Security'},
     {key: '运维', value: 'Operation'},
-    {key: '搜索', value: 'Search'},
-    {key: '测试', value: 'Test'}
+    {key: '搜索', value: 'Search'}
   ],
   // 1: 资源之家
   [
     {key: '利器', value: 'Tools'},
     {key: '书籍', value: 'Books'},
+    {key: '社区', value: 'Community'},
     {key: '论坛', value: 'Forum'},
     {key: '产品', value: 'Product'},
     {key: '美图', value: 'Picture'},

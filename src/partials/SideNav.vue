@@ -104,7 +104,7 @@ export default {
 
     triggerSideNav () {
       this.$gtagTracking('trigger-sidenav', 'sidebar', 'm-trigger-sidenav')
-      this.$bus.$emit('trigger-sidenav')
+      this.$triggerSidenav()
     },
 
     handleOpen (index) {

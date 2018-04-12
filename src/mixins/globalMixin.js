@@ -55,6 +55,11 @@ Vue.mixin({
       this.$router.push(`/theme/${theme.toLocaleLowerCase()}`)
     },
 
+    $triggerSidenav () {
+      let app = document.getElementById('app')
+      app.className = !app.className ? 'menu-expand' : ''
+    },
+
     $switchToLogin () {
       this.$vuexSaveLastPathUrl()
       this.$router.push('/login')

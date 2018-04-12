@@ -6875,10 +6875,6 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-vue-bus@^0.3.0:
-  version "0.3.0"
-  resolved "http://registry.npm.taobao.org/vue-bus/download/vue-bus-0.3.0.tgz#811d979606a72fea3e6edd5cebeee5de97670201"
-
 vue-content-placeholder@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-content-placeholder/-/vue-content-placeholder-1.1.1.tgz#24726c85e6a0ae260b3034a466cb7706551527e6"

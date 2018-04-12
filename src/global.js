@@ -3,7 +3,6 @@ import ElementUI from 'element-ui'
 import VueI18n from 'vue-i18n'
 // import VueTouch from 'vue-touch'
 import Cookies from 'js-cookie'
-import VueBus from 'vue-bus'
 import SocialSharing from 'vue-social-sharing'
 import VueMeta from 'vue-meta'
 
@@ -14,7 +13,6 @@ import Filters from './filters'
 Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.use(SocialSharing)
-Vue.use(VueBus)
 Vue.use(VueMeta)
 // Vue.use(VueTouch, {name: 'v-touch'})
 

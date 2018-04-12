@@ -30,11 +30,6 @@ export default {
   },
 
   created () {
-    this.$bus.on('trigger-sidenav', () => {
-      let app = document.getElementById('app')
-      app.className = !app.className ? 'menu-expand' : ''
-    })
-
     if (!this.$auth.checkSession()) {
       this.$vuexSetUserInfo({})
     } else {
@@ -59,7 +54,7 @@ export default {
   methods: {
     hideMenu () {
       if (this.isShowSideNav) {
-        this.$bus.$emit('trigger-sidenav')
+        this.$triggerSidenav()
       }
     },
 

@@ -200,7 +200,7 @@ export default {
 
     onToggleMenuClick () {
       this.$gtagTracking('trigger-sidenav', 'header', 'p-trigger-sidenav')
-      this.$bus.$emit('trigger-sidenav')
+      this.$triggerSidenav()
     },
 
     onGotoLoginClick () {

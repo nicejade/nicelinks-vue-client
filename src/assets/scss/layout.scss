@@ -65,13 +65,15 @@
     color: $black;
   }
   .title{
+    height: 40px;
+    line-height: 36px;
     margin: 0 1rem;
     font-size: 2rem;
     font-weight: 500;
     display: inline-block;
     text-align: center;
-    vertical-align: middle;
     color: $black;
+    vertical-align: middle;
     &:hover,
     &:focus,
     &:link,

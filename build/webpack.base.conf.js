@@ -91,7 +91,7 @@ module.exports = {
         test: /\.svg$/,
         include: [resolve('src')],
         loader: 'happypack/loader?id=happy-svg',
-        include: /assets\/icons/
+        include: [/assets\/icons/, /node_modules\/mavon-editor/]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -104,12 +104,10 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff2?|eot|woff|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        include: [resolve('src')],
-        exclude: /node_modules/,
         query: {
-          limit: 10000,
+          limit: 100000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }

@@ -6,6 +6,10 @@ import Cookies from 'js-cookie'
 import SocialSharing from 'vue-social-sharing'
 import VueMeta from 'vue-meta'
 
+import MavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+import 'mavon-editor/dist/markdown/github-markdown.min.css'
+
 import { $apis, $util, $document, $auth, $lodash, $errorReport } from 'helper'
 import locales from './locales'
 import Filters from './filters'
@@ -14,6 +18,7 @@ Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.use(SocialSharing)
 Vue.use(VueMeta)
+Vue.use(MavonEditor)
 // Vue.use(VueTouch, {name: 'v-touch'})
 
 // Initialize the sentry error reporting @2017-10-29

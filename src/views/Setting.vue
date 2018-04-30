@@ -39,9 +39,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
                     <div class="col-sm-9">
-                      <el-input type="textarea"  :autosize="{ minRows: 4, maxRows: 6}"
-                        :maxlength="140" placeholder="" v-model="fillForm.profile.description">
-                      </el-input>
+                      <markdown v-model="fillForm.profile.description"/>
                     </div>
                   </div>
                 </el-form>
@@ -95,8 +93,9 @@
 </template>
 
 <script>
-import UploadAvatar from 'components/UploadAvatar'
 import metaMixin from 'mixins/metaMixin.js'
+import UploadAvatar from 'components/UploadAvatar'
+import Markdown from 'components/markdown/index'
 
 export default{
   name: 'Setting',
@@ -104,7 +103,8 @@ export default{
   mixins: [metaMixin],
 
   components: {
-    UploadAvatar
+    UploadAvatar,
+    Markdown
   },
 
   data () {

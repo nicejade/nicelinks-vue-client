@@ -51,8 +51,10 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
                   <div class="col-sm-9">
+                    <preview-md
+                      :value="mUserInfo.profile.description || $t('noFill')">
+                    </preview-md>
                     <p class="text-padding gray">
-                      {{ mUserInfo.profile.description || $t('noFill') }}
                     </p>
                   </div>
                 </div>
@@ -73,6 +75,7 @@
 
 <script>
 import metaMixin from 'mixins/metaMixin.js'
+import PreviewMd from 'components/markdown/PreviewMd.vue'
 
 export default{
   name: 'HomePage',
@@ -80,6 +83,7 @@ export default{
   mixins: [metaMixin],
 
   components: {
+    PreviewMd
   },
 
   data () {

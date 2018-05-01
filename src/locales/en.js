@@ -18,7 +18,7 @@ export default {
   save: 'Save',
   delete: 'Delete',
   keywordStr: 'Keyword: ',
-  reviewStr: 'Review: ',
+  reviewStr: 'Recommendation: ',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'NICE LINKS',
 

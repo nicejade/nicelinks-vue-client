@@ -23,17 +23,17 @@
       {{ item.abstract || $util.interceptString(item.desc) }}
     </div>
     <div v-if="!isAbstract">
-      <div v-if="item.keywords" class="link-keywords">
+      <div v-if="isShowKeywords && item.keywords" class="link-keywords">
         <strong>{{$t('keywordStr')}}</strong>
         {{ item.keywords }}
       </div>
       <div class="link-desc"
         v-html="this.obtainLinkDesc(item)">
       </div>
+      <hr class="segmenting-line">
       <div v-if="item.review" class="link-review">
-        <strong>{{ $t('reviewStr') }}</strong>
         <preview-md
-          :value="item.review">
+          :value="reviewPrefix + item.review">
         </preview-md>
       </div>
     </div>
@@ -62,7 +62,8 @@ export default {
     return {
       classifyList: $config.classify,
       themeList: $config.theme,
-      tagsList: $config.tags
+      tagsList: $config.tags,
+      isShowKeywords: true
     }
   },
 
@@ -78,6 +79,12 @@ export default {
     isAbstract: {
       type: Boolean,
       default: false
+    }
+  },
+
+  computed: {
+    reviewPrefix () {
+      return `**${this.$t('reviewStr')}**`
     }
   },
 
@@ -207,6 +214,34 @@ export default {
     color: $silver-grey;
     line-height: 1.5;
     letter-spacing: .02rem;
+  }
+
+  .link-keywords,
+  .link-review{
+    margin: 15px 0;
+    color: $black-grey;
+    line-height: 1.8rem;
+    strong{
+      font-weight: 700;
+      color: $link-title;
+    }
+  }
+  .link-keywords{
+    word-break: break-all;
+  }
+  .link-desc{
+    color: $silver-grey;
+    margin: 15px auto;
+    padding-left: 10px;
+    word-break: break-all;
+    line-height: 1.8rem;
+    font-size: $font-small;
+    word-spacing: 3px;
+    border-left: 2px solid #000000;
+  }
+  .segmenting-line{
+    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #ffffff;
   }
   .meta{
     font-size: 1.314rem;

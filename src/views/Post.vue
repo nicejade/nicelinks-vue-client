@@ -90,28 +90,3 @@ export default {
   }
 }
 </script>
-
-<style media="screen" lang="scss">
-@import "./../assets/scss/variables.scss";
-
-.link-desc{
-  color: $silver-grey;
-  margin: 15px auto;
-  padding-left: 10px;
-  word-break: break-all;
-  line-height: 1.8rem;
-  font-size: $font-small;
-  word-spacing: 3px;
-  border-left: 2px solid #000000;
-}
-.link-keywords,
-.link-review{
-  margin: 15px 0;
-  color: $black-grey;
-  line-height: 1.8rem;
-  strong{
-    font-weight: 700;
-    color: $link-title;
-  }
-}
-</style>

@@ -18,7 +18,7 @@ export default {
   save: '保存',
   delete: '删除',
   keywordStr: '关键字：',
-  reviewStr: '点评：',
+  reviewStr: '推荐语：',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 

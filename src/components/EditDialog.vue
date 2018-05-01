@@ -76,7 +76,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkKeywordStr') }} <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkKeywordStr') }} ：</label>
             <div class="col-sm-8">
               <el-form-item prop="keywords">
                 <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 2, maxRows: 10}"
@@ -100,17 +100,15 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkReviewStr') }} <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('linkReviewStr') }} ：</label>
             <div class="col-sm-8">
-              <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"
-                v-model="fillForm.review">
-              </el-input>
+              <markdown v-model="fillForm.review"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"/>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} <em>*</em>：</label>
+            <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} ：</label>
             <div class="col-sm-8">
               <el-switch
                 :on-text="$t('yes')" :off-text="$t('no')"
@@ -131,6 +129,7 @@
 
 <script>
 import $config from 'config'
+import Markdown from 'components/markdown/index'
 
 export default {
   name: 'EditDialog',
@@ -166,6 +165,10 @@ export default {
         ]
       }
     }
+  },
+
+  components: {
+    Markdown
   },
 
   props: {

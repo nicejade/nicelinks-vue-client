@@ -1,12 +1,13 @@
 <template>
   <div class="jade-markdown">
     <el-tabs v-model="activeName" type="card" @tab-click="onHandleClick">
-      <el-tab-pane label="编写" name="write"></el-tab-pane>
-      <el-tab-pane label="预览" name="preview"></el-tab-pane>
+      <el-tab-pane :label="$t('write')" name="write"></el-tab-pane>
+      <el-tab-pane :label="$t('preview')" name="preview"></el-tab-pane>
     </el-tabs>
 
     <div class="write-area" v-if="activeName === 'write'">
-      <el-input type="textarea" :rows="6" placeholder="请输入内容"
+      <el-input type="textarea" :placeholder="placeholder"
+        :maxlength="3600" :autosize="{ minRows: 6, maxRows: 21}"
         v-model="originalVal"
         @change="onChangeEvent">
       </el-input>
@@ -33,6 +34,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
     }
   },
 
@@ -50,6 +55,7 @@ export default {
   },
 
   mounted () {
+    this.originalVal = this.value
   },
 
   methods: {
@@ -58,6 +64,17 @@ export default {
     },
 
     onHandleClick () {}
+  },
+
+  locales: {
+    en: {
+      write: 'Write',
+      preview: 'Preview'
+    },
+    zh: {
+      write: '编写',
+      preview: '预览'
+    }
   }
 }
 </script>
@@ -71,6 +88,7 @@ export default {
   border-radius: 3px;
   .el-tabs--card{
     .el-tabs__nav{
+      height: 36px;
       margin-left: 15px;
       .el-tabs__item{
         height: 36px;

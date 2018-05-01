@@ -32,7 +32,9 @@
       </div>
       <div v-if="item.review" class="link-review">
         <strong>{{ $t('reviewStr') }}</strong>
-        <span v-html="item.review"></span>
+        <preview-md
+          :value="item.review">
+        </preview-md>
       </div>
     </div>
     <div class="action-list">
@@ -51,6 +53,7 @@
 
 <script>
 import $config from 'config'
+import PreviewMd from 'components/markdown/PreviewMd.vue'
 
 export default {
   name: 'LinkItem',
@@ -82,6 +85,7 @@ export default {
   },
 
   components: {
+    PreviewMd
   },
 
   created () {

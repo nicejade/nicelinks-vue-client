@@ -102,11 +102,8 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="review">
-                      <el-input type="textarea"
-                        :maxlength="360" :autosize="{ minRows: 5, maxRows: 10}"
-                        :placeholder="$t('linkReviewStr')"
-                        v-model="fillForm.review">
-                      </el-input>
+                      <markdown v-model="fillForm.review"
+                        :placeholder="$t('linkReviewStr')"/>
                     </el-form-item>
                   </div>
                 </div>
@@ -131,6 +128,7 @@
 <script>
 import $config from 'config'
 import metaMixin from 'mixins/metaMixin.js'
+import Markdown from 'components/markdown/index'
 
 export default {
   name: 'ShareLink',
@@ -177,6 +175,10 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+
+  components: {
+    Markdown
   },
 
   computed: {

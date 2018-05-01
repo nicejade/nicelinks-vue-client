@@ -1,7 +1,5 @@
 <template>
-  <div class="preview-area markdown-body"
-    v-html="beParsedVal">
-  </div>
+  <div class="markdown-body" v-html="beParsedVal" />
 </template>
 
 <script>
@@ -44,11 +42,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import "../../assets/scss/variables.scss";
-
-.preview-area{
-  padding: 0 15px;
-}
-</style>

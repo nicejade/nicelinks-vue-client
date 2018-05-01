@@ -12,7 +12,10 @@
         @change="onChangeEvent">
       </el-input>
     </div>
-    <preview-md v-if="activeName === 'preview'" :value="originalVal">
+    <preview-md
+      class="preview-area"
+      :value="originalVal"
+      v-if="activeName === 'preview'">
     </preview-md>
   </div>
 </template>

@@ -40,9 +40,12 @@ Vue.mixin({
     },
 
     $switchLang () {
-      let currentLang = Vue.config.lang === 'zh' ? 'en' : 'zh'
+      const currentLang = Vue.config.lang === 'zh' ? 'en' : 'zh'
       Vue.config.lang = currentLang
       Cookies.set('lang', currentLang)
+
+      const htmlLang = currentLang === 'zh' ? 'zh-CN' : 'en'
+      document.getElementsByTagName('html')[0].lang = htmlLang
     },
 
     $switchRouteByExplore (name = '') {

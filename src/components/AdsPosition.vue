@@ -4,7 +4,7 @@
     <el-carousel trigger="click" class="jade-gg-body"
       indicator-position="outside" :interval='3600' height="256px">
       <el-carousel-item v-for="(item, index) in advertsList" :key="index">
-        <a :href="item.path" target=_blank>
+        <a :href="item.path" target="_blank" rel="noreferrer noopener">
           <img :src="item.image" :alt="item.alt">
         </a>
       </el-carousel-item>

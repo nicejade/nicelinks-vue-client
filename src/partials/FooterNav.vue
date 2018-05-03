@@ -4,7 +4,7 @@
       <div class="footer-body">
         <div class="content">
           <p>
-            <a target="_blank" class="link gtag-track" href="/"
+            <a target="_blank" rel="noreferrer noopener" class="link gtag-track" href="/"
               data-action="footer-nicelinks" data-category="footer" data-label="footer-nicelinks">
               {{ $t('niceLinksStr') }}
             </a>
@@ -19,6 +19,7 @@
             :href="item.path + item.name"
             :title="item.title"
             target="_blank"
+            rel="noreferrer noopener"
             :class="item.class"
             class="social-btn gtag-track">
             <icon class="icons" :name="item.class"></icon>
@@ -26,8 +27,12 @@
         </div>
         <div class="icp">
           <span>{{ copyright }}</span>
-          <a class="link gtag-track" target="_blank" href="http://jeffjade.com"
-            data-action="footer-jeffjade" data-category="footer" data-label="footer-jeffjade">
+          <a class="link gtag-track"
+            href="https://jeffjade.com"
+            target="_blank" rel="noreferrer noopener"
+            data-action="footer-jeffjade"
+            data-category="footer"
+            data-label="footer-jeffjade">
             晚晴幽草轩
           </a>
           {{ $t('produced') }}

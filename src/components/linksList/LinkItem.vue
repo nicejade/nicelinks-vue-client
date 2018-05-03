@@ -5,19 +5,22 @@
         @click.stop.prevent="onThemeClick(item.theme)">
         {{ fillThemeName(item.classify, item.theme) }}
       </span>
-      <a class="item username" :href="getUserPath(item.createdBy)" target="_blank">
+      <a class="item username" :href="getUserPath(item.createdBy)" target="_blank" rel="noreferrer noopener">
         {{ item.createdBy || '' }}
       </a>
       <span >{{ item.created | dateOffset }}</span>
       <a class="tag"
         v-for="(iitem, index) in item.tags" :key="index"
-        :href="getTagPath(iitem)"  target="_blank"
-      >
+        :href="getTagPath(iitem)"
+        target="_blank" rel="noreferrer noopener">
         {{ iitem }}
       </a>
     </div>
     <h3 class="title">
-      <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
+      <a class="title-link" :href="item.urlPath"
+        target="_blank" rel="noreferrer noopener">
+        {{ item.title }}
+      </a>
     </h3>
     <div class="abstract" v-if="isAbstract">
       {{ item.abstract || $util.interceptString(item.desc) }}
@@ -30,7 +33,7 @@
       <div class="link-desc"
         v-html="this.obtainLinkDesc(item)">
       </div>
-      <hr class="segmenting-line">
+      <hr v-if="item.review" class="segmenting-line">
       <div v-if="item.review" class="link-review">
         <preview-md
           :value="reviewPrefix + item.review">

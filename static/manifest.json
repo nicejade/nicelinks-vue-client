@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/?from=device-screen",
+    "start_url": "https://nicelinks.site/?from=device-screen",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone"

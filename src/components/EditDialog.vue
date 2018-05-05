@@ -145,7 +145,8 @@ export default {
         classify: '',
         theme: '',
         tags: [],
-        review: ''
+        review: '',
+        active: false
       },
       themeList: [],
       tagsList: $config.tags,

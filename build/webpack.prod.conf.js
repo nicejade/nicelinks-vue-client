@@ -11,6 +11,9 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+const loadMinified = require('./load-minified')
+
+const PUBLIC_PATH = 'https://nicelinks.site/'
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -85,7 +88,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      serviceWorkerLoader: `<script>${loadMinified(path.join(__dirname,
+      serviceWorkerLoader: `<script type="text/javascript">${loadMinified(path.join(__dirname,
         './service-worker-prod.js'))}</script>`
     }),
     // split vendor js into its own file
@@ -110,10 +113,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // service worker caching
     new SWPrecacheWebpackPlugin({
-      cacheId: 'my-vue-app',
+      cacheId: 'nicelinksapp',
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
+      navigateFallback: PUBLIC_PATH + 'index.html',
       stripPrefix: 'dist/'
     }),
     new LodashModuleReplacementPlugin()

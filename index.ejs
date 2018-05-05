@@ -43,15 +43,16 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v04-23"></script>
+    <script src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v05-05"></script>
     <!--[if lt IE 9]>
       <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
     <![endif]-->
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
+    </script>
   </body>
-  <script>
+  <script type="text/javascript">
     console.log('“倾心缔造，痴心为你”：%c倾城之链', 'font-weight: 600;color: #2c85ff')
   </script>
 </html>

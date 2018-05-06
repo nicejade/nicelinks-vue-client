@@ -10,30 +10,30 @@
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="number" label="第几成员" width="100">
-                <template scope="scope">{{ scope.row.number }}</template>
+                <template slot-scope="scope">{{ scope.row.number }}</template>
               </el-table-column>
               <el-table-column prop="username" label="用户名" width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-button type="text" @click.stop="onUserClick(scope.row.username)">
                     {{ scope.row.username }}
                   </el-button>
                 </template>
               </el-table-column>
               <el-table-column prop="active" :label="$t('isActived')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag :type="scope.row.active ? 'success' : 'error'">
                     {{ scope.row.active ? $t('yes') : $t('no') }}
                   </el-tag>
                 </template>
               </el-table-column>
               <el-table-column prop="email" label="注册邮箱" min-width="160">
-                <template scope="scope">{{ scope.row.email }}</template>
+                <template slot-scope="scope">{{ scope.row.email }}</template>
               </el-table-column>
               <el-table-column prop="registeTime" :label="$t('createdDateStr')" width="160">
-                <template scope="scope">{{ scope.row.registeTime | dateConvert }}</template>
+                <template slot-scope="scope">{{ scope.row.registeTime | dateConvert }}</template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-button size="small" type="danger"
                     @click="handleDelete(scope.row)">{{ $t('delete') }}
                   </el-button>

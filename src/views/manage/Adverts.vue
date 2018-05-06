@@ -19,27 +19,27 @@
             </div>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="path" label="地址" min-width="200">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-input v-model="scope.row.path"></el-input>
                 </template>
               </el-table-column>
               <el-table-column prop="image" label="图片" min-width="200">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-input v-model="scope.row.image"></el-input>
                 </template>
               </el-table-column>
               <el-table-column prop="image" label="描述" min-width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-input v-model="scope.row.alt"></el-input>
                 </template>
               </el-table-column>
               <el-table-column prop="image" label="排序" min-width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-input v-model="scope.row.sort"></el-input>
                 </template>
               </el-table-column>
               <el-table-column prop="active" :label="$t('isActived')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-switch
                     v-model="scope.row.active"
                     :on-text="$t('yes')" :off-text="$t('no')"
@@ -48,12 +48,12 @@
                 </template>
               </el-table-column>
               <el-table-column prop="modifyTime" label="修改时间" width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   {{ scope.row.modifyTime | dateConvert }}
                 </template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-button size="small"
                     @click="handleSave(scope.row)">{{ $t('save') }}
                   </el-button>

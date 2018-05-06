@@ -2,7 +2,7 @@
   <strong class="countup"></strong>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .countup{
   font-size: 8.8rem;
   background: #212121;

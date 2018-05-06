@@ -77,7 +77,6 @@ input:-ms-input-placeholder{
 }
 
 .button{
-  // @include absolute-center;
   position: relative;
   left: 50%;
   transform: translateX(-50%);

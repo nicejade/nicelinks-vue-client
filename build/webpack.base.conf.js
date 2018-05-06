@@ -1,19 +1,34 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config')
-var webpack = require('webpack')
-var autoprefixer = require('autoprefixer')
-var vueLoaderConfig = require('./vue-loader.conf')
-var svgoConfig = require('../config/svgo-config.json')
-var chalk = require('chalk')
-var ProgressBarPlugin = require('progress-bar-webpack-plugin')
-var HappyPack = require('happypack')
-var os = require('os')
-var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+const path = require('path')
+const utils = require('./utils')
+const config = require('../config')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const vueLoaderConfig = require('./vue-loader.conf')
+const svgoConfig = require('../config/svgo-config.json')
+const chalk = require('chalk')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-function resolve (dir) {
+const env = process.env.NODE_ENV
+
+const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
 }
+
+const cssLoader = new MiniCssExtractPlugin({
+  use: [
+    'happypack/loader?id=happy-css'
+  ]
+})
+
+// inject happypack accelerate packing for vue-loader @17-08-18
+Object.assign(vueLoaderConfig.loaders, {
+  js: 'happypack/loader?id=happy-babel-vue',
+  css: cssLoader
+})
 
 function createHappyPlugin (id, loaders) {
   return new HappyPack({
@@ -27,8 +42,10 @@ function createHappyPlugin (id, loaders) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    vendor: ['lodash']
   },
+  mode: env === 'production' ? 'production' : 'development',
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -107,7 +124,7 @@ module.exports = {
         test: /\.(woff2?|eot|woff|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         query: {
-          limit: 100000,
+          limit: 8192,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
@@ -140,7 +157,7 @@ module.exports = {
     createHappyPlugin('happy-babel-js', ['babel-loader?cacheDirectory=true']),
     createHappyPlugin('happy-babel-vue', ['babel-loader?cacheDirectory=true']),
     createHappyPlugin('happy-svg', ['svg-sprite-loader']),
-    // createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
+    createHappyPlugin('happy-css', ['css-loader', 'vue-style-loader']),
     new HappyPack({
       loaders: [{
         path: 'vue-loader',

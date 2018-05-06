@@ -10,31 +10,31 @@
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="classify" :label="$t('linkClassifyStr')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   {{ $t(classifyList[scope.row.classify]['name']) }}
                 </template>
               </el-table-column>
               <el-table-column prop="active" :label="$t('isActived')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag :type="scope.row.active ? 'success' : 'error'">
                     {{ scope.row.active ? $t('yes') : $t('no') }}
                   </el-tag>
                 </template>
               </el-table-column>
               <el-table-column prop="createdBy" :label="$t('creater')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-button type="text" @click="onCreaterClick(scope.row.createdBy)">
                     {{ scope.row.createdBy }}
                   </el-button>
                 </template>
               </el-table-column>
               <el-table-column prop="theme" :label="$t('linkThemeStr')" width="100">
-                <template scope="scope">
+                <template slot-scope="scope">
                 {{ fillThemeName(scope.row.classify, scope.row.theme) }}
                 </template>
               </el-table-column>
               <el-table-column prop="urlPath" :label="$t('linkAddressStr')" min-width="180">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <a class="title-link" :href="scope.row.urlPath"
                     target="_blank" rel="noreferrer noopener">
                     {{ scope.row.title }}
@@ -42,10 +42,10 @@
                 </template>
               </el-table-column>
               <el-table-column prop="created" :label="$t('createdDateStr')" width="160">
-                <template scope="scope">{{ scope.row.created | dateConvert }}</template>
+                <template slot-scope="scope">{{ scope.row.created | dateConvert }}</template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-button size="small"
                     @click="handleEdit(scope.row)">{{ $t('edit') }}</el-button>
                   <el-button size="small" type="danger"

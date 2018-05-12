@@ -20,7 +20,6 @@
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "analyz": "NODE_ENV=production  npm_config_report=true npm run build",
     "clean-commit": "git checkout --orphan latest_branch && git add -A && git commit -am 'style: clean past commit history 😊' && git branch -D master && git branch -m master && git push -f origin master",
-    "commitmsg": "validate-commit-msg",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "generate-sitemap": "node build/generate-sitemap.js"
   },
@@ -64,6 +63,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
+    "babili-webpack-plugin": "^0.1.2",
     "chai": "^3.5.0",
     "chalk": "^1.1.3",
     "chromedriver": "^2.27.2",
@@ -128,7 +128,6 @@
     "svgxuse": "^1.1.16",
     "sw-precache-webpack-plugin": "^0.11.4",
     "uglify-es": "^3.3.9",
-    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.5.7",
     "vue-loader": "^11.0.0",
     "vue-style-loader": "^2.0.0",

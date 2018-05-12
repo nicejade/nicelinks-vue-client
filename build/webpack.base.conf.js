@@ -43,7 +43,8 @@ function createHappyPlugin (id, loaders) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    vendor: ['lodash']
+    lodash: ['lodash'],
+    element: ['element-ui']
   },
   mode: env === 'production' ? 'production' : 'development',
   output: {
@@ -134,7 +135,6 @@ module.exports = {
   externals: {
     // 'element-ui': 'ElementUI',
     // 'vue': 'Vue',
-    // 'lodash': '_',
     'babel-polyfill': 'window'
   },
   plugins: [

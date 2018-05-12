@@ -5,19 +5,23 @@
         @click.stop.prevent="onThemeClick(item.theme)">
         {{ fillThemeName(item.classify, item.theme) }}
       </span>
-      <a class="item username" :href="getUserPath(item.createdBy)" target="_blank" rel="noreferrer noopener">
+      <a class="item username" :href="getUserPath(item.createdBy)"
+        @click.stop="onStopPropagationClick"
+        target="_blank" rel="noreferrer noopener">
         {{ item.createdBy || '' }}
       </a>
       <span >{{ item.created | dateOffset }}</span>
       <a class="tag"
         v-for="(iitem, index) in item.tags" :key="index"
         :href="getTagPath(iitem)"
+        @click.stop="onStopPropagationClick"
         target="_blank" rel="noreferrer noopener">
         {{ iitem }}
       </a>
     </div>
     <h3 class="title">
       <a class="title-link" :href="item.urlPath"
+        @click.stop="onStopPropagationClick"
         target="_blank" rel="noreferrer noopener">
         {{ item.title }}
       </a>
@@ -165,6 +169,9 @@ export default {
     },
 
     /* -----------------------onClickEvent-----------------------Start */
+    onStopPropagationClick (elem) {
+    },
+
     onThemeClick (theme) {
       this.$switchRouteByTheme(theme)
     },

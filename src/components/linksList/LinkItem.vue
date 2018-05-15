@@ -212,7 +212,9 @@ export default {
       line-height: 1.2;
       text-decoration: none;
       color: $link-title;
+      transition: color 0.3s ease-in;
       &:hover{
+        transition: color 0.3s ease-out;
         color: $link-title-hover;
       }
     }

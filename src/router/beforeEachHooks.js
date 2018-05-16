@@ -1,6 +1,7 @@
 /*
-* 路由跳转权限控制
+* @desc: Check routing jump permission control.
 */
+
 import { $auth } from 'helper'
 
 export default {

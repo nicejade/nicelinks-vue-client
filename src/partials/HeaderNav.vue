@@ -250,8 +250,8 @@ export default {
   position: fixed;
   width: 100%;
   @include height-center($header-height);
-  background-color: #fff;
-  border-bottom: solid 1px $moudle-border-color;
+  background-color: $white;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   z-index: 999;
   transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   .nav{

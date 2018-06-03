@@ -111,8 +111,21 @@
   }
 }
 
-.el-tabs__header{
-  border-bottom: solid 1px $moudle-border-color;
+.el-collapse-item__header{
+  text-indent: 15px;
+}
+
+.header{
+  .el-tabs__header,
+  .el-tabs__nav{
+    border-bottom: none !important;
+  }
+  .el-tabs__nav-wrap{
+    margin-bottom: 0px !important;
+  }
+  .el-tabs__nav{
+    background-color: #ffffff;
+  }
 }
 
 .el-button--primary{

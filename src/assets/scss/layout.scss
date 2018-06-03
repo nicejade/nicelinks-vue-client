@@ -16,7 +16,7 @@
     .panel-body{
       min-height: calc(100vh - 280px);
       // 天空的颜色(ColorsOfSky),参见：https://uigradients.com/#ColorsOfSky
-      @include get-gradient-background(#E0EAFC, #E0EAFC, top);
+      @include get-gradient-background(#E0EAFC, #F4F5F5, top);
       .main-container{
         width: 100%;
         max-width: 960px;

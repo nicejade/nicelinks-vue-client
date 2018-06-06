@@ -28,12 +28,12 @@
         <div class="icp">
           <span>{{ copyright }}</span>
           <a class="link gtag-track"
-            href="https://jeffjade.com"
+            href="https://jeffjade.com?from=nicelinks.site"
             target="_blank" rel="noreferrer noopener"
             data-action="footer-jeffjade"
             data-category="footer"
             data-label="footer-jeffjade">
-            晚晴幽草轩
+              晚晴幽草轩
           </a>
           {{ $t('produced') }}
         </div>
@@ -99,7 +99,7 @@ export default {
     padding: 15px 20px;
     color: $footer-grey;
     // 参见：https://uigradients.com/
-    @include get-gradient-background(#C9D6FF, #E2E2E2, bottom);
+    @include get-gradient-background(#ECE9E6, #FFFFFF, top);
     .content{
       font-size: $font-medium;
       font-weight: 500;
@@ -110,6 +110,7 @@ export default {
     }
     .link{
       color: $common-link;
+      font-weight: 500;
       &:link, &:visited{
         color: $common-link;
         text-decoration: none;

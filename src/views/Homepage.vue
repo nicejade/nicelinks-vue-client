@@ -223,7 +223,10 @@ export default{
 .homepage{
   .main-container{
     .el-card__header{
-      padding: 10px 10px;
+      padding: 15px;
+    }
+    .el-tabs{
+      padding: 0 15px;
     }
     .el-card__body{
       padding: 0;

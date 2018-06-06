@@ -1,6 +1,6 @@
 <template>
 <div class="links-list">
-  <div class="moudle" v-if="pdata.length <= 0">
+  <el-card shadow="hover" v-if="pdata.length <= 0">
     <div class="content">
       <el-card class="tip-box-card" v-if="!isLoading">
         <div slot="header" class="clearfix">
@@ -11,9 +11,10 @@
       <content-placeholder v-else slot="link-desc" :rows="placeholderRows">
       </content-placeholder>
     </div>
-  </div>
+  </el-card>
 
-  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
+  <el-card :class="cardClassName"  shadow="hover"
+    v-for="(item, index) in pdata" v-if="pdata.length > 0">
     <router-link :to="getAssembleRoute(item)" v-if="isAbstract">
       <LinkItem :item="item" :is-abstract="isAbstract">
       </LinkItem>
@@ -21,7 +22,7 @@
     <LinkItem v-else :item="item" :is-abstract="isAbstract">
     </LinkItem>
     <slot name="link-share"></slot>
-  </div>
+  </el-card>
 </div>
 </template>
 
@@ -115,6 +116,12 @@ export default {
     }
   },
 
+  computed: {
+    cardClassName () {
+      return this.isAbstract ? 'single-moudle' : ''
+    }
+  },
+
   components: {
     LinkItem,
     ContentPlaceholder
@@ -135,13 +142,16 @@ export default {
 @import "./../../assets/scss/variables.scss";
 @import './../../assets/scss/mixins.scss';
 
-.links-list{
-  .moudle{
-    padding: 2rem;
-    text-align: left;
-    border-bottom: 1px solid $item-border-color;
-    &:hover{
-      background-color: $white-grey;
+.main{
+  .links-list{
+    .single-moudle{
+      &:hover{
+        background-color: $white-grey;
+      }
+    }
+    .el-card{
+      text-align: left;
+      border-bottom: 1px solid $item-border-color;
     }
   }
 }

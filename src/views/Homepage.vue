@@ -222,6 +222,11 @@ export default{
 
 .homepage{
   .main-container{
+    .links-list{
+      .el-card{
+        padding: 15px;
+      }
+    }
     .el-card__header{
       padding: 15px;
     }

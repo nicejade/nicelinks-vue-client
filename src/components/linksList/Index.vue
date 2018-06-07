@@ -13,7 +13,7 @@
     </div>
   </el-card>
 
-  <el-card :class="cardClassName"  shadow="hover"
+  <el-card :class="cardClassName"  shadow="hover" key="index"
     v-for="(item, index) in pdata" v-if="pdata.length > 0">
     <router-link :to="getAssembleRoute(item)" v-if="isAbstract">
       <LinkItem :item="item" :is-abstract="isAbstract">

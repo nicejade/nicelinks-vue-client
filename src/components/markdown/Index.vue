@@ -99,6 +99,9 @@ export default {
       }
     }
   }
+  .el-tabs__nav-wrap{
+    margin-bottom: 0px;
+  }
   .write-area{
     padding: 0 15px;
   }

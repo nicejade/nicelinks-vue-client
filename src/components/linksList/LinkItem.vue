@@ -296,7 +296,7 @@ export default {
     .action-item{
       @include flex-box-center();
       cursor: pointer;
-      padding: .2rem .8rem;
+      padding: .3rem .9rem;
       height: 100%;
       text-align: center;
       min-width: 3.6rem;

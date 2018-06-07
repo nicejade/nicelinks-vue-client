@@ -10,23 +10,14 @@
 </template>
 
 <script>
+import $config from 'config'
+
 export default {
   name: 'FriendshipLinks',
 
   data () {
     return {
-      friendshipList: [
-        {
-          name: '晚晴幽草轩',
-          label: 'jeffjade',
-          path: 'https://jeffjade.com'
-        },
-        {
-          name: '天意人间舫',
-          label: 'nicejade',
-          path: 'https://blog.lovejade.cn'
-        }
-      ]
+      friendshipList: $config.friends
     }
   },
 

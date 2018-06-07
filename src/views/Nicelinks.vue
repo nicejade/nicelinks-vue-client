@@ -108,7 +108,7 @@ export default {
 @media screen and (max-width: $mobile-screen) {
   .entry-list{
     .operate-tabs-space{
-      padding-top: 5rem;
+      padding-top: 5.6rem;
     }
   }
 }

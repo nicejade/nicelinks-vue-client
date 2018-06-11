@@ -15,18 +15,24 @@
         <span></span>
       </a>
 
-      <div class="operate-link">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane v-for="item in navList"
-            :key="item.value" :label="$t(item.name)" :name="item.name">
-          </el-tab-pane>
-        </el-tabs>
+      <div class="operate-area">
+        <router-link v-for="item in navList" :key="item.value"
+          :to="'/explore/' + item.name"
+          class="nav-item gtag-track"
+          :data-action="'explore-' + item.name"
+          :data-category="header"
+          :data-label="'p-explore-' + item.name">
+          {{ $t(item.name) }}
+        </router-link>
       </div>
 
-      <div class="inject-btn">
-        <el-button type="text" icon="plus"
-          @click="onShareNewLinkClick">{{ $t('shareNewLink') }}
-        </el-button>
+      <div class="share-btn">
+        <router-link to="/share-link" class="share-link gtag-track"
+          data-action="share-new-link"
+          data-category="header"
+          data-label="p-share-new-link">
+          <icon class="icons" name="share" />{{ $t('shareNewLink') }}
+        </router-link>
       </div>
 
       <div class="find-more">
@@ -154,11 +160,6 @@ export default {
       document.getElementById('app').className = ''
     },
 
-    handleClick (item) {
-      this.$gtagTracking(`explore-${item.name}`, 'header', `p-explore-${item.name}`)
-      this.$switchRouteByExplore(item.name)
-    },
-
     handleCommand (command) {
       this['on' + command + 'Click']()
     },
@@ -167,11 +168,6 @@ export default {
     onIndexPageClick () {
       this.$gtagTracking('header-logo-link', 'header', 'header-logo-link')
       this.$switchToIndexPage()
-    },
-
-    onShareNewLinkClick () {
-      this.$switchToShareLink()
-      this.$gtagTracking('share-new-link', 'header', 'p-share-new-link')
     },
 
     onThemeCollectionClick () {
@@ -246,6 +242,12 @@ export default {
 @import "./../assets/scss/variables.scss";
 @import "./../assets/scss/mixins.scss";
 
+#share{
+  path{
+    fill: $brand;
+  }
+}
+
 .header{
   position: fixed;
   width: 100%;
@@ -268,12 +270,38 @@ export default {
         line-height: $header-height / 2;
       }
     }
-    .operate-link{
+    .operate-area{
       display: inline-block;
+      position: relative;
       margin-right: 12px;
       float: left;
+      .nav-item{
+        color: $black;
+        margin: 0 1rem;
+        &:hover{
+          color: $brand;
+        }
+      }
+      .nav-item.active{
+        color: $brand;
+      }
     }
-    .inject-btn, .find-more{
+    .share-btn {
+      .share-link{
+        @include flex-box-center(row, space-around, center);
+        color: $black;
+        .icon-share{
+          width: 16px;
+          height: 16px;
+          margin: 0 .3rem;
+          vertical-align: middle;
+        }
+        &:hover{
+          color: $brand;
+        }
+      }
+    }
+    .share-btn, .find-more{
       cursor: pointer;
       margin: 0 12px;
       display: inline-block;
@@ -369,10 +397,10 @@ export default {
         line-height: $header-mobile-height;
         height: $header-mobile-height;
       }
-      .operate-link{
+      .operate-area{
         display: none;
       }
-      .inject-btn, .find-more{
+      .share-btn, .find-more{
         display: none;
       }
     }

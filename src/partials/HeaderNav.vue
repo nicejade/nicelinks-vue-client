@@ -52,6 +52,17 @@
             <el-dropdown-item command="SwitchLang">
               <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
             </el-dropdown-item>
+            <el-dropdown-item command="" divided>
+              <icon class="vector-icon" name="about-website"></icon>
+                <a class="about-website gtag-track"
+                  data-action="header-about-website"
+                  data-category="header"
+                  data-label="header-about-website"
+                  target="_blank" rel="noreferrer noopener"
+                  :href="getAboutWebsiteLink">
+                  {{ $t('aboutWebsite') }}
+                </a>
+            </el-dropdown-item>
             <el-dropdown-item command="AboutAuthor">
               <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
             </el-dropdown-item>
@@ -143,6 +154,9 @@ export default {
     },
     isShowSignUp () {
       return window.innerWidth >= 480 || this.$getCurrentLang() === 'zh'
+    },
+    getAboutWebsiteLink () {
+      return `https://nice.lovejade.cn/${this.$getCurrentLang()}/application/`
     }
   },
 
@@ -361,6 +375,9 @@ export default {
       margin-left: 0;
       margin-right: 0;
     }
+  }
+  .about-website{
+    color: $black;
   }
 }
 

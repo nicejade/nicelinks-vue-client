@@ -35,6 +35,7 @@ export default {
   tagsCollection: '倾城标签',
   management: '后台管理',
   switchLang: '切换语言',
+  aboutWebsite: '关于网站',
   aboutAuthor: '关于作者',
   manageLinks: '管理链接',
   manageUsers: '管理用户',

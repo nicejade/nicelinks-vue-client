@@ -35,6 +35,7 @@ export default {
   tagsCollection: 'Tags Collections',
   management: 'Management',
   switchLang: 'Switch Lang',
+  aboutWebsite: 'About Website',
   aboutAuthor: 'About Author',
   manageLinks: 'Manage Links',
   manageUsers: 'Manage Users',

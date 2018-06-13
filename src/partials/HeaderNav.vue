@@ -26,7 +26,9 @@
         </router-link>
       </div>
 
-      <div class="share-btn">
+      <div class="share-btn"
+        @mouseenter="onShareBtnMouseover"
+        @mouseout="onShareBtnMouseout">
         <router-link to="/share-link" class="share-link gtag-track"
           data-action="share-new-link"
           data-category="header"
@@ -247,6 +249,14 @@ export default {
       }).catch((error) => {
         this.$message.error(`${error}`)
       })
+    },
+
+    onShareBtnMouseover () {
+      document.querySelectorAll('#share path')[0].setAttribute('fill', '#20a0ff')
+    },
+
+    onShareBtnMouseout () {
+      document.querySelectorAll('#share path')[0].setAttribute('fill', '#000000')
     }
   }
 }
@@ -255,12 +265,6 @@ export default {
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
 @import "./../assets/scss/mixins.scss";
-
-#share{
-  path{
-    fill: $brand;
-  }
-}
 
 .header{
   position: fixed;

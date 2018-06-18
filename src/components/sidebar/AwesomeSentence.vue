@@ -15,7 +15,7 @@
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
 export default {
-  name: 'AwesomeSentences',
+  name: 'AwesomeSentence',
 
   data () {
     return {

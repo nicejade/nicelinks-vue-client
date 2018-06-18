@@ -55,15 +55,17 @@
               <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
             </el-dropdown-item>
             <el-dropdown-item command="" divided>
+            </el-dropdown-item>
+            <el-dropdown-item command="">
               <icon class="vector-icon" name="about-website"></icon>
-                <a class="about-website gtag-track"
-                  data-action="header-about-website"
-                  data-category="header"
-                  data-label="header-about-website"
-                  target="_blank" rel="noreferrer noopener"
-                  :href="getAboutWebsiteLink">
-                  {{ $t('aboutWebsite') }}
-                </a>
+              <a class="about-website gtag-track"
+                data-action="header-about-website"
+                data-category="header"
+                data-label="header-about-website"
+                target="_blank" rel="noreferrer noopener"
+                :href="getAboutWebsiteLink">
+                {{ $t('aboutWebsite') }}
+              </a>
             </el-dropdown-item>
             <el-dropdown-item command="AboutAuthor">
               <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
@@ -373,7 +375,7 @@ export default {
 
 .find-more-dropdown-menu{
   .el-dropdown-menu__item--divided{
-    margin: 6px 1px;
+    margin: 3px 1px;
     &:before{
       height: 0;
       margin-left: 0;
@@ -381,7 +383,7 @@ export default {
     }
   }
   .about-website{
-    color: $black;
+    color: $dropdown-grey;
   }
 }
 

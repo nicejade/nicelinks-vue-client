@@ -14,6 +14,8 @@ export default {
   publish: '发 布',
   reset: '重 置',
   operation: '操作',
+  content: '内容',
+  type: '类型',
   edit: '编辑',
   save: '保存',
   delete: '删除',
@@ -40,6 +42,8 @@ export default {
   manageLinks: '管理链接',
   manageUsers: '管理用户',
   manageAdverts: '管理广告',
+  manageSentences: '管理箴言',
+  shareNewSentences: '分享新箴言',
   isAcive: '是否激活',
 
   linkAddressStr: '链接地址',
@@ -72,6 +76,7 @@ export default {
   updateAvatar: '更新头像',
 
   adPosition: '广而告之',
+  awesomeSentence: '箴言锦语',
   visitCount: '网站统计',
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',

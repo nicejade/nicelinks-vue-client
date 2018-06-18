@@ -130,5 +130,22 @@ export default {
 
   removeAdverts (data) {
     return $ajax.post(requestUrl('removeAdverts'), data)
+  },
+
+  // -----------Sentences-----------@18-06-18
+  getSentences (data) {
+    return $ajax.get(requestUrl('getSentences'), data)
+  },
+
+  updateSentences (data) {
+    return $ajax.post(requestUrl('updateSentences'), data)
+  },
+
+  removeSentences (data) {
+    return $ajax.post(requestUrl('removeSentences'), data)
+  },
+
+  getRandomSentence () {
+    return $ajax.post(requestUrl('getRandomSentence'))
   }
 }

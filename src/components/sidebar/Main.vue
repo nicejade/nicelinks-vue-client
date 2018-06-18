@@ -2,27 +2,33 @@
   <aside class="aside-list">
     <ads-position :adverts-list="advertsList"></ads-position>
     <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
+        <awesome-sentence :sentence="sentence" />
+      </el-collapse-item>
       <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks">
-        <friendship-links></friendship-links>
+        <friendship-links />
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
-        <reward-me></reward-me>
+        <reward-me />
       </el-collapse-item>
     </el-collapse>
   </aside>
 </template>
 
 <script>
-import AdsPosition from 'components/AdsPosition'
-import FriendshipLinks from 'components/FriendshipLinks'
-import RewardMe from 'components/RewardMe'
+import AdsPosition from './AdsPosition'
+import FriendshipLinks from './FriendshipLinks'
+import RewardMe from './RewardMe'
+import AwesomeSentence from './AwesomeSentence'
 
 export default {
-  name: 'AsideList',
+  name: 'Sidebar',
+
   data () {
     return {
+      activeNames: ['awesomeSentence', 'friendshipLinks'],
       advertsList: [],
-      activeNames: ['friendshipLinks']
+      sentence: {}
     }
   },
 
@@ -34,6 +40,8 @@ export default {
       this.advertsList = result.advertsList.sort((a, b) => {
         return a.sort - b.sort
       })
+
+      this.sentence = result.sentence
     }).catch((error) => {
       this.$message.error(`${error}`)
     })
@@ -42,7 +50,8 @@ export default {
   components: {
     AdsPosition,
     FriendshipLinks,
-    RewardMe
+    RewardMe,
+    AwesomeSentence
   },
 
   mounted () {
@@ -55,7 +64,7 @@ export default {
 </script>
 
 <style type="text/css" lang="scss">
-@import "./../assets/scss/variables.scss";
+@import "./../../assets/scss/variables.scss";
 
 .aside-list{
   background-color: $white;

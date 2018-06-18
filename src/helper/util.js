@@ -73,6 +73,9 @@ export default {
     }, {
       name: 'manageAdverts',
       path: 'adverts'
+    }, {
+      name: 'manageSentences',
+      path: 'sentences'
     }]
   },
 

@@ -59,7 +59,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./../assets/scss/mixins.scss";
+@import "./../../assets/scss/mixins.scss";
+
 #reward-me{
   width: 100%;
   height: 300px;

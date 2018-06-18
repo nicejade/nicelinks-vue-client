@@ -14,6 +14,8 @@ export default {
   publish: 'Publish',
   reset: 'Reset',
   operation: 'Operation',
+  content: 'Content',
+  type: 'Type',
   edit: 'Edit',
   save: 'Save',
   delete: 'Delete',
@@ -40,6 +42,8 @@ export default {
   manageLinks: 'Manage Links',
   manageUsers: 'Manage Users',
   manageAdverts: 'Manage Adverts',
+  manageSentences: 'Manage Sentences',
+  shareNewSentences: 'Share New Sentences',
   isAcive: 'Is Acive',
 
   linkAddressStr: 'Address Link',
@@ -72,6 +76,7 @@ export default {
   updateAvatar: 'Update Avatar',
 
   adPosition: 'Advertisement Space',
+  awesomeSentence: 'Awesome Sentences',
   visitCount: 'Website Statistics',
   friendshipLinks: 'Friendship Links',
   rewardme: 'Reward Me',

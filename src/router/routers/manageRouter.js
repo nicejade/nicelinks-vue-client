@@ -30,5 +30,11 @@ export default {
       isNeedAuth: true
     },
     component: resolve => require(['views/manage/Adverts'], resolve)
+  }, {
+    path: 'sentences',
+    meta: {
+      isNeedAuth: true
+    },
+    component: resolve => require(['views/manage/Sentences'], resolve)
   }]
 }

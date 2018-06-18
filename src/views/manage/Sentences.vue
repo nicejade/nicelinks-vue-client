@@ -1,18 +1,30 @@
 <template>
-  <div class="wrapper" id="manage-links">
+  <div class="wrapper" id="manage-sentences">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
-          <div class="entry-list">
+          <el-button round icon="el-icon-plus" @click="isShowDlgFlag = true">
+            {{ $t('shareNewSentences') }}
+          </el-button>
+          <div class="sentences-list">
             <el-tabs v-model="activeName" @tab-click="handleClick">
-              <el-tab-pane :label="$t('unapproved')" name="first"></el-tab-pane>
-              <el-tab-pane :label="$t('approved')" name="second"></el-tab-pane>
+              <el-tab-pane :label="$t('approved')" name="first"></el-tab-pane>
+              <el-tab-pane :label="$t('unapproved')" name="second"></el-tab-pane>
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%">
-              <el-table-column prop="classify" :label="$t('linkClassifyStr')" width="100">
+              <el-table-column prop="type" :label="$t('type')" width="100"
+                :filters="sentencesTypeList"
+                :filter-method="filterTag"
+                filter-placement="bottom-end">
                 <template slot-scope="scope">
-                  {{ $t(classifyList[scope.row.classify]['name']) }}
+                  <el-tag
+                    :type="scope.row.tag === '家' ? 'primary' : 'success'"
+                    disable-transitions>{{ getSentenceTypeName(scope.row.type) }}
+                  </el-tag>
                 </template>
+              </el-table-column>
+              <el-table-column prop="content" :label="$t('content')"
+                show-overflow-tooltip min-width="100">
               </el-table-column>
               <el-table-column prop="createdBy" :label="$t('creater')" width="100">
                 <template slot-scope="scope">
@@ -21,21 +33,8 @@
                   </el-button>
                 </template>
               </el-table-column>
-              <el-table-column prop="theme" :label="$t('linkThemeStr')" width="100">
-                <template slot-scope="scope">
-                {{ fillThemeName(scope.row.classify, scope.row.theme) }}
-                </template>
-              </el-table-column>
-              <el-table-column prop="urlPath" :label="$t('linkAddressStr')" min-width="180">
-                <template slot-scope="scope">
-                  <a class="title-link" :href="scope.row.urlPath"
-                    target="_blank" rel="noreferrer noopener">
-                    {{ scope.row.title }}
-                  </a>
-                </template>
-              </el-table-column>
-              <el-table-column prop="created" :label="$t('createdDateStr')" width="160">
-                <template slot-scope="scope">{{ scope.row.created | dateConvert }}</template>
+              <el-table-column prop="createTime" :label="$t('createdDateStr')" width="160">
+                <template slot-scope="scope">{{ scope.row.createTime | dateConvert }}</template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
                 <template slot-scope="scope">
@@ -62,47 +61,55 @@
         </div>
       </div>
     </div>
-    <edit-dialog
+    <sentences-dialog
       v-model="isShowDlgFlag"
       :pdata="currentRowData"
-      @update-success="onUpdateSuccess">
-    </edit-dialog>
+      @update-success="onUpdateSuccess"/>
   </div>
 </template>
 
 <script>
-import EditDialog from 'components/dialog/EditDialog'
+import SentencesDialog from 'components/dialog/SentencesDialog'
 import $config from 'config'
 import metaMixin from 'mixins/metaMixin.js'
 
 export default{
-  name: 'ManageLinks',
+  name: 'ManageSentences',
 
   mixins: [metaMixin],
 
   data () {
     const vm = this
     return {
-      title: vm.$t('manageLinks'),
+      title: vm.$t('manageSentences'),
       isLoading: false,
       isShowDlgFlag: false,
       activeName: 'first',
-      classifyList: $config.classify,
-      themeList: $config.theme,
       tableData: [],
       tableControl: {
         totalCount: 30,
         pageCount: 1,
         pageSize: 20,
         sortType: -1,
-        sortTarget: 'created'
+        sortTarget: 'createTime'
       },
       currentRowData: {}
     }
   },
 
   components: {
-    EditDialog
+    SentencesDialog
+  },
+
+  computed: {
+    sentencesTypeList () {
+      return $config.sentences.map(item => {
+        return {
+          text: item.text[this.$lang],
+          value: item.value
+        }
+      })
+    }
   },
 
   created () {
@@ -119,23 +126,18 @@ export default{
     initFetch () {
       let params = {}
       Object.assign(params, this.tableControl)
-      params.active = !(this.activeName === 'first')
+      params.active = this.activeName === 'first'
 
       this.isLoading = true
-      this.$apis.getAllLinks(params).then(result => {
+      this.$apis.getSentences(params).then(result => {
         this.isLoading = false
         this.tableData = result
+        this.tableControl.totalCount = result.length
       }).catch((error) => {
         this.isLoading = false
         this.$message.error(`${error}`)
       }).finally(() => {
         this.isLoading = false
-      })
-
-      this.$apis.getAllLinksCount(params).then(result => {
-        this.tableControl.totalCount = result
-      }).catch((error) => {
-        console.log(error)
       })
     },
 
@@ -147,6 +149,12 @@ export default{
         }
       })
       return result
+    },
+
+    getSentenceTypeName (type) {
+      return this.sentencesTypeList.filter(item => {
+        return item.value === type
+      })[0]['text']
     },
 
     handleClick () {
@@ -177,7 +185,7 @@ export default{
         params.operatorId = this.userInfo && this.userInfo._id
 
         this.isLoading = true
-        this.$apis.deleteNiceLinks(params).then(result => {
+        this.$apis.removeSentences(params).then(result => {
           this.$message({
             type: 'success',
             message: '删除成功!'
@@ -225,8 +233,11 @@ export default{
 <style lang="scss">
 @import "./../../assets/scss/variables.scss";
 
-#manage-links{
-  .entry-list{
+#app #manage-sentences{
+  .panel-body{
+    padding-top: 15px;
+  }
+  .sentences-list{
     width: 100%;
     padding: 15px;
     .classify-title{

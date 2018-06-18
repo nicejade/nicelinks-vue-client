@@ -36,8 +36,8 @@ Object.keys(locales).forEach(lang => {
 import Icon from 'components/Icon/Icon.vue'
 Vue.component('icon', Icon)
 
-import AsideList from 'components/AsideList'
-Vue.component('aside-list', AsideList)
+import Sidebar from 'components/sidebar/Main.vue'
+Vue.component('aside-list', Sidebar)
 
 import LinksList from 'components/linksList/Index.vue'
 Vue.component('links-list', LinksList)

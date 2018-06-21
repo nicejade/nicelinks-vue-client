@@ -7,12 +7,10 @@
           <span class="zero center-zero"><span class="screen-reader-text">0</span></span>
           <span class="right-four">4</span>
         </div>
-        <p class="error-404-body-message">YOU&nbsp;&nbsp;LOOK&nbsp;&nbsp;LOST</p>
+        <p class="not-found-page-message" v-html="$t('errPromptMessage')"/>
         <div class="error-404-btns">
-          <el-button @click="onGoHomeClick" :plain="true" size="large" type="info">
-          返回首页
-          </el-button>
-          <el-button @click="onBackPageClick" :plain="true" size="large" ttype="info">返回上一页
+          <el-button size="large" round @click="onGoHomeClick">
+            {{ $t('backToHomePage') }}
           </el-button>
         </div>
       </el-card>
@@ -28,14 +26,28 @@ export default {
     onBackPageClick () {
       this.$router.go(-1)
     },
+
     onGoHomeClick () {
       this.$router.push('/')
+    }
+  },
+
+  locales: {
+    en: {
+      errPromptMessage: '<strong>NICE LINKS</strong> ── Heart to create just for you.',
+      backToHomePage: 'To Home Page'
+    },
+    zh: {
+      errPromptMessage: '<strong><a href="/">倾城之链</a></strong> ── 倾心缔造，痴心为你；<br>纵然情意无限，可世事难料又易变，请原谅这份情偶尔的被失联；<br>你可以操作如下按钮，穿越回倾城爱的主场：<br>那里充盈各类优秀网站，等着您与之厮磨缠绵。',
+      backToHomePage: '返回主页'
     }
   }
 }
 </script>
 
 <style type="text/css" lang="scss">
+@import "./../assets/scss/variables.scss";
+
 .screen-reader-text {
   position: absolute;
   top: -9999em;
@@ -209,7 +221,7 @@ export default {
 .error-404{
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: $white-grey;
   .error-404-body {
     width: 96%;
     max-width: 600px;
@@ -242,13 +254,18 @@ export default {
         animation: right-four-animation 3s ease 0s infinite alternate;
       }
     }
-    .error-404-body-message {
+    .not-found-page-message {
       display: block;
+      color: $silver-grey;
       text-align: center;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 12px;
-      color: #dddde2;
+      line-height: 1.5rem;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+    }
+    .error-404-btns{
+      margin-top: 1rem;
     }
   }
 }
@@ -258,7 +275,7 @@ export default {
     padding: 10px 0;
   }
   .error-404-body{
-    background-color: #000;
+    background-color: $white-grey;
     .error-404-body-title{
       height: 12rem;
       font-size: 6rem;

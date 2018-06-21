@@ -4,9 +4,10 @@
       <preview-md :value="sentenceStr || $t('noFill')" />
     </div>
     <el-tooltip :content="$t('randomTip')" placement="top">
-      <el-button @click="onRandomClick" type="text">
+      <a href="javascript:;" class="button-ripple random-btn"
+        @click="onRandomClick">
         <icon name="random"></icon>
-      </el-button>
+      </a>
     </el-tooltip>
   </div>
 </template>
@@ -93,12 +94,12 @@ export default {
       margin: 0;
     }
   }
-  .el-button{
-    padding: 0;
-    .icon-random{
-      width: 2rem;
-      height: 2rem;
-    }
+  .random-btn{
+    margin-top: 10px;
+  }
+  .icon-random{
+    width: 2rem;
+    height: 2rem;
   }
 }
 </style>

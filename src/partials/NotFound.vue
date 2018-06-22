@@ -256,6 +256,7 @@ export default {
     }
     .not-found-page-message {
       display: block;
+      margin: 2rem auto;
       color: $silver-grey;
       text-align: center;
       line-height: 1.5rem;

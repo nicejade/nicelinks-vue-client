@@ -14,8 +14,7 @@ export default [
     {key: '产品', value: 'Product'},
     {key: '美图', value: 'Picture'},
     {key: '图标', value: 'Icons'},
-    {key: '字体', value: 'Typeface'},
-    {key: '酷工作', value: 'Jobs'}
+    {key: '字体', value: 'Typeface'}
   ],
   // 2. 写意人生
   [
@@ -29,6 +28,7 @@ export default [
     {key: '综合', value: 'Colligate'},
     {key: '科技', value: 'Technology'},
     {key: '教育', value: 'Education'},
+    {key: '工作', value: 'Jobs'},
     {key: '历史', value: 'History'},
     {key: '人文', value: 'Humanity'},
     {key: '娱乐', value: 'Entertainment'},

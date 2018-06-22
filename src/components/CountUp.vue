@@ -5,6 +5,7 @@
 <style lang="scss" scoped>
 .countup{
   font-size: 8.8rem;
+  font-weight: 400;
   background: #212121;
   -webkit-background-clip:text;
   -moz-background-clip: text;

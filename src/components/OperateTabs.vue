@@ -56,7 +56,7 @@ export default {
   mounted () {
     const currentRouteQuery = this.$route.query
     const sortTypeArray = ['hottest', 'latest', 'earliest']
-    const isWithSort = sortTypeArray.includes(currentRouteQuery)
+    const isWithSort = sortTypeArray.includes(currentRouteQuery.sort)
     this.activeName = isWithSort ? currentRouteQuery.sort : 'hottest'
   },
 

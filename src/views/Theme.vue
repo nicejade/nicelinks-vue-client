@@ -8,7 +8,7 @@
               :theme-list="themeList"
               @fetch-search="$fetchSearch">
             </sub-head>
-            <operate-tabs @switch-tabs="$onSwitchTabs"></operate-tabs>
+            <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs" />
             <links-list
               :is-abstract="true"
               :pdata="$niceLinksArray"
@@ -84,4 +84,22 @@ export default {
   }
 }
 </script>
+
+
+<style type="text/css" lang="scss" scoped>
+@import "../assets/scss/variables.scss";
+.entry-list{
+  .operate-tabs-space{
+    margin-bottom: -15px;
+  }
+}
+
+@media screen and (max-width: $mobile-screen) {
+  .entry-list{
+    .operate-tabs-space{
+      padding-top: 5.6rem;
+    }
+  }
+}
+</style>
 

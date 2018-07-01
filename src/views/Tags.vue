@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <operate-tabs @switch-tabs="$onSwitchTabs"></operate-tabs>
+            <operate-tabs @switch-tabs="$onSwitchTabs" />
             <links-list
               :is-abstract="true"
               :pdata="$niceLinksArray"

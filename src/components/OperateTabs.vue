@@ -14,20 +14,20 @@ export default {
 
   data () {
     return {
-      activeName: 'hot',
+      activeName: 'hottest',
       operateTabList: [
         {
-          name: 'hot',
+          name: 'hottest',
           sortTarget: 'likes',
           sortType: -1
         },
         {
-          name: 'new',
+          name: 'latest',
           sortTarget: 'created',
           sortType: -1
         },
         {
-          name: 'old',
+          name: 'earliest',
           sortTarget: 'created',
           sortType: 1
         }
@@ -37,6 +37,9 @@ export default {
 
   watch: {
     activeName (val) {
+      const currentRoutePath = this.$route.paths
+      this.$router.push({ path: currentRoutePath, query: { sort: val } })
+
       let currentItem = this.operateTabList.find(item => {
         return item.name === val
       })
@@ -51,6 +54,10 @@ export default {
   },
 
   mounted () {
+    const currentRouteQuery = this.$route.query
+    const sortTypeArray = ['hottest', 'latest', 'earliest']
+    const isWithSort = sortTypeArray.includes(currentRouteQuery)
+    this.activeName = isWithSort ? currentRouteQuery.sort : 'hottest'
   },
 
   methods: {
@@ -58,14 +65,14 @@ export default {
 
   locales: {
     zh: {
-      hot: '热门分享',
-      new: '最新分享',
-      old: '最早分享'
+      hottest: '热门分享',
+      latest: '最新分享',
+      earliest: '最早分享'
     },
     en: {
-      hot: 'Popular Share',
-      new: 'Latest Share',
-      old: 'Earliest Share'
+      hottest: 'Popular Share',
+      latest: 'Latest Share',
+      earliest: 'Earliest Share'
     }
   }
 }

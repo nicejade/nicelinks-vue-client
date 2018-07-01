@@ -4,6 +4,10 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
+            <sub-head
+              :theme-list="themeList"
+              @fetch-search="$fetchSearch">
+            </sub-head>
             <operate-tabs @switch-tabs="$onSwitchTabs"></operate-tabs>
             <links-list
               :is-abstract="true"
@@ -31,6 +35,7 @@ export default {
 
   data () {
     return {
+      themeList: []
     }
   },
 
@@ -45,16 +50,37 @@ export default {
   },
 
   mounted () {
-    const theme = this.$route.params.theme
-    const themeList = this.$_.flatten($config.theme)
-    themeList.map(item => {
-      if (item.value.toUpperCase() === theme.toUpperCase()) {
-        this.title = this.$lang === 'en' ? item.value : item.key
-      }
-    })
+    this.setThemeList()
+    this.setMetaInfo()
   },
 
   methods: {
+    isCurrentThemeVal (value) {
+      const cTheme = this.$route.params.theme
+      return cTheme.toUpperCase() === value.toUpperCase()
+    },
+
+    setMetaInfo () {
+      const themeList = this.$_.flatten($config.theme)
+      themeList.map(item => {
+        if (this.isCurrentThemeVal(item.value)) {
+          this.title = this.$lang === 'en' ? item.value : item.key
+        }
+      })
+    },
+
+    setThemeList () {
+      this.themeList = $config.theme.filter(items => {
+        let isInclude = false
+        items.forEach(item => {
+          if (this.isCurrentThemeVal(item.value)) {
+            isInclude = true
+            return
+          }
+        })
+        return isInclude
+      })[0]
+    }
   }
 }
 </script>

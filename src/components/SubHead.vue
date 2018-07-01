@@ -1,15 +1,23 @@
 <template>
   <div class="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
-      <li class="nav-item is-active">
-        <el-button type="text" @click="onThemeTagClick('', 0)">
+      <li :class="makeClassName(null)">
+        <router-link to="/explore/all"
+          class="gtag-track theme-link"
+          data-action="mian-explore-all"
+          data-category="sub-head"
+          data-label="explore-all">
           {{ $t('all') }}
-        </el-button>
+        </router-link>
       </li>
-      <li class="nav-item" v-for="(item, index) in themeList" :key="index">
-        <el-button type="text" @click="onThemeTagClick(item.value, index + 1)">
+      <li v-for="(item, index) in themeList" :key="index" :class="makeClassName(item)" >
+        <router-link :to="getLinkPathByThemeVal(item.value)"
+          class="gtag-track theme-link"
+          data-action="mian-explore-all"
+          data-category="sub-head"
+          data-label="explore-all">
           {{ item.key }}
-        </el-button>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -35,23 +43,50 @@ export default {
     }
   },
 
+  watch: {
+  },
+
   components: {
   },
 
   methods: {
-    onThemeTagClick (value = '', index) {
-      let activeItem = document.querySelector('.sub-head-nav .is-active')
-      this.$document.removeClass(activeItem, 'is-active')
+    isCurrentThemeVal (value) {
+      const cTheme = this.$route.params.theme || ''
+      return cTheme.toUpperCase() === value.toUpperCase()
+    },
 
-      let subHeadNav = this.$refs['subHeadNav']
-      let navItem = subHeadNav.querySelectorAll('.nav-item')
-      this.$document.addClass(navItem[index], 'is-active')
+    makeClassName (item) {
+      if (!item) {
+        const cTheme = this.$route.params.theme
+        return !cTheme ? 'nav-item is-active' : 'nav-item'
+      }
+      const isTheTheme = this.isCurrentThemeVal(item.value)
+      return isTheTheme ? 'nav-item is-active' : 'nav-item'
+    },
 
-      this.$emit('fetch-search', { theme: value })
-
-      const parameters = {behavior: 'smooth', block: 'start', inline: 'start'}
-      document.getElementById('nice-links').scrollIntoView(parameters)
+    getLinkPathByThemeVal (value) {
+      return value ? `/theme/${value.toLocaleLowerCase()}` : '/explore/all'
     }
+
+    /* ------------变更 SubHead ”按钮“触发后展示方案(18-07-01)------------ */
+    /*
+    onThemeTagClick (value = '') {
+      if (value === '') {
+        return this.$router.push('/explore/all')
+      }
+      this.$switchRouteByTheme(value || '')
+
+      // let activeItem = document.querySelector('.sub-head-nav .is-active')
+      // this.$document.removeClass(activeItem, 'is-active')
+      // let subHeadNav = this.$refs['subHeadNav']
+      // let navItem = subHeadNav.querySelectorAll('.nav-item')
+      // this.$document.addClass(navItem[index], 'is-active')
+
+      // this.$emit('fetch-search', { theme: value })
+
+      // const parameters = {behavior: 'smooth', block: 'start', inline: 'start'}
+      // document.getElementById('nice-links').scrollIntoView(parameters)
+    } */
   },
 
   locales: {
@@ -88,14 +123,17 @@ export default {
     margin: 0;
     .nav-item{
       margin: auto 0.88rem;
-      .el-button{
+      .theme-link{
+        display: inline-block;
+        min-width: 3rem;
+        padding: 1rem 0;
         color: $black-grey;
         font-size: 1.5rem;
         font-weight: 500;
       }
     }
     .is-active{
-      .el-button{
+      .theme-link{
         color: $brand;
       }
     }

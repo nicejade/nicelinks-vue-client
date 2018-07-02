@@ -2,20 +2,20 @@
   <div class="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
       <li :class="makeClassName(null)">
-        <router-link to="/explore/all"
+        <a href="/explore/all"
           class="gtag-track theme-link"
-          data-action="mian-explore-all"
+          data-action="explore-all"
           data-category="sub-head"
           data-label="explore-all">
           {{ $t('all') }}
-        </router-link>
+        </a>
       </li>
       <li v-for="(item, index) in themeList" :key="index" :class="makeClassName(item)" >
         <router-link :to="getLinkPathByThemeVal(item.value)"
           class="gtag-track theme-link"
-          data-action="mian-explore-all"
+          :data-action="'explore-'+item.value"
           data-category="sub-head"
-          data-label="explore-all">
+          :data-label="'explore-'+item.value">
           {{ item.key }}
         </router-link>
       </li>

@@ -18,7 +18,7 @@
       <div class="operate-area">
         <router-link v-for="item in navList" :key="item.value"
           :to="'/explore/' + item.name"
-          class="nav-item gtag-track"
+          :class="makeClassName(item.name)"
           :data-action="'explore-' + item.name"
           :data-category="header"
           :data-label="'p-explore-' + item.name">
@@ -122,7 +122,6 @@ export default {
     return {
       isShowDlgFlag: false,
       isMobile: window.innerWidth <= 960,
-      activeName: '',
       navList: $config.classify
     }
   },
@@ -165,13 +164,36 @@ export default {
   },
 
   mounted () {
-    this.updateNavActive()
   },
 
   methods: {
     updateNavActive () {
-      let tempPathArr = this.$route.path.split('/') || []
-      this.activeName = tempPathArr[tempPathArr.length - 1]
+      // let tempPathArr = this.$route.path.split('/') || []
+      // this.activeName = tempPathArr[tempPathArr.length - 1]
+    },
+
+    makeClassName (classifyName) {
+      const intrinsicName = 'nav-item gtag-track '
+      const routeClassify = this.$route.params.classify
+      const currentClssify = routeClassify || this.getClassifyByTheme()
+      const isMatch = classifyName === currentClssify
+      return isMatch ? `${intrinsicName}active` : intrinsicName
+    },
+
+    getClassifyByTheme () {
+      const routeTheme = this.$route.params.theme
+      if (!routeTheme) return ''
+
+      let clssifyIndex = 0
+      $config.theme.forEach((items, index) => {
+        items.forEach(item => {
+          if (item.value.toUpperCase() === routeTheme.toUpperCase()) {
+            clssifyIndex = index
+            return
+          }
+        })
+      })
+      return $config.classify[clssifyIndex].name
     },
 
     hideSidenav () {

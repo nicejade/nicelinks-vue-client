@@ -1,0 +1,170 @@
+$emotion: #34dfa5;
+$encourage: #0099FF;
+$entertainment: #FF6666;
+$self-cultivation: #CCCC99;
+$aestheticism: #2edfa3;
+$philosophy: #333366;
+
+.emotion-color {
+  color: $emotion;
+  border-color: $emotion;
+}
+.encourage-color {
+  color: $encourage;
+  border-color: $encourage;
+}
+.entertainment-color {
+  color: $entertainment;
+  border-color: $entertainment;
+}
+.self-cultivation-color {
+  color: $self-cultivation;
+  border-color: $self-cultivation;
+}
+.aestheticism-color {
+  color: $aestheticism;
+  border-color: $aestheticism;
+}
+.philosophy-color {
+  color: $philosophy;
+  border-color: $philosophy;
+}
+
+#awesome-sentence {
+  .emotion-colors {
+  }
+
+  .encourage-colors {
+    color: #FFFFCC;
+    fill: #FFFFCC;
+    background-color: $encourage;
+    border: 1px solid #FFFFCC;
+    box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
+    &:hover {
+      animation: pulseEncourage 2s infinite;
+    }
+  }
+  @keyframes pulseEncourage {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
+      box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
+      border-color: rgba(255, 66, 66, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
+      box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
+      box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
+    }
+  }
+
+
+  .entertainment-colors {
+    color: #FFFF00;
+    fill: #FFFF00;
+    background-color: $entertainment;
+    border: 1px solid #FFFF00;
+    box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
+    &:hover {
+      animation: pulseEntertainment 2s infinite;
+    }
+  }
+  @keyframes pulseEntertainment {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
+      box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
+      border-color: rgba(255, 66, 66, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
+      box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
+      box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
+    }
+  }
+
+
+  .self-cultivation-colors {
+    color: #333333;
+    fill: #333333;
+    background-color: $self-cultivation;
+    border: 1px solid #333333;
+    box-shadow: 0 0 0 rgba(204, 204, 99, 0.4);
+    &:hover {
+      animation: pulseSelfCultivation 2s infinite;
+    }
+  }
+  @keyframes pulseSelfCultivation {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(204, 204, 99, 0.8);
+      box-shadow: 0 0 0 0px rgba(204, 204, 99, 0.8);
+      border-color: rgba(204, 204, 99, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(204, 204, 99, 0);
+      box-shadow: 0 0 0 10px rgba(204, 204, 99, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204, 204, 99, 0);
+      box-shadow: 0 0 0 0 rgba(204, 204, 99, 0);
+    }
+  }
+
+
+  .aestheticism-colors {
+    color: #ffffff;
+    fill: #ffffff;
+    background-color: $aestheticism;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 0 rgba(46, 223, 123, 0.4);
+    &:hover {
+      animation: pulseAestheticism 2s infinite;
+    }
+  }
+  @keyframes pulseAestheticism {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(46, 223, 123, 0.8);
+      box-shadow: 0 0 0 0px rgba(46, 223, 123, 0.8);
+      border-color: rgba(46, 223, 123, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(46, 223, 123, 0);
+      box-shadow: 0 0 0 10px rgba(46, 223, 123, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(46, 223, 123, 0);
+      box-shadow: 0 0 0 0 rgba(46, 223, 123, 0);
+    }
+  }
+
+
+  .philosophy-colors {
+    color: #FEFEFE;
+    fill: #FEFEFE;
+    background-color: $philosophy;
+    border: 1px solid #FEFEFE;
+    box-shadow: 0 0 0 rgba(33, 33, 66, 0.4);
+    &:hover {
+      animation: pulsePhilosophy 2s infinite;
+    }
+  }
+  @keyframes pulsePhilosophy {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(33, 33, 66, 0.8);
+      box-shadow: 0 0 0 0px rgba(33, 33, 66, 0.8);
+      border-color: rgba(33, 33, 66, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(33, 33, 66, 0);
+      box-shadow: 0 0 0 10px rgba(33, 33, 66, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(33, 33, 66, 0);
+      box-shadow: 0 0 0 0 rgba(33, 33, 66, 0);
+    }
+  }
+}

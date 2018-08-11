@@ -4,7 +4,7 @@
       <preview-md :value="sentenceStr || $t('noFill')" />
     </div>
     <el-tooltip :content="$t('randomTip')" placement="top">
-      <a href="javascript:;" class="button-ripple random-btn"
+      <a href="javascript:;"  :class="btnClassName"
         @click="onRandomClick">
         <icon name="random"></icon>
       </a>
@@ -32,6 +32,10 @@ export default {
   },
 
   computed: {
+    btnClassName () {
+      const sentenceType = this.currantSentence.type
+      return `button-ripple random-btn ${sentenceType}-colors`
+    },
     sentenceStr () {
       return this.currantSentence.content || this.sentence.content
     }

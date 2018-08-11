@@ -17,8 +17,7 @@
                 :filter-method="filterTag"
                 filter-placement="bottom-end">
                 <template slot-scope="scope">
-                  <el-tag
-                    :type="scope.row.tag === '家' ? 'primary' : 'success'"
+                  <el-tag :class="scope.row.type + '-color'"
                     disable-transitions>{{ getSentenceTypeName(scope.row.type) }}
                   </el-tag>
                 </template>

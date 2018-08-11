@@ -105,6 +105,13 @@ export default {
       this.isShowDlgFlag = val
     },
     isShowDlgFlag (val) {
+      if (!val) {
+        this.fillForm = {
+          type: '',
+          content: '',
+          active: false
+        }
+      }
       this.$emit('input', val)
     },
     pdata (val) {

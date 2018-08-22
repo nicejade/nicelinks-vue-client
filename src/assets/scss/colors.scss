@@ -39,24 +39,24 @@ $philosophy: #333366;
     fill: #FFFFCC;
     background-color: $encourage;
     border: 1px solid #FFFFCC;
-    box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
+    box-shadow: 0 0 0 rgba(0, 99, 255, 0.4);
     &:hover {
       animation: pulseEncourage 2s infinite;
     }
   }
   @keyframes pulseEncourage {
     0% {
-      -moz-box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
-      box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
-      border-color: rgba(255, 66, 66, 0.6);
+      -moz-box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
+      box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
+      border-color: rgba(0, 99, 255, 0.6);
     }
     80% {
-      -moz-box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
-      box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
+      -moz-box-shadow: 0 0 0 10px rgba(0, 99, 255, 0);
+      box-shadow: 0 0 0 10px rgba(0, 99, 255, 0);
     }
     100% {
-      -moz-box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
-      box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
+      -moz-box-shadow: 0 0 0 0 rgba(0, 99, 255, 0);
+      box-shadow: 0 0 0 0 rgba(0, 99, 255, 0);
     }
   }
 

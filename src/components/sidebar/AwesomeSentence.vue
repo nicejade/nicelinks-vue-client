@@ -3,7 +3,7 @@
     <div class="lined-paper" v-show="sentenceStr">
       <preview-md :value="sentenceStr || $t('noFill')" />
     </div>
-    <el-tooltip :content="$t('randomTip')" placement="top">
+    <el-tooltip :content="$t('randomTip')" placement="right">
       <a href="javascript:;"  :class="btnClassName"
         @click="onRandomClick">
         <icon name="random"></icon>

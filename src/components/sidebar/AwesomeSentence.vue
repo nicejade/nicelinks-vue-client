@@ -3,12 +3,10 @@
     <div class="lined-paper" v-show="sentenceStr">
       <preview-md :value="sentenceStr || $t('noFill')" />
     </div>
-    <el-tooltip :content="$t('randomTip')" placement="right">
-      <a href="javascript:;"  :class="btnClassName"
-        @click="onRandomClick">
-        <icon name="random"></icon>
-      </a>
-    </el-tooltip>
+    <a href="javascript:;" class="button-ripple random-btn" :class="btnClassName"
+      @click="onRandomClick">
+      <icon name="random"></icon>
+    </a>
   </div>
 </template>
 
@@ -34,7 +32,7 @@ export default {
   computed: {
     btnClassName () {
       const sentenceType = this.currantSentence.type
-      return `button-ripple random-btn ${sentenceType}-colors`
+      return `${sentenceType}-colors`
     },
     sentenceStr () {
       return this.currantSentence.content || this.sentence.content

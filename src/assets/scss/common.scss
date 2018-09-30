@@ -151,6 +151,7 @@ input:-ms-input-placeholder{
   border: 1px solid #EFEFEF;
   transition: background-color .3s linear, border .3s linear;
   box-shadow: 0 0 0 rgba(52,223,165, 0.4);
+  animation: pulse 2s infinite;
   &:after{
     content: "";
     display: block;
@@ -173,9 +174,9 @@ input:-ms-input-placeholder{
     transition: 0s;
   }
   &:hover{
-    color: #34dfa5;
-    fill: #34dfa5;
-    border: 1px solid #34dfa5;
+    color: $jade;
+    fill: $jade;
+    border: 1px solid $jade;
     animation: pulse 2s infinite;
   }
   &:focus{

@@ -1,31 +1,31 @@
-$emotion: #34dfa5;
+$emotion: $jade;
 $encourage: #0099FF;
 $entertainment: #FF6666;
 $self-cultivation: #CCCC99;
 $aestheticism: #2edfa3;
 $philosophy: #333366;
 
-.emotion-color {
+.emotion-colors {
   color: $emotion;
   border-color: $emotion;
 }
-.encourage-color {
+.encourage-colors {
   color: $encourage;
   border-color: $encourage;
 }
-.entertainment-color {
+.entertainment-colors {
   color: $entertainment;
   border-color: $entertainment;
 }
-.self-cultivation-color {
+.self-cultivation-colors {
   color: $self-cultivation;
   border-color: $self-cultivation;
 }
-.aestheticism-color {
+.aestheticism-colors {
   color: $aestheticism;
   border-color: $aestheticism;
 }
-.philosophy-color {
+.philosophy-colors {
   color: $philosophy;
   border-color: $philosophy;
 }
@@ -38,17 +38,14 @@ $philosophy: #333366;
     color: #FFFFCC;
     fill: #FFFFCC;
     background-color: $encourage;
-    border: 1px solid #FFFFCC;
-    box-shadow: 0 0 0 rgba(0, 99, 255, 0.4);
-    &:hover {
-      animation: pulseEncourage 2s infinite;
-    }
+    border: 1px solid $encourage !important;
+    box-shadow: 0 0 10px rgba(0, 99, 255, 0.4);
+    animation: pulseEncourage 2s infinite;
   }
   @keyframes pulseEncourage {
     0% {
       -moz-box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
       box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
-      border-color: rgba(0, 99, 255, 0.6);
     }
     80% {
       -moz-box-shadow: 0 0 0 10px rgba(0, 99, 255, 0);
@@ -67,9 +64,7 @@ $philosophy: #333366;
     background-color: $entertainment;
     border: 1px solid #FFFF00;
     box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
-    &:hover {
-      animation: pulseEntertainment 2s infinite;
-    }
+    animation: pulseEntertainment 2s infinite;
   }
   @keyframes pulseEntertainment {
     0% {
@@ -94,9 +89,7 @@ $philosophy: #333366;
     background-color: $self-cultivation;
     border: 1px solid #333333;
     box-shadow: 0 0 0 rgba(204, 204, 99, 0.4);
-    &:hover {
-      animation: pulseSelfCultivation 2s infinite;
-    }
+    animation: pulseSelfCultivation 2s infinite;
   }
   @keyframes pulseSelfCultivation {
     0% {
@@ -121,9 +114,7 @@ $philosophy: #333366;
     background-color: $aestheticism;
     border: 1px solid #ffffff;
     box-shadow: 0 0 0 rgba(46, 223, 123, 0.4);
-    &:hover {
-      animation: pulseAestheticism 2s infinite;
-    }
+    animation: pulseAestheticism 2s infinite;
   }
   @keyframes pulseAestheticism {
     0% {
@@ -148,9 +139,7 @@ $philosophy: #333366;
     background-color: $philosophy;
     border: 1px solid #FEFEFE;
     box-shadow: 0 0 0 rgba(33, 33, 66, 0.4);
-    &:hover {
-      animation: pulsePhilosophy 2s infinite;
-    }
+    animation: pulsePhilosophy 2s infinite;
   }
   @keyframes pulsePhilosophy {
     0% {

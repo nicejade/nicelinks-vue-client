@@ -23,7 +23,13 @@
     <el-menu-item index="5" @click="onSwitchLangClick">
       <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
     </el-menu-item>
-    <el-submenu index="6" v-if="isAdminFlag">
+    <el-menu-item index="6" @click="onJump2WebsiteClick">
+      <icon class="sidenav-icon" name="about-website"></icon>{{ $t('switchLang') }}
+    </el-menu-item>
+    <el-menu-item index="6" @click="onJump2AuthorClick">
+      <icon class="sidenav-icon" name="about-author"></icon>{{ $t('switchLang') }}
+    </el-menu-item>
+    <el-submenu index="7" v-if="isAdminFlag">
       <template slot="title">
         <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
       </template>
@@ -89,6 +95,17 @@ export default {
     onManageClick () {
       this.$router.push('/manage')
       this.triggerSideNav()
+    },
+
+    onJump2WebsiteClick () {
+      this.triggerSideNav()
+      const websitePath = `https://nice.lovejade.cn/${this.$getCurrentLang()}/application/`
+      window.open(websitePath)
+    },
+
+    onJump2AuthorClick () {
+      this.triggerSideNav()
+      window.open('https://about.me/nicejade/')
     },
 
     handleClick (item) {

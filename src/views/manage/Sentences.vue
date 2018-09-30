@@ -49,7 +49,7 @@
               <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
-                :total="tableControl.totalCount"
+                :total="totalCount"
                 :current-page="tableControl.pageCount"
                 :page-size="tableControl.pageSize"
                 :page-sizes="[20, 50, 100]"
@@ -85,8 +85,8 @@ export default{
       isShowDlgFlag: false,
       activeName: 'first',
       tableData: [],
+      totalCount: 0,
       tableControl: {
-        totalCount: 30,
         pageCount: 1,
         pageSize: 20,
         sortType: -1,
@@ -123,6 +123,11 @@ export default{
 
   methods: {
     initFetch () {
+      this.requestSentences()
+      this.requestSentencesCount()
+    },
+
+    requestSentences () {
       let params = {}
       Object.assign(params, this.tableControl)
       params.active = this.activeName === 'first'
@@ -131,12 +136,22 @@ export default{
       this.$apis.getSentences(params).then(result => {
         this.isLoading = false
         this.tableData = result
-        this.tableControl.totalCount = result.length
       }).catch((error) => {
         this.isLoading = false
         this.$message.error(`${error}`)
       }).finally(() => {
         this.isLoading = false
+      })
+    },
+
+    requestSentencesCount () {
+      let params = {
+        active: this.activeName === 'first'
+      }
+      this.$apis.getSentencesCount(params).then(result => {
+        this.totalCount = result
+      }).catch((error) => {
+        this.$message.error(`${error}`)
       })
     },
 

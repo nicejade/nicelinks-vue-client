@@ -137,6 +137,10 @@ export default {
     return $ajax.get(requestUrl('getSentences'), data)
   },
 
+  getSentencesCount (data) {
+    return $ajax.get(requestUrl('getSentencesCount'), data)
+  },
+
   updateSentences (data) {
     return $ajax.post(requestUrl('updateSentences'), data)
   },

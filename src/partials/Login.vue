@@ -19,25 +19,25 @@
           <el-input v-model.trim.lazy="account.username"
             :icon="checkLoading ? 'loading' : ''"  :autofocus='true'
             @blur="onBlurUsername"
-            @keydown.enter.native="onLoginClick">
+            @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="email" v-if="isSignUpPage">
           <el-input v-model.trim="account.email"
-            @keydown.enter.native="onLoginClick">
+            @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userinfo" v-if="!isSignUpPage">
           <el-input v-model.trim="account.userinfo"
-            @keydown.enter.native="onLoginClick">
+            @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="account.password" type="password"
-            @keydown.enter.native="onLoginClick">
+            @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend"><icon class="icons" name="password"></icon></template>
           </el-input>
         </el-form-item>
@@ -189,6 +189,11 @@ export default{
     },
 
     // ----------------------------onClickEvent-----------------------------
+    onKeyEnterClick () {
+      const execFuncName = this.isSignUpPage ? 'onSignupClick' : 'onLoginClick'
+      this[execFuncName]()
+    },
+
     onLoginClick () {
       this.$gtagTracking('signin', 'login', 'login-signin')
       this.isLoading = true

@@ -29,7 +29,7 @@
               <el-table-column prop="urlPath" :label="$t('linkAddressStr')" min-width="180">
                 <template slot-scope="scope">
                   <a class="title-link" :href="scope.row.urlPath"
-                    target="_blank" rel="noreferrer noopener">
+                    target="_blank" rel="noopener">
                     {{ scope.row.title }}
                   </a>
                 </template>

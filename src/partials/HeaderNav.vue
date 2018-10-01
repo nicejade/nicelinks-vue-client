@@ -62,7 +62,7 @@
                 data-action="header-about-website"
                 data-category="header"
                 data-label="header-about-website"
-                target="_blank" rel="noreferrer noopener"
+                target="_blank" rel="noopener"
                 :href="getAboutWebsiteLink">
                 {{ $t('aboutWebsite') }}
               </a>

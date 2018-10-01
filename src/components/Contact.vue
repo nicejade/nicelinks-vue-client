@@ -5,7 +5,7 @@
         :href="item.path + item.name"
         :title="item.title"
         target="_blank"
-        rel="noreferrer noopener"
+        rel="noopener"
         :class="item.class"
         class="social-btn">
         <icon class="icons" :name="item.class"></icon>

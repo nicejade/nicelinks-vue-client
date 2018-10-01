@@ -7,7 +7,7 @@
       </span>
       <a class="item username" :href="getUserPath(item.createdBy)"
         @click.stop="onStopPropagationClick"
-        target="_blank" rel="noreferrer noopener">
+        target="_blank" rel="noopener">
         {{ item.createdBy || '' }}
       </a>
       <span >{{ item.created | dateOffset }}</span>
@@ -15,14 +15,14 @@
         v-for="(iitem, index) in item.tags" :key="index"
         :href="getTagPath(iitem)"
         @click.stop="onStopPropagationClick"
-        target="_blank" rel="noreferrer noopener">
+        target="_blank" rel="noopener">
         {{ iitem }}
       </a>
     </div>
     <h3 class="title">
       <a class="title-link" :href="item.urlPath"
         @click.stop="onStopPropagationClick"
-        target="_blank" rel="noreferrer noopener">
+        target="_blank" rel="noopener">
         {{ item.title }}
       </a>
     </h3>

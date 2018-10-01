@@ -4,7 +4,7 @@
       <div class="footer-body">
         <div class="content">
           <p>
-            <a target="_blank" rel="noreferrer noopener" class="link gtag-track" href="/"
+            <a target="_blank" rel="noopener" class="link gtag-track" href="/"
               data-action="footer-nicelinks" data-category="footer" data-label="footer-nicelinks">
               {{ $t('niceLinksStr') }}
             </a>
@@ -19,7 +19,7 @@
             :href="item.path + item.name"
             :title="item.title"
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noopener"
             :class="item.class"
             class="social-btn gtag-track">
             <icon class="icons" :name="item.class"></icon>
@@ -29,7 +29,7 @@
           <span>{{ copyright }}</span>
           <a class="link gtag-track"
             href="https://jeffjade.com?from=nicelinks.site"
-            target="_blank" rel="noreferrer noopener"
+            target="_blank" rel="noopener"
             data-action="footer-jeffjade"
             data-category="footer"
             data-label="footer-jeffjade">

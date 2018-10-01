@@ -49,10 +49,10 @@ export default {
 
   locales: {
     zh: {
-      noMoreDataTip: '嘿，我是有底线的'
+      noMoreDataTip: '嘿，云集美好，我是有底线的'
     },
     en: {
-      noMoreDataTip: `Hey, I have a bottom line.`
+      noMoreDataTip: `Hey, Gathering awesome, i have a bottom line.`
     }
   }
 }

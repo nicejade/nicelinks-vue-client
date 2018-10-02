@@ -20,9 +20,9 @@
 
 ## 如何访问[「倾城之链」](https://nicelinks.site?from=github)
 
-为便捷用户访问，有为[「倾城之链」](https://nicelinks.site?from=github)注入 [Pwa](https://github.com/nicejade/nice-front-end-tutorial/blob/master/tutorial/pwa-tutorial.md) 部分功能，您可通过现代浏览器访问 [https://nicelinks.site](https://nicelinks.site?from=github) 地址（推荐是用 `Chrome`），然后将其“**添加至主屏幕**”，它将为您创建与原生应用相同的桌面图标，以便您下次快速打开。
+为便捷用户访问，有为[「倾城之链」](https://nicelinks.site?from=github)注入 [Pwa](https://github.com/nicejade/nice-front-end-tutorial/blob/master/tutorial/pwa-tutorial.md) 部分功能，您可通过现代浏览器访问 [https://nicelinks.site](https://nicelinks.site?from=github) （推荐使用 `Chrome`），可将其“**添加至主屏幕**”，它将为您创建与原生应用类似的桌面图标，以供您下次可便捷且快速打开。
 
->**备注**：当您在移动设备浏览器点击“**添加到主屏幕**”后，并未得到预期反应，需要您主动进行设置；可在设备`设置`项，找到`权限管理`，进而开启“**桌面快捷方式**”权限即可；这在不同供应商的手机设备间，步骤会有所差别。
+>**备注**：当您在移动设备浏览器点击“**添加到主屏幕**”后，如未得到预期结果，需要您主动进行设置；可在设备`设置`项，找到`权限管理`，进而开启“**桌面快捷方式**”权限即可；这在不同供应商的手机设备间，步骤会有所差别。
 
 如果您想在 `MacOS`, `Windows` 或 `Linux` 中，获得更快捷的访问体验，您可以通过 [Nativefier](https://github.com/jiahaog/nativefier)（使任何网页成为桌面应用程序的一个命令行工具），轻松创建桌面版[「倾城之链」](https://nicelinks.site?from=github)应用，只需运行以下命令即可：
 ```bash

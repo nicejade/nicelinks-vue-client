@@ -24,10 +24,10 @@
       <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
     </el-menu-item>
     <el-menu-item index="6" @click="onJump2WebsiteClick">
-      <icon class="sidenav-icon" name="about-website"></icon>{{ $t('switchLang') }}
+      <icon class="sidenav-icon" name="about-website"></icon>{{ $t('aboutWebsite') }}
     </el-menu-item>
     <el-menu-item index="6" @click="onJump2AuthorClick">
-      <icon class="sidenav-icon" name="about-author"></icon>{{ $t('switchLang') }}
+      <icon class="sidenav-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
     </el-menu-item>
     <el-submenu index="7" v-if="isAdminFlag">
       <template slot="title">

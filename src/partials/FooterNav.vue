@@ -100,6 +100,9 @@ export default {
     color: $footer-grey;
     // 参见：https://uigradients.com/
     @include get-gradient-background(#ECE9E6, #FFFFFF, top);
+    .content, .icp, .contact {
+      margin: 6px auto;
+    }
     .content{
       font-size: $font-medium;
       font-weight: 500;

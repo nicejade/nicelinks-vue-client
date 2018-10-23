@@ -1,5 +1,31 @@
 <h1 align="center"><a href="https://nicelinks.site?from=github"><img src="https://image.nicelinks.site/nice-links-logo.png" alt="倾城之链 | NICE LINKS"></a></h1>
 
+<div align="center">
+  <strong>
+    🐬 <a href="https://nicelinks.site?from=github">倾城之链</a>，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；
+在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。
+  </strong>
+</div>
+
+<div align="center">
+ 🐬 使用 Vue2 (Webpack4, Es6, Element-Ui...) 构建的 Web 应用程序客户端。
+</div>
+
+<br>
+
+<div align="center">
+  <a href="https://nodejs.org/en/">
+    <img src="https://img.shields.io/badge/node-%3E%3D%208.0.0-green.svg" alt="node version">
+  </a>
+  <a href="https://github.com/nicejade/nicelinks-vue-client">
+    <img src="https://img.shields.io/github/license/nicejade/nicelinks-vue-client.svg" alt="LICENSE">
+  </a>
+  <a href="https://www.jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/">
+    <img src="https://img.shields.io/badge/chat-on%20blog-brightgreen.svg" alt="Chat On My Blog">
+  </a>
+  <a href="https://about.me/nicejade"><img src="https://img.shields.io/badge/Author-nicejade-%23a696c8.svg" alt="Author nicejade"></a>
+</div>
+
 ## 目标与哲学
 
 您知道，如今这时代，无法估量的信息，广阔无垠且散乱无际；担心错过她而努力汲取的同时，却可能错过更多。当上进心充盈之时，难免会因此感到焦虑与惶恐；故此，有意打造一款优良开放型平台，用来承载信息之入口，并对其进行分门别类、过滤排序，从而为获取、发布信息的双方提供便利 —— 此即为[**「倾城之链」**](https://nicelinks.site?from=github)，其旨在云集全球优秀网站，让您更为便捷地探索互联网中那更广阔的世界；在这里，您可以轻松发现、学习、分享更多`有用`或`有趣`的事物。更多关于此项目的动机，详见博客文章：[云集优站，尽在「倾城之链」](https://jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/)。
@@ -16,7 +42,7 @@
 
 ### 箴言锦语 佳句共赏
 
-情不知所起，一往而深。那些与旁人说来脸红的绰号暱称、轻灵的诗意，和深刻的激动，像筛子一般，将文字抖出松弛微醺的质感，历久弥新。任时世流转，风华变迁，在这美妙的质感前，循迹而去，仍能感观：那些在文字中留鲜的岁月，一段段永不衰老的情缘；隔著时空漫漫，跨越千山万水，蹁跹而来，带给我们不曾褪色的悸动。**箴言锦语，云集世间曼妙句子**；或情感、或唯美、或修身、或励志、或哲学、或娱乐，拳拳真情，精心择选，总有荡漾你心的那一言。
+>情不知所起，一往而深。那些与旁人说来脸红的绰号暱称、轻灵的诗意，和深刻的激动，像筛子一般，将文字抖出松弛微醺的质感，历久弥新。任时世流转，风华变迁，在这美妙的质感前，循迹而去，仍能感观：那些在文字中留鲜的岁月，一段段永不衰老的情缘；隔著时空漫漫，跨越千山万水，蹁跹而来，带给我们不曾褪色的悸动。**箴言锦语，云集世间曼妙句子**；或情感、或唯美、或修身、或励志、或哲学、或娱乐，拳拳真情，精心择选，总有荡漾你心的那一言。
 
 ## 如何访问[「倾城之链」](https://nicelinks.site?from=github)
 
@@ -32,19 +58,26 @@ nativefier --name "倾城之链" "https://nicelinks.site/"
 
 ## 相关链接
 
-- [**倾城之链**](https://nicelinks.site?from=github)
-- [About Me](https://about.me/nicejade)
-- [个人博客](https://jeffjade.com/nicelinks)
-- [辅助博客](https://blog.lovejade.cn/)
-- [新浪微博](https://weibo.com/jeffjade)
-- [知乎主页](https://www.zhihu.com/people/yang-qiong-pu/)
-- [简书主页](https://www.jianshu.com/u/9aae3d8f4c3d)
-- [SegmentFault](https://segmentfault.com/u/jeffjade)
-- [Twitter](https://twitter.com/jeffjade2)
-- [Facebook](https://www.facebook.com/yang.gang.jade)
+* [**倾城之链**](https://nicelinks.site?from=github)
+* [About Me](https://about.me/nicejade?from=github)
+* [个人博客](https://jeffjade.com/nicelinks?from=github)
+* [静晴轩别苑](https://nice.lovejade.cn/?from=github)
+* [吾意静晴轩](https://docz.lovejade.cn/?from=github)
+* [天意人间舫](https://blog.lovejade.cn/?from=github)
+* [新浪微博](https://weibo.com/jeffjade?from=github)
+* [知乎主页](https://www.zhihu.com/people/yang-qiong-pu/)
+* [简书主页](https://www.jianshu.com/u/9aae3d8f4c3d)
+* [SegmentFault](https://segmentfault.com/u/jeffjade)
+* [Twitter](https://twitter.com/nicejadeyang)
+* [Facebook](https://www.facebook.com/yang.gang.jade)
+
+| 微信公众号 | 前端微信群 | 推荐 Web 应用 |
+| --- | --- | --- |
+| 😉 静晴轩 | ✨ 大前端联盟 | 🎉 倾城之链 |
+| ![静晴轩](https://image.nicelinks.site/qrcode_jqx.jpg) | ![倾城之链](https://image.nicelinks.site/wqycx-weixin.png?ver=1) |<img src="https://image.nicelinks.site/nice-links.png" width="300px" alt="倾城之链"></img>|
 
 ## 许可执照
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2017-present, [nicejade](https://github.com/nicejade)
+Copyright (c) 2018-present, [nicejade](https://about.me/nicejade)

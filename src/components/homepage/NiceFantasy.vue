@@ -1,17 +1,27 @@
 <template>
   <section class="nice-fantasy">
-    <img src="//image.nicelinks.site/nice-fantasy.jpg" :alt="$t('niceLinksStr')">
+    <img :src="niceImageSrc" :alt="$t('niceLinksStr')">
   </section>
 </template>
 
 <script>
-
 export default {
   name: 'NiceFantasy',
 
   data () {
     return {
       isMobile: window.innerWidth <= 960
+    }
+  },
+
+  computed: {
+    niceImageSrc () {
+      const primaryPath = `//image.nicelinks.site/jpg/nice-links-@#.jpg`
+      const randomNum = this.$util.getRandomInt(0, 49)
+      const thePathKey = this.$util.specifiedPadding(randomNum, 3, '0')
+      const smallScreenParam = '?imageView2/1/w/640/h/360/interlace/1/ignore-error/1'
+      const resultPath = primaryPath.replace('@#', thePathKey)
+      return this.isMobile ? resultPath + smallScreenParam : resultPath
     }
   },
 

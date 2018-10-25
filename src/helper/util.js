@@ -63,6 +63,26 @@ export default {
     }
   },
 
+  /**
+   * @desc:获得 mix max 之间的随机值，包括两者;
+   * @param {number} min 小值
+   * @param {number} max 大值
+   * @return {number} 随机数
+   */
+  getRandomInt (min, max) {
+    return Math.floor(min + Math.random() * (max + 1 - min))
+  },
+
+  /**
+   * @desc 前置填充指定位数个“字符”;
+   * @param {number|string} source 源字符/数组
+   * @param {number} length 指定长度
+   * @param {string} keyStr 填充字符
+   */
+  specifiedPadding (source, length, keyStr) {
+    return (Array(length).join(keyStr) + source).slice(-length)
+  },
+
   getManageList () {
     return [{
       name: 'manageLinks',

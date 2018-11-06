@@ -21,7 +21,8 @@ export default [
     path: '//www.zhihu.com/people/',
     name: 'yang-qiong-pu',
     class: 'zhihu',
-    title: '知乎'
+    title: '知乎',
+    notInQuickapp: true
   },
   {
     path: '//www.cnblogs.com/',
@@ -33,7 +34,8 @@ export default [
     path: '//www.jianshu.com/u/',
     name: '9aae3d8f4c3d',
     class: 'jianshu',
-    title: '简书'
+    title: '简书',
+    notInQuickapp: true
   },
   {
     path: '//twitter.com/',

@@ -67,9 +67,12 @@ export default {
 
   methods: {
     filterEntryInMobile (sourceData) {
-      let isMobile = window.innerWidth <= 768
-      return sourceData.filter((element) => {
-        return isMobile ? !element['notInMobile'] : true
+      const isMobile = window.innerWidth <= 768
+      const isFromQuickapp = this.$util.getUrlParam('utm_source') === 'quickapp'
+      console.log(isFromQuickapp)
+      return sourceData.filter((item) => {
+        return (isMobile ? !item.notInMobile : true) &&
+         (isFromQuickapp ? !item.notInQuickapp : true)
       })
     }
   },

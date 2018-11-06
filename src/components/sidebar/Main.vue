@@ -9,7 +9,7 @@
         <friendship-links />
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
-        <reward-me />
+        <reward-me :show="activeNames.includes('rewardme')" />
       </el-collapse-item>
     </el-collapse>
   </aside>
@@ -35,6 +35,13 @@ export default {
   watch: {
   },
 
+  components: {
+    AdsPosition,
+    FriendshipLinks,
+    RewardMe,
+    AwesomeSentence
+  },
+
   created () {
     this.$apis.getSysConf().then(result => {
       this.advertsList = result.advertsList.sort((a, b) => {
@@ -47,14 +54,9 @@ export default {
     })
   },
 
-  components: {
-    AdsPosition,
-    FriendshipLinks,
-    RewardMe,
-    AwesomeSentence
-  },
-
   mounted () {
+    const isMobile = window.innerWidth <= 768
+    isMobile && this.activeNames.push('rewardme')
   },
 
   methods: {
@@ -72,6 +74,7 @@ export default {
   max-width: 360px;
   width: 32%;
   float: right;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,.1);
   .aside-list-li{
     list-style-type: bengali;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div id="reward-me">
+  <div id="reward-me" v-if="show">
     <div id="reward" @click="onTurnClick">
       <div class="front"><img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText"></div>
       <div class="back"><img class="reward-img" :src="rewardArr[1].imgPath" :alt="rewardArr[1].altText"></div>
@@ -29,6 +29,14 @@ export default {
     return {
       payWay: 'weixin',
       rewardArr: $config.reward
+    }
+  },
+
+  props: {
+    show: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 

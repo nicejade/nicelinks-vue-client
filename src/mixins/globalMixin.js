@@ -106,6 +106,10 @@ Vue.mixin({
         'event_category': category,
         'event_label': label
       })
+    },
+
+    $isFromQuickapp () {
+      return this.$util.getUrlParam('utm_source') === 'quickapp'
     }
   }
 })

@@ -56,7 +56,12 @@ export default {
   mounted () {
     this.updatePageTitle()
     this.setFetchData()
-    this.$fetchSearch()
+
+    const sortVal = this.$util.getUrlParam('sort')
+    const sortTypeArray = ['hottest', 'latest', 'earliest']
+    if (!sortTypeArray.includes(sortVal)) {
+      this.$fetchSearch()
+    }
   },
 
   methods: {

@@ -5,7 +5,8 @@
       <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
         <awesome-sentence :sentence="sentence" />
       </el-collapse-item>
-      <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks">
+      <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks"
+        v-if="isShowFriendFlag">
         <friendship-links />
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
@@ -29,6 +30,12 @@ export default {
       activeNames: ['awesomeSentence', 'friendshipLinks'],
       advertsList: [],
       sentence: {}
+    }
+  },
+
+  computed: {
+    isShowFriendFlag () {
+      return !this.$isFromQuickapp()
     }
   },
 

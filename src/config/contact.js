@@ -9,7 +9,8 @@ export default [
     path: '//weibo.com/',
     name: 'jeffjade',
     class: 'weibo',
-    title: '微博'
+    title: '微博',
+    notInQuickapp: true
   },
   {
     path: '//github.com/',
@@ -55,7 +56,8 @@ export default [
     path: '//www.douban.com/people/',
     name: '125966439',
     class: 'douban',
-    title: '豆瓣'
+    title: '豆瓣',
+    notInQuickapp: true
   },
   {
     path: 'mailto:',

@@ -45,11 +45,14 @@
 
 ## 如何访问[「倾城之链」](https://nicelinks.site?from=github)
 
-为便捷用户访问，有为[「倾城之链」](https://nicelinks.site?from=github)注入 [Pwa](https://github.com/nicejade/nice-front-end-tutorial/blob/master/tutorial/pwa-tutorial.md) 部分功能，您可通过现代浏览器访问 [https://nicelinks.site](https://nicelinks.site?from=github) （推荐使用 `Chrome`），可将其“**添加至主屏幕**”，它将为您创建与原生应用类似的桌面图标，以供您下次可便捷且快速打开。
+- 为便捷用户访问，有为[「倾城之链」](https://nicelinks.site?from=github)注入 [Pwa](https://github.com/nicejade/nice-front-end-tutorial/blob/master/tutorial/pwa-tutorial.md) 部分功能，您可通过现代浏览器访问 [https://nicelinks.site](https://nicelinks.site?from=github) （推荐使用 `Chrome`），可将其“**添加至主屏幕**”，它将为您创建与原生应用类似的桌面图标，以供您下次可便捷且快速打开。
 
 >**备注**：当您在移动设备浏览器点击“**添加到主屏幕**”后，如未得到预期结果，需要您主动进行设置；可在设备`设置`项，找到`权限管理`，进而开启“**桌面快捷方式**”权限即可；这在不同供应商的手机设备间，步骤会有所差别。
 
-如果您想在 `MacOS`, `Windows` 或 `Linux` 中，获得更快捷的访问体验，您可以通过 [Nativefier](https://github.com/jiahaog/nativefier)（使任何网页成为桌面应用程序的一个命令行工具），轻松创建桌面版[「倾城之链」](https://nicelinks.site?from=github)应用，只需运行以下命令即可：
+- 目前[倾城之链(快应用版)](https://github.com/nicejade/nicelinks-quick-app)已在 `OPPO`、`vivo`、`小米`、`魅族`等平台上线；如果您使用 `Android` 手机，可以在*应用商店*、*负一屏*、*浏览器*等场景搜索`倾城之链`，便可**秒开**使用，亦可保存在桌面；也可以在手机[倾城之链(网页版)](https://nicelinks.site?from=github)，点击**快应用中打开**即可(仅限于已上线平台)；未上线平台机型，可参见[倾城之链 - 快应用版](https://github.com/nicejade/nicelinks-quick-app#倾城之链快应用版)，下载[快应用调试器](https://github.com/nicejade/awesome-quickapp#调试器下载)扫码体验。
+
+- 如果您想在 `MacOS`, `Windows` 或 `Linux` 中，获得更快捷的访问体验，您可以通过 [Nativefier](https://github.com/jiahaog/nativefier)（使任何网页成为桌面应用程序的一个命令行工具），轻松创建桌面版[「倾城之链」](https://nicelinks.site?from=github)应用，只需运行以下命令即可：
+
 ```bash
 npm install nativefier -g
 nativefier --name "倾城之链" "https://nicelinks.site/"

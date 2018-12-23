@@ -13,6 +13,7 @@
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'Frame',
@@ -43,6 +44,11 @@ export default {
   },
 
   mounted () {
+    const isMobile = this.$isMobileScreen()
+    const isAndroid = this.$util.isAndroidSystem()
+    if (isMobile && isAndroid) {
+      this.initQuickappDeeplink()
+    }
   },
 
   watch: {
@@ -52,10 +58,23 @@ export default {
   },
 
   methods: {
+    ...mapMutations([
+      '$setIsLoadRouterInlineJs'
+    ]),
+
     hideMenu () {
       if (this.isShowSideNav) {
         this.$triggerSidenav()
       }
+    },
+
+    initQuickappDeeplink () {
+      const routerInlineJs = '//statres.quickapp.cn/quickapp/js/routerinline.min.js'
+      this.$util.loadScript(routerInlineJs).then(() => {
+        this.$setIsLoadRouterInlineJs(true)
+      }).catch(error => {
+        this.$message.error(`SomeThing Error: ${error.message}`)
+      })
     },
 
     initWechatShare () {

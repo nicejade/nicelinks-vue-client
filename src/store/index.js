@@ -31,7 +31,8 @@ const state = {
     nonceStr: '',
     signature: '',
     timestamp: ''
-  }
+  },
+  isLoadRouterInlineJs: false
 }
 
 const debug = process.env.NODE_ENV !== 'production'

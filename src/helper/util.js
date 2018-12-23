@@ -186,6 +186,11 @@ export default {
     return pattern.test(str)
   },
 
+  isAndroidSystem () {
+    const ua = window.navigator.userAgent
+    return ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1
+  },
+
   isWechatBrowser () {
     var ua = window.navigator.userAgent.toLowerCase()
     if (ua.match(/MicroMessenger/i) === 'micromessenger') {

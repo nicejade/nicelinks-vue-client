@@ -23,6 +23,7 @@ export default {
   reviewStr: 'Recommendation: ',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'NICE LINKS',
+  openInQuickapp: 'Open In App',
 
   all: 'All',
   skill: 'Technical',

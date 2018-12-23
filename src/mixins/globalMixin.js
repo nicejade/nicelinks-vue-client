@@ -39,6 +39,10 @@ Vue.mixin({
       return Vue.config.lang || 'zh'
     },
 
+    $isMobileScreen () {
+      return window.innerWidth <= 768
+    },
+
     $switchLang () {
       const currentLang = Vue.config.lang === 'zh' ? 'en' : 'zh'
       Vue.config.lang = currentLang

@@ -51,7 +51,7 @@ export default {
 
     // Filter the specified entry link on the phone(innerWidth <= 768)
     filterEntryInMobile (sourceData) {
-      let isMobile = window.innerWidth <= 768
+      let isMobile = this.$isMobileScreen()
       return sourceData.filter((element) => {
         return isMobile ? !element['notInMobile'] : true
       })

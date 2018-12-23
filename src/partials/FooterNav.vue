@@ -39,6 +39,12 @@
         </div>
       </div>
     </footer>
+    <a v-if="isShowOpenAppBtn"
+      href="javascript:;" @click="onOpenAppClick" 
+      class="link gtag-track open-in-quickapp"
+      data-action="footer-quickapp" data-category="footer" data-label="footer-quickapp">
+      {{ $t('openInQuickapp') }}
+    </a>
   </div>
 </template>
 
@@ -51,6 +57,15 @@ export default {
     return {
       copyright: '',
       contactArray: this.filterEntryInMobile($config.contact)
+    }
+  },
+
+  computed: {
+    isShowOpenAppBtn () {
+      const isMobile = this.$isMobileScreen()
+      const isAndroid = this.$util.isAndroidSystem()
+      const isLoadRouterInlineJs = this.$store && this.$store.state.isLoadRouterInlineJs
+      return isMobile && isAndroid && isLoadRouterInlineJs
     }
   },
 
@@ -67,11 +82,22 @@ export default {
 
   methods: {
     filterEntryInMobile (sourceData) {
-      const isMobile = window.innerWidth <= 768
+      const isMobile = this.$isMobileScreen()
       return sourceData.filter((item) => {
         return (isMobile ? !item.notInMobile : true) &&
          (this.$isFromQuickapp() ? !item.notInQuickapp : true)
       })
+    },
+    onOpenAppClick () {
+      try {
+        this.$message({
+          type: 'warning',
+          message: '目前上线的平台有：OPPO、vivo、小米、魅族等'
+        })
+        global.appRouter('com.quickapp.nicelinks', '/', { from: 1 })
+      } catch (error) {
+        this.$message.error(`${error.message}`)
+      }
     }
   },
 
@@ -125,5 +151,23 @@ export default {
       }
     }
   }
+}
+.open-in-quickapp {
+  @include flex-box-center;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background-color: $brand;
+  color: $white !important;
+  border: 1px solid $brand;
+  border-radius: 15px;
+  padding: 5px 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -90,14 +90,20 @@ export default {
     },
     onOpenAppClick () {
       try {
+        global.appRouter('com.quickapp.nicelinks', '/', { from: 1 })
+        this.showSupportStatusToast()
+      } catch (error) {
+        this.$message.error(`${error.message}`)
+      }
+    },
+
+    showSupportStatusToast () {
+      setTimeout(() => {
         this.$message({
           type: 'warning',
           message: '目前上线的平台有：OPPO、vivo、小米、魅族等'
         })
-        global.appRouter('com.quickapp.nicelinks', '/', { from: 1 })
-      } catch (error) {
-        this.$message.error(`${error.message}`)
-      }
+      }, 1000)
     }
   },
 

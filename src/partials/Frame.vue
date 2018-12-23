@@ -46,7 +46,8 @@ export default {
   mounted () {
     const isMobile = this.$isMobileScreen()
     const isAndroid = this.$util.isAndroidSystem()
-    if (isMobile && isAndroid) {
+    const isInQuickapp = this.$isFromQuickapp()
+    if (isMobile && isAndroid && !isInQuickapp) {
       this.initQuickappDeeplink()
     }
   },

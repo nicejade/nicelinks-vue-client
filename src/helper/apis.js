@@ -60,6 +60,11 @@ export default {
   searchNiceLinks (data) {
     return $ajax.get(requestUrl('searchNiceLinks'), data)
   },
+
+  getRandomLinks (data) {
+    return $ajax.get(requestUrl('getRandomLinks'), data)
+  },
+
   /* auth */
   checkIsExisted (data) {
     return $ajax.post(requestUrl('checkIsExisted'), data)

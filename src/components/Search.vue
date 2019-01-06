@@ -1,6 +1,8 @@
 <template>
   <el-autocomplete
     popper-class="search-autocomplete"
+    select-when-unmatched="true"
+    :trigger-on-focus="isTriggerFocus"
     v-model="keyword"
     :fetch-suggestions="handleFetchNiceLinks"
     :placeholder="$t('searchYourWant')"
@@ -20,19 +22,18 @@
 </template>
 
 <script>
+import marked from 'marked'
+
 export default {
   name: 'Search',
   data () {
     return {
-      keyword: ''
+      keyword: '',
+      isTriggerFocus: true
     }
   },
 
   props: {
-    isChange: {
-      type: Boolean,
-      default: false
-    }
   },
 
   computed: {
@@ -49,7 +50,13 @@ export default {
 
   methods: {
     handleFetchNiceLinks (queryString, callback) {
-      if (!queryString) return
+      if (queryString.trim() === '') {
+        return this.$apis.getRandomLinks({ size: 6 }).then(result => {
+          callback(result)
+        }).catch(error => {
+          this.$message.error(`${error}`)
+        })
+      }
 
       const params = {
         keyword: queryString
@@ -69,13 +76,13 @@ export default {
     },
 
     handleSearchFocus () {
-      if (this.isChange) {
+      if (!this.$isMobileScreen()) {
         document.querySelector('.el-input__inner').style.width = '395px'
       }
     },
 
     handleSearchBlur () {
-      if (this.isChange) {
+      if (!this.$isMobileScreen()) {
         document.querySelector('.el-input__inner').style.width = '200px'
       }
     },
@@ -85,19 +92,19 @@ export default {
     },
 
     styleForDesc (item) {
-      const stype = item.stype
-      return item[stype].replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
+      const tempDesc = (item && item.stype)
+        ? item[item.stype].replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
+        : item.review || item.desc
+      return marked(tempDesc, {
+        sanitize: true
+      })
     }
   },
 
   locales: {
     zh: {
-      mySiteFunc: '云集世间优秀站点',
-      produced: '出品'
     },
     en: {
-      mySiteFunc: 'Gathered in the world excellent site',
-      produced: 'Produced'
     }
   }
 }

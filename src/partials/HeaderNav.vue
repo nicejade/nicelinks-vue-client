@@ -78,7 +78,7 @@
       </div>
 
       <div class="search-area" id="search-area" v-if="!isMobile">
-        <search :is-change="isMobile"></search>
+        <search />
       </div>
 
       <div class="user-account" v-if="$isLogin()">
@@ -457,7 +457,7 @@ export default {
 }
 .search-area{
   position: absolute;
-  right: 200px;
+  right: 210px;
   display: block;
 }
 </style>

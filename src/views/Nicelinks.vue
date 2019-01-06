@@ -4,6 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
+            <search class="mobile-search" v-if="$isMobileScreen()" />
             <sub-head
               :theme-list="themeList"
               @fetch-search="$fetchSearch">
@@ -105,6 +106,7 @@ export default {
 <style type="text/css" lang="scss" scoped>
 @import "../assets/scss/variables.scss";
 .entry-list{
+  position: relative;
   .operate-tabs-space{
     margin-bottom: -15px;
   }
@@ -113,7 +115,7 @@ export default {
 @media screen and (max-width: $mobile-screen) {
   .entry-list{
     .operate-tabs-space{
-      padding-top: 5.6rem;
+      padding-top: 8.6rem;
     }
   }
 }

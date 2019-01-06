@@ -51,6 +51,9 @@ Vue.component('sub-head', SubHead)
 import LoadMore from 'components/LoadMore'
 Vue.component('load-more', LoadMore)
 
+import Search from 'components/Search'
+Vue.component('search', Search)
+
 /* Public Filter */
 for (let key in Filters) {
   Vue.filter(key, Filters[key])

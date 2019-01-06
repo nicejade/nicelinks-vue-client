@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <HomeLotus></HomeLotus>
+    <search class="mobile-search" v-if="$isMobileScreen()" />
+    <HomeLotus class="$isMobileScreen() ? mobile-search-serving : ''"></HomeLotus>
     <NiceFantasy></NiceFantasy>
     <Introduction></Introduction>
     <LinkCountup></LinkCountup>

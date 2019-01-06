@@ -235,7 +235,7 @@ export default {
 
     onAboutAuthorClick () {
       this.$gtagTracking('about-author', 'header', 'p-about-author')
-      window.open('https://about.me/nicejade/')
+      this.$util.openAuthorSite('header')
     },
 
     onToggleMenuClick () {

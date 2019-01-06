@@ -257,6 +257,10 @@ export default {
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     )
   },
+
+  openAuthorSite (p) {
+    window.open(`https://aboutme.lovejade.cn/?utm_source=nicelinks.site&position=${p}`)
+  },
   /* -----------------------------localStorage------------------------------------ Start */
   /*
    * set localStorage
@@ -286,6 +290,7 @@ export default {
     window.localStorage.removeItem(getStorageName(name))
   },
   /* -----------------------------localStorage------------------------------------ End */
+
   /* ----------------------------sessionStorage----------------------------------- Start */
   setSessionStorage (name, content) {
     if (!name) return

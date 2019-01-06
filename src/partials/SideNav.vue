@@ -105,7 +105,7 @@ export default {
 
     onJump2AuthorClick () {
       this.triggerSideNav()
-      window.open('https://about.me/nicejade/')
+      this.$util.openAuthorSite('sidebar')
     },
 
     handleClick (item) {

@@ -24,6 +24,7 @@ export default {
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'NICE LINKS',
   openInQuickapp: 'Open In App',
+  searchYourWant: 'Search what you want',
 
   all: 'All',
   skill: 'Technical',

@@ -3,7 +3,7 @@
     popper-class="search-autocomplete"
     v-model="keyword"
     :fetch-suggestions="handleFetchNiceLinks"
-    placeholder="搜索优站"
+    :placeholder="$t('searchYourWant')"
     @select="handleSearchSelect"
     @focus="handleSearchFocus"
     @blur="handleSearchBlur">
@@ -107,9 +107,20 @@ export default {
 @import "../assets/scss/variables.scss";
 @import "../assets/scss/mixins.scss";
 
+.el-autocomplete-suggestion {
+  .el-scrollbar {
+    .el-autocomplete-suggestion__wrap {
+      height: 30rem;
+      min-height: 30rem;
+    }
+    .el-autocomplete-suggestion__list li {
+      border-bottom: 1px dashed $border-grey;
+    }
+  }
+}
+
 .search-autocomplete {
   li {
-    line-height: normal;
     padding: 10px;
     .item-title{
       font-size: $font-medium;

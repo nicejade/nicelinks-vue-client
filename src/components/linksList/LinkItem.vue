@@ -20,7 +20,7 @@
       </a>
     </div>
     <h3 class="title">
-      <a class="title-link" :href="item.urlPath"
+      <a class="title-link" :href="$util.assembleExternalLink(item.urlPath)"
         @click.stop="onStopPropagationClick"
         target="_blank" rel="noopener">
         {{ item.title }}

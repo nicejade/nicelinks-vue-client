@@ -63,6 +63,10 @@ export default {
     }
   },
 
+  assembleExternalLink (url) {
+    return `${url}/?utm_source=nicelinks.site`
+  },
+
   /**
    * @desc:获得 mix max 之间的随机值，包括两者;
    * @param {number} min 小值
@@ -259,7 +263,7 @@ export default {
   },
 
   openAuthorSite (p) {
-    window.open(`https://aboutme.lovejade.cn/?utm_source=nicelinks.site&position=${p}`)
+    window.open(`${this.$util.assembleExternalLink('https://aboutme.lovejade.cn/')}position=${p}`)
   },
   /* -----------------------------localStorage------------------------------------ Start */
   /*

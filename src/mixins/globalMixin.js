@@ -40,7 +40,7 @@ Vue.mixin({
     },
 
     $isMobileScreen () {
-      return window.innerWidth <= 768
+      return window.innerWidth <= 960
     },
 
     $switchLang () {

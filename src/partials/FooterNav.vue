@@ -16,7 +16,7 @@
             :data-action="'footer-social-' + item.class"
             data-category="footer"
             :data-label="'footer-social-' + item.class"
-            :href="item.path + item.name"
+            :href="$util.assembleExternalLink(item.path + item.name)"
             :title="item.title"
             target="_blank"
             rel="noopener"
@@ -40,7 +40,7 @@
       </div>
     </footer>
     <a v-if="isShowOpenAppBtn"
-      href="javascript:;" @click="onOpenAppClick" 
+      href="javascript:;" @click="onOpenAppClick"
       class="link gtag-track open-in-quickapp"
       data-action="footer-quickapp" data-category="footer" data-label="footer-quickapp">
       {{ $t('openInQuickapp') }}

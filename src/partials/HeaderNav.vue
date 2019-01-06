@@ -77,6 +77,10 @@
         </el-dropdown>
       </div>
 
+      <div class="search-area" id="search-area" v-if="!isMobile">
+        <search :is-change="isMobile"></search>
+      </div>
+
       <div class="user-account" v-if="$isLogin()">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
@@ -295,7 +299,7 @@ export default {
   width: 100%;
   @include height-center($header-height);
   background-color: $white;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, .1);
   z-index: 999;
   transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   .nav{
@@ -450,5 +454,10 @@ export default {
       }
     }
   }
+}
+.search-area{
+  position: absolute;
+  right: 200px;
+  display: block;
 }
 </style>

@@ -79,3 +79,17 @@
     }
   }
 }
+
+.mobile-search {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  margin: 0;
+  padding: 10px 15px;
+  z-index: 1000;
+}
+.mobile-search-serving {
+  margin-top: 60px;
+}

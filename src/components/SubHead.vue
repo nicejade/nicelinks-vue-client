@@ -143,6 +143,7 @@ export default {
 @media screen and (max-width: $mobile-screen) {
   .sub-head{
     position: fixed;
+    top: 110px;
     max-width: $mobile-screen;
     background-color: $white;
     z-index: 100;

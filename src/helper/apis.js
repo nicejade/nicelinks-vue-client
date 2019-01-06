@@ -57,6 +57,9 @@ export default {
     return $ajax.get(requestUrl('getMyDislikes'), data)
   },
 
+  searchNiceLinks (data) {
+    return $ajax.get(requestUrl('searchNiceLinks'), data)
+  },
   /* auth */
   checkIsExisted (data) {
     return $ajax.post(requestUrl('checkIsExisted'), data)

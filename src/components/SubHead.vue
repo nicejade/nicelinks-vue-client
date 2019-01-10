@@ -104,7 +104,7 @@ export default {
   text-align: left;
   border-bottom: solid 1px #d1d5da;
   padding: .3rem;
-  z-index: 100;
+  z-index: $zindex-subhead;
   background-color: $white;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
   transition: all .2s;
@@ -146,7 +146,7 @@ export default {
     top: 110px;
     max-width: $mobile-screen;
     background-color: $white;
-    z-index: 100;
+    z-index: $zindex-subhead;
   }
 }
 </style>

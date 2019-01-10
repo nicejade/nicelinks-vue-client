@@ -64,11 +64,6 @@ export default {
     }
   },
 
-  assembleExternalLink (url) {
-    const separator = $lodash.endsWith(url, '/') ? '' : '/'
-    return `${url}${separator}?utm_source=nicelinks.site`
-  },
-
   /**
    * @desc:获得 mix max 之间的随机值，包括两者;
    * @param {number} min 小值
@@ -280,8 +275,13 @@ export default {
     )
   },
 
+  assembleExternalLink (url) {
+    const separator = $lodash.endsWith(url, '/') ? '' : '/'
+    return `${url}${separator}?utm_source=nicelinks.site`
+  },
+
   openAuthorSite (p) {
-    window.open(`${this.$util.assembleExternalLink('https://aboutme.lovejade.cn/')}position=${p}`)
+    window.open(`${this.assembleExternalLink('https://aboutme.lovejade.cn/')}&position=${p}`)
   },
   /* -----------------------------localStorage------------------------------------ Start */
   /*

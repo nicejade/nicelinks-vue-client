@@ -65,6 +65,10 @@ export default {
     },
 
     getLinkPathByThemeVal (value) {
+      this.$vuexSetRequestParamList({
+        sortTarget: 'likes',
+        sortType: -1
+      })
       return value ? `/theme/${value.toLocaleLowerCase()}` : '/explore/all'
     }
 

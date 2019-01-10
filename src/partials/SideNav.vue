@@ -147,7 +147,7 @@ export default {
     overflow-x: hidden;
     background-color: $white;
     text-align: left;
-    z-index: 1000;
+    z-index: $zindex-side-nav;
     transition: all .5s ease;
     &::-webkit-scrollbar {
       background: transparent;

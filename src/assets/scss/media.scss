@@ -88,7 +88,7 @@
   background-color: $white;
   margin: 0;
   padding: 10px 15px;
-  z-index: 1000;
+  z-index: $zindex-mobile-search;
 }
 .mobile-search-serving {
   margin-top: 60px;

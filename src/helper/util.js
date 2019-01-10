@@ -2,6 +2,7 @@ import Vue from 'vue'
 import sha256 from 'crypto-js/sha256'
 import md5 from 'crypto-js/md5'
 import {STORAGE_PREFIX} from 'config/constant'
+const $lodash = require('./lodash').default
 
 const getStorageName = (name = '') => {
   return `${STORAGE_PREFIX}-${name}`
@@ -64,7 +65,8 @@ export default {
   },
 
   assembleExternalLink (url) {
-    return `${url}/?utm_source=nicelinks.site`
+    const separator = $lodash.endsWith(url, '/') ? '' : '/'
+    return `${url}${separator}?utm_source=nicelinks.site`
   },
 
   /**
@@ -75,6 +77,22 @@ export default {
    */
   getRandomInt (min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min))
+  },
+
+  /**
+   * 过滤掉 String 中的 Html 标签;
+   */
+  filterHtmlTag (str = '') {
+    return str.replace(/<(.|\n)*?>/g, '')
+  },
+
+  /* 适当截取 String，使得目标内容可以提前显示(默认位置为第 15 个字符) */
+  sliceToAheadTarget (string = '', target = '', position = 15) {
+    const index = string.indexOf(target)
+    if (index <= position) return string
+    const sliceIdx = index - position
+    const length = string.length - sliceIdx
+    return '...' + string.substr(sliceIdx, length)
   },
 
   /**

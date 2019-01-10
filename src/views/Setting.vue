@@ -250,7 +250,7 @@ export default{
 
 <style lang="scss">
 .update-avatar-area{
-  width: 200px;
+  width: 221px;
   text-align: center;
   margin: auto;
   .preview-avatar{

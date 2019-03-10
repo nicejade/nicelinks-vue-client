@@ -1,5 +1,5 @@
 <template>
-  <div class="sub-head">
+  <div class="sub-head" id="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
       <li :class="makeClassName(null)">
         <a href="/explore/all"

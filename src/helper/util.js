@@ -208,6 +208,11 @@ export default {
     return ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1
   },
 
+  isIosSystem () {
+    const ua = window.navigator.userAgent
+    return !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+  },
+
   isWechatBrowser () {
     var ua = window.navigator.userAgent.toLowerCase()
     if (ua.match(/MicroMessenger/i) === 'micromessenger') {

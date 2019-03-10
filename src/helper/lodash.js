@@ -14,5 +14,6 @@ export default {
   endsWith: _.endsWith,
   isEmpty: _.isEmpty,
   flatten: _.flatten,
-  flattenDepth: _.flattenDepth
+  flattenDepth: _.flattenDepth,
+  throttle: _.throttle
 }

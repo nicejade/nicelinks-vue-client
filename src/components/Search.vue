@@ -1,5 +1,6 @@
 <template>
   <el-autocomplete
+    id="search-nice"
     popper-class="search-autocomplete"
     placement="bottom-start"
     :select-when-unmatched="isSelectWhenUnmatched"
@@ -34,7 +35,9 @@ export default {
       keywordBackup: '',
       isSelectWhenUnmatched: true,
       isTriggerFocus: true,
-      isPopperToBody: true
+      isPopperToBody: true,
+      startPageY: 0,
+      startPageX: 0
     }
   },
 
@@ -51,9 +54,62 @@ export default {
   },
 
   mounted () {
+    this.switchSerachShowHide()
   },
 
   methods: {
+    switchSerachShowHide () {
+      if (this.$isMobileScreen()) {
+        document.addEventListener('touchstart', (elem) => {
+          this.startPageX = elem.touches[0].pageX
+          this.startPageY = elem.touches[0].pageY
+        })
+        document.addEventListener('touchmove', (elem) => {
+          this.dealWitchTouchCB(elem.touches)
+        })
+        // @desc: Fix can't perfect work about touchmove in IOS system.
+        if (this.$util.isIosSystem()) {
+          document.addEventListener('scroll', this.$_.throttle(() => {
+            const operateTabsElem = document.getElementById('operate-tabs')
+            const tabstoTopSpace = operateTabsElem.getBoundingClientRect().top
+            if (tabstoTopSpace > 50) {
+              this.handleSearchInput('removeClass')
+            }
+          }, 60), false)
+        }
+      }
+    },
+
+    getDistanceAngle (angx, angy) {
+      return Math.atan2(angy, angx) * 180 / Math.PI
+    },
+
+    dealWitchTouchCB (touches) {
+      const endPageX = touches[0].pageX
+      const endPageY = touches[0].pageY
+
+      const distanceX = endPageX - this.startPageX
+      const distanceY = endPageY - this.startPageY
+      const angle = this.getDistanceAngle(distanceX, distanceY)
+      const isShortDistance = Math.abs(distanceY) < 3
+      if (isShortDistance) return
+
+      const isUpDirection = angle >= -135 && angle <= -45
+      const isDownDirection = angle > 45 && angle < 135
+      if (isDownDirection) {
+        this.handleSearchInput('removeClass')
+      } else if (isUpDirection) {
+        this.handleSearchInput('addClass')
+      }
+    },
+
+    handleSearchInput (funcName) {
+      const searchNiceElem = document.getElementById('search-nice')
+      const subHeadElem = document.getElementById('sub-head')
+      this.$document[funcName](searchNiceElem, 'search-extra-class')
+      this.$document[funcName](subHeadElem, 'sub-head-follow')
+    },
+
     handleFetchNiceLinks (queryString, callback) {
       this.keywordBackup = queryString
       if (queryString === '' && queryString.trim() === '') {
@@ -214,5 +270,36 @@ export default {
   font-style: normal;
   color: $brand;
   text-decoration: underline;
+}
+@keyframes fade-out {
+  0% {
+    top: 60px;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 0px;
+  }
+}
+.search-extra-class {
+  top: 0px;
+  opacity: 0;
+  animation-name: fade-out;
+  animation-fill-mode: both;
+  animation-duration: .3s;
+}
+@keyframes fade-up {
+  0% {
+    top: 110px;
+  }
+  100% {
+    top: 60px;
+  }
+}
+.sub-head-follow {
+  top: 60px;
+  animation-name: fade-up;
+  animation-fill-mode: both;
+  animation-duration: .3s;
 }
 </style>

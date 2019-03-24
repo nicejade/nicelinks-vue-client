@@ -1,5 +1,5 @@
 <template>
-  <section class="lotus fade-in animated">
+  <section class="lotus fade-in animated" id="lotus">
     <article class="twelve columns cssanimations">
       <div class="flower-container">
         <div class="flower">
@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./../../assets/scss/variables.scss";
 @import './../../assets/scss/mixins.scss';
 
@@ -117,6 +117,314 @@ export default {
   }
 }
 
+
+.flower-container {
+  padding-bottom: 8em;
+  margin: 0em 0 -6em;
+  overflow: hidden
+}
+
+.flower-container .flower {
+  position: relative;
+  display: block;
+  height: 14em;
+  width: 14em;
+  margin: 5em auto 4.25em;
+  font-size: 22px;
+  transition: all 0.2s ease-out
+}
+
+.flower-container .part {
+  position: absolute;
+  top: 50%;
+  left: 50%
+}
+
+.flower-container .part:nth-child(1) {
+  height: 10em;
+  width: 10em;
+  margin: -10em 0 0;
+  border-radius: 100% 0;
+  background: rgba(199, 212, 227, 0.5);
+  opacity: 0.6;
+  transform-origin: 0 100% 0;
+  background-color: rgba(199, 212, 227, 0.5)!important;
+  opacity: 1;
+  transform: rotate(0deg);
+  box-shadow: 0 2.75em 4.5em rgba(0, 0, 0, 0.2)
+}
+
+.flower-container .part:nth-child(2) {
+  height: 10em;
+  width: 10em;
+  margin: -10em 0 0;
+  border-radius: 100% 0;
+  background: rgba(199, 212, 227, 0.5);
+  opacity: 0.6;
+  transform-origin: 0 100% 0;
+  background-color: rgba(199, 212, 227, 0.5)!important;
+  opacity: 1;
+  transform: rotate(90deg);
+  box-shadow: 2.75em 0 4.5em rgba(0, 0, 0, 0.2)
+}
+
+.flower-container .part:nth-child(3) {
+  height: 10em;
+  width: 10em;
+  margin: -10em 0 0;
+  border-radius: 100% 0;
+  background: rgba(199, 212, 227, 0.5);
+  opacity: 0.6;
+  transform-origin: 0 100% 0;
+  background-color: rgba(199, 212, 227, 0.5)!important;
+  opacity: 1;
+  transform: rotate(180deg);
+  box-shadow: 0 -2.75em 4.5em rgba(0, 0, 0, 0.2)
+}
+
+.flower-container .part:nth-child(4) {
+  height: 10em;
+  width: 10em;
+  margin: -10em 0 0;
+  border-radius: 100% 0;
+  background: rgba(199, 212, 227, 0.5);
+  opacity: 0.6;
+  transform-origin: 0 100% 0;
+  background-color: rgba(199, 212, 227, 0.5)!important;
+  opacity: 1;
+  transform: rotate(270deg);
+  box-shadow: -2.75em 0 4.5em rgba(0, 0, 0, 0.2)
+}
+
+.flower-container .part:nth-child(5) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(0deg)
+}
+
+.flower-container .part:nth-child(6) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(45deg)
+}
+
+.flower-container .part:nth-child(7) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(90deg)
+}
+
+.flower-container .part:nth-child(8) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(135deg)
+}
+
+.flower-container .part:nth-child(9) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(180deg)
+}
+
+.flower-container .part:nth-child(10) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(225deg)
+}
+
+.flower-container .part:nth-child(11) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(270deg)
+}
+
+.flower-container .part:nth-child(12) {
+  background: rgba(121, 103, 158, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 6em;
+  width: 6em;
+  opacity: 0.7;
+  border-radius: 100% 0;
+  margin-top: -6em;
+  margin-left: 0em;
+  transform-origin: 0 100% 0;
+  background-color: rgba(121, 103, 158, 0.5)!important;
+  transform: rotate(315deg)
+}
+
+.cssanimations .flower-container .part {
+  opacity: 0;
+  animation: linear forwards 2s
+}
+
+.cssanimations .part:nth-child(1) {
+  animation-name: show-large-leaf;
+  animation-delay: .5s
+}
+
+.cssanimations .part:nth-child(2) {
+  animation-name: show-large-leaf;
+  animation-delay: 1s
+}
+
+.cssanimations .part:nth-child(3) {
+  animation-name: show-large-leaf;
+  animation-delay: 1.5s
+}
+
+.cssanimations .part:nth-child(4) {
+  animation-name: show-large-leaf;
+  animation-delay: 2s
+}
+
+.cssanimations .part:nth-child(5) {
+  animation-name: show-small-leaf;
+  animation-delay: .25s
+}
+
+.cssanimations .part:nth-child(6) {
+  animation-name: show-small-leaf;
+  animation-delay: .5s
+}
+
+.cssanimations .part:nth-child(7) {
+  animation-name: show-small-leaf;
+  animation-delay: .75s
+}
+
+.cssanimations .part:nth-child(8) {
+  animation-name: show-small-leaf;
+  animation-delay: 1s
+}
+
+.cssanimations .part:nth-child(9) {
+  animation-name: show-small-leaf;
+  animation-delay: 1.25s
+}
+
+.cssanimations .part:nth-child(10) {
+  animation-name: show-small-leaf;
+  animation-delay: 1.5s
+}
+
+.cssanimations .part:nth-child(11) {
+  animation-name: show-small-leaf;
+  animation-delay: 1.75s
+}
+
+.cssanimations .part:nth-child(12) {
+  animation-name: show-small-leaf;
+  animation-delay: 2s
+}
+
+@keyframes show-large-leaf {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes show-small-leaf {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: .7
+  }
+}
+
+@keyframes show-text {
+  0% {
+    opacity: 0;
+    transform: translateY(1em)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
 
 @media (max-width: $mobile-screen) {
   .hero-description {

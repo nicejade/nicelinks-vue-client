@@ -416,6 +416,7 @@ export default {
 @media screen and (max-width: $mobile-screen) {
   #app .header{
     height: $header-mobile-height;
+    z-index: 3000;
     .nav{
       padding: 0;
       .header-logo{

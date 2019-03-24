@@ -71,7 +71,7 @@ export default {
         if (this.$util.isIosSystem()) {
           document.addEventListener('scroll', this.$_.throttle(() => {
             const operateTabsElem = document.getElementById('operate-tabs')
-            const tabstoTopSpace = operateTabsElem.getBoundingClientRect().top
+            const tabstoTopSpace = operateTabsElem && operateTabsElem.getBoundingClientRect().top
             if (tabstoTopSpace > 50) {
               this.handleSearchInput('removeClass')
             }
@@ -91,7 +91,7 @@ export default {
       const distanceX = endPageX - this.startPageX
       const distanceY = endPageY - this.startPageY
       const angle = this.getDistanceAngle(distanceX, distanceY)
-      const isShortDistance = Math.abs(distanceY) < 3
+      const isShortDistance = Math.abs(distanceY) < 25
       if (isShortDistance) return
 
       const isUpDirection = angle >= -135 && angle <= -45
@@ -105,9 +105,10 @@ export default {
 
     handleSearchInput (funcName) {
       const searchNiceElem = document.getElementById('search-nice')
-      const subHeadElem = document.getElementById('sub-head')
       this.$document[funcName](searchNiceElem, 'search-extra-class')
-      this.$document[funcName](subHeadElem, 'sub-head-follow')
+
+      const subHeadElem = document.getElementById('sub-head')
+      subHeadElem && this.$document[funcName](subHeadElem, 'sub-head-follow')
     },
 
     handleFetchNiceLinks (queryString, callback) {
@@ -271,35 +272,35 @@ export default {
   color: $brand;
   text-decoration: underline;
 }
-@keyframes fade-out {
-  0% {
-    top: 60px;
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    top: 0px;
-  }
-}
-.search-extra-class {
+#search-nice.search-extra-class {
   top: 0px;
   opacity: 0;
-  animation-name: fade-out;
+  animation-name: search-up-hide;
   animation-fill-mode: both;
   animation-duration: .3s;
+  animation-timing-function: ease-out;
 }
-@keyframes fade-up {
+@keyframes search-up-hide {
+  0% {
+    top: 60px;
+  }
+  100% {
+    display: none;
+  }
+}
+.sub-head-follow {
+  top: 60px;
+  animation-name: sub-head-up;
+  animation-fill-mode: both;
+  animation-duration: .3s;
+  animation-timing-function: ease-out;
+}
+@keyframes sub-head-up {
   0% {
     top: 110px;
   }
   100% {
     top: 60px;
   }
-}
-.sub-head-follow {
-  top: 60px;
-  animation-name: fade-up;
-  animation-fill-mode: both;
-  animation-duration: .3s;
 }
 </style>

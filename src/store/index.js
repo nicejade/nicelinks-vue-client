@@ -11,12 +11,12 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
-import { $util } from 'helper'
+import Cookies from 'js-cookie'
 
 Vue.use(Vuex)
 
 const state = {
-  userInfo: $util.getSessionStorage('userInfo'),
+  userInfo: JSON.parse(Cookies.get('userInfo') || '{}'),
   nicelinksList: [],
   requestParamList: {
     pageCount: 1,

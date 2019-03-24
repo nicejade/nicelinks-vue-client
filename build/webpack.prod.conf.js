@@ -171,7 +171,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       @reference: https://github.com/goldhand/sw-precache-webpack-plugin
     */
     new SWPrecacheWebpackPlugin({
-      cacheId: 'your-app-name',
+      cacheId: 'nicelinks',
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,

@@ -70,7 +70,7 @@ export default {
     },
 
     initQuickappDeeplink () {
-      const routerInlineJs = '//statres.quickapp.cn/quickapp/js/routerinline.min.js'
+      const routerInlineJs = 'https://statres.quickapp.cn/quickapp/js/routerinline.min.js'
       this.$util.loadScript(routerInlineJs).then(() => {
         this.$setIsLoadRouterInlineJs(true)
       }).catch(error => {

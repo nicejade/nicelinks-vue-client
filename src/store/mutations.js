@@ -1,6 +1,9 @@
+import Cookies from 'js-cookie'
+
 export default {
   $vuexSetUserInfo (state, info = {}) {
     state.userInfo = info
+    Cookies.set('userInfo', JSON.stringify(info))
   },
 
   $vuexSetNiceLinksList (state, params = {}) {

@@ -79,7 +79,8 @@ export default {
     createShareContent (item = {}) {
       let defaultStr = `我在 #倾城之链# 发现优质网站 —— @NAME：@URL (@DESC)；欢迎前来围观、品评。`
       let resultText = defaultStr.replace('@NAME', item.title || '')
-      resultText = resultText.replace('@URL', item.urlPath || '')
+      const urlPath = `${item.urlPath}?utm_source=nicelinks.site`
+      resultText = resultText.replace('@URL', urlPath || '')
       return resultText.replace('@DESC', item.desc || '')
     },
 

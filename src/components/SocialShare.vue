@@ -20,9 +20,6 @@
       <network network="twitter">
         <icon class="icons" name="twitter"></icon>
       </network>
-      <network network="googleplus">
-        <icon class="icons" name="googleplus"></icon>
-      </network>
       <network network="pinterest">
         <icon class="icons" name="pinterest"></icon>
       </network>

@@ -34,6 +34,24 @@ export default {
       '$vuexUpdateLoadMoreState'
     ]),
 
+    getMatchSortTarget (sortVal = '') {
+      const sortTargetMapping = {
+        hottest: {
+          sortTarget: 'likes',
+          sortType: -1
+        },
+        latest: {
+          sortTarget: 'created',
+          sortType: -1
+        },
+        earliest: {
+          sortTarget: 'created',
+          sortType: 1
+        }
+      }
+      return sortTargetMapping[sortVal] || {}
+    },
+
     assembleAjaxParams () {
       let params = this.$_.cloneDeep(this.$requestParamList)
       params.active = true
@@ -42,6 +60,11 @@ export default {
       let classifyVal = getValueByName($config.classify, this.$route.params.classify)
       if (this.$route.params.classify && classifyVal) {
         params.classify = classifyVal
+      }
+
+      const sortVal = this.$util.getUrlParam('sort')
+      if (sortVal) {
+        Object.assign(params, this.getMatchSortTarget(sortVal))
       }
 
       if (this.$route.params.theme) {

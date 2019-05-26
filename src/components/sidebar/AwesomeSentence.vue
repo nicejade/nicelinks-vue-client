@@ -1,12 +1,22 @@
 <template>
   <div id="awesome-sentence" class="awesome-sentence">
-    <div class="lined-paper" v-show="sentenceStr">
-      <preview-md :value="sentenceStr || $t('noFill')" />
+    <div class="lined-paper" v-show="currentSentenceStr" v-loading="isLoading">
+      <preview-md id="sentence" :value="currentSentenceStr || $t('noFill')" />
     </div>
-    <a href="javascript:;" class="button-ripple random-btn" :class="btnClassName"
-      @click="onRandomClick">
-      <icon name="random"></icon>
-    </a>
+    <div class="btn-group">
+      <el-button class="common-btn"
+        @click="onPreviousClick">
+        <icon class="icon" name="previous"></icon>
+      </el-button>
+      <el-button class="common-btn button-ripple" :class="btnClassName"
+        @click="onRandomClick">
+        <icon class="icon" name="random"></icon>
+      </el-button>
+      <el-button class="common-btn"
+        @click="onCopy2ClipboardClick">
+        <icon class="icon" name="copy"></icon>
+      </el-button>
+    </div> 
   </div>
 </template>
 
@@ -18,7 +28,11 @@ export default {
 
   data () {
     return {
-      currantSentence: {}
+      isLoading: false,
+      isCanLookBack: false,
+      currentSentenceStr: '',
+      lastSentenceStr: '',
+      currentSentence: {}
     }
   },
 
@@ -31,11 +45,11 @@ export default {
 
   computed: {
     btnClassName () {
-      const sentenceType = this.currantSentence.type
+      const sentenceType = this.currentSentence.type
       return `${sentenceType}-colors`
     },
-    sentenceStr () {
-      return this.currantSentence.content || this.sentence.content
+    currentSentenceStr () {
+      return this.currentSentence.content || this.sentence.content
     }
   },
 
@@ -46,22 +60,65 @@ export default {
   mounted () {
   },
 
-  methods: {
-    onRandomClick () {
-      this.$apis.getRandomSentence().then(result => {
-        this.currantSentence = result || {}
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-      })
+  watch: {
+    'sentence.content': function (val = '') {
+      this.currentSentenceStr = val
+      this.lastSentenceStr = val
     }
   },
 
-  locales: {
-    en: {
-      randomTip: 'Random Update'
+  methods: {
+    copyToClipboard (content) {
+      const el = document.createElement('textarea')
+      el.value = content
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
     },
-    zh: {
-      randomTip: '随机更新'
+    copyToIosClipboard (content) {
+      window.getSelection().removeAllRanges()
+      const node = document.getElementById('sentence')
+      const range = document.createRange()
+      range.selectNode(node)
+      window.getSelection().addRange(range)
+      document.execCommand('copy')
+      window.getSelection().removeAllRanges()
+    },
+    /* ---------------------Click Event--------------------- */
+    onPreviousClick () {
+      if (!this.isCanLookBack) {
+        return this.$message({
+          type: 'info',
+          message: `错过，许是永恒，只可回首前一条`
+        })
+      }
+      this.currentSentenceStr = this.lastSentenceStr
+      this.isCanLookBack = false
+    },
+    onRandomClick () {
+      this.isLoading = false
+      this.$apis.getRandomSentence().then(result => {
+        this.lastSentenceStr = this.currentSentenceStr
+        this.isCanLookBack = true
+        this.currentSentence = result || {}
+        this.currentSentenceStr = result.content
+      }).catch((error) => {
+        this.$message.error(`${error}`)
+      }).finally(() => {
+        this.isLoading = false
+      })
+    },
+    onCopy2ClipboardClick () {
+      const constent = this.currentSentenceStr + `── 倾城之链 · 箴言锦语`
+      console.log(this.$util.isIosSystem())
+      this.$util.isIosSystem()
+        ? this.copyToIosClipboard(constent)
+        : this.copyToClipboard(constent)
+      this.$message({
+        type: 'success',
+        message: `已将此条「锦语」复制到您剪切板`
+      })
     }
   }
 }
@@ -96,12 +153,27 @@ export default {
       margin: 0;
     }
   }
-  .random-btn{
+  .btn-group{
     margin-top: 10px;
-  }
-  .icon-random{
-    width: 2rem;
-    height: 2rem;
+    .common-btn{
+      display: inline-block;
+      position: relative;
+      width: 4.3rem;
+      height: 4.3rem;
+      vertical-align: middle;
+      text-align: center;
+      border: 1px solid #EFEFEF;
+      border-radius: 50%;
+      margin: 0 15px;
+      .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2rem;
+        height: 2rem;
+      }
+    }
   }
 }
 </style>

@@ -143,8 +143,6 @@ input:-ms-input-placeholder{
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 3.6rem;
-  height: 3.6rem;
   background-color: #EFEFEF;
   text-align: center;
   border-radius: 50%;
@@ -169,17 +167,20 @@ input:-ms-input-placeholder{
     transition: transform .5s, opacity 1s;
   }
   &:active:after{
+    border-radius: 50%;
     transform: scale(0);
     opacity: .2;
     transition: 0s;
   }
   &:hover{
+    border-radius: 50%;
     color: $jade;
     fill: $jade;
     border: 1px solid $jade;
     animation: pulse 2s infinite;
   }
   &:focus{
+    border-radius: 50%;
     border-color: rgba(52,223,165, 0.5);
   }
 }

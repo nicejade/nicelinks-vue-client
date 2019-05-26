@@ -74,7 +74,7 @@ export default {
 
   created () {
     let currentYear = (new Date(this.$util.getCurrentDate())).getFullYear()
-    this.copyright = `Copyright © ${currentYear} nicelinks.com`
+    this.copyright = `Copyright © ${currentYear}`
   },
 
   mounted () {

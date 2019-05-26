@@ -12,7 +12,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BabiliWebpackPlugin = require('babili-webpack-plugin')
 const Jarvis = require('webpack-jarvis')
 
@@ -47,6 +47,27 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
 
   optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        // 过滤掉以".min.js"结尾的文件
+        exclude: /\.min\.js$/,
+        // 启用缓存和多进程并行运行；
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+        // 移除注释
+        extractComments: 'all',
+        // 参见：https://github.com/mishoo/UglifyJS2#minify-options
+        uglifyOptions: {
+          warnings: false,
+          sourceMap: false,
+          output: false,
+          compress: false,
+          mangle: true,
+          ie8: false
+        }
+      }),
+    ],
     /*
       @desc: Setting optimization.runtimeChunk to true adds an additonal chunk to each entrypoint containing only the runtime.
         The value single instead creates a runtime file to be shared for all generated chunks.
@@ -61,26 +82,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
-    }),
-
-    /*
-      @desc: A faster uglifyjs plugin.(用来替代 Webpack `uglifyjs-webpack-plugin`)
-      @reference: https://github.com/gdborton/webpack-parallel-uglify-plugin
-    */
-    new ParallelUglifyPlugin({
-      cacheDir: '.cache/',
-      uglifyJS: {
-        output: {
-          comments: false,
-          beautify: false
-        },
-        compress: {
-          warnings: false,
-          drop_console: true,
-          collapse_vars: true,
-          reduce_vars: true
-        }
-      }
     }),
 
     // extract css into its own file

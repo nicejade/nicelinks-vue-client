@@ -97,7 +97,7 @@ export default {
       this.isCanLookBack = false
     },
     onRandomClick () {
-      this.isLoading = false
+      this.isLoading = true
       this.$apis.getRandomSentence().then(result => {
         this.lastSentenceStr = this.currentSentenceStr
         this.isCanLookBack = true
@@ -117,7 +117,7 @@ export default {
         : this.copyToClipboard(constent)
       this.$message({
         type: 'success',
-        message: `已将此条「锦语」复制到您剪切板`
+        message: `已将此条「锦语」复制到您的剪切板`
       })
     }
   }

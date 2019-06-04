@@ -3,8 +3,8 @@
   <header class="header">
     <nav class="nav">
       <div class="header-logo">
-        <a href="javascript:;" @click="onIndexPageClick"
-          class="header-logo-a nicelinks-logo">
+        <a href="/" class="header-logo-a nicelinks-logo gtag-track"
+          data-action="login-logo-link" data-category="header" data-label="header-logo-link">
           <img src="/static/img/favicons/safari-pinned-tab.svg"
             :alt="$t('niceLinksStr')">
           <h1 class="title">{{ $t('niceLinksStr') }}</h1>
@@ -209,11 +209,6 @@ export default {
     },
 
     // -------------------------onClickEvent-------------------------Start
-    onIndexPageClick () {
-      this.$gtagTracking('header-logo-link', 'header', 'header-logo-link')
-      this.$switchToIndexPage()
-    },
-
     onThemeCollectionClick () {
       this.$gtagTracking('theme-collection', 'header', 'p-theme-collection')
       this.$router.push('/collections/theme')

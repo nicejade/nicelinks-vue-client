@@ -72,11 +72,6 @@ Vue.mixin({
       this.$router.push('/login')
     },
 
-    $switchToIndexPage () {
-      this.$vuexRecoverRequestParamList()
-      this.$router.push('/')
-    },
-
     $switchToExploreAll () {
       this.$vuexRecoverRequestParamList()
       this.$router.push('/explore/all')

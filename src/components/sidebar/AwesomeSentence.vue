@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import marked from 'marked'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
 export default {
@@ -110,8 +111,7 @@ export default {
       })
     },
     onCopy2ClipboardClick () {
-      const constent = this.currentSentenceStr + `── 倾城之链 · 箴言锦语`
-      console.log(this.$util.isIosSystem())
+      const constent = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
       this.$util.isIosSystem()
         ? this.copyToIosClipboard(constent)
         : this.copyToClipboard(constent)

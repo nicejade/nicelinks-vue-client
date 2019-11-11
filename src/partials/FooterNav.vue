@@ -37,6 +37,12 @@
           </a>
           {{ $t('produced') }}
         </div>
+        <div class="beian-area icp">
+          <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">
+            粤ICP备17099767号
+          </a>
+          <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示">
+        </div>
       </div>
     </footer>
     <a v-if="isShowOpenAppBtn"
@@ -176,5 +182,16 @@ export default {
   padding: 5px 10px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: $zindex-quickapp-btn;
+}
+.beian-area {
+  .beian-link {
+    vertical-align: middle;
+    color: $black-grey !important;
+  }
+  .zero {
+    height: 1.5rem;
+    width: 1.1rem;
+    margin-left: .5rem;
+  }
 }
 </style>

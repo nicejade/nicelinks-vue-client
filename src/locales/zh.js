@@ -79,6 +79,7 @@ export default {
 
   adPosition: '广而告之',
   awesomeSentence: '箴言锦语',
+  miniprogramCode: '🎉小程序',
   visitCount: '网站统计',
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',

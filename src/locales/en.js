@@ -79,6 +79,7 @@ export default {
 
   adPosition: 'Advertisement Space',
   awesomeSentence: 'Awesome Sentences',
+  miniprogramCode: '🎉 MiniProgram',
   visitCount: 'Website Statistics',
   friendshipLinks: 'Friendship Links',
   rewardme: 'Reward Me',

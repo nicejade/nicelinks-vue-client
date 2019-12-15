@@ -5,6 +5,9 @@
       <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
         <awesome-sentence :sentence="sentence" />
       </el-collapse-item>
+      <el-collapse-item :title="$t('miniprogramCode')" name="miniprogramCode">
+        <img src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1" alt="倾城之链.小程序">
+      </el-collapse-item>
       <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks"
         v-if="isShowFriendFlag">
         <friendship-links />
@@ -27,7 +30,7 @@ export default {
 
   data () {
     return {
-      activeNames: ['awesomeSentence', 'friendshipLinks'],
+      activeNames: ['awesomeSentence', 'miniprogramCode', 'friendshipLinks'],
       advertsList: [],
       sentence: {}
     }

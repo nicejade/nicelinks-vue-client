@@ -17,7 +17,7 @@ export default {
   computed: {
     niceImageSrc () {
       const primaryPath = `//image.nicelinks.site/jpg/nice-links-@#.jpg`
-      const randomNum = this.$util.getRandomInt(0, 49)
+      const randomNum = this.$util.getRandomInt(0, 149)
       const thePathKey = this.$util.specifiedPadding(randomNum, 3, '0')
       const smallScreenParam = '?imageView2/1/w/640/h/360/interlace/1/ignore-error/1'
       const resultPath = primaryPath.replace('@#', thePathKey)

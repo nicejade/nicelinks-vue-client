@@ -66,5 +66,11 @@ export default {
       isNeedLogin: true
     },
     component: resolve => require(['views/share/ShareLink'], resolve)
+  }, {
+    path: 'about',
+    meta: {
+      isNeedLogin: false
+    },
+    component: resolve => require(['views/About'], resolve)
   }]
 }

@@ -60,6 +60,7 @@ export default {
   beLikedStr: '喜欢程度',
   beDisikedStr: '厌恶程度',
   loadMoreStr: '加载更多',
+  aboutNiceLinks: '关于倾城',
 
   validateFailure: '验证失败',
   noResultTip: '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至 <a class="no-result-tip-a" href="/">NICE LINKS</a> 。',

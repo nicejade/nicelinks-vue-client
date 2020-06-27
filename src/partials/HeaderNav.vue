@@ -163,7 +163,7 @@ export default {
       return window.innerWidth >= 480 || this.$getCurrentLang() === 'zh'
     },
     getAboutWebsiteLink () {
-      return `https://nice.lovejade.cn/${this.$getCurrentLang()}/application/`
+      return `https://nicelinks.site/about?utm_source=nicelinks.site`
     }
   },
 

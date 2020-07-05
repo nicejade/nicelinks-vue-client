@@ -14,16 +14,16 @@ export default {
 
   data () {
     return {
-      activeName: 'hottest',
+      activeName: 'latest',
       operateTabList: [
-        {
-          name: 'hottest',
-          sortTarget: 'likes',
-          sortType: -1
-        },
         {
           name: 'latest',
           sortTarget: 'created',
+          sortType: -1
+        },
+        {
+          name: 'hottest',
+          sortTarget: 'likes',
           sortType: -1
         },
         {
@@ -55,9 +55,9 @@ export default {
 
   mounted () {
     const currentRouteQuery = this.$route.query
-    const sortTypeArray = ['hottest', 'latest', 'earliest']
+    const sortTypeArray = ['latest', 'hottest', 'earliest']
     const isWithSort = sortTypeArray.includes(currentRouteQuery.sort)
-    this.activeName = isWithSort ? currentRouteQuery.sort : 'hottest'
+    this.activeName = isWithSort ? currentRouteQuery.sort : 'latest'
   },
 
   methods: {

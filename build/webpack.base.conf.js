@@ -83,16 +83,6 @@ module.exports = {
         include: /assets\/icons/
       },
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        exclude: /node_modules/,
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig,

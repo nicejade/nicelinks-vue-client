@@ -34,10 +34,7 @@
             data-category="footer"
             data-label="footer-jeffjade">
               晚晴幽草轩
-          </a>
-          {{ $t('produced') }}
-        </div>
-        <div class="beian-area icp">
+          </a>{{ $t('produced') }}
           <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">
             粤ICP备17099767号
           </a>
@@ -149,6 +146,15 @@ export default {
     }
     .icp{
       font-size: $font-small;
+      .beian-link {
+        margin-left: 15px;
+        color: $black-grey !important;
+      }
+      .zero {
+        height: 1.5rem;
+        width: 1.1rem;
+        margin-left: .5rem;
+      }
     }
     .link{
       color: $common-link;
@@ -182,16 +188,5 @@ export default {
   padding: 5px 10px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: $zindex-quickapp-btn;
-}
-.beian-area {
-  .beian-link {
-    vertical-align: middle;
-    color: $black-grey !important;
-  }
-  .zero {
-    height: 1.5rem;
-    width: 1.1rem;
-    margin-left: .5rem;
-  }
 }
 </style>

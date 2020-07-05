@@ -1,18 +1,29 @@
 <template>
   <div id="edit-dialog">
-    <el-dialog stripe :title="$t('shareNewSentences')"
-      :visible.sync="isShowDlgFlag" size="small" v-loading.body="isLoading">
+    <el-dialog
+      stripe
+      :title="$t('shareNewSentences')"
+      :visible.sync="isShowDlgFlag"
+      size="small"
+      v-loading.body="isLoading"
+    >
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('type') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="type">
-                <el-select class="wrap-block" v-model="fillForm.type"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('type')">
+                <el-select
+                  class="wrap-block"
+                  v-model="fillForm.type"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('type')"
+                >
                   <el-option
-                    v-for="item in sentencesTypeList" :key="item.value"
-                    :label="$t(item.text)" :value="item.value">
+                    v-for="item in sentencesTypeList"
+                    :key="item.value"
+                    :label="$t(item.text)"
+                    :value="item.value"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -22,8 +33,10 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('content') }} ：</label>
             <div class="col-sm-8">
-              <markdown v-model="fillForm.content"
-                :placeholder="this.$t('pleaseSelect') + this.$t('content')"/>
+              <markdown
+                v-model="fillForm.content"
+                :placeholder="this.$t('pleaseSelect') + this.$t('content')"
+              />
             </div>
           </div>
 
@@ -31,8 +44,12 @@
             <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} ：</label>
             <div class="col-sm-8">
               <el-switch
-                :on-text="$t('yes')" :off-text="$t('no')"
-                v-model="fillForm.active" on-color="#13ce66" off-color="#ff4949">
+                :on-text="$t('yes')"
+                :off-text="$t('no')"
+                v-model="fillForm.active"
+                on-color="#13ce66"
+                off-color="#ff4949"
+              >
               </el-switch>
             </div>
           </div>
@@ -54,73 +71,81 @@ import Markdown from 'components/markdown/index'
 export default {
   name: 'EditDialog',
 
-  data () {
+  data() {
     return {
       isShowDlgFlag: false,
       isLoading: false,
       fillForm: {
         type: '',
         content: '',
-        active: false
+        active: false,
       },
       rules: {
         content: [
-          { required: true, message: this.$t('pleaseEnter') + this.$t('linkNameStr'), trigger: 'change,blur' }
+          {
+            required: true,
+            message: this.$t('pleaseEnter') + this.$t('linkNameStr'),
+            trigger: 'change,blur',
+          },
         ],
         type: [
-          { required: true, message: this.$t('pleaseSelect') + this.$t('type'), trigger: 'change,blur' }
-        ]
-      }
+          {
+            required: true,
+            message: this.$t('pleaseSelect') + this.$t('type'),
+            trigger: 'change,blur',
+          },
+        ],
+      },
     }
   },
 
   components: {
-    Markdown
+    Markdown,
   },
 
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     pdata: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
 
   computed: {
-    sentencesTypeList () {
-      return $config.sentences.map(item => {
+    sentencesTypeList() {
+      return $config.sentences.map((item) => {
         return {
           text: item.text[this.$lang],
-          value: item.value
+          value: item.value,
         }
       })
-    }
+    },
   },
 
   watch: {
-    value (val) {
+    value(val) {
       this.isShowDlgFlag = val
     },
-    isShowDlgFlag (val) {
+    isShowDlgFlag(val) {
       if (!val) {
         this.fillForm = {
           type: '',
           content: '',
-          active: false
+          active: false,
         }
       }
       this.$emit('input', val)
     },
-    pdata (val) {
+    pdata(val) {
       this.fillForm = this.$_.cloneDeep(val)
-    }
+    },
   },
 
   methods: {
-    onCommitClick () {
+    onCommitClick() {
       this.$refs.fillForm.validate((valid) => {
         if (valid) {
           this.isLoading = true
@@ -131,31 +156,34 @@ export default {
           params.createdBy = this.userInfo && this.userInfo.username
           params.managerRole = this.userInfo && this.userInfo.role
 
-          this.$apis.updateSentences(params).then(result => {
-            this.isLoading = false
-            this.isShowDlgFlag = false
-            this.$message({
-              message: this.$t('successAddTip'),
-              type: 'success'
+          this.$apis
+            .updateSentences(params)
+            .then((result) => {
+              this.isLoading = false
+              this.isShowDlgFlag = false
+              this.$message({
+                message: this.$t('successAddTip'),
+                type: 'success',
+              })
+              this.$emit('update-success')
             })
-            this.$emit('update-success')
-          }).catch((error) => {
-            console.log(error)
-            this.isLoading = false
-            this.$message.error(`${error}`)
-          })
+            .catch((error) => {
+              console.log(error)
+              this.isLoading = false
+              this.$message.error(`${error}`)
+            })
         }
       })
-    }
+    },
   },
 
   locales: {
     en: {
-      successAddTip: 'Well, you have successfully updated the sentence'
+      successAddTip: 'Well, you have successfully updated the sentence',
     },
     zh: {
-      successAddTip: '干的漂亮，您已成功更新该箴言'
-    }
-  }
+      successAddTip: '干的漂亮，您已成功更新该箴言',
+    },
+  },
 }
 </script>

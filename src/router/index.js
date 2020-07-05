@@ -10,7 +10,7 @@ const routerInstance = new Router({
   mode: 'history',
   linkActiveClass: 'active',
   scrollBehavior: () => ({ y: 0 }),
-  routes: routesMapConfig.concat(commonRoutesMap)
+  routes: routesMapConfig.concat(commonRoutesMap),
 })
 
 Object.values(beforeEachHooks).forEach((hook) => {

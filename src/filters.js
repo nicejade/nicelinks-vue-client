@@ -1,17 +1,17 @@
 export default {
-  reverseStr (sourceStr) {
+  reverseStr(sourceStr) {
     return sourceStr.split('').reverse().join('')
   },
 
-  dateConvert (time) {
+  dateConvert(time) {
     return time ? new Date(time).Format('yyyy-MM-dd hh:mm') : ''
   },
 
-  dayConvert (time) {
+  dayConvert(time) {
     return time ? new Date(time).Format('yyyy-MM-dd') : ''
   },
 
-  dateOffset (datetime = '', nowTime = '') {
+  dateOffset(datetime = '', nowTime = '') {
     if (!arguments.length) return ''
 
     let now = nowTime ? new Date(nowTime).getTime() : new Date().getTime()
@@ -27,7 +27,7 @@ export default {
     let offsetArr = [year, month, week, day, hour, minute].map((item, index) => {
       return {
         value: offsetValue / item,
-        unit: unitArr[index]
+        unit: unitArr[index],
       }
     })
 
@@ -37,5 +37,5 @@ export default {
       }
     }
     return unitArr[6]
-  }
+  },
 }

@@ -15,13 +15,17 @@
               <div class="form form-horizontal">
                 <el-form :model="fillForm" :rules="rules" ref="fillForm">
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('setUsername')}}<em>*</em>:</label>
+                    <label class="col-sm-3 control-label">{{ $t('setUsername') }}<em>*</em>:</label>
                     <div class="col-sm-9">
-                      <el-input placeholder="" :disabled="true" v-model="fillForm.username"></el-input>
+                      <el-input
+                        placeholder=""
+                        :disabled="true"
+                        v-model="fillForm.username"
+                      ></el-input>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('setNickname')}}:</label>
+                    <label class="col-sm-3 control-label">{{ $t('setNickname') }}:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="profile.nickname">
                         <el-input placeholder="" v-model="fillForm.profile.nickname"></el-input>
@@ -29,7 +33,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
+                    <label class="col-sm-3 control-label">{{ $t('personalWebsite') }}:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="profile.website">
                         <el-input placeholder="" v-model="fillForm.profile.website"></el-input>
@@ -37,9 +41,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
+                    <label class="col-sm-3 control-label">{{ $t('profile') }}:</label>
                     <div class="col-sm-9">
-                      <markdown v-model="fillForm.profile.description"/>
+                      <markdown v-model="fillForm.profile.description" />
                     </div>
                   </div>
                 </el-form>
@@ -47,25 +51,27 @@
 
               <div class="form-group operation-area">
                 <div class="col-sm-offset-3 col-sm-9 no-padding">
-                  <el-button :loading="isLoading" type="primary" @click='onSaveClick'>{{$t('saveSeting')}}</el-button>
+                  <el-button :loading="isLoading" type="primary" @click="onSaveClick">{{
+                    $t('saveSeting')
+                  }}</el-button>
                 </div>
               </div>
               <el-alert
                 v-if="tipMessageObj.message"
                 :title="tipMessageObj.message"
-                :type="tipMessageObj.type">
+                :type="tipMessageObj.type"
+              >
               </el-alert>
 
-              <hr>
+              <hr />
 
               <div class="form-group">
                 <div class="col-sm-12">
                   <div class="update-avatar-area">
-                    <img class="preview-avatar" :src="imgDataUrl">
-                    <br>
-                    <el-button
-                      :loading="isLoading" type="text" @click='onUpdateAvatarClick'>
-                      {{$t('updateAvatar')}}
+                    <img class="preview-avatar" :src="imgDataUrl" />
+                    <br />
+                    <el-button :loading="isLoading" type="text" @click="onUpdateAvatarClick">
+                      {{ $t('updateAvatar') }}
                     </el-button>
                   </div>
                 </div>
@@ -87,7 +93,8 @@
       url="/api/uploadAvatar"
       :params="params"
       :headers="headers"
-      img-format="png">
+      img-format="png"
+    >
     </upload-avatar>
   </div>
 </template>
@@ -97,17 +104,17 @@ import metaMixin from 'mixins/metaMixin.js'
 import UploadAvatar from 'components/UploadAvatar'
 import Markdown from 'components/markdown/index'
 
-export default{
+export default {
   name: 'Setting',
 
   mixins: [metaMixin],
 
   components: {
     UploadAvatar,
-    Markdown
+    Markdown,
   },
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('accountSetting'),
@@ -120,64 +127,67 @@ export default{
         profile: {
           nickname: '',
           website: '',
-          description: ''
-        }
+          description: '',
+        },
       },
       rules: {
         'profile.nickname': [
-          { required: false, validator: this.isTheLegalNick, trigger: 'change,blur' }
+          { required: false, validator: this.isTheLegalNick, trigger: 'change,blur' },
         ],
         'profile.website': [
-          { required: false, validator: this.isTheLegalUrl, trigger: 'change,blur' }
-        ]
+          { required: false, validator: this.isTheLegalUrl, trigger: 'change,blur' },
+        ],
       },
       isShowUploadAvatar: false,
       params: {
         token: '131421',
-        name: 'avatar'
+        name: 'avatar',
       },
       headers: {
         imgname: '',
-        username: ''
+        username: '',
       },
-      imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg'
+      imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg',
     }
   },
 
-  mounted () {
+  mounted() {
     this.initFetch()
   },
 
   methods: {
-    initFetch () {
+    initFetch() {
       const userInfoId = this.userInfo._id
-      this.$apis.getProfile({_id: userInfoId}).then(result => {
-        Object.assign(this.fillForm, result)
-        let currentDateStr = (new Date(this.$util.getCurrentDate())).Format('yyyy-MM-dd')
-        let currentTimeHMS = this.$util.getCurrentDateHMS()
-        if (result.profile.avatar) {
-          this.imgDataUrl = `/api/avatar/${result.profile.avatar}`
-        }
+      this.$apis
+        .getProfile({ _id: userInfoId })
+        .then((result) => {
+          Object.assign(this.fillForm, result)
+          let currentDateStr = new Date(this.$util.getCurrentDate()).Format('yyyy-MM-dd')
+          let currentTimeHMS = this.$util.getCurrentDateHMS()
+          if (result.profile.avatar) {
+            this.imgDataUrl = `/api/avatar/${result.profile.avatar}`
+          }
 
-        this.headers.imgname = [currentDateStr, currentTimeHMS, userInfoId].join('-')
-        this.headers.username = this.userInfo.username || ''
-      }).catch(error => {
-        this.errorAlertTip(`Err: ${error}`, 'error')
-        this.isLoading = false
-      })
+          this.headers.imgname = [currentDateStr, currentTimeHMS, userInfoId].join('-')
+          this.headers.username = this.userInfo.username || ''
+        })
+        .catch((error) => {
+          this.errorAlertTip(`Err: ${error}`, 'error')
+          this.isLoading = false
+        })
     },
 
-    errorAlertTip (message, type) {
+    errorAlertTip(message, type) {
       this.tipMessageObj = {
         message: message,
-        type: type
+        type: type,
       }
       setTimeout(() => {
         this.tipMessageObj = {}
       }, 2000)
     },
 
-    isTheLegalNick (rule, value, callback) {
+    isTheLegalNick(rule, value, callback) {
       if (value && !this.$util.isLegalNick(value)) {
         callback(new Error(this.$t('enterLegalNick')))
       } else {
@@ -185,7 +195,7 @@ export default{
       }
     },
 
-    isTheLegalUrl (rule, value, callback) {
+    isTheLegalUrl(rule, value, callback) {
       if (value && !this.$util.isLegalUrl(value)) {
         callback(new Error(this.$t('enterLegalUrl')))
       } else {
@@ -193,75 +203,80 @@ export default{
       }
     },
 
-    onSaveClick () {
+    onSaveClick() {
       this.$gtagTracking('save-setting', 'setting', 'save-setting')
       this.$refs['fillForm'].validate((valid) => {
         if (valid) {
           this.isLoading = true
           let params = this.$_.cloneDeep(this.fillForm)
           delete params.username
-          this.$apis.setProfile(params).then(result => {
-            this.$message({
-              message: result,
-              type: 'success'
-            })
+          this.$apis
+            .setProfile(params)
+            .then((result) => {
+              this.$message({
+                message: result,
+                type: 'success',
+              })
 
-            // ReUpdate UserInfo
-            this.$getUserInfo()
-          }).catch(error => {
-            this.errorAlertTip(error, 'error')
-          }).finally(() => {
-            this.isLoading = false
-          })
+              // ReUpdate UserInfo
+              this.$getUserInfo()
+            })
+            .catch((error) => {
+              this.errorAlertTip(error, 'error')
+            })
+            .finally(() => {
+              this.isLoading = false
+            })
         }
       })
     },
 
-    onUpdateAvatarClick () {
+    onUpdateAvatarClick() {
       this.$gtagTracking('update-avatar', 'setting', 'update-avatar')
       this.isShowUploadAvatar = true
     },
 
-    onCropSuccess (imgPath) {
+    onCropSuccess(imgPath) {
       this.imgDataUrl = imgPath
     },
 
-    onCropUploadFail () {
+    onCropUploadFail() {
       console.log('Upload Avatar Fail.')
     },
 
-    onCropUploadSuccess (imgPath) {
+    onCropUploadSuccess(imgPath) {
       this.imgDataUrl = `/api/avatar/${imgPath}`
       // ReUpdate UserInfo
       this.$getUserInfo()
-    }
+    },
   },
 
   locales: {
     en: {
-      enterLegalNick: 'Please enter 3 ~ 15 arbitrary characters.'
+      enterLegalNick: 'Please enter 3 ~ 15 arbitrary characters.',
     },
     zh: {
-      enterLegalNick: '请输入 3 ～ 15 位任意字符'
-    }
-  }
+      enterLegalNick: '请输入 3 ～ 15 位任意字符',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-.update-avatar-area{
+.update-avatar-area {
   width: 221px;
   text-align: center;
   margin: auto;
-  .preview-avatar{
+  .preview-avatar {
     border: 1px solid #d1dbe5;
     border-radius: 50%;
   }
 }
 
-.setting{
-  .form-group{
-    .el-input, .el-textarea{
+.setting {
+  .form-group {
+    .el-input,
+    .el-textarea {
       max-width: 768px;
       width: 100%;
     }
@@ -269,14 +284,14 @@ export default{
 }
 
 @media (max-width: 768px) {
-  .setting{
-    .form-horizontal{
-      .form-group{
+  .setting {
+    .form-horizontal {
+      .form-group {
         margin-left: 0px;
         margin-right: 0px;
       }
     }
-    .operation-area{
+    .operation-area {
       margin-left: 15px;
     }
   }

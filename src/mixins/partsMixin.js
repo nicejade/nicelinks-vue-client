@@ -2,60 +2,59 @@ import $config from 'config'
 import { mapMutations } from 'vuex'
 
 const getValueByName = (source = [], name = '') => {
-  let result = source.filter(item => {
+  let result = source.filter((item) => {
     return item.name === name
   })[0]
   return result && result['value']
 }
 
 export default {
-  data () {
+  data() {
     return {
-      isLoading: false
+      isLoading: false,
     }
   },
 
   computed: {
-    $niceLinksArray () {
-      return this.$store && this.$store.state.nicelinksList || []
+    $niceLinksArray() {
+      return (this.$store && this.$store.state.nicelinksList) || []
     },
-    $requestParamList () {
-      return this.$store && this.$store.state.requestParamList || []
-    }
+    $requestParamList() {
+      return (this.$store && this.$store.state.requestParamList) || []
+    },
   },
 
-  watch: {
-  },
+  watch: {},
 
   methods: {
     ...mapMutations([
       '$vuexSetNiceLinksList',
       '$vuexSetRequestParamList',
-      '$vuexUpdateLoadMoreState'
+      '$vuexUpdateLoadMoreState',
     ]),
 
-    getMatchSortTarget (sortVal = '') {
+    getMatchSortTarget(sortVal = '') {
       const sortTargetMapping = {
         hottest: {
           sortTarget: 'likes',
-          sortType: -1
+          sortType: -1,
         },
         latest: {
           sortTarget: 'created',
-          sortType: -1
+          sortType: -1,
         },
         earliest: {
           sortTarget: 'created',
-          sortType: 1
-        }
+          sortType: 1,
+        },
       }
       return sortTargetMapping[sortVal] || {}
     },
 
-    assembleAjaxParams () {
+    assembleAjaxParams() {
       let params = this.$_.cloneDeep(this.$requestParamList)
       params.active = true
-      params.userId = this.userInfo && this.userInfo._id || ''
+      params.userId = (this.userInfo && this.userInfo._id) || ''
 
       let classifyVal = getValueByName($config.classify, this.$route.params.classify)
       if (this.$route.params.classify && classifyVal) {
@@ -79,50 +78,53 @@ export default {
       return this.$util.updateAfterFilterEmptyValue(params)
     },
 
-    $fetchSearch (params = {}, isLoadMore = false) {
+    $fetchSearch(params = {}, isLoadMore = false) {
       // Update the LoadMore Button State(true);
       this.$vuexUpdateLoadMoreState(true)
 
-      !isLoadMore ? params.pageCount = 1 : ''
+      !isLoadMore ? (params.pageCount = 1) : ''
       this.$vuexSetRequestParamList(params)
 
       params = this.assembleAjaxParams()
       let apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
 
       this.isLoading = true
-      this.$apis[apiName](params).then(result => {
-        if (!result || result.length <= 0) {
-          this.$vuexSetNiceLinksList({
-            data: [],
-            isLoadMore
-          })
-          this.$vuexUpdateLoadMoreState(false)
-          return
-        } else {
-          this.$vuexSetNiceLinksList({
-            data: result,
-            isLoadMore
-          })
-        }
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-        this.$vuexSetNiceLinksList({
-          data: $config.default,
-          isLoadMore
+      this.$apis[apiName](params)
+        .then((result) => {
+          if (!result || result.length <= 0) {
+            this.$vuexSetNiceLinksList({
+              data: [],
+              isLoadMore,
+            })
+            this.$vuexUpdateLoadMoreState(false)
+            return
+          } else {
+            this.$vuexSetNiceLinksList({
+              data: result,
+              isLoadMore,
+            })
+          }
         })
-      }).finally(() => {
-        this.isLoading = false
-      })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+          this.$vuexSetNiceLinksList({
+            data: $config.default,
+            isLoadMore,
+          })
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
 
-    $onSwitchTabs (item = {}) {
+    $onSwitchTabs(item = {}) {
       const params = {
         pageCount: 1,
         sortTarget: item.sortTarget,
-        sortType: item.sortType
+        sortType: item.sortType,
       }
       this.$vuexSetRequestParamList(params)
       this.$fetchSearch()
-    }
-  }
+    },
+  },
 }

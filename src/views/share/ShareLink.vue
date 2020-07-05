@@ -13,7 +13,8 @@
                       <el-input
                         v-model="fillForm.urlPath"
                         @blur="getLinkPageData"
-                        :placeholder="$t('pleaseEnter') + $t('linkAddressStr')">
+                        :placeholder="$t('pleaseEnter') + $t('linkAddressStr')"
+                      >
                       </el-input>
                     </el-form-item>
                   </div>
@@ -24,7 +25,8 @@
                     <el-form-item prop="title">
                       <el-input
                         v-model="fillForm.title"
-                        :placeholder="$t('pleaseEnter') + $t('linkNameStr')"></el-input>
+                        :placeholder="$t('pleaseEnter') + $t('linkNameStr')"
+                      ></el-input>
                     </el-form-item>
                   </div>
                 </div>
@@ -32,12 +34,17 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="classify">
-                      <el-select class="wrap-block" v-model="fillForm.classify"
-                        :placeholder="$t('pleaseSelect') + $t('linkClassifyStr')">
+                      <el-select
+                        class="wrap-block"
+                        v-model="fillForm.classify"
+                        :placeholder="$t('pleaseSelect') + $t('linkClassifyStr')"
+                      >
                         <el-option
-                          v-for="item in classifyList" :key="item.value"
+                          v-for="item in classifyList"
+                          :key="item.value"
                           :label="$t(item.name)"
-                          :value="item.value">
+                          :value="item.value"
+                        >
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -47,13 +54,17 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="theme">
-                      <el-select class="wrap-block" v-model="fillForm.theme"
-                        :placeholder="$t('pleaseSelect') + $t('linkThemeStr')">
+                      <el-select
+                        class="wrap-block"
+                        v-model="fillForm.theme"
+                        :placeholder="$t('pleaseSelect') + $t('linkThemeStr')"
+                      >
                         <el-option
                           v-for="item in themeList"
                           :key="item.key"
                           :label="$getCurrentLang() === 'en' ? item.value : item.key"
-                          :value="item.value">
+                          :value="item.value"
+                        >
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -63,12 +74,21 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="tags">
-                      <el-select class="wrap-block"
-                        v-model="fillForm.tags" allow-create multiple filterable
+                      <el-select
+                        class="wrap-block"
+                        v-model="fillForm.tags"
+                        allow-create
+                        multiple
+                        filterable
                         :multiple-limit="3"
-                        :placeholder="$t('pleaseSelect') + $t('linkTagsStr')">
-                        <el-option v-for="(item, index) in tagsList" :key="index"
-                          :label="item" :value="item">
+                        :placeholder="$t('pleaseSelect') + $t('linkTagsStr')"
+                      >
+                        <el-option
+                          v-for="(item, index) in tagsList"
+                          :key="index"
+                          :label="item"
+                          :value="item"
+                        >
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -78,10 +98,13 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="keywords">
-                      <el-input type="textarea"
-                        :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
+                      <el-input
+                        type="textarea"
+                        :maxlength="360"
+                        :autosize="{ minRows: 3, maxRows: 10 }"
                         :placeholder="$t('linkKeywordStr')"
-                        v-model="fillForm.keywords">
+                        v-model="fillForm.keywords"
+                      >
                       </el-input>
                     </el-form-item>
                   </div>
@@ -90,10 +113,13 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="desc">
-                      <el-input type="textarea"
-                        :maxlength="360" :autosize="{ minRows: 5, maxRows: 10}"
+                      <el-input
+                        type="textarea"
+                        :maxlength="360"
+                        :autosize="{ minRows: 5, maxRows: 10 }"
                         :placeholder="$t('linkDescStr')"
-                        v-model="fillForm.desc">
+                        v-model="fillForm.desc"
+                      >
                       </el-input>
                     </el-form-item>
                   </div>
@@ -102,8 +128,7 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="review">
-                      <markdown v-model="fillForm.review"
-                        :placeholder="$t('linkReviewStr')"/>
+                      <markdown v-model="fillForm.review" :placeholder="$t('linkReviewStr')" />
                     </el-form-item>
                   </div>
                 </div>
@@ -135,7 +160,7 @@ export default {
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('shareNewLink'),
@@ -148,50 +173,59 @@ export default {
         classify: '',
         theme: '',
         tags: [],
-        review: ''
+        review: '',
       },
       themeList: [],
       tagsList: $config.tags,
       classifyList: $config.classify,
       rules: {
-        urlPath: [
-          { required: true, validator: this.$verifyUrl, trigger: 'change,blur' }
-        ],
+        urlPath: [{ required: true, validator: this.$verifyUrl, trigger: 'change,blur' }],
         title: [
-          { required: true, message: this.$t('pleaseEnter') + this.$t('linkNameStr'), trigger: 'change,blur' }
+          {
+            required: true,
+            message: this.$t('pleaseEnter') + this.$t('linkNameStr'),
+            trigger: 'change,blur',
+          },
         ],
         theme: [
-          { required: true, message: this.$t('pleaseSelect') + this.$t('linkThemeStr'), trigger: 'change,blur' }
+          {
+            required: true,
+            message: this.$t('pleaseSelect') + this.$t('linkThemeStr'),
+            trigger: 'change,blur',
+          },
         ],
         classify: [
-          { required: true, message: this.$t('pleaseSelect') + this.$t('linkClassifyStr'), trigger: 'change,blur' }
-        ]
-      }
+          {
+            required: true,
+            message: this.$t('pleaseSelect') + this.$t('linkClassifyStr'),
+            trigger: 'change,blur',
+          },
+        ],
+      },
     }
   },
 
   props: {
     value: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   components: {
-    Markdown
+    Markdown,
   },
 
-  computed: {
-  },
+  computed: {},
 
   watch: {
     'fillForm.classify': function (val) {
       this.themeList = $config.theme[this.fillForm.classify] || []
-    }
+    },
   },
 
   methods: {
-    getLinkPageData () {
+    getLinkPageData() {
       if (!this.fillForm.urlPath) return
 
       // 如填写的路径，未以 "/" 结尾，则为其加上(@18-01-27)
@@ -199,24 +233,27 @@ export default {
         this.fillForm.urlPath += '/'
       }
 
-      this.$apis.crawlLinksInfo({url: this.fillForm.urlPath}).then(result => {
-        this.fillForm.title = result.title
-        this.fillForm.desc = result.desc
-        this.fillForm.keywords = result.keywords
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-      })
+      this.$apis
+        .crawlLinksInfo({ url: this.fillForm.urlPath })
+        .then((result) => {
+          this.fillForm.title = result.title
+          this.fillForm.desc = result.desc
+          this.fillForm.keywords = result.keywords
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
     },
 
-    resetForm () {
+    resetForm() {
       this.$refs['fillForm'].resetFields()
     },
 
-    onResetClick () {
+    onResetClick() {
       this.resetForm()
     },
 
-    onPublishClick () {
+    onPublishClick() {
       this.$refs.fillForm.validate((valid) => {
         if (valid) {
           this.isLoading = true
@@ -226,53 +263,56 @@ export default {
           params.role = this.userInfo && this.userInfo.role
           params.createdBy = this.userInfo && this.userInfo.username
 
-          this.$apis.addNiceLinks(params).then(result => {
-            this.isLoading = false
-            this.$message({
-              message: this.$t('successAddTip'),
-              type: 'success'
+          this.$apis
+            .addNiceLinks(params)
+            .then((result) => {
+              this.isLoading = false
+              this.$message({
+                message: this.$t('successAddTip'),
+                type: 'success',
+              })
+              this.resetForm()
             })
-            this.resetForm()
-          }).catch((error) => {
-            console.log(error)
-            this.isLoading = false
-            this.$message.error(`${error}`)
-          })
+            .catch((error) => {
+              console.log(error)
+              this.isLoading = false
+              this.$message.error(`${error}`)
+            })
         }
       })
-    }
+    },
   },
 
   locales: {
     en: {
-      successAddTip: 'Well, you have successfully added the link，Pending audit.'
+      successAddTip: 'Well, you have successfully added the link，Pending audit.',
     },
     zh: {
-      successAddTip: '很好，您已成功添加该链接，正在待审核中.'
-    }
-  }
+      successAddTip: '很好，您已成功添加该链接，正在待审核中.',
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/variables.scss";
+@import '../../assets/scss/variables.scss';
 
-.entry-list{
+.entry-list {
   padding: 0 3rem;
-  .share-title{
+  .share-title {
     padding: 2rem 0;
     text-align: left;
     font-weight: 700;
   }
-  .operate-area{
+  .operate-area {
     padding-bottom: 40px;
   }
 }
 
 @media screen and (max-width: $small-mobile-screen) {
-  .entry-list{
+  .entry-list {
     padding: 0 20px;
-    .share-title{
+    .share-title {
       padding: 20px 0;
     }
   }

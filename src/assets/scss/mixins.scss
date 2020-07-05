@@ -13,7 +13,7 @@
 @mixin clearfix() {
   &:before,
   &:after {
-    content: " ";
+    content: ' ';
     display: table;
   }
   &:after {
@@ -21,7 +21,7 @@
   }
 }
 
-@mixin height-center($header-height){
+@mixin height-center($header-height) {
   height: $header-height;
   line-height: $header-height;
 }
@@ -40,7 +40,7 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin flex-box-center($direction: row, $justify: center, $align-items: center){
+@mixin flex-box-center($direction: row, $justify: center, $align-items: center) {
   flex-direction: $direction;
   display: -webkit-box;
   display: -moz-box;

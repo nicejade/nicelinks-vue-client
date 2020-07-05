@@ -1,7 +1,12 @@
 <template>
   <div class="load-more">
-    <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore"
-      @click="onLoadMoreClick">{{ $t('loadMoreStr') }}
+    <el-button
+      type="primary"
+      icon="plus"
+      size="large"
+      v-if="isShowLoadMore"
+      @click="onLoadMoreClick"
+      >{{ $t('loadMoreStr') }}
     </el-button>
     <el-alert v-else :title="$t('noMoreDataTip')" type="info"> </el-alert>
   </div>
@@ -15,68 +20,63 @@ export default {
 
   mixins: [partsMixin],
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   computed: {
-    isShowLoadMore () {
+    isShowLoadMore() {
       return this.$store && this.$store.state.isLoadMore
-    }
+    },
   },
 
-  watch: {
-  },
+  watch: {},
 
-  components: {
-  },
+  components: {},
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
-  },
+  mounted() {},
 
   methods: {
-    onLoadMoreClick () {
+    onLoadMoreClick() {
       this.$vuexSetRequestParamList({
-        pageCount: this.$requestParamList.pageCount + 1
+        pageCount: this.$requestParamList.pageCount + 1,
       })
       this.$fetchSearch({}, true)
-    }
+    },
   },
 
   locales: {
     zh: {
-      noMoreDataTip: '嘿，云集美好，我是有底线的'
+      noMoreDataTip: '嘿，云集美好，我是有底线的',
     },
     en: {
-      noMoreDataTip: `Hey, Gathering awesome, i have a bottom line.`
-    }
-  }
+      noMoreDataTip: `Hey, Gathering awesome, i have a bottom line.`,
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "./../assets/scss/variables.scss";
+@import './../assets/scss/variables.scss';
 
-.load-more{
+.load-more {
   width: 70%;
   margin: auto;
   padding: 15px 0;
-  .el-button{
+  .el-button {
     background-color: #ffffff;
     color: $black;
     transition: 1s border ease-in;
     border-radius: 20px;
     border: 1px solid $entry-btn-grey;
     width: 80%;
-    &:hover{
+    &:hover {
       border: 1px solid $entry-btn-hover;
     }
   }
-  .el-alert{
+  .el-alert {
     border-radius: 20px;
   }
 }

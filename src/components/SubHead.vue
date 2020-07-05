@@ -2,20 +2,24 @@
   <div class="sub-head" id="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
       <li :class="makeClassName(null)">
-        <a href="/explore/all"
+        <a
+          href="/explore/all"
           class="gtag-track theme-link"
           data-action="explore-all"
           data-category="sub-head"
-          data-label="explore-all">
+          data-label="explore-all"
+        >
           {{ $t('all') }}
         </a>
       </li>
-      <li v-for="(item, index) in themeList" :key="index" :class="makeClassName(item)" >
-        <router-link :to="getLinkPathByThemeVal(item.value)"
+      <li v-for="(item, index) in themeList" :key="index" :class="makeClassName(item)">
+        <router-link
+          :to="getLinkPathByThemeVal(item.value)"
           class="gtag-track theme-link"
-          :data-action="'explore-'+item.value"
+          :data-action="'explore-' + item.value"
           data-category="sub-head"
-          :data-label="'explore-'+item.value">
+          :data-label="'explore-' + item.value"
+        >
           {{ item.key }}
         </router-link>
       </li>
@@ -31,31 +35,28 @@ export default {
 
   mixins: [partsMixin],
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   props: {
     themeList: {
       type: [Array],
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
-  watch: {
-  },
+  watch: {},
 
-  components: {
-  },
+  components: {},
 
   methods: {
-    isCurrentThemeVal (value) {
+    isCurrentThemeVal(value) {
       const cTheme = this.$route.params.theme || ''
       return cTheme.toUpperCase() === value.toUpperCase()
     },
 
-    makeClassName (item) {
+    makeClassName(item) {
       if (!item) {
         const cTheme = this.$route.params.theme
         return !cTheme ? 'nav-item is-active' : 'nav-item'
@@ -64,13 +65,13 @@ export default {
       return isTheTheme ? 'nav-item is-active' : 'nav-item'
     },
 
-    getLinkPathByThemeVal (value) {
+    getLinkPathByThemeVal(value) {
       this.$vuexSetRequestParamList({
         sortTarget: 'likes',
-        sortType: -1
+        sortType: -1,
       })
       return value ? `/theme/${value.toLocaleLowerCase()}` : '/explore/all'
-    }
+    },
 
     /* ------------变更 SubHead ”按钮“触发后展示方案(18-07-01)------------ */
     /*
@@ -93,25 +94,24 @@ export default {
     } */
   },
 
-  locales: {
-  }
+  locales: {},
 }
 </script>
 
 <style lang="scss">
-@import "../assets/scss/variables.scss";
+@import '../assets/scss/variables.scss';
 
-.sub-head{
+.sub-head {
   width: 100%;
   max-width: 960px;
   overflow: auto;
   text-align: left;
   border-bottom: solid 1px #d1d5da;
-  padding: .3rem;
+  padding: 0.3rem;
   z-index: $zindex-subhead;
   background-color: $white;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
-  transition: all .2s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
   transform: translateZ(0);
   &::-webkit-scrollbar {
     background: transparent;
@@ -121,13 +121,13 @@ export default {
     background: transparent;
     height: 0px;
   }
-  .sub-head-nav{
+  .sub-head-nav {
     width: 100%;
     display: flex;
     margin: 0;
-    .nav-item{
+    .nav-item {
       margin: auto 0.88rem;
-      .theme-link{
+      .theme-link {
         display: inline-block;
         min-width: 3rem;
         padding: 1rem 0;
@@ -136,8 +136,8 @@ export default {
         font-weight: 500;
       }
     }
-    .is-active{
-      .theme-link{
+    .is-active {
+      .theme-link {
         color: $brand;
       }
     }
@@ -145,7 +145,7 @@ export default {
 }
 
 @media screen and (max-width: $mobile-screen) {
-  .sub-head{
+  .sub-head {
     position: fixed;
     top: 110px;
     max-width: $mobile-screen;

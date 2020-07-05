@@ -2,43 +2,43 @@ export default [
   {
     text: {
       zh: '情感',
-      en: 'emotion'
+      en: 'emotion',
     },
-    value: 'emotion'
+    value: 'emotion',
   },
   {
     text: {
       zh: '励志',
-      en: 'encourage'
+      en: 'encourage',
     },
-    value: 'encourage'
+    value: 'encourage',
   },
   {
     text: {
       zh: '娱乐',
-      en: 'entertainment'
+      en: 'entertainment',
     },
-    value: 'entertainment'
+    value: 'entertainment',
   },
   {
     text: {
       zh: '修身',
-      en: 'self-cultivation'
+      en: 'self-cultivation',
     },
-    value: 'self-cultivation'
+    value: 'self-cultivation',
   },
   {
     text: {
       zh: '唯美',
-      en: 'aestheticism'
+      en: 'aestheticism',
     },
-    value: 'aestheticism'
+    value: 'aestheticism',
   },
   {
     text: {
       zh: '哲学',
-      en: 'philosophy'
+      en: 'philosophy',
     },
-    value: 'philosophy'
-  }
+    value: 'philosophy',
+  },
 ]

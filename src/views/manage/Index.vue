@@ -3,9 +3,13 @@
     <div class="panel-default">
       <div class="panel-body">
         <div class="operate-area">
-          <el-button :plain="true" type="success"
-            v-for="(item, index) in $util.getManageList()" :key="index"
-            @click="onJumpClick(item.path)">{{ $t(item.name) }}
+          <el-button
+            :plain="true"
+            type="success"
+            v-for="(item, index) in $util.getManageList()"
+            :key="index"
+            @click="onJumpClick(item.path)"
+            >{{ $t(item.name) }}
           </el-button>
         </div>
       </div>
@@ -21,30 +25,28 @@ export default {
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
-      title: vm.$t('management')
+      title: vm.$t('management'),
     }
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
-  },
+  created() {},
 
   methods: {
-    onJumpClick (i) {
+    onJumpClick(i) {
       this.$router.push(`/manage/${i}`)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-#manage-index{
-  .operate-area{
+#manage-index {
+  .operate-area {
     min-height: 300px;
   }
 }

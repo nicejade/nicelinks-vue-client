@@ -1,7 +1,7 @@
 $emotion: $jade;
-$encourage: #0099FF;
-$entertainment: #FF6666;
-$self-cultivation: #CCCC99;
+$encourage: #0099ff;
+$entertainment: #ff6666;
+$self-cultivation: #cccc99;
 $aestheticism: #2edfa3;
 $philosophy: #333366;
 
@@ -35,8 +35,8 @@ $philosophy: #333366;
   }
 
   .encourage-colors {
-    color: #FFFFCC;
-    fill: #FFFFCC;
+    color: #ffffcc;
+    fill: #ffffcc;
     background-color: $encourage;
     border: 1px solid $encourage !important;
     box-shadow: 0 0 10px rgba(0, 99, 255, 0.4);
@@ -57,12 +57,11 @@ $philosophy: #333366;
     }
   }
 
-
   .entertainment-colors {
-    color: #FFFF00;
-    fill: #FFFF00;
+    color: #ffff00;
+    fill: #ffff00;
     background-color: $entertainment;
-    border: 1px solid #FFFF00;
+    border: 1px solid #ffff00;
     box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
     animation: pulseEntertainment 2s infinite;
   }
@@ -81,7 +80,6 @@ $philosophy: #333366;
       box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
     }
   }
-
 
   .self-cultivation-colors {
     color: #333333;
@@ -107,7 +105,6 @@ $philosophy: #333366;
     }
   }
 
-
   .aestheticism-colors {
     color: #ffffff;
     fill: #ffffff;
@@ -132,12 +129,11 @@ $philosophy: #333366;
     }
   }
 
-
   .philosophy-colors {
-    color: #FEFEFE;
-    fill: #FEFEFE;
+    color: #fefefe;
+    fill: #fefefe;
     background-color: $philosophy;
-    border: 1px solid #FEFEFE;
+    border: 1px solid #fefefe;
     box-shadow: 0 0 0 rgba(33, 33, 66, 0.4);
     animation: pulsePhilosophy 2s infinite;
   }

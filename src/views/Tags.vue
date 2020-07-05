@@ -5,10 +5,7 @@
         <div class="main-container">
           <div class="entry-list">
             <operate-tabs @switch-tabs="$onSwitchTabs" />
-            <links-list
-              :is-abstract="true"
-              :pdata="$niceLinksArray"
-              :is-loading="isLoading">
+            <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
             <load-more></load-more>
           </div>
@@ -28,26 +25,22 @@ export default {
 
   mixins: [partsMixin, metaMixin],
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
-  watch: {
-  },
+  watch: {},
 
-  components: {
-  },
+  components: {},
 
-  created () {
+  created() {
     this.$fetchSearch()
   },
 
-  mounted () {
+  mounted() {
     this.title = this.$route.params.tags
   },
 
-  methods: {
-  }
+  methods: {},
 }
 </script>

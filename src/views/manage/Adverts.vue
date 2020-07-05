@@ -4,20 +4,25 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <el-carousel trigger="click" class="jade-gg-body"
-              indicator-position="outside" :interval='3600' height="256px">
+            <el-carousel
+              trigger="click"
+              class="jade-gg-body"
+              indicator-position="outside"
+              :interval="3600"
+              height="256px"
+            >
               <el-carousel-item v-for="(item, index) in tableData" :key="index">
                 <a :href="item.path" target="_blank" rel="noopener">
-                  <img :src="item.image">
+                  <img :src="item.image" />
                 </a>
               </el-carousel-item>
             </el-carousel>
             <div class="form-group">
-              <el-button :plain="true" type="success" size="large"
-              @click="onAddAdsClick">添加广告
+              <el-button :plain="true" type="success" size="large" @click="onAddAdsClick"
+                >添加广告
               </el-button>
             </div>
-            <el-table :data="tableData" stripe style="width: 100%">
+            <el-table :data="tableData" stripe style="width: 100%;">
               <el-table-column prop="path" label="地址" min-width="200">
                 <template slot-scope="scope">
                   <el-input v-model="scope.row.path"></el-input>
@@ -42,8 +47,11 @@
                 <template slot-scope="scope">
                   <el-switch
                     v-model="scope.row.active"
-                    :on-text="$t('yes')" :off-text="$t('no')"
-                    on-color="#13ce66" off-color="#ff4949">
+                    :on-text="$t('yes')"
+                    :off-text="$t('no')"
+                    on-color="#13ce66"
+                    off-color="#ff4949"
+                  >
                   </el-switch>
                 </template>
               </el-table-column>
@@ -54,11 +62,11 @@
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
                 <template slot-scope="scope">
-                  <el-button size="small"
-                    @click="handleSave(scope.row)">{{ $t('save') }}
+                  <el-button size="small" @click="handleSave(scope.row)"
+                    >{{ $t('save') }}
                   </el-button>
-                  <el-button size="small" type="danger"
-                    @click="handleDelete(scope.row)">{{ $t('delete') }}
+                  <el-button size="small" type="danger" @click="handleDelete(scope.row)"
+                    >{{ $t('delete') }}
                   </el-button>
                 </template>
               </el-table-column>
@@ -73,85 +81,95 @@
 <script>
 import metaMixin from 'mixins/metaMixin.js'
 
-export default{
+export default {
   name: 'ManageAdverts',
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('manageAdverts'),
       isLoading: false,
-      tableData: []
+      tableData: [],
     }
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
+  created() {
     this.initFetch()
   },
 
-  watch: {
-  },
+  watch: {},
 
   methods: {
-    initFetch () {
+    initFetch() {
       this.isLoading = true
-      this.$apis.getAdverts({}).then(result => {
-        this.isLoading = false
-        this.tableData = result
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
-    },
-
-    handleSave (row) {
-      this.isLoading = true
-      this.$apis.updateAdverts(row).then(result => {
-        this.isLoading = false
-        this.$message({message: `已成功保存`, type: 'success'})
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
-    },
-
-    handleDelete (row) {
-      this.$confirm('此操作将永久删除该条目, 是否继续?', this.$t('warmReminder'), {
-        confirmButtonText: this.$t('confirm'),
-        cancelButtonText: this.$t('cancel'),
-        type: 'warning'
-      }).then(() => {
-        this.isLoading = true
-        this.$apis.removeAdverts(row).then(result => {
-          this.$message({message: `已成功删除`, type: 'success'})
-          this.initFetch()
-        }).catch((error) => {
+      this.$apis
+        .getAdverts({})
+        .then((result) => {
+          this.isLoading = false
+          this.tableData = result
+        })
+        .catch((error) => {
           this.isLoading = false
           this.$message.error(`${error}`)
         })
-      }).catch(() => {
-      })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
 
-    onAddAdsClick () {
+    handleSave(row) {
+      this.isLoading = true
+      this.$apis
+        .updateAdverts(row)
+        .then((result) => {
+          this.isLoading = false
+          this.$message({ message: `已成功保存`, type: 'success' })
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
+
+    handleDelete(row) {
+      this.$confirm('此操作将永久删除该条目, 是否继续?', this.$t('warmReminder'), {
+        confirmButtonText: this.$t('confirm'),
+        cancelButtonText: this.$t('cancel'),
+        type: 'warning',
+      })
+        .then(() => {
+          this.isLoading = true
+          this.$apis
+            .removeAdverts(row)
+            .then((result) => {
+              this.$message({ message: `已成功删除`, type: 'success' })
+              this.initFetch()
+            })
+            .catch((error) => {
+              this.isLoading = false
+              this.$message.error(`${error}`)
+            })
+        })
+        .catch(() => {})
+    },
+
+    onAddAdsClick() {
       this.tableData.push({
         path: '',
         image: '',
         alt: '',
         active: true,
         sort: 0,
-        modifyTime: new Date()
+        modifyTime: new Date(),
       })
-    }
+    },
   },
 
   locales: {
@@ -159,26 +177,26 @@ export default{
       approved: 'Approved',
       unapproved: 'Unapproved',
       isActived: 'Is Actived',
-      creater: 'Creater'
+      creater: 'Creater',
     },
     zh: {
       approved: '已审核',
       unapproved: '未审核',
       isActived: '是否已激活',
-      creater: '创建者'
-    }
-  }
+      creater: '创建者',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./../../assets/scss/variables.scss";
+@import './../../assets/scss/variables.scss';
 
-#manage-users{
-  .entry-list{
+#manage-users {
+  .entry-list {
     width: 100%;
     padding: 15px;
-    .classify-title{
+    .classify-title {
       margin: 15px auto;
     }
   }

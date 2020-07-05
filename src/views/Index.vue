@@ -21,9 +21,9 @@ export default {
 
   mixins: [pageMixin, metaMixin],
 
-  data () {
+  data() {
     return {
-      title: ''
+      title: '',
     }
   },
 
@@ -31,19 +31,15 @@ export default {
     HomeLotus,
     NiceFantasy,
     Introduction,
-    LinkCountup
+    LinkCountup,
   },
 
-  beforeCreate () {
-  },
+  beforeCreate() {},
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
-  },
+  mounted() {},
 
-  methods: {
-  }
+  methods: {},
 }
 </script>

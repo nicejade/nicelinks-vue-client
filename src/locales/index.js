@@ -4,7 +4,7 @@ import eleEN from 'element-ui/lib/locale/lang/en'
 import eleZH from 'element-ui/lib/locale/lang/zh-CN'
 
 var locale = {}
-function addLang (key, a, b) {
+function addLang(key, a, b) {
   locale[key] = Object.assign(a, b)
 }
 addLang('zh', zh, eleZH)

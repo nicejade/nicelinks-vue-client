@@ -5,8 +5,13 @@
         <div class="main-container">
           <div class="entry-list">
             <h3 class="classify-title">{{ $t('tagsCollection') }}</h3>
-            <el-button class="radius-btn" v-for="(item, index) in tagsList" :key="item"
-              type="text" @click="onItemClick(item)">{{ item }}
+            <el-button
+              class="radius-btn"
+              v-for="(item, index) in tagsList"
+              :key="item"
+              type="text"
+              @click="onItemClick(item)"
+              >{{ item }}
             </el-button>
           </div>
           <aside-list></aside-list>
@@ -24,45 +29,46 @@ export default {
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('tagsCollection'),
       isLoading: false,
-      tagsList: []
+      tagsList: [],
     }
   },
 
-  watch: {
+  watch: {},
+
+  created() {
+    this.$apis
+      .getAllTags()
+      .then((result) => {
+        this.tagsList = this.$_.flattenDepth(result.sort())
+      })
+      .catch((error) => {
+        this.isLoading = false
+        this.$message.error(`${error}`)
+      })
   },
 
-  created () {
-    this.$apis.getAllTags().then(result => {
-      this.tagsList = this.$_.flattenDepth(result.sort())
-    }).catch((error) => {
-      this.isLoading = false
-      this.$message.error(`${error}`)
-    })
-  },
-
-  mounted () {
-  },
+  mounted() {},
 
   methods: {
-    onItemClick (tag) {
+    onItemClick(tag) {
       this.$router.push(`/tags/${tag}`)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./../assets/scss/variables.scss";
+@import './../assets/scss/variables.scss';
 
-#tags-coll-page{
-  .entry-list{
+#tags-coll-page {
+  .entry-list {
     padding: 15px;
-    .classify-title{
+    .classify-title {
       font-size: $font-large;
       font-weight: 500;
       margin: 15px auto;

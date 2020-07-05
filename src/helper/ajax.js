@@ -2,10 +2,10 @@ import axios from 'axios'
 import $q from 'q'
 import { $util, $errorReport } from 'helper'
 
-function requestHandle (params) {
+function requestHandle(params) {
   let defer = $q.defer()
   axios(params)
-    .then(res => {
+    .then((res) => {
       if (res && (res.unauthorized || res.statusCode === 401)) {
         window.location.href = '/login'
       }
@@ -22,7 +22,8 @@ function requestHandle (params) {
       } else {
         defer.reject()
       }
-    }).catch(err => {
+    })
+    .catch((err) => {
       $errorReport.captureException(err)
       defer.reject(err)
     })
@@ -30,7 +31,7 @@ function requestHandle (params) {
   return defer.promise
 }
 
-function redirectToIframe (url) {
+function redirectToIframe(url) {
   let iframe = document.createElement('iframe')
   iframe.style.display = 'none'
   iframe.src = url
@@ -45,13 +46,13 @@ export default {
     return requestHandle({
       method: 'post',
       url: url,
-      data: params
+      data: params,
     })
   },
   get: function (url, params, op) {
     return requestHandle({
       method: 'get',
-      url: $util.queryString(url, params)
+      url: $util.queryString(url, params),
     })
-  }
+  },
 }

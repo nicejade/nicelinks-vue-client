@@ -3,7 +3,7 @@
     <header-nav></header-nav>
     <side-nav v-if="isMobile"></side-nav>
     <main @click="hideMenu" class="main">
-      <router-view  :key="$route.path"></router-view>
+      <router-view :key="$route.path"></router-view>
     </main>
     <footer-nav></footer-nav>
   </div>
@@ -17,20 +17,20 @@ import { mapMutations } from 'vuex'
 
 export default {
   name: 'Frame',
-  data () {
+  data() {
     return {
       isMobile: window.innerWidth <= 960,
-      isShowDlgFlag: false
+      isShowDlgFlag: false,
     }
   },
 
   components: {
     HeaderNav,
     SideNav,
-    FooterNav
+    FooterNav,
   },
 
-  created () {
+  created() {
     if (!this.$auth.checkSession()) {
       this.$vuexSetUserInfo({})
     } else {
@@ -43,7 +43,7 @@ export default {
     // this.initWechatShare()
   },
 
-  mounted () {
+  mounted() {
     const isMobile = this.$isMobileScreen()
     const isAndroid = this.$util.isAndroidSystem()
     const isInQuickapp = this.$isFromQuickapp()
@@ -55,39 +55,40 @@ export default {
   watch: {
     $route: function (to, from) {
       // this.initWechatShare()
-    }
+    },
   },
 
   methods: {
-    ...mapMutations([
-      '$setIsLoadRouterInlineJs'
-    ]),
+    ...mapMutations(['$setIsLoadRouterInlineJs']),
 
-    hideMenu () {
+    hideMenu() {
       if (this.isShowSideNav) {
         this.$triggerSidenav()
       }
     },
 
-    initQuickappDeeplink () {
+    initQuickappDeeplink() {
       const routerInlineJs = 'https://statres.quickapp.cn/quickapp/js/routerinline.min.js'
-      this.$util.loadScript(routerInlineJs).then(() => {
-        this.$setIsLoadRouterInlineJs(true)
-      }).catch(error => {
-        this.$message.error(`SomeThing Error: ${error.message}`)
-      })
+      this.$util
+        .loadScript(routerInlineJs)
+        .then(() => {
+          this.$setIsLoadRouterInlineJs(true)
+        })
+        .catch((error) => {
+          this.$message.error(`SomeThing Error: ${error.message}`)
+        })
     },
 
-    initWechatShare () {
+    initWechatShare() {
       const params = {
-        url: encodeURIComponent(location.href.split('#')[0])
+        url: encodeURIComponent(location.href.split('#')[0]),
       }
-      this.$apis.getWechatApiSignature(params).then(result => {
+      this.$apis.getWechatApiSignature(params).then((result) => {
         this.initWechatConfig(result)
       })
     },
 
-    initWechatConfig (result) {
+    initWechatConfig(result) {
       const wechatJs = 'https://res.wx.qq.com/open/js/jweixin-1.0.0.js'
       this.$util.loadScript(wechatJs).then(() => {
         window.wx.config({
@@ -95,22 +96,18 @@ export default {
           timestamp: result.timestamp,
           nonceStr: result.nonceStr,
           signature: result.signature,
-          jsApiList: [
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage'
-          ]
+          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
         })
 
         window.wx.ready(() => {
           this.setWechatShare()
         })
 
-        window.wx.error((res) => {
-        })
+        window.wx.error((res) => {})
       })
     },
 
-    setWechatShare () {
+    setWechatShare() {
       if (!window.wx) return
 
       const shareTitle = window.document.title
@@ -120,13 +117,11 @@ export default {
         title: shareTitle,
         link: shareLink,
         imgUrl: shareImgUrl,
-        success: function () {
-        },
-        cancel: function () {
-        },
+        success: function () {},
+        cancel: function () {},
         fail: function (message) {
           window.alert(`Error: ${message}`)
-        }
+        },
       })
 
       window.wx.onMenuShareAppMessage({
@@ -136,15 +131,13 @@ export default {
         imgUrl: shareImgUrl,
         type: 'link',
         dataUrl: '',
-        success: function () {
-        },
-        cancel: function () {
-        },
+        success: function () {},
+        cancel: function () {},
         fail: function (message) {
           window.alert(`Error: ${message}`)
-        }
+        },
       })
-    }
-  }
+    },
+  },
 }
 </script>

@@ -20,8 +20,13 @@
           <h1 class="headline large-font">{{ $t('niceLinksStr') }}</h1>
           <section class="hero-description">
             <p v-html="$t('niceLinksDesc')"></p>
-            <router-link to="/explore/all" class="gtag-track"
-              data-action="mian-explore-all" data-category="index" data-label="explore-all">
+            <router-link
+              to="/explore/all"
+              class="gtag-track"
+              data-action="mian-explore-all"
+              data-category="index"
+              data-label="explore-all"
+            >
               {{ $t('exploreNice') }}
             </router-link>
           </section>
@@ -35,45 +40,42 @@
 export default {
   name: 'HomeLotus',
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
-  },
+  created() {},
 
-  methods: {
-  },
+  methods: {},
 
   locales: {
     en: {
-      niceLinksDesc: `NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet;<br>Here, you can easily find, learn, and share more useful or interesting things.`
+      niceLinksDesc: `NICE LINKS, as an open platform, is designed to gather around the world's excellent websites to explore the wider world of the Internet;<br>Here, you can easily find, learn, and share more useful or interesting things.`,
     },
     zh: {
-      niceLinksDesc: '倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；<br>在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。'
-    }
-  }
+      niceLinksDesc:
+        '倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；<br>在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。',
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/variables.scss";
+@import './../../assets/scss/variables.scss';
 @import './../../assets/scss/mixins.scss';
 
 @media (min-width: 550px) {
   .twelve.columns {
     width: 100%;
-    margin-left: 0
+    margin-left: 0;
   }
 }
 
-.flower-container{
+.flower-container {
   position: relative;
-  .unit-wrapper{
+  .unit-wrapper {
     position: absolute;
     width: 66%;
     top: 0;
@@ -84,7 +86,7 @@ export default {
     opacity: 0;
     animation-delay: 2.75s;
     animation: show-text 1s 2.5s forwards cubic-bezier(0.1, 0.95, 0.59, 1.22);
-    .headline{
+    .headline {
       position: absolute;
       top: calc(50% - 2em);
       left: -10em;
@@ -117,11 +119,10 @@ export default {
   }
 }
 
-
 .flower-container {
   padding-bottom: 8em;
   margin: 0em 0 -6em;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .flower-container .flower {
@@ -131,13 +132,13 @@ export default {
   width: 14em;
   margin: 5em auto 4.25em;
   font-size: 22px;
-  transition: all 0.2s ease-out
+  transition: all 0.2s ease-out;
 }
 
 .flower-container .part {
   position: absolute;
   top: 50%;
-  left: 50%
+  left: 50%;
 }
 
 .flower-container .part:nth-child(1) {
@@ -148,10 +149,10 @@ export default {
   background: rgba(199, 212, 227, 0.5);
   opacity: 0.6;
   transform-origin: 0 100% 0;
-  background-color: rgba(199, 212, 227, 0.5)!important;
+  background-color: rgba(199, 212, 227, 0.5) !important;
   opacity: 1;
   transform: rotate(0deg);
-  box-shadow: 0 2.75em 4.5em rgba(0, 0, 0, 0.2)
+  box-shadow: 0 2.75em 4.5em rgba(0, 0, 0, 0.2);
 }
 
 .flower-container .part:nth-child(2) {
@@ -162,10 +163,10 @@ export default {
   background: rgba(199, 212, 227, 0.5);
   opacity: 0.6;
   transform-origin: 0 100% 0;
-  background-color: rgba(199, 212, 227, 0.5)!important;
+  background-color: rgba(199, 212, 227, 0.5) !important;
   opacity: 1;
   transform: rotate(90deg);
-  box-shadow: 2.75em 0 4.5em rgba(0, 0, 0, 0.2)
+  box-shadow: 2.75em 0 4.5em rgba(0, 0, 0, 0.2);
 }
 
 .flower-container .part:nth-child(3) {
@@ -176,10 +177,10 @@ export default {
   background: rgba(199, 212, 227, 0.5);
   opacity: 0.6;
   transform-origin: 0 100% 0;
-  background-color: rgba(199, 212, 227, 0.5)!important;
+  background-color: rgba(199, 212, 227, 0.5) !important;
   opacity: 1;
   transform: rotate(180deg);
-  box-shadow: 0 -2.75em 4.5em rgba(0, 0, 0, 0.2)
+  box-shadow: 0 -2.75em 4.5em rgba(0, 0, 0, 0.2);
 }
 
 .flower-container .part:nth-child(4) {
@@ -190,10 +191,10 @@ export default {
   background: rgba(199, 212, 227, 0.5);
   opacity: 0.6;
   transform-origin: 0 100% 0;
-  background-color: rgba(199, 212, 227, 0.5)!important;
+  background-color: rgba(199, 212, 227, 0.5) !important;
   opacity: 1;
   transform: rotate(270deg);
-  box-shadow: -2.75em 0 4.5em rgba(0, 0, 0, 0.2)
+  box-shadow: -2.75em 0 4.5em rgba(0, 0, 0, 0.2);
 }
 
 .flower-container .part:nth-child(5) {
@@ -209,8 +210,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(0deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(0deg);
 }
 
 .flower-container .part:nth-child(6) {
@@ -226,8 +227,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(45deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(45deg);
 }
 
 .flower-container .part:nth-child(7) {
@@ -243,8 +244,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(90deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(90deg);
 }
 
 .flower-container .part:nth-child(8) {
@@ -260,8 +261,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(135deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(135deg);
 }
 
 .flower-container .part:nth-child(9) {
@@ -277,8 +278,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(180deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(180deg);
 }
 
 .flower-container .part:nth-child(10) {
@@ -294,8 +295,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(225deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(225deg);
 }
 
 .flower-container .part:nth-child(11) {
@@ -311,8 +312,8 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(270deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(270deg);
 }
 
 .flower-container .part:nth-child(12) {
@@ -328,118 +329,118 @@ export default {
   margin-top: -6em;
   margin-left: 0em;
   transform-origin: 0 100% 0;
-  background-color: rgba(121, 103, 158, 0.5)!important;
-  transform: rotate(315deg)
+  background-color: rgba(121, 103, 158, 0.5) !important;
+  transform: rotate(315deg);
 }
 
 .cssanimations .flower-container .part {
   opacity: 0;
-  animation: linear forwards 2s
+  animation: linear forwards 2s;
 }
 
 .cssanimations .part:nth-child(1) {
   animation-name: show-large-leaf;
-  animation-delay: .5s
+  animation-delay: 0.5s;
 }
 
 .cssanimations .part:nth-child(2) {
   animation-name: show-large-leaf;
-  animation-delay: 1s
+  animation-delay: 1s;
 }
 
 .cssanimations .part:nth-child(3) {
   animation-name: show-large-leaf;
-  animation-delay: 1.5s
+  animation-delay: 1.5s;
 }
 
 .cssanimations .part:nth-child(4) {
   animation-name: show-large-leaf;
-  animation-delay: 2s
+  animation-delay: 2s;
 }
 
 .cssanimations .part:nth-child(5) {
   animation-name: show-small-leaf;
-  animation-delay: .25s
+  animation-delay: 0.25s;
 }
 
 .cssanimations .part:nth-child(6) {
   animation-name: show-small-leaf;
-  animation-delay: .5s
+  animation-delay: 0.5s;
 }
 
 .cssanimations .part:nth-child(7) {
   animation-name: show-small-leaf;
-  animation-delay: .75s
+  animation-delay: 0.75s;
 }
 
 .cssanimations .part:nth-child(8) {
   animation-name: show-small-leaf;
-  animation-delay: 1s
+  animation-delay: 1s;
 }
 
 .cssanimations .part:nth-child(9) {
   animation-name: show-small-leaf;
-  animation-delay: 1.25s
+  animation-delay: 1.25s;
 }
 
 .cssanimations .part:nth-child(10) {
   animation-name: show-small-leaf;
-  animation-delay: 1.5s
+  animation-delay: 1.5s;
 }
 
 .cssanimations .part:nth-child(11) {
   animation-name: show-small-leaf;
-  animation-delay: 1.75s
+  animation-delay: 1.75s;
 }
 
 .cssanimations .part:nth-child(12) {
   animation-name: show-small-leaf;
-  animation-delay: 2s
+  animation-delay: 2s;
 }
 
 @keyframes show-large-leaf {
   0% {
-    opacity: 0
+    opacity: 0;
   }
   100% {
-    opacity: 1
+    opacity: 1;
   }
 }
 
 @keyframes show-small-leaf {
   0% {
-    opacity: 0
+    opacity: 0;
   }
   100% {
-    opacity: .7
+    opacity: 0.7;
   }
 }
 
 @keyframes show-text {
   0% {
     opacity: 0;
-    transform: translateY(1em)
+    transform: translateY(1em);
   }
   100% {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
 @media (max-width: $mobile-screen) {
   .hero-description {
-    br{
+    br {
       display: none;
     }
   }
 }
 
 @media (max-width: 768px) {
-  .flower-container{
+  .flower-container {
     .flower {
       font-size: 1.8rem !important;
     }
-    .unit-wrapper{
+    .unit-wrapper {
       width: 100%;
       .hero-description {
         font-size: 2.2rem;
@@ -451,7 +452,7 @@ export default {
 }
 
 @media (max-width: 560px) {
-  .flower-container{
+  .flower-container {
     .unit-wrapper .hero-description {
       font-size: 2.1rem;
       padding: 0px 10px;
@@ -460,7 +461,7 @@ export default {
 }
 
 @media (max-width: 414px) {
-  .flower-container{
+  .flower-container {
     .flower {
       font-size: 1.6rem !important;
     }

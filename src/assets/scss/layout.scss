@@ -7,39 +7,39 @@
   height: 100%;
 }
 
-.wrapper{
+.wrapper {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.2);
   padding-top: $header-height;
-  .panel-default{
-    .panel-body{
+  .panel-default {
+    .panel-body {
       min-height: calc(100vh - 280px);
       // 天空的颜色(ColorsOfSky),参见：https://uigradients.com/#ColorsOfSky
-      @include get-gradient-background(#EFEFEF, #F4F5F5, top);
-      .main-container{
+      @include get-gradient-background(#efefef, #f4f5f5, top);
+      .main-container {
         width: 100%;
         max-width: 960px;
         margin: auto;
-        .entry-list{
+        .entry-list {
           display: inline-block;
           float: left;
           background-color: $white;
           width: 66%;
-          .page-responsive{
+          .page-responsive {
             padding: 15px 0;
           }
         }
-        .tip-box-card{
-          .el-card__body{
+        .tip-box-card {
+          .el-card__body {
             padding: 18px 20px !important;
-            .no-result-tip{
+            .no-result-tip {
               text-align: left;
               color: $silver-grey;
               line-height: 2rem;
-              .no-result-tip-a{
+              .no-result-tip-a {
                 color: $brand;
-                &:hover{
+                &:hover {
                   text-decoration: none;
                   color: $brand;
                 }
@@ -52,7 +52,7 @@
   }
 }
 
-.nicelinks-logo{
+.nicelinks-logo {
   display: inline-block;
   color: $black;
   width: 100%;
@@ -61,10 +61,10 @@
   &:hover,
   &:focus,
   &:link,
-  &:active,{
+  &:active {
     color: $black;
   }
-  .title{
+  .title {
     height: 40px;
     line-height: 38px;
     margin: 0 1rem;
@@ -77,16 +77,16 @@
     &:hover,
     &:focus,
     &:link,
-    &:active,{
+    &:active {
       color: $black;
     }
   }
-  img{
+  img {
     width: 3rem;
   }
 }
 
-.nav-menu-item{
+.nav-menu-item {
   display: inline-block;
   float: right;
   min-width: 72px;
@@ -97,22 +97,22 @@
   margin: 0 10px;
 }
 
-.aside-list{
-  .aside-widget-title{
+.aside-list {
+  .aside-widget-title {
     font-weight: 700;
     margin: 10px 0;
     padding-top: 10px;
   }
 }
 
-.nav-menu-item:before{
-  content:'';
-  display:inline-block;
-  vertical-align:middle;
-  height:100%;
-  width:0;
+.nav-menu-item:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 0;
 }
 
-.table-operate{
+.table-operate {
   margin-top: 10px;
 }

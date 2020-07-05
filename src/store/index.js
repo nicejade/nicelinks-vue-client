@@ -18,6 +18,7 @@ Vue.use(Vuex)
 const state = {
   userInfo: JSON.parse(Cookies.get('userInfo') || '{}'),
   nicelinksList: [],
+  // 默认展示「最新分享」而不是「热门分享」；
   requestParamList: {
     pageCount: 1,
     pageSize: 10,

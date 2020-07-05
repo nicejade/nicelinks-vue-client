@@ -6,16 +6,17 @@
     </el-tabs>
 
     <div class="write-area" v-if="activeName === 'write'">
-      <el-input type="textarea" :placeholder="placeholder"
-        :maxlength="3600" :autosize="{ minRows: 6, maxRows: 21}"
+      <el-input
+        type="textarea"
+        :placeholder="placeholder"
+        :maxlength="3600"
+        :autosize="{ minRows: 6, maxRows: 21 }"
         v-model="originalVal"
-        @change="onChangeEvent">
+        @change="onChangeEvent"
+      >
       </el-input>
     </div>
-    <preview-md
-      class="preview-area"
-      :value="originalVal"
-      v-if="activeName === 'preview'">
+    <preview-md class="preview-area" :value="originalVal" v-if="activeName === 'preview'">
     </preview-md>
   </div>
 </template>
@@ -26,86 +27,85 @@ import PreviewMd from './PreviewMd'
 export default {
   name: 'Markdown',
 
-  data () {
+  data() {
     return {
       activeName: 'write',
-      originalVal: ''
+      originalVal: '',
     }
   },
 
   props: {
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   watch: {
-    value (val) {
+    value(val) {
       this.originalVal = val
-    }
+    },
   },
 
   components: {
-    PreviewMd
+    PreviewMd,
   },
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
+  mounted() {
     this.originalVal = this.value
   },
 
   methods: {
-    onChangeEvent (value) {
+    onChangeEvent(value) {
       this.$emit('input', value)
     },
 
-    onHandleClick () {}
+    onHandleClick() {},
   },
 
   locales: {
     en: {
       write: 'Write',
-      preview: 'Preview'
+      preview: 'Preview',
     },
     zh: {
       write: '编写',
-      preview: '预览'
-    }
-  }
+      preview: '预览',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "../../assets/scss/variables.scss";
+@import '../../assets/scss/variables.scss';
 
-.jade-markdown{
+.jade-markdown {
   padding: 15px 0;
   border: 1px solid $border-grey;
   border-radius: 3px;
-  .el-tabs--card{
-    .el-tabs__nav{
+  .el-tabs--card {
+    .el-tabs__nav {
       height: 36px;
       margin-left: 15px;
-      .el-tabs__item{
+      .el-tabs__item {
         height: 36px;
         line-height: 36px;
       }
     }
   }
-  .el-tabs__nav-wrap{
+  .el-tabs__nav-wrap {
     margin-bottom: 0px;
   }
-  .write-area{
+  .write-area {
     padding: 0 15px;
   }
-  .preview-area{
+  .preview-area {
     padding: 0 15px;
   }
 }

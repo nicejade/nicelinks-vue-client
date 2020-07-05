@@ -15,5 +15,5 @@ export default {
   isEmpty: _.isEmpty,
   flatten: _.flatten,
   flattenDepth: _.flattenDepth,
-  throttle: _.throttle
+  throttle: _.throttle,
 }

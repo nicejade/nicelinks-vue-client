@@ -1,11 +1,14 @@
 <template>
   <div id="friendship-links">
     <li class="aside-list-li" v-for="(item, index) in friendshipList">
-      <a class="aside-list-a gtag-track" target="_black"
+      <a
+        class="aside-list-a gtag-track"
+        target="_black"
         :href="$util.assembleExternalLink(item.path)"
-        :data-action="'friendship-'+item.label"
+        :data-action="'friendship-' + item.label"
         data-category="aside"
-        :data-label="'friendship-'+item.label">
+        :data-label="'friendship-' + item.label"
+      >
         {{ item.name }}
       </a>
     </li>
@@ -18,19 +21,16 @@ import $config from 'config'
 export default {
   name: 'FriendshipLinks',
 
-  data () {
+  data() {
     return {
-      friendshipList: $config.friends
+      friendshipList: $config.friends,
     }
   },
 
-  components: {
-  },
+  components: {},
 
-  mounted () {
-  },
+  mounted() {},
 
-  methods: {
-  }
+  methods: {},
 }
 </script>

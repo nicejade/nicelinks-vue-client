@@ -4,19 +4,16 @@
       <preview-md id="sentence" :value="currentSentenceStr || $t('noFill')" />
     </div>
     <div class="btn-group">
-      <el-button class="common-btn"
-        @click="onPreviousClick">
+      <el-button class="common-btn" @click="onPreviousClick">
         <icon class="icon" name="previous"></icon>
       </el-button>
-      <el-button class="common-btn button-ripple" :class="btnClassName"
-        @click="onRandomClick">
+      <el-button class="common-btn button-ripple" :class="btnClassName" @click="onRandomClick">
         <icon class="icon" name="random"></icon>
       </el-button>
-      <el-button class="common-btn"
-        @click="onCopy2ClipboardClick">
+      <el-button class="common-btn" @click="onCopy2ClipboardClick">
         <icon class="icon" name="copy"></icon>
       </el-button>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -27,49 +24,48 @@ import PreviewMd from 'components/markdown/PreviewMd.vue'
 export default {
   name: 'AwesomeSentence',
 
-  data () {
+  data() {
     return {
       isLoading: false,
       isCanLookBack: false,
       currentSentenceStr: '',
       lastSentenceStr: '',
-      currentSentence: {}
+      currentSentence: {},
     }
   },
 
   props: {
     sentence: {
       type: [Object],
-      default: ''
-    }
+      default: '',
+    },
   },
 
   computed: {
-    btnClassName () {
+    btnClassName() {
       const sentenceType = this.currentSentence.type
       return `${sentenceType}-colors`
     },
-    currentSentenceStr () {
+    currentSentenceStr() {
       return this.currentSentence.content || this.sentence.content
-    }
+    },
   },
 
   components: {
-    PreviewMd
+    PreviewMd,
   },
 
-  mounted () {
-  },
+  mounted() {},
 
   watch: {
     'sentence.content': function (val = '') {
       this.currentSentenceStr = val
       this.lastSentenceStr = val
-    }
+    },
   },
 
   methods: {
-    copyToClipboard (content) {
+    copyToClipboard(content) {
       const el = document.createElement('textarea')
       el.value = content
       document.body.appendChild(el)
@@ -77,7 +73,7 @@ export default {
       document.execCommand('copy')
       document.body.removeChild(el)
     },
-    copyToIosClipboard (content) {
+    copyToIosClipboard(content) {
       window.getSelection().removeAllRanges()
       const node = document.getElementById('sentence')
       const range = document.createRange()
@@ -87,47 +83,49 @@ export default {
       window.getSelection().removeAllRanges()
     },
     /* ---------------------Click Event--------------------- */
-    onPreviousClick () {
+    onPreviousClick() {
       if (!this.isCanLookBack) {
         return this.$message({
           type: 'info',
-          message: `错过，许是永恒，只可回首前一条`
+          message: `错过，许是永恒，只可回首前一条`,
         })
       }
       this.currentSentenceStr = this.lastSentenceStr
       this.isCanLookBack = false
     },
-    onRandomClick () {
+    onRandomClick() {
       this.isLoading = true
-      this.$apis.getRandomSentence().then(result => {
-        this.lastSentenceStr = this.currentSentenceStr
-        this.isCanLookBack = true
-        this.currentSentence = result || {}
-        this.currentSentenceStr = result.content
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
+      this.$apis
+        .getRandomSentence()
+        .then((result) => {
+          this.lastSentenceStr = this.currentSentenceStr
+          this.isCanLookBack = true
+          this.currentSentence = result || {}
+          this.currentSentenceStr = result.content
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
-    onCopy2ClipboardClick () {
+    onCopy2ClipboardClick() {
       const constent = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
-      this.$util.isIosSystem()
-        ? this.copyToIosClipboard(constent)
-        : this.copyToClipboard(constent)
+      this.$util.isIosSystem() ? this.copyToIosClipboard(constent) : this.copyToClipboard(constent)
       this.$message({
         type: 'success',
-        message: `已将此条「锦语」复制到您的剪切板`
+        message: `已将此条「锦语」复制到您的剪切板`,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./../../assets/scss/variables.scss";
+@import './../../assets/scss/variables.scss';
 
-.awesome-sentence{
+.awesome-sentence {
   margin: 0 15px;
   margin-bottom: -10px;
   .lined-paper {
@@ -146,23 +144,25 @@ export default {
     -ms-background-size: 100% 26px;
     -o-background-size: 100% 26px;
     background-size: 100% 26px;
-    div, p{
+    div,
+    p {
       line-height: 26px;
     }
-    div:last-child, p:last-child {
+    div:last-child,
+    p:last-child {
       margin: 0;
     }
   }
-  .btn-group{
+  .btn-group {
     margin-top: 10px;
-    .common-btn{
+    .common-btn {
       display: inline-block;
       position: relative;
       width: 4.3rem;
       height: 4.3rem;
       vertical-align: middle;
       text-align: center;
-      border: 1px solid #EFEFEF;
+      border: 1px solid #efefef;
       border-radius: 50%;
       margin: 0 15px;
       .icon {

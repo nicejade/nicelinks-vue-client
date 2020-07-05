@@ -9,36 +9,31 @@ import './markdown.css'
 export default {
   name: 'PreviewMd',
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   computed: {
-    beParsedVal () {
+    beParsedVal() {
       return marked(this.value, {
-        sanitize: true
+        sanitize: true,
       })
-    }
+    },
   },
 
   props: {
     value: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
-  },
+  mounted() {},
 
-  methods: {
-  }
+  methods: {},
 }
 </script>

@@ -13,16 +13,16 @@ export default {
       type: String,
       required: true,
       default: '',
-      validator (val) {
+      validator(val) {
         return Icons[val]
-      }
-    }
+      },
+    },
   },
-  data () {
+  data() {
     return {
       Icons: Icons,
-      iconClass: 'icon-' + this.name
+      iconClass: 'icon-' + this.name,
     }
-  }
+  },
 }
 </script>

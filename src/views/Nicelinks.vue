@@ -5,17 +5,9 @@
         <div class="main-container">
           <div class="entry-list">
             <search class="mobile-search" v-if="$isMobileScreen()" />
-            <sub-head
-              :theme-list="themeList"
-              @fetch-search="$fetchSearch">
-            </sub-head>
-            <operate-tabs class="operate-tabs-space"
-              @switch-tabs="$onSwitchTabs">
-            </operate-tabs>
-            <links-list
-              :is-abstract="true"
-              :pdata="$niceLinksArray"
-              :is-loading="isLoading">
+            <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
+            <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs"> </operate-tabs>
+            <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
             <load-more></load-more>
           </div>
@@ -36,25 +28,23 @@ export default {
 
   mixins: [partsMixin, metaMixin],
 
-  data () {
+  data() {
     return {
-      themeList: []
+      themeList: [],
     }
   },
 
-  components: {
-  },
+  components: {},
 
   watch: {
-    '$route': function (to, from) {
+    $route: function (to, from) {
       // 只是别名变化, Vue 无法监听到 @17-07-18;
-    }
+    },
   },
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
+  mounted() {
     this.updatePageTitle()
     this.setFetchData()
 
@@ -66,15 +56,15 @@ export default {
   },
 
   methods: {
-    updatePageTitle () {
+    updatePageTitle() {
       const cClassify = this.$route.params.classify
       const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
       this.title = this.$t(localesKey)
     },
 
-    setFetchData () {
+    setFetchData() {
       let currentClassify = this.$route.params.classify
-      let currentItem = $config.classify.find(item => {
+      let currentItem = $config.classify.find((item) => {
         return currentClassify === item.name
       })
 
@@ -85,36 +75,36 @@ export default {
           pageCount: 1,
           sortType: -1,
           sortTarget: 'likes',
-          theme: null
+          theme: null,
         })
       }
       this.setThemeList()
     },
 
-    setThemeList () {
+    setThemeList() {
       let allThemeList = []
-      $config.theme.map(item => {
+      $config.theme.map((item) => {
         allThemeList = allThemeList.concat(item)
       })
       let classify = this.$requestParamList.classify
       this.themeList = classify ? $config.theme[classify] : allThemeList
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style type="text/css" lang="scss" scoped>
-@import "../assets/scss/variables.scss";
-.entry-list{
+@import '../assets/scss/variables.scss';
+.entry-list {
   position: relative;
-  .operate-tabs-space{
+  .operate-tabs-space {
     margin-bottom: -15px;
   }
 }
 
 @media screen and (max-width: $mobile-screen) {
-  .entry-list{
-    .operate-tabs-space{
+  .entry-list {
+    .operate-tabs-space {
       padding-top: 9rem;
     }
   }

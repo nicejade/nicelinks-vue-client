@@ -11,12 +11,9 @@
     :placeholder="$t('searchYourWant')"
     @select="handleSearchSelect"
     @focus="handleSearchFocus"
-    @blur="handleSearchBlur">
-    <i
-      class="el-icon-search el-input__icon"
-      slot="suffix"
-      @click="handleIconClick">
-    </i>
+    @blur="handleSearchBlur"
+  >
+    <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"> </i>
     <template slot-scope="{ item }">
       <p class="item-title" v-html="styleForTitle(item)"></p>
       <div class="item-desc" v-html="styleForDesc(item)"></div>
@@ -29,7 +26,7 @@ import marked from 'marked'
 
 export default {
   name: 'Search',
-  data () {
+  data() {
     return {
       keyword: '',
       keywordBackup: '',
@@ -37,28 +34,24 @@ export default {
       isTriggerFocus: true,
       isPopperToBody: true,
       startPageY: 0,
-      startPageX: 0
+      startPageX: 0,
     }
   },
 
-  props: {
-  },
+  props: {},
 
-  computed: {
-  },
+  computed: {},
 
-  components: {
-  },
+  components: {},
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
+  mounted() {
     this.switchSerachShowHide()
   },
 
   methods: {
-    switchSerachShowHide () {
+    switchSerachShowHide() {
       if (this.$isMobileScreen()) {
         document.addEventListener('touchstart', (elem) => {
           this.startPageX = elem.touches[0].pageX
@@ -69,22 +62,26 @@ export default {
         })
         // @desc: Fix can't perfect work about touchmove in IOS system.
         if (this.$util.isIosSystem()) {
-          document.addEventListener('scroll', this.$_.throttle(() => {
-            const operateTabsElem = document.getElementById('operate-tabs')
-            const tabstoTopSpace = operateTabsElem && operateTabsElem.getBoundingClientRect().top
-            if (tabstoTopSpace > 50) {
-              this.handleSearchInput('removeClass')
-            }
-          }, 60), false)
+          document.addEventListener(
+            'scroll',
+            this.$_.throttle(() => {
+              const operateTabsElem = document.getElementById('operate-tabs')
+              const tabstoTopSpace = operateTabsElem && operateTabsElem.getBoundingClientRect().top
+              if (tabstoTopSpace > 50) {
+                this.handleSearchInput('removeClass')
+              }
+            }, 60),
+            false
+          )
         }
       }
     },
 
-    getDistanceAngle (angx, angy) {
-      return Math.atan2(angy, angx) * 180 / Math.PI
+    getDistanceAngle(angx, angy) {
+      return (Math.atan2(angy, angx) * 180) / Math.PI
     },
 
-    dealWitchTouchCB (touches) {
+    dealWitchTouchCB(touches) {
       const endPageX = touches[0].pageX
       const endPageY = touches[0].pageY
 
@@ -103,7 +100,7 @@ export default {
       }
     },
 
-    handleSearchInput (funcName) {
+    handleSearchInput(funcName) {
       const searchNiceElem = document.getElementById('search-nice')
       this.$document[funcName](searchNiceElem, 'search-extra-class')
 
@@ -111,28 +108,34 @@ export default {
       subHeadElem && this.$document[funcName](subHeadElem, 'sub-head-follow')
     },
 
-    handleFetchNiceLinks (queryString, callback) {
+    handleFetchNiceLinks(queryString, callback) {
       this.keywordBackup = queryString
       if (queryString === '' && queryString.trim() === '') {
         const defSize = this.$isMobileScreen() ? 8 : 16
-        return this.$apis.getRandomLinks({ size: defSize }).then(result => {
-          callback(result)
-        }).catch(error => {
-          this.$message.error(`${error}`)
-        })
+        return this.$apis
+          .getRandomLinks({ size: defSize })
+          .then((result) => {
+            callback(result)
+          })
+          .catch((error) => {
+            this.$message.error(`${error}`)
+          })
       }
 
       const params = {
-        keyword: queryString
+        keyword: queryString,
       }
-      this.$apis.searchNiceLinks(params).then(result => {
-        callback(result)
-      }).catch(error => {
-        this.$message.error(`${error}`)
-      })
+      this.$apis
+        .searchNiceLinks(params)
+        .then((result) => {
+          callback(result)
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
     },
 
-    handleSearchSelect (item) {
+    handleSearchSelect(item) {
       if (!item || !item._id) return
       const keyword = this.keywordBackup || 'srandom'
       const stype = item.stype || 'srandom'
@@ -140,10 +143,9 @@ export default {
       this.$router.push(`/post/${item._id}${paramStr}`)
     },
 
-    handleIconClick () {
-    },
+    handleIconClick() {},
 
-    handleSearchFocus () {
+    handleSearchFocus() {
       if (this.$isMobileScreen()) {
         if (this.$util.isAndroidSystem()) {
           document.querySelector('.search-autocomplete').style.display = 'none'
@@ -159,40 +161,36 @@ export default {
       document.querySelector('.el-input__inner').style.width = `${expandedWidth}px`
     },
 
-    handleSearchBlur () {
+    handleSearchBlur() {
       if (this.$isMobileScreen()) return
       document.querySelector('.el-input__inner').style.width = '221px'
     },
 
-    styleForTitle (item) {
+    styleForTitle(item) {
       return item.title.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
     },
 
-    styleForDesc (item) {
-      const tempDesc = (item && item.stype)
-        ? item[item.stype]
-        : item.review || item.desc
+    styleForDesc(item) {
+      const tempDesc = item && item.stype ? item[item.stype] : item.review || item.desc
       let niceDesc = marked(tempDesc, {
-        sanitize: true
+        sanitize: true,
       })
       niceDesc = this.$util.filterHtmlTag(niceDesc)
       niceDesc = this.$util.sliceToAheadTarget(niceDesc, this.keyword)
       return niceDesc.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
-    }
+    },
   },
 
   locales: {
-    zh: {
-    },
-    en: {
-    }
-  }
+    zh: {},
+    en: {},
+  },
 }
 </script>
 
 <style lang="scss">
-@import "../assets/scss/variables.scss";
-@import "../assets/scss/mixins.scss";
+@import '../assets/scss/variables.scss';
+@import '../assets/scss/mixins.scss';
 
 .el-autocomplete-suggestion {
   .el-scrollbar {
@@ -239,7 +237,7 @@ export default {
   }
 }
 
-.search-autocomplete .el-autocomplete-suggestion__wrap{
+.search-autocomplete .el-autocomplete-suggestion__wrap {
   li {
     padding: 0 15px;
     line-height: 18px;
@@ -277,7 +275,7 @@ export default {
   opacity: 0;
   animation-name: search-up-hide;
   animation-fill-mode: both;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: ease-out;
 }
 @keyframes search-up-hide {
@@ -292,7 +290,7 @@ export default {
   top: 60px;
   animation-name: sub-head-up;
   animation-fill-mode: both;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: ease-out;
 }
 @keyframes sub-head-up {

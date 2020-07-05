@@ -8,7 +8,7 @@
               <el-tab-pane label="未激活" name="first"></el-tab-pane>
               <el-tab-pane label="已激活" name="second"></el-tab-pane>
             </el-tabs>
-            <el-table :data="tableData" stripe style="width: 100%">
+            <el-table :data="tableData" stripe style="width: 100%;">
               <el-table-column prop="number" label="第几成员" width="100">
                 <template slot-scope="scope">{{ scope.row.number }}</template>
               </el-table-column>
@@ -34,8 +34,8 @@
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
                 <template slot-scope="scope">
-                  <el-button size="small" type="danger"
-                    @click="handleDelete(scope.row)">{{ $t('delete') }}
+                  <el-button size="small" type="danger" @click="handleDelete(scope.row)"
+                    >{{ $t('delete') }}
                   </el-button>
                 </template>
               </el-table-column>
@@ -49,7 +49,8 @@
                 :current-page="tableControl.pageCount"
                 :page-size="tableControl.pageSize"
                 :page-sizes="[20, 50, 100]"
-                layout="total, sizes, prev, pager, next, jumper">
+                layout="total, sizes, prev, pager, next, jumper"
+              >
               </el-pagination>
             </div>
           </div>
@@ -62,12 +63,12 @@
 <script>
 import metaMixin from 'mixins/metaMixin.js'
 
-export default{
+export default {
   name: 'ManageUsers',
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('manageUsers'),
@@ -79,100 +80,108 @@ export default{
         pageCount: 1,
         pageSize: 20,
         sortType: -1,
-        sortTarget: 'created'
+        sortTarget: 'created',
       },
-      currentRowData: {}
+      currentRowData: {},
     }
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
+  created() {
     this.initFetch()
   },
 
   watch: {
-    activeName (val) {
+    activeName(val) {
       this.initFetch()
-    }
+    },
   },
 
   methods: {
-    initFetch () {
+    initFetch() {
       let params = {}
       Object.assign(params, this.tableControl)
       params.active = !(this.activeName === 'first')
 
       this.isLoading = true
-      this.$apis.getAllUsers(params).then(result => {
-        this.isLoading = false
-        this.tableData = result.data
-        this.tableControl.totalCount = result.count
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
+      this.$apis
+        .getAllUsers(params)
+        .then((result) => {
+          this.isLoading = false
+          this.tableData = result.data
+          this.tableControl.totalCount = result.count
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
 
-    handleClick () {
-    },
+    handleClick() {},
 
-    handleSizeChange (val) {
+    handleSizeChange(val) {
       this.tableControl.pageSize = val
       this.initFetch()
     },
 
-    handleCurrentChange (val) {
+    handleCurrentChange(val) {
       this.tableControl.pageCount = val
       this.initFetch()
     },
 
-    handleEdit (row) {
+    handleEdit(row) {
       this.currentRowData = row
     },
 
-    handleDelete (params) {
+    handleDelete(params) {
       this.$confirm('此操作将永久删除该条目, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        params.operatorId = this.userInfo && this.userInfo._id
-
-        this.isLoading = true
-        this.$apis.removeUserById(params).then(result => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          })
-        }).catch((error) => {
-          this.$message.error(`${error}`)
-        }).finally(() => {
-          this.isLoading = false
-        })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        })
+        type: 'warning',
       })
+        .then(() => {
+          params.operatorId = this.userInfo && this.userInfo._id
+
+          this.isLoading = true
+          this.$apis
+            .removeUserById(params)
+            .then((result) => {
+              this.$message({
+                type: 'success',
+                message: '删除成功!',
+              })
+            })
+            .catch((error) => {
+              this.$message.error(`${error}`)
+            })
+            .finally(() => {
+              this.isLoading = false
+            })
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除',
+          })
+        })
     },
 
-    onUpdateSuccess () {
+    onUpdateSuccess() {
       this.initFetch()
     },
 
-    onUserClick (username) {
+    onUserClick(username) {
       let userName = username || this.userInfo.username
       this.$router.push(`/member/${userName}`)
     },
 
-    onCreaterClick (username) {
+    onCreaterClick(username) {
       this.$router.push(`/member/${username}`)
-    }
+    },
   },
 
   locales: {
@@ -180,26 +189,26 @@ export default{
       approved: 'Approved',
       unapproved: 'Unapproved',
       isActived: 'Is Actived',
-      creater: 'Creater'
+      creater: 'Creater',
     },
     zh: {
       approved: '已审核',
       unapproved: '未审核',
       isActived: '是否已激活',
-      creater: '创建者'
-    }
-  }
+      creater: '创建者',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./../../assets/scss/variables.scss";
+@import './../../assets/scss/variables.scss';
 
-#manage-users{
-  .entry-list{
+#manage-users {
+  .entry-list {
     width: 100%;
     padding: 15px;
-    .classify-title{
+    .classify-title {
       margin: 15px auto;
     }
   }

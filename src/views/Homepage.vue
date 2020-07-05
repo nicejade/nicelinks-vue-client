@@ -6,29 +6,32 @@
           <div class="entry-list">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-              <el-breadcrumb separator="/">
+                <el-breadcrumb separator="/">
                   <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
                   <el-breadcrumb-item>{{ $t('homepage') }}</el-breadcrumb-item>
                 </el-breadcrumb>
               </div>
 
               <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane name="BaseInfo"
-                  :label="isUserSelf ? $t('baseInfo') : $t('baseInfo')">
+                <el-tab-pane name="BaseInfo" :label="isUserSelf ? $t('baseInfo') : $t('baseInfo')">
                 </el-tab-pane>
-                <el-tab-pane name="MyPublish"
-                  :label="isUserSelf ? $t('myPublish') : $t('hisPublish')">
+                <el-tab-pane
+                  name="MyPublish"
+                  :label="isUserSelf ? $t('myPublish') : $t('hisPublish')"
+                >
                 </el-tab-pane>
-                <el-tab-pane name="MyLikes"
-                  :label="isUserSelf ? $t('myLikes') : $t('hisLikes')">
+                <el-tab-pane name="MyLikes" :label="isUserSelf ? $t('myLikes') : $t('hisLikes')">
                 </el-tab-pane>
-                <el-tab-pane name="MyDislikes" v-if="isUserSelf"
-                  :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')">
+                <el-tab-pane
+                  name="MyDislikes"
+                  v-if="isUserSelf"
+                  :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')"
+                >
                 </el-tab-pane>
               </el-tabs>
               <el-card class="box-card base-info" v-if="isShowBaseInfo">
                 <div slot="header" class="clearfix">
-                  <img class="avatar" :src="userAvatar" alt="User Avatar">
+                  <img class="avatar" :src="userAvatar" alt="User Avatar" />
                   <div class="info">
                     <p class="username">{{ mUserInfo.username }}</p>
                     <p class="nickname" v-if="mUserInfo.profile.nickname">
@@ -38,7 +41,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
+                  <label class="col-sm-3 control-label">{{ $t('personalWebsite') }}:</label>
                   <div class="col-sm-9">
                     <p class="text-padding gray" v-if="!mUserInfo.profile.website">
                       {{ $t('noFill') }}
@@ -49,20 +52,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
+                  <label class="col-sm-3 control-label">{{ $t('profile') }}:</label>
                   <div class="col-sm-9">
-                    <preview-md
-                      :value="mUserInfo.profile.description || $t('noFill')">
+                    <preview-md :value="mUserInfo.profile.description || $t('noFill')">
                     </preview-md>
-                    <p class="text-padding gray">
-                    </p>
+                    <p class="text-padding gray"></p>
                   </div>
                 </div>
               </el-card>
-              <links-list v-else
-                :pdata="myLinksList"
-                :is-abstract="true"
-                :is-loading="isLoading">
+              <links-list v-else :pdata="myLinksList" :is-abstract="true" :is-loading="isLoading">
               </links-list>
             </el-card>
           </div>
@@ -77,16 +75,16 @@
 import metaMixin from 'mixins/metaMixin.js'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
-export default{
+export default {
   name: 'HomePage',
 
   mixins: [metaMixin],
 
   components: {
-    PreviewMd
+    PreviewMd,
   },
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('homepage'),
@@ -95,67 +93,71 @@ export default{
       activeName: 'BaseInfo',
       myLinksList: [],
       mUserInfo: {
-        profile: {}
+        profile: {},
       },
       nicerNumText: '',
       tabApiObj: {
         MyPublish: 'getMyPublish',
         MyLikes: 'getMyLikes',
-        MyDislikes: 'getMyDislikes'
+        MyDislikes: 'getMyDislikes',
       },
       tabDataObj: {
         MyPublish: null,
         MyLikes: null,
-        MyDislikes: null
-      }
+        MyDislikes: null,
+      },
     }
   },
 
   computed: {
-    isUserSelf () {
+    isUserSelf() {
       return this.userInfo && this.userInfo.username === this.$route.params.id
     },
-    userAvatar () {
+    userAvatar() {
       if (this.mUserInfo) {
         let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
         let userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
-    }
+    },
   },
 
-  created () {
+  created() {
     this.getUserInfoByUsername()
   },
 
   watch: {
-    $lang (val) {
+    $lang(val) {
       this.updateDetailInfo()
-    }
+    },
   },
 
   methods: {
-    getUserInfoByUsername () {
+    getUserInfoByUsername() {
       this.isLoading = true
-      let params = {username: this.$route.params.id}
-      this.$apis.getUserInfo(params).then(result => {
-        this.mUserInfo = result
-        this.updateDetailInfo()
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
+      let params = { username: this.$route.params.id }
+      this.$apis
+        .getUserInfo(params)
+        .then((result) => {
+          this.mUserInfo = result
+          this.updateDetailInfo()
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
 
-    updateDetailInfo () {
+    updateDetailInfo() {
       let cTemp = this.$t('nicerNumText').replace('@X', this.mUserInfo.number || 1)
       let joinTime = this.mUserInfo.activeTime || this.mUserInfo.createdAt
-      joinTime = (new Date(joinTime)).Format('yyyy-MM-dd hh:mm:ss')
+      joinTime = new Date(joinTime).Format('yyyy-MM-dd hh:mm:ss')
       this.nicerNumText = cTemp.replace('@TIME', joinTime)
     },
 
-    requestApiUpdateList (index) {
+    requestApiUpdateList(index) {
       if (this.tabDataObj[index]) {
         this.myLinksList = this.tabDataObj[index]
         return
@@ -164,29 +166,31 @@ export default{
       let currentApi = this.tabApiObj[index]
       let params = {
         username: this.$route.params.id,
-        userId: this.userInfo && this.userInfo._id || ''
+        userId: (this.userInfo && this.userInfo._id) || '',
       }
 
       this.isLoading = true
-      this.$apis[currentApi](params).then(result => {
-        this.myLinksList = this.tabDataObj[index] = result
-        this.isLoading = false
-      }).catch((error) => {
-        this.$message.error(`${error}`)
-        this.isLoading = true
-      })
+      this.$apis[currentApi](params)
+        .then((result) => {
+          this.myLinksList = this.tabDataObj[index] = result
+          this.isLoading = false
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+          this.isLoading = true
+        })
     },
 
-    handleClick (item) {
+    handleClick(item) {
       this.isShowBaseInfo = item.name === 'BaseInfo'
       if (item.name !== 'BaseInfo') {
         this.requestApiUpdateList(item.name)
       }
     },
 
-    onLinkClick (item) {
-      item.website ? document.location.href = item.website : ''
-    }
+    onLinkClick(item) {
+      item.website ? (document.location.href = item.website) : ''
+    },
   },
 
   locales: {
@@ -199,7 +203,7 @@ export default{
       hisLikes: 'His Likes',
       hisDislikes: 'His Dislikes',
       nicerNumText: `<a href='/'>NICE LINKS</a> Member No. @X, Join in @TIME`,
-      noFill: 'Not yet filled'
+      noFill: 'Not yet filled',
     },
     zh: {
       baseInfo: '基本信息',
@@ -210,38 +214,38 @@ export default{
       hisLikes: '他的点赞',
       hisDislikes: '他的狂踩',
       nicerNumText: `<a href='/'>倾城之链</a>第 @X 号成员，加入于 @TIME`,
-      noFill: '暂未填写'
-    }
-  }
+      noFill: '暂未填写',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./../assets/scss/variables.scss";
+@import './../assets/scss/variables.scss';
 @import './../assets/scss/mixins.scss';
 
-.homepage{
-  .main-container{
-    .links-list{
-      .el-card{
+.homepage {
+  .main-container {
+    .links-list {
+      .el-card {
         padding: 15px;
       }
     }
-    .el-card__header{
+    .el-card__header {
       padding: 15px;
     }
-    .el-tabs{
+    .el-tabs {
       padding: 0 15px;
     }
-    .el-card__body{
+    .el-card__body {
       padding: 0;
     }
-    .el-tabs__header{
+    .el-tabs__header {
       margin: 0;
     }
-    .base-info{
+    .base-info {
       padding: 2rem;
-      .avatar{
+      .avatar {
         float: left;
         border-radius: 50%;
         height: 6rem;
@@ -250,18 +254,18 @@ export default{
         position: relative;
         margin: 0;
       }
-      .info{
+      .info {
         @include flex-box-center(column, space-around, left);
         width: calc(100% - 7rem);
         height: 6rem;
         float: left;
         margin-left: 1rem;
-        .username{
+        .username {
           font-size: $font-large;
           font-weight: 500;
         }
       }
-      .text-padding{
+      .text-padding {
         padding: 10px 0;
       }
     }
@@ -269,12 +273,12 @@ export default{
 }
 
 @media (max-width: 768px) {
-  #app .wrapper.homepage{
-    .main-container{
-      .el-card__body{
+  #app .wrapper.homepage {
+    .main-container {
+      .el-card__body {
         padding: 0;
       }
-      .base-info{
+      .base-info {
         padding: 1rem;
       }
     }

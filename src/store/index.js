@@ -22,7 +22,7 @@ const state = {
     pageCount: 1,
     pageSize: 10,
     sortType: -1,
-    sortTarget: 'created'
+    sortTarget: 'created',
   },
   isLoadMore: true,
   lastPathUrl: '',
@@ -30,9 +30,9 @@ const state = {
     appid: '',
     nonceStr: '',
     signature: '',
-    timestamp: ''
+    timestamp: '',
   },
-  isLoadRouterInlineJs: false
+  isLoadRouterInlineJs: false,
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -43,5 +43,5 @@ export default new Vuex.Store({
   getters,
   mutations,
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger()] : [],
 })

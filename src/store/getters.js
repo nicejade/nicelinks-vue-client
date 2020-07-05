@@ -1,5 +1,5 @@
 export default {
-  userInfo (state) {
+  userInfo(state) {
     return state.userInfo
-  }
+  },
 }

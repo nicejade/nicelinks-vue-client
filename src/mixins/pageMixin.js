@@ -1,16 +1,13 @@
 export default {
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
-  computed: {
-  },
+  computed: {},
 
-  created () {
-  },
+  created() {},
 
-  mounted () {
+  mounted() {
     this.sendGtagEventTracking()
   },
 
@@ -19,7 +16,7 @@ export default {
       Desc: 使用 gtag.js 进行事件跟踪(通过 JS + DOM);
       Date: 2018-03-04
     */
-    sendGtagEventTracking () {
+    sendGtagEventTracking() {
       const bindEventListener = (elem) => {
         const gtagAction = elem.dataset.action
         const gtagCategory = elem.dataset.category
@@ -29,8 +26,8 @@ export default {
           elem.onclick = () => {
             const gtag = window.gtag || (() => {})
             gtag('event', gtagAction, {
-              'event_category': gtagCategory,
-              'event_label': gtagLabel
+              event_category: gtagCategory,
+              event_label: gtagLabel,
             })
           }
         }
@@ -38,6 +35,6 @@ export default {
 
       const gtagTrackList = document.querySelectorAll('.gtag-track')
       ;[].forEach.call(gtagTrackList, bindEventListener, false)
-    }
-  }
+    },
+  },
 }

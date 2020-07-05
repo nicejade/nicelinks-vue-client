@@ -4,15 +4,23 @@
       <div class="footer-body">
         <div class="content">
           <p>
-            <a target="_blank" rel="noopener" class="link gtag-track" href="/"
-              data-action="footer-nicelinks" data-category="footer" data-label="footer-nicelinks">
+            <a
+              target="_blank"
+              rel="noopener"
+              class="link gtag-track"
+              href="/"
+              data-action="footer-nicelinks"
+              data-category="footer"
+              data-label="footer-nicelinks"
+            >
               {{ $t('niceLinksStr') }}
             </a>
             : {{ $t('mySiteFunc') }}
           </p>
         </div>
         <div class="contact">
-          <a v-for="item in contactArray"
+          <a
+            v-for="item in contactArray"
             :data-action="'footer-social-' + item.class"
             data-category="footer"
             :data-label="'footer-social-' + item.class"
@@ -21,31 +29,40 @@
             target="_blank"
             rel="noopener"
             :class="item.class"
-            class="social-btn gtag-track">
+            class="social-btn gtag-track"
+          >
             <icon class="icons" :name="item.class"></icon>
           </a>
         </div>
         <div class="icp">
           <span>{{ copyright }}</span>
-          <a class="link gtag-track"
+          <a
+            class="link gtag-track"
             href="https://jeffjade.com?from=nicelinks.site"
-            target="_blank" rel="noopener"
+            target="_blank"
+            rel="noopener"
             data-action="footer-jeffjade"
             data-category="footer"
-            data-label="footer-jeffjade">
-              晚晴幽草轩
-          </a>{{ $t('produced') }}
+            data-label="footer-jeffjade"
+          >
+            晚晴幽草轩 </a
+          >{{ $t('produced') }}
           <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">
             粤ICP备17099767号
           </a>
-          <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示">
+          <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
         </div>
       </div>
     </footer>
-    <a v-if="isShowOpenAppBtn"
-      href="javascript:;" @click="onOpenAppClick"
+    <a
+      v-if="isShowOpenAppBtn"
+      href="javascript:;"
+      @click="onOpenAppClick"
       class="link gtag-track open-in-quickapp"
-      data-action="footer-quickapp" data-category="footer" data-label="footer-quickapp">
+      data-action="footer-quickapp"
+      data-category="footer"
+      data-label="footer-quickapp"
+    >
       {{ $t('openInQuickapp') }}
     </a>
   </div>
@@ -56,42 +73,42 @@ import $config from 'config'
 
 export default {
   name: 'FooterNav',
-  data () {
+  data() {
     return {
       copyright: '',
-      contactArray: this.filterEntryInMobile($config.contact)
+      contactArray: this.filterEntryInMobile($config.contact),
     }
   },
 
   computed: {
-    isShowOpenAppBtn () {
+    isShowOpenAppBtn() {
       const isMobile = this.$isMobileScreen()
       const isAndroid = this.$util.isAndroidSystem()
       const isLoadRouterInlineJs = this.$store && this.$store.state.isLoadRouterInlineJs
       return isMobile && isAndroid && isLoadRouterInlineJs
-    }
+    },
   },
 
-  components: {
-  },
+  components: {},
 
-  created () {
-    let currentYear = (new Date(this.$util.getCurrentDate())).getFullYear()
+  created() {
+    let currentYear = new Date(this.$util.getCurrentDate()).getFullYear()
     this.copyright = `Copyright © ${currentYear}`
   },
 
-  mounted () {
-  },
+  mounted() {},
 
   methods: {
-    filterEntryInMobile (sourceData) {
+    filterEntryInMobile(sourceData) {
       const isMobile = this.$isMobileScreen()
       return sourceData.filter((item) => {
-        return (isMobile ? !item.notInMobile : true) &&
-         (this.$isFromQuickapp() ? !item.notInQuickapp : true)
+        return (
+          (isMobile ? !item.notInMobile : true) &&
+          (this.$isFromQuickapp() ? !item.notInQuickapp : true)
+        )
       })
     },
-    onOpenAppClick () {
+    onOpenAppClick() {
       try {
         global.appRouter('com.quickapp.nicelinks', '/', { from: 1 })
         this.showSupportStatusToast()
@@ -100,51 +117,53 @@ export default {
       }
     },
 
-    showSupportStatusToast () {
+    showSupportStatusToast() {
       setTimeout(() => {
         this.$message({
           type: 'warning',
-          message: '目前上线的平台有：OPPO、vivo、小米、魅族等'
+          message: '目前上线的平台有：OPPO、vivo、小米、魅族等',
         })
       }, 1000)
-    }
+    },
   },
 
   locales: {
     zh: {
       mySiteFunc: '云集世间优秀站点',
-      produced: '出品'
+      produced: '出品',
     },
     en: {
       mySiteFunc: 'Gathered in the world excellent site',
-      produced: 'Produced'
-    }
-  }
+      produced: 'Produced',
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "../assets/scss/variables.scss";
-@import "../assets/scss/mixins.scss";
+@import '../assets/scss/variables.scss';
+@import '../assets/scss/mixins.scss';
 
-.footer{
-  .footer-body{
+.footer {
+  .footer-body {
     width: 100%;
     @include flex-box-center(column);
     height: $footer-height;
     padding: 15px 20px;
     color: $footer-grey;
     // 参见：https://uigradients.com/
-    @include get-gradient-background(#ECE9E6, #FFFFFF, top);
-    .content, .icp, .contact {
+    @include get-gradient-background(#ece9e6, #ffffff, top);
+    .content,
+    .icp,
+    .contact {
       margin: 6px auto;
     }
-    .content{
+    .content {
       font-size: $font-medium;
       font-weight: 500;
       text-shadow: 1px 1px 0px #fff;
     }
-    .icp{
+    .icp {
       font-size: $font-small;
       .beian-link {
         margin-left: 15px;
@@ -153,17 +172,19 @@ export default {
       .zero {
         height: 1.5rem;
         width: 1.1rem;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
     }
-    .link{
+    .link {
       color: $common-link;
       font-weight: 500;
-      &:link, &:visited{
+      &:link,
+      &:visited {
         color: $common-link;
         text-decoration: none;
-      };
-      &:hover, &:active{
+      }
+      &:hover,
+      &:active {
         color: $common-link-hover;
         text-decoration: none;
       }

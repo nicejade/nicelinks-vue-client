@@ -15,19 +15,18 @@ import './assets/scss/style.scss'
 export default {
   name: 'app',
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   methods: {
-    onSwipeLeft () {
+    onSwipeLeft() {
       this.$router.go(-1)
     },
 
-    onSwipeRight () {
+    onSwipeRight() {
       this.$router.go(1)
-    }
-  }
+    },
+  },
 }
 </script>

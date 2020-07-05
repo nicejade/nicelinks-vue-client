@@ -1,21 +1,21 @@
 <template>
-<div class="wrapper account">
-  <div class="panel-default" v-loading.body="isLoading">
-    <div class="panel-body">
-      <div class="main-container">
-        <div class="entry-list active-fail" v-show="failureMessage">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <h4>{{ $t('validateFailure') }}</h4>
-            </div>
-            <div class="no-result-tip" v-html="failureMessage"></div>
-          </el-card>
+  <div class="wrapper account">
+    <div class="panel-default" v-loading.body="isLoading">
+      <div class="panel-body">
+        <div class="main-container">
+          <div class="entry-list active-fail" v-show="failureMessage">
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <h4>{{ $t('validateFailure') }}</h4>
+              </div>
+              <div class="no-result-tip" v-html="failureMessage"></div>
+            </el-card>
+          </div>
+          <aside-list></aside-list>
         </div>
-        <aside-list></aside-list>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -27,48 +27,48 @@ export default {
 
   mixins: [metaMixin],
 
-  data () {
+  data() {
     const vm = this
     return {
       title: vm.$t('accountActivation'),
       isLoading: false,
-      failureMessage: ''
+      failureMessage: '',
     }
   },
 
-  watch: {
-  },
+  watch: {},
 
-  components: {
-  },
+  components: {},
 
-  mounted () {
+  mounted() {
     this.dispatchActivate()
   },
 
   methods: {
-    dispatchActivate () {
+    dispatchActivate() {
       let params = {
-        activeToken: $util.query(window.location.href).activeToken
+        activeToken: $util.query(window.location.href).activeToken,
       }
       this.isLoading = true
-      $apis.active(params).then(result => {
-        this.$message({
-          message: result,
-          type: 'success'
+      $apis
+        .active(params)
+        .then((result) => {
+          this.$message({
+            message: result,
+            type: 'success',
+          })
+          setTimeout(() => {
+            this.isLoading = false
+            this.$router.push('/login')
+          }, 600)
         })
-        setTimeout(() => {
+        .catch((error) => {
           this.isLoading = false
-          this.$router.push('/login')
-        }, 600)
-      }).catch(error => {
-        this.isLoading = false
-        this.failureMessage = error
-      })
-    }
-  }
+          this.failureMessage = error
+        })
+    },
+  },
 }
 </script>
 
-<style type="text/css" lang="scss">
-</style>
+<style type="text/css" lang="scss"></style>

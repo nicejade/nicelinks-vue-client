@@ -5,15 +5,9 @@
         <div class="main-container">
           <div class="entry-list">
             <search class="mobile-search" v-if="$isMobileScreen()" />
-            <sub-head
-              :theme-list="themeList"
-              @fetch-search="$fetchSearch">
-            </sub-head>
+            <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
             <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs" />
-            <links-list
-              :is-abstract="true"
-              :pdata="$niceLinksArray"
-              :is-loading="isLoading">
+            <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
             <load-more></load-more>
           </div>
@@ -34,46 +28,44 @@ export default {
 
   mixins: [partsMixin, metaMixin],
 
-  data () {
+  data() {
     return {
-      themeList: []
+      themeList: [],
     }
   },
 
-  watch: {
-  },
+  watch: {},
 
-  components: {
-  },
+  components: {},
 
-  created () {
+  created() {
     this.$fetchSearch()
   },
 
-  mounted () {
+  mounted() {
     this.setThemeList()
     this.setMetaInfo()
   },
 
   methods: {
-    isCurrentThemeVal (value) {
+    isCurrentThemeVal(value) {
       const cTheme = this.$route.params.theme
       return cTheme.toUpperCase() === value.toUpperCase()
     },
 
-    setMetaInfo () {
+    setMetaInfo() {
       const themeList = this.$_.flatten($config.theme)
-      themeList.map(item => {
+      themeList.map((item) => {
         if (this.isCurrentThemeVal(item.value)) {
           this.title = this.$lang === 'en' ? item.value : item.key
         }
       })
     },
 
-    setThemeList () {
-      this.themeList = $config.theme.filter(items => {
+    setThemeList() {
+      this.themeList = $config.theme.filter((items) => {
         let isInclude = false
-        items.forEach(item => {
+        items.forEach((item) => {
           if (this.isCurrentThemeVal(item.value)) {
             isInclude = true
             return
@@ -81,26 +73,24 @@ export default {
         })
         return isInclude
       })[0]
-    }
-  }
+    },
+  },
 }
 </script>
 
-
 <style type="text/css" lang="scss" scoped>
-@import "../assets/scss/variables.scss";
-.entry-list{
-  .operate-tabs-space{
+@import '../assets/scss/variables.scss';
+.entry-list {
+  .operate-tabs-space {
     margin-bottom: -15px;
   }
 }
 
 @media screen and (max-width: $mobile-screen) {
-  .entry-list{
-    .operate-tabs-space{
+  .entry-list {
+    .operate-tabs-space {
       padding-top: 9rem;
     }
   }
 }
 </style>
-

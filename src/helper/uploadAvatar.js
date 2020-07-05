@@ -7,11 +7,11 @@ export default {
    * @return {[blob]}      [description]
    */
   /**
- * dataURL to blob, ref to https://gist.github.com/fupslot/5015897
- * @param dataURI
- * @returns {Blob}
- */
-  dataURItoBlob (dataURI) {
+   * dataURL to blob, ref to https://gist.github.com/fupslot/5015897
+   * @param dataURI
+   * @returns {Blob}
+   */
+  dataURItoBlob(dataURI) {
     var byteString = atob(dataURI.split(',')[1])
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
     var ab = new ArrayBuffer(byteString.length)
@@ -20,10 +20,10 @@ export default {
       ia[i] = byteString.charCodeAt(i)
     }
     console.log(mimeString)
-    return new Blob([ab], {type: mimeString})
+    return new Blob([ab], { type: mimeString })
   },
 
-  getLangConf () {
+  getLangConf() {
     return {
       zh: {
         hint: '点击，或拖动图片至此处',
@@ -36,13 +36,13 @@ export default {
           off: '取消',
           close: '关闭',
           back: '上一步',
-          save: '保存'
+          save: '保存',
         },
         error: {
           onlyImg: '仅限图片格式',
           outOfSize: '单文件大小不能超过 ',
-          lowestPx: '图片最低像素为（宽*高）：'
-        }
+          lowestPx: '图片最低像素为（宽*高）：',
+        },
       },
       en: {
         hint: 'Click or drag the file here to upload',
@@ -55,14 +55,14 @@ export default {
           off: 'Cancel',
           close: 'Close',
           back: 'Back',
-          save: 'Save'
+          save: 'Save',
         },
         error: {
           onlyImg: 'Image only',
           outOfSize: 'Image exceeds size limit: ',
-          lowestPx: `Image's size is too low. Expected at least: `
-        }
-      }
+          lowestPx: `Image's size is too low. Expected at least: `,
+        },
+      },
     }
   },
 
@@ -73,12 +73,15 @@ export default {
    * @param  {[Object]} argOpts [description]
    * @return {[bollean]}          [description]
    */
-  effectRipple (e, argOpts) {
-    var opts = Object.assign({
-      ele: e.target, // 波纹作用元素
-      type: 'hit', // hit点击位置扩散,center中心点扩展
-      bgc: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
-    }, argOpts)
+  effectRipple(e, argOpts) {
+    var opts = Object.assign(
+      {
+        ele: e.target, // 波纹作用元素
+        type: 'hit', // hit点击位置扩散,center中心点扩展
+        bgc: 'rgba(0, 0, 0, 0.15)', // 波纹颜色
+      },
+      argOpts
+    )
     var target = opts.ele
     if (target) {
       let rect = target.getBoundingClientRect()
@@ -93,16 +96,18 @@ export default {
       }
       switch (opts.type) {
         case 'center':
-          ripple.style.top = (rect.height / 2 - ripple.offsetHeight / 2) + 'px'
-          ripple.style.left = (rect.width / 2 - ripple.offsetWidth / 2) + 'px'
+          ripple.style.top = rect.height / 2 - ripple.offsetHeight / 2 + 'px'
+          ripple.style.left = rect.width / 2 - ripple.offsetWidth / 2 + 'px'
           break
         default:
-          ripple.style.top = (e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop) + 'px'
-          ripple.style.left = (e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft) + 'px'
+          ripple.style.top =
+            e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop + 'px'
+          ripple.style.left =
+            e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft + 'px'
       }
       ripple.style.backgroundColor = opts.bgc
       ripple.className = 'e-ripple z-active'
       return false
     }
-  }
+  },
 }

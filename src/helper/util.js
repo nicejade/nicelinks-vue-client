@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import sha256 from 'crypto-js/sha256'
 import md5 from 'crypto-js/md5'
-import {STORAGE_PREFIX} from 'config/constant'
+import { STORAGE_PREFIX } from 'config/constant'
 const $lodash = require('./lodash').default
 
 const getStorageName = (name = '') => {
@@ -37,30 +37,34 @@ window.Date.prototype.Format = function (fmt) {
     'm+': this.getMinutes(),
     's+': this.getSeconds(),
     'q+': Math.floor((this.getMonth() + 3) / 3),
-    'S': this.getMilliseconds()
+    S: this.getMilliseconds(),
   }
-  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
   for (var k in o) {
     if (new RegExp('(' + k + ')').test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
+      )
     }
   }
   return fmt
 }
 
 export default {
-  encryptPwd (str) {
+  encryptPwd(str) {
     str = sha256(str).toString()
     str = md5(str).toString()
     return str
   },
 
-  setTitleLang (zhStr, enStr) {
+  setTitleLang(zhStr, enStr) {
     let NICE_ZH = `倾城之链`
     let NICE_EN = `NICE LINKS`
     return {
       zh: zhStr ? `${NICE_ZH} | ${zhStr}` : NICE_ZH,
-      en: enStr ? `${NICE_EN} | ${enStr}` : enStr
+      en: enStr ? `${NICE_EN} | ${enStr}` : enStr,
     }
   },
 
@@ -70,19 +74,19 @@ export default {
    * @param {number} max 大值
    * @return {number} 随机数
    */
-  getRandomInt (min, max) {
+  getRandomInt(min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min))
   },
 
   /**
    * 过滤掉 String 中的 Html 标签;
    */
-  filterHtmlTag (str = '') {
+  filterHtmlTag(str = '') {
     return str.replace(/<(.|\n)*?>/g, '')
   },
 
   /* 适当截取 String，使得目标内容可以提前显示(默认位置为第 15 个字符) */
-  sliceToAheadTarget (string = '', target = '', position = 15) {
+  sliceToAheadTarget(string = '', target = '', position = 15) {
     const index = string.indexOf(target)
     if (index <= position) return string
     const sliceIdx = index - position
@@ -96,27 +100,32 @@ export default {
    * @param {number} length 指定长度
    * @param {string} keyStr 填充字符
    */
-  specifiedPadding (source, length, keyStr) {
+  specifiedPadding(source, length, keyStr) {
     return (Array(length).join(keyStr) + source).slice(-length)
   },
 
-  getManageList () {
-    return [{
-      name: 'manageLinks',
-      path: 'links'
-    }, {
-      name: 'manageUsers',
-      path: 'users'
-    }, {
-      name: 'manageAdverts',
-      path: 'adverts'
-    }, {
-      name: 'manageSentences',
-      path: 'sentences'
-    }]
+  getManageList() {
+    return [
+      {
+        name: 'manageLinks',
+        path: 'links',
+      },
+      {
+        name: 'manageUsers',
+        path: 'users',
+      },
+      {
+        name: 'manageAdverts',
+        path: 'adverts',
+      },
+      {
+        name: 'manageSentences',
+        path: 'sentences',
+      },
+    ]
   },
 
-  getUrlParam (name) {
+  getUrlParam(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
     var r = window.location.search.substr(1).match(reg)
     if (r != null) {
@@ -126,28 +135,24 @@ export default {
     }
   },
 
-  query (search) {
+  query(search) {
     let str = search || window.location.search
     let objURL = {}
 
-    str.replace(
-      new RegExp('([^?=&]+)(=([^&]*))?', 'g'),
-      ($0, $1, $2, $3) => {
-        objURL[$1] = $3
-      }
-    )
+    str.replace(new RegExp('([^?=&]+)(=([^&]*))?', 'g'), ($0, $1, $2, $3) => {
+      objURL[$1] = $3
+    })
     return objURL
   },
 
-  loadScript (url, isAsyncFlag) {
+  loadScript(url, isAsyncFlag) {
     return new Promise((resolve, reject) => {
       var script = document.createElement('script')
       script.type = 'text/javascript'
 
       if (script.readyState) {
         script.onreadystatechange = () => {
-          if (script.readyState === 'loaded' ||
-            script.readyState === 'complete') {
+          if (script.readyState === 'loaded' || script.readyState === 'complete') {
             script.onreadystatechange = null
             resolve('success: ' + url)
           }
@@ -168,7 +173,7 @@ export default {
     })
   },
 
-  queryString (url, query) {
+  queryString(url, query) {
     let str = []
     for (let key in query) {
       str.push(key + '=' + query[key])
@@ -177,43 +182,43 @@ export default {
     return paramStr ? `${url}?${paramStr}` : url
   },
 
-  isLegalUrl (str) {
+  isLegalUrl(str) {
     let pattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/
     return pattern.test(str)
   },
 
-  isLegalUsername (str) {
+  isLegalUsername(str) {
     let pattern = /^[a-zA-Z0-9]{3,16}$/
     return pattern.test(str)
   },
 
-  isLegalNick (str) {
+  isLegalNick(str) {
     let pattern = /(.){3,15}$/
     let byteNum = this.getByteLength(str)
-    return (pattern.test(str) && byteNum <= 15) && byteNum >= 3
+    return pattern.test(str) && byteNum <= 15 && byteNum >= 3
   },
 
-  isLegalEmail (str) {
+  isLegalEmail(str) {
     let pattern = new RegExp('^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$', 'g')
     return pattern.test(str)
   },
 
-  isLegalPassword (str) {
+  isLegalPassword(str) {
     let pattern = new RegExp('^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9!@#$%^&*]{6,18}$', 'g')
     return pattern.test(str)
   },
 
-  isAndroidSystem () {
+  isAndroidSystem() {
     const ua = window.navigator.userAgent
     return ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1
   },
 
-  isIosSystem () {
+  isIosSystem() {
     const ua = window.navigator.userAgent
     return !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
   },
 
-  isWechatBrowser () {
+  isWechatBrowser() {
     var ua = window.navigator.userAgent.toLowerCase()
     if (ua.match(/MicroMessenger/i) === 'micromessenger') {
       return true
@@ -222,15 +227,15 @@ export default {
     }
   },
 
-  setCurrentDate (date) {
+  setCurrentDate(date) {
     Vue.config.currentDate = date
   },
 
-  getCurrentDate () {
+  getCurrentDate() {
     return Vue.config.currentDate || new Date()
   },
 
-  getCurrentDateHMS (delimiter = '-') {
+  getCurrentDateHMS(delimiter = '-') {
     let currentDate = new Date(Vue.config.currentDate) || new Date()
     let currentH = currentDate.getHours()
     let currentM = currentDate.getMinutes()
@@ -239,12 +244,12 @@ export default {
   },
 
   // 获取字符串实际长度(包含汉字,汉字统一按照 2 字节算;)
-  getByteLength (str = '') {
+  getByteLength(str = '') {
     if (typeof str !== 'string') return str.length
     return str.replace(/[^\x00-\xff]/g, 'aa').length
   },
 
-  interceptString (string = '', length = 140) {
+  interceptString(string = '', length = 140) {
     if (this.getByteLength(string) > 140) {
       return string.substring(0, length) + '...'
     } else {
@@ -252,14 +257,14 @@ export default {
     }
   },
 
-  updateAfterFilterEmptyValue (obj) {
+  updateAfterFilterEmptyValue(obj) {
     for (let key in obj) {
       if (!obj[key]) delete obj[key]
     }
     return obj
   },
 
-  getElementOffsetTop (element) {
+  getElementOffsetTop(element) {
     let actualTop = element.offsetTop
     let current = element.offsetParent
 
@@ -270,7 +275,7 @@ export default {
     return actualTop
   },
 
-  isElementInViewport (elem) {
+  isElementInViewport(elem) {
     const rect = elem.getBoundingClientRect()
     return (
       rect.top >= 0 &&
@@ -280,19 +285,19 @@ export default {
     )
   },
 
-  assembleExternalLink (url) {
+  assembleExternalLink(url) {
     const separator = $lodash.endsWith(url, '/') ? '' : '/'
     return `${url}${separator}?utm_source=nicelinks.site`
   },
 
-  openAuthorSite (p) {
+  openAuthorSite(p) {
     window.open(`${this.assembleExternalLink('https://aboutme.lovejade.cn/')}&position=${p}`)
   },
   /* -----------------------------localStorage------------------------------------ Start */
   /*
    * set localStorage
    */
-  setLocalStorage (name, content) {
+  setLocalStorage(name, content) {
     if (!name) return
     if (typeof content !== 'string') {
       content = JSON.stringify(content)
@@ -303,7 +308,7 @@ export default {
   /**
    * get localStorage
    */
-  getLocalStorage (name) {
+  getLocalStorage(name) {
     if (!name) return
     let content = window.localStorage.getItem(getStorageName(name))
     return JSON.parse(content)
@@ -312,14 +317,14 @@ export default {
   /**
    * delete localStorage
    */
-  removeLocalStorage (name) {
+  removeLocalStorage(name) {
     if (!name) return
     window.localStorage.removeItem(getStorageName(name))
   },
   /* -----------------------------localStorage------------------------------------ End */
 
   /* ----------------------------sessionStorage----------------------------------- Start */
-  setSessionStorage (name, content) {
+  setSessionStorage(name, content) {
     if (!name) return
     if (typeof content !== 'string') {
       content = JSON.stringify(content)
@@ -330,7 +335,7 @@ export default {
   /**
    * get sessionStorage
    */
-  getSessionStorage (name) {
+  getSessionStorage(name) {
     if (!name) return
     let content = window.sessionStorage.getItem(getStorageName(name))
     return JSON.parse(content)
@@ -339,9 +344,9 @@ export default {
   /**
    * delete sessionStorage
    */
-  removeSessionStorage (name) {
+  removeSessionStorage(name) {
     if (!name) return
     window.sessionStorage.removeItem(getStorageName(name))
-  }
+  },
   /* ----------------------------sessionStorage----------------------------------- End */
 }

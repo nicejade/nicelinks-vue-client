@@ -60,6 +60,14 @@ export default {
     const sortTypeArray = ['latest', 'hottest', 'earliest']
     const isWithSort = sortTypeArray.includes(currentRouteQuery.sort)
     this.activeName = isWithSort ? currentRouteQuery.sort : 'latest'
+
+    // Fixed: 解决 activeName: 'latest'，导致 sort=latest，相同值无法触发 watch 问题；
+    if (currentRouteQuery.sort === 'latest') {
+      let currentItem = this.operateTabList.find((item) => {
+        return item.name === 'latest'
+      })
+      this.$emit('switch-tabs', currentItem)
+    }
   },
 
   methods: {},

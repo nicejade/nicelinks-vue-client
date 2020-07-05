@@ -11,6 +11,7 @@
     "deploy": "npm run build && node build/deploy.js",
     "build": "NODE_ENV=production node build/build.js --progress",
     "build:dll": "NODE_ENV=production webpack --config build/webpack.dll.conf.js",
+    "prettier": "prettier --write \"src/**/*.{js,css,scss,vue}\"",
     "unit": "cross-env NODE_ENV=production cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "pretest": "cross-env NODE_ENV=testing node build/build.js && node test/index.js",
     "e2e": "node test/e2e/runner.js",
@@ -28,9 +29,9 @@
     "lint-staged"
   ],
   "lint-staged": {
-    "linters": {
-      "src/**/*.{js,vue}": "eslint -f ./node_modules/eslint-friendly-formatter"
-    }
+    "**/**.{js,json,pcss,md,vue,css,scss}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "axios": "^0.18.1",
@@ -86,6 +87,7 @@
     "http-proxy-middleware": "^0.17.3",
     "lint-staged": "^3.6.1",
     "lodash-webpack-plugin": "^0.11.4",
+    "lodash.clonedeep": "^4.5.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.12.0",
     "opn": "^4.0.2",
@@ -93,6 +95,7 @@
     "ora": "^1.1.0",
     "postcss-loader": "^2.1.5",
     "pre-commit": "^1.2.2",
+    "prettier": "^2.0.5",
     "progress-bar-webpack-plugin": "^1.9.3",
     "sass-loader": "^4.0.2",
     "scss-loader": "^0.0.1",
@@ -122,6 +125,12 @@
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 100,
+    "proseWrap": "never"
   },
   "config": {
     "commitizen": {

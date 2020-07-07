@@ -74,7 +74,7 @@ export default {
           // 当切换 classify 时候，要更新 requestParamList(vuex) 中的字段为初始值;
           pageCount: 1,
           sortType: -1,
-          sortTarget: 'likes',
+          sortTarget: 'created',
           theme: null,
         })
       }

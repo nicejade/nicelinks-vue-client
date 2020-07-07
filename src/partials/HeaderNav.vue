@@ -143,7 +143,7 @@ export default {
 
   watch: {
     $route: function (to, from) {
-      this.updateNavActive()
+      // this.updateNavActive()
       this.hideSidenav()
     },
   },

@@ -21,7 +21,7 @@ export default {
       pageCount: 1,
       pageSize: 10,
       sortType: -1,
-      sortTarget: 'likes',
+      sortTarget: 'created',
     }
   },
 

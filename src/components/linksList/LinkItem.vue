@@ -46,7 +46,15 @@
         {{ item.keywords }}
       </div>
       <div class="link-desc" v-html="this.obtainLinkDesc(item)"></div>
-      <hr v-if="item.review" class="segmenting-line" />
+      <!-- <hr v-if="item.review" class="segmenting-line" /> -->
+      <div slot="link-screenshot" class="link-screenshot">
+        <img
+          style="width: 100%;"
+          :src="linkScreenshot"
+          onerror="javascript:this.src='https://s1.ax1x.com/2020/07/15/U0tlqg.png';"
+          alt=""
+        />
+      </div>
       <div v-if="item.review" class="link-review">
         <preview-md :value="reviewPrefix + item.review"> </preview-md>
       </div>
@@ -61,7 +69,6 @@
         <span class="item-num">{{ item.dislikes }}</span>
       </div>
     </div>
-    <slot name="link-share"></slot>
   </div>
 </template>
 
@@ -78,6 +85,7 @@ export default {
       themeList: $config.theme,
       tagsList: $config.tags,
       isShowKeywords: true,
+      linkScreenshot: 'https://image.nicelinks.site/jpg/nice-links-076.jpg',
     }
   },
 
@@ -112,9 +120,16 @@ export default {
 
   created() {},
 
-  mounted() {},
+  mounted() {
+    this.updatelinkScreenshot()
+  },
 
   methods: {
+    updatelinkScreenshot() {
+      const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
+      this.linkScreenshot = `/api/screenshot/${hostname}.png`
+    },
+
     dispatchAction(row, action) {
       if (!this.$isLogin()) {
         this.$switchToLogin()
@@ -263,6 +278,10 @@ export default {
   .segmenting-line {
     border-top: 1px solid #8c8b8b;
     border-bottom: 1px solid #ffffff;
+  }
+  .link-screenshot {
+    margin-bottom: 15px;
+    filter: drop-shadow(0px 0px 15px lightgrey);
   }
   .meta {
     font-size: 1.314rem;

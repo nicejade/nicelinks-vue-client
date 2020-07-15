@@ -68,6 +68,10 @@ export default {
     }
   },
 
+  getHostnameByUrl(url) {
+    return new URL(url).hostname
+  },
+
   /**
    * @desc:获得 mix max 之间的随机值，包括两者;
    * @param {number} min 小值

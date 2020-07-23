@@ -51,8 +51,8 @@
         <img
           style="width: 100%;"
           :src="linkScreenshot"
-          onerror="javascript:this.src='https://s1.ax1x.com/2020/07/15/U0tlqg.png';"
-          alt=""
+          onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
+          :alt="item.title + ' 倾城之链'"
         />
       </div>
       <div v-if="item.review" class="link-review">
@@ -85,7 +85,7 @@ export default {
       themeList: $config.theme,
       tagsList: $config.tags,
       isShowKeywords: true,
-      linkScreenshot: 'https://image.nicelinks.site/jpg/nice-links-076.jpg',
+      linkScreenshot: 'https://oss.nicelinks.site/nicelinks.site.png',
     }
   },
 
@@ -127,7 +127,7 @@ export default {
   methods: {
     updatelinkScreenshot() {
       const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
-      this.linkScreenshot = `/api/screenshot/${hostname}.png`
+      this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
     },
 
     dispatchAction(row, action) {

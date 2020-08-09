@@ -6,7 +6,11 @@
           <div class="list-item" v-if="!isMobile">
             <dt class="title">公众号</dt>
             <dd>
-              <img width="100" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩-公众号">
+              <img
+                width="100"
+                src="https://image.nicelinks.site/qrcode_jqx.jpg"
+                alt="静晴轩-公众号"
+              />
             </dd>
           </div>
           <div class="list-item">
@@ -81,14 +85,12 @@
             data-action="footer-jeffjade"
             data-category="footer"
             data-label="footer-jeffjade"
-          >晚晴幽草轩</a>
+            >晚晴幽草轩</a
+          >
           {{ $t('produced') }}
-          <a
-            class="beian-link"
-            href="http://www.beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener"
-          >粤ICP备17099767号</a>
+          <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener"
+            >粤ICP备17099767号</a
+          >
           <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
         </div>
       </div>
@@ -101,7 +103,8 @@
       data-action="footer-quickapp"
       data-category="footer"
       data-label="footer-quickapp"
-    >{{ $t('openInQuickapp') }}</a>
+      >{{ $t('openInQuickapp') }}</a
+    >
   </div>
 </template>
 

@@ -61,6 +61,7 @@ export default {
   beDisikedStr: 'Dislike Degree',
   loadMoreStr: 'Load More',
   aboutNiceLinks: 'About NICE LINKS',
+  sponsorNiceLinks: 'Sincerely Donate',
 
   validateFailure: 'Verification Failed',
   noResultTip: `Hey, friend, there's no relevant data here, if you want to know more, Please move to <a class="no-result-tip-a" href="/">NICE LINKS</a>.`,

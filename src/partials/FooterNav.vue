@@ -191,8 +191,10 @@ export default {
   @include get-gradient-background(#ece9e6, #ffffff, top);
   .footer-body {
     width: 100%;
-    @include flex-box-center(column);
+    max-width: 1440px;
     height: $footer-height;
+    @include flex-box-center(column);
+    margin: auto;
     padding: 15px 20px;
     color: $footer-grey;
     .container,

@@ -19,6 +19,7 @@
                 <img src="https://image.nicelinks.site/jade-wechat.png" alt="倾城之链" />
                 <br />
                 <img
+                  style="width: 100%; height: auto; margin-top: 15px;"
                   src="https://image.nicelinks.site/%E5%80%BE%E5%9F%8E%E4%B9%8B%E9%93%BE-Banner.png"
                   alt="倾城之链 - 小程序"
                 />
@@ -59,8 +60,8 @@ export default {
     line-height: 20px;
   }
   img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin: 20px auto;
     text-align: center;
   }

@@ -28,6 +28,7 @@
                     <strong>访问小程序支持</strong>
                   </h4>
                   <img
+                    style="width: 100%; margin-top: 15px;"
                     src="https://image.nicelinks.site/%E5%80%BE%E5%9F%8E%E4%B9%8B%E9%93%BE-Banner.png"
                     alt="倾城之链 - 小程序"
                   />

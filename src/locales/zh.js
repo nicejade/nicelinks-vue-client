@@ -61,6 +61,7 @@ export default {
   beDisikedStr: '厌恶程度',
   loadMoreStr: '加载更多',
   aboutNiceLinks: '关于倾城',
+  sponsorNiceLinks: '倾情捐赠',
 
   validateFailure: '验证失败',
   noResultTip:

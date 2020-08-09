@@ -26,10 +26,10 @@ export default [
     notInQuickapp: true,
   },
   {
-    path: '//www.cnblogs.com/',
-    name: 'jadeboy',
+    path: '//www.jeffjade.com/',
+    name: 'about-me',
     class: 'blog',
-    title: '博客园',
+    title: '晚晴幽草轩',
   },
   {
     path: '//www.jianshu.com/u/',

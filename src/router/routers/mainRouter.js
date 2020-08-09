@@ -76,5 +76,19 @@ export default {
       },
       component: (resolve) => require(['views/About'], resolve),
     },
+    {
+      path: 'sponsor',
+      meta: {
+        isNeedLogin: false,
+      },
+      component: (resolve) => require(['views/Sponsor'], resolve),
+    },
+    {
+      path: 'business',
+      meta: {
+        isNeedLogin: false,
+      },
+      component: (resolve) => require(['views/Business'], resolve),
+    },
   ],
 }

@@ -68,11 +68,18 @@
         <icon class="icons" :name="item.isDislikes ? 'dislike-down' : 'dislike'"></icon>
         <span class="item-num">{{ item.dislikes }}</span>
       </div>
+      <div class="action-item" @click.stop.prevent="onEditClick(item)" v-if="isAdminFlag()">
+        <icon class="icons" name="setting"></icon>
+        <span class="item-num">{{ $t('edit') }}</span>
+      </div>
     </div>
+    <edit-dialog v-model="isShowDlgFlag" :pdata="currentRowData" @update-success="onUpdateSuccess">
+    </edit-dialog>
   </div>
 </template>
 
 <script>
+import EditDialog from 'components/dialog/EditDialog'
 import $config from 'config'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
@@ -85,6 +92,8 @@ export default {
       themeList: $config.theme,
       tagsList: $config.tags,
       isShowKeywords: true,
+      isShowDlgFlag: false,
+      currentRowData: {},
       linkScreenshot: 'https://oss.nicelinks.site/nicelinks.site.png',
     }
   },
@@ -115,6 +124,7 @@ export default {
   watch: {},
 
   components: {
+    EditDialog,
     PreviewMd,
   },
 
@@ -125,6 +135,12 @@ export default {
   },
 
   methods: {
+    isAdminFlag() {
+      if (this.userInfo) {
+        return this.userInfo && this.userInfo.role === 'Admin'
+      }
+    },
+
     updatelinkScreenshot() {
       const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
       this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
@@ -218,6 +234,13 @@ export default {
         })
         .catch(() => {})
     },
+
+    onEditClick(item) {
+      this.isShowDlgFlag = true
+      this.currentRowData = item
+    },
+
+    onUpdateSuccess() {},
   },
 }
 </script>

@@ -60,6 +60,7 @@ export default {
           this.niceLinksDetail = result[0]
 
           this.updatePageTitle(result[0])
+          this.addHeaderNavActive()
         } else {
           this.$router.push('/404')
         }
@@ -73,11 +74,27 @@ export default {
       })
   },
 
+  destroyed() {
+    this.removeHeaderNavActive()
+  },
+
   methods: {
     updatePageTitle(details) {
       this.title = details.title
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc
+    },
+
+    addHeaderNavActive() {
+      const classify = +this.niceLinksDetail.classify
+      const navItemNodes = document.getElementsByClassName('nav-item')
+      navItemNodes[classify].classList.add('active')
+    },
+
+    removeHeaderNavActive() {
+      const classify = +this.niceLinksDetail.classify
+      const navItemNodes = document.getElementsByClassName('nav-item')
+      navItemNodes[classify].classList.remove('active')
     },
 
     createShareContent(item = {}) {

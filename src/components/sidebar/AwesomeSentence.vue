@@ -111,8 +111,9 @@ export default {
         })
     },
     onCopy2ClipboardClick() {
-      const constent = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
-      this.$util.isIosSystem() ? this.copyToIosClipboard(constent) : this.copyToClipboard(constent)
+      const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
+      const content = tempStr.replace(/<[^>]*>/g, '')
+      this.$util.isIosSystem() ? this.copyToIosClipboard(content) : this.copyToClipboard(content)
       this.$message({
         type: 'success',
         message: `已将此条「锦语」复制到您的剪切板`,

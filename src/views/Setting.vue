@@ -102,7 +102,7 @@
 <script>
 import metaMixin from 'mixins/metaMixin.js'
 import UploadAvatar from 'components/UploadAvatar'
-import Markdown from 'components/markdown/index'
+import Markdown from 'components/markdown/Index'
 
 export default {
   name: 'Setting',

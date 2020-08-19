@@ -153,7 +153,7 @@
 <script>
 import $config from 'config'
 import metaMixin from 'mixins/metaMixin.js'
-import Markdown from 'components/markdown/index'
+import Markdown from 'components/markdown/Index'
 
 export default {
   name: 'ShareLink',

@@ -175,7 +175,7 @@
 
 <script>
 import $config from 'config'
-import Markdown from 'components/markdown/index'
+import Markdown from 'components/markdown/Index'
 
 export default {
   name: 'EditDialog',

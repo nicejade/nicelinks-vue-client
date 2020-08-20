@@ -11,13 +11,13 @@
                 </h4>
               </div>
               <div class="advertise">
-                <p class="explain">
-                  关于「倾城之链」的访问量，可以参见
-                  <a src="https://www.alexa.com/siteinfo/nicelinks.site#trafficstats">alexa</a
-                  >；如果您有意向在此投入广告，可以扫如下二维码加我微信，随聊详谈。
-                </p>
-                <img src="https://image.nicelinks.site/jade-wechat.png" alt="倾城之链" />
+                <preview-md :value="introduce"></preview-md>
                 <br />
+                <img
+                  class="contact-us"
+                  src="https://image.nicelinks.site/jade-wechat.png"
+                  alt="倾城之链"
+                />
                 <img
                   style="width: 100%; height: auto; margin-top: 15px;"
                   src="https://image.nicelinks.site/%E5%80%BE%E5%9F%8E%E4%B9%8B%E9%93%BE-Banner.png"
@@ -34,16 +34,29 @@
 </template>
 
 <script>
+import PreviewMd from 'components/markdown/PreviewMd.vue'
+
+const introduce = `
+关于「[倾城之链](https://nicelinks.site/)」的访问量，可以参见 [alexa.com](https://www.alexa.com/siteinfo/nicelinks.site#trafficstats)；另有\`小程序\`、\`快应用\`等相关产品矩阵。目前，计划在产品详情页，开辟两个区域，来支持“广告投放”，如下图所示（广告 A 区、广告 B 区）：
+
+![倾城之链 - 商业合作](https://image.nicelinks.site/nicelinks.site-screenshots.png)
+
+如果您有意向在此投入广告，可以扫如下二维码加我微信，随聊详谈。
+`
 export default {
   name: 'Business',
 
   data() {
-    return {}
+    return {
+      introduce: introduce,
+    }
   },
 
   watch: {},
 
-  components: {},
+  components: {
+    PreviewMd,
+  },
 
   mounted() {},
 
@@ -55,11 +68,10 @@ export default {
 .advertise {
   width: 100%;
   text-align: center;
-  .explain {
-    text-align: left;
-    line-height: 20px;
-  }
   img {
+    width: 100%;
+  }
+  .contact-us {
     width: 250px;
     height: 250px;
     margin: 20px auto;

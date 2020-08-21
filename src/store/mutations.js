@@ -37,8 +37,4 @@ export default {
   $setWechatApiSignature(state, result) {
     Object.assign(state.wechatApiSignature, result)
   },
-
-  $setIsLoadRouterInlineJs(state, result) {
-    state.isLoadRouterInlineJs = result
-  },
 }

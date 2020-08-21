@@ -97,8 +97,7 @@
     </footer>
     <a
       v-if="isShowOpenAppBtn"
-      href="javascript:;"
-      @click="onOpenAppClick"
+      href="https://hapjs.org/app/com.quickapp.nicelinks"
       class="link gtag-track open-in-quickapp"
       data-action="footer-quickapp"
       data-category="footer"
@@ -125,8 +124,7 @@ export default {
     isShowOpenAppBtn() {
       const isMobile = this.$isMobileScreen()
       const isAndroid = this.$util.isAndroidSystem()
-      const isLoadRouterInlineJs = this.$store && this.$store.state.isLoadRouterInlineJs
-      return isMobile && isAndroid && isLoadRouterInlineJs
+      return isMobile && isAndroid
     },
   },
 
@@ -148,23 +146,6 @@ export default {
           (this.$isFromQuickapp() ? !item.notInQuickapp : true)
         )
       })
-    },
-    onOpenAppClick() {
-      try {
-        global.appRouter('com.quickapp.nicelinks', '/', { from: 1 })
-        this.showSupportStatusToast()
-      } catch (error) {
-        this.$message.error(`${error.message}`)
-      }
-    },
-
-    showSupportStatusToast() {
-      setTimeout(() => {
-        this.$message({
-          type: 'warning',
-          message: '目前上线的平台有：OPPO、vivo、小米、魅族等',
-        })
-      }, 1000)
     },
   },
 

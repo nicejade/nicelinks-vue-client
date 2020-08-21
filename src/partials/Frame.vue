@@ -43,14 +43,7 @@ export default {
     // this.initWechatShare()
   },
 
-  mounted() {
-    const isMobile = this.$isMobileScreen()
-    const isAndroid = this.$util.isAndroidSystem()
-    const isInQuickapp = this.$isFromQuickapp()
-    if (isMobile && isAndroid && !isInQuickapp) {
-      this.initQuickappDeeplink()
-    }
-  },
+  mounted() {},
 
   watch: {
     $route: function (to, from) {
@@ -65,18 +58,6 @@ export default {
       if (this.isShowSideNav) {
         this.$triggerSidenav()
       }
-    },
-
-    initQuickappDeeplink() {
-      const routerInlineJs = 'https://statres.quickapp.cn/quickapp/js/routerinline.min.js'
-      this.$util
-        .loadScript(routerInlineJs)
-        .then(() => {
-          this.$setIsLoadRouterInlineJs(true)
-        })
-        .catch((error) => {
-          this.$message.error(`SomeThing Error: ${error.message}`)
-        })
     },
 
     initWechatShare() {

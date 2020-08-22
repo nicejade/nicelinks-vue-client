@@ -1,11 +1,5 @@
 export default [
   {
-    path: '//image.nicelinks.site/',
-    name: 'qrcode_jqx.jpg',
-    class: 'weixin',
-    title: '静晴轩',
-  },
-  {
     path: '//weibo.com/',
     name: 'jeffjade',
     class: 'weibo',

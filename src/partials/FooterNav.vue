@@ -60,6 +60,14 @@
           </div>
         </div>
         <div class="contact">
+          <div class="tooltip">
+            <img
+              class="tooltip-img"
+              src="https://image.nicelinks.site/qrcode_jqx.jpg"
+              alt="静晴轩"
+            />
+            <icon class="icons" name="weixin"></icon>
+          </div>
           <a
             v-for="item in contactArray"
             :data-action="'footer-social-' + item.class"
@@ -79,7 +87,7 @@
           <span>{{ copyright }}</span>
           <a
             class="link gtag-track"
-            href="https://jeffjade.com?from=nicelinks.site"
+            href="https://www.jeffjade.com?utm_source=nicelinks.site"
             target="_blank"
             rel="noopener"
             data-action="footer-jeffjade"
@@ -252,5 +260,24 @@ export default {
   padding: 5px 10px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: $zindex-quickapp-btn;
+}
+/* Tooltip 容器 */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltip-img {
+  position: absolute;
+  top: -200px;
+  left: -80px;
+  z-index: 1;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+}
+.tooltip:hover .tooltip-img {
+  visibility: visible;
 }
 </style>

@@ -85,6 +85,7 @@ export default {
   awesomeSentence: '箴言锦语',
   miniprogramCode: '🎉小程序',
   visitCount: '网站统计',
+  productHuntUpvote: '投票支持',
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',
 

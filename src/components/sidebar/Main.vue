@@ -11,6 +11,20 @@
           alt="倾城之链.小程序"
         />
       </el-collapse-item>
+      <el-collapse-item :title="$t('productHuntUpvote')" name="producthunt-upvote">
+        <div>
+          <a
+            href="https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
+            target="_blank"
+            ><img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=237464&theme=light"
+              alt="NICE LINKS - Is designed to gather around the world's excellent websites. | Product Hunt Embed"
+              style="width: 250px; height: 54px;"
+              width="250px"
+              height="54px"
+          /></a>
+        </div>
+      </el-collapse-item>
       <el-collapse-item
         :title="$t('friendshipLinks')"
         name="friendshipLinks"
@@ -36,7 +50,7 @@ export default {
 
   data() {
     return {
-      activeNames: ['awesomeSentence', 'miniprogramCode', 'friendshipLinks'],
+      activeNames: ['awesomeSentence', 'miniprogramCode', 'producthunt-upvote'],
       advertsList: [],
       sentence: {},
     }

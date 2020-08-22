@@ -83,6 +83,7 @@ export default {
   awesomeSentence: 'Awesome Sentences',
   miniprogramCode: '🎉 MiniProgram',
   visitCount: 'Website Statistics',
+  productHuntUpvote: 'Product Hunt Upvote',
   friendshipLinks: 'Friendship Links',
   rewardme: 'Reward Me',
 

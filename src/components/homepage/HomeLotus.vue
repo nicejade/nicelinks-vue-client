@@ -459,6 +459,11 @@ export default {
         font-size: 2.2rem;
         padding: 0px 20px;
         line-height: 2.2rem;
+        a {
+          padding: 0.25em 2em;
+          margin-top: 1em;
+          line-height: 1.4em;
+        }
       }
     }
   }

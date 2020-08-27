@@ -5303,6 +5303,10 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
+medium-zoom@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/medium-zoom/-/medium-zoom-1.0.6.tgz#9247f21ca9313d8bbe9420aca153a410df08d027"
+
 mem-fs-editor@^4.0.0:
   version "4.0.3"
   resolved "https://registry.npmjs.org/mem-fs-editor/-/mem-fs-editor-4.0.3.tgz#d282a0c4e0d796e9eff9d75661f25f68f389af53"

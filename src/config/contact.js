@@ -47,13 +47,6 @@ export default [
     notInMobile: true,
   },
   {
-    path: '//www.douban.com/people/',
-    name: '125966439',
-    class: 'douban',
-    title: '豆瓣',
-    notInQuickapp: true,
-  },
-  {
     path: 'mailto:',
     name: 'yunjeff@163.com',
     class: 'email',

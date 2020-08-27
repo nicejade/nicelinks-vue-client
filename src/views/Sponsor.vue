@@ -6,9 +6,9 @@
           <div class="entry-list active-fail">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h4>
+                <h3>
                   <strong>{{ $t('sponsorNiceLinks') }}</strong>
-                </h4>
+                </h3>
               </div>
               <div class="donate">
                 <div class="wechat-pay">

@@ -6,7 +6,7 @@
           <div class="entry-list active-fail" v-show="failureMessage">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h4>{{ $t('validateFailure') }}</h4>
+                <h3>{{ $t('validateFailure') }}</h3>
               </div>
               <div class="no-result-tip" v-html="failureMessage"></div>
             </el-card>

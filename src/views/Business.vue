@@ -6,17 +6,15 @@
           <div class="entry-list active-fail">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h4>
-                  <strong>广告投放</strong>
-                </h4>
+                <h3><strong>广告投放</strong></h3>
               </div>
               <div class="advertise">
                 <preview-md :value="introduce"></preview-md>
                 <br />
                 <img
                   class="contact-us"
-                  src="https://image.nicelinks.site/jade-wechat.png"
-                  alt="倾城之链"
+                  src="https://image.nicelinks.site/nice-small-store.jpeg"
+                  alt="倾城之链 - 小商店"
                 />
                 <img
                   style="width: 100%; height: auto; margin-top: 15px;"
@@ -41,7 +39,7 @@ const introduce = `
 
 ![倾城之链 - 商业合作](https://image.nicelinks.site/nicelinks.site-screenshots.png)
 
-如果您有意向在此投入广告，可以扫如下二维码加我微信，随聊详谈。
+如果您有意向在此投入广告，可以扫如下「小程序码」购买服务。
 `
 export default {
   name: 'Business',

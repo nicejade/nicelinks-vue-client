@@ -47,8 +47,9 @@
       </div>
       <div class="link-desc" v-html="this.obtainLinkDesc(item)"></div>
       <!-- <hr v-if="item.review" class="segmenting-line" /> -->
-      <div slot="link-screenshot" class="link-screenshot">
+      <div class="link-screenshot">
         <img
+          data-zoomable
           style="width: 100%;"
           :src="linkScreenshot"
           onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
@@ -79,9 +80,12 @@
 </template>
 
 <script>
+import mediumZoom from 'medium-zoom'
+
 import EditDialog from 'components/dialog/EditDialog'
-import $config from 'config'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
+
+import $config from 'config'
 
 export default {
   name: 'LinkItem',
@@ -132,6 +136,7 @@ export default {
 
   mounted() {
     this.updatelinkScreenshot()
+    mediumZoom('[data-zoomable]')
   },
 
   methods: {
@@ -248,6 +253,10 @@ export default {
 <style media="screen" lang="scss">
 @import './../../assets/scss/variables.scss';
 @import './../../assets/scss/mixins.scss';
+
+.medium-zoom-image--opened {
+  z-index: 10000;
+}
 
 .content {
   margin: 5px;

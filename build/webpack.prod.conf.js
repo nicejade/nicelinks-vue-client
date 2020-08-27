@@ -16,16 +16,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BabiliWebpackPlugin = require('babili-webpack-plugin')
 const Jarvis = require('webpack-jarvis')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+const env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
-      extract: true
-    })
+      extract: true,
+    }),
   },
 
   devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -37,13 +35,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     // The default value is 250000 (bytes).
     maxEntrypointSize: 500000, // (300kb)
     // This option controls when webpack emits a performance hint based on individual asset size. The default value is 250000 (bytes).
-    maxAssetSize: 500000
+    maxAssetSize: 500000,
   },
 
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
   },
 
   optimization: {
@@ -56,7 +54,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         parallel: true,
         sourceMap: false,
         // 移除注释
-        extractComments: 'all',
+        extractComments: false,
         // 参见：https://github.com/mishoo/UglifyJS2#minify-options
         uglifyOptions: {
           warnings: false,
@@ -64,8 +62,8 @@ const webpackConfig = merge(baseWebpackConfig, {
           output: false,
           compress: false,
           mangle: true,
-          ie8: false
-        }
+          ie8: false,
+        },
       }),
     ],
     /*
@@ -81,12 +79,12 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env,
     }),
 
     // extract css into its own file
     new MiniCssExtractPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      filename: utils.assetsPath('css/[name].[contenthash].css'),
     }),
 
     // Compress extracted CSS. We are using this plugin so that possible
@@ -121,41 +119,40 @@ const webpackConfig = merge(baseWebpackConfig, {
           test: /[\\/]node_modules[\\/]element-ui[\\/]/,
           chunks: 'initial',
           // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
-          priority: -10
+          priority: -10,
         },
         lodash: {
           name: 'lodash',
           test: /[\\/]node_modules[\\/]lodash[\\/]/,
           chunks: 'initial',
           // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
-          priority: -10
-        }
-      }
+          priority: -10,
+        },
+      },
     }),
 
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: process.env.NODE_ENV === 'testing'
-        ? 'index.html'
-        : config.build.index,
+      filename: process.env.NODE_ENV === 'testing' ? 'index.html' : config.build.index,
       template: 'index.ejs',
       inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
         // @reference: https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via splitChunks
       chunksSortMode: 'dependency',
-      serviceWorkerLoader: `<script type="text/javascript">${loadMinified(path.join(__dirname,
-        './service-worker-prod.js'))}</script>`
+      serviceWorkerLoader: `<script type="text/javascript">${loadMinified(
+        path.join(__dirname, './service-worker-prod.js')
+      )}</script>`,
     }),
 
     new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, 'dist/*.dll.js')
+      filepath: path.resolve(__dirname, 'dist/*.dll.js'),
     }),
 
     // copy custom static assets (已在 build.js 中通过 Shell 做了，所以可不用此插件;)
@@ -176,7 +173,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
-      stripPrefix: 'dist/'
+      stripPrefix: 'dist/',
     }),
 
     new LodashModuleReplacementPlugin(),
@@ -185,7 +182,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       @reference: https://webpack.js.org/plugins/min-chunk-size-plugin/
     */
     new webpack.optimize.MinChunkSizePlugin({
-      minChunkSize: 50000 // Minimum number of characters (25kb)
+      minChunkSize: 50000, // Minimum number of characters (25kb)
     }),
 
     /*
@@ -205,7 +202,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       @reference: https://webpack.js.org/plugins/limit-chunk-count-plugin/
     */
     new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 10 // Must be greater than or equal to one
+      maxChunks: 10, // Must be greater than or equal to one
       // minChunkSize: 1000
     }),
 
@@ -216,8 +213,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       @desc: 提升代码在浏览器中的执行速度: 作用域提升(scope hoisting)；
       @reference: https://doc.webpack-china.org/plugins/module-concatenation-plugin/
     */
-    new webpack.optimize.ModuleConcatenationPlugin()
-  ]
+    new webpack.optimize.ModuleConcatenationPlugin(),
+  ],
 })
 
 if (config.build.productionGzip) {
@@ -227,13 +224,9 @@ if (config.build.productionGzip) {
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
-        ')$'
-      ),
+      test: new RegExp('\\.(' + config.build.productionGzipExtensions.join('|') + ')$'),
       threshold: 10240,
-      minRatio: 0.8
+      minRatio: 0.8,
     })
   )
 }
@@ -244,9 +237,11 @@ if (config.build.bundleAnalyzerReport) {
 }
 
 if (config.build.bundleIntelligentDashboard) {
-  webpackConfig.plugins.push(new Jarvis({
-    port: 1337
-  }))
+  webpackConfig.plugins.push(
+    new Jarvis({
+      port: 1337,
+    })
+  )
 }
 
 module.exports = webpackConfig

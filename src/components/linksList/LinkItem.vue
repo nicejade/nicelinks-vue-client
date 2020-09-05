@@ -1,18 +1,17 @@
 <template>
   <div class="content">
     <div class="meta">
-      <span class="item classify" @click.stop.prevent="onThemeClick(item.theme)">
-        {{ fillThemeName(item.classify, item.theme) }}
-      </span>
+      <span class="item classify" @click.stop.prevent="onThemeClick(item.theme)">{{
+        fillThemeName(item.classify, item.theme)
+      }}</span>
       <a
         class="item username"
         :href="getUserPath(item.createdBy)"
         @click.stop="onStopPropagationClick"
         target="_blank"
         rel="noopener"
+        >{{ item.createdBy || '' }}</a
       >
-        {{ item.createdBy || '' }}
-      </a>
       <span>{{ item.created | dateOffset }}</span>
       <a
         class="tag"
@@ -22,9 +21,8 @@
         @click.stop="onStopPropagationClick"
         target="_blank"
         rel="noopener"
+        >{{ iitem }}</a
       >
-        {{ iitem }}
-      </a>
     </div>
     <h3 class="title">
       <a
@@ -33,9 +31,8 @@
         @click.stop="onStopPropagationClick"
         target="_blank"
         rel="noopener"
+        >{{ item.title }}</a
       >
-        {{ item.title }}
-      </a>
     </h3>
     <div class="abstract" v-if="isAbstract">
       {{ item.abstract || $util.interceptString(item.desc) }}
@@ -57,7 +54,7 @@
         />
       </div>
       <div v-if="item.review" class="link-review">
-        <preview-md :value="reviewPrefix + item.review"> </preview-md>
+        <preview-md :value="getReviewContent(item)"></preview-md>
       </div>
     </div>
     <div class="action-list">
@@ -74,8 +71,11 @@
         <span class="item-num">{{ $t('edit') }}</span>
       </div>
     </div>
-    <edit-dialog v-model="isShowDlgFlag" :pdata="currentRowData" @update-success="onUpdateSuccess">
-    </edit-dialog>
+    <edit-dialog
+      v-model="isShowDlgFlag"
+      :pdata="currentRowData"
+      @update-success="onUpdateSuccess"
+    ></edit-dialog>
   </div>
 </template>
 
@@ -140,6 +140,14 @@ export default {
   },
 
   methods: {
+    getReviewContent(item) {
+      return (
+        this.reviewPrefix +
+        item.review +
+        `── 出自[倾城之链 | ${item.title}](https://nicelinks.site/post/${item._id})。`
+      )
+    },
+
     isAdminFlag() {
       if (this.userInfo) {
         return this.userInfo && this.userInfo.role === 'Admin'

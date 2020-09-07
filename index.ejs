@@ -35,8 +35,6 @@
         if (file.match(/\.(css)$/)) { %>
       <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
       <% }}} %>
-
-      <script async src="<%= webpackConfig.output.publicPath %>static/js/polyfill.min.js"></script>
     <% } %>
   </head>
 

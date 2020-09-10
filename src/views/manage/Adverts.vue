@@ -13,7 +13,7 @@
             >
               <el-carousel-item v-for="(item, index) in tableData" :key="index">
                 <a :href="item.path" target="_blank" rel="noopener">
-                  <img :src="item.image" />
+                  <img :src="item.image" :alt="$t('niceLinksStr')" />
                 </a>
               </el-carousel-item>
             </el-carousel>

@@ -9,7 +9,7 @@
               <img
                 width="100"
                 src="https://image.nicelinks.site/qrcode_jqx.jpg"
-                alt="静晴轩-公众号"
+                alt="静晴轩 | 公众号"
               />
             </dd>
           </div>

@@ -68,7 +68,7 @@
               <div class="form-group">
                 <div class="col-sm-12">
                   <div class="update-avatar-area">
-                    <img class="preview-avatar" :src="imgDataUrl" />
+                    <img class="preview-avatar" :src="imgDataUrl" :alt="$t('niceLinksStr')" />
                     <br />
                     <el-button :loading="isLoading" type="text" @click="onUpdateAvatarClick">
                       {{ $t('updateAvatar') }}

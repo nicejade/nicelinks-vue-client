@@ -15,13 +15,19 @@
                   <h4>
                     <strong>微信捐赠</strong>
                   </h4>
-                  <img src="https://nicelinks.site/static/img/reward_wexin.jpg" alt="倾城之链" />
+                  <img
+                    src="https://nicelinks.site/static/img/reward_wexin.jpg"
+                    :alt="$t('niceLinksStr')"
+                  />
                 </div>
                 <div class="zhifubao-pay">
                   <h4>
                     <strong>支付宝捐赠</strong>
                   </h4>
-                  <img src="https://nicelinks.site/static/img/reward_zhifubao.jpg" alt="倾城之链" />
+                  <img
+                    src="https://nicelinks.site/static/img/reward_zhifubao.jpg"
+                    :alt="$t('niceLinksStr')"
+                  />
                 </div>
                 <div>
                   <h4>

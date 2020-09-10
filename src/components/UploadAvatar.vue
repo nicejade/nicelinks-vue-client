@@ -89,11 +89,11 @@
           <div class="vicp-crop-right" v-show="true">
             <div class="vicp-preview">
               <div class="vicp-preview-item">
-                <img :src="createImgUrl" :style="previewStyle" />
+                <img :src="createImgUrl" :style="previewStyle" :alt="$t('niceLinksStr')" />
                 <span>{{ lang.preview }}</span>
               </div>
               <div class="vicp-preview-item" v-if="!noCircle">
-                <img :src="createImgUrl" :style="previewStyle" />
+                <img :src="createImgUrl" :style="previewStyle" :alt="$t('niceLinksStr')" />
                 <span>{{ lang.preview }}</span>
               </div>
             </div>

@@ -31,7 +31,7 @@
               </el-tabs>
               <el-card class="box-card base-info" v-if="isShowBaseInfo">
                 <div slot="header" class="clearfix">
-                  <img class="avatar" :src="userAvatar" alt="User Avatar" />
+                  <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
                   <div class="info">
                     <p class="username">{{ mUserInfo.username }}</p>
                     <p class="nickname" v-if="mUserInfo.profile.nickname">

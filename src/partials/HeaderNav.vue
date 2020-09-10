@@ -93,7 +93,7 @@
         <div class="user-account" v-if="$isLogin()">
           <el-dropdown @command="handleCommand" trigger="click">
             <span class="el-dropdown-link">
-              <img class="avatar" :src="userAvatar" alt="" />
+              <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
               <span>{{ userSign }} </span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>

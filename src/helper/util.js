@@ -289,6 +289,10 @@ export default {
     )
   },
 
+  getRedirectLink(url) {
+    return `https://nicelinks.site/redirect?url=${url}`
+  },
+
   assembleExternalLink(url) {
     const separator = $lodash.endsWith(url, '/') ? '' : '/'
     return `${url}${separator}?utm_source=nicelinks.site`

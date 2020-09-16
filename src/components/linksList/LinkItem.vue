@@ -27,7 +27,7 @@
     <h3 class="title">
       <a
         class="title-link"
-        :href="$util.assembleExternalLink(item.urlPath)"
+        :href="$util.getRedirectLink(item.urlPath)"
         @click.stop="onStopPropagationClick"
         target="_blank"
         rel="noopener"
@@ -352,7 +352,7 @@ export default {
     }
     .tag + .tag {
       &:before {
-        margin: 0 0.1em;
+        margin: 0 0.3em;
         content: '/';
         color: $black-grey;
       }

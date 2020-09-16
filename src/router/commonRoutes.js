@@ -11,6 +11,13 @@ let commonConf = [
     component: (resolve) => require(['partials/Login'], resolve),
   },
   {
+    path: '/redirect',
+    meta: {
+      isNeedLogin: false,
+    },
+    component: (resolve) => require(['views/Redirect'], resolve),
+  },
+  {
     path: '/404',
     meta: {},
     component: NotFound,

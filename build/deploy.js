@@ -4,17 +4,11 @@ var chalk = require('chalk')
 
 let sourcePath = path.resolve(__dirname, '../dist/*')
 
-// Copy To NiceLinks-API (1)
-let targetPath = './../nice-koa2-api/'
+// Copy To nicelinks.site
+let targetPath = './../nicelinks.site/server/'
 shell.rm('-rf', `${targetPath}public/static`)
 shell.mkdir('-p', `${targetPath}public/static`)
 shell.cp('-R', sourcePath, `${targetPath}public/`)
-
-// Copy To NiceLinks-Static (2)
-targetPath = './../nicelinks/'
-shell.rm('-rf', `${targetPath}/static`)
-shell.mkdir('-p', targetPath)
-shell.cp('-R', sourcePath, targetPath)
 
 // shell.cd(targetPath)
 

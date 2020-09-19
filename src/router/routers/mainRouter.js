@@ -90,5 +90,12 @@ export default {
       },
       component: (resolve) => require(['views/Business'], resolve),
     },
+    {
+      path: 'cemetery',
+      meta: {
+        isNeedLogin: false,
+      },
+      component: (resolve) => require(['views/Cemetery'], resolve),
+    },
   ],
 }

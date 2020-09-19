@@ -58,6 +58,10 @@
                 <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
               </el-dropdown-item>
               <el-dropdown-item command="" divided> </el-dropdown-item>
+              <el-dropdown-item command="ProductCemetery">
+                <icon class="vector-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
+              </el-dropdown-item>
+              <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="SwitchLang">
                 <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
               </el-dropdown-item>
@@ -290,6 +294,11 @@ export default {
 
     onShareBtnMouseout() {
       document.querySelectorAll('#share path')[0].setAttribute('fill', '#000000')
+    },
+
+    onProductCemeteryClick() {
+      this.$gtagTracking('product-cemetery', 'header', 'product-cemetery')
+      this.$router.push('/cemetery')
     },
   },
 }

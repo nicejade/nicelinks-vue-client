@@ -70,6 +70,7 @@ export default {
 
       if (currentItem && currentItem['value']) {
         this.$vuexSetRequestParamList({
+          alive: 1,
           classify: currentItem ? currentItem['value'] : '',
           // 当切换 classify 时候，要更新 requestParamList(vuex) 中的字段为初始值;
           pageCount: 1,

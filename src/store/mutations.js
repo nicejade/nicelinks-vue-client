@@ -18,6 +18,7 @@ export default {
 
   $vuexRecoverRequestParamList(state, params = {}) {
     state.requestParamList = {
+      alive: 1,
       pageCount: 1,
       pageSize: 10,
       sortType: -1,

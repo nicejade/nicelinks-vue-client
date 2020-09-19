@@ -37,6 +37,7 @@ export default {
   findMore: 'Find More',
   themeCollection: 'Theme Collections',
   tagsCollection: 'Tags Collections',
+  productCemetery: 'Product Cemetery',
   management: 'Management',
   switchLang: 'Switch Lang',
   aboutWebsite: 'About Website',
@@ -47,6 +48,7 @@ export default {
   manageSentences: 'Manage Sentences',
   shareNewSentences: 'Share New Sentences',
   isAcive: 'Is Acive',
+  isAlive: 'Is Alive',
 
   linkAddressStr: 'Address Link',
   linkNameStr: 'Link Name',

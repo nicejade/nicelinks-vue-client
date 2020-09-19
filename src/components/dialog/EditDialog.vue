@@ -162,6 +162,20 @@
               </el-switch>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"> {{ this.$t('isAlive') }} ：</label>
+            <div class="col-sm-8">
+              <el-switch
+                :on-text="$t('yes')"
+                :off-text="$t('no')"
+                v-model="fillForm.alive"
+                on-color="#13ce66"
+                off-color="#ff4949"
+              >
+              </el-switch>
+            </div>
+          </div>
         </el-form>
       </div>
 
@@ -192,6 +206,7 @@ export default {
         theme: '',
         tags: [],
         review: '',
+        alive: true,
         active: false,
       },
       themeList: [],

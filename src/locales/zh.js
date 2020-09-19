@@ -37,6 +37,7 @@ export default {
   findMore: '发现更多',
   themeCollection: '倾城主题',
   tagsCollection: '倾城标签',
+  productCemetery: '产品公墓',
   management: '后台管理',
   switchLang: '切换语言',
   aboutWebsite: '关于网站',
@@ -47,6 +48,7 @@ export default {
   manageSentences: '管理箴言',
   shareNewSentences: '分享新箴言',
   isAcive: '是否激活',
+  isAlive: '是否可访问',
 
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',

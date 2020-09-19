@@ -20,6 +20,7 @@ const state = {
   nicelinksList: [],
   // 默认展示「最新分享」而不是「热门分享」；
   requestParamList: {
+    alive: 1,
     pageCount: 1,
     pageSize: 10,
     sortType: -1,

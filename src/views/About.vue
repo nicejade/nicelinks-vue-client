@@ -6,9 +6,9 @@
           <div class="entry-list active-fail">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h3>
+                <h2>
                   <strong>{{ $t('aboutNiceLinks') }}</strong>
-                </h3>
+                </h2>
               </div>
               <preview-md :value="aboutMarkdown"></preview-md>
             </el-card>

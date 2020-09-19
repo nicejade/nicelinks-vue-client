@@ -61,9 +61,8 @@
 }
 .markdown-body h2 {
   padding-bottom: 0.3em;
-  font-size: 1.75em;
+  font-size: 18px;
   line-height: 1.225;
-  border-bottom: 1px solid #eee;
 }
 .markdown-body h3 {
   font-size: 1.5em;

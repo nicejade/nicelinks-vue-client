@@ -6,7 +6,7 @@
           <div class="entry-list active-fail">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <h3><strong>广告投放</strong></h3>
+                <h2><strong>广告投放</strong></h2>
               </div>
               <div class="advertise">
                 <preview-md :value="introduce"></preview-md>

@@ -24,7 +24,7 @@
         >{{ iitem }}</a
       >
     </div>
-    <h3 class="title">
+    <h2 class="title">
       <a
         class="title-link"
         :href="$util.getRedirectLink(item.urlPath)"
@@ -33,7 +33,7 @@
         rel="noopener"
         >{{ item.title }}</a
       >
-    </h3>
+    </h2>
     <div class="abstract" v-if="isAbstract">
       {{ item.abstract || $util.interceptString(item.desc) }}
     </div>
@@ -155,8 +155,15 @@ export default {
     },
 
     updatelinkScreenshot() {
-      const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
-      this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
+      if (this.item.alive) {
+        const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
+        this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
+      } else {
+        const isEvenDay = new Date().getDate() % 2 === 0
+        this.linkScreenshot = isEvenDay
+          ? 'https://image.nicelinks.site/nicelinks.site-screely.png'
+          : 'https://image.nicelinks.site/nicelinks.site-mpb.png'
+      }
     },
 
     dispatchAction(row, action) {

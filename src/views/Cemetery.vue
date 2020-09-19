@@ -4,6 +4,11 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
+            <div class="cemetery-desc">
+              <mark>
+                <preview-md :value="cemeteryDescStr"></preview-md>
+              </mark>
+            </div>
             <links-list
               :is-abstract="true"
               :pdata="pastLinksArray"
@@ -19,20 +24,26 @@
 
 <script>
 import $config from 'config'
-import metaMixin from 'mixins/metaMixin.js'
+import PreviewMd from 'components/markdown/PreviewMd.vue'
+
+const cemeteryDescStr = `## 产品公墓 
+天地不仁，以万物为刍狗。年与时驰间，[倾城之链](https://nicelinks.site/)所收录的优质网站，也难逃时间洗礼；其中诸多内容，因为各种缘由而消隐逝去；[倾城之链 - 产品公墓](https://nicelinks.site/cemetery)，就是将不再能访问的、可能永远被人遗忘的产品列出来，留个纪念，缅怀过往。`
 
 export default {
   name: 'Cemetery',
 
-  mixins: [metaMixin],
+  mixins: [],
 
   data() {
     return {
       pastLinksArray: [],
+      cemeteryDescStr: cemeteryDescStr,
     }
   },
 
-  components: {},
+  components: {
+    PreviewMd,
+  },
 
   watch: {},
 
@@ -83,6 +94,10 @@ export default {
 #cemetery {
   .entry-list {
     position: relative;
+    .cemetery-desc {
+      padding: 18px 20px;
+      border-bottom: 1px solid $item-border-color;
+    }
   }
 }
 </style>

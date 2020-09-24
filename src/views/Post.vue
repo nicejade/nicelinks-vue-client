@@ -59,7 +59,7 @@ export default {
           this.niceLinksArrayay = result
           this.niceLinksDetail = result[0]
 
-          this.updatePageTitle(result[0])
+          this.updatePageMeta(result[0])
           this.addHeaderNavActive()
         } else {
           this.$router.push('/404')
@@ -79,7 +79,7 @@ export default {
   },
 
   methods: {
-    updatePageTitle(details) {
+    updatePageMeta(details) {
       this.title = details.title
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc

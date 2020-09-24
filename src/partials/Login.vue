@@ -102,7 +102,7 @@ export default {
   created() {},
 
   mounted() {
-    this.updatePageTitle(this.isSignUpPage)
+    this.updatePageMeta(this.isSignUpPage)
   },
 
   components: {},
@@ -115,12 +115,12 @@ export default {
 
   watch: {
     isSignUpPage(val) {
-      this.updatePageTitle(val)
+      this.updatePageMeta(val)
     },
   },
 
   methods: {
-    updatePageTitle(val) {
+    updatePageMeta(val) {
       const localeKey = val ? 'signUp' : 'signIn'
       this.title = this.$t(localeKey)
     },

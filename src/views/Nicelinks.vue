@@ -45,7 +45,7 @@ export default {
   created() {},
 
   mounted() {
-    this.updatePageTitle()
+    this.updatePageMeta()
     this.setFetchData()
 
     const sortVal = this.$util.getUrlParam('sort')
@@ -56,7 +56,7 @@ export default {
   },
 
   methods: {
-    updatePageTitle() {
+    updatePageMeta() {
       const cClassify = this.$route.params.classify
       const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
       this.title = this.$t(localesKey)

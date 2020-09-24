@@ -13,18 +13,12 @@ import HomeLotus from 'components/homepage/HomeLotus'
 import NiceFantasy from 'components/homepage/NiceFantasy'
 import Introduction from 'components/homepage/Introduction'
 import LinkCountup from 'components/homepage/LinkCountup'
-import pageMixin from 'mixins/pageMixin.js'
-import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Index',
 
-  mixins: [pageMixin, metaMixin],
-
   data() {
-    return {
-      title: '',
-    }
+    return {}
   },
 
   components: {
@@ -39,6 +33,16 @@ export default {
   created() {},
 
   mounted() {},
+
+  metaInfo() {
+    return {
+      title: `${this.$t('niceLinksStr')}}`,
+      meta: [
+        { name: 'keywords', content: this.$t('keywords') },
+        { name: 'description', content: this.$t('description') },
+      ],
+    }
+  },
 
   methods: {},
 }

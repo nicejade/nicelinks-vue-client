@@ -56,6 +56,16 @@ export default {
     PreviewMd,
   },
 
+  metaInfo() {
+    return {
+      title: `${this.$t('niceLinksStr')} - 广告投放`,
+      meta: [
+        { name: 'keywords', content: this.$t('keywords') },
+        { name: 'description', content: this.$t('description') },
+      ],
+    }
+  },
+
   mounted() {},
 
   methods: {},

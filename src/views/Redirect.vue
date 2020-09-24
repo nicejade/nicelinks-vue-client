@@ -10,12 +10,16 @@
 </template>
 
 <script>
+import metaMixin from 'mixins/metaMixin.js'
+
 export default {
   name: 'Redirect',
 
   data() {
     return {}
   },
+
+  mixins: [metaMixin],
 
   created() {},
 

@@ -17,6 +17,7 @@
           target="_blank"
           ><img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=237464&theme=light"
+            onerror="this.src='https://image.nicelinks.site/producthunt-upvoted.svg'"
             alt="NICE LINKS - Is designed to gather around the world's excellent websites. | Product Hunt Embed"
             style="width: 250px; height: 54px;"
             width="250px"

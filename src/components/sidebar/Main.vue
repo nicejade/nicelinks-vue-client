@@ -13,7 +13,7 @@
       </el-collapse-item>
       <el-collapse-item :title="$t('productHuntUpvote')" name="producthunt-upvote">
         <a
-          href="https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
+          href="https://nicelinks.site/redirect?url=https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
           target="_blank"
           ><img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=237464&theme=light"

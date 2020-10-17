@@ -1,7 +1,7 @@
 <template>
   <div class="embed-upvote">
     <a
-      href="https://creatorsdaily.com/f4d0e23e-4b50-41f4-b03e-9ac99be28944?utm_source=nicelinks.site&pid=vote"
+      href="https://nicelinks.site/redirect?url=https://creatorsdaily.com/f4d0e23e-4b50-41f4-b03e-9ac99be28944?utm_source=nicelinks.site&pid=vote"
       target="_blank"
       style="border: 1px solid #de7d77; border-radius: 12px;"
     >
@@ -10,7 +10,7 @@
       />
     </a>
     <a
-      href="https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
+      href="https://nicelinks.site/redirect?url=https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
       target="_blank"
     >
       <img

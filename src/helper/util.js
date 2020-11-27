@@ -208,7 +208,7 @@ export default {
   },
 
   isLegalPassword(str) {
-    let pattern = new RegExp('^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9!@#$%^&*]{6,18}$', 'g')
+    let pattern = new RegExp('^[a-zA-Z0-9@$!%_*#&]{6,18}$', 'g')
     return pattern.test(str)
   },
 

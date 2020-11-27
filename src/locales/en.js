@@ -89,8 +89,9 @@ export default {
   friendshipLinks: 'Friendship Links',
   rewardme: 'Reward Me',
 
-  enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
-  enterLegalPwdTip: 'Enter A Valid Password',
+  enterPwdTip: 'Enter Password（Including letters, numbers, special characters, 6 to 18 digits）',
+  enterLegalPwdTip:
+    'Enter A Valid Password（Including letters, numbers, special characters, 6 to 18 digits）',
   enterLegalUrl: 'Please enter a valid address',
   enterEmailTip: 'Please Enter Email',
   enterLegalEmailTip: 'Please Enter A Valid Email Box',

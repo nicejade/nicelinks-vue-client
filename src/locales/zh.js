@@ -91,8 +91,8 @@ export default {
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',
 
-  enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
-  enterLegalPwdTip: '请输入合法密码',
+  enterPwdTip: '请输入密码(含字母、数字、特殊字符，6至18位)',
+  enterLegalPwdTip: '请输入合法密码(含字母、数字、特殊字符，6至18位)',
   enterLegalUrl: '请输入合法地址',
   enterEmailTip: '请输入邮箱',
   enterLegalEmailTip: '请输入有效邮箱',

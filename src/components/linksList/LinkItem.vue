@@ -331,7 +331,7 @@ export default {
     filter: drop-shadow(0px 0px 15px lightgrey);
   }
   .meta {
-    font-size: 1.314rem;
+    font-size: 1.4rem;
     color: $black-grey;
     .item {
       cursor: pointer;

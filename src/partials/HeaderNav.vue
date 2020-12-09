@@ -276,7 +276,7 @@ export default {
         .logout()
         .then((result) => {
           this.$message({
-            message: result,
+            message: `您已成功退出登录🤝`,
             type: 'success',
           })
 
@@ -336,6 +336,7 @@ export default {
       position: relative;
       margin-right: 12px;
       float: left;
+      font-size: $font-medium;
       .nav-item {
         color: $black;
         margin: 0 1rem;
@@ -348,6 +349,7 @@ export default {
       }
     }
     .share-btn {
+      font-size: $font-medium;
       .share-link {
         @include flex-box-center(row, space-around, center);
         color: $black;
@@ -368,6 +370,12 @@ export default {
       margin: 0 12px;
       display: inline-block;
       float: left;
+    }
+    .find-more,
+    .user-account {
+      .el-dropdown {
+        font-size: $font-medium;
+      }
     }
     .user-account {
       cursor: pointer;
@@ -476,8 +484,13 @@ export default {
   }
 }
 .search-area {
+  display: block;
   position: absolute;
   right: 210px;
-  display: block;
+  .el-autocomplete {
+    .el-input {
+      font-size: $font-medium;
+    }
+  }
 }
 </style>

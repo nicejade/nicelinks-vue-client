@@ -6,13 +6,16 @@
 *:focus {
   outline: none !important;
 }
-body,
 html {
+  font-size: 62.5%;
   height: 100%;
 }
 body {
   font: normal 14px/1 'Open Sans', 'SF Pro Text', 'Myriad Set Pro', 'SF Pro Icons', 'Helvetica Neue',
     'Helvetica', 'Arial', sans-serif;
+}
+body {
+  font-size: 1.4rem;
 }
 h1,
 h2,

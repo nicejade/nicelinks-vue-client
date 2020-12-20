@@ -151,6 +151,16 @@ export default {
     }
   },
 
+  metaInfo() {
+    return {
+      title: `倾城设置 - ${this.$t('niceLinksStr')}`,
+      meta: [
+        { name: 'keywords', content: this.$t('keywords') },
+        { name: 'description', content: this.$t('description') },
+      ],
+    }
+  },
+
   mounted() {
     this.initFetch()
   },

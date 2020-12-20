@@ -65,7 +65,7 @@ export default {
 
   metaInfo() {
     return {
-      title: `${this.$t('niceLinksStr')} - ${this.$t('productCemetery')}`,
+      title: `${this.$t('productCemetery')} - ${this.$t('niceLinksStr')}`,
       meta: [
         { name: 'keywords', content: this.$t('keywords') },
         {

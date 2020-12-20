@@ -1,18 +1,9 @@
 <template>
   <div class="content">
-    <div class="meta">
+    <div class="meta-box">
       <span class="item classify" @click.stop.prevent="onThemeClick(item.theme)">{{
         fillThemeName(item.classify, item.theme)
       }}</span>
-      <a
-        class="item username"
-        :href="getUserPath(item.createdBy)"
-        @click.stop="onStopPropagationClick"
-        target="_blank"
-        rel="noopener"
-        >{{ item.createdBy || '' }}</a
-      >
-      <span>{{ item.created | dateOffset }}</span>
       <a
         class="tag"
         v-for="(iitem, index) in item.tags"
@@ -23,6 +14,18 @@
         rel="noopener"
         >{{ iitem }}</a
       >
+    </div>
+    <div class="meta-box">
+      <a
+        class="username"
+        :href="getUserPath(item.createdBy)"
+        @click.stop="onStopPropagationClick"
+        target="_blank"
+        rel="noopener"
+        >@{{ item.createdBy || '' }}</a
+      >
+      <span class="item">分享于 {{ item.created | dateOffset }}</span>
+      <span>阅读数 {{ item.countup }}</span>
     </div>
     <h2 class="title">
       <a
@@ -330,11 +333,13 @@ export default {
     margin-bottom: 15px;
     filter: drop-shadow(0px 0px 15px lightgrey);
   }
-  .meta {
+  .meta-box + .meta-box {
+    margin-top: 15px;
+  }
+  .meta-box {
     font-size: 1.4rem;
     color: $black-grey;
     .item {
-      cursor: pointer;
       &:after {
         content: '\B7';
         margin: 0 0.4em;

@@ -23,6 +23,16 @@ export default {
 
   created() {},
 
+  metaInfo() {
+    return {
+      title: `倾城跳转 - ${this.$t('niceLinksStr')}`,
+      meta: [
+        { name: 'keywords', content: this.$t('keywords') },
+        { name: 'description', content: this.$t('description') },
+      ],
+    }
+  },
+
   mounted() {
     const paramObj = this.$util.query(window.location.href)
     const targetUrl = window.decodeURIComponent(paramObj.url)

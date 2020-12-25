@@ -1,31 +1,45 @@
 <template>
   <div class="content">
-    <div class="meta-box">
-      <span class="item classify" @click.stop.prevent="onThemeClick(item.theme)">{{
-        fillThemeName(item.classify, item.theme)
-      }}</span>
+    <div class="info-block">
       <a
-        class="tag"
-        v-for="(iitem, index) in item.tags"
-        :key="index"
-        :href="getTagPath(iitem)"
-        @click.stop="onStopPropagationClick"
-        target="_blank"
-        rel="noopener"
-        >{{ iitem }}</a
-      >
-    </div>
-    <div class="meta-box">
-      <a
-        class="username"
+        class="user-info"
         :href="getUserPath(item.createdBy)"
-        @click.stop="onStopPropagationClick"
         target="_blank"
         rel="noopener"
-        >@{{ item.createdBy || '' }}</a
+        v-if="!isAbstract"
       >
-      <span class="item">分享于 {{ item.created | dateOffset }}</span>
-      <span>阅读数 {{ item.countup }}</span>
+        <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
+      </a>
+      <div class="meta-block">
+        <div class="meta-box" v-if="!isAbstract">
+          <a
+            class="username"
+            :href="getUserPath(item.createdBy)"
+            @click.stop="onStopPropagationClick"
+            target="_blank"
+            rel="noopener"
+            >@{{ mUserInfo.profile.nickname || item.createdBy || '' }}</a
+          >
+          <span class="item">分享于 {{ item.created | dateOffset }}</span>
+          <span>阅读数 {{ item.countup + 1 }}</span>
+        </div>
+        <div class="meta-box">
+          <a class="item classify" :href="'/theme/' + item.theme.toLocaleLowerCase()">{{
+            fillThemeName(item.classify, item.theme)
+          }}</a>
+          <a
+            class="tag"
+            v-for="(iitem, index) in item.tags"
+            :key="index"
+            :href="getTagPath(iitem)"
+            @click.stop="onStopPropagationClick"
+            target="_blank"
+            rel="noopener"
+          >
+            #{{ iitem }}
+          </a>
+        </div>
+      </div>
     </div>
     <h2 class="title">
       <a
@@ -102,6 +116,9 @@ export default {
       isShowDlgFlag: false,
       currentRowData: {},
       linkScreenshot: 'https://oss.nicelinks.site/nicelinks.site.png',
+      mUserInfo: {
+        profile: {},
+      },
     }
   },
 
@@ -126,6 +143,13 @@ export default {
     reviewPrefix() {
       return `**${this.$t('reviewStr')}**`
     },
+    userAvatar() {
+      if (this.mUserInfo) {
+        let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
+        let userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
+        return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
+      }
+    },
   },
 
   watch: {},
@@ -139,10 +163,24 @@ export default {
 
   mounted() {
     this.updatelinkScreenshot()
+    this.getUserInfoByUsername()
     mediumZoom('[data-zoomable]')
   },
 
   methods: {
+    getUserInfoByUsername() {
+      let params = { username: this.item.createdBy }
+      this.$apis
+        .getUserInfo(params)
+        .then((result) => {
+          this.mUserInfo = result
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {})
+    },
+
     getReviewContent(item) {
       return (
         this.reviewPrefix +
@@ -332,6 +370,21 @@ export default {
   .link-screenshot {
     margin-bottom: 15px;
     filter: drop-shadow(0px 0px 15px lightgrey);
+  }
+  .info-block {
+    @include flex-box-center(row, start, center);
+    .avatar {
+      float: left;
+      border-radius: 50%;
+      height: 6rem;
+      width: 6rem;
+      box-shadow: 0 0 0 2px #fff;
+      position: relative;
+      margin: 0;
+    }
+    .user-info {
+      margin-right: 15px;
+    }
   }
   .meta-box + .meta-box {
     margin-top: 15px;

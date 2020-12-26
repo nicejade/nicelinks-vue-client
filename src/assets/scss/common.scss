@@ -77,6 +77,11 @@ input:-ms-input-placeholder {
   color: $border-grey !important;
 }
 
+.panel-body {
+  padding: $panel-body-padding;
+  @include clearfix;
+}
+
 .flex-box {
   display: -webkit-box;
   display: -moz-box;

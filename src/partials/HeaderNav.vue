@@ -326,7 +326,7 @@ export default {
       margin: 20px 0;
       width: 180px;
       .header-logo-a {
-        display: table;
+        @include flex-box-center;
         height: $header-height / 2;
         line-height: $header-height / 2;
       }

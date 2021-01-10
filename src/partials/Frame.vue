@@ -6,7 +6,7 @@
       <router-view :key="$route.path"></router-view>
     </main>
     <footer-nav></footer-nav>
-    <feedback></feedback>
+    <feedback v-if="!isMobile"></feedback>
   </div>
 </template>
 

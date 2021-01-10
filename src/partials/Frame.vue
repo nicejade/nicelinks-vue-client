@@ -6,6 +6,7 @@
       <router-view :key="$route.path"></router-view>
     </main>
     <footer-nav></footer-nav>
+    <feedback></feedback>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
+import Feedback from 'components/Feedback'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -28,6 +30,7 @@ export default {
     HeaderNav,
     SideNav,
     FooterNav,
+    Feedback,
   },
 
   created() {

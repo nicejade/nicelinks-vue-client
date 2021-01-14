@@ -41,23 +41,17 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">{{ $t('personalWebsite') }}:</label>
-                  <div class="col-sm-9">
-                    <p class="text-padding gray" v-if="!mUserInfo.profile.website">
-                      {{ $t('noFill') }}
-                    </p>
-                    <el-button v-else type="text" @click="onLinkClick(mUserInfo.profile)">
-                      {{ mUserInfo.profile.website }}
-                    </el-button>
-                  </div>
+                  <label class="control-label">{{ $t('personalWebsite') }}:</label>
+                  <p class="text-padding gray" v-if="!mUserInfo.profile.website">
+                    {{ $t('noFill') }}
+                  </p>
+                  <a v-else :href="mUserInfo.profile.website" target="_blank" rel="noopener">
+                    {{ mUserInfo.profile.website }}
+                  </a>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">{{ $t('profile') }}:</label>
-                  <div class="col-sm-9">
-                    <preview-md :value="mUserInfo.profile.description || $t('noFill')">
-                    </preview-md>
-                    <p class="text-padding gray"></p>
-                  </div>
+                  <label class="control-label">{{ $t('profile') }}:</label>
+                  <preview-md :value="mUserInfo.profile.description || $t('noFill')"> </preview-md>
                 </div>
               </el-card>
               <links-list v-else :pdata="myLinksList" :is-abstract="true" :is-loading="isLoading">
@@ -243,8 +237,24 @@ export default {
     .el-tabs__header {
       margin: 0;
     }
+    .box-card {
+      .form-group {
+        @include flex-box-center(row, start, center);
+        .control-label {
+          text-align: center;
+          min-width: 90px;
+          padding: 0 15px 0 0;
+        }
+      }
+    }
     .base-info {
       padding: 2rem;
+      .el-card__header {
+        padding: 0px;
+      }
+      .clearfix {
+        @include flex-box-center(row, start, center);
+      }
       .avatar {
         float: left;
         border-radius: 50%;
@@ -257,7 +267,7 @@ export default {
       .info {
         @include flex-box-center(column, space-around, left);
         width: calc(100% - 7rem);
-        height: 6rem;
+        height: 8rem;
         float: left;
         margin-left: 1rem;
         .username {

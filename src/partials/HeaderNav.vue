@@ -373,8 +373,18 @@ export default {
     }
     .find-more,
     .user-account {
+      height: 100%;
       .el-dropdown {
+        display: flex;
+        align-items: center;
+        height: 100%;
         font-size: $font-medium;
+        .el-dropdown-link {
+          display: flex !important;
+          align-items: center !important;
+          line-height: $header-mobile-height;
+          height: $header-mobile-height;
+        }
       }
     }
     .user-account {
@@ -382,12 +392,13 @@ export default {
       display: inline-block;
       float: right;
       .avatar {
-        border-radius: 50%;
         height: 38px;
         width: 38px;
         box-shadow: 0 0 0 2px #fff;
+        border-radius: 50%;
         position: relative;
         margin: 0;
+        margin-right: 10px !important;
       }
     }
     .not-loggedin,
@@ -469,7 +480,8 @@ export default {
       }
       .not-loggedin,
       .el-dropdown-link {
-        display: block;
+        display: flex !important;
+        align-items: center !important;
         line-height: $header-mobile-height;
         height: $header-mobile-height;
       }

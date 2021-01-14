@@ -10,59 +10,42 @@
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
-            <label class="col-sm-3 control-label">
-              {{ this.$t('linkAddressStr') }} <em>*</em>：</label
-            >
-            <div class="col-sm-8">
-              <el-form-item prop="urlPath">
-                <el-input
-                  v-model="fillForm.urlPath"
-                  :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"
+            <el-form-item prop="urlPath">
+              <el-input
+                v-model="fillForm.urlPath"
+                :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"
+              >
+              </el-input>
+            </el-form-item>
+          </div>
+          <div class="form-group">
+            <el-form-item prop="title">
+              <el-input
+                v-model="fillForm.title"
+                :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')"
+              ></el-input>
+            </el-form-item>
+          </div>
+
+          <div class="form-group">
+            <el-form-item prop="classify">
+              <el-select
+                class="wrap-block"
+                v-model="fillForm.classify"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')"
+              >
+                <el-option
+                  v-for="item in classifyList"
+                  :key="item.key"
+                  :label="$t(item.name)"
+                  :value="item.value"
                 >
-                </el-input>
-              </el-form-item>
-            </div>
+                </el-option>
+              </el-select>
+            </el-form-item>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkNameStr') }} <em>*</em>：</label>
-            <div class="col-sm-8">
-              <el-form-item prop="title">
-                <el-input
-                  v-model="fillForm.title"
-                  :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')"
-                ></el-input>
-              </el-form-item>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label">
-              {{ this.$t('linkClassifyStr') }} <em>*</em>：</label
-            >
-            <div class="col-sm-8">
-              <el-form-item prop="classify">
-                <el-select
-                  class="wrap-block"
-                  v-model="fillForm.classify"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')"
-                >
-                  <el-option
-                    v-for="item in classifyList"
-                    :key="item.key"
-                    :label="$t(item.name)"
-                    :value="item.value"
-                  >
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label">
-              {{ this.$t('linkThemeStr') }} <em>*</em>：</label
-            >
             <div class="col-sm-8">
               <el-form-item prop="theme">
                 <el-select
@@ -83,98 +66,82 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkTagsStr') }} <em>*</em>：</label>
-            <div class="col-sm-8">
-              <el-form-item prop="tags">
-                <el-select
-                  class="wrap-block"
-                  v-model="fillForm.tags"
-                  allow-create
-                  multiple
-                  filterable
-                  :multiple-limit="3"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')"
-                >
-                  <el-option
-                    v-for="(item, index) in tagsList"
-                    :key="index"
-                    :label="item"
-                    :value="item"
-                  >
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkKeywordStr') }} ：</label>
-            <div class="col-sm-8">
-              <el-form-item prop="keywords">
-                <el-input
-                  type="textarea"
-                  :maxlength="360"
-                  :autosize="{ minRows: 2, maxRows: 10 }"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('linkKeywordStr')"
-                  v-model="fillForm.keywords"
-                >
-                </el-input>
-              </el-form-item>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkDescStr') }} <em>*</em>：</label>
-            <div class="col-sm-8">
-              <el-form-item prop="desc">
-                <el-input
-                  type="textarea"
-                  :maxlength="360"
-                  :autosize="{ minRows: 3, maxRows: 10 }"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')"
-                  v-model="fillForm.desc"
-                >
-                </el-input>
-              </el-form-item>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkReviewStr') }} ：</label>
-            <div class="col-sm-8">
-              <markdown
-                v-model="fillForm.review"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"
-              />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} ：</label>
-            <div class="col-sm-8">
-              <el-switch
-                :on-text="$t('yes')"
-                :off-text="$t('no')"
-                v-model="fillForm.active"
-                on-color="#13ce66"
-                off-color="#ff4949"
+            <el-form-item prop="tags">
+              <el-select
+                class="wrap-block"
+                v-model="fillForm.tags"
+                allow-create
+                multiple
+                filterable
+                :multiple-limit="3"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')"
               >
-              </el-switch>
-            </div>
+                <el-option
+                  v-for="(item, index) in tagsList"
+                  :key="index"
+                  :label="item"
+                  :value="item"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </div>
+
+          <div class="form-group">
+            <el-form-item prop="keywords">
+              <el-input
+                type="textarea"
+                :maxlength="360"
+                :autosize="{ minRows: 2, maxRows: 10 }"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkKeywordStr')"
+                v-model="fillForm.keywords"
+              >
+              </el-input>
+            </el-form-item>
+          </div>
+
+          <div class="form-group">
+            <el-form-item prop="desc">
+              <el-input
+                type="textarea"
+                :maxlength="360"
+                :autosize="{ minRows: 3, maxRows: 10 }"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')"
+                v-model="fillForm.desc"
+              >
+              </el-input>
+            </el-form-item>
+          </div>
+
+          <div class="form-group">
+            <markdown
+              v-model="fillForm.review"
+              :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="control-label"> {{ this.$t('isAcive') }} ：</label>
+            <el-switch
+              :on-text="$t('yes')"
+              :off-text="$t('no')"
+              v-model="fillForm.active"
+              on-color="#13ce66"
+              off-color="#ff4949"
+            >
+            </el-switch>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('isAlive') }} ：</label>
-            <div class="col-sm-8">
-              <el-switch
-                :on-text="$t('yes')"
-                :off-text="$t('no')"
-                v-model="fillForm.alive"
-                on-color="#13ce66"
-                off-color="#ff4949"
-              >
-              </el-switch>
-            </div>
+            <el-switch
+              :on-text="$t('yes')"
+              :off-text="$t('no')"
+              v-model="fillForm.alive"
+              on-color="#13ce66"
+              off-color="#ff4949"
+            >
+            </el-switch>
           </div>
         </el-form>
       </div>

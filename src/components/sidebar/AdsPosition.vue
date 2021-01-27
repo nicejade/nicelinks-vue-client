@@ -5,8 +5,8 @@
       trigger="click"
       class="jade-gg-body"
       indicator-position="outside"
-      :interval="3600"
-      height="256px"
+      :interval="5000"
+      height="255px"
     >
       <el-carousel-item v-for="(item, index) in advertsList" :key="index">
         <a :href="item.path" target="_blank" rel="noopener">
@@ -41,6 +41,7 @@ export default {
 <style lang="scss">
 #jade-gg-position {
   .jade-gg-body {
+    overflow: hidden;
     width: 100%;
   }
 }

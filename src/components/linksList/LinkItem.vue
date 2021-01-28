@@ -1,47 +1,27 @@
 <template>
   <div class="content">
-    <div class="info-block">
-      <a
-        class="user-info"
-        :href="getUserPath(item.createdBy)"
-        target="_blank"
-        rel="noopener"
-        v-if="!isAbstract"
-      >
+    <div class="info-block mb-normal" v-if="!isAbstract">
+      <a class="user-info" :href="getUserPath(item.createdBy)" target="_blank" rel="noopener">
         <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
       </a>
       <div class="meta-block">
-        <div class="meta-box" v-if="!isAbstract">
+        <div class="meta-box">
           <a
             class="username"
             :href="getUserPath(item.createdBy)"
             @click.stop="onStopPropagationClick"
             target="_blank"
             rel="noopener"
-            >@{{ mUserInfo.profile.nickname || item.createdBy || '' }}</a
+            >{{ mUserInfo.profile.nickname || item.createdBy || '' }}</a
           >
+        </div>
+        <div class="meta-box">
           <span class="item">分享于 {{ item.created | dateOffset }}</span>
           <span>阅读数 {{ item.countup + 1 }}</span>
         </div>
-        <div class="meta-box">
-          <a class="item classify" :href="'/theme/' + item.theme.toLocaleLowerCase()">{{
-            fillThemeName(item.classify, item.theme)
-          }}</a>
-          <a
-            class="tag"
-            v-for="(iitem, index) in item.tags"
-            :key="index"
-            :href="getTagPath(iitem)"
-            @click.stop="onStopPropagationClick"
-            target="_blank"
-            rel="noopener"
-          >
-            #{{ iitem }}
-          </a>
-        </div>
       </div>
     </div>
-    <h2 class="title">
+    <h2 class="title mb-normal">
       <a
         class="title-link"
         :href="$util.getRedirectLink(item.urlPath)"
@@ -51,6 +31,21 @@
         >{{ item.title }}</a
       >
     </h2>
+    <div class="meta-box mb-normal">
+      <a class="item classify" :href="'/theme/' + item.theme.toLocaleLowerCase()">{{
+        fillThemeName(item.classify, item.theme)
+      }}</a>
+      <a
+        class="tag"
+        v-for="(iitem, index) in item.tags"
+        :key="index"
+        :href="getTagPath(iitem)"
+        @click.stop="onStopPropagationClick"
+        target="_blank"
+        rel="noopener"
+        >{{ iitem }}
+      </a>
+    </div>
     <div class="abstract" v-if="isAbstract">
       {{ item.abstract || $util.interceptString(item.desc) }}
     </div>
@@ -317,7 +312,6 @@ export default {
 .content {
   margin: 5px;
   .title {
-    margin: 15px 0;
     .title-link {
       font-size: 1.8rem;
       font-weight: 600;
@@ -335,7 +329,7 @@ export default {
     width: 100%;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: $silver-grey;
+    color: $black-grey;
     line-height: 1.5;
     letter-spacing: 0.02rem;
   }
@@ -354,14 +348,14 @@ export default {
     word-break: break-all;
   }
   .link-desc {
-    color: $silver-grey;
+    color: $black-grey;
     margin: 15px auto;
     padding-left: 10px;
     word-break: break-all;
     line-height: 1.8rem;
     font-size: $font-small;
     word-spacing: 3px;
-    border-left: 2px solid #000000;
+    border-left: 2px solid $black-grey;
   }
   .segmenting-line {
     border-top: 1px solid #8c8b8b;
@@ -378,7 +372,7 @@ export default {
       border-radius: 50%;
       height: 6rem;
       width: 6rem;
-      box-shadow: 0 0 0 2px #fff;
+      box-shadow: 0px 10px 30px 0px rgba(0, 64, 128, 0.1);
       position: relative;
       margin: 0;
     }
@@ -391,7 +385,7 @@ export default {
   }
   .meta-box {
     font-size: 1.4rem;
-    color: $black-grey;
+    color: $silver-grey;
     .item {
       &:after {
         content: '\B7';
@@ -409,7 +403,7 @@ export default {
       }
     }
     .tag {
-      color: $black-grey;
+      color: $silver-grey;
       cursor: pointer;
       &:hover {
         color: $brand;
@@ -419,7 +413,7 @@ export default {
       &:before {
         margin: 0 0.3em;
         content: '/';
-        color: $black-grey;
+        color: $silver-grey;
       }
     }
   }

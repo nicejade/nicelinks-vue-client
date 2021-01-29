@@ -71,15 +71,53 @@
     </div>
     <div class="action-list">
       <div class="action-item" @click.stop.prevent="onLikeClick(item)">
-        <icon class="icons" :name="item.isLikes ? 'likes-down' : 'likes'"></icon>
+        <heart :is-down="item.isLikes"></heart>
         <span class="item-num">{{ item.likes }}</span>
       </div>
       <div class="action-item" @click.stop.prevent="onDislikeClick(item)">
-        <icon class="icons" :name="item.isDislikes ? 'dislike-down' : 'dislike'"></icon>
+        <heart-broken :is-down="item.isDislikes"></heart-broken>
         <span class="item-num">{{ item.dislikes }}</span>
       </div>
+      <div class="action-item" v-if="isAbstract">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-eye"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#9393aa"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="2" />
+          <path
+            d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"
+          />
+        </svg>
+        <span class="item-num">{{ item.countup }}</span>
+      </div>
       <div class="action-item" @click.stop.prevent="onEditClick(item)" v-if="isAdminFlag()">
-        <icon class="icons" name="setting"></icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-settings"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#9393aa"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+          />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
         <span class="item-num">{{ $t('edit') }}</span>
       </div>
     </div>
@@ -96,6 +134,8 @@ import mediumZoom from 'medium-zoom'
 
 import EditDialog from 'components/dialog/EditDialog'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
+import Heart from 'components/Heart.vue'
+import HeartBroken from 'components/HeartBroken.vue'
 
 import $config from 'config'
 
@@ -152,6 +192,8 @@ export default {
   components: {
     EditDialog,
     PreviewMd,
+    Heart,
+    HeartBroken,
   },
 
   created() {},
@@ -421,27 +463,29 @@ export default {
     display: inline-flex;
     display: -webkit-flex;
     .action-item {
-      @include flex-box-center();
+      @include flex-box-center(row, start);
       cursor: pointer;
-      padding: 0.3rem 0.9rem;
+      padding: 0;
       height: 100%;
       text-align: center;
       min-width: 3.6rem;
-      border: 1px solid $item-border-color;
       .icons {
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-left: 0;
+        margin-right: 5px;
       }
       .icon-green {
         color: $green;
       }
       .item-num {
-        color: $black;
+        color: $silver-grey;
         margin-left: 0.2em;
-        font-weight: 700;
+        font-weight: 400;
       }
     }
     .action-item + .action-item {
+      margin-left: 3rem;
       border-left: none;
     }
   }

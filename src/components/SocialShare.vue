@@ -66,5 +66,10 @@ export default {
 <style type="text/css" lang="scss">
 .social-share {
   padding-top: 1.2rem;
+  .icons {
+    width: 22px;
+    height: 22px;
+    margin: 0 1em 0 0;
+  }
 }
 </style>

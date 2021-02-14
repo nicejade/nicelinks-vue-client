@@ -50,11 +50,9 @@
               </div>
 
               <div class="form-group operation-area">
-                <div class="col-sm-offset-3 col-sm-9 no-padding">
-                  <el-button :loading="isLoading" type="primary" @click="onSaveClick">{{
-                    $t('saveSeting')
-                  }}</el-button>
-                </div>
+                <el-button :loading="isLoading" type="primary" @click="onSaveClick">{{
+                  $t('saveSeting')
+                }}</el-button>
               </div>
               <el-alert
                 v-if="tipMessageObj.message"
@@ -290,6 +288,10 @@ export default {
       max-width: 768px;
       width: 100%;
     }
+  }
+  .operation-area {
+    display: flex;
+    justify-content: center;
   }
 }
 

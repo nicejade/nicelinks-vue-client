@@ -128,6 +128,15 @@ input:-ms-input-placeholder {
       padding-right: 3px;
     }
   }
+  .col-sm-3 {
+    display: inline-block;
+    width: 24.5%;
+    text-align: left;
+  }
+  .col-sm-9 {
+    display: inline-block;
+    width: 73.5%;
+  }
 }
 
 .gray {
@@ -140,7 +149,7 @@ input:-ms-input-placeholder {
   display: table;
 }
 
-@media (max-height: 768px) {
+@media (max-width: 768px) {
   .form-group {
     margin-bottom: 15px;
   }

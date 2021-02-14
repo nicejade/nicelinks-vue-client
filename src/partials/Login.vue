@@ -23,6 +23,7 @@
         <el-form-item prop="username" v-if="isSignUpPage">
           <el-input
             v-model.trim.lazy="account.username"
+            placeholder="请输入账号 ID"
             :icon="checkLoading ? 'loading' : ''"
             :autofocus="true"
             @blur="onBlurUsername"
@@ -32,17 +33,26 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="email" v-if="isSignUpPage">
-          <el-input v-model.trim="account.email" @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            placeholder="请输入邮箱"
+            v-model.trim="account.email"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userinfo" v-if="!isSignUpPage">
-          <el-input v-model.trim="account.userinfo" @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            placeholder="请输入账号 ID"
+            v-model.trim="account.userinfo"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
+            placeholder="请填写密码"
             v-model="account.password"
             type="password"
             @keydown.enter.native="onKeyEnterClick"
@@ -281,18 +291,18 @@ export default {
 
   locales: {
     en: {
-      enterUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
-      enterUserinfoTip: 'Please enter username Or email',
-      enterLegalUsernameTip: 'Please enter username(Only letters and numbers，3-16)',
+      enterUsernameTip: 'Please enter account ID (Only letters、numbers、-，3-16)',
+      enterUserinfoTip: 'Please enter account ID Or email',
+      enterLegalUsernameTip: 'Please enter account ID(Only letters and numbers，3-16)',
       signupBottomTip: `Don't have an account ?`,
       signinBottomTip: `Already have an account?`,
     },
     zh: {
-      enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
-      enterUserinfoTip: '请输入用户名或邮箱',
-      enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
-      signupBottomTip: `你已拥有一个账号？`,
-      signinBottomTip: `还未拥有一个账号？`,
+      enterUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
+      enterUserinfoTip: '请输入账号 ID 或邮箱',
+      enterLegalUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
+      signupBottomTip: `您已拥有一个账号？`,
+      signinBottomTip: `您还未拥有一个账号？`,
     },
   },
 }

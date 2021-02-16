@@ -64,14 +64,12 @@
               <hr />
 
               <div class="form-group">
-                <div class="col-sm-12">
-                  <div class="update-avatar-area">
-                    <img class="preview-avatar" :src="imgDataUrl" :alt="$t('niceLinksStr')" />
-                    <br />
-                    <el-button :loading="isLoading" type="text" @click="onUpdateAvatarClick">
-                      {{ $t('updateAvatar') }}
-                    </el-button>
-                  </div>
+                <div class="update-avatar-area">
+                  <img class="preview-avatar" :src="imgDataUrl" :alt="$t('niceLinksStr')" />
+                  <br />
+                  <el-button :loading="isLoading" type="text" @click="onUpdateAvatarClick">
+                    {{ $t('updateAvatar') }}
+                  </el-button>
                 </div>
               </div>
             </el-card>
@@ -256,6 +254,7 @@ export default {
       this.imgDataUrl = `/api/avatar/${imgPath}`
       // ReUpdate UserInfo
       this.$getUserInfo()
+      this.isShowUploadAvatar = false
     },
   },
 
@@ -272,10 +271,13 @@ export default {
 
 <style lang="scss">
 .update-avatar-area {
-  width: 221px;
+  width: 100%;
   text-align: center;
   margin: auto;
+  margin-top: 25px;
   .preview-avatar {
+    width: 100px;
+    height: 100px;
     border: 1px solid #d1dbe5;
     border-radius: 50%;
   }

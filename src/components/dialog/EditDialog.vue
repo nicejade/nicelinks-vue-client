@@ -133,7 +133,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('isAlive') }} ：</label>
+            <label class="control-label"> {{ this.$t('isAlive') }} ：</label>
             <el-switch
               :on-text="$t('yes')"
               :off-text="$t('no')"

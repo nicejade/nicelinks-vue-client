@@ -179,7 +179,7 @@ export default {
       return `**${this.$t('reviewStr')}**`
     },
     userAvatar() {
-      if (this.mUserInfo) {
+      if (this.mUserInfo && !this.isAbstract) {
         let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
         let userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
@@ -200,7 +200,9 @@ export default {
 
   mounted() {
     this.updatelinkScreenshot()
-    this.getUserInfoByUsername()
+    if (!this.isAbstract) {
+      this.getUserInfoByUsername()
+    }
     mediumZoom('[data-zoomable]')
   },
 

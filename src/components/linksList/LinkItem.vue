@@ -149,6 +149,7 @@ export default {
       tagsList: $config.tags,
       isShowKeywords: true,
       isShowDlgFlag: false,
+      isRequesting: false,
       currentRowData: {},
       linkScreenshot: 'https://oss.nicelinks.site/nicelinks.site.png',
       mUserInfo: {
@@ -163,10 +164,6 @@ export default {
       default: () => {
         return {}
       },
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
     },
     isAbstract: {
       type: Boolean,
@@ -252,6 +249,8 @@ export default {
         return
       }
 
+      if (this.isRequesting) return
+      this.isRequesting = true
       let params = {
         userId: this.userInfo._id,
         _id: row._id,
@@ -266,6 +265,9 @@ export default {
         })
         .catch((error) => {
           this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isRequesting = false
         })
     },
 

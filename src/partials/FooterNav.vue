@@ -105,7 +105,7 @@
     </footer>
     <a
       v-if="isShowOpenAppBtn"
-      href="https://hapjs.org/app/com.quickapp.nicelinks"
+      :href="getCurrentHref"
       class="link gtag-track open-in-quickapp"
       data-action="footer-quickapp"
       data-category="footer"
@@ -154,6 +154,11 @@ export default {
           (this.$isFromQuickapp() ? !item.notInQuickapp : true)
         )
       })
+    },
+
+    getCurrentHref() {
+      const currentHref = window.location.href
+      return `https://hapjs.org/app/graceful.sentences.com/pages/AryaJarvis?path=${currentHref}`
     },
   },
 

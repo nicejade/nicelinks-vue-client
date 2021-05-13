@@ -1,108 +1,102 @@
 <template>
-  <div id="footer-nav" class="footer-wrapper">
-    <footer class="footer">
-      <div class="footer-body">
-        <div class="container">
-          <div class="list-item" v-if="!isMobile">
-            <dt class="title">公众号</dt>
-            <dd>
-              <img
-                width="100"
-                src="https://image.nicelinks.site/qrcode_jqx.jpg"
-                alt="静晴轩 | 公众号"
-              />
-            </dd>
-          </div>
-          <div class="list-item">
-            <dt class="title">产品</dt>
-            <dd>
-              <a class="nice-link" href="https://nicelinks.site/explore/skill">技术客栈</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://nicelinks.site/explore/resource">资源之家</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://nicelinks.site/explore/life">写意人生</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://nicelinks.site/explore/info">信息快讯</a>
-            </dd>
-          </div>
-          <div class="list-item">
-            <dt class="title">合作</dt>
-            <dd>
-              <a class="nice-link" href="/about">关于我们</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="/business">广告投放</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="/sponsor">倾情捐赠</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="/member/admin">联系我们</a>
-            </dd>
-          </div>
-          <div class="list-item">
-            <dt class="title">推荐</dt>
-            <dd>
-              <a class="nice-link" href="https://www.jeffjade.com/">晚晴幽草轩</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://quickapp.lovejade.cn/">静轩之别苑</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://markdown.lovejade.cn/">在线编辑器</a>
-            </dd>
-            <dd>
-              <a class="nice-link" href="https://arya.lovejade.cn/#/zh-cn">二丫贾维斯</a>
-            </dd>
-          </div>
-        </div>
-        <div class="contact">
-          <div class="tooltip">
+  <footer class="footer">
+    <div class="footer-body">
+      <div class="container">
+        <div class="list-item" v-if="!isMobile">
+          <dt class="title">公众号</dt>
+          <dd>
             <img
-              class="tooltip-img"
+              width="100"
               src="https://image.nicelinks.site/qrcode_jqx.jpg"
-              alt="静晴轩"
+              alt="静晴轩 | 公众号"
             />
-            <icon class="icons" name="weixin"></icon>
-          </div>
-          <a
-            v-for="item in contactArray"
-            :data-action="'footer-social-' + item.class"
-            data-category="footer"
-            :data-label="'footer-social-' + item.class"
-            :href="$util.assembleExternalLink(item.path + item.name)"
-            :title="item.title"
-            target="_blank"
-            rel="noopener"
-            :class="item.class"
-            class="social-btn gtag-track"
-          >
-            <icon class="icons" :name="item.class"></icon>
-          </a>
+          </dd>
         </div>
-        <div class="icp">
-          <span>{{ copyright }}</span>
-          <a
-            class="link gtag-track"
-            href="https://www.jeffjade.com?utm_source=nicelinks.site"
-            target="_blank"
-            rel="noopener"
-            data-action="footer-jeffjade"
-            data-category="footer"
-            data-label="footer-jeffjade"
-            >晚晴幽草轩</a
-          >
-          {{ $t('produced') }}
-          <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener"
-            >粤ICP备17099767号</a
-          >
-          <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
+        <div class="list-item">
+          <dt class="title">产品</dt>
+          <dd>
+            <a class="nice-link" href="https://nicelinks.site/explore/skill">技术客栈</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://nicelinks.site/explore/resource">资源之家</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://nicelinks.site/explore/life">写意人生</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://nicelinks.site/explore/info">信息快讯</a>
+          </dd>
+        </div>
+        <div class="list-item">
+          <dt class="title">合作</dt>
+          <dd>
+            <a class="nice-link" href="/about">关于我们</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="/business">广告投放</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="/sponsor">倾情捐赠</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="/member/admin">联系我们</a>
+          </dd>
+        </div>
+        <div class="list-item">
+          <dt class="title">推荐</dt>
+          <dd>
+            <a class="nice-link" href="https://www.jeffjade.com/">晚晴幽草轩</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://quickapp.lovejade.cn/">静轩之别苑</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://markdown.lovejade.cn/">在线编辑器</a>
+          </dd>
+          <dd>
+            <a class="nice-link" href="https://arya.lovejade.cn/#/zh-cn">二丫贾维斯</a>
+          </dd>
         </div>
       </div>
-    </footer>
+      <div class="contact">
+        <div class="tooltip">
+          <img class="tooltip-img" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩" />
+          <icon class="icons" name="weixin"></icon>
+        </div>
+        <a
+          v-for="item in contactArray"
+          :data-action="'footer-social-' + item.class"
+          data-category="footer"
+          :data-label="'footer-social-' + item.class"
+          :href="$util.assembleExternalLink(item.path + item.name)"
+          :title="item.title"
+          target="_blank"
+          rel="noopener"
+          :class="item.class"
+          class="social-btn gtag-track"
+        >
+          <icon class="icons" :name="item.class"></icon>
+        </a>
+      </div>
+      <div class="icp">
+        <span>{{ copyright }}</span>
+        <a
+          class="link gtag-track"
+          href="https://www.jeffjade.com?utm_source=nicelinks.site"
+          target="_blank"
+          rel="noopener"
+          data-action="footer-jeffjade"
+          data-category="footer"
+          data-label="footer-jeffjade"
+          >晚晴幽草轩</a
+        >
+        {{ $t('produced') }}
+        <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener"
+          >粤ICP备17099767号</a
+        >
+        <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
+      </div>
+    </div>
     <a
       v-if="isShowOpenAppBtn"
       :href="getCurrentHref"
@@ -112,7 +106,7 @@
       data-label="footer-quickapp"
       >{{ $t('openInQuickapp') }}</a
     >
-  </div>
+  </footer>
 </template>
 
 <script>

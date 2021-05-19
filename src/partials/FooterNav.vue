@@ -99,7 +99,7 @@
     </div>
     <a
       v-if="isShowOpenAppBtn"
-      :href="getCurrentHref"
+      :href="getCurrentHref()"
       class="link gtag-track open-in-quickapp"
       data-action="footer-quickapp"
       data-category="footer"
@@ -126,7 +126,7 @@ export default {
     isShowOpenAppBtn() {
       const isMobile = this.$isMobileScreen()
       const isAndroid = this.$util.isAndroidSystem()
-      return isMobile && isAndroid
+      return (isMobile && isAndroid) || 1
     },
   },
 

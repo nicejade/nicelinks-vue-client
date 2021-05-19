@@ -126,7 +126,7 @@ export default {
     isShowOpenAppBtn() {
       const isMobile = this.$isMobileScreen()
       const isAndroid = this.$util.isAndroidSystem()
-      return (isMobile && isAndroid) || 1
+      return isMobile && isAndroid
     },
   },
 

@@ -45,6 +45,7 @@
     "marked": "^0.3.19",
     "medium-zoom": "^1.0.6",
     "q": "^1.4.1",
+    "qrcodejs2": "^0.0.2",
     "raven-js": "^3.19.1",
     "vue": "^2.1.10",
     "vue-content-placeholder": "^1.1.1",

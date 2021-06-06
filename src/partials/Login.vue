@@ -1,5 +1,8 @@
 <template>
   <div class="login-wrap">
+    <!-- <div class="wechat-box">
+      <div id="qrcode"></div>
+    </div> -->
     <div class="login-box" v-loading.body="isLoading">
       <a
         href="/explore/all"
@@ -82,6 +85,7 @@
 
 <script>
 import metaMixin from 'mixins/metaMixin.js'
+// import QRCode from 'qrcodejs2'
 
 export default {
   name: 'Login',
@@ -104,8 +108,12 @@ export default {
         userinfo: [{ required: true, validator: this.validateUserinfo, trigger: 'change,blur' }],
         password: [{ required: true, validator: this.validatePassword, trigger: 'change,blur' }],
       },
+      wechatQrCode:
+        'https://st2.depositphotos.com/3562409/8433/i/950/depositphotos_84332510-stock-photo-qr-cube.jpg',
     }
   },
+
+  components: {},
 
   mixins: [metaMixin],
 
@@ -113,9 +121,8 @@ export default {
 
   mounted() {
     this.updatePageMeta(this.isSignUpPage)
+    // this.initWechatQrCode()
   },
-
-  components: {},
 
   computed: {
     isSignUpPage() {
@@ -130,6 +137,30 @@ export default {
   },
 
   methods: {
+    initWechatQrCode() {
+      this.$apis
+        .getWechatQrCode()
+        .then((result) => {
+          console.log(`result：`, result)
+          this.createQrCodeImg(result.url)
+        })
+        .catch((error) => {
+          console.log(`error：`, error)
+          this.$message.error(`${error}`)
+        })
+    },
+
+    createQrCodeImg(target) {
+      const qrcode = new QRCode(document.getElementById('qrcode'), {
+        text: target,
+        width: 128,
+        height: 128,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H,
+      })
+    },
+
     updatePageMeta(val) {
       const localeKey = val ? 'signUp' : 'signIn'
       this.title = this.$t(localeKey)
@@ -323,6 +354,11 @@ export default {
     padding: 15px 0;
   }
 }
+.wechat-box {
+  width: 100%;
+  height: 100%;
+}
+
 .login-box {
   width: 520px;
   padding: 30px 30px 0px 30px;

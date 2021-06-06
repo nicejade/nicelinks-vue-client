@@ -160,4 +160,8 @@ export default {
   getRandomSentence() {
     return $ajax.post(requestUrl('getRandomSentence'))
   },
+
+  getWechatQrCode() {
+    return $ajax.get(requestUrl('getWechatQrCode'))
+  },
 }

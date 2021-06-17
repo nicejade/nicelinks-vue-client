@@ -35,7 +35,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.23.0",
     "countup": "^1.8.2",
     "crypto-js": "^3.1.9-1",

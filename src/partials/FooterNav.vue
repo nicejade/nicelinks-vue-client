@@ -152,7 +152,7 @@ export default {
 
     getCurrentHref() {
       const currentHref = window.location.href
-      return `https://hapjs.org/app/graceful.sentences.com/pages/AryaJarvis?path=${currentHref}`
+      return `https://hapjs.org/app/com.graceful.sentences/browser/pages/detail?path=${currentHref}`
     },
   },
 

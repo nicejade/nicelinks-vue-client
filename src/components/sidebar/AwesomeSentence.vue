@@ -39,6 +39,10 @@ export default {
       type: [Object],
       default: '',
     },
+    index: {
+      type: [Number],
+      default: 1,
+    },
   },
 
   computed: {
@@ -62,6 +66,9 @@ export default {
       this.currentSentenceStr = val
       this.lastSentenceStr = val
     },
+    index: function (val = 1) {
+      this.updateSentence(val)
+    },
   },
 
   methods: {
@@ -73,6 +80,7 @@ export default {
       document.execCommand('copy')
       document.body.removeChild(el)
     },
+
     copyToIosClipboard(content) {
       window.getSelection().removeAllRanges()
       const node = document.getElementById('sentence')
@@ -82,6 +90,7 @@ export default {
       document.execCommand('copy')
       window.getSelection().removeAllRanges()
     },
+
     /* ---------------------Click Event--------------------- */
     onPreviousClick() {
       if (!this.isCanLookBack) {
@@ -93,6 +102,7 @@ export default {
       this.currentSentenceStr = this.lastSentenceStr
       this.isCanLookBack = false
     },
+
     onRandomClick() {
       this.isLoading = true
       this.$apis
@@ -110,6 +120,34 @@ export default {
           this.isLoading = false
         })
     },
+
+    updateSentence(index) {
+      const params = {
+        pageCount: index,
+        pageSize: 1,
+        sortType: 1,
+        active: true,
+        sortTarget: 'createTime',
+      }
+      this.$apis
+        .getSentences(params)
+        .then((result) => {
+          if (!result || result.length === 0) return
+
+          this.lastSentenceStr = this.currentSentenceStr
+          this.isCanLookBack = true
+          this.currentSentence = result[0] || {}
+          this.currentSentenceStr = result[0].content
+        })
+        .catch((error) => {
+          console.log(error)
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
+
     onCopy2ClipboardClick() {
       const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
       const content = tempStr.replace(/<[^>]*>/g, '')

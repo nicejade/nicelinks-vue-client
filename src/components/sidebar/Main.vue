@@ -3,7 +3,7 @@
     <ads-position :adverts-list="advertsList"></ads-position>
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
-        <awesome-sentence :sentence="sentence" />
+        <awesome-sentence :sentence="sentence" :index="index" />
       </el-collapse-item>
       <el-collapse-item :title="$t('miniprogramCode')" name="miniprogramCode">
         <img
@@ -53,6 +53,13 @@ export default {
       advertsList: [],
       sentence: {},
     }
+  },
+
+  props: {
+    index: {
+      type: [Number],
+      default: 1,
+    },
   },
 
   computed: {

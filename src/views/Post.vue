@@ -14,7 +14,7 @@
               </social-share>
             </links-list>
           </div>
-          <aside-list></aside-list>
+          <aside-list :index="index"></aside-list>
         </div>
       </div>
     </div>
@@ -35,6 +35,7 @@ export default {
       isLoading: true,
       niceLinksArrayay: [],
       niceLinksDetail: {},
+      index: 0,
       currentPath: window.document.location.href,
       shareTitle: '',
     }
@@ -59,6 +60,7 @@ export default {
           this.niceLinksArrayay = result
           this.niceLinksDetail = result[0]
 
+          this.updatePageSentence()
           this.updatePageMeta(result[0])
           this.addHeaderNavActive()
         } else {
@@ -83,6 +85,13 @@ export default {
       this.title = details.title
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc
+    },
+
+    updatePageSentence() {
+      const createTime = new Date(this.niceLinksDetail.created)
+      const startTime = new Date('2017-09-14')
+      const offsetTime = createTime.getTime() - startTime.getTime()
+      this.index = Math.ceil(offsetTime / 1296000000) // (15 * 24 * 60 * 60 * 1000)
     },
 
     addHeaderNavActive() {

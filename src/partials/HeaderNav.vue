@@ -58,6 +58,10 @@
                 <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
               </el-dropdown-item>
               <el-dropdown-item command="" divided> </el-dropdown-item>
+              <el-dropdown-item command="Recommend">
+                <icon class="vector-icon" name="likes"></icon>优站推荐
+              </el-dropdown-item>
+              <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="ProductCemetery">
                 <icon class="vector-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
               </el-dropdown-item>
@@ -299,6 +303,12 @@ export default {
     onProductCemeteryClick() {
       this.$gtagTracking('product-cemetery', 'header', 'product-cemetery')
       this.$router.push('/cemetery')
+    },
+
+    onRecommendClick() {
+      this.$gtagTracking('site-recommend', 'header', 'site-recommend')
+      const websitePath = 'https://support.qq.com/products/340357?utm_source=nicelinks.site'
+      window.open(websitePath)
     },
   },
 }

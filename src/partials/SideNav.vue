@@ -30,19 +30,22 @@
       <el-menu-item index="4" @click="onTagsClick">
         <icon class="sidenav-icon" name="tag"></icon>{{ $t('tagsCollection') }}
       </el-menu-item>
-      <el-menu-item index="5" @click="onProductCemeteryClick">
+      <el-menu-item index="5" @click="onRecommendClick">
+        <icon class="sidenav-icon" name="likes"></icon>优站推荐
+      </el-menu-item>
+      <el-menu-item index="6" @click="onProductCemeteryClick">
         <icon class="sidenav-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
       </el-menu-item>
-      <el-menu-item index="6" @click="onSwitchLangClick">
+      <el-menu-item index="7" @click="onSwitchLangClick">
         <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
       </el-menu-item>
-      <el-menu-item index="7" @click="onJump2WebsiteClick">
+      <el-menu-item index="8" @click="onJump2WebsiteClick">
         <icon class="sidenav-icon" name="about-website"></icon>{{ $t('aboutWebsite') }}
       </el-menu-item>
-      <el-menu-item index="8" @click="onJump2AuthorClick">
+      <el-menu-item index="9" @click="onJump2AuthorClick">
         <icon class="sidenav-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
       </el-menu-item>
-      <el-submenu index="9" v-if="isAdminFlag">
+      <el-submenu index="10" v-if="isAdminFlag">
         <template slot="title">
           <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
         </template>
@@ -105,6 +108,13 @@ export default {
       this.$router.push('/cemetery')
       this.triggerSideNav()
       this.$gtagTracking('cemetery', 'sidebar', 'm-cemetery')
+    },
+
+    onRecommendClick() {
+      this.$gtagTracking('cemetery', 'sidebar', 'm-recommend')
+      this.triggerSideNav()
+      const websitePath = 'https://support.qq.com/products/340357?utm_source=nicelinks.site'
+      window.open(websitePath)
     },
 
     onSwitchLangClick() {

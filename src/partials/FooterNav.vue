@@ -51,7 +51,7 @@
             <a class="nice-link" href="https://quickapp.lovejade.cn/">静轩之别苑</a>
           </dd>
           <dd>
-            <a class="nice-link" href="https://markdown.lovejade.cn/">在线编辑器</a>
+            <a class="nice-link" href="https://forum.lovejade.cn/">悠然宜想亭</a>
           </dd>
           <dd>
             <a class="nice-link" href="https://arya.lovejade.cn/#/zh-cn">二丫贾维斯</a>

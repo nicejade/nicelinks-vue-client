@@ -23,6 +23,14 @@
     </div>
     <h2 class="title mb-normal">
       <a
+        v-if="isAbstract"
+        class="title-link"
+        :href="'/post/' + item._id"
+        @click.stop="onStopPropagationClick"
+        >{{ item.title }}</a
+      >
+      <a
+        v-else
         class="title-link"
         :href="$util.getRedirectLink(item.urlPath)"
         @click.stop="onStopPropagationClick"

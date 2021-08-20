@@ -3,7 +3,7 @@
     target="_blank"
     class="feedback-link"
     rel="noopener"
-    href="https://www.yuque.com/nicejade/nicelinks.site/feedback"
+    href="https://support.qq.com/products/340357"
     >反馈
   </a>
 </template>

@@ -63,13 +63,14 @@
 </template>
 
 <script>
-import $config from 'config'
+import classify from 'config/classify'
+import { REPORT_PATH } from 'config/constant'
 
 export default {
   name: 'SideNav',
   data() {
     return {
-      navList: $config.classify,
+      navList: classify,
     }
   },
 
@@ -113,8 +114,7 @@ export default {
     onRecommendClick() {
       this.$gtagTracking('cemetery', 'sidebar', 'm-recommend')
       this.triggerSideNav()
-      const websitePath = 'https://support.qq.com/products/340357?utm_source=nicelinks.site'
-      window.open(websitePath)
+      window.open(REPORT_PATH)
     },
 
     onSwitchLangClick() {

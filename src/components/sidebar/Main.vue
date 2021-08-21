@@ -2,6 +2,9 @@
   <aside class="aside-list">
     <ads-position :adverts-list="advertsList"></ads-position>
     <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item title="推荐投稿" name="recommend">
+        <SitesRecommend />
+      </el-collapse-item>
       <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
         <awesome-sentence :sentence="sentence" :index="index" />
       </el-collapse-item>
@@ -43,13 +46,14 @@ import AdsPosition from './AdsPosition'
 import FriendshipLinks from './FriendshipLinks'
 import RewardMe from './RewardMe'
 import AwesomeSentence from './AwesomeSentence'
+import SitesRecommend from './SitesRecommend'
 
 export default {
   name: 'Sidebar',
 
   data() {
     return {
-      activeNames: ['awesomeSentence', 'miniprogramCode', 'producthunt-upvote'],
+      activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'producthunt-upvote'],
       advertsList: [],
       sentence: {},
     }
@@ -75,6 +79,7 @@ export default {
     FriendshipLinks,
     RewardMe,
     AwesomeSentence,
+    SitesRecommend,
   },
 
   created() {

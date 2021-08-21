@@ -1,12 +1,20 @@
 <template>
-  <a
-    target="_blank"
-    class="feedback-link"
-    rel="noopener"
-    href="https://support.qq.com/products/340357"
-    >反馈
-  </a>
+  <a target="_blank" class="feedback-link" rel="noopener" :href="reportPath">反馈 </a>
 </template>
+
+<script>
+import { REPORT_PATH } from 'config/constant'
+
+export default {
+  name: 'SitesRecommend',
+
+  data() {
+    return {
+      reportPath: REPORT_PATH,
+    }
+  },
+}
+</script>
 
 <style scoped lang="scss">
 @import './../assets/scss/variables.scss';

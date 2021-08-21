@@ -133,6 +133,7 @@
 <script>
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
+import { REPORT_PATH } from 'config/constant'
 
 export default {
   name: 'HeaderNav',
@@ -307,8 +308,7 @@ export default {
 
     onRecommendClick() {
       this.$gtagTracking('site-recommend', 'header', 'site-recommend')
-      const websitePath = 'https://support.qq.com/products/340357?utm_source=nicelinks.site'
-      window.open(websitePath)
+      window.open(REPORT_PATH)
     },
   },
 }

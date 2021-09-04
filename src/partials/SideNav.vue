@@ -36,16 +36,13 @@
       <el-menu-item index="6" @click="onProductCemeteryClick">
         <icon class="sidenav-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
       </el-menu-item>
-      <el-menu-item index="7" @click="onSwitchLangClick">
-        <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
-      </el-menu-item>
-      <el-menu-item index="8" @click="onJump2WebsiteClick">
+      <el-menu-item index="7" @click="onJump2WebsiteClick">
         <icon class="sidenav-icon" name="about-website"></icon>{{ $t('aboutWebsite') }}
       </el-menu-item>
-      <el-menu-item index="9" @click="onJump2AuthorClick">
+      <el-menu-item index="8" @click="onJump2AuthorClick">
         <icon class="sidenav-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
       </el-menu-item>
-      <el-submenu index="10" v-if="isAdminFlag">
+      <el-submenu index="9" v-if="isAdminFlag">
         <template slot="title">
           <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
         </template>
@@ -115,12 +112,6 @@ export default {
       this.$gtagTracking('cemetery', 'sidebar', 'm-recommend')
       this.triggerSideNav()
       window.open(REPORT_PATH)
-    },
-
-    onSwitchLangClick() {
-      this.$switchLang()
-      this.triggerSideNav()
-      this.$gtagTracking('switch-lang', 'sidebar', 'm-switch-lang')
     },
 
     onManageClick() {

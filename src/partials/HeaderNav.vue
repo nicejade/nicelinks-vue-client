@@ -66,10 +66,6 @@
                 <icon class="vector-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
               </el-dropdown-item>
               <el-dropdown-item command="" divided> </el-dropdown-item>
-              <el-dropdown-item command="SwitchLang">
-                <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="">
                 <icon class="vector-icon" name="about-website"></icon>
                 <a
@@ -237,11 +233,6 @@ export default {
 
     onManageClick() {
       this.$router.push('/manage')
-    },
-
-    onSwitchLangClick() {
-      this.$gtagTracking('switch-lang', 'header', 'p-switch-lang')
-      this.$switchLang()
     },
 
     onAboutAuthorClick() {

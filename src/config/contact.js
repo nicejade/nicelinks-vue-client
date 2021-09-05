@@ -13,13 +13,6 @@ export default [
     title: 'Github',
   },
   {
-    path: 'https://nicelinks.site/redirect?url=https://www.zhihu.com/people/',
-    name: 'yang-qiong-pu',
-    class: 'zhihu',
-    title: '知乎',
-    notInQuickapp: true,
-  },
-  {
     path: 'https://nicelinks.site/redirect?url=https://www.jeffjade.com/',
     name: 'about-me',
     class: 'blog',

@@ -8,7 +8,7 @@
       data-category="aside"
       data-label="link-recommend"
       :href="reportPath"
-      >优质网站推荐
+      >👍优质网站推荐
     </a>
   </div>
 </template>

@@ -48,7 +48,7 @@ export default [
   },
   {
     path: 'mailto:',
-    name: 'yunjeff@163.com',
+    name: 'yunjeff#163.com',
     class: 'email',
     title: '邮件',
     notInMobile: true,

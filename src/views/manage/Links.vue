@@ -216,12 +216,6 @@ export default {
   },
 
   locales: {
-    en: {
-      approved: 'Approved',
-      unapproved: 'Unapproved',
-      isActived: 'Is Actived',
-      creater: 'Creater',
-    },
     zh: {
       approved: '已审核',
       unapproved: '未审核',

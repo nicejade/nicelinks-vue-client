@@ -126,6 +126,10 @@ export default {
         name: 'manageSentences',
         path: 'sentences',
       },
+      {
+        name: 'manageFriends',
+        path: 'friends',
+      },
     ]
   },
 

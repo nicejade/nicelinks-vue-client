@@ -42,5 +42,12 @@ export default {
       },
       component: (resolve) => require(['views/manage/Sentences'], resolve),
     },
+    {
+      path: 'friends',
+      meta: {
+        isNeedAuth: true,
+      },
+      component: (resolve) => require(['views/manage/Friends'], resolve),
+    },
   ],
 }

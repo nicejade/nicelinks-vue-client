@@ -45,6 +45,7 @@ export default {
   manageUsers: '管理用户',
   manageAdverts: '管理广告',
   manageSentences: '管理箴言',
+  manageFriends: '友情链接',
   shareNewSentences: '分享新箴言',
   isAcive: '是否给激活',
   isAlive: '是否可访问',

@@ -161,6 +161,18 @@ export default {
     return $ajax.post(requestUrl('getRandomSentence'))
   },
 
+  getFriendsLinks() {
+    return $ajax.get(requestUrl('getFriendsLinks'))
+  },
+
+  updateFriendsLinks(data) {
+    return $ajax.post(requestUrl('updateFriendsLinks'), data)
+  },
+
+  removeFriendsLinks() {
+    return $ajax.post(requestUrl('removeFriendsLinks'))
+  },
+
   getWechatQrCode() {
     return $ajax.get(requestUrl('getWechatQrCode'))
   },

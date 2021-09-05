@@ -97,5 +97,12 @@ export default {
       },
       component: (resolve) => require(['views/Cemetery'], resolve),
     },
+    {
+      path: 'friendlink',
+      meta: {
+        isNeedLogin: false,
+      },
+      component: (resolve) => require(['views/FriendLink'], resolve),
+    },
   ],
 }

@@ -267,13 +267,13 @@ export default {
 }
 .tooltip .tooltip-img {
   position: absolute;
-  top: -200px;
+  top: -180px;
   left: -80px;
   z-index: 1;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   visibility: hidden;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   padding: 0;
 }
 .tooltip:hover .tooltip-img {

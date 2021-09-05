@@ -8,6 +8,13 @@
       <el-collapse-item :title="$t('awesomeSentence')" name="awesomeSentence">
         <awesome-sentence :sentence="sentence" :index="index" />
       </el-collapse-item>
+      <el-collapse-item
+        :title="$t('friendshipLinks')"
+        name="friendshipLinks"
+        v-if="isShowFriendFlag"
+      >
+        <friendship-links />
+      </el-collapse-item>
       <el-collapse-item :title="$t('miniprogramCode')" name="miniprogramCode">
         <img
           src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
@@ -26,13 +33,6 @@
             width="250px"
             height="54px"
         /></a>
-      </el-collapse-item>
-      <el-collapse-item
-        :title="$t('friendshipLinks')"
-        name="friendshipLinks"
-        v-if="isShowFriendFlag"
-      >
-        <friendship-links />
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
         <reward-me :show="activeNames.includes('rewardme')" />
@@ -53,7 +53,13 @@ export default {
 
   data() {
     return {
-      activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'producthunt-upvote'],
+      activeNames: [
+        'awesomeSentence',
+        'recommend',
+        'miniprogramCode',
+        'producthunt-upvote',
+        'friendshipLinks',
+      ],
       advertsList: [],
       sentence: {},
     }

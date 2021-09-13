@@ -29,7 +29,6 @@
             >
               {{ $t('exploreNice') }}
             </router-link>
-            <EmbedUpvote v-if="!isMobile"></EmbedUpvote>
           </section>
         </div>
       </div>
@@ -38,8 +37,6 @@
 </template>
 
 <script>
-import EmbedUpvote from 'components/homepage/EmbedUpvote'
-
 export default {
   name: 'HomeLotus',
 
@@ -49,9 +46,7 @@ export default {
     }
   },
 
-  components: {
-    EmbedUpvote,
-  },
+  components: {},
 
   created() {},
 
@@ -108,7 +103,7 @@ export default {
       left: 0;
       right: 0;
       font-size: 18px;
-      line-height: 2.2rem;
+      line-height: 18px;
       text-align: center;
       text-shadow: 0 0 2em $white;
       a {
@@ -116,9 +111,10 @@ export default {
         box-sizing: border-box;
         border: 2px solid $producthunt;
         padding: 0.25em 3em;
-        margin-top: 2em;
+        margin-top: 2.6em;
         color: $producthunt;
         font-weight: bold;
+        font-size: 2.4rem;
         line-height: 2em;
         border-radius: 2em;
         transition: all 0.2s ease;

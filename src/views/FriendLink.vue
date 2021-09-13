@@ -28,14 +28,17 @@
               </div>
             </div>
             <div class="friends-list">
-              <a class="item" :href="item.path" v-for="(item, index) in tableData">
+              <a class="item" :href="item.path" v-for="(item, index) in tableData" :key="item.path">
                 <img
                   class="icon"
                   :src="getSiteIcon(item)"
                   onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/no-image.png';"
                   :alt="item.desc"
                 />
-                <div class="content">
+                <div
+                  class="content hint--rounded hint--info hint--top hint--medium"
+                  :aria-label="item.desc"
+                >
                   <h2 class="title">
                     {{ item.title }}
                   </h2>
@@ -52,6 +55,8 @@
 </template>
 
 <script>
+import 'hint.css'
+
 export default {
   name: 'FriendLink',
 
@@ -101,18 +106,31 @@ export default {
 
     getSiteIcon(item) {
       const urlObject = new URL(item.path)
-      return `https://icon.horse/icon/${urlObject.hostname}`
+      // return `https://icon.horse/icon/${urlObject.hostname}`
+      return `https://nicelinks.oss-cn-shenzhen.aliyuncs.com/icons/${urlObject.hostname}.ico`
     },
   },
 }
 </script>
 
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped>
 @import './../assets/scss/variables.scss';
 @import './../assets/scss/mixins.scss';
+
+.hint--info:after {
+  background-color: $border-grey !important;
+}
+[class*='hint--']:after {
+  color: $black !important;
+  text-shadow: 0 -1px 0px $white !important;
+}
+.hint--info.hint--top:before {
+  border-top-color: $border-grey !important;
+}
+
 .entry-list {
   position: relative;
-  padding: 35px;
+  padding: 20px;
   .friends-desc {
     .subtitle {
       padding-bottom: 10px;

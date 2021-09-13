@@ -53,13 +53,7 @@ export default {
 
   data() {
     return {
-      activeNames: [
-        'awesomeSentence',
-        'recommend',
-        'miniprogramCode',
-        'producthunt-upvote',
-        'friendshipLinks',
-      ],
+      activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'friendshipLinks'],
       advertsList: [],
       sentence: {},
     }

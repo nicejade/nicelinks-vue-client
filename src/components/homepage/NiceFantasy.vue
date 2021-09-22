@@ -62,4 +62,10 @@ export default {
     border-radius: 3px;
   }
 }
+
+@media (max-width: 768px) {
+  .nice-fantasy {
+    margin-top: 2em;
+  }
+}
 </style>

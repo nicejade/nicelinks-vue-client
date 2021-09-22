@@ -22,7 +22,7 @@
             <p v-html="$t('niceLinksDesc')"></p>
             <router-link
               to="/explore/all"
-              class="gtag-track"
+              class="gtag-track explore-all-link"
               data-action="mian-explore-all"
               data-category="index"
               data-label="explore-all"
@@ -106,12 +106,12 @@ export default {
       line-height: 18px;
       text-align: center;
       text-shadow: 0 0 2em $white;
-      a {
+      .explore-all-link {
         display: inline-block;
         box-sizing: border-box;
         border: 2px solid $producthunt;
         padding: 0.25em 3em;
-        margin-top: 2.6em;
+        margin-top: 3.6em;
         color: $producthunt;
         font-weight: bold;
         font-size: 2.4rem;
@@ -455,9 +455,10 @@ export default {
         font-size: 2.2rem;
         padding: 0px 20px;
         line-height: 2.2rem;
-        a {
+        .explore-all-link {
           padding: 0.25em 2em;
           margin-top: 1em;
+          margin-bottom: 1em;
           line-height: 1.4em;
         }
       }
@@ -480,7 +481,7 @@ export default {
       font-size: 1.6rem !important;
     }
     .unit-wrapper .hero-description {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       padding: 0px 10px;
     }
   }

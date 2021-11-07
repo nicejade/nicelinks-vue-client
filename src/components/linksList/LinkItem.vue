@@ -7,7 +7,10 @@
       <div class="meta-block">
         <div class="meta-box">
           <a
-            class="username"
+            class="gtag-track username"
+            data-action="post-link"
+            data-category="post"
+            data-label="post-link"
             :href="getUserPath(item.createdBy)"
             @click.stop="onStopPropagationClick"
             target="_blank"

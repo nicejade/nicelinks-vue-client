@@ -97,6 +97,7 @@
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>
+    <feedback v-if="!isMobile"></feedback>
     <a
       v-if="isShowOpenAppBtn"
       :href="getCurrentHref()"
@@ -110,6 +111,7 @@
 </template>
 
 <script>
+import Feedback from 'components/Feedback'
 import $config from 'config'
 
 export default {
@@ -130,7 +132,9 @@ export default {
     },
   },
 
-  components: {},
+  components: {
+    Feedback,
+  },
 
   created() {
     let currentYear = new Date(this.$util.getCurrentDate()).getFullYear()
@@ -174,12 +178,13 @@ export default {
 @import '../assets/scss/mixins.scss';
 
 .footer {
+  position: relative;
   padding: 15px 0;
   // 参见：https://uigradients.com/
   @include get-gradient-background(#ece9e6, #ffffff, top);
   .footer-body {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1280px;
     height: $footer-height;
     @include flex-box-center(column);
     margin: auto;

@@ -1,12 +1,36 @@
 <template>
-  <a target="_blank" class="feedback-link" rel="noopener" :href="reportPath">反馈 </a>
+  <div class="feedback-area">
+    <a
+      target="_blank"
+      class="outside-link-btn gtag-track"
+      data-action="recommend-btn"
+      data-category="footer"
+      data-label="recommend-btn"
+      rel="noopener"
+      :href="reportPath"
+      >投稿
+    </a>
+    <a
+      target="_blank"
+      class="outside-link-btn gtag-track"
+      data-action="feedback-btn"
+      data-category="footer"
+      data-label="feedback-btn"
+      rel="noopener"
+      :href="reportPath"
+      >反馈
+    </a>
+  </div>
 </template>
 
 <script>
 import { REPORT_PATH } from 'config/constant'
+import partsMixin from 'mixins/partsMixin.js'
 
 export default {
-  name: 'SitesRecommend',
+  name: 'Feedback',
+
+  mixins: [partsMixin],
 
   data() {
     return {
@@ -18,10 +42,17 @@ export default {
 
 <style scoped lang="scss">
 @import './../assets/scss/variables.scss';
-.feedback-link {
-  position: fixed;
+.feedback-area {
+  position: absolute;
   bottom: 30px;
   right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.outside-link-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +74,9 @@ export default {
     cursor: pointer;
     animation: jelly 0.5s;
   }
+}
+.outside-link-btn + .outside-link-btn {
+  margin-top: 15px;
 }
 @keyframes jelly {
   0%,

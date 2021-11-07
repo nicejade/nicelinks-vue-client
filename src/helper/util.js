@@ -201,9 +201,9 @@ export default {
   },
 
   isLegalNick(str) {
-    let pattern = /(.){3,15}$/
+    let pattern = /(.){2,18}$/
     let byteNum = this.getByteLength(str)
-    return pattern.test(str) && byteNum <= 15 && byteNum >= 3
+    return pattern.test(str) && byteNum <= 18 && byteNum >= 2
   },
 
   isLegalEmail(str) {

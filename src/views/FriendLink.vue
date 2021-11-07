@@ -28,7 +28,16 @@
               </div>
             </div>
             <div class="friends-list">
-              <a class="item" :href="item.path" v-for="(item, index) in tableData" :key="item.path">
+              <a
+                class="gtag-track item"
+                data-action="go-friend-link"
+                data-category="friend"
+                data-label="go-friend-link"
+                :href="item.path + '?ref=nicelinks.site'"
+                v-for="item in tableData"
+                :key="item.path"
+                rel="noopener"
+              >
                 <img
                   class="icon"
                   :src="getSiteIcon(item)"
@@ -55,10 +64,13 @@
 </template>
 
 <script>
+import partsMixin from 'mixins/partsMixin.js'
 import 'hint.css'
 
 export default {
   name: 'FriendLink',
+
+  mixins: [partsMixin],
 
   data() {
     return {
@@ -217,7 +229,7 @@ export default {
 }
 @media screen and (max-width: $mobile-screen) {
   .entry-list {
-    padding: 15px;
+    padding: 10px;
     .friends-list {
       width: 100%;
       display: inline-grid;

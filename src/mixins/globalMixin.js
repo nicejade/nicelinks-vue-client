@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Cookies from 'js-cookie'
 import { $util } from 'helper'
 import { mapActions, mapMutations } from 'vuex'
 

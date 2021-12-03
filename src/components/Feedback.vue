@@ -25,12 +25,12 @@
 
 <script>
 import { REPORT_PATH } from 'config/constant'
-import partsMixin from 'mixins/partsMixin.js'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'Feedback',
 
-  mixins: [partsMixin],
+  mixins: [pageMixin],
 
   data() {
     return {

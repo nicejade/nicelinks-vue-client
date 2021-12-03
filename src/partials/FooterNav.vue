@@ -15,46 +15,133 @@
         <div class="list-item">
           <dt class="title">产品</dt>
           <dd>
-            <a class="nice-link" href="https://nicelinks.site/explore/skill">技术客栈</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="explore-skill"
+              data-category="footer"
+              data-label="explore-skill"
+              href="https://nicelinks.site/explore/skill"
+              >技术客栈
+            </a>
           </dd>
           <dd>
-            <a class="nice-link" href="https://nicelinks.site/explore/resource">资源之家</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="explore-resource"
+              data-category="footer"
+              data-label="explore-resource"
+              href="https://nicelinks.site/explore/resource"
+              >资源之家
+            </a>
           </dd>
           <dd>
-            <a class="nice-link" href="https://nicelinks.site/explore/life">写意人生</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="explore-life"
+              data-category="footer"
+              data-label="explore-life"
+              href="https://nicelinks.site/explore/life"
+              >写意人生
+            </a>
           </dd>
           <dd>
-            <a class="nice-link" href="https://nicelinks.site/explore/info">信息快讯</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="explore-info"
+              data-category="footer"
+              data-label="explore-info"
+              href="https://nicelinks.site/explore/info"
+              >信息快讯
+            </a>
           </dd>
         </div>
         <div class="list-item">
           <dt class="title">合作</dt>
           <dd>
-            <a class="nice-link" href="/about">关于我们</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="about"
+              data-category="footer"
+              data-label="about"
+              href="/about"
+              >关于我们</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="/business">广告投放</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="business"
+              data-category="footer"
+              data-label="business"
+              href="/business"
+              >广告投放</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="/sponsor">倾情捐赠</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="sponsor"
+              data-category="footer"
+              data-label="sponsor"
+              href="/sponsor"
+              >倾情捐赠</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="/member/admin">联系我们</a>
+            <a
+              class="nice-link gtag-track"
+              data-action="contact"
+              data-category="footer"
+              data-label="contact"
+              href="/member/admin"
+              >联系我们</a
+            >
           </dd>
         </div>
         <div class="list-item">
           <dt class="title">推荐</dt>
           <dd>
-            <a class="nice-link" href="https://www.jeffjade.com/">晚晴幽草轩</a>
+            <a
+              class="nice-link gtag-track"
+              target="_blank"
+              data-action="jeffjade-com"
+              data-category="footer"
+              data-label="jeffjade-com"
+              href="https://www.jeffjade.com/?ref=nicelinks.site"
+              >晚晴幽草轩</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="https://quickapp.lovejade.cn/">静轩之别苑</a>
+            <a
+              class="nice-link gtag-track"
+              target="_blank"
+              data-action="footkapp-lovejade"
+              data-category="footer"
+              data-label="footkapp-lovejade"
+              href="https://quickapp.lovejade.cn/?ref=nicelinks.site"
+              >静轩之别苑</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="https://forum.lovejade.cn/">悠然宜想亭</a>
+            <a
+              class="nice-link gtag-track"
+              target="_blank"
+              data-action="forum-lovejade"
+              data-category="footer"
+              data-label="forum-lovejade"
+              href="https://forum.lovejade.cn/?ref=nicelinks.site"
+              >悠然宜想亭</a
+            >
           </dd>
           <dd>
-            <a class="nice-link" href="https://arya.lovejade.cn/#/zh-cn">二丫贾维斯</a>
+            <a
+              class="nice-link gtag-track"
+              target="_blank"
+              data-action="wiki-lovejade"
+              data-label="wiki-lovejade"
+              href="https://wiki.lovejade.cn/?ref=nicelinks.site"
+              >清风明月阁</a
+            >
           </dd>
         </div>
       </div>
@@ -65,9 +152,9 @@
         </div>
         <a
           v-for="item in contactArray"
-          :data-action="'footer-social-' + item.class"
+          :data-action="'social-' + item.class"
           data-category="footer"
-          :data-label="'footer-social-' + item.class"
+          :data-label="'social-' + item.class"
           :href="$util.assembleExternalLink(item.path + item.name)"
           :title="item.title"
           target="_blank"
@@ -82,16 +169,23 @@
         <span>{{ copyright }}</span>
         <a
           class="link gtag-track"
+          data-action="link-jeffjade"
+          data-category="footer"
+          data-label="link-jeffjade"
           href="https://www.jeffjade.com?utm_source=nicelinks.site"
           target="_blank"
           rel="noopener"
-          data-action="footer-jeffjade"
-          data-category="footer"
-          data-label="footer-jeffjade"
           >晚晴幽草轩</a
         >
         {{ $t('produced') }}
-        <a class="beian-link" href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener"
+        <a
+          class="beian-link gtag-track"
+          data-action="beian"
+          data-category="footer"
+          data-label="beian"
+          href="http://www.beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener"
           >粤ICP备17099767号</a
         >
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
@@ -112,6 +206,7 @@
 
 <script>
 import Feedback from 'components/Feedback'
+import pageMixin from 'mixins/pageMixin.js'
 import $config from 'config'
 
 export default {
@@ -123,6 +218,8 @@ export default {
       contactArray: this.filterEntryInMobile($config.contact),
     }
   },
+
+  mixins: [pageMixin],
 
   computed: {
     isShowOpenAppBtn() {

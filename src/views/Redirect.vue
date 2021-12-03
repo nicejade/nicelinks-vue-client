@@ -2,11 +2,13 @@
   <div class="redirect-wrapper">
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
-        <h2 class="title">即将从<a href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到</h2>
+        <h2 class="title">
+          即将从<a class="gtag-track" href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
+        </h2>
         <div class="link-box">
           <span class="link-url">{{ targetWebsite }}</span>
         </div>
-        <button class="continue-btn gtag-track" @click="onContinueClick">
+        <button class="continue-btn" @click="onContinueClick">
           <span class="continue-go">继续前往</span>
         </button>
       </div>

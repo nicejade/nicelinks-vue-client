@@ -2,11 +2,9 @@
   <div id="friendship-links">
     <a
       target="_blank"
-      class="friendship-links gtag-track"
+      class="friendship-links"
       rel="noopener"
-      data-action="friendship-links"
-      data-category="aside"
-      data-label="friendship-links"
+      @click="onFriendshipClick"
       href="/friendlink"
       >🤝友情链接
     </a>
@@ -19,6 +17,12 @@ export default {
 
   data() {
     return {}
+  },
+
+  methods: {
+    onFriendshipClick() {
+      this.$gtagTracking('friendship-links', 'aside', 'friendship-links')
+    },
   },
 }
 </script>

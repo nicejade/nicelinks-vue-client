@@ -11,18 +11,16 @@
               <div class="friend-hint">
                 如果，您有自己的<strong>网站</strong>或者<strong>博客</strong>，非常欢迎您和<a
                   href="https://nicelinks.site"
+                  target="_blank"
                   >倾城之链</a
-                >交换<strong>友情链接</strong>，请添加
+                >交换<strong>友情链接</strong>，
                 <div class="tooltip">
-                  <img
-                    src="https://image.nicelinks.site/倾城之链-微信-mini.jpeg"
-                    onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks-service.jpeg';"
-                    alt="倾城客服微信"
-                    class="tooltip-img"
-                  />
-                  <a href="https://image.nicelinks.site/倾城之链-微信-mini.jpeg">倾城客服微信</a>
+                  <img :src="niceLinksServerStr" alt="倾城客服微信" class="tooltip-img" />
+                  请添加<a :href="niceLinksServerStr" target="_blank">倾城客服微信</a>
                 </div>
-                ，进行详细沟通（当然，如果您如果喜欢，也可以通过<a href="mailto:yunjeff#163.com"
+                ，进行详细沟通（当然，如果您如果喜欢，也可以通过<a
+                  target="_blank"
+                  href="mailto:yunjeff#163.com"
                   >邮件</a
                 >）。
               </div>
@@ -75,6 +73,7 @@ export default {
   data() {
     return {
       tableData: [],
+      niceLinksServerStr: 'https://z3.ax1x.com/2021/11/23/oSwcTI.jpg',
     }
   },
 
@@ -160,12 +159,12 @@ export default {
       .tooltip .tooltip-img {
         position: absolute;
         top: 20px;
-        left: 0px;
+        left: -35px;
         z-index: 1;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
         visibility: hidden;
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         padding: 0;
       }
       .tooltip:hover .tooltip-img {

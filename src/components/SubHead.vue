@@ -29,11 +29,12 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'SubHead',
 
-  mixins: [partsMixin],
+  mixins: [partsMixin, pageMixin],
 
   data() {
     return {}

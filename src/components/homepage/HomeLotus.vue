@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import pageMixin from 'mixins/pageMixin.js'
+
 export default {
   name: 'HomeLotus',
 
@@ -45,6 +47,8 @@ export default {
       isMobile: window.innerWidth <= 960,
     }
   },
+
+  mixins: [pageMixin],
 
   components: {},
 

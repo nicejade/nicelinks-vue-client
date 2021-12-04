@@ -2,11 +2,9 @@
   <div id="sites-recommend">
     <a
       target="_blank"
-      class="nice-link-recommend gtag-track"
+      class="nice-link-recommend"
       rel="noopener"
-      data-action="link-recommend"
-      data-category="aside"
-      data-label="link-recommend"
+      @click="onRecommendClick"
       :href="reportPath"
       >👍优质网站推荐
     </a>
@@ -23,6 +21,12 @@ export default {
     return {
       reportPath: REPORT_PATH,
     }
+  },
+
+  methods: {
+    onRecommendClick() {
+      this.$gtagTracking('link-recommend', 'aside', 'link-recommend')
+    },
   },
 }
 </script>

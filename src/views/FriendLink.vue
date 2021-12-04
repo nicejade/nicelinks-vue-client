@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       tableData: [],
-      niceLinksServerStr: 'https://z3.ax1x.com/2021/11/23/oSwcTI.jpg',
+      niceLinksServerStr: 'https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks-service.jpeg',
     }
   },
 

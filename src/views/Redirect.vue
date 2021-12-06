@@ -1,5 +1,13 @@
 <template>
   <div class="redirect-wrapper">
+    <h1 class="jump-title">
+      <img
+        class="logo"
+        src="/static/img/favicons/safari-pinned-tab.svg"
+        :alt="$t('niceLinksStr')"
+      />
+      <a class="gtag-track title-link" href="http://nicelinks.site?ref=redirect">倾城之链</a>
+    </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
         <h2 class="title">
@@ -84,7 +92,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 .redirect-wrapper {
   width: 100%;
   height: 100vh;
@@ -92,6 +100,23 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .jump-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    margin: 1rem 0;
+    height: 4rem;
+    .logo {
+      width: 4rem;
+      margin-right: 1rem;
+    }
+    .title-link {
+      font-size: 2.4rem;
+      color: #454545;
+    }
+  }
 }
 
 .jump-to-area {
@@ -116,6 +141,7 @@ export default {
     .title {
       font-weight: 500;
       margin: 15px 0;
+      text-align: center;
     }
     .link-box {
       width: 360px;
@@ -142,7 +168,7 @@ export default {
       height: 40px;
       margin: 15px 0;
       border-radius: 20px;
-      background: #20a0ff;
+      background-color: #20a0ff;
       border: none;
       background-image: -webkit-linear-gradient(45deg, #20a0ff 38%, #b0c9ff 100%);
       background-image: linear-gradient(45deg, #20a0ff 38%, #b0c9ff 100%);

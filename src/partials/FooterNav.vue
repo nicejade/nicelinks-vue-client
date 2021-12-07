@@ -8,7 +8,7 @@
             <img
               width="100"
               src="https://image.nicelinks.site/qrcode_jqx.jpg"
-              alt="静晴轩 | 公众号"
+              alt="晚晴幽草轩 | 公众号"
             />
           </dd>
         </div>
@@ -191,7 +191,6 @@
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>
-    <feedback v-if="!isMobile"></feedback>
     <a
       v-if="isShowOpenAppBtn"
       :href="getCurrentHref()"
@@ -205,7 +204,6 @@
 </template>
 
 <script>
-import Feedback from 'components/Feedback'
 import pageMixin from 'mixins/pageMixin.js'
 import $config from 'config'
 
@@ -229,9 +227,7 @@ export default {
     },
   },
 
-  components: {
-    Feedback,
-  },
+  components: {},
 
   created() {
     let currentYear = new Date(this.$util.getCurrentDate()).getFullYear()

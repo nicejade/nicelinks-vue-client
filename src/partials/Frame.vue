@@ -5,7 +5,8 @@
     <main @click="hideMenu" class="main">
       <router-view :key="$route.path"></router-view>
     </main>
-    <footer-nav></footer-nav>
+    <footer-nav />
+    <elevator v-if="!isMobile" />
   </div>
 </template>
 
@@ -13,6 +14,8 @@
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
+import Elevator from 'components/Elevator'
+
 import { mapMutations } from 'vuex'
 
 export default {
@@ -28,6 +31,7 @@ export default {
     HeaderNav,
     SideNav,
     FooterNav,
+    Elevator,
   },
 
   created() {

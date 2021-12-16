@@ -6,12 +6,26 @@
         src="/static/img/favicons/safari-pinned-tab.svg"
         :alt="$t('niceLinksStr')"
       />
-      <a class="gtag-track title-link" href="http://nicelinks.site?ref=redirect">倾城之链</a>
+      <a
+        class="gtag-track title-link"
+        data-action="h1-title-link"
+        data-category="redirect"
+        data-label="h1-title-link"
+        href="http://nicelinks.site?ref=redirect"
+        >倾城之链</a
+      >
     </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
         <h2 class="title">
-          即将从<a class="gtag-track" href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
+          即将从<a
+            class="gtag-track"
+            data-action="jump-link"
+            data-category="redirect"
+            data-label="jump-link"
+            href="http://nicelinks.site?ref=redirect"
+            >倾城之链</a
+          >跳转到
         </h2>
         <div class="link-box">
           <span class="link-url">{{ targetWebsite }}</span>

@@ -1,5 +1,5 @@
 export default {
-  toggleClass(el, className) {
+  toggleClass(el = {}, className) {
     if (el.classList) {
       el.classList.toggle(className)
     } else {
@@ -15,7 +15,7 @@ export default {
     }
   },
 
-  addClass(el, className) {
+  addClass(el = {}, className) {
     if (el.classList) {
       el.classList.add(className)
     } else {
@@ -23,7 +23,7 @@ export default {
     }
   },
 
-  removeClass(el, className) {
+  removeClass(el = {}, className) {
     if (el.classList) {
       el.classList.remove(className)
     } else {

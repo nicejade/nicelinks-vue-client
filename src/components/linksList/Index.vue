@@ -18,7 +18,14 @@
       v-for="(item, index) in pdata"
       v-if="pdata.length > 0"
     >
-      <router-link :to="getAssembleRoute(item)" v-if="isAbstract">
+      <router-link
+        class="gtag-track"
+        data-action="route-entry"
+        data-category="list"
+        data-label="route-entry"
+        :to="getAssembleRoute(item)"
+        v-if="isAbstract"
+      >
         <LinkItem :item="item" :is-abstract="isAbstract"> </LinkItem>
       </router-link>
       <LinkItem v-else :item="item" :is-abstract="isAbstract"></LinkItem>
@@ -37,6 +44,7 @@
 <script>
 import ContentPlaceholder from 'vue-content-placeholder'
 import LinkItem from './LinkItem.vue'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'LinksList',
@@ -108,6 +116,8 @@ export default {
       ],
     }
   },
+
+  mixins: [pageMixin],
 
   props: {
     pdata: {

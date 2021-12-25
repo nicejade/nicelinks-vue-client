@@ -77,6 +77,7 @@ $factor: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: $zindex-elevator;
 }
 
 .outside-link-btn {

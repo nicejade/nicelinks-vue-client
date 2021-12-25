@@ -6,9 +6,9 @@
           <a
             href="/"
             class="header-logo-a nicelinks-logo gtag-track"
-            data-action="login-logo-link"
+            data-action="logo-link"
             data-category="header"
-            data-label="header-logo-link"
+            data-label="logo-link"
           >
             <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
             <h1 class="title">{{ $t('niceLinksStr') }}</h1>
@@ -37,9 +37,9 @@
           <router-link
             to="/share-link"
             class="share-link gtag-track"
-            data-action="share-new-link"
+            data-action="share-link"
             data-category="header"
-            data-label="p-share-new-link"
+            data-label="p-share-link"
           >
             <icon class="icons" name="share" />{{ $t('shareNewLink') }}
           </router-link>
@@ -129,12 +129,13 @@
 <script>
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
+import pageMixin from 'mixins/pageMixin.js'
 import { REPORT_PATH } from 'config/constant'
 
 export default {
   name: 'HeaderNav',
 
-  mixins: [partsMixin],
+  mixins: [partsMixin, pageMixin],
 
   data() {
     return {

@@ -1,18 +1,21 @@
 <template>
   <div class="content">
     <div class="info-block mb-normal" v-if="!isAbstract">
-      <a class="user-info" :href="getUserPath(item.createdBy)" target="_blank" rel="noopener">
+      <a
+        class="user-info"
+        :href="getUserPath(item.createdBy)"
+        @click.stop="onStopPropagationClick('avatar')"
+        target="_blank"
+        rel="noopener"
+      >
         <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
       </a>
       <div class="meta-block">
         <div class="meta-box">
           <a
             class="gtag-track username"
-            data-action="post-link"
-            data-category="post"
-            data-label="post-link"
             :href="getUserPath(item.createdBy)"
-            @click.stop="onStopPropagationClick"
+            @click.stop="onStopPropagationClick('username')"
             target="_blank"
             rel="noopener"
             >{{ mUserInfo.profile.nickname || item.createdBy || '' }}</a
@@ -29,29 +32,32 @@
         v-if="isAbstract"
         class="title-link"
         :href="'/post/' + item._id"
-        @click.stop="onStopPropagationClick"
+        @click.stop="onStopPropagationClick('list-title', 'list')"
         >{{ item.title }}</a
       >
       <a
         v-else
         class="title-link"
         :href="$util.getRedirectLink(item.urlPath)"
-        @click.stop="onStopPropagationClick"
+        @click.stop="onStopPropagationClick('item-title')"
         target="_blank"
         rel="noopener"
         >{{ item.title }}</a
       >
     </h2>
     <div class="meta-box mb-normal">
-      <a class="item classify" :href="'/theme/' + item.theme.toLocaleLowerCase()">{{
-        fillThemeName(item.classify, item.theme)
-      }}</a>
+      <a
+        class="item classify"
+        @click="onStopPropagationClick('classify')"
+        :href="'/theme/' + item.theme.toLocaleLowerCase()"
+        >{{ fillThemeName(item.classify, item.theme) }}</a
+      >
       <a
         class="tag"
         v-for="(iitem, index) in item.tags"
         :key="index"
         :href="getTagPath(iitem)"
-        @click.stop="onStopPropagationClick"
+        @click.stop="onStopPropagationClick('tags')"
         target="_blank"
         rel="noopener"
         >{{ iitem }}
@@ -322,7 +328,9 @@ export default {
     },
 
     /* -----------------------onClickEvent-----------------------Start */
-    onStopPropagationClick(elem) {},
+    onStopPropagationClick(action, category = 'post') {
+      this.$gtagTracking(action, category, action)
+    },
 
     onThemeClick(theme) {
       this.$switchRouteByTheme(theme)

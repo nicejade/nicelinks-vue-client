@@ -97,13 +97,17 @@ export default {
     addHeaderNavActive() {
       const classify = +this.niceLinksDetail.classify
       const navItemNodes = document.getElementsByClassName('nav-item')
-      navItemNodes[classify].classList.add('active')
+      if (navItemNodes && navItemNodes[classify]) {
+        navItemNodes[classify].classList.add('active')
+      }
     },
 
     removeHeaderNavActive() {
       const classify = +this.niceLinksDetail.classify
       const navItemNodes = document.getElementsByClassName('nav-item')
-      navItemNodes[classify].classList.remove('active')
+      if (navItemNodes && navItemNodes[classify]) {
+        navItemNodes[classify].classList.remove('active')
+      }
     },
 
     createShareContent(item = {}) {

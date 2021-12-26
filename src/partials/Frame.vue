@@ -7,16 +7,20 @@
     </main>
     <footer-nav />
     <elevator v-if="!isMobile" />
+    <auto-dialog v-if="isShowAutoDlgFlag" @close="onHandleClose" />
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
 import Elevator from 'components/Elevator'
+import AutoDialog from 'components/AutoDialog'
 
-import { mapMutations } from 'vuex'
+import { AUTO_DIALOG } from 'config/constant'
 
 export default {
   name: 'Frame',
@@ -24,6 +28,7 @@ export default {
     return {
       isMobile: window.innerWidth <= 960,
       isShowDlgFlag: false,
+      isShowAutoDlgFlag: false,
     }
   },
 
@@ -32,6 +37,7 @@ export default {
     SideNav,
     FooterNav,
     Elevator,
+    AutoDialog,
   },
 
   created() {
@@ -42,7 +48,11 @@ export default {
         this.$getUserInfo()
       }
     }
-
+    const isHadDisplay = this.$util.getLocalStorage(AUTO_DIALOG)
+    this.isShowAutoDlgFlag = !this.isMobile && !isHadDisplay
+    if (this.isShowAutoDlgFlag) {
+      this.$gtagTracking('auto-dialog', 'global', 'auto-dialog')
+    }
     // Temporarily shut down the WeChat sharing function@04-07
     // this.initWechatShare()
   },
@@ -62,6 +72,11 @@ export default {
       if (this.isShowSideNav) {
         this.$triggerSidenav()
       }
+    },
+
+    onHandleClose() {
+      this.isShowAutoDlgFlag = false
+      this.$gtagTracking('close-auto-dialog', 'global', 'close-auto-dialog')
     },
 
     initWechatShare() {

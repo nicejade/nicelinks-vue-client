@@ -116,7 +116,7 @@ $factor: 1rem;
   .pannel {
     position: absolute;
     bottom: -9.25 * $factor;
-    right: 8 * $factor;
+    right: 6 * $factor;
     z-index: 100;
     display: flex;
     flex-direction: row;

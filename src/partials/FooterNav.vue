@@ -84,18 +84,20 @@
               data-category="footer"
               data-label="sponsor"
               href="/sponsor"
-              >倾情捐赠</a
-            >
+              >倾情捐赠
+            </a>
           </dd>
           <dd>
             <a
+              target="_blank"
+              rel="noopener"
               class="nice-link gtag-track"
-              data-action="contact"
+              data-action="weekly"
               data-category="footer"
-              data-label="contact"
-              href="/member/admin"
-              >联系我们</a
-            >
+              data-label="weekly"
+              href="https://blog.nicelinks.site/?ref=nicelinks.site"
+              >倾城周刊
+            </a>
           </dd>
         </div>
         <div class="list-item">

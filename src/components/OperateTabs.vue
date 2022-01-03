@@ -93,5 +93,8 @@ export default {
 .operate-tabs {
   padding-top: 15px;
   margin-bottom: -15px;
+  .el-tabs__item {
+    font-size: $font-small;
+  }
 }
 </style>

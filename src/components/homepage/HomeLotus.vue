@@ -473,7 +473,7 @@ export default {
 @media (max-width: 560px) {
   .flower-container {
     .unit-wrapper .hero-description {
-      font-size: 2.1rem;
+      font-size: 2rem;
       padding: 0px 10px;
     }
   }
@@ -482,10 +482,10 @@ export default {
 @media (max-width: 414px) {
   .flower-container {
     .flower {
-      font-size: 1.6rem !important;
+      font-size: 1.8rem !important;
     }
     .unit-wrapper .hero-description {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       padding: 0px 10px;
     }
   }
@@ -493,7 +493,7 @@ export default {
 
 @media (max-width: 375px) {
   .flower-container .flower {
-    font-size: 1.3rem !important;
+    font-size: 1.6rem !important;
   }
 }
 

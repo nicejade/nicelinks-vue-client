@@ -127,14 +127,17 @@ export default {
     display: flex;
     margin: 0;
     .nav-item {
-      margin: auto 0.88rem;
+      margin: auto 0.5rem;
       .theme-link {
         display: inline-block;
-        min-width: 3rem;
+        min-width: 4rem;
         padding: 1rem 0;
         color: $black-grey;
-        font-size: 1.5rem;
+        font-size: $font-small;
         font-weight: 500;
+        &:hover {
+          color: $brand;
+        }
       }
     }
     .is-active {

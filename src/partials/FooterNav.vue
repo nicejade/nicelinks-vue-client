@@ -292,7 +292,7 @@ export default {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      font-size: $font-medium;
+      font-size: $font-small;
       text-align: left;
       font-weight: 500;
       text-shadow: 1px 1px 0px #fff;

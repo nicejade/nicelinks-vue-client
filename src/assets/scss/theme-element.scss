@@ -88,10 +88,12 @@
   background-color: $white;
   .el-menu-item {
     color: $black;
+    font-size: $font-small;
   }
   .el-submenu {
     .el-submenu__title {
       color: $black;
+      font-size: $font-small;
     }
     .el-menu-item {
       color: $black;

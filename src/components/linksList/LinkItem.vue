@@ -393,7 +393,7 @@ export default {
   .abstract {
     width: 100%;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: $font-small;
     color: $black-grey;
     line-height: 1.5;
     letter-spacing: 0.02rem;
@@ -417,7 +417,7 @@ export default {
     margin: 15px auto;
     padding-left: 10px;
     word-break: break-all;
-    line-height: 1.8rem;
+    line-height: $font-medium;
     font-size: $font-small;
     word-spacing: 3px;
     border-left: 2px solid $black-grey;
@@ -449,7 +449,7 @@ export default {
     margin-top: 15px;
   }
   .meta-box {
-    font-size: 1.4rem;
+    font-size: $font-small;
     color: $silver-grey;
     .item {
       &:after {

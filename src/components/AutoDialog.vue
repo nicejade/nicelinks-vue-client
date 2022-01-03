@@ -1,7 +1,19 @@
 <template>
   <div class="auto-dialog">
     <div class="dlg-header">
-      <h2 class="title">订阅倾城 每周精要</h2>
+      <h2 class="title">
+        订阅倾城
+        <a
+          target="_blank"
+          rel="noopener"
+          class="gtag-track"
+          data-action="open-weekly"
+          data-category="global"
+          data-label="open-weekly"
+          href="https://blog.nicelinks.site/?ref=nicelinks.site"
+          >每周精要
+        </a>
+      </h2>
       <button type="button" class="btn-close" @click="onCloseClick">
         <span class="icon-cross"></span>
       </button>
@@ -81,7 +93,7 @@ $factor: 0.5rem;
   position: fixed;
   bottom: 28 * $factor;
   right: 8 * $factor;
-  width: 80 * $factor;
+  width: 90 * $factor;
   height: 60 * $factor;
   display: flex;
   flex-direction: column;

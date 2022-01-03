@@ -67,7 +67,7 @@ export default {
 
   validateFailure: '验证失败',
   noResultTip:
-    '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至 <a class="no-result-tip-a" href="/">NICE LINKS</a> 。',
+    '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至<a class="no-result-tip-a" href="/">倾城之链</a>主页 。',
   dislikesTips:
     '如果你确定这是一个很(/不)需要改进的网站，那么你可以尽情点击确定；否则，还请三思；毕竟这可能间接影响到别人对此网站的评判。',
 

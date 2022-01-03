@@ -29,12 +29,16 @@
           .page-responsive {
             padding: 15px 0;
           }
+          .el-card__header {
+            font-size: $font-medium;
+          }
         }
         .tip-box-card {
           .el-card__body {
             padding: 18px 20px !important;
             .no-result-tip {
               text-align: left;
+              font-size: $font-small;
               color: $silver-grey;
               line-height: 2rem;
               .no-result-tip-a {
@@ -67,7 +71,7 @@
   .title {
     display: inline-block;
     margin: 0 1rem;
-    font-size: 2rem;
+    font-size: $font-medium;
     font-weight: 500;
     text-align: center;
     color: $black;
@@ -80,7 +84,7 @@
     }
   }
   img {
-    width: 3rem;
+    width: 3.6rem;
   }
 }
 
@@ -90,7 +94,7 @@
   min-width: 72px;
   height: 100%;
   color: #ffffff;
-  font-size: 1.2em;
+  font-size: 1.6em;
   list-style-type: none;
   margin: 0 10px;
 }

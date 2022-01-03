@@ -338,7 +338,7 @@ export default {
       position: relative;
       margin-right: 12px;
       float: left;
-      font-size: $font-medium;
+      font-size: $font-small;
       .nav-item {
         color: $black;
         margin: 0 1rem;
@@ -351,7 +351,7 @@ export default {
       }
     }
     .share-btn {
-      font-size: $font-medium;
+      font-size: $font-small;
       .share-link {
         @include flex-box-center(row, space-around, center);
         color: $black;
@@ -380,7 +380,7 @@ export default {
         display: flex;
         align-items: center;
         height: 100%;
-        font-size: $font-medium;
+        font-size: $font-small;
         .el-dropdown-link {
           display: flex !important;
           align-items: center !important;
@@ -408,6 +408,9 @@ export default {
       display: inline-block;
       float: right;
       margin-right: 15px;
+      .el-button {
+        font-size: $font-small;
+      }
     }
   }
 }
@@ -492,6 +495,7 @@ export default {
       }
       .share-btn,
       .find-more {
+        font-size: $font-small;
         display: none;
       }
     }

@@ -262,6 +262,7 @@ export default {
   }
 }
 .el-autocomplete .el-input--suffix .el-input__inner {
+  font-size: $font-small;
   width: 100%;
   border-radius: 20px;
 }

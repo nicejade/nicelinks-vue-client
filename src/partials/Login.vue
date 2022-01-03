@@ -374,7 +374,7 @@ export default {
   .heading {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 2.4rem;
     color: #707473;
   }
   .el-form-item {
@@ -385,6 +385,7 @@ export default {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 15px;
+    font-size: $font-small;
   }
   .el-input {
     .icons {

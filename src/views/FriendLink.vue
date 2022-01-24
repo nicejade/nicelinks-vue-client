@@ -85,17 +85,9 @@ export default {
     this.initFetch()
   },
 
-  metaInfo() {
-    return {
-      title: `${this.$t('manageFriends')} - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
+  mounted() {
+    document.title = `友情链接 - ${this.$t('niceLinksStr')}`
   },
-
-  mounted() {},
 
   methods: {
     initFetch() {

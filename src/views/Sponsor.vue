@@ -51,24 +51,11 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
 export default {
   name: 'Sponsor',
 
-  mixins: [metaMixin],
-
   data() {
     return {}
-  },
-
-  metaInfo() {
-    return {
-      title: `赞助倾城 - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
   },
 
   watch: {},
@@ -76,6 +63,7 @@ export default {
   components: {},
 
   mounted() {
+    document.title = `赞助倾城 - ${this.$t('niceLinksStr')}`
     // Add Waline Comment Functions @2022.01.24
     this.$util.addWalineComment()
   },

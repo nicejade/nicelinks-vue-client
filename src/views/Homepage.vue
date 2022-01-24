@@ -66,22 +66,19 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
 export default {
   name: 'HomePage',
 
-  mixins: [metaMixin],
+  mixins: [],
 
   components: {
     PreviewMd,
   },
 
   data() {
-    const vm = this
     return {
-      title: vm.$t('homepage'),
       isLoading: false,
       isShowBaseInfo: true,
       activeName: 'BaseInfo',
@@ -188,17 +185,6 @@ export default {
   },
 
   locales: {
-    en: {
-      baseInfo: 'Base Information',
-      myPublish: 'My Publish',
-      myLikes: 'My Likes',
-      myDislikes: 'My Dislikes',
-      hisPublish: 'His Publish',
-      hisLikes: 'His Likes',
-      hisDislikes: 'His Dislikes',
-      nicerNumText: `<a href='/'>NICE LINKS</a> Member No. @X, Join in @TIME`,
-      noFill: 'Not yet filled',
-    },
     zh: {
       baseInfo: '基本信息',
       myPublish: '我的发布',

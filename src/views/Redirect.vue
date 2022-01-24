@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
 import pageMixin from 'mixins/pageMixin.js'
 
 export default {
@@ -53,7 +52,7 @@ export default {
     }
   },
 
-  mixins: [metaMixin, pageMixin],
+  mixins: [pageMixin],
 
   components: {},
 
@@ -67,17 +66,9 @@ export default {
     },
   },
 
-  metaInfo() {
-    return {
-      title: `倾城跳转 - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
-  },
-
   mounted() {
+    document.title = `倾城跳转 - ${this.$t('niceLinksStr')}`
+
     this.isAutoRedirect = this.$util.getUrlParam('isauto')
     const paramObj = this.$util.query(window.location.href)
     this.targetWebsite = window.decodeURIComponent(paramObj.url)

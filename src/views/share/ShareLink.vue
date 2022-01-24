@@ -152,18 +152,13 @@
 
 <script>
 import $config from 'config'
-import metaMixin from 'mixins/metaMixin.js'
 import Markdown from 'components/markdown/Index'
 
 export default {
   name: 'ShareLink',
 
-  mixins: [metaMixin],
-
   data() {
-    const vm = this
     return {
-      title: vm.$t('shareNewLink'),
       isLoading: false,
       fillForm: {
         urlPath: '',
@@ -222,6 +217,10 @@ export default {
     'fillForm.classify': function (val) {
       this.themeList = $config.theme[this.fillForm.classify] || []
     },
+  },
+
+  mounted() {
+    document.title = `${this.$t('shareNewLink')} - ${this.$t('niceLinksStr')}`
   },
 
   methods: {
@@ -284,9 +283,6 @@ export default {
   },
 
   locales: {
-    en: {
-      successAddTip: 'Well, you have successfully added the link，Pending audit.',
-    },
     zh: {
       successAddTip: '很好，您已成功添加该链接，正在待审核中.',
     },

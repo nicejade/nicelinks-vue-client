@@ -57,17 +57,8 @@ export default {
     PreviewMd,
   },
 
-  metaInfo() {
-    return {
-      title: `广告投放 - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
-  },
-
   mounted() {
+    document.title = `广告投放 - ${this.$t('niceLinksStr')}`
     // Add Waline Comment Functions @2022.01.24
     this.$util.addWalineComment()
   },

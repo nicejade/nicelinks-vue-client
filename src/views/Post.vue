@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArrayay" :is-loading="isLoading">
+            <links-list :pdata="niceLinksArr" :is-loading="isLoading">
               <social-share
                 slot="link-share"
                 :share-url="currentPath"
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       isLoading: true,
-      niceLinksArrayay: [],
+      niceLinksArr: [],
       niceLinksDetail: {},
       index: 0,
       currentPath: window.document.location.href,
@@ -64,7 +64,7 @@ export default {
         .getNiceLinks(params)
         .then((result) => {
           if (result[0]) {
-            this.niceLinksArrayay = result
+            this.niceLinksArr = result
             this.niceLinksDetail = result[0]
 
             this.updatePageSentence()
@@ -88,11 +88,10 @@ export default {
     },
 
     updatePageMeta(details) {
-      this.title = details.title
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc
 
-      document.title = `${this.title} | 倾城之链`
+      document.title = `${details.title} | 倾城之链`
       const descNode = document.querySelector('meta[name="description"]')
       descNode.setAttribute('content', this.description)
 

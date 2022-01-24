@@ -22,17 +22,13 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
-
 export default {
   name: 'TagsCollections',
 
-  mixins: [metaMixin],
+  mixins: [],
 
   data() {
-    const vm = this
     return {
-      title: vm.$t('tagsCollection'),
       isLoading: false,
       tagsList: [],
     }
@@ -52,7 +48,9 @@ export default {
       })
   },
 
-  mounted() {},
+  mounted() {
+    document.title = `${this.$t('tagsCollection')} - ${this.$t('niceLinksStr')}`
+  },
 
   methods: {
     onItemClick(tag) {

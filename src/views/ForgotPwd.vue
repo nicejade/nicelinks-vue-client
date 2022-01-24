@@ -51,19 +51,13 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
-
 export default {
-  name: 'Setting',
-
-  mixins: [metaMixin],
+  name: 'ForgotPwd',
 
   components: {},
 
   data() {
-    const vm = this
     return {
-      title: vm.$t('resetPwd'),
       isLoading: false,
       isShowFillPwd: false,
       fillForm: {
@@ -86,6 +80,7 @@ export default {
   },
 
   mounted() {
+    document.title = `${this.$t('resetPwd')} - ${this.$t('niceLinksStr')}`
     if (this.$util.getUrlParam('resetPasswordToken')) {
       this.isShowFillPwd = true
     }
@@ -161,11 +156,6 @@ export default {
       resetPwd: '重设密码',
       registeredMailbox: '注册邮箱',
       resetNewPwd: '设新密码',
-    },
-    en: {
-      resetPwd: 'Reset Password',
-      registeredMailbox: 'Registered Mailbox',
-      resetNewPwd: 'Reset New Password',
     },
   },
 }

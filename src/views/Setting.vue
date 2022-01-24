@@ -96,14 +96,13 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
 import UploadAvatar from 'components/UploadAvatar'
 import Markdown from 'components/markdown/Index'
 
 export default {
   name: 'Setting',
 
-  mixins: [metaMixin],
+  mixins: [],
 
   components: {
     UploadAvatar,
@@ -111,9 +110,7 @@ export default {
   },
 
   data() {
-    const vm = this
     return {
-      title: vm.$t('accountSetting'),
       tipMessageObj: {},
       isLoading: false,
       fillForm: {
@@ -147,17 +144,8 @@ export default {
     }
   },
 
-  metaInfo() {
-    return {
-      title: `倾城设置 - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
-  },
-
   mounted() {
+    document.title = `倾城设置 - ${this.$t('niceLinksStr')}`
     this.initFetch()
   },
 

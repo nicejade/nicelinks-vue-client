@@ -40,22 +40,17 @@ export default {
     PreviewMd,
   },
 
-  metaInfo() {
-    return {
-      title: `关于倾城 - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        { name: 'description', content: this.$t('description') },
-      ],
-    }
-  },
-
   mounted() {
+    this.updatePageMeta()
     // Add Waline Comment Functions @2022.01.24
     this.$util.addWalineComment()
   },
 
-  methods: {},
+  methods: {
+    updatePageMeta() {
+      document.title = `关于倾城 - ${this.$t('niceLinksStr')}`
+    },
+  },
 }
 </script>
 

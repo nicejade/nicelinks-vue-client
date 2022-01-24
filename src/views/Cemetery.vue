@@ -51,7 +51,6 @@ export default {
   watch: {},
 
   created() {
-    // this.updatePageTitle()
     this.fetchPastLinks({
       alive: 0,
       pageSize: 100,
@@ -61,21 +60,15 @@ export default {
     })
   },
 
-  mounted() {},
-
-  metaInfo() {
-    return {
-      title: `${this.$t('productCemetery')} - ${this.$t('niceLinksStr')}`,
-      meta: [
-        { name: 'keywords', content: this.$t('keywords') },
-        {
-          name: 'description',
-          content: marked(this.cemeteryDescStr, {
-            sanitize: false,
-          }).replace(/<[^>]*>/g, ''),
-        },
-      ],
-    }
+  mounted() {
+    document.title = `${this.$t('productCemetery')} - ${this.$t('niceLinksStr')}`
+    const descNode = document.querySelector('meta[name="description"]')
+    descNode.setAttribute(
+      'content',
+      marked(this.cemeteryDescStr, {
+        sanitize: false,
+      }).replace(/<[^>]*>/g, '')
+    )
   },
 
   methods: {

@@ -41,6 +41,7 @@
                 </div>
               </div>
             </el-card>
+            <div id="waline"></div>
           </div>
           <aside-list></aside-list>
         </div>
@@ -74,7 +75,10 @@ export default {
 
   components: {},
 
-  mounted() {},
+  mounted() {
+    // Add Waline Comment Functions @2022.01.24
+    this.$util.addWalineComment()
+  },
 
   methods: {},
 }

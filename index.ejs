@@ -12,7 +12,6 @@
     <meta name="twitter:description" content="倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。" />
     <meta name="twitter:image" content="https://static.nicelinks.site/static/img/favicons/favicon.png" />
     <script data-ad-client="ca-pub-8586652723015758" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
     <% if (htmlWebpackPlugin.options.env !== 'development') { %>
       <!-- Global site tag (gtag.js) - Google Analytics Start-->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98631211-1"></script>
@@ -38,6 +37,7 @@
       <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
       <% }}} %>
     <% } %>
+    <script async src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
   </head>
 
   <body>

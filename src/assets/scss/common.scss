@@ -238,6 +238,16 @@ input:-ms-input-placeholder {
   margin-bottom: 15px;
 }
 
+#post-page #waline .vbtn {
+  display: none;
+}
+#post-page #waline .primary {
+  display: block;
+}
+#post-page #waline .v {
+  padding: 15px 20px;
+}
+
 /* ----------------------title font define---------------------- Start*/
 .large-font {
   font-size: 4.6rem;

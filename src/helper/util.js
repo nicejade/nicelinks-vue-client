@@ -361,4 +361,13 @@ export default {
     window.sessionStorage.removeItem(getStorageName(name))
   },
   /* ----------------------------sessionStorage----------------------------------- End */
+  addWalineComment() {
+    window.Waline({
+      el: '#waline',
+      serverURL: 'https://comment.nicelinks.site/',
+      copyright: false,
+      wordLimit: [10, 360],
+      requiredMeta: ['nick', 'mail'],
+    })
+  },
 }

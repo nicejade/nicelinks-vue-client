@@ -21,12 +21,11 @@
 <script>
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
-import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'NiceLinks',
 
-  mixins: [partsMixin, metaMixin],
+  mixins: [partsMixin],
 
   data() {
     return {
@@ -59,7 +58,7 @@ export default {
     updatePageMeta() {
       const cClassify = this.$route.params.classify
       const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
-      this.title = this.$t(localesKey)
+      document.title = this.$t(localesKey)
     },
 
     setFetchData() {

@@ -72,12 +72,9 @@
 <script>
 import EditDialog from 'components/dialog/EditDialog'
 import $config from 'config'
-import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'ManageLinks',
-
-  mixins: [metaMixin],
 
   data() {
     const vm = this

@@ -79,17 +79,11 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
-
 export default {
   name: 'ManageAdverts',
 
-  mixins: [metaMixin],
-
   data() {
-    const vm = this
     return {
-      title: vm.$t('manageAdverts'),
       isLoading: false,
       tableData: [],
     }
@@ -169,21 +163,6 @@ export default {
         sort: 0,
         modifyTime: new Date(),
       })
-    },
-  },
-
-  locales: {
-    en: {
-      approved: 'Approved',
-      unapproved: 'Unapproved',
-      isActived: 'Is Actived',
-      creater: 'Creater',
-    },
-    zh: {
-      approved: '已审核',
-      unapproved: '未审核',
-      isActived: '是否已激活',
-      creater: '创建者',
     },
   },
 }

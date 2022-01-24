@@ -4,7 +4,6 @@ import VueI18n from 'vue-i18n'
 // import VueTouch from 'vue-touch'
 import Cookies from 'js-cookie'
 import SocialSharing from 'vue-social-sharing'
-import VueMeta from 'vue-meta'
 import { $apis, $util, $document, $auth, $lodash, $errorReport } from 'helper'
 import locales from './locales'
 import Filters from './filters'
@@ -12,7 +11,6 @@ import Filters from './filters'
 Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.use(SocialSharing)
-Vue.use(VueMeta)
 // Vue.use(VueTouch, {name: 'v-touch'})
 
 // Initialize the sentry error reporting @2017-10-29

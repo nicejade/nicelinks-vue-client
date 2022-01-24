@@ -84,9 +84,6 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
-// import QRCode from 'qrcodejs2'
-
 export default {
   name: 'Login',
 
@@ -114,8 +111,6 @@ export default {
   },
 
   components: {},
-
-  mixins: [metaMixin],
 
   created() {},
 

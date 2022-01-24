@@ -61,17 +61,12 @@
 </template>
 
 <script>
-import metaMixin from 'mixins/metaMixin.js'
-
 export default {
   name: 'ManageFriends',
-
-  mixins: [metaMixin],
 
   data() {
     const vm = this
     return {
-      title: vm.$t('manageAdverts'),
       isLoading: false,
       tableData: [],
     }

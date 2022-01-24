@@ -20,13 +20,12 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
-import metaMixin from 'mixins/metaMixin.js'
 import $config from 'config'
 
 export default {
   name: 'theme',
 
-  mixins: [partsMixin, metaMixin],
+  mixins: [partsMixin],
 
   data() {
     return {
@@ -44,22 +43,12 @@ export default {
 
   mounted() {
     this.setThemeList()
-    this.setMetaInfo()
   },
 
   methods: {
     isCurrentThemeVal(value) {
       const cTheme = this.$route.params.theme
       return cTheme.toUpperCase() === value.toUpperCase()
-    },
-
-    setMetaInfo() {
-      const themeList = this.$_.flatten($config.theme)
-      themeList.map((item) => {
-        if (this.isCurrentThemeVal(item.value)) {
-          this.title = this.$lang === 'en' ? item.value : item.key
-        }
-      })
     },
 
     setThemeList() {

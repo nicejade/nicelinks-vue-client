@@ -12,6 +12,7 @@
               </div>
               <preview-md :value="aboutMarkdown"></preview-md>
             </el-card>
+            <div id="waline"></div>
           </div>
           <aside-list></aside-list>
         </div>
@@ -49,7 +50,10 @@ export default {
     }
   },
 
-  mounted() {},
+  mounted() {
+    // Add Waline Comment Functions @2022.01.24
+    this.$util.addWalineComment()
+  },
 
   methods: {},
 }

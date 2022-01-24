@@ -96,7 +96,7 @@
               data-category="footer"
               data-label="weekly"
               href="https://blog.nicelinks.site/?ref=nicelinks.site"
-              >倾城周刊
+              >倾城博客
             </a>
           </dd>
         </div>

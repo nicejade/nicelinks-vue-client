@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <v-touch v-on:swipeleft="onSwipeLeft"
-      v-on:swiperight="onSwipeRight"
-      v-bind:swipe-options="{ direction: 'horizontal', threshold: 120 }">
-    </v-touch> -->
     <router-view></router-view>
   </div>
 </template>
@@ -19,14 +15,8 @@ export default {
     return {}
   },
 
-  methods: {
-    onSwipeLeft() {
-      this.$router.go(-1)
-    },
+  mounted() {},
 
-    onSwipeRight() {
-      this.$router.go(1)
-    },
-  },
+  methods: {},
 }
 </script>

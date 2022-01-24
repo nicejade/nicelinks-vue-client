@@ -13,6 +13,7 @@
               >
               </social-share>
             </links-list>
+            <div id="waline"></div>
           </div>
           <aside-list :index="index"></aside-list>
         </div>
@@ -23,12 +24,9 @@
 
 <script>
 import SocialShare from 'components/SocialShare'
-import metaMixin from 'mixins/metaMixin.js'
 
 export default {
   name: 'Post',
-
-  mixins: [metaMixin],
 
   data() {
     return {
@@ -47,44 +45,59 @@ export default {
     SocialShare,
   },
 
-  created() {},
-
-  mounted() {
-    let params = {}
-    params._id = this.$route.params.id
-    params.userId = (this.userInfo && this.userInfo._id) || ''
-    this.$apis
-      .getNiceLinks(params)
-      .then((result) => {
-        if (result[0]) {
-          this.niceLinksArrayay = result
-          this.niceLinksDetail = result[0]
-
-          this.updatePageSentence()
-          this.updatePageMeta(result[0])
-          this.addHeaderNavActive()
-        } else {
-          this.$router.push('/404')
-        }
-      })
-      .catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      })
-      .finally(() => {
-        this.isLoading = false
-      })
+  created() {
+    this.fetchPostData()
   },
+
+  mounted() {},
 
   destroyed() {
     this.removeHeaderNavActive()
   },
 
   methods: {
+    fetchPostData() {
+      let params = {}
+      params._id = this.$route.params.id
+      params.userId = (this.userInfo && this.userInfo._id) || ''
+      this.$apis
+        .getNiceLinks(params)
+        .then((result) => {
+          if (result[0]) {
+            this.niceLinksArrayay = result
+            this.niceLinksDetail = result[0]
+
+            this.updatePageSentence()
+            this.$nextTick(() => {
+              this.updatePageMeta(result[0])
+              this.addHeaderNavActive()
+              // Add Waline Comment Functions @2022.01.17~18
+              this.$util.addWalineComment()
+            })
+          } else {
+            this.$router.push('/404')
+          }
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
+
     updatePageMeta(details) {
       this.title = details.title
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc
+
+      document.title = `${this.title} | 倾城之链`
+      const descNode = document.querySelector('meta[name="description"]')
+      descNode.setAttribute('content', this.description)
+
+      const tDescNode = document.querySelector('meta[name="twitter:description"]')
+      tDescNode.setAttribute('content', this.description)
     },
 
     updatePageSentence() {

@@ -19,40 +19,39 @@ module.exports = {
       'raven-js',
       'countup',
       'marked',
-      'vue-meta',
       'vue-social-sharing',
-      'vue-content-placeholder'
-    ]
+      'vue-content-placeholder',
+    ],
   },
   output: {
     path: path.resolve(__dirname, '../static/js'),
     filename: '[name].dll.js',
-    library: '[name]_library'
+    library: '[name]_library',
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules\/(?!(autotrack|dom-utils))/
-      }
-    ]
+        exclude: /node_modules\/(?!(autotrack|dom-utils))/,
+      },
+    ],
   },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: false // set to true if you want JS source maps
+        sourceMap: false, // set to true if you want JS source maps
       }),
       // Compress extracted CSS. We are using this plugin so that possible
       // duplicated CSS from different components can be deduped.
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   plugins: [
     /*
@@ -62,7 +61,7 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DllPlugin({
       path: path.join(__dirname, '.', '[name]-manifest.json'),
-      name: '[name]_library'
-    })
-  ]
+      name: '[name]_library',
+    }),
+  ],
 }

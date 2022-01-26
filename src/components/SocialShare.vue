@@ -29,11 +29,16 @@
 </template>
 
 <script>
+import SocialSharing from 'vue-social-sharing'
 export default {
   name: 'SocialShare',
 
   data() {
     return {}
+  },
+
+  components: {
+    SocialSharing,
   },
 
   props: {

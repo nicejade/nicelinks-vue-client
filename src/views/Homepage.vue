@@ -256,8 +256,8 @@ export default {
         height: 8rem;
         float: left;
         margin-left: 1rem;
+        font-size: $font-small;
         .username {
-          font-size: $font-large;
           font-weight: 500;
         }
       }
@@ -275,6 +275,7 @@ export default {
         padding: 0;
       }
       .base-info {
+        font-size: $font-small;
         padding: 1rem;
       }
     }

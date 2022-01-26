@@ -29,8 +29,9 @@
           .page-responsive {
             padding: 15px 0;
           }
+          .el-tabs__item,
           .el-card__header {
-            font-size: $font-medium;
+            font-size: $font-small;
           }
         }
         .tip-box-card {

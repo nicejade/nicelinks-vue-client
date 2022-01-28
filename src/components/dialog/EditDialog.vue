@@ -271,9 +271,6 @@ export default {
   },
 
   locales: {
-    en: {
-      successAddTip: 'Well, you have successfully added the link',
-    },
     zh: {
       successAddTip: '干的漂亮，您已成功修改该链接',
     },

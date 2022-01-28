@@ -9,7 +9,7 @@
                 <h2 align="left" class="subtitle">
                   <strong>{{ $t('productCemetery') }}</strong>
                 </h2>
-                <preview-md :value="cemeteryDescStr"></preview-md>
+                <preview-md v-once :value="cemeteryDescStr"></preview-md>
               </mark>
             </div>
             <links-list

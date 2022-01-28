@@ -180,11 +180,6 @@ export default {
       return niceDesc.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
     },
   },
-
-  locales: {
-    zh: {},
-    en: {},
-  },
 }
 </script>
 

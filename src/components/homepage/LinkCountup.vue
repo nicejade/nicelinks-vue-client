@@ -77,9 +77,6 @@ export default {
   },
 
   locales: {
-    en: {
-      countupText: 'The number of high quality websites has been included',
-    },
     zh: {
       countupText: '已经收录优质网站个数',
     },

@@ -78,11 +78,6 @@ export default {
       latest: '最新分享',
       earliest: '最早分享',
     },
-    en: {
-      hottest: 'Popular Share',
-      latest: 'Latest Share',
-      earliest: 'Earliest Share',
-    },
   },
 }
 </script>

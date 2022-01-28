@@ -247,9 +247,6 @@ export default {
   },
 
   locales: {
-    en: {
-      enterLegalNick: 'Please enter 3 ~ 15 arbitrary characters.',
-    },
     zh: {
       enterLegalNick: '请输入 3 ～ 15 位任意字符',
     },

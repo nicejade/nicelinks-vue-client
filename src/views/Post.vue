@@ -65,7 +65,7 @@ export default {
         .then((result) => {
           if (result[0]) {
             this.niceLinksArr = result
-            this.niceLinksDetail = result[0]
+            this.niceLinksDetail = Object.freeze(result[0])
 
             this.updatePageSentence()
             this.$nextTick(() => {

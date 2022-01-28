@@ -70,10 +70,6 @@ export default {
   },
 
   locales: {
-    en: {
-      write: 'Write',
-      preview: 'Preview',
-    },
     zh: {
       write: '编写',
       preview: '预览',

@@ -178,9 +178,6 @@ export default {
   },
 
   locales: {
-    en: {
-      successAddTip: 'Well, you have successfully updated the sentence',
-    },
     zh: {
       successAddTip: '干的漂亮，您已成功更新该箴言',
     },

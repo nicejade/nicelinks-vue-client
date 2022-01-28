@@ -17,7 +17,7 @@ export default {
 
   computed: {
     $niceLinksArray() {
-      return (this.$store && this.$store.state.nicelinksList) || []
+      return (this.$store && Object.freeze(this.$store.state.nicelinksList)) || []
     },
     $requestParamList() {
       return (this.$store && this.$store.state.requestParamList) || []

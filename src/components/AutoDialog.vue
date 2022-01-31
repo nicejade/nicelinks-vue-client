@@ -91,8 +91,8 @@ $factor: 0.5rem;
 
 .auto-dialog {
   position: fixed;
-  bottom: 28 * $factor;
-  right: 8 * $factor;
+  bottom: 32 * $factor;
+  right: 18 * $factor;
   width: 90 * $factor;
   height: 60 * $factor;
   display: flex;
@@ -101,8 +101,8 @@ $factor: 0.5rem;
   align-items: center;
   background-color: $white;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.618);
-  animation: moveto 1s;
-  -webkit-animation: moveto 1s;
+  animation: moveto 0.618s;
+  -webkit-animation: moveto 0.618s;
   animation-timing-function: cubic-bezier(0, 0.13, 0.14, 1);
 
   padding: 2 * $factor;
@@ -175,7 +175,7 @@ $factor: 0.5rem;
   }
   to {
     opacity: 1;
-    right: 8 * $factor;
+    right: 18 * $factor;
   }
 }
 </style>

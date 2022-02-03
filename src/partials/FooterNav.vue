@@ -193,15 +193,6 @@
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>
-    <a
-      v-if="isShowOpenAppBtn"
-      :href="getCurrentHref()"
-      class="link gtag-track open-in-quickapp"
-      data-action="footer-quickapp"
-      data-category="footer"
-      data-label="footer-quickapp"
-      >{{ $t('openInQuickapp') }}</a
-    >
   </footer>
 </template>
 
@@ -221,13 +212,7 @@ export default {
 
   mixins: [pageMixin],
 
-  computed: {
-    isShowOpenAppBtn() {
-      const isMobile = this.$isMobileScreen()
-      const isAndroid = this.$util.isAndroidSystem()
-      return isMobile && isAndroid
-    },
-  },
+  computed: {},
 
   components: {},
 
@@ -248,21 +233,12 @@ export default {
         )
       })
     },
-
-    getCurrentHref() {
-      const currentHref = window.location.href
-      return `https://hapjs.org/app/com.graceful.sentences/browser/pages/detail?path=${currentHref}`
-    },
   },
 
   locales: {
     zh: {
       mySiteFunc: '云集世间优秀站点',
       produced: '出品',
-    },
-    en: {
-      mySiteFunc: 'Gathered in the world excellent site',
-      produced: 'Produced',
     },
   },
 }
@@ -340,25 +316,6 @@ export default {
       }
     }
   }
-}
-.open-in-quickapp {
-  @include flex-box-center;
-  width: 110px;
-  height: 30px;
-  line-height: 30px;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  margin: auto;
-  background-color: $brand;
-  color: $white !important;
-  border: 1px solid $brand;
-  border-radius: 15px;
-  padding: 5px 10px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  z-index: $zindex-quickapp-btn;
 }
 /* Tooltip 容器 */
 .tooltip {

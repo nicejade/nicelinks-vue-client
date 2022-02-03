@@ -33,10 +33,6 @@ export default {
   },
 
   locales: {
-    en: {
-      errPromptMessage: '<strong>NICE LINKS</strong> ── Heart to create just for you.',
-      backToHomePage: 'To Home Page',
-    },
     zh: {
       errPromptMessage:
         '<strong><a href="/">倾城之链</a></strong> ── 倾心缔造，痴心为你；<br>纵然情意无限，可世事难料又易变，请原谅这份情偶尔的被失联；<br>你可以操作如下按钮，穿越回倾城爱的主场：<br>那里充盈各类优秀网站，等着您与之厮磨缠绵。',

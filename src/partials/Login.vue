@@ -316,13 +316,6 @@ export default {
   },
 
   locales: {
-    en: {
-      enterUsernameTip: 'Please enter account ID (Only letters、numbers、-，3-16)',
-      enterUserinfoTip: 'Please enter account ID Or email',
-      enterLegalUsernameTip: 'Please enter account ID(Only letters and numbers，3-16)',
-      signupBottomTip: `Don't have an account ?`,
-      signinBottomTip: `Already have an account?`,
-    },
     zh: {
       enterUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
       enterUserinfoTip: '请输入账号 ID 或邮箱',

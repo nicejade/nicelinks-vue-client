@@ -248,6 +248,15 @@ export default {
       this.$refs['fillForm'].resetFields()
     },
 
+    removeTagsSpaceChar() {
+      if (!this.fillForm.tags.length) {
+        return
+      }
+      this.fillForm.tags = this.fillForm.tags.map((item) => {
+        return item.replace(/\s/g, '')
+      })
+    },
+
     onResetClick() {
       this.resetForm()
     },
@@ -257,6 +266,8 @@ export default {
         if (valid) {
           this.isLoading = true
 
+          // 遍历 Tags 数组，移除 tag 中空格字符，以免发生不匹配问题；
+          this.removeTagsSpaceChar()
           let params = this.$_.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
           params.role = this.userInfo && this.userInfo.role

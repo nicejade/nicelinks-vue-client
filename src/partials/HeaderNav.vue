@@ -504,7 +504,7 @@ export default {
 .search-area {
   display: block;
   position: absolute;
-  right: 210px;
+  right: 21.13rem;
   .el-autocomplete {
     .el-input {
       font-size: $font-medium;

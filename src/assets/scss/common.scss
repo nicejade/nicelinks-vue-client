@@ -235,17 +235,27 @@ input:-ms-input-placeholder {
 }
 
 .mb-normal {
-  margin-bottom: 15px;
+  margin-bottom: 1.8rem;
 }
 
-#post-page #waline .vbtn {
-  display: none;
-}
-#post-page #waline .primary {
-  display: block;
-}
-#post-page #waline .v {
-  padding: 15px 20px;
+#post-page #waline {
+  width: 100%;
+  min-width: 30rem;
+  .vbtn {
+    display: none;
+  }
+  .primary {
+    display: block;
+  }
+  .v {
+    padding: 15px 20px;
+  }
+  .v[data-class='v'] blockquote {
+    border-left-width: 4px;
+    p {
+      color: $silver-grey;
+    }
+  }
 }
 
 /* ----------------------title font define---------------------- Start*/

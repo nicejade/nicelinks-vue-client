@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <h2 class="title mb-normal">
+    <h2 class="title">
       <a
         v-if="isAbstract"
         class="title-link"
@@ -60,8 +60,8 @@
         @click.stop="onStopPropagationClick('tags')"
         target="_blank"
         rel="noopener"
-        >{{ iitem }}
-      </a>
+        >{{ iitem }}</a
+      >
     </div>
     <div class="abstract" v-if="isAbstract">
       {{ item.abstract || $util.interceptString(item.desc) }}
@@ -377,6 +377,7 @@ export default {
 .content {
   margin: 5px;
   .title {
+    margin-bottom: 2rem;
     .title-link {
       font-size: 1.8rem;
       font-weight: 600;
@@ -403,7 +404,7 @@ export default {
   .link-review {
     margin: 15px 0;
     color: $black-grey;
-    line-height: 1.8rem;
+    line-height: 1.6;
     strong {
       font-weight: 700;
       color: $link-title;
@@ -476,7 +477,7 @@ export default {
     }
     .tag + .tag {
       &:before {
-        margin: 0 0.3em;
+        margin: 0 0.4em;
         content: '/';
         color: $silver-grey;
       }

@@ -7,12 +7,12 @@
       "buildMeta": { "providedExports": true }
     },
     "./node_modules/process/browser.js": { "id": 2, "buildMeta": { "providedExports": true } },
+    "./node_modules/axios/lib/defaults.js": { "id": 3, "buildMeta": { "providedExports": true } },
+    "./node_modules/raven-js/src/utils.js": { "id": 4, "buildMeta": { "providedExports": true } },
     "./node_modules/timers-browserify/main.js": {
-      "id": 3,
+      "id": 5,
       "buildMeta": { "providedExports": true }
     },
-    "./node_modules/axios/lib/defaults.js": { "id": 4, "buildMeta": { "providedExports": true } },
-    "./node_modules/raven-js/src/utils.js": { "id": 5, "buildMeta": { "providedExports": true } },
     "./node_modules/axios/lib/helpers/bind.js": {
       "id": 6,
       "buildMeta": { "providedExports": true }
@@ -166,16 +166,8 @@
       "buildMeta": { "providedExports": true }
     },
     "./node_modules/marked/lib/marked.js": { "id": 48, "buildMeta": { "providedExports": true } },
-    "./node_modules/vue-social-sharing/dist/vue-social-sharing.common.js": {
-      "id": 49,
-      "buildMeta": { "providedExports": true }
-    },
-    "./node_modules/vue/dist/vue.runtime.esm.js": {
-      "id": 50,
-      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
-    },
     "./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js": {
-      "id": 51,
+      "id": 49,
       "buildMeta": { "moduleConcatenationBailout": "eval()", "providedExports": true }
     }
   }

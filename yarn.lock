@@ -8058,11 +8058,9 @@ vue-router@^2.2.0:
   version "2.8.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-2.8.1.tgz#9833c9ee57ac83beb0269056fefee71713f20695"
 
-vue-social-sharing@^2.2.6:
-  version "2.4.3"
-  resolved "https://registry.npmjs.org/vue-social-sharing/-/vue-social-sharing-2.4.3.tgz#fb69e8bfa1ea60da33e1d10a1c997401c25673be"
-  dependencies:
-    vue "^2.2.4"
+vue-social-sharing@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.npmmirror.com/vue-social-sharing/-/vue-social-sharing-3.0.8.tgz#5927c54a91b8cb4965dfa492c2ad4553591ba00c"
 
 vue-style-loader@^2.0.0:
   version "2.0.5"
@@ -8082,7 +8080,7 @@ vue-template-es2015-compiler@^1.2.2:
   version "1.9.1"
   resolved "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
 
-vue@^2.1.10, vue@^2.2.4:
+vue@^2.1.10:
   version "2.6.10"
   resolved "https://registry.npmjs.org/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
 

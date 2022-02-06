@@ -1,6 +1,6 @@
 {
   "name": "nicelinks-vue-client",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A nice website for assembling nice links created using Vue.js",
   "author": "jeffjade <jeffygisgreat@gmail.com>",
   "private": true,
@@ -52,7 +52,6 @@
     "vue-content-placeholder": "^1.1.1",
     "vue-i18n": "^5.0.0",
     "vue-router": "^2.2.0",
-    "vue-social-sharing": "^2.2.6",
     "vuex": "^2.3.1"
   },
   "devDependencies": {

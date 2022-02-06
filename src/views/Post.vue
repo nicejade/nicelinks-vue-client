@@ -4,15 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr" :is-loading="isLoading">
-              <social-share
-                slot="link-share"
-                :share-url="currentPath"
-                :share-content="createShareContent(niceLinksDetail)"
-                :hashtags="createShareTags(niceLinksDetail)"
-              >
-              </social-share>
-            </links-list>
+            <links-list :pdata="niceLinksArr" :is-loading="isLoading" />
             <div id="waline"></div>
           </div>
           <aside-list :index="index"></aside-list>
@@ -23,8 +15,6 @@
 </template>
 
 <script>
-import SocialShare from 'components/SocialShare'
-
 export default {
   name: 'Post',
 
@@ -41,9 +31,7 @@ export default {
 
   watch: {},
 
-  components: {
-    SocialShare,
-  },
+  components: {},
 
   created() {
     this.fetchPostData()

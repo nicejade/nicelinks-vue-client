@@ -19,7 +19,6 @@ module.exports = {
       'raven-js',
       'countup',
       'marked',
-      'vue-social-sharing',
       'vue-content-placeholder',
     ],
   },

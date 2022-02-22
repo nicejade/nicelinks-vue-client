@@ -414,14 +414,14 @@ export default {
     word-break: break-all;
   }
   .link-desc {
-    color: $black-grey;
+    color: $silver-grey;
     margin: 15px auto;
     padding-left: 10px;
     word-break: break-all;
     line-height: $font-medium;
     font-size: $font-small;
     word-spacing: 3px;
-    border-left: 2px solid $black-grey;
+    border-left: 2px solid $border-grey;
   }
   .segmenting-line {
     border-top: 1px solid #8c8b8b;

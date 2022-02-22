@@ -254,15 +254,24 @@ export default {
   // 获取字符串实际长度(包含汉字,汉字统一按照 2 字节算;)
   getByteLength(str = '') {
     if (typeof str !== 'string') return str.length
-    return str.replace(/[^\x00-\xff]/g, 'aa').length
+    return str.replace(/[\\u4E00-\\u9FFF]+/g, 'aa').length
   },
 
   interceptString(string = '', length = 140) {
-    if (this.getByteLength(string) > 140) {
-      return string.substring(0, length) + '...'
-    } else {
-      return string
+    let count = 0
+    let reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
+    let result = ''
+    for (let i = 0, len = string.length; i < len; i++) {
+      const target = string[i]
+      const isChinese = reg.test(target)
+      result += target
+      const step = isChinese ? 2 : 1
+      count += step
+      if (count >= length) {
+        return result + '...'
+      }
     }
+    return string
   },
 
   updateAfterFilterEmptyValue(obj) {

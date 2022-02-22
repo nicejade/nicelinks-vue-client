@@ -5,6 +5,7 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArr" :is-loading="isLoading" />
+            <SimilarRecommend :pdata="niceLinksArr[0]" />
             <div id="waline"></div>
           </div>
           <aside-list :index="index"></aside-list>
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+import SimilarRecommend from 'components/SimilarRecommend'
+
 export default {
   name: 'Post',
 
@@ -31,7 +34,9 @@ export default {
 
   watch: {},
 
-  components: {},
+  components: {
+    SimilarRecommend,
+  },
 
   created() {
     this.fetchPostData()

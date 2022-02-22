@@ -248,12 +248,20 @@ input:-ms-input-placeholder {
     display: block;
   }
   .v {
-    padding: 15px 20px;
+    padding: 0 20px;
   }
-  .v[data-class='v'] blockquote {
-    border-left-width: 4px;
-    p {
-      color: $silver-grey;
+  .v[data-class='v'] {
+    blockquote {
+      border-left-width: 4px;
+      p {
+        color: $silver-grey;
+      }
+    }
+    .vcomment {
+      display: block;
+    }
+    .vpanel {
+      margin: 0.5em auto;
     }
   }
 }

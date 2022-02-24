@@ -91,7 +91,7 @@ export default {
     },
 
     getAssembleDesc(item) {
-      const limit = this.isMobile ? 50 : 80
+      const limit = this.isMobile ? 40 : 60
       const content =
         marked(item.review, {
           sanitize: false,
@@ -161,10 +161,10 @@ export default {
         white-space: nowrap;
       }
       .desc {
-        color: $silver-grey;
-        font-size: $font-small;
+        color: #9393aa;
+        font-size: 1.6rem;
         line-height: 1.8rem;
-        word-spacing: 3px;
+        word-spacing: 2px;
       }
     }
   }

@@ -57,8 +57,10 @@ export default {
       params.userId = (this.userInfo && this.userInfo._id) || ''
 
       let classifyVal = getValueByName($config.classify, this.$route.params.classify)
-      if (this.$route.params.classify && classifyVal) {
+      if (classifyVal && this.$route.params.classify) {
         params.classify = classifyVal
+      } else {
+        delete params.classify
       }
 
       const sortVal = this.$util.getUrlParam('sort')

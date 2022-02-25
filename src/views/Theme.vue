@@ -38,7 +38,7 @@ export default {
   components: {},
 
   created() {
-    this.$fetchSearch()
+    this.$fetchSearch({})
   },
 
   mounted() {

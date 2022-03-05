@@ -10,7 +10,12 @@
         :to="getAssembleRoute(item)"
       >
         <div class="screenshot">
-          <img class="image" :src="getScreenshotPath(item)" :alt="item.title + ' | 倾城之链'" />
+          <img
+            class="image"
+            :alt="item.title + ' | 倾城之链'"
+            :src="getScreenshotPath(item)"
+            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
+          />
         </div>
         <div class="meta">
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
@@ -152,6 +157,7 @@ export default {
       .title {
         width: 100%;
         font-size: $font-medium;
+        line-height: $font-large;
         color: $link-title;
         margin: 0;
         padding: 0;

@@ -38,10 +38,18 @@
           .el-card__body {
             padding: 18px 20px !important;
             .no-result-tip {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
               text-align: left;
               font-size: $font-small;
               color: $silver-grey;
               line-height: 2rem;
+              .no-result-img {
+                width: 100%;
+                max-width: 500px;
+                margin-bottom: 1rem;
+              }
               .no-result-tip-a {
                 color: $brand;
                 &:hover {

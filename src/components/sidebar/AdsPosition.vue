@@ -8,7 +8,7 @@
       :interval="5000"
       height="255px"
     >
-      <el-carousel-item v-for="(item, index) in advertsList" :key="index">
+      <el-carousel-item v-for="item in advertsList" :key="item.item">
         <a :href="item.path" target="_blank" rel="noopener">
           <img :src="item.image" :alt="item.alt" />
         </a>

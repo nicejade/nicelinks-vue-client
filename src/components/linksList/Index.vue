@@ -18,13 +18,7 @@
         <content-placeholder v-else slot="link-desc" :rows="placeholderRows"> </content-placeholder>
       </div>
     </el-card>
-    <el-card
-      v-else
-      :class="cardClassName"
-      shadow="hover"
-      :key="index"
-      v-for="(item, index) in pdata"
-    >
+    <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
       <router-link
         class="gtag-track"
         data-action="route-entry"

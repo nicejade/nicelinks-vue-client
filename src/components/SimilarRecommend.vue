@@ -1,7 +1,7 @@
 <template>
   <div class="similar-recommend" v-if="linksArr.length > 0">
     <h2 class="title">猜您可能喜欢</h2>
-    <div class="list-item" v-for="(item, index) in linksArr" :key="index">
+    <div class="list-item" v-for="item in linksArr" :key="item._id">
       <router-link
         class="gtag-track jump-link"
         data-action="route-entry"

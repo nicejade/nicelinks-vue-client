@@ -76,12 +76,7 @@
                 :multiple-limit="3"
                 :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')"
               >
-                <el-option
-                  v-for="(item, index) in tagsList"
-                  :key="index"
-                  :label="item"
-                  :value="item"
-                >
+                <el-option v-for="item in tagsList" :key="item" :label="item" :value="item">
                 </el-option>
               </el-select>
             </el-form-item>

@@ -6,7 +6,14 @@
           <div slot="header" class="clearfix">
             <h4>{{ $t('warmReminder') }}</h4>
           </div>
-          <div class="no-result-tip" v-html="$t('noResultTip')"></div>
+          <div class="no-result-tip">
+            <img
+              class="no-result-img"
+              src="https://image.nicelinks.site/no-result.svg"
+              :alt="$t('description')"
+            />
+            <div v-html="$t('noResultTip')"></div>
+          </div>
         </el-card>
         <content-placeholder v-else slot="link-desc" :rows="placeholderRows"> </content-placeholder>
       </div>

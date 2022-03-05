@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <search class="mobile-search" v-if="$isMobileScreen()" />
-    <HomeLotus class="$isMobileScreen() ? mobile-search-serving : ''"></HomeLotus>
+    <HomeLotus :class="{ 'mobile-search-serving': isMobile }"></HomeLotus>
     <NiceFantasy></NiceFantasy>
     <Introduction></Introduction>
     <LinkCountup></LinkCountup>
@@ -18,7 +18,9 @@ export default {
   name: 'Index',
 
   data() {
-    return {}
+    return {
+      isMobile: window.innerWidth <= 960,
+    }
   },
 
   components: {

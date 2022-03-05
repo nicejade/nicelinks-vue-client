@@ -12,7 +12,7 @@
           {{ $t('all') }}
         </a>
       </li>
-      <li v-for="(item, index) in themeList" :key="index" :class="makeClassName(item)">
+      <li v-for="item in themeList" :key="item.vaule" :class="makeClassName(item)">
         <router-link
           :to="getLinkPathByThemeVal(item.value)"
           class="gtag-track theme-link"

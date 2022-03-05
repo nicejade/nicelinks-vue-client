@@ -73,8 +73,8 @@
       >
       <a
         class="tag"
-        v-for="(iitem, index) in item.tags"
-        :key="index"
+        v-for="iitem in item.tags"
+        :key="iitem._id"
         :href="getTagPath(iitem)"
         @click.stop="onStopPropagationClick('tags')"
         target="_blank"

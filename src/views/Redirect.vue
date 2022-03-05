@@ -28,11 +28,18 @@
           >跳转到
         </h2>
         <div class="link-box">
-          <span class="link-url">{{ targetWebsite }}</span>
+          <p class="link-url">{{ targetWebsite }}</p>
         </div>
-        <button class="continue-btn" @click="onContinueClick">
-          <span class="continue-go">继续前往</span>
-        </button>
+        <a
+          class="gtag-track redirect-btn effect-btn"
+          data-action="redirect-btn"
+          data-category="redirect"
+          data-label="redirect-btn"
+          :rel="isalive ? 'noopener' : 'noopener nofollow'"
+          :href="targetPath"
+        >
+          <span class="jump-to">前往该网站</span>
+        </a>
       </div>
     </div>
   </div>
@@ -47,7 +54,9 @@ export default {
   data() {
     return {
       targetWebsite: '',
+      targetPath: '',
       websiteDomain: '',
+      isalive: true,
       isAutoRedirect: false,
     }
   },
@@ -68,13 +77,15 @@ export default {
 
   mounted() {
     document.title = `倾城跳转 - ${this.$t('niceLinksStr')}`
-
-    this.isAutoRedirect = this.$util.getUrlParam('isauto')
     const paramObj = this.$util.query(window.location.href)
     this.targetWebsite = window.decodeURIComponent(paramObj.url)
     this.websiteDomain = new URL(this.targetWebsite).hostname
+    this.isAutoRedirect = paramObj.isauto
+    this.isalive = paramObj.alive && paramObj.alive === '1'
+    const targetUrl = window.decodeURIComponent(paramObj.url) || 'https://nicelinks.site'
+    this.targetPath = `${targetUrl}?utm_source=nicelinks.site`
     if (this.isAutoRedirect) {
-      this.jumpToTargetWebsite()
+      window.location.href = this.targetPath
     }
   },
 
@@ -82,22 +93,14 @@ export default {
 
   components: {},
 
-  methods: {
-    jumpToTargetWebsite() {
-      const paramObj = this.$util.query(window.location.href)
-      const targetUrl = window.decodeURIComponent(paramObj.url)
-      window.location.href = `${targetUrl}?utm_source=nicelinks.site`
-    },
-
-    onContinueClick() {
-      this.$gtagTracking('redirect-btn', 'redirect', 'redirect-btn')
-      this.jumpToTargetWebsite()
-    },
-  },
+  methods: {},
 }
 </script>
 
 <style lang="scss" scope>
+$color: #272755;
+$primary: #ea552d;
+
 .redirect-wrapper {
   width: 100%;
   height: 100vh;
@@ -149,48 +152,45 @@ export default {
       text-align: center;
     }
     .link-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 360px;
       height: 36px;
       background: #f4f4f4;
       border-radius: 3px;
       border: 1px solid #dcdce0;
       margin: 15px 0;
-      position: relative;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       .link-url {
-        color: #5a6d96;
         display: block;
+        color: #5a6d96;
         line-height: 36px;
         text-align: left;
         box-sizing: border-box;
-        padding-left: 32px;
       }
     }
-    .continue-btn {
-      width: 150px;
-      height: 40px;
+    .redirect-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 56px;
+      font-size: 1.8rem;
+      line-height: 2em;
       margin: 15px 0;
-      border-radius: 20px;
-      background-color: #20a0ff;
+      border-radius: 28px;
       border: none;
-      background-image: -webkit-linear-gradient(45deg, #20a0ff 38%, #b0c9ff 100%);
-      background-image: linear-gradient(45deg, #20a0ff 38%, #b0c9ff 100%);
-      transition: 0.4s;
-      color: #fff;
-      cursor: pointer;
-      .continue-go {
-        font-size: 18px;
-        background-image: linear-gradient(to right, #ffeb3b, #fff);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
     }
-    .continue-btn:hover {
-      background-image: -webkit-linear-gradient(45deg, #20a0ff 80%, #b0c9ff 100%);
-      background-image: linear-gradient(45deg, #20a0ff 80%, #b0c9ff 100%);
+    .effect-btn {
+      border: 2px solid #ea552d;
+      color: #ea552d;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      &:hover {
+        color: #ffffff;
+        background-color: #ea552d;
+      }
     }
   }
 }
@@ -216,14 +216,6 @@ export default {
     .card {
       .link-box {
         width: 280px;
-      }
-      .continue-btn {
-        width: 120px;
-        height: 32px;
-        border-radius: 16px;
-        .continue-go {
-          font-size: 16px;
-        }
       }
     }
   }

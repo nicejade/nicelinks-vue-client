@@ -33,17 +33,36 @@
         class="title-link"
         :href="'/post/' + item._id"
         @click.stop="onStopPropagationClick('list-title', 'list')"
-        >{{ item.title }}</a
+      >
+        {{ item.title }}</a
       >
       <a
         v-else
         class="title-link"
-        :href="$util.getRedirectLink(item.urlPath)"
+        :href="$util.getRedirectLink(item.urlPath, item.alive)"
         @click.stop="onStopPropagationClick('item-title')"
         target="_blank"
         rel="noopener"
-        >{{ item.title }}</a
       >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-link"
+          width="22"
+          height="22"
+          style="margin-right: 5px;"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#34dfa5"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M0 0h24v24H0z" stroke="none" />
+          <path d="M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" />
+          <path d="M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" />
+        </svg>
+        {{ item.title }}
+      </a>
     </h2>
     <div class="meta-box mb-normal">
       <a
@@ -372,6 +391,9 @@ export default {
   .title {
     margin-bottom: 2rem;
     .title-link {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
       font-size: 1.8rem;
       font-weight: 600;
       line-height: 1.2;
@@ -411,9 +433,9 @@ export default {
     margin: 15px auto;
     padding-left: 10px;
     word-break: break-all;
-    line-height: $font-medium;
+    line-height: $font-large;
     font-size: $font-small;
-    word-spacing: 3px;
+    word-spacing: 4px;
     border-left: 2px solid $border-grey;
   }
   .segmenting-line {

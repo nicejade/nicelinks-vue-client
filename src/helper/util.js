@@ -302,8 +302,9 @@ export default {
     )
   },
 
-  getRedirectLink(url) {
-    return `https://nicelinks.site/redirect?url=${url}`
+  getRedirectLink(url, isalive) {
+    const more = isalive ? `&alive=1` : ''
+    return `https://nicelinks.site/redirect?url=${url}${more}`
   },
 
   assembleExternalLink(url) {

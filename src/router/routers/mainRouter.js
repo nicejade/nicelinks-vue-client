@@ -33,6 +33,11 @@ export default {
       component: (resolve) => require(['views/Account'], resolve),
     },
     {
+      path: 'member/:id/:tab',
+      meta: {},
+      component: (resolve) => require(['views/Homepage'], resolve),
+    },
+    {
       path: 'member/:id',
       meta: {},
       component: (resolve) => require(['views/Homepage'], resolve),

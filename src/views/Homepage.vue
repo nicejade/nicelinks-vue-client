@@ -8,27 +8,55 @@
               <div slot="header" class="clearfix">
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
-                  <el-breadcrumb-item>{{ $t('homepage') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item :to="'/member/' + currentUser">主页</el-breadcrumb-item>
+                  <el-breadcrumb-item>详情</el-breadcrumb-item>
                 </el-breadcrumb>
               </div>
 
-              <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane name="BaseInfo" :label="isUserSelf ? $t('baseInfo') : $t('baseInfo')">
-                </el-tab-pane>
-                <el-tab-pane
-                  name="MyPublish"
-                  :label="isUserSelf ? $t('myPublish') : $t('hisPublish')"
+              <div class="user-profile-nav">
+                <router-link
+                  v-if="isShowBaseInfo"
+                  key="base"
+                  class="gtag-track nav-item"
+                  data-action="base"
+                  data-category="member"
+                  data-label="base"
+                  :to="'/member/' + currentUser"
                 >
-                </el-tab-pane>
-                <el-tab-pane name="MyLikes" :label="isUserSelf ? $t('myLikes') : $t('hisLikes')">
-                </el-tab-pane>
-                <el-tab-pane
-                  name="MyDislikes"
-                  v-if="isUserSelf"
-                  :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')"
+                  {{ $t('baseInfo') }}
+                </router-link>
+                <router-link
+                  key="posts"
+                  class="gtag-track nav-item"
+                  data-action="base"
+                  data-category="member"
+                  data-label="base"
+                  :to="'/member/' + currentUser + '/posts'"
                 >
-                </el-tab-pane>
-              </el-tabs>
+                  {{ isUserSelf ? $t('myPublish') : $t('hisPublish') }}
+                </router-link>
+                <router-link
+                  key="likes"
+                  data-action="likes"
+                  data-category="member"
+                  data-label="likes"
+                  class="gtag-track nav-item"
+                  :to="'/member/' + currentUser + '/likes'"
+                >
+                  {{ isUserSelf ? $t('myLikes') : $t('hisLikes') }}
+                </router-link>
+                <router-link
+                  key="dislikes"
+                  data-action="dislikes"
+                  data-category="member"
+                  data-label="dislikes"
+                  class="gtag-track nav-item"
+                  :to="'/member/' + currentUser + '/dislikes'"
+                >
+                  {{ isUserSelf ? $t('myDislikes') : $t('hisDislikes') }}
+                </router-link>
+              </div>
+
               <el-card class="box-card base-info" v-if="isShowBaseInfo">
                 <div slot="header" class="clearfix">
                   <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
@@ -67,11 +95,12 @@
 
 <script>
 import PreviewMd from 'components/markdown/PreviewMd.vue'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'HomePage',
 
-  mixins: [],
+  mixins: [pageMixin],
 
   components: {
     PreviewMd,
@@ -80,22 +109,23 @@ export default {
   data() {
     return {
       isLoading: false,
-      isShowBaseInfo: true,
-      activeName: 'BaseInfo',
+      isShowBaseInfo: false,
+      currentUser: null,
+      currentTab: null,
       myLinksList: [],
       mUserInfo: {
         profile: {},
       },
       nicerNumText: '',
       tabApiObj: {
-        MyPublish: 'getMyPublish',
-        MyLikes: 'getMyLikes',
-        MyDislikes: 'getMyDislikes',
+        posts: 'getMyPublish',
+        likes: 'getMyLikes',
+        dislikes: 'getMyDislikes',
       },
       tabDataObj: {
-        MyPublish: null,
-        MyLikes: null,
-        MyDislikes: null,
+        posts: null,
+        likes: null,
+        dislikes: null,
       },
     }
   },
@@ -114,7 +144,14 @@ export default {
   },
 
   created() {
-    this.getUserInfoByUsername()
+    this.currentUser = this.$route.params.id
+    this.currentTab = this.$route.params.tab
+    this.isShowBaseInfo = !this.currentTab
+    if (this.isShowBaseInfo) {
+      this.getUserInfoByUsername()
+    } else {
+      this.requestApiUpdateList(this.currentTab)
+    }
   },
 
   watch: {
@@ -171,17 +208,6 @@ export default {
           this.isLoading = true
         })
     },
-
-    handleClick(item) {
-      this.isShowBaseInfo = item.name === 'BaseInfo'
-      if (item.name !== 'BaseInfo') {
-        this.requestApiUpdateList(item.name)
-      }
-    },
-
-    onLinkClick(item) {
-      item.website ? (document.location.href = item.website) : ''
-    },
   },
 
   locales: {
@@ -204,13 +230,8 @@ export default {
 @import './../assets/scss/variables.scss';
 @import './../assets/scss/mixins.scss';
 
-.homepage {
+#app .homepage {
   .main-container {
-    .links-list {
-      .el-card {
-        padding: 15px;
-      }
-    }
     .el-card__header {
       padding: 15px;
     }
@@ -218,7 +239,13 @@ export default {
       padding: 0 15px;
     }
     .el-card__body {
-      padding: 0;
+      padding: 0 !important;
+      .links-list {
+        padding: 0 20px;
+        .el-card {
+          padding: 15px 0;
+        }
+      }
     }
     .el-tabs__header {
       margin: 0;
@@ -231,6 +258,21 @@ export default {
           min-width: 90px;
           padding: 0 15px 0 0;
         }
+      }
+    }
+    .user-profile-nav {
+      @include flex-box-center(row, center, center);
+      width: 100%;
+      height: 6rem;
+      border-bottom: 1px solid #ebeef5;
+      .nav-item {
+        margin: 0 1rem;
+        font-size: $font-small;
+        color: $link-title;
+      }
+      .active {
+        color: $brand;
+        font-weight: 600;
       }
     }
     .base-info {
@@ -251,11 +293,12 @@ export default {
         margin: 0;
       }
       .info {
-        @include flex-box-center(column, space-around, left);
+        @include flex-box-center(column, space-around, flex-start);
         width: calc(100% - 7rem);
-        height: 8rem;
+        height: 10rem;
         float: left;
         margin-left: 1rem;
+        margin-bottom: 1rem;
         font-size: $font-small;
         .username {
           font-weight: 500;
@@ -271,12 +314,14 @@ export default {
 @media (max-width: 768px) {
   #app .wrapper.homepage {
     .main-container {
-      .el-card__body {
-        padding: 0;
-      }
       .base-info {
         font-size: $font-small;
         padding: 1rem;
+      }
+      .user-profile-nav {
+        .nav-item {
+          margin: 0 0.5rem;
+        }
       }
     }
   }

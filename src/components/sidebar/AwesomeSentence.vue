@@ -7,9 +7,9 @@
       <el-button class="common-btn" @click="onPreviousClick">
         <icon class="icon" name="previous"></icon>
       </el-button>
-      <el-button class="common-btn button-ripple" :class="btnClassName" @click="onRandomClick">
+      <div class="common-btn button-ripple" :class="btnClassName" @click="onRandomClick">
         <icon class="icon" name="random"></icon>
-      </el-button>
+      </div>
       <el-button class="common-btn" @click="onCopy2ClipboardClick">
         <icon class="icon" name="copy"></icon>
       </el-button>
@@ -163,6 +163,7 @@ export default {
 
 <style lang="scss">
 @import './../../assets/scss/variables.scss';
+@import './../../assets/scss/mixins.scss';
 
 .awesome-sentence {
   margin: 0 15px;
@@ -175,7 +176,6 @@ export default {
     color: #444;
     text-align: left;
     line-height: 26px;
-
     background: #fff;
     background: -webkit-linear-gradient(top, $border-grey 0%, $white 6%) 0 6px;
     -webkit-background-size: 100% 26px;
@@ -212,6 +212,68 @@ export default {
         width: 2rem;
         height: 2rem;
       }
+    }
+  }
+
+  .button-ripple {
+    @include flex-box-center(column);
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #efefef;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #efefef;
+    transition: background-color 0.3s linear, border 0.3s linear;
+    box-shadow: 0 0 0 rgba(52, 223, 165, 0.4);
+    animation: pulse 2s infinite;
+    &:after {
+      content: '';
+      display: block;
+      width: 3.1rem;
+      height: 3.1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(circle, #000 10%, rgba(0, 0, 0, 0.2) 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10);
+      opacity: 0;
+      transition: transform 0.5s, opacity 1s;
+    }
+    &:active:after {
+      border-radius: 50%;
+      transform: scale(10);
+      opacity: 0.2;
+      transition: 0s;
+    }
+    &:hover {
+      border-radius: 50%;
+      color: $jade;
+      fill: $jade;
+      border: 1px solid $jade;
+      animation: pulse 2s infinite;
+    }
+    &:focus {
+      border-radius: 50%;
+      border-color: rgba(52, 223, 165, 0.5);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
+      box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
+      border-color: rgba(52, 223, 165, 0.6);
+    }
+    80% {
+      -moz-box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
+      box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
+      box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
     }
   }
 }

@@ -42,6 +42,10 @@
         </a>
       </div>
     </div>
+    <p v-if="!isalive" class="visit-reminder">
+      <string class="reminder">*温馨提示</string
+      >：据「倾城观察员」探测，该网站已不能正常访问，望客观知悉。
+    </p>
   </div>
 </template>
 
@@ -81,7 +85,7 @@ export default {
     this.targetWebsite = window.decodeURIComponent(paramObj.url)
     this.websiteDomain = new URL(this.targetWebsite).hostname
     this.isAutoRedirect = paramObj.isauto
-    this.isalive = paramObj.alive && paramObj.alive === '1'
+    this.isalive = !(paramObj.alive && paramObj.alive === '0')
     const targetUrl = window.decodeURIComponent(paramObj.url) || 'https://nicelinks.site'
     this.targetPath = `${targetUrl}?utm_source=nicelinks.site`
     if (this.isAutoRedirect) {
@@ -192,6 +196,15 @@ $primary: #ea552d;
         background-color: #ea552d;
       }
     }
+  }
+}
+
+.visit-reminder {
+  color: #9393aa;
+  margin: 2rem auto;
+  .reminder {
+    font-weight: 600;
+    color: #ea552d;
   }
 }
 

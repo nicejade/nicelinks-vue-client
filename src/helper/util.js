@@ -303,7 +303,7 @@ export default {
   },
 
   getRedirectLink(url, isalive) {
-    const more = isalive ? `&alive=1` : ''
+    const more = isalive ? '' : `&alive=0`
     return `https://nicelinks.site/redirect?url=${url}${more}`
   },
 

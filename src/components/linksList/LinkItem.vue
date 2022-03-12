@@ -107,11 +107,11 @@
     </div>
     <div class="action-list">
       <div class="action-item" @click.stop.prevent="onLikeClick(item)">
-        <heart :is-down="item.isLikes"></heart>
+        <heart :is-down="$isLogin() && item.isLikes"></heart>
         <span class="item-num">{{ item.likes }}</span>
       </div>
       <div class="action-item" @click.stop.prevent="onDislikeClick(item)">
-        <heart-broken :is-down="item.isDislikes"></heart-broken>
+        <heart-broken :is-down="$isLogin() && item.isDislikes"></heart-broken>
         <span class="item-num">{{ item.dislikes }}</span>
       </div>
       <div class="action-item" v-if="isAbstract">

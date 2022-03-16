@@ -57,6 +57,7 @@ export default {
       pageCount: 1,
       sortType: -1,
       sortTarget: 'created',
+      userId: (this.userInfo && this.userInfo._id) || '',
     })
   },
 
@@ -81,7 +82,7 @@ export default {
             this.pastLinksArray = []
             return
           } else {
-            this.pastLinksArray = result
+            this.pastLinksArray = Object.freeze(result)
           }
         })
         .catch((error) => {

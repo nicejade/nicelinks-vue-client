@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import { PAGE_SIZE } from 'config/constant'
 
 export default {
   $vuexSetUserInfo(state, info = {}) {
@@ -20,7 +21,7 @@ export default {
     state.requestParamList = {
       alive: 1,
       pageCount: 1,
-      pageSize: 10,
+      pageSize: PAGE_SIZE,
       sortType: -1,
       sortTarget: 'created',
     }

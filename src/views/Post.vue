@@ -52,7 +52,9 @@ export default {
     fetchPostData() {
       let params = {}
       params._id = this.$route.params.id
-      params.userId = (this.userInfo && this.userInfo._id) || ''
+      if (this.userInfo && this.userInfo._id) {
+        params.userId = this.userInfo._id
+      }
       this.$apis
         .getNiceLinks(params)
         .then((result) => {

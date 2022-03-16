@@ -13,6 +13,8 @@ import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 import Cookies from 'js-cookie'
 
+import { PAGE_SIZE } from 'config/constant'
+
 Vue.use(Vuex)
 
 const state = {
@@ -22,7 +24,7 @@ const state = {
   requestParamList: {
     alive: 1,
     pageCount: 1,
-    pageSize: 10,
+    pageSize: PAGE_SIZE,
     sortType: -1,
     sortTarget: 'created',
   },

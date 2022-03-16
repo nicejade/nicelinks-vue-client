@@ -187,7 +187,7 @@ export default {
 
     requestApiUpdateList(index) {
       if (this.tabDataObj[index]) {
-        this.myLinksList = this.tabDataObj[index]
+        this.myLinksList = Object.freeze(this.tabDataObj[index])
         return
       }
 
@@ -200,7 +200,7 @@ export default {
       this.isLoading = true
       this.$apis[currentApi](params)
         .then((result) => {
-          this.myLinksList = this.tabDataObj[index] = result
+          this.myLinksList = this.tabDataObj[index] = Object.freeze(result)
           this.isLoading = false
         })
         .catch((error) => {

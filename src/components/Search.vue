@@ -81,6 +81,21 @@ export default {
       return (Math.atan2(angy, angx) * 180) / Math.PI
     },
 
+    requestSearchTarget(queryString, callback) {
+      return this.$_.throttle(() => {
+        this.$apis
+          .searchNiceLinks({
+            keyword: queryString,
+          })
+          .then((result) => {
+            callback(result)
+          })
+          .catch((error) => {
+            this.$message.error(`${error}`)
+          })
+      }, 300)
+    },
+
     dealWitchTouchCB(touches) {
       const endPageX = touches[0].pageX
       const endPageY = touches[0].pageY
@@ -121,18 +136,8 @@ export default {
             this.$message.error(`${error}`)
           })
       }
-
-      const params = {
-        keyword: queryString,
-      }
-      this.$apis
-        .searchNiceLinks(params)
-        .then((result) => {
-          callback(result)
-        })
-        .catch((error) => {
-          this.$message.error(`${error}`)
-        })
+      // 增加防抖功效，提升检索体验 @2022.03.16
+      this.requestSearchTarget(queryString, callback)()
     },
 
     handleSearchSelect(item) {
@@ -157,7 +162,7 @@ export default {
         }
         return
       }
-      const expandedWidth = window.innerWidth > 1280 ? 666 : 521
+      const expandedWidth = window.innerWidth > 1560 ? 666 : 521
       document.querySelector('.el-input__inner').style.width = `${expandedWidth}px`
     },
 

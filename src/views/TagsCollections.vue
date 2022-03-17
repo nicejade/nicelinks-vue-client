@@ -5,14 +5,16 @@
         <div class="main-container">
           <div class="entry-list">
             <h3 class="classify-title">{{ $t('tagsCollection') }}</h3>
-            <el-button
-              class="radius-btn"
-              v-for="(item, index) in tagsList"
+            <a
+              class="gtag-track radius-btn"
+              :data-action="`tags-${item}`"
+              data-category="collections-tags"
+              :data-label="`tags-${item}`"
+              v-for="item in tagsList"
               :key="item"
-              type="text"
-              @click="onItemClick(item)"
+              :href="`/tags/${item}`"
               >{{ item }}
-            </el-button>
+            </a>
           </div>
           <aside-list></aside-list>
         </div>
@@ -22,10 +24,12 @@
 </template>
 
 <script>
+import pageMixin from 'mixins/pageMixin.js'
+
 export default {
   name: 'TagsCollections',
 
-  mixins: [],
+  mixins: [pageMixin],
 
   data() {
     return {
@@ -52,11 +56,7 @@ export default {
     document.title = `${this.$t('tagsCollection')} - ${this.$t('niceLinksStr')}`
   },
 
-  methods: {
-    onItemClick(tag) {
-      this.$router.push(`/tags/${tag}`)
-    },
-  },
+  methods: {},
 }
 </script>
 

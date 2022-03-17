@@ -156,11 +156,37 @@ input:-ms-input-placeholder {
   width: 100%;
 }
 
-.radius-btn {
+.wrapper .radius-btn {
+  display: inline-block;
+  color: $common-link;
   margin: 0.3em;
-  padding: 0.4rem 1rem;
-  background: #e6e6e6;
-  border-radius: 1rem;
+  padding: 0.5em 1em;
+  background-color: $grey;
+  border: 1px solid $silver-grey;
+  border-radius: 1.5rem;
+}
+
+.wrapper .radius-btn:hover {
+  cursor: pointer;
+  color: $brand;
+  border: 1px solid $brand;
+  animation: jelly 0.5s;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
 }
 
 .no-padding {

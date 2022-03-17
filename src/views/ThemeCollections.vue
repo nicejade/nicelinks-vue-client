@@ -6,15 +6,17 @@
           <div class="entry-list">
             <h3 class="classify-title">{{ $t('themeCollection') }}</h3>
             <div v-for="(obj, index) in themeList" :key="index">
-              <el-button
-                class="radius-btn"
+              <a
                 v-for="item in obj"
                 :key="item.value"
-                type="text"
-                @click="onItemClick(item)"
+                class="gtag-track radius-btn"
+                :data-action="`themes-${item.value}`"
+                data-category="collections-themes"
+                :data-label="`themes-${item.value}`"
+                :href="`/theme/${item.value.toLocaleLowerCase()}`"
               >
                 {{ item.key }}
-              </el-button>
+              </a>
             </div>
           </div>
           <aside-list></aside-list>
@@ -26,9 +28,12 @@
 
 <script>
 import $config from 'config'
+import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'ThemeCollections',
+
+  mixins: [pageMixin],
 
   data() {
     return {
@@ -44,12 +49,6 @@ export default {
 
   mounted() {
     document.title = `${this.$t('themeCollection')} - ${this.$t('niceLinksStr')}`
-  },
-
-  methods: {
-    onItemClick(item) {
-      this.$switchRouteByTheme(item.value)
-    },
   },
 }
 </script>

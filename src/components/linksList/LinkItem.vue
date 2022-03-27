@@ -82,8 +82,9 @@
         >{{ iitem }}</a
       >
     </div>
+    <!-- list is abstract: 是否显示摘要内容  -->
     <div class="abstract" v-if="isAbstract">
-      {{ item.abstract || $util.interceptString(item.desc) }}
+      {{ getAbstractContent(item) }}
     </div>
     <div v-if="!isAbstract">
       <div v-if="isShowKeywords && item.keywords" class="link-keywords">
@@ -91,7 +92,6 @@
         {{ item.keywords }}
       </div>
       <div class="link-desc" v-html="this.obtainLinkDesc(item)"></div>
-      <!-- <hr v-if="item.review" class="segmenting-line" /> -->
       <div class="link-screenshot">
         <img
           data-zoomable
@@ -167,6 +167,7 @@
 
 <script>
 import mediumZoom from 'medium-zoom'
+import marked from 'marked'
 
 import EditDialog from 'components/dialog/EditDialog'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
@@ -236,7 +237,9 @@ export default {
     if (!this.isAbstract) {
       this.getUserInfoByUsername()
     }
-    mediumZoom('[data-zoomable]')
+    this.$nextTick((_) => {
+      mediumZoom('[data-zoomable]')
+    })
   },
 
   methods: {
@@ -259,6 +262,15 @@ export default {
         item.review +
         `── 出自[倾城之链 | ${item.title}](https://nicelinks.site/post/${item._id})。`
       )
+    },
+
+    getAbstractContent(item) {
+      const content = !!item.review
+        ? marked(item.review, {
+            sanitize: false,
+          }).replace(/<[^>]*>/g, '')
+        : item.desc
+      return this.$util.interceptString(content)
     },
 
     isAdminFlag() {

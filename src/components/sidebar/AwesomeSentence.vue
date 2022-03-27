@@ -149,7 +149,9 @@ export default {
     },
 
     onCopy2ClipboardClick() {
-      const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语`
+      const sentenceId = this.currentSentence._id || this.sentence._id
+      const readLinkPath = `https://read.lovejade.cn/p/${sentenceId}`
+      const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语 ${readLinkPath}`
       const content = tempStr.replace(/<[^>]*>/g, '')
       this.$util.isIosSystem() ? this.copyToIosClipboard(content) : this.copyToClipboard(content)
       this.$message({

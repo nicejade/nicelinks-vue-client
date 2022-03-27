@@ -195,8 +195,8 @@ export default {
 .el-autocomplete-suggestion {
   .el-scrollbar {
     .el-autocomplete-suggestion__wrap {
-      height: 539px;
-      min-height: 539px;
+      height: 48rem;
+      min-height: 48rem;
     }
     .el-autocomplete-suggestion__list li {
       border-bottom: 1px dashed $border-grey;
@@ -208,12 +208,13 @@ export default {
   .el-autocomplete-suggestion {
     .el-scrollbar {
       .el-autocomplete-suggestion__wrap {
-        height: 677px;
-        min-height: 677px;
+        height: 618px;
+        min-height: 618px;
       }
     }
   }
 }
+
 @media screen and (max-width: $mobile-screen) {
   .el-autocomplete-suggestion {
     top: 110px !important;

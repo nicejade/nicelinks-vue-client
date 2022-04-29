@@ -52,9 +52,7 @@ export default {
     fetchPostData() {
       let params = {}
       params._id = this.$route.params.id
-      if (this.userInfo && this.userInfo._id) {
-        params.userId = this.userInfo._id
-      }
+      params.userId = this.userInfo && this.userInfo._id ? this.userInfo._id : ''
       this.$apis
         .getNiceLinks(params)
         .then((result) => {
@@ -67,7 +65,9 @@ export default {
               this.updatePageMeta(result[0])
               this.addHeaderNavActive()
               // Add Waline Comment Functions @2022.01.17~18
-              this.$util.addWalineComment()
+              this.$nextTick(() => {
+                this.$util.addWalineComment()
+              })
             })
           } else {
             this.$router.push('/404')

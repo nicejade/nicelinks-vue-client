@@ -53,6 +53,7 @@
                 </div>
               </a>
             </div>
+            <div id="waline" style="margin-top: 1rem;"></div>
           </div>
           <aside-list></aside-list>
         </div>
@@ -87,6 +88,10 @@ export default {
 
   mounted() {
     document.title = `友情链接 - ${this.$t('niceLinksStr')}`
+    // Add Waline Comment Functions @2022.04.15
+    this.$nextTick(() => {
+      this.$util.addWalineComment()
+    })
   },
 
   methods: {

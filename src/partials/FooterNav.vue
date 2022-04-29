@@ -185,7 +185,7 @@
           data-action="beian"
           data-category="footer"
           data-label="beian"
-          href="http://www.beian.miit.gov.cn/"
+          href="https://beian.miit.gov.cn/"
           target="_blank"
           rel="noopener"
           >粤ICP备17099767号</a

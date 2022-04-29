@@ -60,7 +60,9 @@ export default {
   mounted() {
     document.title = `广告投放 - ${this.$t('niceLinksStr')}`
     // Add Waline Comment Functions @2022.01.24
-    this.$util.addWalineComment()
+    this.$nextTick(() => {
+      this.$util.addWalineComment()
+    })
   },
 
   methods: {},

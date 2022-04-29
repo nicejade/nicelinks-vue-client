@@ -43,7 +43,9 @@ export default {
   mounted() {
     this.updatePageMeta()
     // Add Waline Comment Functions @2022.01.24
-    this.$util.addWalineComment()
+    this.$nextTick(() => {
+      this.$util.addWalineComment()
+    })
   },
 
   methods: {

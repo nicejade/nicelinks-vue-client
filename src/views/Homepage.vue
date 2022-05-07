@@ -239,11 +239,14 @@ export default {
       padding: 0 15px;
     }
     .el-card__body {
-      padding: 0 !important;
+      padding: 0;
       .links-list {
-        padding: 0 20px;
+        padding: 0;
         .el-card {
           padding: 15px 0;
+        }
+        .el-card__body {
+          padding: 0 20px;
         }
       }
     }

@@ -10,7 +10,11 @@
         :to="getAssembleRoute(item)"
       >
         <div class="screenshot">
+          <div class="image-placeholder" v-show="isShowPlaceholder">
+            <strong>图片加载中...</strong>
+          </div>
           <img
+            v-show="!isShowPlaceholder"
             class="image"
             :alt="item.title + ' | 倾城之链'"
             :src="getScreenshotPath(item)"
@@ -39,6 +43,7 @@ export default {
     return {
       linksArr: [],
       RECOMMEND_NUM: 5,
+      isShowPlaceholder: true,
       isMobile: window.innerWidth <= 960,
     }
   },
@@ -58,7 +63,11 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    setTimeout(() => {
+      this.isShowPlaceholder = false
+    }, 300)
+  },
 
   components: {},
 
@@ -141,12 +150,25 @@ export default {
     margin: 1.2rem auto;
     box-sizing: content-box;
     @include flex-box-center(column, center, inherit);
+
     .screenshot {
+      position: relative;
       width: 20%;
-      height: 4rem;
+      height: 6rem;
+      .image-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include flex-box-center(row, center, center);
+        width: 100%;
+        height: 100%;
+        background-color: $white-grey;
+        color: $silver-grey;
+      }
       .image {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
     .meta {

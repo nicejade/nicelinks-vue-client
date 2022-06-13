@@ -35,7 +35,7 @@
         /></a>
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
-        <reward-me :show="activeNames.includes('rewardme')" />
+        <reward-me :show="activeNames.indexOf('rewardme') > -1" />
       </el-collapse-item>
     </el-collapse>
   </aside>

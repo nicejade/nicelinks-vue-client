@@ -19,18 +19,14 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+        gtag('config', 'UA-98631211-1');
         gtag('config', 'G-L1T4772VPY');
+        gtag('config', 'AW-340824387');
+        if (Math.random() >= 0.618) {
+          gtag('event', 'conversion', {'send_to': 'AW-340824387/tXAWCOzt-sEDEMOiwqIB'});
+        }
       </script>
       <!-- Global site tag (gtag.js) - Google Analytics End-->
-
-      <!-- Global site tag (gtag.js) - Google Ads: 340824387 -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-340824387"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-340824387');
-      </script>
 
       <link rel="apple-touch-icon" sizes="180x180" href="/static/img/favicons/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicons/favicon-32x32.png">
@@ -46,7 +42,7 @@
       <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
       <% }}} %>
     <% } %>
-    <script async src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+    <script async src="<%= webpackConfig.output.publicPath %>static/js/Waline.min.js"></script>
   </head>
 
   <body>

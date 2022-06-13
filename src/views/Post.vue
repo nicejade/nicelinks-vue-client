@@ -104,7 +104,7 @@ export default {
     addHeaderNavActive() {
       const classify = +this.niceLinksDetail.classify
       const navItemNodes = document.getElementsByClassName('nav-item')
-      if (navItemNodes && navItemNodes[classify]) {
+      if (navItemNodes && navItemNodes[classify] && navItemNodes[classify].classList) {
         navItemNodes[classify].classList.add('active')
       }
     },
@@ -112,7 +112,7 @@ export default {
     removeHeaderNavActive() {
       const classify = +this.niceLinksDetail.classify
       const navItemNodes = document.getElementsByClassName('nav-item')
-      if (navItemNodes && navItemNodes[classify]) {
+      if (navItemNodes && navItemNodes[classify] && navItemNodes[classify]) {
         navItemNodes[classify].classList.remove('active')
       }
     },

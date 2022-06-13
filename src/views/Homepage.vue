@@ -317,6 +317,9 @@ export default {
 @media (max-width: 768px) {
   #app .wrapper.homepage {
     .main-container {
+      .el-card__body {
+        padding: 0;
+      }
       .base-info {
         font-size: $font-small;
         padding: 1rem;

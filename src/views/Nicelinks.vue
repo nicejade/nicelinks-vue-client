@@ -49,7 +49,7 @@ export default {
 
     const sortVal = this.$util.getUrlParam('sort')
     const sortTypeArray = ['hottest', 'latest', 'earliest']
-    if (!sortTypeArray.includes(sortVal)) {
+    if (sortTypeArray.indexOf(sortVal) < 0) {
       this.$fetchSearch()
     }
   },

@@ -93,7 +93,7 @@ export default {
           .catch((error) => {
             this.$message.error(`${error}`)
           })
-      }, 300)
+      }, 200)
     },
 
     dealWitchTouchCB(touches) {

@@ -210,6 +210,14 @@ input:-ms-input-placeholder {
   .primary {
     display: block;
   }
+  .vcards {
+    ul {
+      padding-left: 1rem;
+      li {
+        list-style: circle;
+      }
+    }
+  }
   .v {
     padding: 0 20px;
   }

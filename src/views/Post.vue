@@ -62,7 +62,8 @@ export default {
 
             this.updatePageSentence()
             this.$nextTick(() => {
-              this.updatePageMeta(result[0])
+              this.updatePageMeta(this.niceLinksDetail)
+              this.addCanonicalForSEO(this.niceLinksDetail)
               this.addHeaderNavActive()
               // Add Waline Comment Functions @2022.01.17~18
               this.$nextTick(() => {
@@ -92,6 +93,14 @@ export default {
 
       const tDescNode = document.querySelector('meta[name="twitter:description"]')
       tDescNode.setAttribute('content', this.description)
+    },
+
+    addCanonicalForSEO(details) {
+      let link = document.querySelector("link[rel='canonical']")
+      link = !!link ? link : document.createElement('link')
+      link.setAttribute('rel', 'canonical')
+      link.setAttribute('href', `https://nicelinks.site/post/${details._id}`)
+      document.head.appendChild(link)
     },
 
     updatePageSentence() {

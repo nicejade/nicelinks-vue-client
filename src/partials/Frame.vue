@@ -2,12 +2,13 @@
   <div class="page-wrap">
     <header-nav></header-nav>
     <side-nav v-if="isMobile"></side-nav>
-    <main @click="hideMenu" class="main">
+    <main @click="onHideMenuClick" class="main">
       <router-view :key="$route.path"></router-view>
     </main>
     <footer-nav />
     <elevator v-if="!isMobile" />
     <auto-dialog v-if="isShowAutoDlgFlag" @close="onHandleClose" />
+    <ad-block-dialog v-if="isInstallAdBlock" @close="onHandleAdBlockClose" />
   </div>
 </template>
 
@@ -19,16 +20,17 @@ import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
 import Elevator from 'components/Elevator'
 import AutoDialog from 'components/AutoDialog'
-
+import AdBlockDialog from 'components/AdBlockDialog'
 import { AUTO_DIALOG } from 'config/constant'
 
 export default {
   name: 'Frame',
+
   data() {
     return {
       isMobile: window.innerWidth <= 960,
-      isShowDlgFlag: false,
       isShowAutoDlgFlag: false,
+      isInstallAdBlock: false,
     }
   },
 
@@ -38,6 +40,7 @@ export default {
     FooterNav,
     Elevator,
     AutoDialog,
+    AdBlockDialog,
   },
 
   created() {
@@ -57,18 +60,35 @@ export default {
     // this.initWechatShare()
   },
 
-  mounted() {},
+  mounted() {
+    this.runAdsChecker()
+  },
 
+  /*
   watch: {
     $route: function (to, from) {
-      // this.initWechatShare()
+      this.initWechatShare()
     },
   },
+  */
 
   methods: {
     ...mapMutations(['$setIsLoadRouterInlineJs']),
 
-    hideMenu() {
+    runAdsChecker() {
+      if (this.isMobile || this.isShowAutoDlgFlag) return
+
+      const elem = document.createElement('div')
+      elem.className = 'adsbox google-ad'
+      document.body.appendChild(elem)
+      this.isInstallAdBlock = 'none' === getComputedStyle(elem).display
+      document.body.removeChild(elem)
+      if (this.isInstallAdBlock) {
+        this.$gtagTracking('ad-block-dialog', 'global', 'ad-block-dialog')
+      }
+    },
+
+    onHideMenuClick() {
       if (this.isShowSideNav) {
         this.$triggerSidenav()
       }
@@ -77,8 +97,18 @@ export default {
     onHandleClose() {
       this.isShowAutoDlgFlag = false
       this.$gtagTracking('close-auto-dialog', 'global', 'close-auto-dialog')
+
+      setTimeout(() => {
+        this.runAdsChecker() // Open Ads Dlg When Close AutoDialog 22.07.02
+      }, 2100)
     },
 
+    onHandleAdBlockClose() {
+      this.isInstallAdBlock = false
+      this.$gtagTracking('close-ad-block-dialog', 'global', 'close-ad-block-dialog')
+    },
+
+    /*
     initWechatShare() {
       const params = {
         url: encodeURIComponent(location.href.split('#')[0]),
@@ -138,6 +168,7 @@ export default {
         },
       })
     },
+    */
   },
 }
 </script>

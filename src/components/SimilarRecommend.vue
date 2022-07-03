@@ -76,7 +76,7 @@ export default {
       const tempArr = resArr.filter((item) => {
         return item._id !== this.pdata._id
       })
-      this.linksArr = tempArr.slice(0, this.RECOMMEND_NUM)
+      this.linksArr = Object.freeze(tempArr.slice(0, this.RECOMMEND_NUM))
     },
 
     fetchSimilarTagLinks() {

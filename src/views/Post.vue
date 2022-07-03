@@ -27,8 +27,6 @@ export default {
       niceLinksArr: [],
       niceLinksDetail: {},
       index: 0,
-      currentPath: window.document.location.href,
-      shareTitle: '',
     }
   },
 
@@ -57,7 +55,7 @@ export default {
         .getNiceLinks(params)
         .then((result) => {
           if (result[0]) {
-            this.niceLinksArr = result
+            this.niceLinksArr = Object.freeze(result)
             this.niceLinksDetail = Object.freeze(result[0])
 
             this.updatePageSentence()

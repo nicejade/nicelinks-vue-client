@@ -202,11 +202,12 @@ import $config from 'config'
 
 export default {
   name: 'FooterNav',
+
   data() {
     return {
       isMobile: window.innerWidth <= 960,
       copyright: '',
-      contactArray: this.filterEntryInMobile($config.contact),
+      contactArray: Object.freeze(this.filterEntryInMobile($config.contact)),
     }
   },
 

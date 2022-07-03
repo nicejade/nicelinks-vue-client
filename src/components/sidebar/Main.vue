@@ -21,8 +21,9 @@
           alt="倾城之链.小程序"
         />
       </el-collapse-item>
-      <el-collapse-item :title="$t('productHuntUpvote')" name="producthunt-upvote">
+      <el-collapse-item :title="$t('productHuntUpvote')" name="upvote">
         <a
+          v-if="activeNames.indexOf('upvote') > -1"
           href="https://nicelinks.site/redirect?url=https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
           target="_blank"
           ><img
@@ -35,7 +36,7 @@
         /></a>
       </el-collapse-item>
       <el-collapse-item :title="$t('rewardme')" name="rewardme">
-        <reward-me :show="activeNames.indexOf('rewardme') > -1" />
+        <reward-me v-if="activeNames.indexOf('rewardme') > -1" />
       </el-collapse-item>
     </el-collapse>
   </aside>
@@ -54,8 +55,6 @@ export default {
   data() {
     return {
       activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'friendshipLinks'],
-      advertsList: [],
-      sentence: {},
     }
   },
 
@@ -86,11 +85,12 @@ export default {
     this.$apis
       .getSysConf()
       .then((result) => {
-        this.advertsList = result.advertsList.sort((a, b) => {
+        const cAdvertsList = result.advertsList.sort((a, b) => {
           return a.sort - b.sort
         })
 
-        this.sentence = result.sentence
+        this.advertsList = Object.freeze(cAdvertsList)
+        this.sentence = Object.freeze(result.sentence)
       })
       .catch((error) => {
         this.$message.error(`${error}`)
@@ -100,10 +100,6 @@ export default {
   mounted() {
     const isMobile = window.innerWidth <= 768
     isMobile && this.activeNames.push('rewardme')
-  },
-
-  methods: {
-    handleChange() {},
   },
 }
 </script>

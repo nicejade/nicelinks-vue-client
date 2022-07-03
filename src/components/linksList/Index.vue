@@ -15,7 +15,7 @@
             <div v-html="$t('noResultTip')"></div>
           </div>
         </el-card>
-        <content-placeholder v-else slot="link-desc" :rows="placeholderRows"> </content-placeholder>
+        <content-placeholder v-else slot="link-desc" :rows="placeholderRows" />
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
@@ -39,75 +39,13 @@
 import ContentPlaceholder from 'vue-content-placeholder'
 import LinkItem from './LinkItem.vue'
 import pageMixin from 'mixins/pageMixin.js'
+import placeholderConfig from 'config/placeholder'
 
 export default {
   name: 'LinksList',
   data() {
     return {
-      placeholderRows: [
-        {
-          height: '2rem',
-          boxes: [[0, '30%']],
-        },
-        {
-          height: '1rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '1rem',
-          boxes: [['3rem', '88%']],
-        },
-        {
-          height: '1rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '1rem',
-          boxes: [['3rem', '88%']],
-        },
-        {
-          height: '2rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '2rem',
-          boxes: [[0, '88%']],
-        },
-        // show again - segmenting placeholder Start
-        {
-          height: '2rem',
-          boxes: [[0, 0]],
-        },
-        // show again - segmenting placeholder End
-        {
-          height: '2rem',
-          boxes: [[0, '30%']],
-        },
-        {
-          height: '1rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '1rem',
-          boxes: [['3rem', '88%']],
-        },
-        {
-          height: '1rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '1rem',
-          boxes: [['3rem', '88%']],
-        },
-        {
-          height: '2rem',
-          boxes: [[0, 0]],
-        },
-        {
-          height: '2rem',
-          boxes: [[0, '88%']],
-        },
-      ],
+      placeholderRows: Object.freeze(placeholderConfig),
     }
   },
 

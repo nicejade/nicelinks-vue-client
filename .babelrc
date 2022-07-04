@@ -10,7 +10,9 @@
         "libraryName": "element-ui",
         "styleLibraryName": "theme-chalk"
       }
-    ]
+    ],
+    "transform-runtime",
+    "lodash"
   ],
   "env": {
     "test": {

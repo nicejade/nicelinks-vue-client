@@ -213,6 +213,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 2rem;
         height: 2rem;
+        margin: auto;
       }
     }
   }

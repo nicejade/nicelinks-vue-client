@@ -131,6 +131,11 @@ import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
 import pageMixin from 'mixins/pageMixin.js'
 import { REPORT_PATH } from 'config/constant'
+import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+import Vue from 'vue'
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 
 export default {
   name: 'HeaderNav',

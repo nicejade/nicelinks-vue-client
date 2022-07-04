@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { $util } from 'helper'
+import { $util, $auth } from 'helper'
 import { mapActions, mapMutations } from 'vuex'
 
 Vue.mixin({
@@ -24,7 +24,7 @@ Vue.mixin({
     ...mapMutations(['$vuexSetUserInfo', '$vuexSaveLastPathUrl', '$vuexRecoverRequestParamList']),
 
     $isLogin() {
-      return this.$auth.checkSession()
+      return $auth.checkSession()
     },
 
     $getCurrentLang() {

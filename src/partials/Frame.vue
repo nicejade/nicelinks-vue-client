@@ -22,6 +22,7 @@ import Elevator from 'components/Elevator'
 import AutoDialog from 'components/AutoDialog'
 import AdBlockDialog from 'components/AdBlockDialog'
 import { AUTO_DIALOG } from 'config/constant'
+import { $auth } from 'helper'
 
 export default {
   name: 'Frame',
@@ -44,7 +45,7 @@ export default {
   },
 
   created() {
-    if (!this.$auth.checkSession()) {
+    if (!$auth.checkSession()) {
       this.$vuexSetUserInfo({})
     } else {
       if (!this.$util.getSessionStorage('userInfo')) {

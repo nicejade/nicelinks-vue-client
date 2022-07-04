@@ -1,6 +1,6 @@
 <template>
   <div id="jade-gg-position">
-    <h3 class="aside-widget-title">{{ $t('adPosition') }}</h3>
+    <h2 class="aside-widget-title">{{ $t('adPosition') }}</h2>
     <el-carousel
       trigger="click"
       class="jade-gg-body"

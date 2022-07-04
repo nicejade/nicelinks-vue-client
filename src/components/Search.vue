@@ -23,6 +23,7 @@
 
 <script>
 import marked from 'marked'
+import { $document } from 'helper'
 
 export default {
   name: 'Search',
@@ -117,10 +118,10 @@ export default {
 
     handleSearchInput(funcName) {
       const searchNiceElem = document.getElementById('search-nice')
-      this.$document[funcName](searchNiceElem, 'search-extra-class')
+      $document[funcName](searchNiceElem, 'search-extra-class')
 
       const subHeadElem = document.getElementById('sub-head')
-      subHeadElem && this.$document[funcName](subHeadElem, 'sub-head-follow')
+      subHeadElem && $document[funcName](subHeadElem, 'sub-head-follow')
     },
 
     handleFetchNiceLinks(queryString, callback) {

@@ -2,10 +2,6 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 // import VueTouch from 'vue-touch'
 import Cookies from 'js-cookie'
-import { $apis, $util, $document, $auth, $lodash, $errorReport } from 'helper'
-import locales from './locales'
-import Filters from './filters'
-
 import {
   Pagination,
   Dialog,
@@ -25,8 +21,6 @@ import {
   Tag,
   Alert,
   Card,
-  Collapse,
-  CollapseItem,
   Carousel,
   CarouselItem,
   Loading,
@@ -54,8 +48,6 @@ Vue.use(Alert)
 Vue.use(Card)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
-Vue.use(Collapse)
-Vue.use(CollapseItem)
 Vue.use(Loading.directive)
 Vue.use(VueI18n)
 
@@ -70,11 +62,13 @@ Vue.prototype.$message = Message
 // Initialize the sentry error reporting @2017-10-29
 $errorReport.init()
 
+import { $apis, $util, $lodash, $errorReport } from 'helper'
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
-Vue.prototype.$auth = $auth
-Vue.prototype.$document = $document
 Vue.prototype.$_ = $lodash
+
+import locales from './locales'
+import filters from './filters'
 
 /* inject i18n */
 // const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]
@@ -107,6 +101,6 @@ import Search from 'components/Search'
 Vue.component('search', Search)
 
 /* Public Filter */
-for (let key in Filters) {
-  Vue.filter(key, Filters[key])
+for (let key in filters) {
+  Vue.filter(key, filters[key])
 }

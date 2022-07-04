@@ -1,5 +1,5 @@
 <template>
-  <div id="reward-me" v-if="show">
+  <div id="reward-me">
     <div id="reward" @click="onTurnClick">
       <div class="front">
         <img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText" />
@@ -23,6 +23,9 @@
 import { $document } from 'helper'
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
+import Vue from 'vue'
+import { Radio } from 'element-ui'
+Vue.use(Radio)
 
 export default {
   name: 'RewardMe',
@@ -32,16 +35,8 @@ export default {
   data() {
     return {
       payWay: 'weixin',
-      rewardArr: $config.reward,
+      rewardArr: Object.freeze($config.reward),
     }
-  },
-
-  props: {
-    show: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
   },
 
   components: {},
@@ -142,7 +137,7 @@ export default {
 .reward-select {
   height: 45px;
   width: 100%;
-  padding-top: 10px;
+  text-align: center;
   .el-radio {
     margin: 0 10px;
   }

@@ -60,6 +60,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Menu, Submenu, MenuItem } from 'element-ui'
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+
 import classify from 'config/classify'
 import { REPORT_PATH } from 'config/constant'
 
@@ -67,7 +73,7 @@ export default {
   name: 'SideNav',
   data() {
     return {
-      navList: classify,
+      navList: Object.freeze(classify),
     }
   },
 
@@ -146,7 +152,7 @@ export default {
       this.$triggerSidenav()
     },
 
-    handleOpen(index) {},
+    handleOpen() {},
 
     handleClose() {},
   },

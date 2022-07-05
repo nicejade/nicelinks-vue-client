@@ -8,10 +8,12 @@
     <h2 class="aside-widget-title">{{ $t('friendshipLinks') }}</h2>
     <friendship-links class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
-    <img
-      src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-      alt="倾城之链.小程序"
-    />
+    <div class="text-center">
+      <img
+        alt="倾城之链.小程序"
+        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
+      />
+    </div>
     <h2 class="aside-widget-title">{{ $t('productHuntUpvote') }}</h2>
     <a
       href="https://nicelinks.site/redirect?url=https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
@@ -96,6 +98,10 @@ export default {
 
 <style type="text/css" lang="scss">
 @import './../../assets/scss/variables.scss';
+
+.el-carousel__item {
+  text-align: center;
+}
 
 .aside-list {
   background-color: $white;

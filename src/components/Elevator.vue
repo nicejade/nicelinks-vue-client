@@ -92,7 +92,7 @@ $factor: 1rem;
   font-weight: 900;
   font-size: inherit;
   font-family: inherit;
-  color: $black;
+  color: $brand;
   background-color: $white;
   word-break: keep-all;
   padding: 0.5em 1em;
@@ -159,9 +159,10 @@ $factor: 1rem;
   }
   .connect {
     .qrcode {
-      width: 3 * $factor;
-      height: 3 * $factor;
-      transform: scale(1.2);
+      width: 3 * $factor !important;
+      height: 3 * $factor !important;
+      margin: 0 auto;
+      transform: scale(1);
     }
   }
 }

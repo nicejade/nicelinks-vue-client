@@ -51,6 +51,7 @@
 
 <script>
 import pageMixin from 'mixins/pageMixin.js'
+import { NICE_LINKS } from 'config/constant'
 
 export default {
   name: 'Redirect',
@@ -82,12 +83,11 @@ export default {
   mounted() {
     document.title = `倾城跳转 - ${this.$t('niceLinksStr')}`
     const paramObj = this.$util.query(window.location.href)
-    this.targetWebsite = window.decodeURIComponent(paramObj.url)
+    this.targetWebsite = window.decodeURIComponent(paramObj.url || NICE_LINKS)
     this.websiteDomain = new URL(this.targetWebsite).hostname
     this.isAutoRedirect = paramObj.isauto
     this.isalive = !(paramObj.alive && paramObj.alive === '0')
-    const targetUrl = window.decodeURIComponent(paramObj.url) || 'https://nicelinks.site'
-    this.targetPath = `${targetUrl}?utm_source=nicelinks.site`
+    this.targetPath = `${this.targetWebsite}?utm_source=nicelinks.site`
     if (this.isAutoRedirect) {
       window.location.href = this.targetPath
     }
@@ -167,10 +167,14 @@ $primary: #ea552d;
       margin: 15px 0;
       .link-url {
         display: block;
+        height: 3rem;
+        line-height: 3rem;
         color: #5a6d96;
-        line-height: 36px;
-        text-align: left;
-        box-sizing: border-box;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
     }
     .redirect-btn {

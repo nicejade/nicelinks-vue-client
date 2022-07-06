@@ -87,7 +87,7 @@ export default {
         allThemeList = allThemeList.concat(item)
       })
       let classify = this.$requestParamList.classify
-      this.themeList = classify ? $config.theme[classify] : allThemeList
+      this.themeList = Object.freeze(classify ? $config.theme[classify] : allThemeList)
     },
   },
 }

@@ -181,9 +181,9 @@ export default {
 
   data() {
     return {
-      classifyList: $config.classify,
-      themeList: $config.theme,
-      tagsList: $config.tags,
+      item: {},
+      themeList: Object.freeze($config.theme),
+      tagsList: Object.freeze($config.tags),
       isShowKeywords: true,
       isShowDlgFlag: false,
       isRequesting: false,
@@ -196,7 +196,7 @@ export default {
   },
 
   props: {
-    item: {
+    pitem: {
       type: [Array, Object],
       default: () => {
         return {}
@@ -214,8 +214,8 @@ export default {
     },
     userAvatar() {
       if (this.mUserInfo && !this.isAbstract) {
-        let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
-        let userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
+        const defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
+        const userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
     },
@@ -230,7 +230,9 @@ export default {
     HeartBroken,
   },
 
-  created() {},
+  created() {
+    this.item = JSON.parse(JSON.stringify(this.pitem))
+  },
 
   mounted() {
     this.updatelinkScreenshot()
@@ -248,7 +250,7 @@ export default {
       this.$apis
         .getUserInfo(params)
         .then((result) => {
-          this.mUserInfo = result
+          this.mUserInfo = Object.freeze(result)
         })
         .catch((error) => {
           this.$message.error(`${error}`)
@@ -300,8 +302,8 @@ export default {
       this.$apis
         .dispatchAction(params)
         .then((result) => {
+          const actionIdx = action === 'likes' ? 'isLikes' : 'isDislikes'
           row[action] = result.count
-          let actionIdx = action === 'likes' ? 'isLikes' : 'isDislikes'
           row[actionIdx] = !row[actionIdx]
         })
         .catch((error) => {

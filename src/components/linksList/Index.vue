@@ -27,9 +27,9 @@
         :to="getAssembleRoute(item)"
         v-if="isAbstract"
       >
-        <LinkItem :item="item" :is-abstract="isAbstract"> </LinkItem>
+        <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
       </router-link>
-      <LinkItem v-else :item="item" :is-abstract="isAbstract"></LinkItem>
+      <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
       <slot name="link-share"></slot>
     </el-card>
   </div>

@@ -30,7 +30,7 @@ export default {
 
   data() {
     return {
-      aboutMarkdown: $config.about,
+      aboutMarkdown: Object.freeze($config.about),
     }
   },
 

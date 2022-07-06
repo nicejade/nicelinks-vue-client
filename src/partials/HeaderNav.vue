@@ -223,6 +223,9 @@ export default {
     },
 
     handleCommand(command) {
+      if (!command) {
+        return
+      }
       this['on' + command + 'Click']()
     },
 

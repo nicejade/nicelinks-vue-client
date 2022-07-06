@@ -2,9 +2,9 @@
   <div class="block-tip-dialog">
     <div class="dlg-header">
       <h2 class="title">
-        若此内容悬浮，多半是由 AdBlock 触发
+        若此弹框悬浮出来，多是由 AdBlock 触发
       </h2>
-      <p class="warm-reminder">您可将加入白名单，以解除广告屏蔽（ABP），感谢支持</p>
+      <p class="warm-reminder">您可将本站加入白名单，解除广告屏蔽（ABP），感谢支持</p>
       <button type="button" class="btn-close" @click="onCloseClick">
         <span class="icon-cross"></span>
       </button>

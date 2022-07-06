@@ -101,7 +101,7 @@ export default {
         .getFriendsLinks({})
         .then((result) => {
           this.isLoading = false
-          this.tableData = result
+          this.tableData = Object.freeze(result)
         })
         .catch((error) => {
           this.isLoading = false

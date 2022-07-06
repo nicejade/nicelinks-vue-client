@@ -146,7 +146,7 @@ export default {
     return {
       isShowDlgFlag: false,
       isMobile: window.innerWidth <= 960,
-      navList: $config.classify,
+      navList: Object.freeze($config.classify),
     }
   },
 

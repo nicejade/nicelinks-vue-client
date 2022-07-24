@@ -105,6 +105,10 @@
         <preview-md :value="getReviewContent(item)"></preview-md>
       </div>
     </div>
+    <div class="operate-area" v-if="!isAbstract">
+      <el-button class="btn" @click="onCopyLinkClick(item)">复制地址</el-button>
+      <el-button class="btn" type="primary" @click="onVisitLinkClick(item)">立即访问</el-button>
+    </div>
     <div class="action-list">
       <div class="action-item" @click.stop.prevent="onLikeClick(item)">
         <heart :is-down="$isLogin() && item.isLikes"></heart>
@@ -175,6 +179,7 @@ import Heart from 'components/Heart.vue'
 import HeartBroken from 'components/HeartBroken.vue'
 
 import $config from 'config'
+import { copyToClipboard } from './../../helper/system.js'
 
 export default {
   name: 'LinkItem',
@@ -362,10 +367,6 @@ export default {
       this.$switchRouteByTheme(theme)
     },
 
-    onLinkClick(item) {
-      window.open(item.urlPath, item.title)
-    },
-
     onLikeClick(row) {
       this.dispatchAction(row, 'likes')
     },
@@ -388,6 +389,17 @@ export default {
     },
 
     onUpdateSuccess() {},
+
+    onCopyLinkClick(item) {
+      copyToClipboard(item.urlPath)
+      this.$gtagTracking('copy-link', 'post', 'copy-link')
+    },
+
+    onVisitLinkClick(item) {
+      this.$gtagTracking('visit-link', 'post', 'visit-link')
+      const targetLink = this.$util.getRedirectLink(item.urlPath, item.alive, true)
+      window.open(targetLink, item.title)
+    },
   },
 }
 </script>
@@ -427,6 +439,32 @@ export default {
     color: $black-grey;
     line-height: 1.5;
     letter-spacing: 0.02rem;
+  }
+
+  .operate-area {
+    @include flex-box-center(row, center, center);
+    margin: 2.1rem auto;
+    .btn {
+      margin: 0 2rem;
+      padding: 1rem 3rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      &:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        transform: scale(1.05) rotate(-1deg);
+      }
+    }
+    .el-button--primary {
+      color: $brand;
+      background-color: transparent;
+      border-color: $brand;
+    }
   }
 
   .link-keywords,

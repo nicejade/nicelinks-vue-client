@@ -302,9 +302,10 @@ export default {
     )
   },
 
-  getRedirectLink(url, isalive) {
+  getRedirectLink(url, isalive, isauto) {
     const more = isalive ? '' : `&alive=0`
-    return `https://nicelinks.site/redirect?url=${url}${more}`
+    const auto = isauto ? '&isauto=1' : ''
+    return `https://nicelinks.site/redirect?url=${url}${more}${auto}`
   },
 
   assembleExternalLink(url) {

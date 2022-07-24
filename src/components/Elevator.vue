@@ -92,7 +92,7 @@ $factor: 1rem;
   font-weight: 900;
   font-size: inherit;
   font-family: inherit;
-  color: $brand;
+  color: $black;
   background-color: $white;
   word-break: keep-all;
   padding: 0.5em 1em;

@@ -66,6 +66,74 @@
       font-size: 1.1em;
     }
   }
+
+  .el-menu {
+    background-color: $white;
+    .el-menu-item {
+      color: $black;
+      font-size: $font-small;
+    }
+    .el-submenu {
+      .el-submenu__title {
+        color: $black;
+        font-size: $font-small;
+      }
+      .el-menu-item {
+        color: $black;
+      }
+      .el-menu {
+        background-color: $grey;
+      }
+    }
+  }
+
+  .el-dropdown,
+  .el-tabs__item,
+  .el-button,
+  .el-button--text {
+    color: $black;
+    transition: color 100ms cubic-bezier(0.125, 0.565, 0.86, 0.31);
+    &:hover,
+    &:focus,
+    &:active {
+      color: $brand;
+    }
+  }
+
+  .el-button--primary {
+    background-color: $brand;
+    border-color: $brand;
+    color: $white;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $brand;
+      border-color: $brand;
+    }
+  }
+
+  .el-tabs__active-bar {
+    background-color: $brand;
+  }
+
+  .el-tabs__item.is-active,
+  .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+    color: $brand;
+  }
+
+  .el-input__inner,
+  .el-textarea__inner {
+    border-radius: 1px;
+  }
+
+  .el-tabs__active-bar {
+    height: 2px;
+  }
+
+  .el-switch.is-checked .el-switch__core {
+    border-color: $brand;
+    background-color: $brand;
+  }
 }
 
 .el-message-box__wrapper {
@@ -84,39 +152,6 @@
   }
 }
 
-.el-menu {
-  background-color: $white;
-  .el-menu-item {
-    color: $black;
-    font-size: $font-small;
-  }
-  .el-submenu {
-    .el-submenu__title {
-      color: $black;
-      font-size: $font-small;
-    }
-    .el-menu-item {
-      color: $black;
-    }
-    .el-menu {
-      background-color: $grey;
-    }
-  }
-}
-
-.el-dropdown,
-.el-tabs__item,
-.el-button,
-.el-button--text {
-  color: $black;
-  transition: color 100ms cubic-bezier(0.125, 0.565, 0.86, 0.31);
-  &:hover,
-  &:focus,
-  &:active {
-    color: $brand;
-  }
-}
-
 .header {
   .el-tabs__header,
   .el-tabs__nav {
@@ -128,34 +163,4 @@
   .el-tabs__nav {
     background-color: #ffffff;
   }
-}
-
-.el-button--primary {
-  background-color: $black;
-  border-color: $black;
-  color: $white;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: $black;
-    border-color: $black;
-  }
-}
-
-.el-tabs__active-bar {
-  background-color: $brand;
-}
-
-.el-tabs__item.is-active,
-.el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
-  color: $brand;
-}
-
-.el-input__inner,
-.el-textarea__inner {
-  border-radius: 1px;
-}
-
-.el-tabs__active-bar {
-  height: 2px;
 }

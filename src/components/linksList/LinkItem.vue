@@ -131,10 +131,10 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M0 0h24v24H0z" stroke="none" />
           <circle cx="12" cy="12" r="2" />
           <path
-            d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"
+            d="M22 12c-2.667 4.667-6 7-10 7s-7.333-2.333-10-7c2.667-4.667 6-7 10-7s7.333 2.333 10 7"
           />
         </svg>
         <span class="item-num">{{ item.countup }}</span>
@@ -152,13 +152,33 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M0 0h24v24H0z" stroke="none" />
           <path
-            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z"
           />
           <circle cx="12" cy="12" r="3" />
         </svg>
         <span class="item-num">{{ $t('edit') }}</span>
+      </div>
+      <div class="action-item" @click.stop.prevent="onCopyClick(item)" v-if="isAdminFlag()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-link"
+          width="22"
+          height="22"
+          style="margin-right: 5px;"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#9393aa"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M0 0h24v24H0z" stroke="none" />
+          <path d="M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" />
+          <path d="M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" />
+        </svg>
+        <span class="item-num">复制</span>
       </div>
     </div>
     <edit-dialog
@@ -179,6 +199,7 @@ import Heart from 'components/Heart.vue'
 import HeartBroken from 'components/HeartBroken.vue'
 
 import $config from 'config'
+import { NICE_LINKS } from 'config/constant'
 import { copyToClipboard } from './../../helper/system.js'
 
 export default {
@@ -358,6 +379,13 @@ export default {
       return item.desc ? item.desc.split('\n').join('<br>') : ''
     },
 
+    copySuccessPrompt() {
+      this.$message({
+        type: 'success',
+        message: '已成功将该链接复制到剪切板.',
+      })
+    },
+
     /* -----------------------onClickEvent-----------------------Start */
     onStopPropagationClick(action, category = 'post') {
       this.$gtagTracking(action, category, action)
@@ -388,10 +416,16 @@ export default {
       this.currentRowData = item
     },
 
+    onCopyClick(item) {
+      copyToClipboard(`${NICE_LINKS}/post/${item._id}`)
+      this.copySuccessPrompt()
+    },
+
     onUpdateSuccess() {},
 
     onCopyLinkClick(item) {
       copyToClipboard(item.urlPath)
+      this.copySuccessPrompt()
       this.$gtagTracking('copy-link', 'post', 'copy-link')
     },
 
@@ -464,6 +498,9 @@ export default {
       color: $brand;
       background-color: transparent;
       border-color: $brand;
+      &:hover {
+        color: $white;
+      }
     }
   }
 

@@ -73,9 +73,10 @@ $factor: 0.5rem;
 .block-tip-dialog {
   position: fixed;
   top: 1.5 * $header-height;
-  right: 18 * $factor;
-  width: 90 * $factor;
-  height: 60 * $factor;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100 * $factor;
+  height: 68 * $factor;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -100,7 +101,7 @@ $factor: 0.5rem;
     }
     .btn-close {
       position: absolute;
-      top: -8 * $factor;
+      top: -10 * $factor;
       right: -6 * $factor;
       width: 8 * $factor;
       height: 8 * $factor;
@@ -154,11 +155,11 @@ $factor: 0.5rem;
 @keyframes moveto {
   from {
     opacity: 0.618;
-    right: -80 * $factor;
+    top: -88 * $factor;
   }
   to {
     opacity: 1;
-    right: 18 * $factor;
+    top: 1.5 * $header-height;
   }
 }
 </style>

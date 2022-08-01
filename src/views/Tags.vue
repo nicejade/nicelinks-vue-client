@@ -36,7 +36,13 @@ export default {
     this.$fetchSearch()
   },
 
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+      if (window.IS_FROM_GOOGLE_ADS) {
+        window.gtag_report_conversion()
+      }
+    })
+  },
 
   methods: {},
 }

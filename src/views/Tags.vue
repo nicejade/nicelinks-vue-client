@@ -37,6 +37,7 @@ export default {
   },
 
   mounted() {
+    this.updatePageMeta()
     this.$nextTick(() => {
       if (window.IS_FROM_GOOGLE_ADS) {
         window.gtag_report_conversion()
@@ -44,6 +45,11 @@ export default {
     })
   },
 
-  methods: {},
+  methods: {
+    updatePageMeta() {
+      const tag = this.$route.params.tags || ''
+      document.title = `${tag} - 倾城之链`
+    },
+  },
 }
 </script>

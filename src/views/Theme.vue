@@ -20,7 +20,7 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
-import $config from 'config'
+import themeConfArr from './../config/theme'
 
 export default {
   name: 'theme',
@@ -42,6 +42,7 @@ export default {
   },
 
   mounted() {
+    this.updatePageMeta()
     this.setThemeList()
     this.$nextTick(() => {
       if (window.IS_FROM_GOOGLE_ADS) {
@@ -56,8 +57,23 @@ export default {
       return cTheme.toUpperCase() === value.toUpperCase()
     },
 
+    updatePageMeta() {
+      const theme = this.$route.params.theme
+      let isFoundTarget = false
+      themeConfArr.forEach((arr) => {
+        if (isFoundTarget) return
+        arr.forEach((item) => {
+          if (item.value.toLowerCase() === theme) {
+            document.title = `${item.key} - 倾城之链`
+            isFoundTarget = true
+            return
+          }
+        })
+      })
+    },
+
     setThemeList() {
-      this.themeList = $config.theme.filter((items) => {
+      this.themeList = themeConfArr.filter((items) => {
         let isInclude = false
         items.forEach((item) => {
           if (this.isCurrentThemeVal(item.value)) {

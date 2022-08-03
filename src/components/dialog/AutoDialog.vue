@@ -1,35 +1,54 @@
 <template>
-  <div class="block-tip-dialog">
+  <div class="auto-dialog">
     <div class="dlg-header">
       <h2 class="title">
-        若此弹框悬浮出来，多是由 AdBlock 触发
+        订阅倾城
+        <a
+          target="_blank"
+          rel="noopener"
+          class="gtag-track"
+          data-action="open-weekly"
+          data-category="global"
+          data-label="open-weekly"
+          href="https://blog.nicelinks.site/?ref=nicelinks.site"
+          >每周精要
+        </a>
       </h2>
-      <p class="warm-reminder">您可将本站加入白名单，解除广告屏蔽（ABP），感谢支持</p>
       <button type="button" class="btn-close" @click="onCloseClick">
         <span class="icon-cross"></span>
       </button>
     </div>
     <div class="pannel">
       <div class="item">
-        <img class="qrcode" src="/static/img/reward_wexin.jpg" alt="微信打赏" />
-        <strong class="text font-medium">“月黑见渔灯，</strong>
-        <span class="text font-medium">微信打赏</span>
+        <img
+          class="qrcode"
+          src="https://image.nicelinks.site/qrcode_jqx.jpg"
+          alt="晚晴幽草轩-公众号"
+        />
+        <span class="text font-medium">晚晴幽草轩</span>
+        <span class="text">微信扫码关注</span>
       </div>
       <div class="item">
-        <img class="qrcode" src="/static/img/reward_zhifubao.jpg" alt="倾城之链-小程序" />
-        <strong class="text font-medium">“孤光一点萤。”</strong>
-        <span class="text font-medium">支付宝打赏</span>
+        <img
+          class="qrcode"
+          src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
+          alt="倾城之链-小程序"
+        />
+        <span class="text font-medium">倾城之链</span>
+        <span class="text">微信扫码体验</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { AUTO_DIALOG } from 'config/constant'
 export default {
-  name: 'AdBlockDialog',
+  name: 'AutoDialog',
 
   methods: {
     onCloseClick() {
+      this.$util.setLocalStorage(AUTO_DIALOG, true)
       this.$emit('close')
     },
   },
@@ -37,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './../assets/scss/variables.scss';
+@import './../../assets/scss/variables.scss';
 $factor: 0.5rem;
 
 @mixin cross($size: 20px, $color: currentColor, $thickness: 1px) {
@@ -70,22 +89,22 @@ $factor: 0.5rem;
   }
 }
 
-.block-tip-dialog {
+.auto-dialog {
   position: fixed;
-  top: 1.5 * $header-height;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100 * $factor;
-  height: 68 * $factor;
+  bottom: 32 * $factor;
+  right: 18 * $factor;
+  width: 90 * $factor;
+  height: 60 * $factor;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background-color: $white;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.618);
-  animation: moveto 0.618s;
-  -webkit-animation: moveto 0.618s;
+  animation: automoveto 0.618s;
+  -webkit-animation: automoveto 0.618s;
   animation-timing-function: cubic-bezier(0, 0.13, 0.14, 1);
+
   padding: 2 * $factor;
   border-radius: 2 * $factor;
   z-index: $zindex-auto-dialog;
@@ -95,9 +114,6 @@ $factor: 0.5rem;
     .title {
       font-size: $font-large;
       font-weight: 500;
-    }
-    .warm-reminder {
-      margin: 2 * $factor 0;
     }
     .btn-close {
       position: absolute;
@@ -136,7 +152,7 @@ $factor: 0.5rem;
     .item {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       width: 40 * $factor;
       height: 100%;
@@ -152,14 +168,14 @@ $factor: 0.5rem;
   }
 }
 
-@keyframes moveto {
+@keyframes automoveto {
   from {
     opacity: 0.618;
-    top: -88 * $factor;
+    right: -80 * $factor;
   }
   to {
     opacity: 1;
-    top: 1.5 * $header-height;
+    right: 18 * $factor;
   }
 }
 </style>

@@ -67,7 +67,7 @@
     <div class="meta-box mb-normal">
       <a
         class="item classify"
-        @click="onStopPropagationClick('classify')"
+        @click.stop="onStopPropagationClick('classify')"
         :href="'/theme/' + item.theme.toLocaleLowerCase()"
         >{{ fillThemeName(item.classify, item.theme) }}</a
       >

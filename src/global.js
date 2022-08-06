@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 // import VueTouch from 'vue-touch'
 import Cookies from 'js-cookie'
+import { NICE_LINKS_NAME } from './config/constant'
 import {
   Pagination,
   Dialog,
@@ -68,6 +69,9 @@ import { $apis, $util, $lodash, $errorReport } from 'helper'
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
 Vue.prototype.$_ = $lodash
+Vue.prototype.$setPageTitle = (title = '') => {
+  document.title = `${title} - ${NICE_LINKS_NAME}`
+}
 
 import locales from './locales'
 import filters from './filters'

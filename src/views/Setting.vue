@@ -7,7 +7,7 @@
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <el-breadcrumb separator="/">
-                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('firstPage') }}</el-breadcrumb-item>
                   <el-breadcrumb-item>{{ $t('accountSetting') }}</el-breadcrumb-item>
                 </el-breadcrumb>
               </div>
@@ -145,7 +145,7 @@ export default {
   },
 
   mounted() {
-    document.title = `倾城设置 - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle('设置')
     this.initFetch()
   },
 

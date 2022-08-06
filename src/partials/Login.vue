@@ -159,6 +159,7 @@ export default {
     updatePageMeta(val) {
       const localeKey = val ? 'signUp' : 'signIn'
       this.title = this.$t(localeKey)
+      this.$setPageTitle(this.title)
     },
 
     setMessageTip(msg, type = 'error') {

@@ -70,11 +70,10 @@ export default {
   dislikesTips:
     '如果你确定这是一个很(/不)需要改进的网站，那么你可以尽情点击确定；否则，还请三思；毕竟这可能间接影响到别人对此网站的评判。',
 
+  firstPage: '首页',
   homepage: '个人主页',
-  homePage: '首页',
 
   accountSetting: '账号设置',
-  accountActivation: '账号激活',
   setUsername: '用户名',
   setNickname: '账号昵称',
   personalWebsite: '个人网站',

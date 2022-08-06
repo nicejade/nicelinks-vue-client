@@ -81,7 +81,8 @@ export default {
   },
 
   mounted() {
-    document.title = `倾城跳转 - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle('重定向')
+
     const paramObj = this.$util.query(window.location.href)
     this.targetWebsite = window.decodeURIComponent(paramObj.url || NICE_LINKS)
     this.websiteDomain = new URL(this.targetWebsite).hostname

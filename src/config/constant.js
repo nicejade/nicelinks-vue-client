@@ -8,3 +8,5 @@ export const REPORT_PATH =
 export const PAGE_SIZE = 16 // 每次请求 NICE LINK S数组的条数 @2022.03.13；
 
 export const NICE_LINKS = 'https://nicelinks.site'
+
+export const NICE_LINKS_NAME = '倾城之链'

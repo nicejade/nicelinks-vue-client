@@ -58,7 +58,7 @@ export default {
     updatePageMeta() {
       const cClassify = this.$route.params.classify
       const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
-      document.title = this.$t(localesKey) + ' - 倾城之链'
+      this.$setPageTitle(this.$t(localesKey))
     },
 
     setFetchData() {

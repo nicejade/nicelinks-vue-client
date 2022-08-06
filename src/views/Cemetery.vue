@@ -62,7 +62,8 @@ export default {
   },
 
   mounted() {
-    document.title = `${this.$t('productCemetery')} - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle(this.$t('productCemetery'))
+
     const descNode = document.querySelector('meta[name="description"]')
     descNode.setAttribute(
       'content',

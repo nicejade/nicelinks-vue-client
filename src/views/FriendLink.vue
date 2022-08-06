@@ -87,7 +87,7 @@ export default {
   },
 
   mounted() {
-    document.title = `友情链接 - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle('友情链接')
     // Add Waline Comment Functions @2022.04.15
     this.$nextTick(() => {
       this.$util.addWalineComment()

@@ -40,8 +40,7 @@
             data-action="share-link"
             data-category="header"
             data-label="p-share-link"
-          >
-            <icon class="icons" name="share" />{{ $t('shareNewLink') }}
+            >🕊 {{ $t('shareNewLink') }}
           </router-link>
         </div>
 
@@ -361,7 +360,11 @@ export default {
       font-size: $font-small;
       .share-link {
         @include flex-box-center(row, space-around, center);
-        color: $black;
+        color: transparent;
+        background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 60%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        font-weight: bold;
         .icon-share {
           width: 16px;
           height: 16px;

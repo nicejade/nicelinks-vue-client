@@ -1,4 +1,4 @@
-.main {
+#app {
   .el-input__inner,
   .el-textarea__inner {
     background-repeat: no-repeat;
@@ -107,8 +107,9 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand;
-      border-color: $brand;
+      color: $white;
+      cursor: pointer;
+      animation: jelly 0.5s;
     }
   }
 
@@ -162,5 +163,21 @@
   }
   .el-tabs__nav {
     background-color: #ffffff;
+  }
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
   }
 }

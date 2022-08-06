@@ -220,7 +220,7 @@ export default {
   },
 
   mounted() {
-    document.title = `${this.$t('shareNewLink')} - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle(this.$t('shareNewLink'))
   },
 
   methods: {

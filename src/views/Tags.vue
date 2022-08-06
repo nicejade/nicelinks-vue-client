@@ -48,7 +48,7 @@ export default {
   methods: {
     updatePageMeta() {
       const tag = this.$route.params.tags || ''
-      document.title = `${tag} - 倾城之链`
+      this.$setPageTitle(`${tag} | 标签`)
     },
   },
 }

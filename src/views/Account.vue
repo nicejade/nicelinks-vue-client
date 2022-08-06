@@ -36,7 +36,7 @@ export default {
   components: {},
 
   mounted() {
-    document.title = `${this.$t('accountActivation')} - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle('账号激活')
     this.dispatchActivate()
   },
 

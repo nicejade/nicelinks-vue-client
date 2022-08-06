@@ -50,7 +50,7 @@ export default {
 
   methods: {
     updatePageMeta() {
-      document.title = `关于倾城 - ${this.$t('niceLinksStr')}`
+      this.$setPageTitle('关于')
     },
   },
 }

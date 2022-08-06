@@ -91,7 +91,7 @@ export default {
       details.keywords ? (this.keywords = details.keywords) : ''
       this.description = details.desc
 
-      document.title = `${details.title} | 倾城之链`
+      this.$setPageTitle(details.title)
       const descNode = document.querySelector('meta[name="description"]')
       descNode.setAttribute('content', this.description)
 

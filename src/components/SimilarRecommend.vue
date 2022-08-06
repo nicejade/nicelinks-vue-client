@@ -16,7 +16,7 @@
           <img
             v-show="!isShowPlaceholder"
             class="image"
-            :alt="item.title + ' | 倾城之链'"
+            :alt="item.title - 倾城之链"
             :src="getScreenshotPath(item)"
             onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
           />

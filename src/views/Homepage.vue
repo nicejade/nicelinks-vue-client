@@ -7,7 +7,7 @@
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <el-breadcrumb separator="/">
-                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item :to="{ path: '/' }">{{ $t('firstPage') }}</el-breadcrumb-item>
                   <el-breadcrumb-item :to="'/member/' + currentUser">主页</el-breadcrumb-item>
                   <el-breadcrumb-item>详情</el-breadcrumb-item>
                 </el-breadcrumb>
@@ -154,10 +154,8 @@ export default {
     }
   },
 
-  watch: {
-    $lang(val) {
-      this.updateDetailInfo()
-    },
+  mounted() {
+    this.$setPageTitle(this.$t('homepage'))
   },
 
   methods: {

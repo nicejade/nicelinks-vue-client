@@ -48,7 +48,7 @@ export default {
   created() {},
 
   mounted() {
-    document.title = `${this.$t('themeCollection')} - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle(this.$t('themeCollection'))
   },
 }
 </script>

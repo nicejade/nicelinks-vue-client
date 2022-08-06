@@ -64,7 +64,7 @@ export default {
         if (isFoundTarget) return
         arr.forEach((item) => {
           if (item.value.toLowerCase() === theme) {
-            document.title = `${item.key} - 倾城之链`
+            this.$setPageTitle(`${item.key} | 主题`)
             isFoundTarget = true
             return
           }

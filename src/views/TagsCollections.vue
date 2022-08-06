@@ -53,7 +53,7 @@ export default {
   },
 
   mounted() {
-    document.title = `${this.$t('tagsCollection')} - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle(this.$t('tagsCollection'))
   },
 
   methods: {},

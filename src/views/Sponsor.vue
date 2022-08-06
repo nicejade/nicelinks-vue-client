@@ -63,7 +63,7 @@ export default {
   components: {},
 
   mounted() {
-    document.title = `赞助倾城 - ${this.$t('niceLinksStr')}`
+    this.$setPageTitle('赞助倾城')
     // Add Waline Comment Functions @2022.01.24
     this.$nextTick(() => {
       this.$util.addWalineComment()

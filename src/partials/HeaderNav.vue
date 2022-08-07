@@ -144,7 +144,7 @@ export default {
   data() {
     return {
       isShowDlgFlag: false,
-      isMobile: window.innerWidth <= 960,
+      isMobile: window.innerWidth <= 1200,
       navList: Object.freeze($config.classify),
     }
   },
@@ -379,7 +379,7 @@ export default {
     .share-btn,
     .find-more {
       cursor: pointer;
-      margin: 0 12px;
+      margin: 0 1.5rem;
       display: inline-block;
       float: left;
     }
@@ -426,7 +426,7 @@ export default {
 }
 
 .el-dropdown-menu {
-  min-width: 150px;
+  min-width: 15rem;
   margin: 0;
   .icons {
     vertical-align: middle;
@@ -514,11 +514,17 @@ export default {
 .search-area {
   display: block;
   position: absolute;
-  right: 21.13rem;
+  right: 22rem;
   .el-autocomplete {
     .el-input {
       font-size: $font-medium;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-area {
+    display: none;
   }
 }
 </style>

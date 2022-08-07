@@ -23,7 +23,6 @@ export default {
   reviewStr: '推荐语：',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
-  searchYourWant: '虎年大吉，搜您想要',
 
   all: '全部',
   skill: '技术客栈',

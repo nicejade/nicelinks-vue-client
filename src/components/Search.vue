@@ -8,7 +8,7 @@
     :popper-append-to-body="isPopperToBody"
     v-model="keyword"
     :fetch-suggestions="handleFetchNiceLinks"
-    :placeholder="$t('searchYourWant')"
+    placeholder="搜您想要，探索美好"
     @select="handleSearchSelect"
     @focus="handleSearchFocus"
     @blur="handleSearchBlur"
@@ -196,8 +196,8 @@ export default {
 .el-autocomplete-suggestion {
   .el-scrollbar {
     .el-autocomplete-suggestion__wrap {
-      height: 48rem;
-      min-height: 48rem;
+      height: 49rem;
+      min-height: 49rem;
     }
     .el-autocomplete-suggestion__list li {
       border-bottom: 1px dashed $border-grey;

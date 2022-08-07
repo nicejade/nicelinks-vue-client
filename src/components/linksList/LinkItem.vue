@@ -508,6 +508,7 @@ export default {
   .link-review {
     margin: 15px 0;
     color: $black-grey;
+    font-size: $font-small;
     line-height: 1.6;
     strong {
       font-weight: 700;

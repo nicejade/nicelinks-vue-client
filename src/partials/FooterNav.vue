@@ -2,149 +2,123 @@
   <footer class="footer">
     <div class="footer-body">
       <div class="container">
-        <div class="list-item" v-if="!isMobile">
-          <dt class="title">公众号</dt>
-          <dd>
-            <img
-              width="100"
-              src="https://image.nicelinks.site/qrcode_jqx.jpg"
-              alt="晚晴幽草轩 | 公众号"
-            />
-          </dd>
+        <div class="list-item show-on-big-screen">
+          <p class="title">公众号</p>
+          <img
+            width="100"
+            src="https://image.nicelinks.site/qrcode_jqx.jpg"
+            alt="晚晴幽草轩 | 公众号"
+          />
         </div>
         <div class="list-item">
-          <dt class="title">产品</dt>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="explore-skill"
-              data-category="footer"
-              data-label="explore-skill"
-              href="https://nicelinks.site/explore/skill"
-              >技术客栈
-            </a>
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="explore-resource"
-              data-category="footer"
-              data-label="explore-resource"
-              href="https://nicelinks.site/explore/resource"
-              >资源之家
-            </a>
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="explore-life"
-              data-category="footer"
-              data-label="explore-life"
-              href="https://nicelinks.site/explore/life"
-              >写意人生
-            </a>
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="explore-info"
-              data-category="footer"
-              data-label="explore-info"
-              href="https://nicelinks.site/explore/info"
-              >信息快讯
-            </a>
-          </dd>
+          <p class="title">产品</p>
+          <a
+            class="nice-link gtag-track"
+            data-action="explore-skill"
+            data-category="footer"
+            data-label="explore-skill"
+            href="https://nicelinks.site/explore/skill"
+            >技术客栈
+          </a>
+          <a
+            class="nice-link gtag-track"
+            data-action="explore-resource"
+            data-category="footer"
+            data-label="explore-resource"
+            href="https://nicelinks.site/explore/resource"
+            >资源之家
+          </a>
+          <a
+            class="nice-link gtag-track"
+            data-action="explore-life"
+            data-category="footer"
+            data-label="explore-life"
+            href="https://nicelinks.site/explore/life"
+            >写意人生
+          </a>
+          <a
+            class="nice-link gtag-track"
+            data-action="explore-info"
+            data-category="footer"
+            data-label="explore-info"
+            href="https://nicelinks.site/explore/info"
+            >信息快讯
+          </a>
         </div>
         <div class="list-item">
-          <dt class="title">合作</dt>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="about"
-              data-category="footer"
-              data-label="about"
-              href="/about"
-              >关于我们</a
-            >
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="business"
-              data-category="footer"
-              data-label="business"
-              href="/business"
-              >广告投放</a
-            >
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              data-action="sponsor"
-              data-category="footer"
-              data-label="sponsor"
-              href="/sponsor"
-              >倾情捐赠
-            </a>
-          </dd>
-          <dd>
-            <a
-              target="_blank"
-              rel="noopener"
-              class="nice-link gtag-track"
-              data-action="weekly"
-              data-category="footer"
-              data-label="weekly"
-              href="https://blog.nicelinks.site/?ref=nicelinks.site"
-              >倾城博客
-            </a>
-          </dd>
+          <p class="title">合作</p>
+          <a
+            class="nice-link gtag-track"
+            data-action="about"
+            data-category="footer"
+            data-label="about"
+            href="/about"
+            >关于我们</a
+          >
+          <a
+            class="nice-link gtag-track"
+            data-action="business"
+            data-category="footer"
+            data-label="business"
+            href="/business"
+            >广告投放</a
+          >
+          <a
+            class="nice-link gtag-track"
+            data-action="sponsor"
+            data-category="footer"
+            data-label="sponsor"
+            href="/sponsor"
+            >倾情捐赠
+          </a>
+          <a
+            target="_blank"
+            rel="noopener"
+            class="nice-link gtag-track"
+            data-action="weekly"
+            data-category="footer"
+            data-label="weekly"
+            href="https://blog.nicelinks.site/?ref=nicelinks.site"
+            >倾城博客
+          </a>
         </div>
         <div class="list-item">
-          <dt class="title">推荐</dt>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              target="_blank"
-              data-action="jeffjade-com"
-              data-category="footer"
-              data-label="jeffjade-com"
-              href="https://www.jeffjade.com/?ref=nicelinks.site"
-              >晚晴幽草轩</a
-            >
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              target="_blank"
-              data-action="footkapp-lovejade"
-              data-category="footer"
-              data-label="footkapp-lovejade"
-              href="https://quickapp.lovejade.cn/?ref=nicelinks.site"
-              >静轩之别苑</a
-            >
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              target="_blank"
-              data-action="forum-lovejade"
-              data-category="footer"
-              data-label="forum-lovejade"
-              href="https://forum.lovejade.cn/?ref=nicelinks.site"
-              >悠然宜想亭</a
-            >
-          </dd>
-          <dd>
-            <a
-              class="nice-link gtag-track"
-              target="_blank"
-              data-action="wiki-lovejade"
-              data-label="wiki-lovejade"
-              href="https://wiki.lovejade.cn/?ref=nicelinks.site"
-              >清风明月阁</a
-            >
-          </dd>
+          <p class="title">推荐</p>
+          <a
+            class="nice-link gtag-track"
+            target="_blank"
+            data-action="jeffjade-com"
+            data-category="footer"
+            data-label="jeffjade-com"
+            href="https://www.jeffjade.com/?ref=nicelinks.site"
+            >晚晴幽草轩</a
+          >
+          <a
+            class="nice-link gtag-track"
+            target="_blank"
+            data-action="footkapp-lovejade"
+            data-category="footer"
+            data-label="footkapp-lovejade"
+            href="https://quickapp.lovejade.cn/?ref=nicelinks.site"
+            >静轩之别苑</a
+          >
+          <a
+            class="nice-link gtag-track"
+            target="_blank"
+            data-action="forum-lovejade"
+            data-category="footer"
+            data-label="forum-lovejade"
+            href="https://forum.lovejade.cn/?ref=nicelinks.site"
+            >悠然宜想亭</a
+          >
+          <a
+            class="nice-link gtag-track"
+            target="_blank"
+            data-action="wiki-lovejade"
+            data-label="wiki-lovejade"
+            href="https://wiki.lovejade.cn/?ref=nicelinks.site"
+            >清风明月阁</a
+          >
         </div>
       </div>
       <div class="contact">
@@ -179,7 +153,7 @@
           rel="noopener"
           >晚晴幽草轩</a
         >
-        {{ $t('produced') }}
+        出品
         <a
           class="beian-link gtag-track"
           data-action="beian"
@@ -205,7 +179,6 @@ export default {
 
   data() {
     return {
-      isMobile: window.innerWidth <= 960,
       copyright: '',
       contactArray: Object.freeze(this.filterEntryInMobile($config.contact)),
     }
@@ -233,13 +206,6 @@ export default {
           (this.$isFromQuickapp() ? !item.notInQuickapp : true)
         )
       })
-    },
-  },
-
-  locales: {
-    zh: {
-      mySiteFunc: '云集世间优秀站点',
-      produced: '出品',
     },
   },
 }
@@ -277,21 +243,21 @@ export default {
       text-shadow: 1px 1px 0px #fff;
       .list-item {
         .title {
-          margin-bottom: 5px;
+          margin-bottom: 1rem;
           text-align: left;
           color: $black;
         }
-        dd {
-          margin: 8px 0;
-          .nice-link {
-            font-weight: 400;
-            color: $footer-grey;
-          }
+        .nice-link {
+          display: block;
+          margin: 1rem 0;
+          font-weight: 400;
+          color: $footer-grey;
         }
       }
     }
     .icp {
       font-size: $font-small;
+      line-height: 1.6;
       .beian-link {
         margin-left: 15px;
         color: $black-grey !important;
@@ -336,5 +302,14 @@ export default {
 }
 .tooltip:hover .tooltip-img {
   visibility: visible;
+}
+
+.show-on-big-screen {
+  display: block;
+}
+@media (max-width: 960px) {
+  .show-on-big-screen {
+    display: none;
+  }
 }
 </style>

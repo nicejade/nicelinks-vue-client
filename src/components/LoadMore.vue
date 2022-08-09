@@ -61,7 +61,7 @@ export default {
 .load-more {
   width: 70%;
   margin: auto;
-  padding: 15px 0;
+  padding: 2rem 0;
   .el-button {
     background-color: #ffffff;
     color: $black;

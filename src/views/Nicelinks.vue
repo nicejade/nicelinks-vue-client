@@ -35,11 +35,13 @@ export default {
 
   components: {},
 
+  // 只是别名变化, Vue 无法监听到 @17-07-18;
+  /*
   watch: {
     $route: function (to, from) {
-      // 只是别名变化, Vue 无法监听到 @17-07-18;
     },
   },
+  */
 
   created() {},
 
@@ -52,12 +54,19 @@ export default {
     if (sortTypeArray.indexOf(sortVal) < 0) {
       this.$fetchSearch()
     }
+
+    this.$nextTick(() => {
+      const classify = this.$route.params.classify
+      if (window.IS_FROM_GOOGLE_ADS && classify !== 'all') {
+        window.gtag_report_conversion()
+      }
+    })
   },
 
   methods: {
     updatePageMeta() {
-      const cClassify = this.$route.params.classify
-      const localesKey = cClassify === 'all' ? 'exploreNice' : cClassify
+      const classify = this.$route.params.classify
+      const localesKey = classify === 'all' ? 'exploreNice' : classify
       this.$setPageTitle(this.$t(localesKey))
     },
 

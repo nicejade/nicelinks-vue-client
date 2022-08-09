@@ -1,6 +1,6 @@
 {
   "name": "nicelinks-vue-client",
-  "version": "2.7.0",
+  "version": "2.11.0",
   "description": "A nice website for assembling nice links created using Vue.js",
   "author": "jeffjade <jeffygisgreat@gmail.com>",
   "private": true,
@@ -45,7 +45,6 @@
     "lodash": "^4.17.13",
     "marked": "^0.3.19",
     "medium-zoom": "^1.0.6",
-    "q": "^1.4.1",
     "qrcodejs2": "^0.0.2",
     "raven-js": "^3.19.1",
     "vue": "^2.1.10",

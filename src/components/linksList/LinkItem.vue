@@ -455,7 +455,7 @@ export default {
       justify-content: flex-start;
       align-items: center;
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: bolder;
       line-height: 1.2;
       text-decoration: none;
       color: $link-title;

@@ -144,7 +144,7 @@ export default {
     padding: 1rem;
   }
   .list-item {
-    width: calc(100% - 2rem);
+    width: 100%;
     height: 9rem;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     margin: 1.2rem auto;

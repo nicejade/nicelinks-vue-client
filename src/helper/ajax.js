@@ -1,34 +1,32 @@
 import axios from 'axios'
-import $q from 'q'
 import { $util, $errorReport } from 'helper'
 
 function requestHandle(params) {
-  let defer = $q.defer()
-  axios(params)
-    .then((res) => {
-      if (res && (res.unauthorized || res.statusCode === 401)) {
-        window.location.href = '/login'
-      }
-      if (res.type === 'application/x-msdownload') {
-        redirectToIframe(res.request.responseURL)
-      } else if (res.data) {
-        // update current date according backend@17-07-27
-        $util.setCurrentDate(res.headers && res.headers.date)
-        if (res.data.success) {
-          defer.resolve(res.data.value)
-        } else {
-          defer.reject(res.data.message)
+  return new Promise((resolve, reject) => {
+    axios(params)
+      .then((res) => {
+        if (res && (res.unauthorized || res.statusCode === 401)) {
+          window.location.href = '/login'
         }
-      } else {
-        defer.reject()
-      }
-    })
-    .catch((err) => {
-      $errorReport.captureException(err)
-      defer.reject(err)
-    })
-
-  return defer.promise
+        if (res.type === 'application/x-msdownload') {
+          redirectToIframe(res.request.responseURL)
+        } else if (res.data) {
+          // update current date according backend@17-07-27
+          $util.setCurrentDate(res.headers && res.headers.date)
+          if (res.data.success) {
+            resolve(res.data.value)
+          } else {
+            reject(res.data.message)
+          }
+        } else {
+          reject(`Something Error @${params.url}.`)
+        }
+      })
+      .catch((err) => {
+        $errorReport.captureException(err)
+        reject(err)
+      })
+  })
 }
 
 function redirectToIframe(url) {

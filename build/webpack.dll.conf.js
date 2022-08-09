@@ -8,7 +8,6 @@ module.exports = {
   entry: {
     vendor: [
       'js-cookie',
-      'q',
       'axios',
       'vue/dist/vue.min.js',
       'vue-router',

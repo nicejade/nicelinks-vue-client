@@ -1,11 +1,11 @@
 <template>
   <section>
     <article class="introduction">
-      <h2 class="medium-font">{{ $t('forFindMoreTitle') }}</h2>
+      <h2 class="find-title medium-font">{{ $t('forFindMoreTitle') }}</h2>
       <p class="desc" v-html="$t('forFindMoreDesc')"></p>
     </article>
     <article class="introduction share-more">
-      <h2 class="medium-font">{{ $t('forShareMoreTitle') }}</h2>
+      <h2 class="share-title medium-font">{{ $t('forShareMoreTitle') }}</h2>
       <p class="desc" v-html="$t('forShareMoreDesc')"></p>
     </article>
   </section>
@@ -49,6 +49,13 @@ export default {
   @include flex-box-center(column);
   color: $white;
   background-color: $black;
+
+  .find-title {
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(-70deg, #ff7170, #ffe57f);
+    -webkit-background-clip: text;
+  }
+
   .desc {
     margin-top: 20px;
     text-align: center;
@@ -60,6 +67,13 @@ export default {
 .share-more {
   color: $black;
   background-color: $white;
+
+  .share-title {
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(-70deg, #9867f0, #ed4e50);
+    -webkit-background-clip: text;
+  }
+
   mark {
     background-color: $white;
   }
@@ -68,10 +82,12 @@ export default {
 @media (max-width: 768px) {
   .introduction {
     padding: 0 1.8rem;
+
     .desc {
       text-align: left;
       font-size: 1.8rem;
       line-height: 2rem;
+
       br {
         content: '';
         display: block;
@@ -84,6 +100,7 @@ export default {
 @media (max-width: 375px) {
   .introduction {
     padding: 0 1.6rem;
+
     .desc {
       font-size: 1.6rem;
     }

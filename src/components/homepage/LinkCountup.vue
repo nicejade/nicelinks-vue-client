@@ -1,7 +1,7 @@
 <template>
   <div class="countup-area">
     <div class="top-crescent" v-if="!isMobile"></div>
-    <h2 class="medium-font">{{ $t('countupText') }}</h2>
+    <h2 class="countup-title medium-font">{{ $t('countupText') }}</h2>
     <CountUp
       id="countup-number"
       class="countup-number"
@@ -105,6 +105,12 @@ export default {
     height: $crescent-height;
     clip-path: ellipse(64% 50% at 50% 50%);
     background-color: $white;
+  }
+
+  .countup-title {
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(-70deg, #9867f0, #ed4e50);
+    -webkit-background-clip: text;
   }
 
   .countup-number {

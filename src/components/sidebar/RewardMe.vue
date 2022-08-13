@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { $document } from 'helper'
+import $document from './../../helper/document'
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
 import Vue from 'vue'
@@ -77,6 +77,7 @@ export default {
   -o-perspective: 800px;
   perspective: 800px;
 }
+
 #reward {
   width: 100%;
   height: 266px;
@@ -93,6 +94,7 @@ export default {
   -o-transform-origin: left center;
   transform-origin: left center;
 }
+
 #reward .front,
 #reward .back {
   height: 100%;
@@ -108,46 +110,56 @@ export default {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
 #reward .front .reward-img {
   width: 100%;
   max-width: 256px;
 }
+
 #reward .back .reward-img {
   width: 100%;
   max-width: 256px;
 }
+
 #reward .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
+
 #reward.flipped {
   -webkit-transform: translateX(100%) rotateY(180deg);
   -moz-transform: translateX(100%) rotateY(180deg);
   -o-transform: translateX(100%) rotateY(180deg);
   transform: translateX(100%) rotateY(180deg);
 }
+
 #loved-reward #reward-me {
   width: 100%;
   height: 266px;
   opacity: 1;
   transition: height 1s, opacity 2s;
 }
+
 .reward-select {
   height: 45px;
   width: 100%;
   text-align: center;
+
   .el-radio {
     margin: 0 10px;
   }
+
   .radio,
   .checkbox {
     display: inline-block;
   }
+
   .el-radio__input {
     height: 36px;
   }
+
   input {
     display: inline-block;
   }

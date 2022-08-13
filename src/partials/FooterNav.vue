@@ -173,6 +173,7 @@
 <script>
 import pageMixin from 'mixins/pageMixin.js'
 import $config from 'config'
+import { getCurrentDate } from './../helper/tool'
 
 export default {
   name: 'FooterNav',
@@ -191,7 +192,7 @@ export default {
   components: {},
 
   created() {
-    let currentYear = new Date(this.$util.getCurrentDate()).getFullYear()
+    let currentYear = new Date(getCurrentDate()).getFullYear()
     this.copyright = `Copyright © ${currentYear}`
   },
 
@@ -220,6 +221,7 @@ export default {
   padding: 15px 0;
   // 参见：https://uigradients.com/
   @include get-gradient-background(#ece9e6, #ffffff, top);
+
   .footer-body {
     width: 100%;
     max-width: 1280px;
@@ -228,11 +230,13 @@ export default {
     margin: auto;
     padding: 15px 20px;
     color: $footer-grey;
+
     .container,
     .icp,
     .contact {
       margin: 6px auto;
     }
+
     .container {
       display: flex;
       justify-content: space-around;
@@ -241,12 +245,14 @@ export default {
       text-align: left;
       font-weight: 500;
       text-shadow: 1px 1px 0px #fff;
+
       .list-item {
         .title {
           margin-bottom: 1rem;
           text-align: left;
           color: $black;
         }
+
         .nice-link {
           display: block;
           margin: 1rem 0;
@@ -255,27 +261,33 @@ export default {
         }
       }
     }
+
     .icp {
       font-size: $font-small;
       line-height: 1.6;
+
       .beian-link {
         margin-left: 15px;
         color: $black-grey !important;
       }
+
       .zero {
         height: 1.5rem;
         width: 1.1rem;
         margin-left: 0.5rem;
       }
     }
+
     .link {
       color: $common-link;
       font-weight: 500;
+
       &:link,
       &:visited {
         color: $common-link;
         text-decoration: none;
       }
+
       &:hover,
       &:active {
         color: $common-link-hover;
@@ -284,11 +296,13 @@ export default {
     }
   }
 }
+
 /* Tooltip 容器 */
 .tooltip {
   position: relative;
   display: inline-block;
 }
+
 .tooltip .tooltip-img {
   position: absolute;
   top: -180px;
@@ -300,6 +314,7 @@ export default {
   height: 180px;
   padding: 0;
 }
+
 .tooltip:hover .tooltip-img {
   visibility: visible;
 }
@@ -307,6 +322,7 @@ export default {
 .show-on-big-screen {
   display: block;
 }
+
 @media (max-width: 960px) {
   .show-on-big-screen {
     display: none;

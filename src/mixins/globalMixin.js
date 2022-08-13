@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import { $util, $auth } from 'helper'
+import $auth from './../helper/auth'
 import { mapActions, mapMutations } from 'vuex'
+import { isLegalUrl } from './../helper/tool'
 
 Vue.mixin({
   data() {
@@ -76,7 +77,7 @@ Vue.mixin({
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('pleaseEnter') + this.$t('linkAddressStr')))
       }
-      if (!$util.isLegalUrl(value)) {
+      if (isLegalUrl(value)) {
         callback(new Error(this.$t('enterLegalUrl')))
       } else {
         callback()

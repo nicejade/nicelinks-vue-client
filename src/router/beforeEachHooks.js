@@ -2,7 +2,7 @@
  * @desc: Check routing jump permission control.
  */
 
-import { $auth } from 'helper'
+import $auth from './../helper/auth'
 
 export default {
   checkVisitAuth(to, from, next) {

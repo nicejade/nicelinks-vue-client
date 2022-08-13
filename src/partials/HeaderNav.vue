@@ -126,15 +126,17 @@
 </template>
 
 <script>
-import $config from 'config'
-import partsMixin from 'mixins/partsMixin.js'
-import pageMixin from 'mixins/pageMixin.js'
-import { REPORT_PATH } from 'config/constant'
 import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
 import Vue from 'vue'
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
+
+import $config from 'config'
+import partsMixin from 'mixins/partsMixin.js'
+import pageMixin from 'mixins/pageMixin.js'
+import { REPORT_PATH } from 'config/constant'
+import { openAuthorSite } from './../helper/tool'
 
 export default {
   name: 'HeaderNav',
@@ -243,7 +245,7 @@ export default {
 
     onAboutAuthorClick() {
       this.$gtagTracking('about-author', 'header', 'p-about-author')
-      this.$util.openAuthorSite('header')
+      openAuthorSite('header')
     },
 
     onToggleMenuClick() {
@@ -325,39 +327,48 @@ export default {
   z-index: 999;
   transition: border 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955),
     background 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
   .nav {
     height: 100%;
     padding: 0 15px;
+
     .header-logo {
       display: inline-block;
       float: left;
       margin: 20px 0;
       width: 180px;
+
       .header-logo-a {
         @include flex-box-center;
         height: $header-height / 2;
         line-height: $header-height / 2;
       }
     }
+
     .operate-area {
       display: inline-block;
       position: relative;
       margin-right: 12px;
       float: left;
       font-size: $font-small;
+
       .nav-item {
         color: $black;
         margin: 0 1rem;
+
         &:hover {
           color: $brand;
         }
       }
+
       .nav-item.active {
         color: $brand;
       }
     }
+
     .share-btn {
       font-size: $font-small;
+
       .share-link {
         @include flex-box-center(row, space-around, center);
         color: transparent;
@@ -365,17 +376,20 @@ export default {
         background-clip: text;
         -webkit-background-clip: text;
         font-weight: bold;
+
         .icon-share {
           width: 16px;
           height: 16px;
           margin: 0 0.3rem;
           vertical-align: middle;
         }
+
         &:hover {
           color: $brand;
         }
       }
     }
+
     .share-btn,
     .find-more {
       cursor: pointer;
@@ -383,14 +397,17 @@ export default {
       display: inline-block;
       float: left;
     }
+
     .find-more,
     .user-account {
       height: 100%;
+
       .el-dropdown {
         display: flex;
         align-items: center;
         height: 100%;
         font-size: $font-small;
+
         .el-dropdown-link {
           display: flex !important;
           align-items: center !important;
@@ -399,10 +416,12 @@ export default {
         }
       }
     }
+
     .user-account {
       cursor: pointer;
       display: inline-block;
       float: right;
+
       .avatar {
         height: 38px;
         width: 38px;
@@ -413,11 +432,13 @@ export default {
         margin-right: 10px !important;
       }
     }
+
     .not-loggedin,
     .el-dropdown {
       display: inline-block;
       float: right;
       margin-right: 15px;
+
       .el-button {
         font-size: $font-small;
       }
@@ -428,12 +449,14 @@ export default {
 .el-dropdown-menu {
   min-width: 15rem;
   margin: 0;
+
   .icons {
     vertical-align: middle;
     width: 2rem;
     height: 2rem;
     margin: 0.1rem 0.5rem 0.1rem 0.1rem;
   }
+
   .vector-icon {
     width: 16px;
     height: 16px;
@@ -453,12 +476,14 @@ export default {
 .find-more-dropdown-menu {
   .el-dropdown-menu__item--divided {
     margin: 3px 1px;
+
     &:before {
       height: 0;
       margin-left: 0;
       margin-right: 0;
     }
   }
+
   .about-website {
     color: $dropdown-grey;
   }
@@ -468,8 +493,10 @@ export default {
   #app .header {
     height: $header-mobile-height;
     z-index: $zindex-header-mobile;
+
     .nav {
       padding: 0;
+
       .header-logo {
         float: none !important;
         text-align: center;
@@ -479,20 +506,24 @@ export default {
         transform: translate(-50%);
         margin: 0px;
       }
+
       .header-logo-a {
         width: 100%;
         height: $header-mobile-height;
         line-height: $header-mobile-height;
+
         .header-logo-img {
           margin: 10px 0;
         }
       }
+
       .menu {
         display: block;
         padding: 20px 15px;
         width: $header-mobile-height;
         height: $header-mobile-height;
       }
+
       .not-loggedin,
       .el-dropdown-link {
         display: flex !important;
@@ -500,9 +531,11 @@ export default {
         line-height: $header-mobile-height;
         height: $header-mobile-height;
       }
+
       .operate-area {
         display: none;
       }
+
       .share-btn,
       .find-more {
         font-size: $font-small;
@@ -511,10 +544,12 @@ export default {
     }
   }
 }
+
 .search-area {
   display: block;
   position: absolute;
   right: 22rem;
+
   .el-autocomplete {
     .el-input {
       font-size: $font-medium;

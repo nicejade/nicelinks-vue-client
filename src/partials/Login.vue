@@ -32,7 +32,9 @@
             @blur="onBlurUsername"
             @keydown.enter.native="onKeyEnterClick"
           >
-            <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
+            <template slot="prepend">
+              <icon class="icons" name="login-user"></icon>
+            </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="email" v-if="isSignUpPage">
@@ -41,7 +43,9 @@
             v-model.trim="account.email"
             @keydown.enter.native="onKeyEnterClick"
           >
-            <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
+            <template slot="prepend">
+              <icon class="icons" name="login-email"></icon>
+            </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userinfo" v-if="!isSignUpPage">
@@ -50,7 +54,9 @@
             v-model.trim="account.userinfo"
             @keydown.enter.native="onKeyEnterClick"
           >
-            <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
+            <template slot="prepend">
+              <icon class="icons" name="login-user"></icon>
+            </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -60,7 +66,9 @@
             type="password"
             @keydown.enter.native="onKeyEnterClick"
           >
-            <template slot="prepend"><icon class="icons" name="password"></icon></template>
+            <template slot="prepend">
+              <icon class="icons" name="password"></icon>
+            </template>
           </el-input>
         </el-form-item>
         <el-button type="primary" v-if="!isSignUpPage" @click="onLoginClick" size="large">{{
@@ -84,6 +92,8 @@
 </template>
 
 <script>
+import { isLegalUsername, isLegalEmail, isLegalPassword, encryptPwd } from './../helper/tool'
+
 export default {
   name: 'Login',
 
@@ -190,7 +200,7 @@ export default {
     validateUsername(rule, value, callback) {
       if (!value || value.length <= 0) {
         return callback(new Error(this.$t('enterUsernameTip')))
-      } else if (!this.$util.isLegalUsername(value)) {
+      } else if (!isLegalUsername(value)) {
         return callback(new Error(this.$t('enterLegalUsernameTip')))
       } else {
         callback()
@@ -208,7 +218,7 @@ export default {
     validateEmail(rule, value, callback) {
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('enterEmailTip')))
-      } else if (!this.$util.isLegalEmail(value)) {
+      } else if (!isLegalEmail(value)) {
         callback(new Error(this.$t('enterLegalEmailTip')))
       } else {
         callback()
@@ -223,7 +233,7 @@ export default {
 
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('enterPwdTip')))
-      } else if (!this.$util.isLegalPassword(value)) {
+      } else if (!isLegalPassword(value)) {
         callback(new Error(this.$t('enterLegalPwdTip')))
       } else {
         callback()
@@ -240,12 +250,13 @@ export default {
       this.$gtagTracking('signin', 'login', 'login-signin')
       this.isLoading = true
       this.$refs['validateForm'].validate((valid) => {
+        debugger
         if (valid) {
-          const isLegalEmail = this.$util.isLegalEmail(this.account.userinfo)
+          const cIsLegalEmail = isLegalEmail(this.account.userinfo)
           const params = {
-            email: isLegalEmail ? this.account.userinfo : '',
-            username: isLegalEmail ? '' : this.account.userinfo,
-            password: this.$util.encryptPwd(this.account.password),
+            email: cIsLegalEmail ? this.account.userinfo : '',
+            username: cIsLegalEmail ? '' : this.account.userinfo,
+            password: encryptPwd(this.account.password),
           }
           this.$apis
             .login(params)
@@ -279,7 +290,7 @@ export default {
           const params = {
             email: this.account.email,
             username: this.account.username,
-            password: this.$util.encryptPwd(this.account.password),
+            password: encryptPwd(this.account.password),
           }
           this.$apis
             .signup(params)
@@ -338,11 +349,13 @@ export default {
   padding-top: 150px;
   min-height: 400px;
   position: relative;
+
   .login-bottom-tip {
     font-size: 1.56rem;
     padding: 15px 0;
   }
 }
+
 .wechat-box {
   width: 100%;
   height: 100%;
@@ -357,18 +370,22 @@ export default {
   display: table;
   border-radius: 3px;
   border: 1px solid #d7dce5;
+
   .nicelinks-logo {
     margin-bottom: 1rem;
   }
+
   .heading {
     text-align: center;
     margin-bottom: 30px;
     font-size: 2.4rem;
     color: #707473;
   }
+
   .el-form-item {
     margin-bottom: 30px;
   }
+
   .el-button {
     display: block;
     width: 100%;
@@ -376,6 +393,7 @@ export default {
     margin-bottom: 15px;
     font-size: $font-small;
   }
+
   .el-input {
     .icons {
       display: block;
@@ -392,6 +410,7 @@ export default {
     width: 100%;
     padding-top: 60px;
   }
+
   .login-box {
     width: 100%;
     border: 0 none;

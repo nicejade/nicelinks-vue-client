@@ -62,16 +62,17 @@ Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$message = Message
 // Vue.use(VueTouch, {name: 'v-touch'})
 
-// Initialize the sentry error reporting @2017-10-29
-$errorReport.init()
-
-import { $apis, $util, $lodash, $errorReport } from 'helper'
+import { $apis, $util, $lodash } from 'helper'
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
 Vue.prototype.$_ = $lodash
 Vue.prototype.$setPageTitle = (title = '') => {
   document.title = `${title} - ${NICE_LINKS_NAME}`
 }
+
+import $errorReport from './helper/errorReport'
+// Initialize the sentry error reporting @2017-10-29
+$errorReport.init()
 
 import locales from './locales'
 import filters from './filters'

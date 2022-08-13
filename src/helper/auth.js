@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
-import { $apis, $util } from 'helper'
+import { $apis } from 'helper'
+import { getSessionStorage } from './../helper/tool'
 
 export default {
   checkSession() {
@@ -10,7 +11,7 @@ export default {
     let userId = Cookies.get('user-id')
     if (!userId) return false
 
-    let userInfo = $util.getSessionStorage('userInfo')
+    let userInfo = getSessionStorage('userInfo')
     userInfo = userInfo || (await $apis.getProfile({ _id: userId }))
     let isHaveAuth = userInfo.role === 'Admin' || userInfo.role === 'Owner'
     return Cookies.get('is-login') && isHaveAuth

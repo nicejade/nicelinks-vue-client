@@ -23,7 +23,9 @@
 
 <script>
 import marked from 'marked'
-import { $document } from 'helper'
+import $document from './../helper/document'
+import { filterHtmlTag, sliceToAheadTarget } from './../helper/tool'
+import { isAndroidSystem, isIosSystem } from './../helper/system'
 
 export default {
   name: 'Search',
@@ -62,7 +64,7 @@ export default {
           this.dealWitchTouchCB(elem.touches)
         })
         // @desc: Fix can't perfect work about touchmove in IOS system.
-        if (this.$util.isIosSystem()) {
+        if (isIosSystem()) {
           document.addEventListener(
             'scroll',
             this.$_.throttle(() => {
@@ -153,7 +155,7 @@ export default {
 
     handleSearchFocus() {
       if (this.$isMobileScreen()) {
-        if (this.$util.isAndroidSystem()) {
+        if (isAndroidSystem()) {
           document.querySelector('.search-autocomplete').style.display = 'none'
           setTimeout(() => {
             // this.$nextTick(() => {})
@@ -181,8 +183,8 @@ export default {
       let niceDesc = marked(tempDesc, {
         sanitize: true,
       })
-      niceDesc = this.$util.filterHtmlTag(niceDesc)
-      niceDesc = this.$util.sliceToAheadTarget(niceDesc, this.keyword)
+      niceDesc = filterHtmlTag(niceDesc)
+      niceDesc = sliceToAheadTarget(niceDesc, this.keyword)
       return niceDesc.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
     },
   },
@@ -199,6 +201,7 @@ export default {
       height: 49rem;
       min-height: 49rem;
     }
+
     .el-autocomplete-suggestion__list li {
       border-bottom: 1px dashed $border-grey;
     }
@@ -219,6 +222,7 @@ export default {
 @media screen and (max-width: $mobile-screen) {
   .el-autocomplete-suggestion {
     top: 110px !important;
+
     .el-scrollbar {
       .el-autocomplete-suggestion__wrap {
         height: 34rem;
@@ -227,9 +231,11 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: $tiny-mobile-screen) {
   .el-autocomplete-suggestion {
     top: 110px !important;
+
     .el-scrollbar {
       .el-autocomplete-suggestion__wrap {
         height: 28.6rem;
@@ -243,6 +249,7 @@ export default {
   li {
     padding: 0 15px;
     line-height: 18px;
+
     .item-title {
       font-size: $font-medium;
       color: $black;
@@ -251,6 +258,7 @@ export default {
       line-height: 18px;
       padding-top: 10px;
     }
+
     .item-desc {
       display: inline-block;
       line-height: 18px;
@@ -263,16 +271,19 @@ export default {
     }
   }
 }
+
 .el-autocomplete .el-input--suffix .el-input__inner {
   font-size: $font-small;
   width: 100%;
   border-radius: 20px;
 }
+
 .keyword {
   font-style: normal;
   color: $brand;
   text-decoration: underline;
 }
+
 #search-nice.search-extra-class {
   top: 0px;
   opacity: 0;
@@ -281,14 +292,17 @@ export default {
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
 }
+
 @keyframes search-up-hide {
   0% {
     top: 60px;
   }
+
   100% {
     display: none;
   }
 }
+
 .sub-head-follow {
   top: 60px;
   animation-name: sub-head-up;
@@ -296,10 +310,12 @@ export default {
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
 }
+
 @keyframes sub-head-up {
   0% {
     top: 110px;
   }
+
   100% {
     top: 60px;
   }

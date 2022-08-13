@@ -8,6 +8,15 @@ export const isIosSystem = () => {
   return !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
 }
 
+export const isWechatBrowser = () => {
+  var ua = window.navigator.userAgent.toLowerCase()
+  if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+    return true
+  } else {
+    return false
+  }
+}
+
 export const copyToClipboard = (content) => {
   if (isIosSystem()) {
     const el = document.createElement('textarea')

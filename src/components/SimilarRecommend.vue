@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { getHostnameByUrl, interceptString } from './../helper/tool'
 import pageMixin from 'mixins/pageMixin.js'
 import marked from 'marked'
 
@@ -101,7 +102,7 @@ export default {
 
     getAssembleTitle(item) {
       const limit = this.isMobile ? 30 : 50
-      return this.$util.interceptString(item.title, limit)
+      return interceptString(item.title, limit)
     },
 
     getAssembleDesc(item) {
@@ -110,7 +111,7 @@ export default {
         marked(item.review, {
           sanitize: false,
         }).replace(/<[^>]*>/g, '') || item.desc
-      return this.$util.interceptString(content, limit)
+      return interceptString(content, limit)
     },
 
     getAssembleRoute(item) {
@@ -118,7 +119,7 @@ export default {
     },
 
     getScreenshotPath(item) {
-      const urlPath = this.$util.getHostnameByUrl(item.urlPath)
+      const urlPath = getHostnameByUrl(item.urlPath)
       return `https://oss.nicelinks.site/${urlPath}.png?x-oss-process=style/png2jpg&imageView2/1/w/320/h/180/interlace/1/ignore-error/1`
     },
   },
@@ -128,9 +129,11 @@ export default {
 <style lang="scss">
 @import '../assets/scss/variables.scss';
 @import '../assets/scss/mixins.scss';
+
 .similar-recommend {
   width: 100%;
   padding: 15px 20px;
+
   .title {
     font-size: $font-large;
     color: $black;
@@ -138,11 +141,13 @@ export default {
     font-weight: 500;
     padding: 10px 0;
   }
+
   .jump-link {
     @include flex-box-center(row, space-between, center);
     height: 100%;
     padding: 1rem;
   }
+
   .list-item {
     width: 100%;
     height: 9rem;
@@ -155,6 +160,7 @@ export default {
       position: relative;
       width: 20%;
       height: 6rem;
+
       .image-placeholder {
         position: absolute;
         top: 0;
@@ -165,17 +171,20 @@ export default {
         background-color: $white-grey;
         color: $silver-grey;
       }
+
       .image {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
+
     .meta {
       width: 78%;
       height: 100%;
       @include flex-box-center(column, space-between, flex-start);
       text-align: left;
+
       .title {
         width: 100%;
         font-size: $font-medium;
@@ -188,6 +197,7 @@ export default {
         overflow: hidden;
         white-space: nowrap;
       }
+
       .desc {
         color: #9393aa;
         font-size: 1.6rem;

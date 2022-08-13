@@ -52,6 +52,7 @@
 <script>
 import pageMixin from 'mixins/pageMixin.js'
 import { NICE_LINKS } from 'config/constant'
+import { queryUrl2Obj } from './../helper/tool'
 
 export default {
   name: 'Redirect',
@@ -83,7 +84,7 @@ export default {
   mounted() {
     this.$setPageTitle('重定向')
 
-    const paramObj = this.$util.query(window.location.href)
+    const paramObj = queryUrl2Obj(window.location.href)
     this.targetWebsite = window.decodeURIComponent(paramObj.url || NICE_LINKS)
     this.websiteDomain = new URL(this.targetWebsite).hostname
     this.isAutoRedirect = paramObj.isauto
@@ -113,6 +114,7 @@ $primary: #ea552d;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .jump-title {
     display: flex;
     flex-direction: row;
@@ -121,10 +123,12 @@ $primary: #ea552d;
     font-weight: 500;
     margin: 1rem 0;
     height: 4rem;
+
     .logo {
       width: 4rem;
       margin-right: 1rem;
     }
+
     .title-link {
       font-size: 2.4rem;
       color: #454545;
@@ -140,6 +144,7 @@ $primary: #ea552d;
   box-shadow: 0 8px 32px 0 #454545;
   background-position: center;
   background-size: 100%;
+
   .card {
     height: 100%;
     display: flex;
@@ -151,11 +156,13 @@ $primary: #ea552d;
     background-color: hsla(0, 0%, 100%, 0.38);
     border-radius: 12px;
     border: 1px solid rgba(209, 213, 219, 0.3);
+
     .title {
       font-weight: 500;
       margin: 15px 0;
       text-align: center;
     }
+
     .link-box {
       display: flex;
       justify-content: center;
@@ -166,6 +173,7 @@ $primary: #ea552d;
       border-radius: 3px;
       border: 1px solid #dcdce0;
       margin: 15px 0;
+
       .link-url {
         display: block;
         height: 3rem;
@@ -178,6 +186,7 @@ $primary: #ea552d;
         -webkit-box-orient: vertical;
       }
     }
+
     .redirect-btn {
       display: flex;
       justify-content: center;
@@ -190,12 +199,14 @@ $primary: #ea552d;
       border-radius: 28px;
       border: none;
     }
+
     .effect-btn {
       border: 2px solid #ea552d;
       color: #ea552d;
       font-weight: bold;
       transition: all 0.2s ease;
       box-sizing: border-box;
+
       &:hover {
         color: #ffffff;
         background-color: #ea552d;
@@ -207,6 +218,7 @@ $primary: #ea552d;
 .visit-reminder {
   color: #9393aa;
   margin: 2rem auto;
+
   .reminder {
     font-weight: 600;
     color: #ea552d;
@@ -218,6 +230,7 @@ $primary: #ea552d;
     width: 1280px;
     height: 720px;
     padding: 60px 120px;
+
     .card {
       .link-box {
         width: 360px;
@@ -231,6 +244,7 @@ $primary: #ea552d;
     width: 356px;
     height: 200px;
     padding: 15px 30px;
+
     .card {
       .link-box {
         width: 280px;

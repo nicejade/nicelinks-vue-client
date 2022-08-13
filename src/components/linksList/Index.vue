@@ -102,7 +102,7 @@ export default {
     }
     .el-card {
       text-align: left;
-      border-bottom: 1px solid $item-border-color;
+      border-bottom: 1px solid $item-border-color !important;
     }
   }
 }

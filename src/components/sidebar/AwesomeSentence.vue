@@ -20,6 +20,7 @@
 <script>
 import marked from 'marked'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
+import { isIosSystem } from './../../helper/system'
 
 export default {
   name: 'AwesomeSentence',
@@ -153,7 +154,7 @@ export default {
       const readLinkPath = `https://read.lovejade.cn/p/${sentenceId}`
       const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语 ${readLinkPath}`
       const content = tempStr.replace(/<[^>]*>/g, '')
-      this.$util.isIosSystem() ? this.copyToIosClipboard(content) : this.copyToClipboard(content)
+      isIosSystem() ? this.copyToIosClipboard(content) : this.copyToClipboard(content)
       this.$message({
         type: 'success',
         message: `已将此条「锦语」复制到您的剪切板`,
@@ -170,6 +171,7 @@ export default {
 .awesome-sentence {
   margin: 0 15px;
   margin-bottom: -10px;
+
   .lined-paper {
     width: 100%;
     margin: 0 auto;
@@ -185,17 +187,21 @@ export default {
     -ms-background-size: 100% 26px;
     -o-background-size: 100% 26px;
     background-size: 100% 26px;
+
     div,
     p {
       line-height: 26px;
     }
+
     div:last-child,
     p:last-child {
       margin: 0;
     }
   }
+
   .btn-group {
     margin-top: 10px;
+
     .common-btn {
       display: inline-block;
       position: relative;
@@ -206,6 +212,7 @@ export default {
       border: 1px solid #efefef;
       border-radius: 50%;
       margin: 0 15px;
+
       .icon {
         position: absolute;
         top: 50%;
@@ -231,6 +238,7 @@ export default {
     transition: background-color 0.3s linear, border 0.3s linear;
     box-shadow: 0 0 0 rgba(52, 223, 165, 0.4);
     animation: pulse 2s infinite;
+
     &:after {
       content: '';
       display: block;
@@ -246,12 +254,14 @@ export default {
       opacity: 0;
       transition: transform 0.5s, opacity 1s;
     }
+
     &:active:after {
       border-radius: 50%;
       transform: scale(10);
       opacity: 0.2;
       transition: 0s;
     }
+
     &:hover {
       border-radius: 50%;
       color: $jade;
@@ -259,21 +269,25 @@ export default {
       border: 1px solid $jade;
       animation: pulse 2s infinite;
     }
+
     &:focus {
       border-radius: 50%;
       border-color: rgba(52, 223, 165, 0.5);
     }
   }
+
   @keyframes pulse {
     0% {
       -moz-box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
       box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
       border-color: rgba(52, 223, 165, 0.6);
     }
+
     80% {
       -moz-box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
       box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
     }
+
     100% {
       -moz-box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
       box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);

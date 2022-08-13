@@ -201,6 +201,7 @@ import HeartBroken from 'components/HeartBroken.vue'
 import $config from 'config'
 import { NICE_LINKS } from 'config/constant'
 import { copyToClipboard } from './../../helper/system.js'
+import { getHostnameByUrl, interceptString } from './../../helper/tool'
 
 export default {
   name: 'LinkItem',
@@ -298,7 +299,7 @@ export default {
             sanitize: false,
           }).replace(/<[^>]*>/g, '')
         : item.desc
-      return this.$util.interceptString(content)
+      return interceptString(content)
     },
 
     isAdminFlag() {
@@ -308,7 +309,7 @@ export default {
     },
 
     updatelinkScreenshot() {
-      const hostname = this.$util.getHostnameByUrl(this.item.urlPath)
+      const hostname = getHostnameByUrl(this.item.urlPath)
       this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
     },
 
@@ -448,8 +449,10 @@ export default {
 
 .content {
   margin: 5px;
+
   .title {
     margin-bottom: 2rem;
+
     .title-link {
       display: flex;
       justify-content: flex-start;
@@ -460,12 +463,14 @@ export default {
       text-decoration: none;
       color: $link-title;
       transition: color 0.3s ease-in;
+
       &:hover {
         transition: color 0.3s ease-out;
         color: $link-title-hover;
       }
     }
   }
+
   .abstract {
     width: 100%;
     margin-bottom: 1rem;
@@ -478,6 +483,7 @@ export default {
   .operate-area {
     @include flex-box-center(row, center, center);
     margin: 2.1rem auto;
+
     .btn {
       margin: 0 2rem;
       padding: 1rem 3rem;
@@ -489,15 +495,18 @@ export default {
       -webkit-user-select: none;
       touch-action: manipulation;
       box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
       &:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         transform: scale(1.05) rotate(-1deg);
       }
     }
+
     .el-button--primary {
       color: $brand;
       background-color: transparent;
       border-color: $brand;
+
       &:hover {
         color: $white;
       }
@@ -510,14 +519,17 @@ export default {
     color: $black-grey;
     font-size: $font-small;
     line-height: 1.6;
+
     strong {
       font-weight: 700;
       color: $link-title;
     }
   }
+
   .link-keywords {
     word-break: break-all;
   }
+
   .link-desc {
     color: $silver-grey;
     margin: 15px auto;
@@ -528,16 +540,20 @@ export default {
     word-spacing: 4px;
     border-left: 2px solid $border-grey;
   }
+
   .segmenting-line {
     border-top: 1px solid #8c8b8b;
     border-bottom: 1px solid #ffffff;
   }
+
   .link-screenshot {
     margin-bottom: 15px;
     filter: drop-shadow(0px 0px 15px lightgrey);
   }
+
   .info-block {
     @include flex-box-center(row, start, center);
+
     .avatar {
       float: left;
       border-radius: 50%;
@@ -547,39 +563,49 @@ export default {
       position: relative;
       margin: 0;
     }
+
     .user-info {
       margin-right: 15px;
     }
   }
+
   .meta-box + .meta-box {
     margin-top: 15px;
   }
+
   .meta-box {
     font-size: $font-small;
     color: $silver-grey;
+
     .item {
       &:after {
         content: '\B7';
         margin: 0 0.4em;
       }
     }
+
     .classify {
       color: $brand;
       font-size: 500;
     }
+
     .username {
       color: $black-grey;
+
       &:hover {
         color: $brand;
       }
     }
+
     .tag {
       color: $silver-grey;
       cursor: pointer;
+
       &:hover {
         color: $brand;
       }
     }
+
     .tag + .tag {
       &:before {
         margin: 0 0.4em;
@@ -588,9 +614,11 @@ export default {
       }
     }
   }
+
   .action-list {
     display: inline-flex;
     display: -webkit-flex;
+
     .action-item {
       @include flex-box-center(row, start);
       cursor: pointer;
@@ -598,21 +626,25 @@ export default {
       height: 100%;
       text-align: center;
       min-width: 3.6rem;
+
       .icons {
         width: 1.8rem;
         height: 1.8rem;
         margin-left: 0;
         margin-right: 5px;
       }
+
       .icon-green {
         color: $green;
       }
+
       .item-num {
         color: $silver-grey;
         margin-left: 0.2em;
         font-weight: 400;
       }
     }
+
     .action-item + .action-item {
       margin-left: 3rem;
       border-left: none;

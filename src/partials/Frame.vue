@@ -22,7 +22,8 @@ import Elevator from 'components/Elevator'
 import AutoDialog from 'components/dialog/AutoDialog'
 import AdBlockDialog from 'components/dialog/AdBlockDialog'
 import { AUTO_DIALOG } from 'config/constant'
-import { $auth } from 'helper'
+import $auth from './../helper/auth'
+import { getSessionStorage, getLocalStorage } from './../helper/tool'
 
 export default {
   name: 'Frame',
@@ -48,11 +49,11 @@ export default {
     if (!$auth.checkSession()) {
       this.$vuexSetUserInfo({})
     } else {
-      if (!this.$util.getSessionStorage('userInfo')) {
+      if (!getSessionStorage('userInfo')) {
         this.$getUserInfo()
       }
     }
-    const isHadDisplay = this.$util.getLocalStorage(AUTO_DIALOG)
+    const isHadDisplay = getLocalStorage(AUTO_DIALOG)
     this.isShowAutoDlgFlag = !this.isMobile && !isHadDisplay
     if (this.isShowAutoDlgFlag) {
       this.$gtagTracking('auto-dialog', 'global', 'auto-dialog')

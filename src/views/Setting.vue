@@ -98,6 +98,7 @@
 <script>
 import UploadAvatar from 'components/UploadAvatar'
 import Markdown from 'components/markdown/Index'
+import { isLegalUrl, isLegalNick, getCurrentDate, getCurrentDateHMS } from './../helper/tool'
 
 export default {
   name: 'Setting',
@@ -156,8 +157,8 @@ export default {
         .getProfile({ _id: userInfoId })
         .then((result) => {
           Object.assign(this.fillForm, result)
-          let currentDateStr = new Date(this.$util.getCurrentDate()).Format('yyyy-MM-dd')
-          let currentTimeHMS = this.$util.getCurrentDateHMS()
+          let currentDateStr = new Date(getCurrentDate()).Format('yyyy-MM-dd')
+          let currentTimeHMS = getCurrentDateHMS()
           if (result.profile.avatar) {
             this.imgDataUrl = `/api/avatar/${result.profile.avatar}`
           }
@@ -182,7 +183,7 @@ export default {
     },
 
     isTheLegalNick(rule, value, callback) {
-      if (value && !this.$util.isLegalNick(value)) {
+      if (value && !isLegalNick(value)) {
         callback(new Error(this.$t('enterLegalNick')))
       } else {
         callback()
@@ -190,7 +191,7 @@ export default {
     },
 
     isTheLegalUrl(rule, value, callback) {
-      if (value && !this.$util.isLegalUrl(value)) {
+      if (value && !isLegalUrl(value)) {
         callback(new Error(this.$t('enterLegalUrl')))
       } else {
         callback()
@@ -260,6 +261,7 @@ export default {
   text-align: center;
   margin: auto;
   margin-top: 25px;
+
   .preview-avatar {
     width: 100px;
     height: 100px;
@@ -276,6 +278,7 @@ export default {
       width: 100%;
     }
   }
+
   .operation-area {
     display: flex;
     justify-content: center;
@@ -290,6 +293,7 @@ export default {
         margin-right: 0px;
       }
     }
+
     .operation-area {
       margin-left: 15px;
     }

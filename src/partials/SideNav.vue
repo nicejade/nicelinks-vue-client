@@ -68,6 +68,7 @@ Vue.use(MenuItem)
 
 import classify from 'config/classify'
 import { REPORT_PATH } from 'config/constant'
+import { openAuthorSite } from './../helper/tool'
 
 export default {
   name: 'SideNav',
@@ -133,7 +134,7 @@ export default {
 
     onJump2AuthorClick() {
       this.triggerSideNav()
-      this.$util.openAuthorSite('sidebar')
+      openAuthorSite('sidebar')
     },
 
     handleClick(item) {
@@ -161,9 +162,11 @@ export default {
 
 <style media="screen" lang="scss">
 @import './../assets/scss/variables.scss';
+
 .menu-expand .side-nav {
   height: 100%;
 }
+
 .side-nav {
   position: fixed;
   top: $header-mobile-height;
@@ -175,24 +178,29 @@ export default {
   text-align: left;
   z-index: $zindex-side-nav;
   transition: all 0.5s ease;
+
   &::-webkit-scrollbar {
     background: transparent;
     width: 0px;
   }
+
   &:hover::-webkit-scrollbar {
     background: transparent;
     width: 0px;
   }
+
   .el-menu-item {
     display: flex;
     align-items: center;
   }
+
   .sidenav-icon {
     width: 16px;
     height: 16px;
     margin-right: 10px;
     color: #130c0e;
   }
+
   &:after {
     content: '';
     position: absolute;
@@ -202,12 +210,14 @@ export default {
     width: calc(100vw - 100%);
     height: 100%;
   }
+
   .side-nav-close {
     position: absolute;
     top: 1.2rem;
     left: 1.2rem;
     color: $black;
   }
+
   .nicelinks-logo {
     margin: 2rem 0 0 0;
   }

@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import { $apis, $util } from 'helper'
+import { $apis } from 'helper'
+import { queryUrl2Obj } from './../helper/tool'
 
 export default {
   name: 'Account',
@@ -43,7 +44,7 @@ export default {
   methods: {
     dispatchActivate() {
       let params = {
-        activeToken: $util.query(window.location.href).activeToken,
+        activeToken: queryUrl2Obj(window.location.href).activeToken,
       }
       this.isLoading = true
       $apis

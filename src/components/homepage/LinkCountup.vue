@@ -18,6 +18,7 @@
 
 <script>
 import CountUp from 'components/CountUp'
+import { isElementInViewport } from './../../helper/tool'
 
 export default {
   name: 'LinkCountup',
@@ -61,12 +62,11 @@ export default {
     handleDisplayCount() {
       const countupNumberNode = document.getElementById('countup-number')
       const handleScrollEvent = (element) => {
-        const isInViewport = this.$util.isElementInViewport(countupNumberNode)
+        const isInViewport = isElementInViewport(countupNumberNode)
         if (isInViewport) {
           this.theDisplayCount = this.totalLinksCount
         }
       }
-
       window.addEventListener('scroll', handleScrollEvent)
     },
 
@@ -97,6 +97,7 @@ export default {
   background: $white-grey;
   background: -webkit-linear-gradient(to top, $white-grey, #eef2f3);
   background: linear-gradient(to top, $white-grey, #eef2f3);
+
   .top-crescent {
     position: absolute;
     top: -$crescent-height / 2;
@@ -105,6 +106,7 @@ export default {
     clip-path: ellipse(64% 50% at 50% 50%);
     background-color: $white;
   }
+
   .countup-number {
     display: block;
     margin-top: 10px;

@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { encryptPwd, isLegalEmail, isLegalPassword } from './../helper/tool'
+
 export default {
   name: 'ForgotPwd',
 
@@ -114,7 +116,7 @@ export default {
     validateEmail(rule, value, callback) {
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('enterEmailTip')))
-      } else if (!this.$util.isLegalEmail(value)) {
+      } else if (!isLegalEmail(value)) {
         callback(new Error(this.$t('enterLegalEmailTip')))
       } else {
         callback()
@@ -124,7 +126,7 @@ export default {
     validatePassword(rule, value, callback) {
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('enterPwdTip')))
-      } else if (!this.$util.isLegalPassword(value)) {
+      } else if (!isLegalPassword(value)) {
         callback(new Error(this.$t('enterLegalPwdTip')))
       } else {
         callback()
@@ -141,7 +143,7 @@ export default {
     launchResetPwd() {
       let params = {
         resetPasswordToken: this.$util.getUrlParam('resetPasswordToken'),
-        password: this.$util.encryptPwd(this.fillForm.password),
+        password: encryptPwd(this.fillForm.password),
         email: this.$util.getUrlParam('email'),
       }
       this.launchRequest(params)

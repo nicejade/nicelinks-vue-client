@@ -43,12 +43,14 @@
 
 <script>
 import { AUTO_DIALOG } from 'config/constant'
+import { setLocalStorage } from './../../helper/tool'
+
 export default {
   name: 'AutoDialog',
 
   methods: {
     onCloseClick() {
-      this.$util.setLocalStorage(AUTO_DIALOG, true)
+      setLocalStorage(AUTO_DIALOG, true)
       this.$emit('close')
     },
   },
@@ -67,6 +69,7 @@ $factor: 0.5rem;
   position: relative;
   width: $size;
   height: $size;
+
   &:before,
   &:after {
     content: '';
@@ -78,12 +81,15 @@ $factor: 0.5rem;
     background: $color;
     border-radius: $thickness;
   }
+
   &:before {
     transform: rotate(45deg);
   }
+
   &:after {
     transform: rotate(-45deg);
   }
+
   span {
     display: block;
   }
@@ -108,13 +114,16 @@ $factor: 0.5rem;
   padding: 2 * $factor;
   border-radius: 2 * $factor;
   z-index: $zindex-auto-dialog;
+
   .dlg-header {
     width: 100%;
     position: relative;
+
     .title {
       font-size: $font-large;
       font-weight: 500;
     }
+
     .btn-close {
       position: absolute;
       top: -10 * $factor;
@@ -132,9 +141,11 @@ $factor: 0.5rem;
       border-radius: 50%;
       cursor: pointer;
       transition: all 150ms;
+
       .icon-cross {
         @include cross(26px, #fff, 1px);
       }
+
       &:hover,
       &:focus {
         transform: rotateZ(90deg);
@@ -142,6 +153,7 @@ $factor: 0.5rem;
       }
     }
   }
+
   .pannel {
     display: flex;
     flex-direction: row;
@@ -149,6 +161,7 @@ $factor: 0.5rem;
     align-items: center;
     width: 100%;
     height: 40 * $factor;
+
     .item {
       display: flex;
       flex-direction: column;
@@ -156,10 +169,12 @@ $factor: 0.5rem;
       align-items: center;
       width: 40 * $factor;
       height: 100%;
+
       .qrcode {
         width: 32 * $factor;
         height: 32 * $factor;
       }
+
       .text {
         font-size: $font-small;
         color: $common-link;
@@ -173,6 +188,7 @@ $factor: 0.5rem;
     opacity: 0.618;
     right: -80 * $factor;
   }
+
   to {
     opacity: 1;
     right: 18 * $factor;

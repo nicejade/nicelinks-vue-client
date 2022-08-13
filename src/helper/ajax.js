@@ -1,5 +1,15 @@
 import axios from 'axios'
-import { $util, $errorReport } from 'helper'
+import $errorReport from './errorReport'
+import { setCurrentDate } from './tool'
+
+function queryString(url, query) {
+  let str = []
+  for (let key in query) {
+    str.push(key + '=' + query[key])
+  }
+  let paramStr = str.join('&')
+  return paramStr ? `${url}?${paramStr}` : url
+}
 
 function requestHandle(params) {
   return new Promise((resolve, reject) => {
@@ -12,7 +22,7 @@ function requestHandle(params) {
           redirectToIframe(res.request.responseURL)
         } else if (res.data) {
           // update current date according backend@17-07-27
-          $util.setCurrentDate(res.headers && res.headers.date)
+          setCurrentDate(res.headers && res.headers.date)
           if (res.data.success) {
             resolve(res.data.value)
           } else {
@@ -50,7 +60,7 @@ export default {
   get: function (url, params, op) {
     return requestHandle({
       method: 'get',
-      url: $util.queryString(url, params),
+      url: queryString(url, params),
     })
   },
 }

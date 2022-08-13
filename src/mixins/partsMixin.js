@@ -1,5 +1,6 @@
 import $config from 'config'
 import { mapMutations } from 'vuex'
+import { updateAfterFilterEmptyValue } from './../helper/tool'
 
 const getValueByName = (source = [], name = '') => {
   let result = source.filter((item) => {
@@ -77,7 +78,7 @@ export default {
         params.tags = decodeURIComponent(this.$route.params.tags)
       }
 
-      return this.$util.updateAfterFilterEmptyValue(params)
+      return updateAfterFilterEmptyValue(params)
     },
 
     $fetchSearch(params = {}, isLoadMore = false) {

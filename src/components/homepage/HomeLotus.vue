@@ -19,7 +19,7 @@
         <div class="unit-wrapper">
           <h1 class="headline large-font">{{ $t('niceLinksStr') }}</h1>
           <section class="hero-description">
-            <p v-html="$t('niceLinksDesc')"></p>
+            <p class="desc-text" v-html="$t('niceLinksDesc')"></p>
             <router-link
               to="/explore/all"
               class="gtag-track explore-all-link"
@@ -78,6 +78,7 @@ export default {
 
 .flower-container {
   position: relative;
+
   .unit-wrapper {
     position: absolute;
     width: 66%;
@@ -89,6 +90,7 @@ export default {
     opacity: 0;
     animation-delay: 2.75s;
     animation: show-text 1s 2.5s forwards cubic-bezier(0.1, 0.95, 0.59, 1.22);
+
     .headline {
       position: absolute;
       top: calc(50% - 2em);
@@ -98,6 +100,7 @@ export default {
       font-weight: 400;
       text-shadow: 0 0 2em $white;
     }
+
     .hero-description {
       position: absolute;
       top: 50%;
@@ -107,6 +110,12 @@ export default {
       line-height: 18px;
       text-align: center;
       text-shadow: 0 0 2em $white;
+
+      .desc-text {
+        font-weight: bolder;
+        line-height: 3rem;
+      }
+
       .explore-all-link {
         display: inline-block;
         box-sizing: border-box;
@@ -120,6 +129,7 @@ export default {
         border-radius: 2em;
         transition: all 0.2s ease;
         box-sizing: border-box;
+
         &:hover {
           color: $white;
           background-color: $producthunt;
@@ -412,6 +422,7 @@ export default {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -421,6 +432,7 @@ export default {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 0.7;
   }
@@ -431,6 +443,7 @@ export default {
     opacity: 0;
     transform: translateY(1em);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -450,12 +463,15 @@ export default {
     .flower {
       font-size: 1.8rem !important;
     }
+
     .unit-wrapper {
       width: 100%;
+
       .hero-description {
         font-size: 2.2rem;
         padding: 0px 20px;
         line-height: 2.2rem;
+
         .explore-all-link {
           padding: 0.25em 2em;
           margin-top: 1em;
@@ -481,6 +497,7 @@ export default {
     .flower {
       font-size: 1.8rem !important;
     }
+
     .unit-wrapper .hero-description {
       font-size: 1.8rem;
       padding: 0px 10px;
@@ -498,13 +515,16 @@ export default {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 .fade-in {
   animation-name: fade-in;
 }
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -515,6 +535,7 @@ export default {
 .animated.infinite {
   animation-iteration-count: infinite;
 }
+
 .animated.hinge {
   animation-duration: 6s;
 }

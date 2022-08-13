@@ -3,17 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 *:focus {
   outline: none !important;
 }
+
 body {
   font: normal 14px/1 'Open Sans', 'SF Pro Text', 'Myriad Set Pro', 'SF Pro Icons', 'Helvetica Neue',
     'Helvetica', 'Arial', sans-serif;
 }
+
 html {
   font-size: 62.5%;
   height: 100%;
 }
+
 @media (max-width: 960px) {
   html {
     font-size: 65%;
@@ -30,36 +34,46 @@ h5 {
   padding: 0;
   line-height: 1;
 }
+
 h2 {
   font-size: $font-large;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 em {
   font-style: normal;
 }
+
 strong {
   font-weight: 500;
 }
+
 textarea {
   resize: vertical;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
+
   th {
     font-weight: normal;
   }
 }
+
 label {
   font-weight: normal;
 }
+
 a {
   color: $brand;
   text-decoration: none;
 }
+
 a:hover,
 a:visited,
 a:link {
@@ -70,12 +84,15 @@ a:link {
 input::-webkit-input-placeholder {
   color: $border-grey !important;
 }
+
 input::-moz-placeholder {
   color: $border-grey !important;
 }
+
 input:-moz-placeholder {
   color: $border-grey !important;
 }
+
 input:-ms-input-placeholder {
   color: $border-grey !important;
 }
@@ -122,20 +139,24 @@ input:-ms-input-placeholder {
 .form-group {
   text-align: left;
   margin-bottom: 25px;
+
   .control-label {
     text-align: right;
     font-weight: normal;
     padding-top: 10px;
+
     em {
       color: $red;
       padding-right: 3px;
     }
   }
+
   .col-sm-3 {
     display: inline-block;
     width: 24.5%;
     text-align: left;
   }
+
   .col-sm-9 {
     display: inline-block;
     width: 73.5%;
@@ -184,12 +205,15 @@ input:-ms-input-placeholder {
   100% {
     transform: scale(1, 1);
   }
+
   25% {
     transform: scale(0.9, 1.1);
   }
+
   50% {
     transform: scale(1.1, 0.9);
   }
+
   75% {
     transform: scale(0.95, 1.05);
   }
@@ -210,33 +234,42 @@ input:-ms-input-placeholder {
 #post-page #waline {
   width: 100%;
   min-width: 30rem;
+
   .vbtn {
     display: none;
   }
+
   .primary {
     display: block;
   }
+
   .vcards {
     ul {
       padding-left: 1rem;
+
       li {
         list-style: circle;
       }
     }
   }
+
   .v {
     padding: 0 20px;
   }
+
   .v[data-class='v'] {
     blockquote {
       border-left-width: 4px;
+
       p {
         color: $silver-grey;
       }
     }
+
     .vcomment {
       display: block;
     }
+
     .vpanel {
       margin: 0.5em auto;
     }
@@ -245,11 +278,13 @@ input:-ms-input-placeholder {
 
 /* ----------------------title font define---------------------- Start*/
 .large-font {
-  font-size: 4.6rem;
+  font-size: 5rem;
 }
+
 .medium-font {
   font-size: 3.8rem;
 }
+
 .small-font {
   font-size: 3rem;
 }
@@ -258,9 +293,11 @@ input:-ms-input-placeholder {
   .large-font {
     font-size: 3.8rem;
   }
+
   .medium-font {
     font-size: 3rem;
   }
+
   .small-font {
     font-size: 2.56rem;
   }
@@ -270,13 +307,16 @@ input:-ms-input-placeholder {
   .large-font {
     font-size: 3.8rem;
   }
+
   .medium-font {
     font-size: 2.88rem;
   }
+
   .small-font {
     font-size: 2.56rem;
   }
 }
+
 /* ----------------------title font define---------------------- End*/
 
 .text-center {

@@ -6,6 +6,7 @@
     border: 1px solid $border-grey;
     outline: none;
     box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075);
+
     &:hover {
       border: 1px solid $brand;
     }
@@ -19,48 +20,55 @@
   .el-table th {
     text-align: center;
   }
+
   .el-tag {
     margin: auto 5px;
   }
+
   .el-table td,
   .el-table th {
     height: 60px;
   }
+
   .el-table .cell {
     line-height: 60px;
     height: 60px;
   }
+
   .el-badge__content.is-fixed {
     top: 8px;
   }
+
   .el-button--mini {
     padding: 0 4px;
     border-radius: 0px;
     min-width: 60px;
   }
+
   .el-card {
     border: none;
+
     .el-card__header {
       text-align: left;
     }
   }
+
   .box-card {
     .form-group {
       width: 100%;
       min-height: 36px;
     }
+
     .clearfix:before,
     .clearfix:after {
       display: table;
       content: '';
     }
+
     .clearfix:after {
       clear: both;
     }
-    .el-input,
-    .el-textarea {
-      max-width: 300px;
-    }
+
     .el-breadcrumb {
       font-size: 1.1em;
     }
@@ -68,18 +76,22 @@
 
   .el-menu {
     background-color: $white;
+
     .el-menu-item {
       color: $black;
       font-size: $font-small;
     }
+
     .el-submenu {
       .el-submenu__title {
         color: $black;
         font-size: $font-small;
       }
+
       .el-menu-item {
         color: $black;
       }
+
       .el-menu {
         background-color: $grey;
       }
@@ -101,6 +113,7 @@
     background-color: $brand;
     border-color: $brand;
     color: $white;
+
     &:hover,
     &:focus,
     &:active {
@@ -116,6 +129,7 @@
   .el-button--text {
     color: $black;
     transition: color 100ms cubic-bezier(0.125, 0.565, 0.86, 0.31);
+
     &:hover,
     &:focus,
     &:active {
@@ -147,10 +161,12 @@
     width: 86%;
     min-width: 300px;
     max-width: 450px;
+
     .el-message-box__header {
       .el-message-box__title {
         display: inline-block;
       }
+
       .el-message-box__close {
         float: right;
       }
@@ -163,9 +179,11 @@
   .el-tabs__nav {
     border-bottom: none !important;
   }
+
   .el-tabs__nav-wrap {
     margin-bottom: 0px !important;
   }
+
   .el-tabs__nav {
     background-color: #ffffff;
   }
@@ -176,12 +194,15 @@
   100% {
     transform: scale(1, 1);
   }
+
   25% {
     transform: scale(0.9, 1.1);
   }
+
   50% {
     transform: scale(1.1, 0.9);
   }
+
   75% {
     transform: scale(0.95, 1.05);
   }

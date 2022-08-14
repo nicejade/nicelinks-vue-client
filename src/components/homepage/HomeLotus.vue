@@ -19,7 +19,13 @@
         <div class="unit-wrapper">
           <h1 class="headline large-font">{{ $t('niceLinksStr') }}</h1>
           <section class="hero-description">
-            <p class="desc-text" v-html="$t('niceLinksDesc')"></p>
+            <strong class="desc-text function"
+              >开放型新一代导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；</strong
+            >
+            <strong class="desc-text objective"
+              >在「<mark class="mark">倾城之链</mark
+              >」，您可以轻松发现、学习、分享更多有用或有趣的事物。</strong
+            >
             <router-link
               to="/explore/all"
               class="gtag-track explore-all-link"
@@ -42,26 +48,9 @@ import pageMixin from 'mixins/pageMixin.js'
 export default {
   name: 'HomeLotus',
 
-  data() {
-    return {
-      isMobile: window.innerWidth <= 960,
-    }
-  },
+  data() {},
 
   mixins: [pageMixin],
-
-  components: {},
-
-  created() {},
-
-  methods: {},
-
-  locales: {
-    zh: {
-      niceLinksDesc:
-        '倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；<br>在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。',
-    },
-  },
 }
 </script>
 
@@ -112,21 +101,38 @@ export default {
       text-shadow: 0 0 2em $white;
 
       .desc-text {
-        font-weight: bolder;
-        line-height: 3rem;
+        display: block;
+        font-weight: bold;
+        line-height: 2.6rem;
+      }
+
+      .function {
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(50deg, #17223b, #ff6768);
+        -webkit-background-clip: text;
+      }
+
+      .objective {
+        margin-top: 1.8rem;
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(220deg, #17223b, #ff6768);
+        -webkit-background-clip: text;
+
+        .mark {
+          background-color: transparent;
+        }
       }
 
       .explore-all-link {
         display: inline-block;
-        box-sizing: border-box;
         border: 2px solid $producthunt;
-        padding: 0.25em 3em;
-        margin-top: 3.6em;
+        padding: 2rem 8rem;
+        margin-top: 3.6rem;
         color: $producthunt;
         font-weight: bold;
         font-size: 2.4rem;
-        line-height: 2em;
-        border-radius: 2em;
+        line-height: 2.6rem;
+        border-radius: 4rem;
         transition: all 0.2s ease;
         box-sizing: border-box;
 
@@ -150,8 +156,8 @@ export default {
   display: block;
   height: 14em;
   width: 14em;
-  margin: 5em auto 4.25em;
   font-size: 22px;
+  margin: 5em auto 4.25em;
   transition: all 0.2s ease-out;
 }
 
@@ -470,13 +476,12 @@ export default {
       .hero-description {
         font-size: 2.2rem;
         padding: 0px 20px;
-        line-height: 2.2rem;
+        line-height: 2.6rem;
 
         .explore-all-link {
-          padding: 0.25em 2em;
-          margin-top: 1em;
-          margin-bottom: 1em;
-          line-height: 1.4em;
+          padding: 1rem 4rem;
+          margin: 1.8rem auto;
+          line-height: 2.6rem;
         }
       }
     }

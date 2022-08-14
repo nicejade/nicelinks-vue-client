@@ -26,15 +26,15 @@
               >在「<mark class="mark">倾城之链</mark
               >」，您可以轻松发现、学习、分享更多有用或有趣的事物。</strong
             >
-            <router-link
-              to="/explore/all"
+            <a
+              href="/explore/all"
               class="gtag-track explore-all-link"
               data-action="mian-explore-all"
               data-category="index"
               data-label="explore-all"
             >
               {{ $t('exploreNice') }}
-            </router-link>
+            </a>
           </section>
         </div>
       </div>

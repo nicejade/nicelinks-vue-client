@@ -43,9 +43,7 @@ export default {
   },
   */
 
-  created() {},
-
-  mounted() {
+  created() {
     this.updatePageMeta()
     this.setFetchData()
 
@@ -54,7 +52,9 @@ export default {
     if (sortTypeArray.indexOf(sortVal) < 0) {
       this.$fetchSearch()
     }
+  },
 
+  mounted() {
     this.$nextTick(() => {
       const classify = this.$route.params.classify
       if (window.IS_FROM_GOOGLE_ADS && classify !== 'all') {
@@ -104,8 +104,10 @@ export default {
 
 <style type="text/css" lang="scss" scoped>
 @import '../assets/scss/variables.scss';
+
 .entry-list {
   position: relative;
+
   .operate-tabs-space {
     margin-bottom: -15px;
   }

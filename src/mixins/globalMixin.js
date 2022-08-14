@@ -77,7 +77,7 @@ Vue.mixin({
       if (!value || value.length <= 0) {
         callback(new Error(this.$t('pleaseEnter') + this.$t('linkAddressStr')))
       }
-      if (isLegalUrl(value)) {
+      if (!isLegalUrl(value)) {
         callback(new Error(this.$t('enterLegalUrl')))
       } else {
         callback()

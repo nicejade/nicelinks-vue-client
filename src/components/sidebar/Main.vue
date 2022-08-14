@@ -14,20 +14,6 @@
         src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
       />
     </div>
-    <h2 class="aside-widget-title">{{ $t('productHuntUpvote') }}</h2>
-    <a
-      href="https://nicelinks.site/redirect?url=https://www.producthunt.com/posts/nice-links?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-nice-links"
-      target="_blank"
-      class="sub-content"
-      style="display: flex;"
-      ><img
-        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=237464&theme=light"
-        onerror="javascript:this.src='https://lovejade.oss-cn-shenzhen.aliyuncs.com/product-hunt.png';"
-        alt="NICE LINKS - Is designed to gather around the world's excellent websites. | Product Hunt Embed"
-        style="width: 250px; height: 54px; margin: auto;"
-        width="250px"
-        height="54px"
-    /></a>
     <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
     <reward-me class="sub-content" />
   </aside>
@@ -111,13 +97,16 @@ export default {
   text-align: left;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   padding: 0 1.5rem;
+
   .sub-content {
     margin: 2rem auto;
     text-align: center;
   }
+
   .aside-list-li {
     list-style-type: bengali;
   }
+
   .aside-list-a {
     color: $common-link;
     font-size: $font-medium;

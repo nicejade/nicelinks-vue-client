@@ -32,6 +32,5 @@ export default [
     { key: '历史', value: 'History' },
     { key: '人文', value: 'Humanity' },
     { key: '娱乐', value: 'Entertainment' },
-    { key: '宗教', value: 'Religion' },
   ],
 ]

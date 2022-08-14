@@ -385,7 +385,7 @@ export default {
         }
 
         &:hover {
-          color: $brand;
+          background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 81%);
         }
       }
     }

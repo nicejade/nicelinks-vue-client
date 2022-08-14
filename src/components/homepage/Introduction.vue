@@ -57,7 +57,7 @@ export default {
   }
 
   .desc {
-    margin-top: 20px;
+    margin-top: 1.8rem;
     text-align: center;
     font-size: $font-medium;
     line-height: 2.6rem;

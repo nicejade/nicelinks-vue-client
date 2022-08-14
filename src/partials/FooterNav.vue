@@ -154,6 +154,7 @@
           >晚晴幽草轩</a
         >
         出品
+        <br class="show-on-small-screen" />
         <a
           class="beian-link gtag-track"
           data-action="beian"
@@ -218,7 +219,7 @@ export default {
 
 .footer {
   position: relative;
-  padding: 15px 0;
+  padding: 2rem 0;
   // 参见：https://uigradients.com/
   @include get-gradient-background(#ece9e6, #ffffff, top);
 
@@ -323,9 +324,17 @@ export default {
   display: block;
 }
 
+.show-on-small-screen {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .show-on-big-screen {
     display: none;
+  }
+
+  .show-on-small-screen {
+    display: block;
   }
 }
 </style>

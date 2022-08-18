@@ -48,8 +48,6 @@ import pageMixin from 'mixins/pageMixin.js'
 export default {
   name: 'HomeLotus',
 
-  data() {},
-
   mixins: [pageMixin],
 }
 </script>

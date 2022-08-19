@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
-    "babel-polyfill": "^6.23.0",
     "countup": "^1.8.2",
     "crypto-js": "^3.1.9-1",
     "element-ui": "2.15.7",
@@ -45,7 +44,6 @@
     "lodash": "^4.17.21",
     "marked": "^0.3.19",
     "medium-zoom": "^1.0.6",
-    "qrcodejs2": "^0.0.2",
     "raven-js": "^3.19.1",
     "vue": "^2.1.10",
     "vue-content-placeholder": "^1.1.1",

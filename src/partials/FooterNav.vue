@@ -201,12 +201,9 @@ export default {
 
   methods: {
     filterEntryInMobile(sourceData) {
-      const isMobile = this.$isMobileScreen()
+      const isMobile = this.$isMobile
       return sourceData.filter((item) => {
-        return (
-          (isMobile ? !item.notInMobile : true) &&
-          (this.$isFromQuickapp() ? !item.notInQuickapp : true)
-        )
+        return isMobile ? !item.notInMobile : true
       })
     },
   },

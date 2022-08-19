@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <search class="mobile-search" v-if="$isMobileScreen()" />
+            <search class="mobile-search" v-if="$isMobile" />
             <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
             <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs" />
             <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
@@ -90,6 +90,7 @@ export default {
 
 <style type="text/css" lang="scss" scoped>
 @import '../assets/scss/variables.scss';
+
 .entry-list {
   .operate-tabs-space {
     margin-bottom: -15px;

@@ -26,7 +26,8 @@
                       <el-input
                         v-model="fillForm.title"
                         :placeholder="$t('pleaseEnter') + $t('linkNameStr')"
-                      ></el-input>
+                      >
+                      </el-input>
                     </el-form-item>
                   </div>
                 </div>
@@ -62,7 +63,7 @@
                         <el-option
                           v-for="item in themeList"
                           :key="item.key"
-                          :label="$getCurrentLang() === 'en' ? item.value : item.key"
+                          :label="item.key"
                           :value="item.value"
                         >
                         </el-option>
@@ -306,11 +307,13 @@ export default {
 
 .entry-list {
   padding: 0 3rem;
+
   .share-title {
     padding: 2rem 0;
     text-align: left;
     font-weight: 700;
   }
+
   .operate-area {
     padding-bottom: 40px;
   }
@@ -319,6 +322,7 @@ export default {
 @media screen and (max-width: $small-mobile-screen) {
   .entry-list {
     padding: 0 20px;
+
     .share-title {
       padding: 20px 0;
     }

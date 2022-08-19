@@ -43,12 +43,6 @@ export default {
     },
   },
 
-  computed: {
-    isShowFriendFlag() {
-      return !this.$isFromQuickapp()
-    },
-  },
-
   watch: {},
 
   components: {

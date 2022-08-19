@@ -24,10 +24,6 @@ export default {
 
   mixins: [partsMixin],
 
-  data() {
-    return {}
-  },
-
   watch: {},
 
   components: {},

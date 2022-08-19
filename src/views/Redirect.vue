@@ -91,6 +91,7 @@ export default {
     this.isalive = !(paramObj.alive && paramObj.alive === '0')
     this.targetPath = `${this.targetWebsite}?utm_source=nicelinks.site`
     if (this.isAutoRedirect) {
+      this.$gtagTracking('auto-jump', 'redirect', 'auto-jump')
       window.location.href = this.targetPath
     }
   },

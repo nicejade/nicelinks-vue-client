@@ -66,6 +66,7 @@ import { $apis, $util, $lodash } from 'helper'
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
 Vue.prototype.$_ = $lodash
+Vue.prototype.$isMobile = window.innerWidth <= 960
 Vue.prototype.$setPageTitle = (title = '') => {
   document.title = `${title} - ${NICE_LINKS_NAME}`
 }

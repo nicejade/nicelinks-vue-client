@@ -203,7 +203,7 @@ export default {
       this.$refs['fillForm'].validate((valid) => {
         if (valid) {
           this.isLoading = true
-          let params = this.$_.cloneDeep(this.fillForm)
+          let params = this.$cloneDeep(this.fillForm)
           delete params.username
           this.$apis
             .setProfile(params)

@@ -131,7 +131,7 @@
           :data-action="'social-' + item.class"
           data-category="footer"
           :data-label="'social-' + item.class"
-          :href="$util.assembleExternalLink(item.path + item.name)"
+          :href="assembleExternalLink(item.path + item.name)"
           :title="item.title"
           target="_blank"
           rel="noopener"
@@ -172,6 +172,8 @@
 </template>
 
 <script>
+import endsWith from 'lodash/endsWith'
+
 import pageMixin from 'mixins/pageMixin.js'
 import $config from 'config'
 import { getCurrentDate } from './../helper/tool'
@@ -188,16 +190,10 @@ export default {
 
   mixins: [pageMixin],
 
-  computed: {},
-
-  components: {},
-
   created() {
     let currentYear = new Date(getCurrentDate()).getFullYear()
     this.copyright = `Copyright © ${currentYear}`
   },
-
-  mounted() {},
 
   methods: {
     filterEntryInMobile(sourceData) {
@@ -205,6 +201,11 @@ export default {
       return sourceData.filter((item) => {
         return isMobile ? !item.notInMobile : true
       })
+    },
+
+    assembleExternalLink(url) {
+      const separator = endsWith(url, '/') ? '' : '/'
+      return `${url}${separator}?utm_source=nicelinks.site`
     },
   },
 }

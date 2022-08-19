@@ -1,5 +1,3 @@
-const $lodash = require('./lodash').default
-
 if (typeof String.prototype.startsWith !== 'function') {
   window.String.prototype.startsWith = function (prefix) {
     return this.slice(0, prefix.length) === prefix
@@ -78,23 +76,6 @@ export default {
     } else {
       return null
     }
-  },
-
-  // 获取字符串实际长度(包含汉字,汉字统一按照 2 字节算;)
-  getByteLength(str = '') {
-    if (typeof str !== 'string') return str.length
-    return str.replace(/[\\u4E00-\\u9FFF]+/g, 'aa').length
-  },
-
-  getRedirectLink(url, isalive, isauto) {
-    const more = isalive ? '' : `&alive=0`
-    const auto = isauto ? '&isauto=1' : ''
-    return `https://nicelinks.site/redirect?url=${url}${more}${auto}`
-  },
-
-  assembleExternalLink(url) {
-    const separator = $lodash.endsWith(url, '/') ? '' : '/'
-    return `${url}${separator}?utm_source=nicelinks.site`
   },
 
   addWalineComment() {

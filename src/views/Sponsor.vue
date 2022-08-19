@@ -54,10 +54,6 @@
 export default {
   name: 'Sponsor',
 
-  data() {
-    return {}
-  },
-
   watch: {},
 
   components: {},

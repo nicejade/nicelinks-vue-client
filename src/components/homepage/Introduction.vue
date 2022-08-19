@@ -15,18 +15,6 @@
 export default {
   name: 'Introduction',
 
-  data() {
-    return {
-      isMobile: window.innerWidth <= 960,
-    }
-  },
-
-  components: {},
-
-  created() {},
-
-  methods: {},
-
   locales: {
     zh: {
       forFindMoreTitle: '探索更广阔的世界，为您',

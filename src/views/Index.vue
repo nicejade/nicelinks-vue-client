@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <search class="mobile-search" v-if="$isMobileScreen()" />
-    <HomeLotus :class="{ 'mobile-search-serving': isMobile }"></HomeLotus>
+    <search class="mobile-search" v-if="$isMobile" />
+    <HomeLotus :class="{ 'mobile-search-serving': $isMobile }"></HomeLotus>
     <NiceFantasy></NiceFantasy>
     <Introduction></Introduction>
     <LinkCountup></LinkCountup>
@@ -17,25 +17,11 @@ import LinkCountup from 'components/homepage/LinkCountup'
 export default {
   name: 'Index',
 
-  data() {
-    return {
-      isMobile: window.innerWidth <= 960,
-    }
-  },
-
   components: {
     HomeLotus,
     NiceFantasy,
     Introduction,
     LinkCountup,
   },
-
-  beforeCreate() {},
-
-  created() {},
-
-  mounted() {},
-
-  methods: {},
 }
 </script>

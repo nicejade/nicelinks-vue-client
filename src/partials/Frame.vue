@@ -1,12 +1,12 @@
 <template>
   <div class="page-wrap">
     <header-nav></header-nav>
-    <side-nav v-if="isMobile"></side-nav>
+    <side-nav v-if="$isMobile"></side-nav>
     <main @click="onHideMenuClick" class="main">
       <router-view :key="$route.path"></router-view>
     </main>
     <footer-nav />
-    <elevator v-if="!isMobile" />
+    <elevator v-if="!$isMobile" />
     <auto-dialog v-if="isShowAutoDlgFlag" @close="onHandleClose" />
     <ad-block-dialog v-if="isInstallAdBlock" @close="onHandleAdBlockClose" />
   </div>
@@ -30,7 +30,6 @@ export default {
 
   data() {
     return {
-      isMobile: window.innerWidth <= 960,
       isShowAutoDlgFlag: false,
       isInstallAdBlock: false,
     }
@@ -54,7 +53,7 @@ export default {
       }
     }
     const isHadDisplay = getLocalStorage(AUTO_DIALOG)
-    this.isShowAutoDlgFlag = !this.isMobile && !isHadDisplay
+    this.isShowAutoDlgFlag = !this.$isMobile && !isHadDisplay
     if (this.isShowAutoDlgFlag) {
       this.$gtagTracking('auto-dialog', 'global', 'auto-dialog')
     }
@@ -78,7 +77,7 @@ export default {
     ...mapMutations(['$setIsLoadRouterInlineJs']),
 
     runAdsChecker() {
-      if (this.isMobile || this.isShowAutoDlgFlag) return
+      if (this.$isMobile || this.isShowAutoDlgFlag) return
 
       const elem = document.createElement('div')
       elem.className = 'adsbox google-ad'

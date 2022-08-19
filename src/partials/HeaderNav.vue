@@ -89,7 +89,7 @@
           </el-dropdown>
         </div>
 
-        <div class="search-area" id="search-area" v-if="!isMobile">
+        <div class="search-area" id="search-area" v-if="!$isMobile">
           <search />
         </div>
 
@@ -115,8 +115,8 @@
         </div>
         <div v-else class="not-loggedin">
           <el-button type="text" @click="onGotoLoginClick">{{ $t('signIn') }}</el-button>
-          <span v-if="isShowSignUp">/</span>
-          <el-button v-if="isShowSignUp" type="text" @click="onGotoSignUpClick">
+          <span>/</span>
+          <el-button type="text" @click="onGotoSignUpClick">
             {{ $t('signUp') }}
           </el-button>
         </div>
@@ -146,7 +146,6 @@ export default {
   data() {
     return {
       isShowDlgFlag: false,
-      isMobile: window.innerWidth <= 1200,
       navList: Object.freeze($config.classify),
     }
   },
@@ -162,7 +161,7 @@ export default {
 
   computed: {
     userSign() {
-      if (this.userInfo && !this.isMobile) {
+      if (this.userInfo && !this.$isMobile) {
         const nickname = this.userInfo.profile && this.userInfo.profile.nickname
         return nickname || this.userInfo.username || this.userInfo.email
       }
@@ -178,9 +177,6 @@ export default {
         let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
-    },
-    isShowSignUp() {
-      return window.innerWidth >= 480 || this.$getCurrentLang() === 'zh'
     },
     getAboutWebsiteLink() {
       return `https://nicelinks.site/about?utm_source=nicelinks.site`

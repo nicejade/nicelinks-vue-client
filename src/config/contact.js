@@ -4,7 +4,6 @@ export default [
     name: 'jeffjade',
     class: 'weibo',
     title: '微博',
-    notInQuickapp: true,
   },
   {
     path: 'https://nicelinks.site/redirect?url=https://github.com/',
@@ -23,7 +22,6 @@ export default [
     name: '9aae3d8f4c3d',
     class: 'jianshu',
     title: '简书',
-    notInQuickapp: true,
   },
   {
     path: 'https://nicelinks.site/redirect?url=https://twitter.com/',

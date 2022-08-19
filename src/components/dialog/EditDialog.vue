@@ -23,7 +23,8 @@
               <el-input
                 v-model="fillForm.title"
                 :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')"
-              ></el-input>
+              >
+              </el-input>
             </el-form-item>
           </div>
 
@@ -56,7 +57,7 @@
                   <el-option
                     v-for="item in themeList"
                     :key="item.key"
-                    :label="$getCurrentLang() === 'en' ? item.value : item.key"
+                    :label="item.key"
                     :value="item.value"
                   >
                   </el-option>

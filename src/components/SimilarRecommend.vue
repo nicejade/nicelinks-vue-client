@@ -45,7 +45,6 @@ export default {
       linksArr: [],
       RECOMMEND_NUM: 5,
       isShowPlaceholder: true,
-      isMobile: window.innerWidth <= 960,
     }
   },
 
@@ -101,12 +100,12 @@ export default {
     },
 
     getAssembleTitle(item) {
-      const limit = this.isMobile ? 30 : 50
+      const limit = this.$isMobile ? 30 : 50
       return interceptString(item.title, limit)
     },
 
     getAssembleDesc(item) {
-      const limit = this.isMobile ? 40 : 60
+      const limit = this.$isMobile ? 40 : 60
       const content =
         marked(item.review, {
           sanitize: false,

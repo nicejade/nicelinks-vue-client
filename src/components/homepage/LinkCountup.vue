@@ -1,6 +1,6 @@
 <template>
   <div class="countup-area">
-    <div class="top-crescent" v-if="!isMobile"></div>
+    <div class="top-crescent" v-if="!$isMobile"></div>
     <h2 class="countup-title medium-font">{{ $t('countupText') }}</h2>
     <CountUp
       id="countup-number"
@@ -25,7 +25,6 @@ export default {
 
   data() {
     return {
-      isMobile: window.innerWidth <= 960,
       theDisplayCount: 0,
       totalLinksCount: 0,
       countUpoptions: {

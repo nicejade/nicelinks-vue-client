@@ -28,14 +28,6 @@ Vue.mixin({
       return $auth.checkSession()
     },
 
-    $getCurrentLang() {
-      return Vue.config.lang || 'zh'
-    },
-
-    $isMobileScreen() {
-      return window.innerWidth <= 960
-    },
-
     $switchRouteByExplore(name = '') {
       if (!name) {
         return
@@ -94,10 +86,6 @@ Vue.mixin({
         event_category: category,
         event_label: label,
       })
-    },
-
-    $isFromQuickapp() {
-      return this.$util.getUrlParam('utm_source') === 'quickapp'
     },
   },
 })

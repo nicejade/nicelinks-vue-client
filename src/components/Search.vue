@@ -55,7 +55,7 @@ export default {
 
   methods: {
     switchSerachShowHide() {
-      if (this.$isMobileScreen()) {
+      if (this.$isMobile) {
         document.addEventListener('touchstart', (elem) => {
           this.startPageX = elem.touches[0].pageX
           this.startPageY = elem.touches[0].pageY
@@ -129,7 +129,7 @@ export default {
     handleFetchNiceLinks(queryString, callback) {
       this.keywordBackup = queryString
       if (queryString === '' && queryString.trim() === '') {
-        const defSize = this.$isMobileScreen() ? 8 : 16
+        const defSize = this.$isMobile ? 8 : 16
         return this.$apis
           .getRandomLinks({ size: defSize })
           .then((result) => {
@@ -154,7 +154,7 @@ export default {
     handleIconClick() {},
 
     handleSearchFocus() {
-      if (this.$isMobileScreen()) {
+      if (this.$isMobile) {
         if (isAndroidSystem()) {
           document.querySelector('.search-autocomplete').style.display = 'none'
           setTimeout(() => {
@@ -170,7 +170,7 @@ export default {
     },
 
     handleSearchBlur() {
-      if (this.$isMobileScreen()) return
+      if (this.$isMobile) return
       document.querySelector('.el-input__inner').style.width = '221px'
     },
 

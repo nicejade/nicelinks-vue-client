@@ -10,12 +10,6 @@ import { getRandomInt, specifiedPadding } from './../../helper/tool'
 export default {
   name: 'NiceFantasy',
 
-  data() {
-    return {
-      isMobile: window.innerWidth <= 960,
-    }
-  },
-
   computed: {
     niceImageSrc() {
       const primaryPath = `//image.nicelinks.site/jpg/nice-links-@#.jpg`
@@ -23,17 +17,9 @@ export default {
       const thePathKey = specifiedPadding(randomNum, 3, '0')
       const smallScreenParam = '?imageView2/1/w/640/h/360/interlace/1/ignore-error/1'
       const resultPath = primaryPath.replace('@#', thePathKey)
-      return this.isMobile ? resultPath + smallScreenParam : resultPath
+      return this.$isMobile ? resultPath + smallScreenParam : resultPath
     },
   },
-
-  components: {},
-
-  created() {},
-
-  methods: {},
-
-  locales: {},
 }
 </script>
 

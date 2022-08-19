@@ -23,6 +23,8 @@
 
 <script>
 import marked from 'marked'
+import throttle from 'lodash/throttle'
+
 import $document from './../helper/document'
 import { filterHtmlTag, sliceToAheadTarget } from './../helper/tool'
 import { isAndroidSystem, isIosSystem } from './../helper/system'
@@ -85,7 +87,7 @@ export default {
     },
 
     requestSearchTarget(queryString, callback) {
-      return this.$_.throttle(() => {
+      return throttle(() => {
         this.$apis
           .searchNiceLinks({
             keyword: queryString,

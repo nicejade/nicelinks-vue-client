@@ -140,7 +140,7 @@ export default {
       this.$emit('input', val)
     },
     pdata(val) {
-      this.fillForm = this.$_.cloneDeep(val)
+      this.fillForm = this.$cloneDeep(val)
     },
   },
 
@@ -150,7 +150,7 @@ export default {
         if (valid) {
           this.isLoading = true
 
-          let params = this.$_.clone(this.fillForm, true)
+          let params = this.$clone(this.fillForm, true)
           // 其基本信息不能改变，只是加上管理者 Id & Role @17-10-02；
           params.managerId = this.userInfo && this.userInfo._id
           params.createdBy = this.userInfo && this.userInfo.username

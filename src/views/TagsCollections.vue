@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import flattenDepth from 'lodash/flattenDepth'
+
 import pageMixin from 'mixins/pageMixin.js'
 
 export default {
@@ -44,7 +46,7 @@ export default {
     this.$apis
       .getAllTags()
       .then((result) => {
-        this.tagsList = this.$_.flattenDepth(result.sort())
+        this.tagsList = flattenDepth(result.sort())
       })
       .catch((error) => {
         this.isLoading = false
@@ -66,6 +68,7 @@ export default {
 #tags-coll-page {
   .entry-list {
     padding: 15px;
+
     .classify-title {
       font-size: $font-large;
       font-weight: 500;

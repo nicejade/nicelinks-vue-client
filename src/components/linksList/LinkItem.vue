@@ -22,7 +22,7 @@
           >
         </div>
         <div class="meta-box">
-          <span class="item">分享于 {{ item.created | dateOffset }}</span>
+          <span class="item">分享于 {{ dateOffset(item.created) }}</span>
           <span>阅读数 {{ item.countup + 1 }}</span>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <a
         v-else
         class="title-link"
-        :href="$util.getRedirectLink(item.urlPath, item.alive)"
+        :href="getRedirectLink(item.urlPath, item.alive)"
         @click.stop="onStopPropagationClick('item-title')"
         target="_blank"
         rel="noopener"
@@ -199,9 +199,9 @@ import Heart from 'components/Heart.vue'
 import HeartBroken from 'components/HeartBroken.vue'
 
 import $config from 'config'
-import { NICE_LINKS } from 'config/constant'
+import { NICE_LINKS, REDIRECT_PATH } from 'config/constant'
 import { copyToClipboard } from './../../helper/system.js'
-import { getHostnameByUrl, interceptString } from './../../helper/tool'
+import { getCurrentDate, getHostnameByUrl, interceptString } from './../../helper/tool'
 
 export default {
   name: 'LinkItem',
@@ -272,6 +272,34 @@ export default {
   },
 
   methods: {
+    dateOffset(datetime = '') {
+      if (!arguments.length) return ''
+
+      const now = new Date(getCurrentDate()).getTime()
+      const offsetValue = now - new Date(datetime).getTime()
+      let minute = 1000 * 60
+      let hour = minute * 60
+      let day = hour * 24
+      let week = day * 7
+      let month = day * 30
+      let year = month * 12
+
+      let unitArr = ['年前', '月前', '周前', '天前', '小时前', '分钟前', '刚刚']
+      let offsetArr = [year, month, week, day, hour, minute].map((item, index) => {
+        return {
+          value: offsetValue / item,
+          unit: unitArr[index],
+        }
+      })
+
+      for (let key in offsetArr) {
+        if (offsetArr[key].value >= 1) {
+          return parseInt(offsetArr[key].value) + ' ' + offsetArr[key].unit
+        }
+      }
+      return unitArr[6]
+    },
+
     getUserInfoByUsername() {
       let params = { username: this.item.createdBy }
       this.$apis
@@ -387,6 +415,12 @@ export default {
       })
     },
 
+    getRedirectLink(url, isalive, isauto) {
+      const more = isalive ? '' : `&alive=0`
+      const auto = isauto ? '&isauto=1' : ''
+      return `${REDIRECT_PATH}${url}${more}${auto}`
+    },
+
     /* -----------------------onClickEvent-----------------------Start */
     onStopPropagationClick(action, category = 'post') {
       this.$gtagTracking(action, category, action)
@@ -432,7 +466,7 @@ export default {
 
     onVisitLinkClick(item) {
       this.$gtagTracking('visit-link', 'post', 'visit-link')
-      const targetLink = this.$util.getRedirectLink(item.urlPath, item.alive, true)
+      const targetLink = this.getRedirectLink(item.urlPath, item.alive, true)
       window.open(targetLink, item.title)
     },
   },

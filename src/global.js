@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-// import VueTouch from 'vue-touch'
-import Cookies from 'js-cookie'
-import { NICE_LINKS_NAME } from './config/constant'
+import clone from 'lodash/clone'
+import cloneDeep from 'lodash/cloneDeep'
 import {
   Pagination,
   Dialog,
@@ -54,35 +53,34 @@ Vue.use(CarouselItem)
 Vue.use(Loading.directive)
 Vue.use(VueI18n)
 
+import { $apis, $util } from 'helper'
+import { NICE_LINKS_NAME } from './config/constant'
+import $errorReport from './helper/errorReport'
+// Initialize the sentry error reporting @2017-10-29
+$errorReport.init()
+
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$message = Message
-// Vue.use(VueTouch, {name: 'v-touch'})
 
-import { $apis, $util, $lodash } from 'helper'
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
-Vue.prototype.$_ = $lodash
+
+Vue.prototype.$clone = clone
+Vue.prototype.$cloneDeep = cloneDeep
+
 Vue.prototype.$isMobile = window.innerWidth <= 960
 Vue.prototype.$setPageTitle = (title = '') => {
   document.title = `${title} - ${NICE_LINKS_NAME}`
 }
 
-import $errorReport from './helper/errorReport'
-// Initialize the sentry error reporting @2017-10-29
-$errorReport.init()
-
 import locales from './locales'
 import filters from './filters'
 
-/* inject i18n */
-// const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]
-// const lang = Cookies.get('lang') || (browserLanguage in locales ? browserLanguage : 'zh')
-const lang = Cookies.get('lang') || 'zh'
-Vue.config.lang = lang === 'en' ? 'en' : 'zh'
+Vue.config.lang = 'zh'
 Object.keys(locales).forEach((lang) => {
   Vue.locale(lang, locales[lang])
 })

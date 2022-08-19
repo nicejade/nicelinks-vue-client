@@ -53,7 +53,7 @@ export default {
     },
 
     assembleAjaxParams() {
-      let params = this.$_.cloneDeep(this.$requestParamList)
+      let params = this.$cloneDeep(this.$requestParamList)
       params.active = true
       params.userId = (this.userInfo && this.userInfo._id) || ''
 

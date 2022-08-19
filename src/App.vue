@@ -9,13 +9,5 @@ import './assets/scss/style.scss'
 
 export default {
   name: 'app',
-
-  data() {
-    return {}
-  },
-
-  mounted() {},
-
-  methods: {},
 }
 </script>

@@ -155,9 +155,15 @@ export const isLegalUsername = (str) => {
   return pattern.test(str)
 }
 
+// 获取字符串实际长度(包含汉字,汉字统一按照 2 字节算;)
+const getByteLength = (str = '') => {
+  if (typeof str !== 'string') return str.length
+  return str.replace(/[\\u4E00-\\u9FFF]+/g, 'aa').length
+}
+
 export const isLegalNick = (str) => {
   let pattern = /(.){2,18}$/
-  let byteNum = this.getByteLength(str)
+  let byteNum = getByteLength(str)
   return pattern.test(str) && byteNum <= 18 && byteNum >= 2
 }
 

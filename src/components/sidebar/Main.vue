@@ -10,6 +10,7 @@
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
     <div class="text-center">
       <img
+        class="miniprogram"
         alt="倾城之链.小程序"
         src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
       />
@@ -104,6 +105,12 @@ export default {
   .aside-list-a {
     color: $common-link;
     font-size: $font-medium;
+  }
+
+  .miniprogram {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 }
 </style>

@@ -95,7 +95,7 @@
       <div class="link-screenshot">
         <img
           data-zoomable
-          style="width: 100%;"
+          class="screenshot"
           :src="linkScreenshot"
           onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
           :alt="item.title + ' 倾城之链'"
@@ -583,6 +583,12 @@ export default {
   .link-screenshot {
     margin-bottom: 15px;
     filter: drop-shadow(0px 0px 15px lightgrey);
+
+    .screenshot {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
   }
 
   .info-block {

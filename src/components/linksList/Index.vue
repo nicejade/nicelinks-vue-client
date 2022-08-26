@@ -19,16 +19,18 @@
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
-      <router-link
+      <a
         class="gtag-track"
         data-action="route-entry"
         data-category="list"
         data-label="route-entry"
-        :to="getAssembleRoute(item)"
+        :href="getAssembleRoute(item)"
+        target="_blank"
+        ref="bookmark"
         v-if="isAbstract"
       >
         <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
-      </router-link>
+      </a>
       <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
       <slot name="link-share"></slot>
     </el-card>
@@ -100,6 +102,7 @@ export default {
         background-color: $white-grey;
       }
     }
+
     .el-card {
       text-align: left;
       border-bottom: 1px solid $item-border-color !important;

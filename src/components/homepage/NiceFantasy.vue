@@ -1,6 +1,6 @@
 <template>
   <section class="nice-fantasy">
-    <img :src="niceImageSrc" :alt="$t('niceLinksStr')" />
+    <img class="hero" :src="niceImageSrc" :alt="$t('niceLinksStr')" />
   </section>
 </template>
 
@@ -43,11 +43,12 @@ export default {
     margin-top: -1px;
   }
 
-  img {
+  .hero {
     position: relative;
     display: block;
     width: 90%;
     max-width: 1280;
+    aspect-ratio: 16 / 9;
     margin: 0 auto;
     border-radius: 3px;
   }

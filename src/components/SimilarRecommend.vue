@@ -171,7 +171,7 @@ export default {
         left: 0;
         @include flex-box-center(row, center, center);
         width: 100%;
-        height: 100%;
+        aspect-ratio: 16 / 9;
         background-color: $white-grey;
         color: $silver-grey;
       }

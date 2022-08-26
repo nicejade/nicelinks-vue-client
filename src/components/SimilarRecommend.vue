@@ -16,7 +16,7 @@
           <img
             v-show="!isShowPlaceholder"
             class="image"
-            :alt="item.title - 倾城之链"
+            :alt="getImgAlt(item)"
             :src="getScreenshotPath(item)"
             onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
           />
@@ -32,6 +32,7 @@
 
 <script>
 import { getHostnameByUrl, interceptString } from './../helper/tool'
+import { NICE_LINKS_NAME } from './../config/constant'
 import pageMixin from 'mixins/pageMixin.js'
 import marked from 'marked'
 
@@ -102,6 +103,10 @@ export default {
     getAssembleTitle(item) {
       const limit = this.$isMobile ? 30 : 50
       return interceptString(item.title, limit)
+    },
+
+    getImgAlt(item) {
+      return `${item.title} - ${NICE_LINKS_NAME}`
     },
 
     getAssembleDesc(item) {

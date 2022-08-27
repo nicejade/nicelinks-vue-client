@@ -1,50 +1,27 @@
 <template>
   <div class="redirect-wrapper">
     <h1 class="jump-title">
-      <img
-        class="logo"
-        src="/static/img/favicons/safari-pinned-tab.svg"
-        :alt="$t('niceLinksStr')"
-      />
-      <a
-        class="gtag-track title-link"
-        data-action="h1-title-link"
-        data-category="redirect"
-        data-label="h1-title-link"
-        href="http://nicelinks.site?ref=redirect"
-        >倾城之链</a
-      >
+      <img class="logo" src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
+      <a class="gtag-track title-link" data-action="h1-title-link" data-category="redirect" data-label="h1-title-link"
+        rel="home" href="http://nicelinks.site?ref=redirect">倾城之链</a>
     </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
         <h2 class="title">
-          即将从<a
-            class="gtag-track"
-            data-action="jump-link"
-            data-category="redirect"
-            data-label="jump-link"
-            href="http://nicelinks.site?ref=redirect"
-            >倾城之链</a
-          >跳转到
+          即将从<a class="gtag-track" data-action="jump-link" data-category="redirect" data-label="jump-link" rel="home"
+            href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
         </h2>
         <div class="link-box">
           <p class="link-url">{{ targetWebsite }}</p>
         </div>
-        <a
-          class="gtag-track redirect-btn effect-btn"
-          data-action="redirect-btn"
-          data-category="redirect"
-          data-label="redirect-btn"
-          :rel="isalive ? 'noopener' : 'noopener nofollow'"
-          :href="targetPath"
-        >
+        <a class="gtag-track redirect-btn effect-btn" data-action="redirect-btn" data-category="redirect"
+          data-label="redirect-btn" :rel="isalive ? 'noopener' : 'noopener nofollow'" :href="targetPath">
           <span class="jump-to">前往该网站</span>
         </a>
       </div>
     </div>
     <p v-if="!isalive" class="visit-reminder">
-      <string class="reminder">*温馨提示</string
-      >：据「倾城观察员」探测，该网站已不能正常访问，望客观知悉。
+      <string class="reminder">*温馨提示</string>：据「倾城观察员」探测，该网站已不能正常访问，望客观知悉。
     </p>
   </div>
 </template>
@@ -71,7 +48,7 @@ export default {
 
   components: {},
 
-  created() {},
+  created() { },
 
   computed: {
     websiteBgStyle() {

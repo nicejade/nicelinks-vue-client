@@ -1,25 +1,16 @@
 <template>
   <div class="content">
     <div class="info-block mb-normal" v-if="!isAbstract">
-      <a
-        class="user-info"
-        :href="getUserPath(item.createdBy)"
-        @click.stop="onStopPropagationClick('avatar')"
-        target="_blank"
-        rel="noopener"
-      >
+      <a class="user-info" :href="getUserPath(item.createdBy)" @click.stop="onStopPropagationClick('avatar')"
+        target="_blank" rel="noopener">
         <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
       </a>
       <div class="meta-block">
         <div class="meta-box">
-          <a
-            class="gtag-track username"
-            :href="getUserPath(item.createdBy)"
-            @click.stop="onStopPropagationClick('username')"
-            target="_blank"
-            rel="noopener"
-            >{{ mUserInfo.profile.nickname || item.createdBy || '' }}</a
-          >
+          <a class="gtag-track username" :href="getUserPath(item.createdBy)"
+            @click.stop="onStopPropagationClick('username')" target="_blank" rel="noopener">{{
+                mUserInfo.profile.nickname || item.createdBy || ''
+            }}</a>
         </div>
         <div class="meta-box">
           <span class="item">分享于 {{ dateOffset(item.created) }}</span>
@@ -27,36 +18,15 @@
         </div>
       </div>
     </div>
-    <h2 class="title">
-      <a
-        v-if="isAbstract"
-        class="title-link"
-        :href="'/post/' + item._id"
-        @click.stop="onStopPropagationClick('list-title', 'list')"
-      >
-        {{ item.title }}</a
-      >
-      <a
-        v-else
-        class="title-link"
-        :href="getRedirectLink(item.urlPath, item.alive)"
-        @click.stop="onStopPropagationClick('item-title')"
-        target="_blank"
-        rel="noopener"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-link"
-          width="22"
-          height="22"
-          style="margin-right: 5px;"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#34dfa5"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+    <h2 class="title mb-normal">
+      <a v-if="isAbstract" class="title-link" :href="'/post/' + item._id"
+        @click.stop="onStopPropagationClick('list-title', 'list')">
+        {{ item.title }}</a>
+      <a v-else class="title-link" :href="getRedirectLink(item.urlPath, item.alive)"
+        @click.stop="onStopPropagationClick('item-title')" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="22" height="22"
+          style="margin-right: 5px;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#34dfa5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
           <path d="M0 0h24v24H0z" stroke="none" />
           <path d="M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" />
           <path d="M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" />
@@ -65,22 +35,10 @@
       </a>
     </h2>
     <div class="meta-box mb-normal">
-      <a
-        class="item classify"
-        @click.stop="onStopPropagationClick('classify')"
-        :href="'/theme/' + item.theme.toLocaleLowerCase()"
-        >{{ fillThemeName(item.classify, item.theme) }}</a
-      >
-      <a
-        class="tag"
-        v-for="iitem in item.tags"
-        :key="iitem._id"
-        :href="getTagPath(iitem)"
-        @click.stop="onStopPropagationClick('tags')"
-        target="_blank"
-        rel="noopener"
-        >{{ iitem }}</a
-      >
+      <a class="item classify" @click.stop="onStopPropagationClick('classify')"
+        :href="'/theme/' + item.theme.toLocaleLowerCase()">{{ fillThemeName(item.classify, item.theme) }}</a>
+      <a class="tag" v-for="iitem in item.tags" :key="iitem._id" :href="getTagPath(iitem)"
+        @click.stop="onStopPropagationClick('tags')" target="_blank" rel="noopener">{{ iitem }}</a>
     </div>
     <!-- list is abstract: 是否显示摘要内容  -->
     <div class="abstract" v-if="isAbstract">
@@ -93,13 +51,8 @@
       </div>
       <div class="link-desc" v-html="this.obtainLinkDesc(item)"></div>
       <div class="link-screenshot">
-        <img
-          data-zoomable
-          class="screenshot"
-          :src="linkScreenshot"
-          onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
-          :alt="item.title + ' 倾城之链'"
-        />
+        <img data-zoomable class="screenshot" :src="linkScreenshot"
+          onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';" :alt="item.title + ' 倾城之链'" />
       </div>
       <div v-if="item.review" class="link-review">
         <preview-md :value="getReviewContent(item)"></preview-md>
@@ -119,61 +72,30 @@
         <span class="item-num">{{ item.dislikes }}</span>
       </div>
       <div class="action-item" v-if="isAbstract">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-eye"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#9393aa"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="22" height="22"
+          viewBox="0 0 24 24" stroke-width="1.5" stroke="#9393aa" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
           <path d="M0 0h24v24H0z" stroke="none" />
           <circle cx="12" cy="12" r="2" />
-          <path
-            d="M22 12c-2.667 4.667-6 7-10 7s-7.333-2.333-10-7c2.667-4.667 6-7 10-7s7.333 2.333 10 7"
-          />
+          <path d="M22 12c-2.667 4.667-6 7-10 7s-7.333-2.333-10-7c2.667-4.667 6-7 10-7s7.333 2.333 10 7" />
         </svg>
         <span class="item-num">{{ item.countup }}</span>
       </div>
       <div class="action-item" @click.stop.prevent="onEditClick(item)" v-if="isAdminFlag()">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-settings"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#9393aa"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="22" height="22"
+          viewBox="0 0 24 24" stroke-width="1.5" stroke="#9393aa" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
           <path d="M0 0h24v24H0z" stroke="none" />
           <path
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z"
-          />
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
           <circle cx="12" cy="12" r="3" />
         </svg>
         <span class="item-num">{{ $t('edit') }}</span>
       </div>
       <div class="action-item" @click.stop.prevent="onCopyClick(item)" v-if="isAdminFlag()">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-link"
-          width="22"
-          height="22"
-          style="margin-right: 5px;"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#9393aa"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="22" height="22"
+          style="margin-right: 5px;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9393aa" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
           <path d="M0 0h24v24H0z" stroke="none" />
           <path d="M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" />
           <path d="M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" />
@@ -181,11 +103,7 @@
         <span class="item-num">复制</span>
       </div>
     </div>
-    <edit-dialog
-      v-model="isShowDlgFlag"
-      :pdata="currentRowData"
-      @update-success="onUpdateSuccess"
-    ></edit-dialog>
+    <edit-dialog v-model="isShowDlgFlag" :pdata="currentRowData" @update-success="onUpdateSuccess"></edit-dialog>
   </div>
 </template>
 
@@ -310,7 +228,7 @@ export default {
         .catch((error) => {
           this.$message.error(`${error}`)
         })
-        .finally(() => {})
+        .finally(() => { })
     },
 
     getReviewContent(item) {
@@ -324,8 +242,8 @@ export default {
     getAbstractContent(item) {
       const content = !!item.review
         ? marked(item.review, {
-            sanitize: false,
-          }).replace(/<[^>]*>/g, '')
+          sanitize: false,
+        }).replace(/<[^>]*>/g, '')
         : item.desc
       return interceptString(content)
     },
@@ -443,7 +361,7 @@ export default {
         .then(() => {
           this.dispatchAction(row, 'dislikes')
         })
-        .catch(() => {})
+        .catch(() => { })
     },
 
     onEditClick(item) {
@@ -456,7 +374,7 @@ export default {
       this.copySuccessPrompt()
     },
 
-    onUpdateSuccess() {},
+    onUpdateSuccess() { },
 
     onCopyLinkClick(item) {
       copyToClipboard(item.urlPath)
@@ -485,7 +403,7 @@ export default {
   margin: 5px;
 
   .title {
-    margin-bottom: 2rem;
+    margin-top: 3rem;
 
     .title-link {
       display: flex;
@@ -609,7 +527,7 @@ export default {
     }
   }
 
-  .meta-box + .meta-box {
+  .meta-box+.meta-box {
     margin-top: 15px;
   }
 
@@ -646,7 +564,7 @@ export default {
       }
     }
 
-    .tag + .tag {
+    .tag+.tag {
       &:before {
         margin: 0 0.4em;
         content: '/';
@@ -685,7 +603,7 @@ export default {
       }
     }
 
-    .action-item + .action-item {
+    .action-item+.action-item {
       margin-left: 3rem;
       border-left: none;
     }

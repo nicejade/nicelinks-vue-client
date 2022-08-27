@@ -76,17 +76,5 @@ export default {
     } else {
       return null
     }
-  },
-
-  addWalineComment() {
-    setTimeout(() => {
-      window.Waline({
-        el: '#waline',
-        serverURL: 'https://comment.nicelinks.site/',
-        copyright: false,
-        wordLimit: [10, 360],
-        requiredMeta: ['nick', 'mail'],
-      })
-    }, 100)
-  },
+  }
 }

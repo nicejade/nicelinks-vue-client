@@ -62,6 +62,7 @@ export default {
   loadMoreStr: '加载更多',
   aboutNiceLinks: '关于倾城',
   sponsorNiceLinks: '倾情捐赠',
+  niceComment: '精彩绝伦的评论',
 
   validateFailure: '验证失败',
   noResultTip:

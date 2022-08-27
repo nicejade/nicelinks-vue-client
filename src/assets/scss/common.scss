@@ -82,19 +82,19 @@ a:link {
 }
 
 input::-webkit-input-placeholder {
-  color: $border-grey !important;
+  color: $border-grey  !important;
 }
 
 input::-moz-placeholder {
-  color: $border-grey !important;
+  color: $border-grey  !important;
 }
 
 input:-moz-placeholder {
-  color: $border-grey !important;
+  color: $border-grey  !important;
 }
 
 input:-ms-input-placeholder {
-  color: $border-grey !important;
+  color: $border-grey  !important;
 }
 
 .panel-body {
@@ -201,6 +201,7 @@ input:-ms-input-placeholder {
 }
 
 @keyframes jelly {
+
   0%,
   100% {
     transform: scale(1, 1);
@@ -229,51 +230,6 @@ input:-ms-input-placeholder {
 
 .mb-normal {
   margin-bottom: 1.8rem;
-}
-
-#post-page #waline {
-  width: 100%;
-  min-width: 30rem;
-
-  .vbtn {
-    display: none;
-  }
-
-  .primary {
-    display: block;
-  }
-
-  .vcards {
-    ul {
-      padding-left: 1rem;
-
-      li {
-        list-style: circle;
-      }
-    }
-  }
-
-  .v {
-    padding: 0 20px;
-  }
-
-  .v[data-class='v'] {
-    blockquote {
-      border-left-width: 4px;
-
-      p {
-        color: $silver-grey;
-      }
-    }
-
-    .vcomment {
-      display: block;
-    }
-
-    .vpanel {
-      margin: 0.5em auto;
-    }
-  }
 }
 
 /* ----------------------title font define---------------------- Start*/

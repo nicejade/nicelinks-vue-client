@@ -1,25 +1,15 @@
 <template>
   <div class="similar-recommend" v-if="linksArr.length > 0">
-    <h2 class="title">猜您可能喜欢</h2>
+    <h2 class="page-second-title">猜您可能喜欢</h2>
     <div class="list-item" v-for="item in linksArr" :key="item._id">
-      <router-link
-        class="gtag-track jump-link"
-        data-action="route-entry"
-        data-category="recommend"
-        data-label="route-entry"
-        :to="getAssembleRoute(item)"
-      >
+      <router-link class="gtag-track jump-link" data-action="route-entry" data-category="recommend"
+        data-label="route-entry" :to="getAssembleRoute(item)">
         <div class="screenshot">
           <div class="image-placeholder" v-show="isShowPlaceholder">
             <strong>图片加载中...</strong>
           </div>
-          <img
-            v-show="!isShowPlaceholder"
-            class="image"
-            :alt="getImgAlt(item)"
-            :src="getScreenshotPath(item)"
-            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
-          />
+          <img v-show="!isShowPlaceholder" class="image" :alt="getImgAlt(item)" :src="getScreenshotPath(item)"
+            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';" />
         </div>
         <div class="meta">
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
@@ -97,7 +87,7 @@ export default {
         .catch((error) => {
           console.error(`Something Error @fetchSimilarTagLinks：`, error)
         })
-        .finally(() => {})
+        .finally(() => { })
     },
 
     getAssembleTitle(item) {
@@ -136,15 +126,7 @@ export default {
 
 .similar-recommend {
   width: 100%;
-  padding: 15px 20px;
-
-  .title {
-    font-size: $font-large;
-    color: $black;
-    text-align: left;
-    font-weight: 500;
-    padding: 10px 0;
-  }
+  padding: 0 20px;
 
   .jump-link {
     @include flex-box-center(row, space-between, center);

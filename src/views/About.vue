@@ -12,7 +12,7 @@
               </div>
               <preview-md :value="aboutMarkdown"></preview-md>
             </el-card>
-            <div id="waline"></div>
+            <Waline />
           </div>
           <aside-list></aside-list>
         </div>
@@ -24,6 +24,7 @@
 <script>
 import $config from 'config'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
+import Waline from 'components/Waline'
 
 export default {
   name: 'About',
@@ -38,14 +39,11 @@ export default {
 
   components: {
     PreviewMd,
+    Waline
   },
 
   mounted() {
     this.updatePageMeta()
-    // Add Waline Comment Functions @2022.01.24
-    this.$nextTick(() => {
-      this.$util.addWalineComment()
-    })
   },
 
   methods: {
@@ -56,4 +54,5 @@ export default {
 }
 </script>
 
-<style type="text/css" lang="scss"></style>
+<style type="text/css" lang="scss">
+</style>

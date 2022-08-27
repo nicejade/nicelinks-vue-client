@@ -6,7 +6,7 @@
           <div class="entry-list">
             <links-list :pdata="niceLinksArr" :is-loading="isLoading" />
             <SimilarRecommend :pdata="niceLinksArr[0]" />
-            <div id="waline"></div>
+            <Waline />
           </div>
           <aside-list :index="index"></aside-list>
         </div>
@@ -17,6 +17,7 @@
 
 <script>
 import SimilarRecommend from 'components/SimilarRecommend'
+import Waline from 'components/Waline'
 
 export default {
   name: 'Post',
@@ -34,6 +35,7 @@ export default {
 
   components: {
     SimilarRecommend,
+    Waline
   },
 
   created() {
@@ -69,10 +71,6 @@ export default {
               this.updatePageMeta(this.niceLinksDetail)
               this.addCanonicalForSEO(this.niceLinksDetail)
               this.addHeaderNavActive()
-              // Add Waline Comment Functions @2022.01.17~18
-              this.$nextTick(() => {
-                this.$util.addWalineComment()
-              })
             })
           } else {
             this.$router.push('/404')

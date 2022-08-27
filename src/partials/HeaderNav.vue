@@ -3,13 +3,8 @@
     <header class="header">
       <nav class="nav">
         <div class="header-logo">
-          <a
-            href="/"
-            class="header-logo-a nicelinks-logo gtag-track"
-            data-action="logo-link"
-            data-category="header"
-            data-label="logo-link"
-          >
+          <a href="/" rel="home" class="header-logo-a nicelinks-logo gtag-track" data-action="logo-link"
+            data-category="header" data-label="logo-link">
             <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
             <h1 class="title">{{ $t('niceLinksStr') }}</h1>
           </a>
@@ -20,27 +15,16 @@
         </a>
 
         <div class="operate-area">
-          <router-link
-            v-for="item in navList"
-            :key="item.value"
-            :to="'/explore/' + item.name"
-            :class="makeClassName(item.name)"
-            :data-action="'explore-' + item.name"
-            :data-category="header"
-            :data-label="'p-explore-' + item.name"
-          >
+          <router-link v-for="item in navList" :key="item.value" :to="'/explore/' + item.name"
+            :class="makeClassName(item.name)" :data-action="'explore-' + item.name" :data-category="header"
+            :data-label="'p-explore-' + item.name">
             {{ $t(item.name) }}
           </router-link>
         </div>
 
         <div class="share-btn" @mouseenter="onShareBtnMouseover" @mouseout="onShareBtnMouseout">
-          <router-link
-            to="/share-link"
-            class="share-link gtag-track"
-            data-action="share-link"
-            data-category="header"
-            data-label="p-share-link"
-            >🕊 {{ $t('shareNewLink') }}
+          <router-link to="/share-link" class="share-link gtag-track" data-action="share-link" data-category="header"
+            data-label="p-share-link">🕊 {{ $t('shareNewLink') }}
           </router-link>
         </div>
 
@@ -67,15 +51,8 @@
               <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="">
                 <icon class="vector-icon" name="about-website"></icon>
-                <a
-                  class="about-website gtag-track"
-                  data-action="header-about-website"
-                  data-category="header"
-                  data-label="header-about-website"
-                  target="_blank"
-                  rel="noopener"
-                  :href="getAboutWebsiteLink"
-                >
+                <a class="about-website gtag-track" data-action="header-about-website" data-category="header"
+                  data-label="header-about-website" target="_blank" rel="noopener" :href="getAboutWebsiteLink">
                   {{ $t('aboutWebsite') }}
                 </a>
               </el-dropdown-item>
@@ -183,7 +160,7 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {
     updateNavActive() {

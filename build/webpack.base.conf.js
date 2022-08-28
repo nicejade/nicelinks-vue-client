@@ -30,7 +30,7 @@ Object.assign(vueLoaderConfig.loaders, {
   css: cssLoader
 })
 
-function createHappyPlugin (id, loaders) {
+function createHappyPlugin(id, loaders) {
   return new HappyPack({
     id: id,
     loaders: loaders,
@@ -91,13 +91,18 @@ module.exports = {
       },
       {
         test: /\.js[x]?$/,
-        include: [resolve('src')],
         exclude: /node_modules/,
+        include: [resolve('src')],
         loader: 'happypack/loader?id=happy-babel-js'
+      },
+      // inject loader for @waline/dist
+      {
+        test: /\.js[x]?$/,
+        include: [/node_modules\/@waline/],
+        loader: 'babel-loader'
       },
       {
         test: /\.svg$/,
-        include: [resolve('src')],
         loader: 'happypack/loader?id=happy-svg',
         include: [/assets\/icons/, /node_modules\/mavon-editor/]
       },

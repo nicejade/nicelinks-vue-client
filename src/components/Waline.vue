@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { init } from '@waline/client/dist/waline.js';
-import '@waline/client/dist/waline.css';
+require('@waline/client/dist/waline')
+import '@waline/client/dist/waline.css'
 
 export default {
   name: 'Waline',
@@ -17,7 +17,7 @@ export default {
   mounted() {
     // Add Waline Comment Functions @2022.01.24
     this.$nextTick(() => {
-      init({
+      Waline.init({
         el: '#waline',
         serverURL: 'https://comment.nicelinks.site/',
         copyright: false,

@@ -1,18 +1,8 @@
 <template>
-  <el-autocomplete
-    id="search-nice"
-    popper-class="search-autocomplete"
-    placement="bottom-start"
-    :select-when-unmatched="isSelectWhenUnmatched"
-    :trigger-on-focus="isTriggerFocus"
-    :popper-append-to-body="isPopperToBody"
-    v-model="keyword"
-    :fetch-suggestions="handleFetchNiceLinks"
-    placeholder="搜您想要，探索美好"
-    @select="handleSearchSelect"
-    @focus="handleSearchFocus"
-    @blur="handleSearchBlur"
-  >
+  <el-autocomplete id="search-nice" popper-class="search-autocomplete" placement="bottom-start"
+    :select-when-unmatched="isSelectWhenUnmatched" :trigger-on-focus="isTriggerFocus"
+    :popper-append-to-body="isPopperToBody" v-model="keyword" :fetch-suggestions="handleFetchNiceLinks"
+    placeholder="搜您想要，探索美好" @select="handleSearchSelect" @focus="handleSearchFocus" @blur="handleSearchBlur">
     <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"> </i>
     <template slot-scope="{ item }">
       <p class="item-title" v-html="styleForTitle(item)"></p>
@@ -25,9 +15,8 @@
 import marked from 'marked'
 import throttle from 'lodash/throttle'
 
-import $document from './../helper/document'
 import { filterHtmlTag, sliceToAheadTarget } from './../helper/tool'
-import { isAndroidSystem, isIosSystem } from './../helper/system'
+import { isAndroidSystem } from './../helper/system'
 
 export default {
   name: 'Search',
@@ -38,54 +27,10 @@ export default {
       isSelectWhenUnmatched: true,
       isTriggerFocus: true,
       isPopperToBody: true,
-      startPageY: 0,
-      startPageX: 0,
     }
   },
 
-  props: {},
-
-  computed: {},
-
-  components: {},
-
-  created() {},
-
-  mounted() {
-    this.switchSerachShowHide()
-  },
-
   methods: {
-    switchSerachShowHide() {
-      if (this.$isMobile) {
-        document.addEventListener('touchstart', (elem) => {
-          this.startPageX = elem.touches[0].pageX
-          this.startPageY = elem.touches[0].pageY
-        })
-        document.addEventListener('touchmove', (elem) => {
-          this.dealWitchTouchCB(elem.touches)
-        })
-        // @desc: Fix can't perfect work about touchmove in IOS system.
-        if (isIosSystem()) {
-          document.addEventListener(
-            'scroll',
-            this.$_.throttle(() => {
-              const operateTabsElem = document.getElementById('operate-tabs')
-              const tabstoTopSpace = operateTabsElem && operateTabsElem.getBoundingClientRect().top
-              if (tabstoTopSpace > 50) {
-                this.handleSearchInput('removeClass')
-              }
-            }, 60),
-            false
-          )
-        }
-      }
-    },
-
-    getDistanceAngle(angx, angy) {
-      return (Math.atan2(angy, angx) * 180) / Math.PI
-    },
-
     requestSearchTarget(queryString, callback) {
       return throttle(() => {
         this.$apis
@@ -99,33 +44,6 @@ export default {
             this.$message.error(`${error}`)
           })
       }, 300)
-    },
-
-    dealWitchTouchCB(touches) {
-      const endPageX = touches[0].pageX
-      const endPageY = touches[0].pageY
-
-      const distanceX = endPageX - this.startPageX
-      const distanceY = endPageY - this.startPageY
-      const angle = this.getDistanceAngle(distanceX, distanceY)
-      const isShortDistance = Math.abs(distanceY) < 25
-      if (isShortDistance) return
-
-      const isUpDirection = angle >= -135 && angle <= -45
-      const isDownDirection = angle > 45 && angle < 135
-      if (isDownDirection) {
-        this.handleSearchInput('removeClass')
-      } else if (isUpDirection) {
-        this.handleSearchInput('addClass')
-      }
-    },
-
-    handleSearchInput(funcName) {
-      const searchNiceElem = document.getElementById('search-nice')
-      $document[funcName](searchNiceElem, 'search-extra-class')
-
-      const subHeadElem = document.getElementById('sub-head')
-      subHeadElem && $document[funcName](subHeadElem, 'sub-head-follow')
     },
 
     handleFetchNiceLinks(queryString, callback) {
@@ -153,14 +71,13 @@ export default {
       this.$router.push(`/post/${item._id}${paramStr}`)
     },
 
-    handleIconClick() {},
+    handleIconClick() { },
 
     handleSearchFocus() {
       if (this.$isMobile) {
         if (isAndroidSystem()) {
           document.querySelector('.search-autocomplete').style.display = 'none'
           setTimeout(() => {
-            // this.$nextTick(() => {})
             document.querySelector('.search-autocomplete').style.display = 'block'
             document.querySelector('.search-autocomplete').style.top = '110px'
           }, 360)

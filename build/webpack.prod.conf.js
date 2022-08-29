@@ -12,7 +12,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const BabiliWebpackPlugin = require('babili-webpack-plugin')
 const Jarvis = require('webpack-jarvis')
 
@@ -45,24 +45,30 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
 
   optimization: {
+    minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
-        // 过滤掉以".min.js"结尾的文件
-        exclude: /\.min\.js$/,
-        // 启用缓存和多进程并行运行；
-        cache: true,
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
         parallel: true,
-        sourceMap: false,
-        // 移除注释
         extractComments: false,
-        // 参见：https://github.com/mishoo/UglifyJS2#minify-options
-        uglifyOptions: {
-          warnings: false,
-          sourceMap: false,
-          output: false,
-          compress: false,
+        terserOptions: {
+          ecma: undefined,
+          parse: {},
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+            pure_funcs: ['console.log']
+          },
           mangle: true,
+          module: true,
+          output: null,
+          format: { comments: false },
+          toplevel: false,
+          nameCache: null,
           ie8: false,
+          keep_classnames: undefined,
+          keep_fnames: false,
+          safari10: false,
         },
       }),
     ],

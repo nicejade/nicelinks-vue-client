@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -40,14 +40,32 @@ module.exports = {
     ],
   },
   optimization: {
+    minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
         parallel: true,
-        sourceMap: false, // set to true if you want JS source maps
+        extractComments: false,
+        terserOptions: {
+          ecma: undefined,
+          parse: {},
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+            pure_funcs: ['console.log']
+          },
+          mangle: true,
+          module: true,
+          output: null,
+          format: { comments: false },
+          toplevel: false,
+          nameCache: null,
+          ie8: false,
+          keep_classnames: undefined,
+          keep_fnames: false,
+          safari10: false,
+        },
       }),
-      // Compress extracted CSS. We are using this plugin so that possible
-      // duplicated CSS from different components can be deduped.
       new OptimizeCSSAssetsPlugin({}),
     ],
   },

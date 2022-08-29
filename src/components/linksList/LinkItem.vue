@@ -18,8 +18,8 @@
         </div>
       </div>
     </div>
-    <h2 class="title mb-normal">
-      <a v-if="isAbstract" class="title-link" :href="'/post/' + item._id"
+    <h2 class="mb-normal" :style="isAbstract ? '' : 'margin-top: 3rem;'">
+      <a v-if="isAbstract" class="title-link text-ellipsis" :href="'/post/' + item._id"
         @click.stop="onStopPropagationClick('list-title', 'list')">
         {{ item.title }}</a>
       <a v-else class="title-link" :href="getRedirectLink(item.urlPath, item.alive)"
@@ -41,7 +41,7 @@
         @click.stop="onStopPropagationClick('tags')" target="_blank" rel="noopener">{{ iitem }}</a>
     </div>
     <!-- list is abstract: 是否显示摘要内容  -->
-    <div class="abstract" v-if="isAbstract">
+    <div class="abstract mb-normal" style="-webkit-box-orient: vertical;" v-if="isAbstract">
       {{ getAbstractContent(item) }}
     </div>
     <div v-if="!isAbstract">
@@ -400,36 +400,30 @@ export default {
 }
 
 .content {
-  margin: 5px;
+  .title-link {
+    font-size: 1.8rem;
+    font-weight: bolder;
+    line-height: 1.2;
+    text-decoration: none;
+    color: $link-title;
+    transition: color 0.3s ease-in;
 
-  .title {
-    margin-top: 3rem;
-
-    .title-link {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      font-size: 1.8rem;
-      font-weight: bolder;
-      line-height: 1.2;
-      text-decoration: none;
-      color: $link-title;
-      transition: color 0.3s ease-in;
-
-      &:hover {
-        transition: color 0.3s ease-out;
-        color: $link-title-hover;
-      }
+    &:hover {
+      transition: color 0.3s ease-out;
+      color: $link-title-hover;
     }
   }
 
   .abstract {
     width: 100%;
-    margin-bottom: 1rem;
     font-size: $font-small;
     color: $black-grey;
     line-height: 1.5;
     letter-spacing: 0.02rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .operate-area {

@@ -24,21 +24,12 @@ export default {
 
   mixins: [partsMixin],
 
-  watch: {},
-
-  components: {},
-
   created() {
     this.$fetchSearch()
   },
 
   mounted() {
     this.updatePageMeta()
-    this.$nextTick(() => {
-      if (window.IS_FROM_GOOGLE_ADS) {
-        window.gtag_report_conversion()
-      }
-    })
   },
 
   methods: {

@@ -342,10 +342,10 @@ export default {
     /* -----------------------onClickEvent-----------------------Start */
     onStopPropagationClick(action, category = 'post') {
       this.$gtagTracking(action, category, action)
-    },
 
-    onThemeClick(theme) {
-      this.$switchRouteByTheme(theme)
+      if (window.IS_FROM_GOOGLE_ADS) {
+        window.gtag_report_conversion()
+      }
     },
 
     onLikeClick(row) {
@@ -372,9 +372,11 @@ export default {
     onCopyClick(item) {
       copyToClipboard(`${NICE_LINKS}/post/${item._id}`)
       this.copySuccessPrompt()
-    },
 
-    onUpdateSuccess() { },
+      if (window.IS_FROM_GOOGLE_ADS) {
+        window.gtag_report_conversion()
+      }
+    },
 
     onCopyLinkClick(item) {
       copyToClipboard(item.urlPath)
@@ -386,7 +388,13 @@ export default {
       this.$gtagTracking('visit-link', 'post', 'visit-link')
       const targetLink = this.getRedirectLink(item.urlPath, item.alive, true)
       window.open(targetLink, item.title)
+
+      if (window.IS_FROM_GOOGLE_ADS) {
+        window.gtag_report_conversion()
+      }
     },
+
+    onUpdateSuccess() { },
   },
 }
 </script>

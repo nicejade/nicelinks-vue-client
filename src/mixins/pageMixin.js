@@ -1,12 +1,4 @@
 export default {
-  data() {
-    return {}
-  },
-
-  computed: {},
-
-  created() {},
-
   mounted() {
     this.sendGtagEventTracking()
   },
@@ -24,7 +16,7 @@ export default {
 
         if (gtagAction && gtagCategory && gtagLabel) {
           elem.onclick = () => {
-            const gtag = window.gtag || (() => {})
+            const gtag = window.gtag || (() => { })
             gtag('event', gtagAction, {
               event_category: gtagCategory,
               event_label: gtagLabel,
@@ -34,7 +26,7 @@ export default {
       }
 
       const gtagTrackList = document.querySelectorAll('.gtag-track')
-      ;[].forEach.call(gtagTrackList, bindEventListener, false)
+        ;[].forEach.call(gtagTrackList, bindEventListener, false)
     },
   },
 }

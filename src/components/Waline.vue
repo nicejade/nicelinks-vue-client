@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .nice-comment {
   padding: 0 20px;
 }
@@ -38,7 +38,33 @@ export default {
   width: 100%;
   min-width: 30rem;
   padding: 15px 0;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 3 / 2;
+
+  .wl-comment {
+    .wl-panel {
+      .wl-header {
+
+        label,
+        input {
+          font-size: 1.4rem;
+        }
+      }
+
+      .wl-editor {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .wl-btn,
+  .wl-text-number,
+  .wl-nick,
+  .wl-time,
+  .wl-content,
+  .wl-count,
+  .wl-empty {
+    font-size: 1.4rem;
+  }
 
   .vbtn {
     display: none;

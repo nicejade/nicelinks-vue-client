@@ -10,8 +10,6 @@ export default {
     }
   },
 
-  created() {},
-
   metaInfo() {
     const titleContent = this.title ? `${this.title} - ${this.siteTitle}` : `${this.siteTitle}`
     return {
@@ -34,9 +32,5 @@ export default {
         { vmid: 'og:description', property: 'og:description', content: this.description },
       ],
     }
-  },
-
-  mounted() {},
-
-  methods: {},
+  }
 }

@@ -1,12 +1,6 @@
 <template>
   <div id="friendship-links">
-    <a
-      target="_blank"
-      class="friendship-links"
-      rel="noopener"
-      @click="onFriendshipClick"
-      href="/friendlink"
-      >🤝友情链接
+    <a target="_blank" class="friendship-links" rel="noopener" @click="onFriendshipClick" href="/friendlink">🤝友情链接
     </a>
   </div>
 </template>
@@ -29,7 +23,11 @@ export default {
 
 <style scoped lang="scss">
 @import './../../assets/scss/variables.scss';
+
 .friendship-links {
+  display: inline-block;
+  width: 100%;
+  height: 2rem;
   font-size: $font-large;
   color: $jade;
   font-weight: 500;
@@ -39,6 +37,7 @@ export default {
   text-shadow: -15px 5px 20px $producthunt;
   transition: all 0.3s ease-out;
 }
+
 .friendship-links:hover {
   text-shadow: 0px 6px 20px $producthunt;
 }

@@ -46,7 +46,7 @@ export default {
 
         label,
         input {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
         }
       }
 
@@ -63,7 +63,12 @@ export default {
   .wl-content,
   .wl-count,
   .wl-empty {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .wl-action:nth-child(1),
+  .wl-action:nth-child(3) {
+    display: none;
   }
 
   .vbtn {

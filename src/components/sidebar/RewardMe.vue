@@ -111,14 +111,12 @@ export default {
   backface-visibility: hidden;
 }
 
-#reward .front .reward-img {
-  width: 100%;
-  max-width: 256px;
-}
-
+#reward .front .reward-img,
 #reward .back .reward-img {
-  width: 100%;
-  max-width: 256px;
+  display: inline-block;
+  width: 25rem;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 #reward .back {

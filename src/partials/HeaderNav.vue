@@ -396,8 +396,10 @@ export default {
       float: right;
 
       .avatar {
-        height: 38px;
-        width: 38px;
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        aspect-ratio: 1 / 1;
         box-shadow: 0 0 0 2px #fff;
         border-radius: 50%;
         position: relative;

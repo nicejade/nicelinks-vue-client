@@ -1,3 +1,5 @@
+import { DESCRIPTION } from './../config/constant'
+
 export default {
   signIn: '登录',
   signUp: '注册',
@@ -95,6 +97,6 @@ export default {
   enterLegalEmailTip: '请输入有效邮箱',
 
   keywords:
-    '倾城之链, nice links, 资源之家, 新媒体导航, 网站, 利器, 新世界, 技术, 产品, 有趣, 人文, 历史, 工具, 社区, 旅行, 美图, 历史, 人文, 娱乐, 抠图, 高效, 搜商, 搜索, 引擎, 思谷搜, 快应用, 翁天信, 天空之城',
-  description: `倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。`,
+    '倾城之链, nice links, 资源之家, 新媒体导航, 网站, 利器, 新世界, 技术, 产品, 有趣, 人文, 历史, 工具, 社区, 旅行, 美图, 历史, 人文, 娱乐, 抠图, 高效, 搜商, 搜索, 引擎, 思谷搜, 快应用, 翁天信, 天空之城, 夸人生成器',
+  description: DESCRIPTION
 }

@@ -150,3 +150,11 @@
   font-weight: 500;
   margin-top: 3rem;
 }
+
+.text-ellipsis {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}

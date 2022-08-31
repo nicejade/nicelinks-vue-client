@@ -507,13 +507,14 @@ export default {
     @include flex-box-center(row, start, center);
 
     .avatar {
-      float: left;
-      border-radius: 50%;
-      height: 6rem;
-      width: 6rem;
-      box-shadow: 0px 10px 30px 0px rgba(0, 64, 128, 0.1);
       position: relative;
+      float: left;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      box-shadow: 0px 10px 30px 0px rgba(0, 64, 128, 0.1);
       margin: 0;
+      aspect-ratio: 1 / 1;
     }
 
     .user-info {

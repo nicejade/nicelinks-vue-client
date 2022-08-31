@@ -3,20 +3,14 @@
     <div class="tooltip">
       <div class="pannel">
         <div class="item">
-          <img
-            class="qrcode"
-            src="https://image.nicelinks.site/qrcode_jqx.jpg"
-            alt="晚晴幽草轩-公众号"
-          />
+          <img class="qrcode" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="晚晴幽草轩-公众号" />
           <span class="text font-medium">晚晴幽草轩</span>
           <span class="text">微信扫码关注</span>
         </div>
         <div class="item">
-          <img
-            class="qrcode"
+          <img class="qrcode"
             src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-            alt="倾城之链-小程序"
-          />
+            alt="倾城之链-小程序" />
           <span class="text font-medium">倾城之链</span>
           <span class="text">微信扫码体验</span>
         </div>
@@ -25,25 +19,11 @@
         <icon class="qrcode" name="qrcode"></icon>
       </div>
     </div>
-    <a
-      target="_blank"
-      class="outside-link-btn gtag-track"
-      data-action="recommend-btn"
-      data-category="elevator"
-      data-label="recommend-btn"
-      rel="noopener"
-      :href="reportPath"
-      >投稿
+    <a target="_blank" class="outside-link-btn gtag-track" data-action="recommend-btn" data-category="elevator"
+      data-label="recommend-btn" rel="noopener" :href="reportPath">投稿
     </a>
-    <a
-      target="_blank"
-      class="outside-link-btn gtag-track"
-      data-action="feedback-btn"
-      data-category="elevator"
-      data-label="feedback-btn"
-      rel="noopener"
-      :href="reportPath"
-      >反馈
+    <a target="_blank" class="outside-link-btn gtag-track" data-action="feedback-btn" data-category="elevator"
+      data-label="feedback-btn" rel="noopener" :href="reportPath">反馈
     </a>
   </div>
 </template>
@@ -99,6 +79,7 @@ $factor: 1rem;
   margin: 1rem 0;
   outline: none;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
   &:hover {
     cursor: pointer;
     animation: jelly 0.5s;
@@ -108,11 +89,13 @@ $factor: 1rem;
 .tooltip {
   position: relative;
   display: inline-block;
+
   &:hover {
     .pannel {
       visibility: visible;
     }
   }
+
   .pannel {
     position: absolute;
     bottom: -9.25 * $factor;
@@ -129,6 +112,7 @@ $factor: 1rem;
     height: 26 * $factor;
     padding: 2 * $factor;
     border-radius: 2 * $factor;
+
     &:before {
       content: '';
       position: absolute;
@@ -140,6 +124,7 @@ $factor: 1rem;
       border-left: $factor solid $white;
       border-bottom: $factor solid transparent;
     }
+
     .item {
       display: flex;
       flex-direction: column;
@@ -147,36 +132,45 @@ $factor: 1rem;
       align-items: center;
       width: 18 * $factor;
       height: 100%;
+
       .qrcode {
         width: 16 * $factor;
         height: 16 * $factor;
+        aspect-ratio: 1 / 1;
       }
+
       .text {
         font-size: 1.6 * $factor;
         color: $common-link;
       }
     }
   }
+
   .connect {
     .qrcode {
-      width: 3 * $factor !important;
-      height: 3 * $factor !important;
+      width: 3 * $factor  !important;
+      height: 3 * $factor  !important;
       margin: 0 auto;
       transform: scale(1);
     }
   }
 }
+
 @keyframes jelly {
+
   0%,
   100% {
     transform: scale(1, 1);
   }
+
   25% {
     transform: scale(0.9, 1.1);
   }
+
   50% {
     transform: scale(1.1, 0.9);
   }
+
   75% {
     transform: scale(0.95, 1.05);
   }

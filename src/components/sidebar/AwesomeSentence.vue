@@ -1,7 +1,7 @@
 <template>
   <div id="awesome-sentence" class="awesome-sentence">
     <div class="lined-paper" v-show="currentSentenceStr" v-loading="isLoading">
-      <preview-md id="sentence" :value="currentSentenceStr || $t('noFill')" />
+      <preview-md class="sentence" id="sentence" :value="currentSentenceStr || $t('noFill')" />
     </div>
     <div class="btn-group">
       <el-button class="common-btn" @click="onPreviousClick">
@@ -60,7 +60,7 @@ export default {
     PreviewMd,
   },
 
-  mounted() {},
+  mounted() { },
 
   watch: {
     'sentence.content': function (val = '') {
@@ -187,6 +187,12 @@ export default {
     -ms-background-size: 100% 26px;
     -o-background-size: 100% 26px;
     background-size: 100% 26px;
+
+    .sentence {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
 
     div,
     p {

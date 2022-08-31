@@ -8,12 +8,9 @@
     <h2 class="aside-widget-title">{{ $t('friendshipLinks') }}</h2>
     <friendship-links class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
-    <div class="text-center">
-      <img
-        class="miniprogram"
-        alt="倾城之链.小程序"
-        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-      />
+    <div class="sub-content">
+      <img class="miniprogram" alt="倾城之链.小程序"
+        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1" />
     </div>
     <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
     <reward-me class="sub-content" />
@@ -108,8 +105,9 @@ export default {
   }
 
   .miniprogram {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: 25rem;
+    height: auto;
     aspect-ratio: 1 / 1;
   }
 }

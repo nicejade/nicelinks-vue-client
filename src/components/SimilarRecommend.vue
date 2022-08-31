@@ -22,9 +22,20 @@
 
 <script>
 import { getHostnameByUrl, interceptString } from './../helper/tool'
-import { NICE_LINKS_NAME } from './../config/constant'
+import { NICE_LINKS, NICE_LINKS_NAME, DESCRIPTION } from './../config/constant'
 import pageMixin from 'mixins/pageMixin.js'
 import marked from 'marked'
+
+const DEFAULT_LINKS_ARR = [];
+[0, 1, 2, 3, 4].map(() => {
+  DEFAULT_LINKS_ARR.push({
+    urlPath: NICE_LINKS,
+    item: NICE_LINKS_NAME,
+    desc: DESCRIPTION,
+    _id: '5aa2579e56ee0d60651820c5',
+    review: DESCRIPTION
+  })
+})
 
 export default {
   name: 'SimilarRecommend',
@@ -33,7 +44,7 @@ export default {
 
   data() {
     return {
-      linksArr: [],
+      linksArr: Object.freeze(DEFAULT_LINKS_ARR),
       RECOMMEND_NUM: 5,
       isShowPlaceholder: true,
     }
@@ -57,10 +68,8 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isShowPlaceholder = false
-    }, 300)
+    }, 200)
   },
-
-  components: {},
 
   methods: {
     assembleSimilarLinks(resArr) {

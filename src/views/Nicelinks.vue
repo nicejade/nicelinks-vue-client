@@ -56,9 +56,8 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      const classify = this.$route.params.classify
-      if (window.IS_FROM_GOOGLE_ADS && classify !== 'all') {
-        window.gtag_report_conversion()
+      if (this.$route.params.classify !== 'all') {
+        this.$gtagReport()
       }
     })
   },

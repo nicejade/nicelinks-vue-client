@@ -77,9 +77,7 @@ export default {
     },
 
     onListClick() {
-      if (window.IS_FROM_GOOGLE_ADS) {
-        window.gtag_report_conversion()
-      }
+      this.$gtagReport()
     }
   },
 }

@@ -113,6 +113,7 @@ export default {
           this.isCanLookBack = true
           this.currentSentence = result || {}
           this.currentSentenceStr = result.content
+          this.$gtagReport()
         })
         .catch((error) => {
           this.$message.error(`${error}`)

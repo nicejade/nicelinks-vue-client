@@ -2,8 +2,8 @@
   <div class="similar-recommend" v-if="linksArr.length > 0">
     <h2 class="page-second-title">猜您可能喜欢</h2>
     <div class="list-item" v-for="item in linksArr" :key="item._id">
-      <router-link class="gtag-track jump-link" data-action="route-entry" data-category="recommend"
-        data-label="route-entry" :to="getAssembleRoute(item)">
+      <a @click="onLinkClick" :href="getAssembleRoute(item)" class="gtag-track jump-link" data-action="route-entry"
+        data-category="recommend" data-label="route-entry">
         <div class="screenshot">
           <div class="image-placeholder" v-show="isShowPlaceholder">
             <strong>图片加载中...</strong>
@@ -15,7 +15,7 @@
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
           <div class="desc">{{ getAssembleDesc(item) }}</div>
         </div>
-      </router-link>
+      </a>
     </div>
   </div>
 </template>
@@ -68,7 +68,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isShowPlaceholder = false
-    }, 200)
+    }, 300)
   },
 
   methods: {
@@ -125,6 +125,10 @@ export default {
       const urlPath = getHostnameByUrl(item.urlPath)
       return `https://oss.nicelinks.site/${urlPath}.png?x-oss-process=style/png2jpg&imageView2/1/w/320/h/180/interlace/1/ignore-error/1`
     },
+
+    onLinkClick() {
+      this.$gtagReport()
+    }
   },
 }
 </script>

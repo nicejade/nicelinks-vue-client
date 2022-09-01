@@ -342,10 +342,7 @@ export default {
     /* -----------------------onClickEvent-----------------------Start */
     onStopPropagationClick(action, category = 'post') {
       this.$gtagTracking(action, category, action)
-
-      if (window.IS_FROM_GOOGLE_ADS) {
-        window.gtag_report_conversion()
-      }
+      this.$gtagReport()
     },
 
     onLikeClick(row) {
@@ -373,25 +370,23 @@ export default {
       copyToClipboard(`${NICE_LINKS}/post/${item._id}`)
       this.copySuccessPrompt()
 
-      if (window.IS_FROM_GOOGLE_ADS) {
-        window.gtag_report_conversion()
-      }
+      this.$gtagReport()
     },
 
     onCopyLinkClick(item) {
       copyToClipboard(item.urlPath)
       this.copySuccessPrompt()
+
       this.$gtagTracking('copy-link', 'post', 'copy-link')
+      this.$gtagReport()
     },
 
     onVisitLinkClick(item) {
       this.$gtagTracking('visit-link', 'post', 'visit-link')
+      this.$gtagReport()
+
       const targetLink = this.getRedirectLink(item.urlPath, item.alive, true)
       window.open(targetLink, item.title)
-
-      if (window.IS_FROM_GOOGLE_ADS) {
-        window.gtag_report_conversion()
-      }
     },
 
     onUpdateSuccess() { },

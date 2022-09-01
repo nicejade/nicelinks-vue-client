@@ -76,6 +76,12 @@ Vue.prototype.$isMobile = window.innerWidth <= 960
 Vue.prototype.$setPageTitle = (title = '') => {
   document.title = `${title} - ${NICE_LINKS_NAME}`
 }
+Vue.prototype.$gtagReport = () => {
+  if (window.IS_FROM_GOOGLE_ADS) {
+    window.gtag_report_conversion()
+    window.IS_FROM_GOOGLE_ADS = false
+  }
+}
 
 import locales from './locales'
 import filters from './filters'

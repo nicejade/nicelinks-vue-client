@@ -9,10 +9,6 @@ import './markdown.css'
 export default {
   name: 'PreviewMd',
 
-  data() {
-    return {}
-  },
-
   computed: {
     beParsedVal() {
       return marked(this.value, {
@@ -26,14 +22,6 @@ export default {
       type: String,
       default: '',
     },
-  },
-
-  components: {},
-
-  created() {},
-
-  mounted() {},
-
-  methods: {},
+  }
 }
 </script>

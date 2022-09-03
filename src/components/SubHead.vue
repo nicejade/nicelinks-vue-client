@@ -23,20 +23,12 @@ export default {
 
   mixins: [partsMixin],
 
-  data() {
-    return {}
-  },
-
   props: {
     themeList: {
       type: [Array],
       default: () => [],
     },
   },
-
-  watch: {},
-
-  components: {},
 
   methods: {
     isCurrentThemeVal(value) {
@@ -90,9 +82,7 @@ export default {
       // const parameters = {behavior: 'smooth', block: 'start', inline: 'start'}
       // document.getElementById('nice-links').scrollIntoView(parameters)
     } */
-  },
-
-  locales: {},
+  }
 }
 </script>
 

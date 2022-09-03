@@ -1,12 +1,8 @@
 <template>
   <div class="load-more">
-    <el-button
-      type="primary"
-      icon="plus"
-      size="large"
-      v-if="isShowLoadMore"
-      @click="onLoadMoreClick"
-      >{{ $t('loadMoreStr') }}
+    <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore" @click="onLoadMoreClick">{{
+        $t('loadMoreStr')
+    }}
     </el-button>
     <el-alert v-else :title="$t('noMoreDataTip')" type="info"> </el-alert>
   </div>
@@ -20,23 +16,11 @@ export default {
 
   mixins: [partsMixin],
 
-  data() {
-    return {}
-  },
-
   computed: {
     isShowLoadMore() {
       return this.$store && this.$store.state.isLoadMore
     },
   },
-
-  watch: {},
-
-  components: {},
-
-  created() {},
-
-  mounted() {},
 
   methods: {
     onLoadMoreClick() {
@@ -62,6 +46,7 @@ export default {
   width: 70%;
   margin: auto;
   padding: 2rem 0;
+
   .el-button {
     background-color: #ffffff;
     color: $black;
@@ -69,10 +54,12 @@ export default {
     border-radius: 20px;
     border: 1px solid $entry-btn-grey;
     width: 80%;
+
     &:hover {
       border: 1px solid $entry-btn-hover;
     }
   }
+
   .el-alert {
     border-radius: 20px;
   }

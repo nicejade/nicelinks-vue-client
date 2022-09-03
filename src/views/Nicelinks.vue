@@ -33,8 +33,6 @@ export default {
     }
   },
 
-  components: {},
-
   // 只是别名变化, Vue 无法监听到 @17-07-18;
   /*
   watch: {

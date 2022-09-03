@@ -25,8 +25,6 @@ export default {
     },
   },
 
-  watch: {},
-
   methods: {
     ...mapMutations([
       '$vuexSetNiceLinksList',

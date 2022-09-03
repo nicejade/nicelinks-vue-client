@@ -108,14 +108,11 @@ Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 
 import $config from 'config'
-import partsMixin from 'mixins/partsMixin.js'
 import { REPORT_PATH } from 'config/constant'
 import { openAuthorSite } from './../helper/tool'
 
 export default {
   name: 'HeaderNav',
-
-  mixins: [partsMixin],
 
   data() {
     return {

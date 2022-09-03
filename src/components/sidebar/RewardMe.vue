@@ -22,15 +22,12 @@
 <script>
 import $document from './../../helper/document'
 import $config from 'config'
-import partsMixin from 'mixins/partsMixin.js'
 import Vue from 'vue'
 import { Radio } from 'element-ui'
 Vue.use(Radio)
 
 export default {
   name: 'RewardMe',
-
-  mixins: [partsMixin],
 
   data() {
     return {

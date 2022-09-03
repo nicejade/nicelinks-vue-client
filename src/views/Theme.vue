@@ -33,10 +33,6 @@ export default {
     }
   },
 
-  watch: {},
-
-  components: {},
-
   created() {
     this.$fetchSearch({})
   },

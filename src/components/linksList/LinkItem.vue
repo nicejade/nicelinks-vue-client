@@ -128,8 +128,8 @@ export default {
   data() {
     return {
       item: {},
-      themeList: Object.freeze(THEME_CONF),
-      tagsList: Object.freeze(TAG_CONF),
+      themeList: THEME_CONF,
+      tagsList: TAG_CONF,
       isShowKeywords: true,
       isShowDlgFlag: false,
       isRequesting: false,

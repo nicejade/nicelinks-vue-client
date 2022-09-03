@@ -1,4 +1,4 @@
-export default [
+export default Object.freeze([
   'Android',
   'C',
   'C#',
@@ -58,4 +58,4 @@ export default [
   '视觉设计',
   '运维',
   '酷工作',
-]
+])

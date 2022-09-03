@@ -104,7 +104,7 @@ export default {
   },
 
   watch: {
-    activeName(val) {
+    activeName() {
       this.initFetch()
     },
   },

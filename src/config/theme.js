@@ -1,4 +1,4 @@
-export default [
+export default Object.freeze([
   // 0: 技术客栈
   [
     { key: '程序', value: 'Program' },
@@ -33,4 +33,4 @@ export default [
     { key: '人文', value: 'Humanity' },
     { key: '娱乐', value: 'Entertainment' },
   ],
-]
+])

@@ -1,4 +1,4 @@
-export default [
+export default Object.freeze([
   {
     name: 'skill',
     value: '0',
@@ -15,4 +15,4 @@ export default [
     name: 'info',
     value: '3',
   },
-]
+])

@@ -20,7 +20,7 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
-import themeConfArr from './../config/theme'
+import THEME_CONF from './../config/theme'
 
 export default {
   name: 'theme',
@@ -51,7 +51,7 @@ export default {
     updatePageMeta() {
       const theme = this.$route.params.theme
       let isFoundTarget = false
-      themeConfArr.forEach((arr) => {
+      THEME_CONF.forEach((arr) => {
         if (isFoundTarget) return
         arr.forEach((item) => {
           if (item.value.toLowerCase() === theme) {
@@ -64,7 +64,7 @@ export default {
     },
 
     setThemeList() {
-      this.themeList = themeConfArr.filter((items) => {
+      this.themeList = THEME_CONF.filter((items) => {
         let isInclude = false
         items.forEach((item) => {
           if (this.isCurrentThemeVal(item.value)) {

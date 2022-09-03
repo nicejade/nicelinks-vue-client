@@ -27,13 +27,14 @@
 <script>
 import ContentPlaceholder from 'vue-content-placeholder'
 import LinkItem from './LinkItem.vue'
-import placeholderConfig from 'config/placeholder'
+import PLACEHOLDER_CONF from 'config/placeholder'
 
 export default {
   name: 'LinksList',
+
   data() {
     return {
-      placeholderRows: Object.freeze(placeholderConfig),
+      placeholderRows: Object.freeze(PLACEHOLDER_CONF),
     }
   },
 
@@ -64,8 +65,6 @@ export default {
     LinkItem,
     ContentPlaceholder,
   },
-
-  created() { },
 
   methods: {
     getAssembleRoute(item) {

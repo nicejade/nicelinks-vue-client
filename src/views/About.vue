@@ -31,7 +31,7 @@ export default {
 
   data() {
     return {
-      aboutMarkdown: Object.freeze(ABOUT_CONF),
+      aboutMarkdown: ABOUT_CONF,
     }
   },
 

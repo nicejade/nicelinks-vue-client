@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       isShowDlgFlag: false,
-      navList: Object.freeze(CLASSIFY_CONF),
+      navList: CLASSIFY_CONF,
     }
   },
 

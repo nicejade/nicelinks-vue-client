@@ -21,7 +21,7 @@
 
 <script>
 import $document from './../../helper/document'
-import $config from 'config'
+import REWARD_CONF from './../../config/reward'
 import Vue from 'vue'
 import { Radio } from 'element-ui'
 Vue.use(Radio)
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       payWay: 'weixin',
-      rewardArr: Object.freeze($config.reward),
+      rewardArr: Object.freeze(REWARD_CONF),
     }
   },
 

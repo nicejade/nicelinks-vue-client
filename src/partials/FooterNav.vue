@@ -71,7 +71,7 @@
 
 <script>
 import endsWith from 'lodash/endsWith'
-import $config from 'config'
+import CONTACT_CONF from './../config/contact'
 import { getCurrentDate } from './../helper/tool'
 
 export default {
@@ -80,7 +80,7 @@ export default {
   data() {
     return {
       copyright: '',
-      contactArray: Object.freeze(this.filterEntryInMobile($config.contact)),
+      contactArray: Object.freeze(this.filterEntryInMobile(CONTACT_CONF)),
     }
   },
 

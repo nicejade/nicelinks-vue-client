@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import $config from 'config'
+import DEFAULT_CONF from './../config/default'
 import { parse } from 'helper/marked'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 
@@ -78,7 +78,7 @@ export default {
         })
         .catch((error) => {
           this.$message.error(`${error}`)
-          this.pastLinksArray = $config.default
+          this.pastLinksArray = DEFAULT_CONF
         })
         .finally(() => {
           this.isLoading = false

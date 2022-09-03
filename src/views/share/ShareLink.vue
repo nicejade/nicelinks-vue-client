@@ -111,7 +111,9 @@
 <script>
 import endsWith from 'lodash/endsWith'
 
-import $config from 'config'
+import CLASSIFY_CONF from './../../config/classify'
+import THEME_CONF from './../../config/theme'
+import TAG_CONF from './../../config/tags'
 import Markdown from 'components/markdown/Index'
 
 export default {
@@ -131,8 +133,8 @@ export default {
         review: '',
       },
       themeList: [],
-      tagsList: $config.tags,
-      classifyList: $config.classify,
+      tagsList: TAG_CONF,
+      classifyList: CLASSIFY_CONF,
       rules: {
         urlPath: [{ required: true, validator: this.$verifyUrl, trigger: 'change,blur' }],
         title: [
@@ -173,7 +175,7 @@ export default {
 
   watch: {
     'fillForm.classify': function (val) {
-      this.themeList = $config.theme[this.fillForm.classify] || []
+      this.themeList = THEME_CONF[this.fillForm.classify] || []
     },
   },
 

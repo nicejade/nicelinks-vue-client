@@ -39,25 +39,20 @@
               <el-table-column :label="$t('operation')" width="160">
                 <template slot-scope="scope">
                   <el-button size="small" @click="handleEdit(scope.row)">{{
-                    $t('edit')
+                      $t('edit')
                   }}</el-button>
                   <el-button size="small" type="danger" @click="handleDelete(scope.row)">{{
-                    $t('delete')
+                      $t('delete')
                   }}</el-button>
                 </template>
               </el-table-column>
             </el-table>
 
             <div class="table-operate">
-              <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :total="tableControl.totalCount"
-                :current-page="tableControl.pageCount"
-                :page-size="tableControl.pageSize"
-                :page-sizes="[20, 50, 100]"
-                layout="total, sizes, prev, pager, next, jumper"
-              >
+              <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :total="tableControl.totalCount" :current-page="tableControl.pageCount"
+                :page-size="tableControl.pageSize" :page-sizes="[20, 50, 100]"
+                layout="total, sizes, prev, pager, next, jumper">
               </el-pagination>
             </div>
           </div>
@@ -70,8 +65,9 @@
 </template>
 
 <script>
+import CLASSIFY_CONF from './../../config/classify'
+import THEME_CONF from './../../config/theme'
 import EditDialog from 'components/dialog/EditDialog'
-import $config from 'config'
 
 export default {
   name: 'ManageLinks',
@@ -83,8 +79,8 @@ export default {
       isLoading: false,
       isShowDlgFlag: false,
       activeName: 'first',
-      classifyList: $config.classify,
-      themeList: $config.theme,
+      classifyList: CLASSIFY_CONF,
+      themeList: THEME_CONF,
       tableData: [],
       tableControl: {
         totalCount: 30,
@@ -152,7 +148,7 @@ export default {
       return result
     },
 
-    handleClick() {},
+    handleClick() { },
 
     handleSizeChange(val) {
       this.tableControl.pageSize = val
@@ -230,6 +226,7 @@ export default {
   .entry-list {
     width: 100%;
     padding: 15px;
+
     .classify-title {
       margin: 15px auto;
     }

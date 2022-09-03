@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import $config from 'config'
+import CLASSIFY_CONF from './../config/classify'
+import THEME_CONF from './../config/theme'
 import partsMixin from 'mixins/partsMixin.js'
 
 export default {
@@ -69,7 +70,7 @@ export default {
 
     setFetchData() {
       let currentClassify = this.$route.params.classify
-      let currentItem = $config.classify.find((item) => {
+      let currentItem = CLASSIFY_CONF.find((item) => {
         return currentClassify === item.name
       })
 
@@ -89,11 +90,11 @@ export default {
 
     setThemeList() {
       let allThemeList = []
-      $config.theme.map((item) => {
+      THEME_CONF.map((item) => {
         allThemeList = allThemeList.concat(item)
       })
       let classify = this.$requestParamList.classify
-      this.themeList = Object.freeze(classify ? $config.theme[classify] : allThemeList)
+      this.themeList = Object.freeze(classify ? THEME_CONF[classify] : allThemeList)
     },
   },
 }

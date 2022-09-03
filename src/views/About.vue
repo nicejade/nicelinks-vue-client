@@ -22,16 +22,16 @@
 </template>
 
 <script>
-import $config from 'config'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 import Waline from 'components/Waline'
+import ABOUT_CONF from './../config/about'
 
 export default {
   name: 'About',
 
   data() {
     return {
-      aboutMarkdown: Object.freeze($config.about),
+      aboutMarkdown: Object.freeze(ABOUT_CONF),
     }
   },
 

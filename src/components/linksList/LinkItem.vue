@@ -116,7 +116,8 @@ import PreviewMd from 'components/markdown/PreviewMd.vue'
 import Heart from 'components/Heart.vue'
 import HeartBroken from 'components/HeartBroken.vue'
 
-import $config from 'config'
+import THEME_CONF from './../../config/theme'
+import TAG_CONF from './../../config/tags'
 import { NICE_LINKS, REDIRECT_PATH } from 'config/constant'
 import { copyToClipboard } from './../../helper/system.js'
 import { getCurrentDate, getHostnameByUrl, interceptString } from './../../helper/tool'
@@ -127,8 +128,8 @@ export default {
   data() {
     return {
       item: {},
-      themeList: Object.freeze($config.theme),
-      tagsList: Object.freeze($config.tags),
+      themeList: Object.freeze(THEME_CONF),
+      tagsList: Object.freeze(TAG_CONF),
       isShowKeywords: true,
       isShowDlgFlag: false,
       isRequesting: false,

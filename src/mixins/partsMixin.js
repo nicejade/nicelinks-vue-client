@@ -1,6 +1,8 @@
-import $config from 'config'
 import { mapMutations } from 'vuex'
+
 import { updateAfterFilterEmptyValue } from './../helper/tool'
+import CLASSIFY_CONF from './../config/classify'
+import DEFAULT_CONF from './../config/default'
 
 const getValueByName = (source = [], name = '') => {
   let result = source.filter((item) => {
@@ -55,7 +57,7 @@ export default {
       params.active = true
       params.userId = (this.userInfo && this.userInfo._id) || ''
 
-      let classifyVal = getValueByName($config.classify, this.$route.params.classify)
+      let classifyVal = getValueByName(CLASSIFY_CONF, this.$route.params.classify)
       if (classifyVal && this.$route.params.classify) {
         params.classify = classifyVal
       } else {
@@ -109,7 +111,7 @@ export default {
         .catch((error) => {
           this.$message.error(`${error}`)
           this.$vuexSetNiceLinksList({
-            data: $config.default,
+            data: DEFAULT_CONF,
             isLoadMore,
           })
         })

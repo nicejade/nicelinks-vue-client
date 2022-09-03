@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import $config from 'config'
+import CLASSIFY_CONF from './../config/classify'
+import THEME_CONF from './../config/theme'
 
 export default {
   name: 'ThemeCollections',
@@ -28,8 +29,8 @@ export default {
   data() {
     return {
       isLoading: false,
-      classifyList: $config.classify,
-      themeList: $config.theme,
+      classifyList: CLASSIFY_CONF,
+      themeList: THEME_CONF,
     }
   },
 

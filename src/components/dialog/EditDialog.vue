@@ -1,46 +1,26 @@
 <template>
   <div id="edit-dialog">
-    <el-dialog
-      stripe
-      :title="$t('shareNewLink')"
-      :visible.sync="isShowDlgFlag"
-      size="small"
-      v-loading.body="isLoading"
-    >
+    <el-dialog stripe :title="$t('shareNewLink')" :visible.sync="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
             <el-form-item prop="urlPath">
-              <el-input
-                v-model="fillForm.urlPath"
-                :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"
-              >
+              <el-input v-model="fillForm.urlPath" :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')">
               </el-input>
             </el-form-item>
           </div>
           <div class="form-group">
             <el-form-item prop="title">
-              <el-input
-                v-model="fillForm.title"
-                :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')"
-              >
+              <el-input v-model="fillForm.title" :placeholder="this.$t('pleaseEnter') + this.$t('linkNameStr')">
               </el-input>
             </el-form-item>
           </div>
 
           <div class="form-group">
             <el-form-item prop="classify">
-              <el-select
-                class="wrap-block"
-                v-model="fillForm.classify"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')"
-              >
-                <el-option
-                  v-for="item in classifyList"
-                  :key="item.key"
-                  :label="$t(item.name)"
-                  :value="item.value"
-                >
+              <el-select class="wrap-block" v-model="fillForm.classify"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')">
+                <el-option v-for="item in classifyList" :key="item.key" :label="$t(item.name)" :value="item.value">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -49,17 +29,9 @@
           <div class="form-group">
             <div class="col-sm-8">
               <el-form-item prop="theme">
-                <el-select
-                  class="wrap-block"
-                  v-model="fillForm.theme"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('linkThemeStr')"
-                >
-                  <el-option
-                    v-for="item in themeList"
-                    :key="item.key"
-                    :label="item.key"
-                    :value="item.value"
-                  >
+                <el-select class="wrap-block" v-model="fillForm.theme"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('linkThemeStr')">
+                  <el-option v-for="item in themeList" :key="item.key" :label="item.key" :value="item.value">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -68,15 +40,8 @@
 
           <div class="form-group">
             <el-form-item prop="tags">
-              <el-select
-                class="wrap-block"
-                v-model="fillForm.tags"
-                allow-create
-                multiple
-                filterable
-                :multiple-limit="3"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')"
-              >
+              <el-select class="wrap-block" v-model="fillForm.tags" allow-create multiple filterable :multiple-limit="3"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')">
                 <el-option v-for="item in tagsList" :key="item" :label="item" :value="item">
                 </el-option>
               </el-select>
@@ -85,58 +50,35 @@
 
           <div class="form-group">
             <el-form-item prop="keywords">
-              <el-input
-                type="textarea"
-                :maxlength="360"
-                :autosize="{ minRows: 2, maxRows: 10 }"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkKeywordStr')"
-                v-model="fillForm.keywords"
-              >
+              <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 2, maxRows: 10 }"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkKeywordStr')" v-model="fillForm.keywords">
               </el-input>
             </el-form-item>
           </div>
 
           <div class="form-group">
             <el-form-item prop="desc">
-              <el-input
-                type="textarea"
-                :maxlength="360"
-                :autosize="{ minRows: 3, maxRows: 10 }"
-                :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')"
-                v-model="fillForm.desc"
-              >
+              <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10 }"
+                :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')" v-model="fillForm.desc">
               </el-input>
             </el-form-item>
           </div>
 
           <div class="form-group">
-            <markdown
-              v-model="fillForm.review"
-              :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')"
-            />
+            <markdown v-model="fillForm.review" :placeholder="this.$t('pleaseSelect') + this.$t('linkReviewStr')" />
           </div>
 
           <div class="form-group">
             <label class="control-label"> {{ this.$t('isAcive') }} ：</label>
-            <el-switch
-              :on-text="$t('yes')"
-              :off-text="$t('no')"
-              v-model="fillForm.active"
-              on-color="#13ce66"
-              off-color="#ff4949"
-            >
+            <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.active" on-color="#13ce66"
+              off-color="#ff4949">
             </el-switch>
           </div>
 
           <div class="form-group">
             <label class="control-label"> {{ this.$t('isAlive') }} ：</label>
-            <el-switch
-              :on-text="$t('yes')"
-              :off-text="$t('no')"
-              v-model="fillForm.alive"
-              on-color="#13ce66"
-              off-color="#ff4949"
-            >
+            <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.alive" on-color="#13ce66"
+              off-color="#ff4949">
             </el-switch>
           </div>
         </el-form>
@@ -151,7 +93,9 @@
 </template>
 
 <script>
-import $config from 'config'
+import CLASSIFY_CONF from './../../config/classify'
+import THEME_CONF from './../../config/theme'
+import TAG_CONF from './../../config/tags'
 import Markdown from 'components/markdown/Index'
 
 export default {
@@ -173,8 +117,8 @@ export default {
         active: false,
       },
       themeList: [],
-      tagsList: $config.tags,
-      classifyList: $config.classify,
+      tagsList: TAG_CONF,
+      classifyList: CLASSIFY_CONF,
       rules: {
         urlPath: [{ required: true, validator: this.$verifyUrl, trigger: 'change,blur' }],
         title: [
@@ -217,8 +161,6 @@ export default {
     },
   },
 
-  computed: {},
-
   watch: {
     value(val) {
       this.isShowDlgFlag = val
@@ -227,7 +169,7 @@ export default {
       this.$emit('input', val)
     },
     'fillForm.classify': function (val) {
-      this.themeList = $config.theme[this.fillForm.classify] || []
+      this.themeList = THEME_CONF[this.fillForm.classify] || []
     },
     pdata(val) {
       this.fillForm = this.$cloneDeep(val)

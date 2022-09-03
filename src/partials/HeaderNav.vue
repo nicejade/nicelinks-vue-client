@@ -107,7 +107,8 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 
-import $config from 'config'
+import CLASSIFY_CONF from './../config/classify'
+import THEME_CONF from './../config/theme'
 import { REPORT_PATH } from 'config/constant'
 import { openAuthorSite } from './../helper/tool'
 
@@ -117,7 +118,7 @@ export default {
   data() {
     return {
       isShowDlgFlag: false,
-      navList: Object.freeze($config.classify),
+      navList: Object.freeze(CLASSIFY_CONF),
     }
   },
 
@@ -175,7 +176,7 @@ export default {
       if (!routeTheme) return ''
 
       let clssifyIndex = 0
-      $config.theme.forEach((items, index) => {
+      THEME_CONF.forEach((items, index) => {
         items.forEach((item) => {
           if (item.value.toUpperCase() === routeTheme.toUpperCase()) {
             clssifyIndex = index
@@ -183,7 +184,7 @@ export default {
           }
         })
       })
-      return $config.classify[clssifyIndex].name
+      return CLASSIFY_CONF[clssifyIndex].name
     },
 
     hideSidenav() {

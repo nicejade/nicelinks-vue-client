@@ -12,26 +12,15 @@
               <el-tab-pane :label="$t('unapproved')" name="second"></el-tab-pane>
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%;">
-              <el-table-column
-                prop="type"
-                :label="$t('type')"
-                width="100"
-                :filters="sentencesTypeList"
-                :filter-method="filterTag"
-                filter-placement="bottom-end"
-              >
+              <el-table-column prop="type" :label="$t('type')" width="100" :filters="sentencesTypeList"
+                :filter-method="filterTag" filter-placement="bottom-end">
                 <template slot-scope="scope">
-                  <el-tag :class="scope.row.type + '-color'" disable-transitions
-                    >{{ getSentenceTypeName(scope.row.type) }}
+                  <el-tag :class="scope.row.type + '-color'" disable-transitions>{{ getSentenceTypeName(scope.row.type)
+                  }}
                   </el-tag>
                 </template>
               </el-table-column>
-              <el-table-column
-                prop="content"
-                :label="$t('content')"
-                show-overflow-tooltip
-                min-width="100"
-              >
+              <el-table-column prop="content" :label="$t('content')" show-overflow-tooltip min-width="100">
               </el-table-column>
               <el-table-column prop="createdBy" :label="$t('creater')" width="100">
                 <template slot-scope="scope">
@@ -46,42 +35,32 @@
               <el-table-column :label="$t('operation')" width="160">
                 <template slot-scope="scope">
                   <el-button size="small" @click="handleEdit(scope.row)">{{
-                    $t('edit')
+                      $t('edit')
                   }}</el-button>
                   <el-button size="small" type="danger" @click="handleDelete(scope.row)">{{
-                    $t('delete')
+                      $t('delete')
                   }}</el-button>
                 </template>
               </el-table-column>
             </el-table>
 
             <div class="table-operate">
-              <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :total="totalCount"
-                :current-page="tableControl.pageCount"
-                :page-size="tableControl.pageSize"
-                :page-sizes="[20, 50, 100]"
-                layout="total, sizes, prev, pager, next, jumper"
-              >
+              <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :total="totalCount"
+                :current-page="tableControl.pageCount" :page-size="tableControl.pageSize" :page-sizes="[20, 50, 100]"
+                layout="total, sizes, prev, pager, next, jumper">
               </el-pagination>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <sentences-dialog
-      v-model="isShowDlgFlag"
-      :pdata="currentRowData"
-      @update-success="onUpdateSuccess"
-    />
+    <sentences-dialog v-model="isShowDlgFlag" :pdata="currentRowData" @update-success="onUpdateSuccess" />
   </div>
 </template>
 
 <script>
 import SentencesDialog from 'components/dialog/SentencesDialog'
-import $config from 'config'
+import SENTENCES_CONF from './../../config/sentences'
 
 export default {
   name: 'ManageSentences',
@@ -111,7 +90,7 @@ export default {
 
   computed: {
     sentencesTypeList() {
-      return $config.sentences.map((item) => {
+      return SENTENCES_CONF.map((item) => {
         return {
           text: item.text[this.$lang],
           value: item.value,
@@ -187,7 +166,7 @@ export default {
       })[0]['text']
     },
 
-    handleClick() {},
+    handleClick() { },
 
     handleSizeChange(val) {
       this.tableControl.pageSize = val
@@ -265,9 +244,11 @@ export default {
   .panel-body {
     padding-top: 15px;
   }
+
   .sentences-list {
     width: 100%;
     padding: 15px;
+
     .classify-title {
       margin: 15px auto;
     }

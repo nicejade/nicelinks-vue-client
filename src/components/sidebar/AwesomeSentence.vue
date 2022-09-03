@@ -261,26 +261,6 @@ export default {
       opacity: 0;
       transition: transform 0.5s, opacity 1s;
     }
-
-    &:active:after {
-      border-radius: 50%;
-      transform: scale(10);
-      opacity: 0.2;
-      transition: 0s;
-    }
-
-    &:hover {
-      border-radius: 50%;
-      color: $jade;
-      fill: $jade;
-      border: 1px solid $jade;
-      animation: pulse 2s infinite;
-    }
-
-    &:focus {
-      border-radius: 50%;
-      border-color: rgba(52, 223, 165, 0.5);
-    }
   }
 
   @keyframes pulse {

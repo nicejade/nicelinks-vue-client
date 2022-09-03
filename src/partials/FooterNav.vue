@@ -40,7 +40,9 @@
       </div>
       <div class="contact">
         <div class="tooltip">
-          <img class="tooltip-img" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩" />
+          <div class="pannel">
+            <img class="qr-code" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩" />
+          </div>
           <icon class="icons" name="weixin"></icon>
         </div>
         <a v-for="item in contactArray" @click="onReortEvent(`social-${item.class}`)" target="_blank"
@@ -201,19 +203,39 @@ export default {
   display: inline-block;
 }
 
-.tooltip .tooltip-img {
+.tooltip .pannel {
   position: absolute;
-  top: -180px;
-  left: -80px;
+  top: -19rem;
+  left: -7rem;
+  width: 18rem;
+  height: 18rem;
   z-index: 1;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   visibility: hidden;
-  width: 180px;
-  height: 180px;
-  padding: 0;
+  border-radius: 1rem;
+  padding: .5rem;
+  background-color: $white;
+
+  .qr-code {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 100%;
+    transform: translateX(50%);
+    border-top: 1rem solid $white;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+  }
 }
 
-.tooltip:hover .tooltip-img {
+.tooltip:hover .pannel {
   visibility: visible;
 }
 

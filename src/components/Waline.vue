@@ -60,10 +60,13 @@ export default {
   .wl-text-number,
   .wl-nick,
   .wl-time,
-  .wl-content,
+  .wl-content {
+    font-size: 1.2rem;
+  }
+
   .wl-count,
   .wl-empty {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .wl-action:nth-child(1),

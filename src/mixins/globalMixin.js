@@ -80,11 +80,11 @@ Vue.mixin({
       Desc: 使用 gtag.js 进行事件跟踪(仅通过 JS);
       Date: 2018-03-04
     */
-    $gtagTracking(action, category, label) {
-      const gtag = window.gtag || (() => {})
+    $gtagTracking(action, category, label = '') {
+      const gtag = window.gtag || (() => { })
       gtag('event', action, {
         event_category: category,
-        event_label: label,
+        event_label: label || action,
       })
     },
   },

@@ -55,7 +55,7 @@ export default {
     const isHadDisplay = getLocalStorage(AUTO_DIALOG)
     this.isShowAutoDlgFlag = !this.$isMobile && !isHadDisplay
     if (this.isShowAutoDlgFlag) {
-      this.$gtagTracking('auto-dialog', 'global', 'auto-dialog')
+      this.$gtagTracking('auto-dialog', 'global')
     }
     // Temporarily shut down the WeChat sharing function@04-07
     // this.initWechatShare()
@@ -85,7 +85,7 @@ export default {
       this.isInstallAdBlock = 'none' === getComputedStyle(elem).display
       document.body.removeChild(elem)
       if (this.isInstallAdBlock) {
-        this.$gtagTracking('ad-block-dialog', 'global', 'ad-block-dialog')
+        this.$gtagTracking('ad-block-dialog', 'global')
       }
     },
 
@@ -97,7 +97,7 @@ export default {
 
     onHandleClose() {
       this.isShowAutoDlgFlag = false
-      this.$gtagTracking('close-auto-dialog', 'global', 'close-auto-dialog')
+      this.$gtagTracking('close-auto-dialog', 'global')
 
       setTimeout(() => {
         this.runAdsChecker() // Open Ads Dlg When Close AutoDialog 22.07.02
@@ -106,7 +106,7 @@ export default {
 
     onHandleAdBlockClose() {
       this.isInstallAdBlock = false
-      this.$gtagTracking('close-ad-block-dialog', 'global', 'close-ad-block-dialog')
+      this.$gtagTracking('close-ad-block-dialog', 'global')
     },
 
     /*

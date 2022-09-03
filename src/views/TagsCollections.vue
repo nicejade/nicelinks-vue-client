@@ -5,15 +5,8 @@
         <div class="main-container">
           <div class="entry-list">
             <h3 class="classify-title">{{ $t('tagsCollection') }}</h3>
-            <a
-              class="gtag-track radius-btn"
-              :data-action="`tags-${item}`"
-              data-category="collections-tags"
-              :data-label="`tags-${item}`"
-              v-for="item in tagsList"
-              :key="item"
-              :href="`/tags/${item}`"
-              >{{ item }}
+            <a class="radius-btn" @click="onTagClick(item)" v-for="item in tagsList" :key="item"
+              :href="`/tags/${item}`">{{ item }}
             </a>
           </div>
           <aside-list></aside-list>
@@ -25,13 +18,8 @@
 
 <script>
 import flattenDepth from 'lodash/flattenDepth'
-
-import pageMixin from 'mixins/pageMixin.js'
-
 export default {
   name: 'TagsCollections',
-
-  mixins: [pageMixin],
 
   data() {
     return {
@@ -39,8 +27,6 @@ export default {
       tagsList: [],
     }
   },
-
-  watch: {},
 
   created() {
     this.$apis
@@ -58,7 +44,11 @@ export default {
     this.$setPageTitle(this.$t('tagsCollection'))
   },
 
-  methods: {},
+  methods: {
+    onTagClick(item) {
+      this.$gtagTracking(`tags-${item}`, 'collections-tags')
+    }
+  },
 }
 </script>
 

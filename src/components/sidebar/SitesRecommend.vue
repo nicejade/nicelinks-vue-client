@@ -19,7 +19,7 @@ export default {
 
   methods: {
     onRecommendClick() {
-      this.$gtagTracking('link-recommend', 'aside', 'link-recommend')
+      this.$gtagTracking('link-recommend', 'aside')
     },
   },
 }

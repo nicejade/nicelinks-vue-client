@@ -8,41 +8,39 @@
         </div>
         <div class="list-item">
           <p class="title">产品</p>
-          <a class="nice-link gtag-track" data-action="explore-skill" data-category="footer" data-label="explore-skill"
+          <a class="nice-link" data-action="explore-skill" data-category="footer" data-label="explore-skill"
             href="https://nicelinks.site/explore/skill">技术客栈
           </a>
-          <a class="nice-link gtag-track" data-action="explore-resource" data-category="footer"
-            data-label="explore-resource" href="https://nicelinks.site/explore/resource">资源之家
+          <a class="nice-link" data-action="explore-resource" data-category="footer" data-label="explore-resource"
+            href="https://nicelinks.site/explore/resource">资源之家
           </a>
-          <a class="nice-link gtag-track" data-action="explore-life" data-category="footer" data-label="explore-life"
+          <a class="nice-link" data-action="explore-life" data-category="footer" data-label="explore-life"
             href="https://nicelinks.site/explore/life">写意人生
           </a>
-          <a class="nice-link gtag-track" data-action="explore-info" data-category="footer" data-label="explore-info"
+          <a class="nice-link" data-action="explore-info" data-category="footer" data-label="explore-info"
             href="https://nicelinks.site/explore/info">信息快讯
           </a>
         </div>
         <div class="list-item">
           <p class="title">合作</p>
-          <a class="nice-link gtag-track" data-action="about" data-category="footer" data-label="about"
-            href="/about">关于我们</a>
-          <a class="nice-link gtag-track" data-action="business" data-category="footer" data-label="business"
+          <a class="nice-link" data-action="about" data-category="footer" data-label="about" href="/about">关于我们</a>
+          <a class="nice-link" data-action="business" data-category="footer" data-label="business"
             href="/business">广告投放</a>
-          <a class="nice-link gtag-track" data-action="sponsor" data-category="footer" data-label="sponsor"
-            href="/sponsor">倾情捐赠
+          <a class="nice-link" data-action="sponsor" data-category="footer" data-label="sponsor" href="/sponsor">倾情捐赠
           </a>
-          <a target="_blank" rel="noopener" class="nice-link gtag-track" data-action="weekly" data-category="footer"
+          <a target="_blank" rel="noopener" class="nice-link" data-action="weekly" data-category="footer"
             data-label="weekly" href="https://blog.nicelinks.site/?ref=nicelinks.site">倾城博客
           </a>
         </div>
         <div class="list-item">
           <p class="title">推荐</p>
-          <a class="nice-link gtag-track" target="_blank" data-action="jeffjade-com" data-category="footer"
+          <a class="nice-link" target="_blank" data-action="jeffjade-com" data-category="footer"
             data-label="jeffjade-com" href="https://www.jeffjade.com/?ref=nicelinks.site">晚晴幽草轩</a>
-          <a class="nice-link gtag-track" target="_blank" data-action="footkapp-lovejade" data-category="footer"
+          <a class="nice-link" target="_blank" data-action="footkapp-lovejade" data-category="footer"
             data-label="footkapp-lovejade" href="https://quickapp.lovejade.cn/?ref=nicelinks.site">静轩之别苑</a>
-          <a class="nice-link gtag-track" target="_blank" data-action="forum-lovejade" data-category="footer"
+          <a class="nice-link" target="_blank" data-action="forum-lovejade" data-category="footer"
             data-label="forum-lovejade" href="https://forum.lovejade.cn/?ref=nicelinks.site">悠然宜想亭</a>
-          <a class="nice-link gtag-track" target="_blank" data-action="wiki-lovejade" data-label="wiki-lovejade"
+          <a class="nice-link" target="_blank" data-action="wiki-lovejade" data-label="wiki-lovejade"
             href="https://wiki.lovejade.cn/?ref=nicelinks.site">清风明月阁</a>
         </div>
       </div>
@@ -53,17 +51,17 @@
         </div>
         <a v-for="item in contactArray" :data-action="'social-' + item.class" data-category="footer"
           :data-label="'social-' + item.class" :href="assembleExternalLink(item.path + item.name)" :title="item.title"
-          target="_blank" rel="noopener" :class="item.class" class="social-btn gtag-track">
+          target="_blank" rel="noopener" :class="item.class" class="social-btn">
           <icon class="icons" :name="item.class"></icon>
         </a>
       </div>
       <div class="icp">
         <span>{{ copyright }}</span>
-        <a class="link gtag-track" data-action="link-jeffjade" data-category="footer" data-label="link-jeffjade"
+        <a class="link" data-action="link-jeffjade" data-category="footer" data-label="link-jeffjade"
           href="https://www.jeffjade.com?utm_source=nicelinks.site" target="_blank" rel="noopener">晚晴幽草轩</a>
         出品
         <br class="show-on-small-screen" />
-        <a class="beian-link gtag-track" data-action="beian" data-category="footer" data-label="beian"
+        <a class="beian-link" data-action="beian" data-category="footer" data-label="beian"
           href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备17099767号</a>
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
@@ -73,8 +71,6 @@
 
 <script>
 import endsWith from 'lodash/endsWith'
-
-import pageMixin from 'mixins/pageMixin.js'
 import $config from 'config'
 import { getCurrentDate } from './../helper/tool'
 
@@ -87,8 +83,6 @@ export default {
       contactArray: Object.freeze(this.filterEntryInMobile($config.contact)),
     }
   },
-
-  mixins: [pageMixin],
 
   created() {
     let currentYear = new Date(getCurrentDate()).getFullYear()

@@ -19,8 +19,8 @@
               </div>
             </div>
             <div class="friends-list">
-              <a class="gtag-track item" data-action="go-friend-link" data-category="friend" data-label="go-friend-link"
-                :href="item.path + '?ref=nicelinks.site'" v-for="item in tableData" :key="item.path" rel="noopener">
+              <a class="item" @click="onFriendItemClick(item)" target="_blank" :href="item.path + '?ref=nicelinks.site'"
+                v-for="item in tableData" :key="item.path" rel="noopener">
                 <img class="icon" :src="getSiteIcon(item)"
                   onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/no-image.png';"
                   :alt="item.desc" />
@@ -43,13 +43,10 @@
 
 <script>
 import Waline from 'components/Waline'
-import partsMixin from 'mixins/partsMixin.js'
 import 'hint.css'
 
 export default {
   name: 'FriendLink',
-
-  mixins: [partsMixin],
 
   data() {
     return {
@@ -93,6 +90,10 @@ export default {
       // return `https://icon.horse/icon/${urlObject.hostname}`
       return `https://nicelinks.oss-cn-shenzhen.aliyuncs.com/icons/${urlObject.hostname}.ico`
     },
+
+    onFriendItemClick(item) {
+      this.$gtagTracking(`link-${item.title}`, 'friend')
+    }
   },
 }
 </script>

@@ -15,33 +15,37 @@
           <span class="text">微信扫码体验</span>
         </div>
       </div>
-      <div class="connect outside-link-btn">
+      <div class="connect outside-link">
         <icon class="qrcode" name="qrcode"></icon>
       </div>
     </div>
-    <a target="_blank" class="outside-link-btn gtag-track" data-action="recommend-btn" data-category="elevator"
-      data-label="recommend-btn" rel="noopener" :href="reportPath">投稿
+    <a target="_blank" class="outside-link" @click="onRecommendClick" rel="noopener" :href="reportPath">投稿
     </a>
-    <a target="_blank" class="outside-link-btn gtag-track" data-action="feedback-btn" data-category="elevator"
-      data-label="feedback-btn" rel="noopener" :href="reportPath">反馈
+    <a target="_blank" class="outside-link" @click="onFeedbackClick" rel="noopener" :href="reportPath">反馈
     </a>
   </div>
 </template>
 
 <script>
 import { REPORT_PATH } from 'config/constant'
-import pageMixin from 'mixins/pageMixin.js'
-
 export default {
   name: 'Feedback',
-
-  mixins: [pageMixin],
 
   data() {
     return {
       reportPath: REPORT_PATH,
     }
   },
+
+  methods: {
+    onRecommendClick() {
+      this.$gtagTracking('recommend-btn', 'elevator')
+    },
+
+    onFeedbackClick() {
+      this.$gtagTracking('feedback-btn', 'elevator')
+    }
+  }
 }
 </script>
 
@@ -60,7 +64,7 @@ $factor: 1rem;
   z-index: $zindex-elevator;
 }
 
-.outside-link-btn {
+.outside-link {
   display: flex;
   justify-content: center;
   align-items: center;

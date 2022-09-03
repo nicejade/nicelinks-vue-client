@@ -6,15 +6,8 @@
           <div class="entry-list">
             <h3 class="classify-title">{{ $t('themeCollection') }}</h3>
             <div v-for="(obj, index) in themeList" :key="index">
-              <a
-                v-for="item in obj"
-                :key="item.value"
-                class="gtag-track radius-btn"
-                :data-action="`themes-${item.value}`"
-                data-category="collections-themes"
-                :data-label="`themes-${item.value}`"
-                :href="`/theme/${item.value.toLocaleLowerCase()}`"
-              >
+              <a @click="onThemeClick(item)" v-for="item in obj" :key="item.value" class="radius-btn"
+                :href="`/theme/${item.value.toLocaleLowerCase()}`">
                 {{ item.key }}
               </a>
             </div>
@@ -28,12 +21,9 @@
 
 <script>
 import $config from 'config'
-import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'ThemeCollections',
-
-  mixins: [pageMixin],
 
   data() {
     return {
@@ -43,12 +33,14 @@ export default {
     }
   },
 
-  watch: {},
-
-  created() {},
-
   mounted() {
     this.$setPageTitle(this.$t('themeCollection'))
+  },
+
+  methods: {
+    onThemeClick(item) {
+      this.$gtagTracking(`themes-${item.value}`, 'collections-themes')
+    }
   },
 }
 </script>
@@ -59,6 +51,7 @@ export default {
 #theme-coll-page {
   .entry-list {
     padding: 15px;
+
     .classify-title {
       font-size: $font-large;
       font-weight: 500;

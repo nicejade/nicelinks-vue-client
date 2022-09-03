@@ -31,8 +31,6 @@ const cemeteryDescStr = `天地不仁，以万物为刍狗。年与时驰间，[
 export default {
   name: 'Cemetery',
 
-  mixins: [],
-
   data() {
     return {
       pastLinksArray: [],
@@ -43,8 +41,6 @@ export default {
   components: {
     PreviewMd,
   },
-
-  watch: {},
 
   created() {
     this.fetchPastLinks({

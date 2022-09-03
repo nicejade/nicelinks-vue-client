@@ -2,20 +2,19 @@
   <div class="redirect-wrapper">
     <h1 class="jump-title">
       <img class="logo" src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
-      <a class="gtag-track title-link" data-action="h1-title-link" data-category="redirect" data-label="h1-title-link"
-        rel="home" href="http://nicelinks.site?ref=redirect">倾城之链</a>
+      <a rel="home" class="title-link" @click="onReportEvent('h1-title-link')"
+        href="http://nicelinks.site?ref=redirect">倾城之链</a>
     </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
         <h2 class="title">
-          即将从<a class="gtag-track" data-action="jump-link" data-category="redirect" data-label="jump-link" rel="home"
-            href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
+          即将从<a rel="home" @click="onReportEvent('nice-link')" href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
         </h2>
         <div class="link-box">
           <p class="link-url">{{ targetWebsite }}</p>
         </div>
-        <a class="gtag-track redirect-btn effect-btn" data-action="redirect-btn" data-category="redirect"
-          data-label="redirect-btn" :rel="isalive ? 'noopener' : 'noopener nofollow'" :href="targetPath">
+        <a class="redirect-btn effect-btn" @click="onReportEvent('redirect-btn')"
+          :rel="isalive ? 'noopener' : 'noopener nofollow'" :href="targetPath">
           <span class="jump-to">前往该网站</span>
         </a>
       </div>
@@ -27,7 +26,6 @@
 </template>
 
 <script>
-import pageMixin from 'mixins/pageMixin.js'
 import { NICE_LINKS } from 'config/constant'
 import { queryUrl2Obj } from './../helper/tool'
 
@@ -44,11 +42,9 @@ export default {
     }
   },
 
-  mixins: [pageMixin],
-
-  components: {},
-
-  created() { },
+  created() {
+    this.$gtagTracking('visite', 'redirect')
+  },
 
   computed: {
     websiteBgStyle() {
@@ -68,20 +64,20 @@ export default {
     this.isalive = !(paramObj.alive && paramObj.alive === '0')
     this.targetPath = `${this.targetWebsite}?utm_source=nicelinks.site`
     if (this.isAutoRedirect) {
-      this.$gtagTracking('auto-jump', 'redirect', 'auto-jump')
+      this.$gtagTracking('auto-jump', 'redirect')
       window.location.href = this.targetPath
     }
   },
 
-  watch: {},
-
-  components: {},
-
-  methods: {},
+  methods: {
+    onReportEvent(action) {
+      this.$gtagTracking(action, 'redirect')
+    }
+  },
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 $color: #272755;
 $primary: #ea552d;
 

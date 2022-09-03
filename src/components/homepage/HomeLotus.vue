@@ -19,20 +19,9 @@
         <div class="unit-wrapper">
           <h1 class="headline large-font">{{ $t('niceLinksStr') }}</h1>
           <section class="hero-description">
-            <strong class="desc-text function"
-              >开放型新一代导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；</strong
-            >
-            <strong class="desc-text objective"
-              >在「<mark class="mark">倾城之链</mark
-              >」，您可以轻松发现、学习、分享更多有用或有趣的事物。</strong
-            >
-            <a
-              href="/explore/all"
-              class="gtag-track explore-all-link"
-              data-action="mian-explore-all"
-              data-category="index"
-              data-label="explore-all"
-            >
+            <strong class="desc-text function">开放型新一代导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；</strong>
+            <strong class="desc-text objective">在「<mark class="mark">倾城之链</mark>」，您可以轻松发现、学习、分享更多有用或有趣的事物。</strong>
+            <a href="/explore/all" @click="onExploreAll" data-label="explore-all">
               {{ $t('exploreNice') }}
             </a>
           </section>
@@ -43,12 +32,14 @@
 </template>
 
 <script>
-import pageMixin from 'mixins/pageMixin.js'
-
 export default {
   name: 'HomeLotus',
 
-  mixins: [pageMixin],
+  methods: {
+    onExploreAll() {
+      this.$gtagTracking('mian-explore-all', 'index')
+    }
+  }
 }
 </script>
 

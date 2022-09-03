@@ -3,15 +3,8 @@
     <div class="dlg-header">
       <h2 class="title">
         订阅倾城
-        <a
-          target="_blank"
-          rel="noopener"
-          class="gtag-track"
-          data-action="open-weekly"
-          data-category="global"
-          data-label="open-weekly"
-          href="https://blog.nicelinks.site/?ref=nicelinks.site"
-          >每周精要
+        <a target="_blank" rel="noopener" @click="onOpenWeekly"
+          href="https://blog.nicelinks.site/?ref=nicelinks.site">每周精要
         </a>
       </h2>
       <button type="button" class="btn-close" @click="onCloseClick">
@@ -20,20 +13,14 @@
     </div>
     <div class="pannel">
       <div class="item">
-        <img
-          class="qrcode"
-          src="https://image.nicelinks.site/qrcode_jqx.jpg"
-          alt="晚晴幽草轩-公众号"
-        />
+        <img class="qrcode" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="晚晴幽草轩-公众号" />
         <span class="text font-medium">晚晴幽草轩</span>
         <span class="text">微信扫码关注</span>
       </div>
       <div class="item">
-        <img
-          class="qrcode"
+        <img class="qrcode"
           src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-          alt="倾城之链-小程序"
-        />
+          alt="倾城之链-小程序" />
         <span class="text font-medium">倾城之链</span>
         <span class="text">微信扫码体验</span>
       </div>
@@ -53,6 +40,10 @@ export default {
       setLocalStorage(AUTO_DIALOG, true)
       this.$emit('close')
     },
+
+    onOpenWeekly() {
+      this.$gtagTracking('open-weekly', 'global')
+    }
   },
 }
 </script>

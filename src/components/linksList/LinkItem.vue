@@ -7,8 +7,8 @@
       </a>
       <div class="meta-block">
         <div class="meta-box">
-          <a class="gtag-track username" :href="getUserPath(item.createdBy)"
-            @click.stop="onStopPropagationClick('username')" target="_blank" rel="noopener">{{
+          <a class="username" :href="getUserPath(item.createdBy)" @click.stop="onStopPropagationClick('username')"
+            target="_blank" rel="noopener">{{
                 mUserInfo.profile.nickname || item.createdBy || ''
             }}</a>
         </div>
@@ -375,12 +375,12 @@ export default {
       copyToClipboard(item.urlPath)
       this.copySuccessPrompt()
 
-      this.$gtagTracking('copy-link', 'post', 'copy-link')
+      this.$gtagTracking('copy-link', 'post')
       this.$gtagReport()
     },
 
     onVisitLinkClick(item) {
-      this.$gtagTracking('visit-link', 'post', 'visit-link')
+      this.$gtagTracking('visit-link', 'post')
       this.$gtagReport()
 
       const targetLink = this.getRedirectLink(item.urlPath, item.alive, true)

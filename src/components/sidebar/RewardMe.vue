@@ -54,7 +54,7 @@ export default {
 
   methods: {
     onTurnClick() {
-      this.$gtagTracking('reward-turn-click', 'aside', 'reward-turn-click')
+      this.$gtagTracking('reward-turn-click', 'aside')
 
       this.payWay = this.payWay === 'weixin' ? 'zhifubao' : 'weixin'
       let $reward = document.getElementById('reward')

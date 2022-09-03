@@ -15,7 +15,7 @@ export default {
 
   methods: {
     onFriendshipClick() {
-      this.$gtagTracking('friendship-links', 'aside', 'friendship-links')
+      this.$gtagTracking('friendship-links', 'aside')
     },
   },
 }

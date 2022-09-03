@@ -15,8 +15,7 @@
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
-      <a class="gtag-track" data-action="route-entry" data-category="list" data-label="route-entry"
-        :href="getAssembleRoute(item)" @click="onListClick" target="_blank" ref="bookmark" v-if="isAbstract">
+      <a :href="getAssembleRoute(item)" @click="onListClick" target="_blank" ref="bookmark" v-if="isAbstract">
         <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
       </a>
       <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
@@ -28,7 +27,6 @@
 <script>
 import ContentPlaceholder from 'vue-content-placeholder'
 import LinkItem from './LinkItem.vue'
-import pageMixin from 'mixins/pageMixin.js'
 import placeholderConfig from 'config/placeholder'
 
 export default {
@@ -38,8 +36,6 @@ export default {
       placeholderRows: Object.freeze(placeholderConfig),
     }
   },
-
-  mixins: [pageMixin],
 
   props: {
     pdata: {
@@ -77,6 +73,7 @@ export default {
     },
 
     onListClick() {
+      this.$gtagTracking('route-entry', 'list')
       this.$gtagReport()
     }
   },

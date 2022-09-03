@@ -2,24 +2,12 @@
   <div class="sub-head" id="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
       <li :class="makeClassName(null)">
-        <a
-          href="/explore/all"
-          class="gtag-track theme-link"
-          data-action="explore-all"
-          data-category="sub-head"
-          data-label="explore-all"
-        >
+        <a href="/explore/all" class="theme-link" @click="onExploreAll">
           {{ $t('all') }}
         </a>
       </li>
       <li v-for="item in themeList" :key="item.vaule" :class="makeClassName(item)">
-        <router-link
-          :to="getLinkPathByThemeVal(item.value)"
-          class="gtag-track theme-link"
-          :data-action="'explore-' + item.value"
-          data-category="sub-head"
-          :data-label="'explore-' + item.value"
-        >
+        <router-link @click.native="onExploreTheme(item)" class="theme-link" :to="getLinkPathByThemeVal(item.value)">
           {{ item.key }}
         </router-link>
       </li>
@@ -29,12 +17,11 @@
 
 <script>
 import partsMixin from 'mixins/partsMixin.js'
-import pageMixin from 'mixins/pageMixin.js'
 
 export default {
   name: 'SubHead',
 
-  mixins: [partsMixin, pageMixin],
+  mixins: [partsMixin],
 
   data() {
     return {}
@@ -73,6 +60,16 @@ export default {
       })
       return value ? `/theme/${value.toLocaleLowerCase()}` : '/explore/all'
     },
+
+    onExploreAll() {
+      this.$gtagTracking('explore-all', 'sub-head')
+      this.$gtagReport()
+    },
+
+    onExploreTheme(item) {
+      this.$gtagTracking(`explore-${item.value}`, 'sub-head')
+      this.$gtagReport()
+    }
 
     /* ------------变更 SubHead ”按钮“触发后展示方案(18-07-01)------------ */
     /*
@@ -114,20 +111,25 @@ export default {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.2s;
   transform: translateZ(0);
+
   &::-webkit-scrollbar {
     background: transparent;
     height: 0px;
   }
+
   &:hover::-webkit-scrollbar {
     background: transparent;
     height: 0px;
   }
+
   .sub-head-nav {
     width: 100%;
     display: flex;
     margin: 0;
+
     .nav-item {
       margin: auto 0.5rem;
+
       .theme-link {
         display: inline-block;
         min-width: 4rem;
@@ -135,11 +137,13 @@ export default {
         color: $black-grey;
         font-size: $font-small;
         font-weight: 500;
+
         &:hover {
           color: $brand;
         }
       }
     }
+
     .is-active {
       .theme-link {
         color: $brand;

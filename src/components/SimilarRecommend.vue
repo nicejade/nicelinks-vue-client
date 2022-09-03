@@ -22,7 +22,6 @@
 <script>
 import { getHostnameByUrl, interceptString } from './../helper/tool'
 import { NICE_LINKS, NICE_LINKS_NAME, DESCRIPTION } from './../config/constant'
-import pageMixin from 'mixins/pageMixin.js'
 import { parse } from 'helper/marked'
 
 const DEFAULT_LINKS_ARR = [];
@@ -38,8 +37,6 @@ const DEFAULT_LINKS_ARR = [];
 
 export default {
   name: 'SimilarRecommend',
-
-  mixins: [pageMixin],
 
   data() {
     return {
@@ -124,7 +121,7 @@ export default {
     },
 
     onSimilarClick() {
-      this.$gtagTracking('route-entry', 'recommend', 'route-entry')
+      this.$gtagTracking('route-entry', 'recommend')
       this.$gtagReport()
     }
   },

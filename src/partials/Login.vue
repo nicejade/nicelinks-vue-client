@@ -4,79 +4,51 @@
       <div id="qrcode"></div>
     </div> -->
     <div class="login-box" v-loading.body="isLoading">
-      <a
-        href="/explore/all"
-        class="nicelinks-logo gtag-track"
-        data-action="login-logo-link"
-        data-category="login"
-        data-label="login-logo-link"
-      >
+      <a href="/explore/all" class="nicelinks-logo" @click="onLogoClick">
         <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
         <h1>{{ $t('niceLinksStr') }}</h1>
       </a>
       <div class="form-group">
-        <el-alert
-          v-if="tipMessageObj.message"
-          :title="tipMessageObj.message"
-          :type="tipMessageObj.type"
-        >
+        <el-alert v-if="tipMessageObj.message" :title="tipMessageObj.message" :type="tipMessageObj.type">
         </el-alert>
       </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="username" v-if="isSignUpPage">
-          <el-input
-            v-model.trim.lazy="account.username"
-            placeholder="请输入账号 ID"
-            :icon="checkLoading ? 'loading' : ''"
-            :autofocus="true"
-            @blur="onBlurUsername"
-            @keydown.enter.native="onKeyEnterClick"
-          >
+          <el-input v-model.trim.lazy="account.username" placeholder="请输入账号 ID" :icon="checkLoading ? 'loading' : ''"
+            :autofocus="true" @blur="onBlurUsername" @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend">
               <icon class="icons" name="login-user"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="email" v-if="isSignUpPage">
-          <el-input
-            placeholder="请输入邮箱"
-            v-model.trim="account.email"
-            @keydown.enter.native="onKeyEnterClick"
-          >
+          <el-input placeholder="请输入邮箱" v-model.trim="account.email" @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend">
               <icon class="icons" name="login-email"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userinfo" v-if="!isSignUpPage">
-          <el-input
-            placeholder="请输入账号 ID"
-            v-model.trim="account.userinfo"
-            @keydown.enter.native="onKeyEnterClick"
-          >
+          <el-input placeholder="请输入账号 ID" v-model.trim="account.userinfo" @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend">
               <icon class="icons" name="login-user"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input
-            placeholder="请填写密码"
-            v-model="account.password"
-            type="password"
-            @keydown.enter.native="onKeyEnterClick"
-          >
+          <el-input placeholder="请填写密码" v-model="account.password" type="password"
+            @keydown.enter.native="onKeyEnterClick">
             <template slot="prepend">
               <icon class="icons" name="password"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-button type="primary" v-if="!isSignUpPage" @click="onLoginClick" size="large">{{
-          $t('signIn')
+            $t('signIn')
         }}</el-button>
         <el-button v-else @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
         <el-button type="text" v-if="!this.isSignUpPage" @click="onForgotPwdClick" size="large">{{
-          $t('forgetPwd')
+            $t('forgetPwd')
         }}</el-button>
       </el-form>
     </div>
@@ -84,8 +56,7 @@
       <p class="text-center">
         {{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
         <a class="el-button--text" href="javascript:;" @click="onBottomClick">
-          {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a
-        >
+          {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a>
       </p>
     </div>
   </div>
@@ -119,10 +90,6 @@ export default {
         'https://st2.depositphotos.com/3562409/8433/i/950/depositphotos_84332510-stock-photo-qr-cube.jpg',
     }
   },
-
-  components: {},
-
-  created() {},
 
   mounted() {
     this.updatePageMeta(this.isSignUpPage)
@@ -247,7 +214,7 @@ export default {
     },
 
     onLoginClick() {
-      this.$gtagTracking('signin', 'login', 'login-signin')
+      this.$gtagTracking('signin', 'login')
       this.isLoading = true
       this.$refs['validateForm'].validate((valid) => {
         debugger
@@ -283,7 +250,7 @@ export default {
     },
 
     onSignupClick() {
-      this.$gtagTracking('signup', 'register', 'register-signup')
+      this.$gtagTracking('signup', 'register')
       this.$refs['validateForm'].validate((valid) => {
         if (valid) {
           this.isLoading = false
@@ -308,13 +275,13 @@ export default {
     },
 
     onForgotPwdClick() {
-      this.$gtagTracking('forgot-pwd', 'login', 'forgot-pwd')
+      this.$gtagTracking('forgot-pwd', 'login')
       this.$router.push('/forgot-pwd')
     },
 
     onBottomClick() {
-      const registerPage = ['signin', 'register', 'register-signin']
-      const loginPage = ['register', 'login', 'login-register']
+      const registerPage = ['signin', 'register']
+      const loginPage = ['register', 'login']
       const params = this.isSignUpPage ? registerPage : loginPage
       this.$gtagTracking(...params)
       this.$router.push(this.isSignUpPage ? '/login' : '/register')
@@ -325,6 +292,10 @@ export default {
         this.queryUsername()
       }
     },
+
+    onLogoClick() {
+      this.$gtagTracking('login-logo-link', 'login')
+    }
   },
 
   locales: {

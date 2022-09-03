@@ -3,8 +3,7 @@
     <header class="header">
       <nav class="nav">
         <div class="header-logo">
-          <a href="/" rel="home" class="header-logo-a nicelinks-logo gtag-track" data-action="logo-link"
-            data-category="header" data-label="logo-link">
+          <a href="/" rel="home" class="header-logo-a nicelinks-logo" @click="onHomeClick">
             <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
             <h1 class="title">{{ $t('niceLinksStr') }}</h1>
           </a>
@@ -15,16 +14,15 @@
         </a>
 
         <div class="operate-area">
-          <router-link v-for="item in navList" :key="item.value" :to="'/explore/' + item.name"
-            :class="makeClassName(item.name)" :data-action="'explore-' + item.name" :data-category="header"
-            :data-label="'p-explore-' + item.name">
+          <router-link @click.native="onExploreClick(item)" v-for="item in navList" :key="item.value"
+            :to="'/explore/' + item.name" :class="makeClassName(item.name)">
             {{ $t(item.name) }}
           </router-link>
         </div>
 
         <div class="share-btn" @mouseenter="onShareBtnMouseover" @mouseout="onShareBtnMouseout">
-          <router-link to="/share-link" class="share-link gtag-track" data-action="share-link" data-category="header"
-            data-label="p-share-link">🕊 {{ $t('shareNewLink') }}
+          <router-link to="/share-link" class="share-link" @click.native="onShareClick">
+            🕊 {{ $t('shareNewLink') }}
           </router-link>
         </div>
 
@@ -51,8 +49,8 @@
               <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="">
                 <icon class="vector-icon" name="about-website"></icon>
-                <a class="about-website gtag-track" data-action="header-about-website" data-category="header"
-                  data-label="header-about-website" target="_blank" rel="noopener" :href="getAboutWebsiteLink">
+                <a class="about-website" @click="onAboutSiteClick" target="_blank" rel="noopener"
+                  :href="getAboutWebsiteLink">
                   {{ $t('aboutWebsite') }}
                 </a>
               </el-dropdown-item>
@@ -111,14 +109,13 @@ Vue.use(DropdownItem)
 
 import $config from 'config'
 import partsMixin from 'mixins/partsMixin.js'
-import pageMixin from 'mixins/pageMixin.js'
 import { REPORT_PATH } from 'config/constant'
 import { openAuthorSite } from './../helper/tool'
 
 export default {
   name: 'HeaderNav',
 
-  mixins: [partsMixin, pageMixin],
+  mixins: [partsMixin],
 
   data() {
     return {
@@ -163,13 +160,13 @@ export default {
   mounted() { },
 
   methods: {
-    updateNavActive() {
-      // let tempPathArr = this.$route.path.split('/') || []
-      // this.activeName = tempPathArr[tempPathArr.length - 1]
-    },
+    // updateNavActive() {
+    //   let tempPathArr = this.$route.path.split('/') || []
+    //   this.activeName = tempPathArr[tempPathArr.length - 1]
+    // },
 
     makeClassName(classifyName) {
-      const intrinsicName = 'nav-item gtag-track '
+      const intrinsicName = 'nav-item '
       const routeClassify = this.$route.params.classify
       const currentClssify = routeClassify || this.getClassifyByTheme()
       const isMatch = classifyName === currentClssify
@@ -274,14 +271,30 @@ export default {
     },
 
     onProductCemeteryClick() {
-      this.$gtagTracking('product-cemetery', 'header', 'product-cemetery')
+      this.$gtagTracking('product-cemetery', 'header')
       this.$router.push('/cemetery')
     },
 
     onRecommendClick() {
-      this.$gtagTracking('site-recommend', 'header', 'site-recommend')
+      this.$gtagTracking('site-recommend', 'header')
       window.open(REPORT_PATH)
     },
+
+    onExploreClick(item) {
+      this.$gtagTracking(`explore-${item.name}`, 'header', `p-explore-${item.name}`)
+    },
+
+    onShareClick() {
+      this.$gtagTracking('share-link', 'header', 'p-share-link')
+    },
+
+    onAboutSiteClick() {
+      this.$gtagTracking('header-about-website', 'header')
+    },
+
+    onHomeClick() {
+      this.$gtagTracking('logo-link', 'header')
+    }
   },
 }
 </script>

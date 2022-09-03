@@ -38,7 +38,7 @@
       <a class="item classify" @click.stop="onStopPropagationClick('classify')"
         :href="'/theme/' + item.theme.toLocaleLowerCase()">{{ fillThemeName(item.classify, item.theme) }}</a>
       <a class="tag" v-for="iitem in item.tags" :key="iitem._id" :href="getTagPath(iitem)"
-        @click.stop="onStopPropagationClick('tags')" target="_blank" rel="noopener">{{ iitem }}</a>
+        @click.stop="onStopPropagationClick('tags')" target="_blank" rel="tag">{{ iitem }}</a>
     </div>
     <!-- list is abstract: 是否显示摘要内容  -->
     <div class="abstract mb-normal" style="-webkit-box-orient: vertical;" v-if="isAbstract">

@@ -20,7 +20,7 @@
             </div>
             <div class="friends-list">
               <a class="item" @click="onFriendItemClick(item)" target="_blank" :href="item.path + '?ref=nicelinks.site'"
-                v-for="item in tableData" :key="item.path" rel="noopener">
+                v-for="item in tableData" :key="item.path" rel="external noopener">
                 <img class="icon" :src="getSiteIcon(item)"
                   onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/no-image.png';"
                   :alt="item.desc" />

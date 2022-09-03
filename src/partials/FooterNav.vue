@@ -8,40 +8,34 @@
         </div>
         <div class="list-item">
           <p class="title">产品</p>
-          <a class="nice-link" data-action="explore-skill" data-category="footer" data-label="explore-skill"
-            href="https://nicelinks.site/explore/skill">技术客栈
+          <a class="nice-link" @click="onReortEvent('skill')" href="/explore/skill">技术客栈
           </a>
-          <a class="nice-link" data-action="explore-resource" data-category="footer" data-label="explore-resource"
-            href="https://nicelinks.site/explore/resource">资源之家
+          <a class="nice-link" @click="onReortEvent('resource')" href="/explore/resource">资源之家
           </a>
-          <a class="nice-link" data-action="explore-life" data-category="footer" data-label="explore-life"
-            href="https://nicelinks.site/explore/life">写意人生
+          <a class="nice-link" @click="onReortEvent('life')" href="/explore/life">写意人生
           </a>
-          <a class="nice-link" data-action="explore-info" data-category="footer" data-label="explore-info"
-            href="https://nicelinks.site/explore/info">信息快讯
+          <a class="nice-link" @click="onReortEvent('info')" href="/explore/info">信息快讯
           </a>
         </div>
         <div class="list-item">
           <p class="title">合作</p>
-          <a class="nice-link" data-action="about" data-category="footer" data-label="about" href="/about">关于我们</a>
-          <a class="nice-link" data-action="business" data-category="footer" data-label="business"
-            href="/business">广告投放</a>
-          <a class="nice-link" data-action="sponsor" data-category="footer" data-label="sponsor" href="/sponsor">倾情捐赠
-          </a>
-          <a target="_blank" rel="noopener" class="nice-link" data-action="weekly" data-category="footer"
-            data-label="weekly" href="https://blog.nicelinks.site/?ref=nicelinks.site">倾城博客
+          <a class="nice-link" @click="onReortEvent('about')" href="/about">关于我们</a>
+          <a class="nice-link" @click="onReortEvent('business')" href="/business">广告投放</a>
+          <a class="nice-link" @click="onReortEvent('sponsor')" href="/sponsor">倾情捐赠</a>
+          <a target="_blank" rel="archives bookmark" class="nice-link" @click="onReortEvent('blog')"
+            :href="assembleExternalLink('https://blog.nicelinks.site/')">倾城博客
           </a>
         </div>
         <div class="list-item">
           <p class="title">推荐</p>
-          <a class="nice-link" target="_blank" data-action="jeffjade-com" data-category="footer"
-            data-label="jeffjade-com" href="https://www.jeffjade.com/?ref=nicelinks.site">晚晴幽草轩</a>
-          <a class="nice-link" target="_blank" data-action="footkapp-lovejade" data-category="footer"
-            data-label="footkapp-lovejade" href="https://quickapp.lovejade.cn/?ref=nicelinks.site">静轩之别苑</a>
-          <a class="nice-link" target="_blank" data-action="forum-lovejade" data-category="footer"
-            data-label="forum-lovejade" href="https://forum.lovejade.cn/?ref=nicelinks.site">悠然宜想亭</a>
-          <a class="nice-link" target="_blank" data-action="wiki-lovejade" data-label="wiki-lovejade"
-            href="https://wiki.lovejade.cn/?ref=nicelinks.site">清风明月阁</a>
+          <a class="nice-link" target="_blank" @click="onReortEvent('jeffjade-com')"
+            :href="assembleExternalLink('https://www.jeffjade.com/')">晚晴幽草轩</a>
+          <a class="nice-link" target="_blank" @click="onReortEvent('quickapp-lovejade')"
+            :href="assembleExternalLink('https://quickapp.lovejade.cn/')">静轩之别苑</a>
+          <a class="nice-link" target="_blank" @click="onReortEvent('forum-lovejade')"
+            :href="assembleExternalLink('https://forum.lovejade.cn/')">悠然宜想亭</a>
+          <a class="nice-link" target="_blank" @click="onReortEvent('wiki-lovejade')"
+            :href="assembleExternalLink('https://wiki.lovejade.cn/')">清风明月阁</a>
         </div>
       </div>
       <div class="contact">
@@ -49,20 +43,20 @@
           <img class="tooltip-img" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩" />
           <icon class="icons" name="weixin"></icon>
         </div>
-        <a v-for="item in contactArray" :data-action="'social-' + item.class" data-category="footer"
-          :data-label="'social-' + item.class" :href="assembleExternalLink(item.path + item.name)" :title="item.title"
-          target="_blank" rel="noopener" :class="item.class" class="social-btn">
+        <a v-for="item in contactArray" @click="onReortEvent(`social-${item.class}`)" target="_blank"
+          :href="assembleExternalLink(item.path + item.name)" :title="item.title" rel="external noopener"
+          :class="item.class" class="social-btn">
           <icon class="icons" :name="item.class"></icon>
         </a>
       </div>
       <div class="icp">
         <span>{{ copyright }}</span>
-        <a class="link" data-action="link-jeffjade" data-category="footer" data-label="link-jeffjade"
-          href="https://www.jeffjade.com?utm_source=nicelinks.site" target="_blank" rel="noopener">晚晴幽草轩</a>
+        <a class="link" target="_blank" @click="onReortEvent('link-jeffjade')" rel="external noopener"
+          :href="assembleExternalLink('https://www.jeffjade.com')">晚晴幽草轩</a>
         出品
         <br class="show-on-small-screen" />
-        <a class="beian-link" data-action="beian" data-category="footer" data-label="beian"
-          href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备17099767号</a>
+        <a class="beian-link" target="_blank" @click="onReortEvent('beian')"
+          :href="assembleExternalLink('https://beian.miit.gov.cn/')" rel="external noopener">粤ICP备17099767号</a>
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>
@@ -99,8 +93,12 @@ export default {
 
     assembleExternalLink(url) {
       const separator = endsWith(url, '/') ? '' : '/'
-      return `${url}${separator}?utm_source=nicelinks.site`
+      return `${url}${separator}?ref=nicelinks.site`
     },
+
+    onReortEvent(action) {
+      this.$gtagTracking(action, 'footer')
+    }
   },
 }
 </script>

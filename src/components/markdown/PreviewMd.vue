@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import marked from 'marked'
+import { parse } from 'helper/marked'
 import './markdown.css'
 
 export default {
@@ -11,9 +11,7 @@ export default {
 
   computed: {
     beParsedVal() {
-      return marked(this.value, {
-        sanitize: true,
-      })
+      return parse(this.value)
     },
   },
 

@@ -24,7 +24,7 @@
 import { getHostnameByUrl, interceptString } from './../helper/tool'
 import { NICE_LINKS, NICE_LINKS_NAME, DESCRIPTION } from './../config/constant'
 import pageMixin from 'mixins/pageMixin.js'
-import marked from 'marked'
+import { parse } from 'helper/marked'
 
 const DEFAULT_LINKS_ARR = [];
 [0, 1, 2, 3, 4].map(() => {
@@ -111,9 +111,7 @@ export default {
     getAssembleDesc(item) {
       const limit = this.$isMobile ? 40 : 60
       const content =
-        marked(item.review, {
-          sanitize: false,
-        }).replace(/<[^>]*>/g, '') || item.desc
+        parse(item.review).replace(/<[^>]*>/g, '') || item.desc
       return interceptString(content, limit)
     },
 

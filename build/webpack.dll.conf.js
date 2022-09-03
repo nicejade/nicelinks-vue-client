@@ -17,7 +17,6 @@ module.exports = {
       'crypto-js/md5',
       'raven-js',
       'countup',
-      'marked',
       'vue-content-placeholder',
     ],
   },

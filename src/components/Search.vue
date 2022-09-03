@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import marked from 'marked'
+import { parse } from 'helper/marked'
 import throttle from 'lodash/throttle'
 
 import { filterHtmlTag, sliceToAheadTarget } from './../helper/tool'
@@ -99,9 +99,7 @@ export default {
 
     styleForDesc(item) {
       const tempDesc = item && item.stype ? item[item.stype] : item.review || item.desc
-      let niceDesc = marked(tempDesc, {
-        sanitize: true,
-      })
+      let niceDesc = parse(tempDesc)
       niceDesc = filterHtmlTag(niceDesc)
       niceDesc = sliceToAheadTarget(niceDesc, this.keyword)
       return niceDesc.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)

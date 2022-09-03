@@ -109,7 +109,7 @@
 
 <script>
 import mediumZoom from 'medium-zoom'
-import marked from 'marked'
+import { parse } from 'helper/marked'
 
 import EditDialog from 'components/dialog/EditDialog'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
@@ -241,9 +241,7 @@ export default {
 
     getAbstractContent(item) {
       const content = !!item.review
-        ? marked(item.review, {
-          sanitize: false,
-        }).replace(/<[^>]*>/g, '')
+        ? parse(item.review).replace(/<[^>]*>/g, '')
         : item.desc
       return interceptString(content)
     },

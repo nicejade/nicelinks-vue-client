@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import marked from 'marked'
+import { parse } from 'helper/marked'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 import { isIosSystem } from './../../helper/system'
 
@@ -153,7 +153,7 @@ export default {
     onCopy2ClipboardClick() {
       const sentenceId = this.currentSentence._id || this.sentence._id
       const readLinkPath = `https://read.lovejade.cn/p/${sentenceId}`
-      const tempStr = marked(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语 ${readLinkPath}`
+      const tempStr = parse(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语 ${readLinkPath}`
       const content = tempStr.replace(/<[^>]*>/g, '')
       isIosSystem() ? this.copyToIosClipboard(content) : this.copyToClipboard(content)
       this.$message({

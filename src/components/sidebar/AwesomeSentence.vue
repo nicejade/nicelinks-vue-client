@@ -60,7 +60,7 @@ export default {
     PreviewMd,
   },
 
-  mounted() { },
+  mounted() {},
 
   watch: {
     'sentence.content': function (val = '') {
@@ -113,7 +113,7 @@ export default {
           this.isCanLookBack = true
           this.currentSentence = result || {}
           this.currentSentenceStr = result.content
-          this.$gtagReport()
+          this.$gtagReport('from-random-sentence')
         })
         .catch((error) => {
           this.$message.error(`${error}`)

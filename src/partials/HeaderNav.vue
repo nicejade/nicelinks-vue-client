@@ -14,8 +14,13 @@
         </a>
 
         <div class="operate-area">
-          <router-link @click.native="onExploreClick(item)" v-for="item in navList" :key="item.value"
-            :to="'/explore/' + item.name" :class="makeClassName(item.name)">
+          <router-link
+            @click.native="onExploreClick(item)"
+            v-for="item in navList"
+            :key="item.value"
+            :to="'/explore/' + item.name"
+            :class="makeClassName(item.name)"
+          >
             {{ $t(item.name) }}
           </router-link>
         </div>
@@ -49,8 +54,13 @@
               <el-dropdown-item command="" divided> </el-dropdown-item>
               <el-dropdown-item command="">
                 <icon class="vector-icon" name="about-website"></icon>
-                <a class="about-website" @click="onAboutSiteClick" target="_blank" rel="noopener"
-                  :href="getAboutWebsiteLink">
+                <a
+                  class="about-website"
+                  @click="onAboutSiteClick"
+                  target="_blank"
+                  rel="noopener"
+                  :href="getAboutWebsiteLink"
+                >
                   {{ $t('aboutWebsite') }}
                 </a>
               </el-dropdown-item>
@@ -155,7 +165,7 @@ export default {
     },
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {
     // updateNavActive() {
@@ -280,6 +290,7 @@ export default {
 
     onExploreClick(item) {
       this.$gtagTracking(`explore-${item.name}`, 'header', `p-explore-${item.name}`)
+      this.$gtagReport(`from-explore-${item.name}`)
     },
 
     onShareClick() {
@@ -292,7 +303,7 @@ export default {
 
     onHomeClick() {
       this.$gtagTracking('logo-link', 'header')
-    }
+    },
   },
 }
 </script>

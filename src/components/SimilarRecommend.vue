@@ -2,13 +2,22 @@
   <div class="similar-recommend" v-if="linksArr.length > 0">
     <h2 class="page-second-title">猜您可能喜欢</h2>
     <div class="list-item" v-for="item in linksArr" :key="item._id">
-      <router-link @click.native="onSimilarClick" class="recommend-link" :to="getAssembleRoute(item)">
+      <router-link
+        @click.native="onSimilarClick"
+        class="recommend-link"
+        :to="getAssembleRoute(item)"
+      >
         <div class="screenshot">
           <div class="image-placeholder" v-show="isShowPlaceholder">
             <strong>图片加载中...</strong>
           </div>
-          <img v-show="!isShowPlaceholder" class="image" :alt="getImgAlt(item)" :src="getScreenshotPath(item)"
-            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';" />
+          <img
+            v-show="!isShowPlaceholder"
+            class="image"
+            :alt="getImgAlt(item)"
+            :src="getScreenshotPath(item)"
+            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
+          />
         </div>
         <div class="meta">
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
@@ -24,14 +33,14 @@ import { getHostnameByUrl, interceptString } from './../helper/tool'
 import { NICE_LINKS, NICE_LINKS_NAME, DESCRIPTION } from './../config/constant'
 import { parse } from 'helper/marked'
 
-const DEFAULT_LINKS_ARR = [];
-[0, 1, 2, 3, 4].map(() => {
+const DEFAULT_LINKS_ARR = []
+;[0, 1, 2, 3, 4].map(() => {
   DEFAULT_LINKS_ARR.push({
     urlPath: NICE_LINKS,
     item: NICE_LINKS_NAME,
     desc: DESCRIPTION,
     _id: '5aa2579e56ee0d60651820c5',
-    review: DESCRIPTION
+    review: DESCRIPTION,
   })
 })
 
@@ -92,7 +101,7 @@ export default {
         .catch((error) => {
           console.error(`Something Error @fetchSimilarTagLinks：`, error)
         })
-        .finally(() => { })
+        .finally(() => {})
     },
 
     getAssembleTitle(item) {
@@ -106,8 +115,7 @@ export default {
 
     getAssembleDesc(item) {
       const limit = this.$isMobile ? 40 : 60
-      const content =
-        parse(item.review).replace(/<[^>]*>/g, '') || item.desc
+      const content = parse(item.review).replace(/<[^>]*>/g, '') || item.desc
       return interceptString(content, limit)
     },
 
@@ -122,8 +130,8 @@ export default {
 
     onSimilarClick() {
       this.$gtagTracking('route-entry', 'recommend')
-      this.$gtagReport()
-    }
+      this.$gtagReport('from-similar-recommend')
+    },
   },
 }
 </script>

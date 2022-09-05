@@ -2,12 +2,16 @@
   <div class="sub-head" id="sub-head">
     <ul class="sub-head-nav" ref="subHeadNav">
       <li :class="makeClassName(null)">
-        <a href="/explore/all" class="theme-link" @click="onExploreAll">
+        <router-link @click.native="onAllTheme" to="/explore/all" class="theme-link">
           {{ $t('all') }}
-        </a>
+        </router-link>
       </li>
       <li v-for="item in themeList" :key="item.vaule" :class="makeClassName(item)">
-        <router-link @click.native="onExploreTheme(item)" class="theme-link" :to="getLinkPathByThemeVal(item.value)">
+        <router-link
+          @click.native="onExploreTheme(item)"
+          class="theme-link"
+          :to="getLinkPathByThemeVal(item.value)"
+        >
           {{ item.key }}
         </router-link>
       </li>
@@ -53,15 +57,14 @@ export default {
       return value ? `/theme/${value.toLocaleLowerCase()}` : '/explore/all'
     },
 
-    onExploreAll() {
-      this.$gtagTracking('explore-all', 'sub-head')
-      this.$gtagReport()
+    onAllTheme() {
+      this.$gtagTracking('all-theme', 'sub-head')
     },
 
     onExploreTheme(item) {
-      this.$gtagTracking(`explore-${item.value}`, 'sub-head')
-      this.$gtagReport()
-    }
+      this.$gtagTracking(`sub-${item.value}`, 'sub-head')
+      this.$gtagReport(`from-sub-${item.value}`)
+    },
 
     /* ------------变更 SubHead ”按钮“触发后展示方案(18-07-01)------------ */
     /*
@@ -82,7 +85,7 @@ export default {
       // const parameters = {behavior: 'smooth', block: 'start', inline: 'start'}
       // document.getElementById('nice-links').scrollIntoView(parameters)
     } */
-  }
+  },
 }
 </script>
 

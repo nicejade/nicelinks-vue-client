@@ -7,7 +7,11 @@
             <h4>{{ $t('warmReminder') }}</h4>
           </div>
           <div class="no-result-tip">
-            <img class="no-result-img" src="https://image.nicelinks.site/no-result.svg" :alt="$t('description')" />
+            <img
+              class="no-result-img"
+              src="https://image.nicelinks.site/no-result.svg"
+              :alt="$t('description')"
+            />
             <div v-html="$t('noResultTip')"></div>
           </div>
         </el-card>
@@ -15,7 +19,13 @@
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
-      <a :href="getAssembleRoute(item)" @click="onListClick" target="_blank" ref="bookmark" v-if="isAbstract">
+      <a
+        v-if="isAbstract"
+        :href="getAssembleRoute(item)"
+        @click="onListClick"
+        target="_blank"
+        rel="bookmark"
+      >
         <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
       </a>
       <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
@@ -72,9 +82,9 @@ export default {
     },
 
     onListClick() {
-      this.$gtagTracking('route-entry', 'list')
-      this.$gtagReport()
-    }
+      this.$gtagTracking('list-entry', 'list')
+      this.$gtagReport('from-list-entry')
+    },
   },
 }
 </script>
@@ -95,7 +105,7 @@ export default {
 
     .el-card {
       text-align: left;
-      border-bottom: 1px solid $item-border-color  !important;
+      border-bottom: 1px solid $item-border-color !important;
     }
   }
 }

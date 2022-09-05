@@ -55,8 +55,9 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      if (this.$route.params.classify !== 'all') {
-        this.$gtagReport()
+      const classify = this.$route.params.classify
+      if (classify !== 'all') {
+        this.$gtagReport(`from-explore-${classify}`)
       }
     })
   },

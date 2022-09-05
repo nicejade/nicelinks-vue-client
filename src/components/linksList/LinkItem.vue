@@ -502,10 +502,7 @@ export default {
     color: $black-grey;
     line-height: 1.5;
     letter-spacing: 0.02rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include text-ellipsis-multiline(3);
   }
 
   .operate-area {

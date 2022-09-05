@@ -81,3 +81,11 @@
   background: -webkit-linear-gradient(to $direction, $front, $back);
   background: linear-gradient(to $direction, $front, $back);
 }
+
+@mixin text-ellipsis-multiline($num: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $num;;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,26 +1,45 @@
 <template>
   <div class="redirect-wrapper">
     <h1 class="jump-title">
-      <img class="logo" src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
-      <a rel="home" class="title-link" @click="onReportEvent('h1-title-link')"
-        href="http://nicelinks.site?ref=redirect">倾城之链</a>
+      <img
+        class="logo"
+        src="/static/img/favicons/safari-pinned-tab.svg"
+        :alt="$t('niceLinksStr')"
+      />
+      <a
+        rel="home"
+        class="title-link"
+        @click="onReportEvent('h1-title-link')"
+        href="http://nicelinks.site?ref=redirect"
+        >倾城之链</a
+      >
     </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
       <div class="card">
         <h2 class="title">
-          即将从<a rel="home" @click="onReportEvent('nice-link')" href="http://nicelinks.site?ref=redirect">倾城之链</a>跳转到
+          即将从<a
+            rel="home"
+            @click="onReportEvent('nice-link')"
+            href="http://nicelinks.site?ref=redirect"
+            >倾城之链</a
+          >跳转到
         </h2>
         <div class="link-box">
           <p class="link-url">{{ targetWebsite }}</p>
         </div>
-        <a class="redirect-btn effect-btn" @click="onReportEvent('redirect-btn')"
-          :rel="isalive ? 'noopener' : 'noopener nofollow'" :href="targetPath">
+        <a
+          class="redirect-btn effect-btn"
+          @click="onReportEvent('redirect-btn')"
+          :rel="isalive ? 'noopener' : 'noopener nofollow'"
+          :href="targetPath"
+        >
           <span class="jump-to">前往该网站</span>
         </a>
       </div>
     </div>
     <p v-if="!isalive" class="visit-reminder">
-      <string class="reminder">*温馨提示</string>：据「倾城观察员」探测，该网站已不能正常访问，望客观知悉。
+      <string class="reminder">*温馨提示</string
+      >：据「倾城观察员」探测，该网站已不能正常访问，望客观知悉。
     </p>
   </div>
 </template>
@@ -72,7 +91,7 @@ export default {
   methods: {
     onReportEvent(action) {
       this.$gtagTracking(action, 'redirect')
-    }
+    },
   },
 }
 </script>
@@ -142,7 +161,7 @@ $primary: #ea552d;
       justify-content: center;
       align-items: center;
       width: 360px;
-      height: 36px;
+      height: 4rem;
       background: #f4f4f4;
       border-radius: 3px;
       border: 1px solid #dcdce0;
@@ -150,8 +169,10 @@ $primary: #ea552d;
 
       .link-url {
         display: block;
-        height: 3rem;
-        line-height: 3rem;
+        height: 4rem;
+        line-height: 4rem;
+        padding: 0 1rem;
+        font-size: 1.6rem;
         color: #5a6d96;
         text-align: center;
         overflow: hidden;

@@ -21,7 +21,7 @@
         </div>
         <div class="meta">
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
-          <div class="desc">{{ getAssembleDesc(item) }}</div>
+          <div class="desc" style="-webkit-box-orient: vertical;">{{ getAssembleDesc(item) }}</div>
         </div>
       </router-link>
     </div>
@@ -104,19 +104,17 @@ export default {
         .finally(() => {})
     },
 
-    getAssembleTitle(item) {
-      const limit = this.$isMobile ? 30 : 50
-      return interceptString(item.title, limit)
-    },
-
     getImgAlt(item) {
       return `${item.title} - ${NICE_LINKS_NAME}`
     },
 
+    getAssembleTitle(item) {
+      return interceptString(item.title)
+    },
+
     getAssembleDesc(item) {
-      const limit = this.$isMobile ? 40 : 60
       const content = parse(item.review).replace(/<[^>]*>/g, '') || item.desc
-      return interceptString(content, limit)
+      return interceptString(content)
     },
 
     getAssembleRoute(item) {
@@ -201,6 +199,7 @@ export default {
       }
 
       .desc {
+        @include text-ellipsis-multiline(2);
         color: #9393aa;
         font-size: 1.6rem;
         line-height: 1.8rem;

@@ -140,17 +140,6 @@ input:-ms-input-placeholder {
   text-align: left;
   margin-bottom: 25px;
 
-  .control-label {
-    text-align: right;
-    font-weight: normal;
-    padding-top: 10px;
-
-    em {
-      color: $red;
-      padding-right: 3px;
-    }
-  }
-
   .col-sm-3 {
     display: inline-block;
     width: 24.5%;

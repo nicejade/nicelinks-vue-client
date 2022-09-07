@@ -62,7 +62,7 @@ export default {
   },
 
   created() {
-    this.$gtagTracking('visite', 'redirect')
+    this.$gtagTracking('visit-redirect', 'redirect')
   },
 
   computed: {

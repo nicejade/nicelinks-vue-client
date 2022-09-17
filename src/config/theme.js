@@ -12,6 +12,8 @@ export default Object.freeze([
     { key: '社区', value: 'Community' },
     { key: '论坛', value: 'Forum' },
     { key: '产品', value: 'Product' },
+    { key: '官网', value: 'Official' },
+    { key: '导航', value: 'Navigation' },
     { key: '美图', value: 'Picture' },
     { key: '图标', value: 'Icons' },
     { key: '字体', value: 'Typeface' },

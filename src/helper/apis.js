@@ -9,6 +9,10 @@ export default {
     return $ajax.get(requestUrl('getNiceLinks'), data)
   },
 
+  getNiceLinkById(data) {
+    return $ajax.get(requestUrl('getNiceLinkById'), data)
+  },
+
   getLinksByTag(data) {
     return $ajax.get(requestUrl('getLinksByTag'), data)
   },

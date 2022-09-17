@@ -35,7 +35,7 @@ export default {
 
   components: {
     SimilarRecommend,
-    Waline
+    Waline,
   },
 
   created() {
@@ -52,7 +52,7 @@ export default {
       params._id = this.$route.params.id
       params.userId = this.userInfo && this.userInfo._id ? this.userInfo._id : ''
       this.$apis
-        .getNiceLinks(params)
+        .getNiceLinkById(params)
         .then((result) => {
           if (result[0]) {
             this.niceLinksArr = Object.freeze(result)

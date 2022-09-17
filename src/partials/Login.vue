@@ -9,46 +9,68 @@
         <h1>{{ $t('niceLinksStr') }}</h1>
       </a>
       <div class="form-group">
-        <el-alert v-if="tipMessageObj.message" :title="tipMessageObj.message" :type="tipMessageObj.type">
+        <el-alert
+          v-if="tipMessageObj.message"
+          :title="tipMessageObj.message"
+          :type="tipMessageObj.type"
+        >
         </el-alert>
       </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="username" v-if="isSignUpPage">
-          <el-input v-model.trim.lazy="account.username" placeholder="请输入账号 ID" :icon="checkLoading ? 'loading' : ''"
-            :autofocus="true" @blur="onBlurUsername" @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            v-model.trim.lazy="account.username"
+            placeholder="请输入账号 ID"
+            :icon="checkLoading ? 'loading' : ''"
+            :autofocus="true"
+            @blur="onBlurUsername"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend">
               <icon class="icons" name="login-user"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="email" v-if="isSignUpPage">
-          <el-input placeholder="请输入邮箱" v-model.trim="account.email" @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            placeholder="请输入邮箱"
+            v-model.trim="account.email"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend">
               <icon class="icons" name="login-email"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userinfo" v-if="!isSignUpPage">
-          <el-input placeholder="请输入账号 ID" v-model.trim="account.userinfo" @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            placeholder="请输入账号 ID"
+            v-model.trim="account.userinfo"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend">
               <icon class="icons" name="login-user"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input placeholder="请填写密码" v-model="account.password" type="password"
-            @keydown.enter.native="onKeyEnterClick">
+          <el-input
+            placeholder="请填写密码"
+            v-model="account.password"
+            type="password"
+            @keydown.enter.native="onKeyEnterClick"
+          >
             <template slot="prepend">
               <icon class="icons" name="password"></icon>
             </template>
           </el-input>
         </el-form-item>
         <el-button type="primary" v-if="!isSignUpPage" @click="onLoginClick" size="large">{{
-            $t('signIn')
+          $t('signIn')
         }}</el-button>
         <el-button v-else @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
         <el-button type="text" v-if="!this.isSignUpPage" @click="onForgotPwdClick" size="large">{{
-            $t('forgetPwd')
+          $t('forgetPwd')
         }}</el-button>
       </el-form>
     </div>
@@ -56,7 +78,8 @@
       <p class="text-center">
         {{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
         <a class="el-button--text" href="javascript:;" @click="onBottomClick">
-          {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a>
+          {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a
+        >
       </p>
     </div>
   </div>
@@ -217,7 +240,6 @@ export default {
       this.$gtagTracking('signin', 'login')
       this.isLoading = true
       this.$refs['validateForm'].validate((valid) => {
-        debugger
         if (valid) {
           const cIsLegalEmail = isLegalEmail(this.account.userinfo)
           const params = {
@@ -295,7 +317,7 @@ export default {
 
     onLogoClick() {
       this.$gtagTracking('login-logo-link', 'login')
-    }
+    },
   },
 
   locales: {

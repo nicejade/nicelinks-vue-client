@@ -4,38 +4,65 @@
       <div class="container">
         <div class="list-item show-on-big-screen">
           <p class="title">公众号</p>
-          <img class="image" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="晚晴幽草轩 | 公众号" />
+          <img
+            class="image"
+            src="https://image.nicelinks.site/qrcode_jqx.jpg"
+            alt="晚晴幽草轩 | 公众号"
+          />
         </div>
         <div class="list-item">
           <p class="title">产品</p>
-          <a class="nice-link" @click="onReortEvent('skill')" href="/explore/skill">技术客栈
+          <a class="nice-link" @click="onReortEvent('skill')" href="/explore/skill">技术客栈 </a>
+          <a class="nice-link" @click="onReortEvent('resource')" href="/explore/resource"
+            >资源之家
           </a>
-          <a class="nice-link" @click="onReortEvent('resource')" href="/explore/resource">资源之家
-          </a>
-          <a class="nice-link" @click="onReortEvent('life')" href="/explore/life">写意人生
-          </a>
-          <a class="nice-link" @click="onReortEvent('info')" href="/explore/info">信息快讯
-          </a>
+          <a class="nice-link" @click="onReortEvent('life')" href="/explore/life">写意人生 </a>
+          <a class="nice-link" @click="onReortEvent('info')" href="/explore/info">信息快讯 </a>
         </div>
         <div class="list-item">
           <p class="title">合作</p>
           <a class="nice-link" @click="onReortEvent('about')" href="/about">关于我们</a>
           <a class="nice-link" @click="onReortEvent('business')" href="/business">广告投放</a>
           <a class="nice-link" @click="onReortEvent('sponsor')" href="/sponsor">倾情捐赠</a>
-          <a target="_blank" rel="archives bookmark" class="nice-link" @click="onReortEvent('blog')"
-            :href="assembleExternalLink('https://blog.nicelinks.site/')">倾城博客
+          <a
+            target="_blank"
+            rel="archives bookmark"
+            class="nice-link"
+            @click="onReortEvent('blog')"
+            :href="assembleExternalLink('https://blog.nicelinks.site/')"
+            >倾城博客
           </a>
         </div>
         <div class="list-item">
           <p class="title">推荐</p>
-          <a class="nice-link" target="_blank" @click="onReortEvent('jeffjade-com')"
-            :href="assembleExternalLink('https://www.jeffjade.com/')">晚晴幽草轩</a>
-          <a class="nice-link" target="_blank" @click="onReortEvent('quickapp-lovejade')"
-            :href="assembleExternalLink('https://quickapp.lovejade.cn/')">静轩之别苑</a>
-          <a class="nice-link" target="_blank" @click="onReortEvent('forum-lovejade')"
-            :href="assembleExternalLink('https://forum.lovejade.cn/')">悠然宜想亭</a>
-          <a class="nice-link" target="_blank" @click="onReortEvent('wiki-lovejade')"
-            :href="assembleExternalLink('https://wiki.lovejade.cn/')">清风明月阁</a>
+          <a
+            class="nice-link"
+            target="_blank"
+            @click="onReortEvent('jeffjade-com')"
+            :href="assembleExternalLink('https://www.jeffjade.com/')"
+            >晚晴幽草轩</a
+          >
+          <a
+            class="nice-link"
+            target="_blank"
+            @click="onReortEvent('quickapp-lovejade')"
+            :href="assembleExternalLink('https://quickapp.lovejade.cn/')"
+            >静轩之别苑</a
+          >
+          <a
+            class="nice-link"
+            target="_blank"
+            @click="onReortEvent('forum-lovejade')"
+            :href="assembleExternalLink('https://forum.lovejade.cn/')"
+            >悠然宜想亭</a
+          >
+          <a
+            class="nice-link"
+            target="_blank"
+            @click="onReortEvent('wiki-lovejade')"
+            :href="assembleExternalLink('https://wiki.lovejade.cn/')"
+            >清风明月阁</a
+          >
         </div>
       </div>
       <div class="contact">
@@ -45,20 +72,39 @@
           </div>
           <icon class="icons" name="weixin"></icon>
         </div>
-        <a v-for="item in contactArray" @click="onReortEvent(`social-${item.class}`)" target="_blank"
-          :href="assembleExternalLink(item.path + item.name)" :title="item.title" rel="external noopener"
-          :class="item.class" class="social-btn">
+        <a
+          v-for="item in contactArray"
+          @click="onReortEvent(`social-${item.class}`)"
+          target="_blank"
+          :href="assembleExternalLink(item.path + item.name)"
+          :title="item.title"
+          rel="external noopener"
+          :class="item.class"
+          class="social-btn"
+        >
           <icon class="icons" :name="item.class"></icon>
         </a>
       </div>
       <div class="icp">
         <span>{{ copyright }}</span>
-        <a class="link" target="_blank" @click="onReortEvent('link-jeffjade')" rel="external noopener"
-          :href="assembleExternalLink('https://www.jeffjade.com')">晚晴幽草轩</a>
+        <a
+          class="link"
+          target="_blank"
+          @click="onReortEvent('link-jeffjade')"
+          rel="external noopener"
+          :href="assembleExternalLink('https://www.jeffjade.com')"
+          >晚晴幽草轩</a
+        >
         出品
         <br class="show-on-small-screen" />
-        <a class="beian-link" target="_blank" @click="onReortEvent('beian')"
-          :href="assembleExternalLink('https://beian.miit.gov.cn/')" rel="external noopener">粤ICP备17099767号</a>
+        <a
+          class="beian-link"
+          target="_blank"
+          @click="onReortEvent('beian')"
+          :href="assembleExternalLink('https://beian.miit.gov.cn/')"
+          rel="external noopener"
+          >粤ICP备17099767号</a
+        >
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>
@@ -100,12 +146,12 @@ export default {
 
     onReortEvent(action) {
       this.$gtagTracking(action, 'footer')
-    }
+    },
   },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/variables.scss';
 @import '../assets/scss/mixins.scss';
 
@@ -155,7 +201,7 @@ export default {
 
         .nice-link {
           display: block;
-          padding: .6rem 0;
+          padding: 0.6rem 0;
           font-weight: 400;
           color: $footer-grey;
         }
@@ -168,7 +214,7 @@ export default {
 
       .beian-link {
         margin-left: 15px;
-        color: $black-grey  !important;
+        color: $black-grey !important;
       }
 
       .zero {
@@ -203,7 +249,7 @@ export default {
   display: inline-block;
 }
 
-.tooltip .pannel {
+.footer .tooltip .pannel {
   position: absolute;
   top: -19rem;
   left: -7rem;
@@ -213,7 +259,7 @@ export default {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   visibility: hidden;
   border-radius: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: $white;
 
   .qr-code {
@@ -235,7 +281,7 @@ export default {
   }
 }
 
-.tooltip:hover .pannel {
+.footer .tooltip:hover .pannel {
   visibility: visible;
 }
 

@@ -3,14 +3,20 @@
     <div class="tooltip">
       <div class="pannel">
         <div class="item">
-          <img class="qrcode" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="晚晴幽草轩-公众号" />
+          <img
+            class="qrcode"
+            src="https://image.nicelinks.site/qrcode_jqx.jpg"
+            alt="晚晴幽草轩-公众号"
+          />
           <span class="text font-medium">晚晴幽草轩</span>
           <span class="text">微信扫码关注</span>
         </div>
         <div class="item">
-          <img class="qrcode"
+          <img
+            class="qrcode"
             src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-            alt="倾城之链-小程序" />
+            alt="倾城之链-小程序"
+          />
           <span class="text font-medium">倾城之链</span>
           <span class="text">微信扫码体验</span>
         </div>
@@ -19,9 +25,21 @@
         <icon class="qrcode" name="qrcode"></icon>
       </div>
     </div>
-    <a target="_blank" class="outside-link" @click="onRecommendClick" rel="noopener" :href="reportPath">投稿
+    <a
+      target="_blank"
+      class="outside-link"
+      @click="onRecommendClick"
+      rel="noopener"
+      :href="reportPath"
+      >投稿
     </a>
-    <a target="_blank" class="outside-link" @click="onFeedbackClick" rel="noopener" :href="reportPath">反馈
+    <a
+      target="_blank"
+      class="outside-link"
+      @click="onFeedbackClick"
+      rel="noopener"
+      :href="reportPath"
+      >反馈
     </a>
   </div>
 </template>
@@ -44,8 +62,8 @@ export default {
 
     onFeedbackClick() {
       this.$gtagTracking('feedback-btn', 'elevator')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -55,7 +73,7 @@ $factor: 1rem;
 
 .elevator {
   position: fixed;
-  bottom: 15 * $factor;
+  bottom: 30 * $factor;
   right: 3 * $factor;
   display: flex;
   flex-direction: column;
@@ -90,7 +108,7 @@ $factor: 1rem;
   }
 }
 
-.tooltip {
+.elevator .tooltip {
   position: relative;
   display: inline-block;
 
@@ -105,15 +123,15 @@ $factor: 1rem;
     bottom: -9.25 * $factor;
     right: 6 * $factor;
     z-index: 100;
+    width: 40 * $factor;
+    height: 26 * $factor;
+    visibility: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     background-color: $white;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    visibility: hidden;
-    width: 40 * $factor;
-    height: 26 * $factor;
     padding: 2 * $factor;
     border-radius: 2 * $factor;
 
@@ -152,8 +170,8 @@ $factor: 1rem;
 
   .connect {
     .qrcode {
-      width: 3 * $factor  !important;
-      height: 3 * $factor  !important;
+      width: 3 * $factor !important;
+      height: 3 * $factor !important;
       margin: 0 auto;
       transform: scale(1);
     }
@@ -161,7 +179,6 @@ $factor: 1rem;
 }
 
 @keyframes jelly {
-
   0%,
   100% {
     transform: scale(1, 1);

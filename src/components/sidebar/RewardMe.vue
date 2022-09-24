@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import $document from './../../helper/document'
+import { toggleClass, addClass, removeClass } from './../../helper/document'
 import REWARD_CONF from './../../config/reward'
 import Vue from 'vue'
 import { Radio } from 'element-ui'
@@ -42,9 +42,9 @@ export default {
     payWay(newVal, oldVal) {
       let $reward = document.getElementById('reward')
       if (newVal !== 'weixin') {
-        $document.addClass($reward, 'flipped')
+        addClass($reward, 'flipped')
       } else {
-        $document.removeClass($reward, 'flipped')
+        removeClass($reward, 'flipped')
       }
     },
   },
@@ -54,8 +54,8 @@ export default {
       this.$gtagTracking('reward-turn-click', 'aside')
 
       this.payWay = this.payWay === 'weixin' ? 'zhifubao' : 'weixin'
-      let $reward = document.getElementById('reward')
-      $document.toggleClass($reward, 'flipped')
+      const $reward = document.getElementById('reward')
+      toggleClass($reward, 'flipped')
     },
   },
 }

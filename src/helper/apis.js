@@ -180,4 +180,8 @@ export default {
   getWechatQrCode() {
     return $ajax.get(requestUrl('getWechatQrCode'))
   },
+
+  checkIsSubscribe(data) {
+    return $ajax.get(requestUrl('checkIsSubscribe'), data)
+  },
 }

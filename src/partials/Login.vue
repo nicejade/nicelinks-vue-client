@@ -1,13 +1,18 @@
 <template>
   <div class="login-wrap">
-    <!-- <div class="wechat-box">
-      <div id="qrcode"></div>
-    </div> -->
-    <div class="login-box" v-loading.body="isLoading">
-      <a href="/explore/all" class="nicelinks-logo" @click="onLogoClick">
-        <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
-        <h1>{{ $t('niceLinksStr') }}</h1>
-      </a>
+    <div class="wechat-box" ref="wechat-box">
+      <h2 class="box-title">微信扫码登录/注册</h2>
+      <qrcode-vue :value="wechatQrCode" size="200" level="H" />
+      <p class="scan-desc">关注"倾城之链官方服务号"快速登录</p>
+      <div class="footer">
+        <a href="/explore/all" class="route-to-main" @click="onLogoClick">
+          {{ $t('niceLinksStr') }}
+        </a>
+        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode">使用账号登录>></a>
+      </div>
+    </div>
+    <div class="login-box display-none" ref="login-box" v-loading.body="isLoading">
+      <h2 class="box-title">账号密码登录/注册</h2>
       <div class="form-group">
         <el-alert
           v-if="tipMessageObj.message"
@@ -69,24 +74,44 @@
           $t('signIn')
         }}</el-button>
         <el-button v-else @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
-        <el-button type="text" v-if="!this.isSignUpPage" @click="onForgotPwdClick" size="large">{{
-          $t('forgetPwd')
-        }}</el-button>
-      </el-form>
-    </div>
-    <div class="form-group login-bottom-tip">
-      <p class="text-center">
-        {{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
-        <a class="el-button--text" href="javascript:;" @click="onBottomClick">
-          {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a
+        <el-button
+          type="text"
+          class="forgot-pwd"
+          v-if="!this.isSignUpPage"
+          @click="onForgotPwdClick"
+          size="large"
+          >{{ $t('forgetPwd') }}</el-button
         >
-      </p>
+      </el-form>
+
+      <div class="form-group login-tip">
+        <p class="text-center">
+          {{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
+          <a class="el-button--text" href="javascript:;" @click="onBottomClick">
+            {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a
+          >
+        </p>
+      </div>
+      <div class="footer">
+        <a href="/explore/all" class="route-to-main" @click="onLogoClick">
+          {{ $t('niceLinksStr') }}
+        </a>
+        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode">使用微信登录</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue'
+
 import { isLegalUsername, isLegalEmail, isLegalPassword, encryptPwd } from './../helper/tool'
+import { waitForTimeout } from './../helper/system'
+import { NICE_LINKS } from './../config/constant'
+import { toggleClass } from './../helper/document'
+
+const gRetryLimit = 60
+let gRetryNum = 0
 
 export default {
   name: 'Login',
@@ -109,14 +134,17 @@ export default {
         userinfo: [{ required: true, validator: this.validateUserinfo, trigger: 'change,blur' }],
         password: [{ required: true, validator: this.validatePassword, trigger: 'change,blur' }],
       },
-      wechatQrCode:
-        'https://st2.depositphotos.com/3562409/8433/i/950/depositphotos_84332510-stock-photo-qr-cube.jpg',
+      wechatQrCode: NICE_LINKS,
     }
   },
 
   mounted() {
     this.updatePageMeta(this.isSignUpPage)
-    // this.initWechatQrCode()
+    this.initWechatQrCode()
+  },
+
+  components: {
+    QrcodeVue,
   },
 
   computed: {
@@ -136,8 +164,8 @@ export default {
       this.$apis
         .getWechatQrCode()
         .then((result) => {
-          console.log(`result：`, result)
-          this.createQrCodeImg(result.url)
+          this.wechatQrCode = result.url
+          this.checkAndLogin(result.ticket)
         })
         .catch((error) => {
           console.log(`error：`, error)
@@ -145,15 +173,20 @@ export default {
         })
     },
 
-    createQrCodeImg(target) {
-      const qrcode = new QRCode(document.getElementById('qrcode'), {
-        text: target,
-        width: 128,
-        height: 128,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.H,
-      })
+    checkAndLogin(ticket) {
+      if (gRetryNum > gRetryLimit) return
+
+      this.$apis
+        .checkIsSubscribe({ ticket })
+        .then((result) => {
+          if (result) this.route2lastpath(result)
+        })
+        .catch(async (error) => {
+          gRetryNum += 1
+          await waitForTimeout(2000)
+          this.checkAndLogin(ticket)
+          console.log(`error：`, error)
+        })
     },
 
     updatePageMeta(val) {
@@ -230,7 +263,23 @@ export default {
       }
     },
 
+    route2lastpath(result) {
+      this.$vuexSetUserInfo(result)
+
+      const lastPathUrl = this.$store && this.$store.state.lastPathUrl
+      if (lastPathUrl) {
+        document.location.href = lastPathUrl
+      } else {
+        this.$router.push('/')
+      }
+    },
+
     // ----------------------------onClickEvent-----------------------------
+    switchLoginMode() {
+      toggleClass(this.$refs['wechat-box'], 'display-none')
+      toggleClass(this.$refs['login-box'], 'display-none')
+    },
+
     onKeyEnterClick() {
       const execFuncName = this.isSignUpPage ? 'onSignupClick' : 'onLoginClick'
       this[execFuncName]()
@@ -251,14 +300,7 @@ export default {
             .login(params)
             .then((result) => {
               // save user-id into vuex-state(& localStorage)
-              this.$vuexSetUserInfo(result)
-
-              const lastPathUrl = this.$store && this.$store.state.lastPathUrl
-              if (lastPathUrl) {
-                document.location.href = lastPathUrl
-              } else {
-                this.$router.push('/')
-              }
+              this.route2lastpath(result)
             })
             .catch((error) => {
               this.isLoading = false
@@ -336,77 +378,133 @@ export default {
 @import '../assets/scss/variables.scss';
 @import '../assets/scss/mixins.scss';
 
+#qrcode {
+  width: 300px;
+  height: 300px;
+  display: block !important;
+  canvas {
+    display: inline-block;
+  }
+  img {
+    width: 132px;
+    height: 132px;
+    background-color: #ffffff;
+    padding: 6px;
+  }
+}
+
 .login-wrap {
-  width: 520px;
+  width: 40rem;
   margin: 0 auto;
-  padding-top: 150px;
-  min-height: 400px;
+  padding-top: 10rem;
   position: relative;
 
-  .login-bottom-tip {
-    font-size: 1.56rem;
-    padding: 15px 0;
-  }
-}
-
-.wechat-box {
-  width: 100%;
-  height: 100%;
-}
-
-.login-box {
-  width: 520px;
-  padding: 30px 30px 0px 30px;
-  height: 100%;
-  background-color: #fff;
-  clear: both;
-  display: table;
-  border-radius: 3px;
-  border: 1px solid #d7dce5;
-
-  .nicelinks-logo {
-    margin-bottom: 1rem;
+  .forgot-pwd {
+    margin: 0 auto !important;
   }
 
-  .heading {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.4rem;
-    color: #707473;
+  .login-tip {
+    font-size: 1.4rem;
   }
 
-  .el-form-item {
-    margin-bottom: 30px;
+  .display-none {
+    display: none;
   }
 
-  .el-button {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 15px;
-    font-size: $font-small;
+  .box-title {
+    margin: 2rem auto;
+    font-size: $font-large;
+    font-weight: 600;
   }
 
-  .el-input {
-    .icons {
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 3.5rem;
+    margin-top: 2rem;
+    background: #c9ffbf;
+    background: -webkit-linear-gradient(to right, #ffafbd, #c9ffbf);
+    background: linear-gradient(to right, #ffafbd, #c9ffbf);
+    .route-to-main {
+      color: $black;
+      font-size: $font-small;
+    }
+  }
+
+  .wechat-box {
+    width: 40rem;
+    height: 100%;
+    background-color: $white;
+    border: 1px solid #d7dce5;
+    .switch-to-account {
       display: block;
-      width: 20px;
-      height: 20px;
-      margin: 0;
-      padding: 0;
+      padding: 1rem 0;
+      text-align: right;
+      color: $brand;
+    }
+    .scan-desc {
+      font-size: 1.4rem;
+      color: $silver-grey;
+      padding: 2rem 0;
+    }
+  }
+
+  .login-box {
+    width: 40rem;
+    height: 100%;
+    background-color: $white;
+    clear: both;
+    border-radius: 3px;
+    border: 1px solid #d7dce5;
+    .form-group,
+    .el-form {
+      padding: 0 2rem;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4rem;
+      color: $black;
+    }
+
+    .el-form-item {
+      margin-bottom: 30px;
+    }
+
+    .el-button {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      font-size: $font-small;
+    }
+
+    .el-input {
+      .icons {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .login-wrap {
     width: 100%;
     padding-top: 60px;
-  }
-
-  .login-box {
-    width: 100%;
-    border: 0 none;
+    .login-box,
+    .wechat-box {
+      width: 100%;
+      border: 0 none;
+      .switch-to-account {
+        text-align: center;
+      }
+    }
   }
 }
 </style>

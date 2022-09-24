@@ -17,6 +17,8 @@ export const isWechatBrowser = () => {
   }
 }
 
+export const waitForTimeout = delay => new Promise((resolve) => setTimeout(resolve, delay || 1000));
+
 export const copyToClipboard = (content) => {
   if (isIosSystem()) {
     const el = document.createElement('textarea')

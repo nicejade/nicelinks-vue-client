@@ -3,10 +3,11 @@ import Cookies from 'js-cookie'
 
 export default {
   async $getUserInfo({ commit, state }) {
-    let userId = Cookies.get('user-id')
+    const userId = Cookies.get('user-id')
+    const wechat = Cookies.get('is-wechat')
     if (!userId) return
 
-    let res = await $apis.getProfile({ _id: userId })
+    const res = await $apis.getProfile({ _id: userId, wechat })
     commit('$vuexSetUserInfo', res)
   },
 }

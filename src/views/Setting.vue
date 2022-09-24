@@ -17,7 +17,11 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{ $t('setUsername') }}<em>*</em>:</label>
                     <div class="col-sm-9">
-                      <el-input placeholder="" :disabled="true" v-model="fillForm.username"></el-input>
+                      <el-input
+                        placeholder=""
+                        :disabled="true"
+                        v-model="fillForm.username"
+                      ></el-input>
                     </div>
                   </div>
                   <div class="form-group">
@@ -47,10 +51,14 @@
 
               <div class="form-group operation-area">
                 <el-button :loading="isLoading" type="primary" @click="onSaveClick">{{
-                    $t('saveSeting')
+                  $t('saveSeting')
                 }}</el-button>
               </div>
-              <el-alert v-if="tipMessageObj.message" :title="tipMessageObj.message" :type="tipMessageObj.type">
+              <el-alert
+                v-if="tipMessageObj.message"
+                :title="tipMessageObj.message"
+                :type="tipMessageObj.type"
+              >
               </el-alert>
 
               <hr />
@@ -70,9 +78,19 @@
         </div>
       </div>
     </div>
-    <upload-avatar field="image" @crop-success="onCropSuccess" @crop-upload-success="onCropUploadSuccess"
-      @crop-upload-fail="onCropUploadFail" v-model="isShowUploadAvatar" :width="100" :height="100"
-      url="/api/uploadAvatar" :params="params" :headers="headers" img-format="png">
+    <upload-avatar
+      field="image"
+      @crop-success="onCropSuccess"
+      @crop-upload-success="onCropUploadSuccess"
+      @crop-upload-fail="onCropUploadFail"
+      v-model="isShowUploadAvatar"
+      :width="100"
+      :height="100"
+      url="/api/uploadAvatar"
+      :params="params"
+      :headers="headers"
+      img-format="png"
+    >
     </upload-avatar>
   </div>
 </template>
@@ -127,16 +145,19 @@ export default {
     }
   },
 
+  created() {
+    this.initFetch()
+  },
+
   mounted() {
     this.$setPageTitle('设置')
-    this.initFetch()
   },
 
   methods: {
     initFetch() {
       const userInfoId = this.userInfo._id
       this.$apis
-        .getProfile({ _id: userInfoId })
+        .getProfile({ _id: userInfoId, wechat: this.userInfo.wechat })
         .then((result) => {
           Object.assign(this.fillForm, result)
           let currentDateStr = new Date(getCurrentDate()).Format('yyyy-MM-dd')
@@ -186,6 +207,7 @@ export default {
         if (valid) {
           this.isLoading = true
           let params = this.$cloneDeep(this.fillForm)
+          params.wechat = this.userInfo.wechat
           delete params.username
           this.$apis
             .setProfile(params)
@@ -223,7 +245,6 @@ export default {
 
     onCropUploadSuccess(imgPath) {
       this.imgDataUrl = `/api/avatar/${imgPath}`
-      // ReUpdate UserInfo
       this.$getUserInfo()
       this.isShowUploadAvatar = false
     },
@@ -254,7 +275,6 @@ export default {
 
 .setting {
   .form-group {
-
     .el-input,
     .el-textarea {
       max-width: 768px;

@@ -120,7 +120,7 @@ Vue.use(DropdownItem)
 import CLASSIFY_CONF from './../config/classify'
 import THEME_CONF from './../config/theme'
 import { REPORT_PATH } from 'config/constant'
-import { openAuthorSite } from './../helper/tool'
+import { openAuthorSite, interceptString } from './../helper/tool'
 
 export default {
   name: 'HeaderNav',
@@ -143,7 +143,7 @@ export default {
     userSign() {
       if (this.userInfo && !this.$isMobile) {
         const nickname = this.userInfo.profile && this.userInfo.profile.nickname
-        return nickname || this.userInfo.username || this.userInfo.email
+        return nickname || this.genFitUsername() || this.userInfo.email
       }
     },
     isAdminFlag() {
@@ -168,6 +168,10 @@ export default {
     //   let tempPathArr = this.$route.path.split('/') || []
     //   this.activeName = tempPathArr[tempPathArr.length - 1]
     // },
+
+    genFitUsername() {
+      return interceptString(this.userInfo.username, 8)
+    },
 
     makeClassName(classifyName) {
       const intrinsicName = 'nav-item '

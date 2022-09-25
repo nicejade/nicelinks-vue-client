@@ -2,13 +2,23 @@
   <div class="login-wrap">
     <div class="wechat-box" ref="wechat-box">
       <h2 class="box-title">微信扫码登录/注册</h2>
-      <qrcode-vue :value="wechatQrCode" size="200" level="H" />
+      <div class="qrcode-area">
+        <qrcode-vue class="qrcode" :value="wechatQrCode" size="186" margin="3" level="H" />
+        <div class="expired-area" v-if="isQrcodeExpired">
+          <a href="javascript:;" @click="onGetQrcode">
+            <p class="expired">二维码已过期</p>
+            <p class="expired">点击重新获取</p>
+          </a>
+        </div>
+      </div>
       <p class="scan-desc">关注"倾城之链官方服务号"快速登录</p>
       <div class="footer">
         <a href="/explore/all" class="route-to-main" @click="onLogoClick">
           {{ $t('niceLinksStr') }}
         </a>
-        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode">使用账号登录>></a>
+        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode(0)"
+          >使用账号登录>></a
+        >
       </div>
     </div>
     <div class="login-box display-none" ref="login-box" v-loading.body="isLoading">
@@ -96,7 +106,9 @@
         <a href="/explore/all" class="route-to-main" @click="onLogoClick">
           {{ $t('niceLinksStr') }}
         </a>
-        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode">使用微信登录</a>
+        <a href="javascript:;" class="switch-to-account" @click="switchLoginMode(1)"
+          >使用微信登录</a
+        >
       </div>
     </div>
   </div>
@@ -113,6 +125,9 @@ import { toggleClass } from './../helper/document'
 const gRetryLimit = 60
 let gRetryNum = 0
 
+const gExpiredTime = 180
+let gTimeCount = 0
+
 export default {
   name: 'Login',
 
@@ -127,6 +142,7 @@ export default {
         userinfo: '',
         password: '',
       },
+      isQrcodeExpired: false,
       isLegalUsername: false,
       rules: {
         username: [{ required: true, validator: this.validateUsername, trigger: 'change,blur' }],
@@ -164,12 +180,20 @@ export default {
       this.$apis
         .getWechatQrCode()
         .then((result) => {
-          this.wechatQrCode = result.url
-          this.checkAndLogin(result.ticket)
+          if (result.url) {
+            this.wechatQrCode = result.url || NICE_LINKS
+            this.checkAndLogin(result.ticket)
+            this.handleQrcodeExpired()
+          } else {
+            this.$message.error(`${result.errmsg}`)
+          }
         })
         .catch((error) => {
           console.log(`error：`, error)
           this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.resetQrcodeExpired()
         })
     },
 
@@ -187,6 +211,21 @@ export default {
           this.checkAndLogin(ticket)
           console.log(`error：`, error)
         })
+    },
+
+    async handleQrcodeExpired() {
+      if (gTimeCount >= gExpiredTime) {
+        this.isQrcodeExpired = true
+        return
+      }
+      await waitForTimeout(1000)
+      gTimeCount += 1
+      this.handleQrcodeExpired()
+    },
+
+    resetQrcodeExpired() {
+      gTimeCount = 0
+      this.isQrcodeExpired = false
     },
 
     updatePageMeta(val) {
@@ -275,9 +314,14 @@ export default {
     },
 
     // ----------------------------onClickEvent-----------------------------
-    switchLoginMode() {
+    switchLoginMode(isToWechat) {
+      isToWechat && this.initWechatQrCode()
       toggleClass(this.$refs['wechat-box'], 'display-none')
       toggleClass(this.$refs['login-box'], 'display-none')
+    },
+
+    onGetQrcode() {
+      this.initWechatQrCode()
     },
 
     onKeyEnterClick() {
@@ -438,6 +482,7 @@ export default {
     height: 100%;
     background-color: $white;
     border: 1px solid #d7dce5;
+    font-size: $font-small;
     .switch-to-account {
       display: block;
       padding: 1rem 0;
@@ -448,6 +493,28 @@ export default {
       font-size: 1.4rem;
       color: $silver-grey;
       padding: 2rem 0;
+    }
+    .qrcode-area {
+      position: relative;
+      width: 186px;
+      height: 186px;
+      margin: auto;
+      .expired-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f7f8f9f6;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .expired {
+          color: $black;
+          line-height: 2rem;
+        }
+      }
     }
   }
 

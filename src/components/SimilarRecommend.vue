@@ -134,19 +134,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/variables.scss';
 @import '../assets/scss/mixins.scss';
 
 .similar-recommend {
   width: 100%;
   padding: 0 20px;
-
-  .recommend-link {
-    @include flex-box-center(row, space-between, center);
-    height: 100%;
-    padding: 1rem;
-  }
 
   .list-item {
     width: 100%;
@@ -177,6 +171,12 @@ export default {
         height: 100%;
         object-fit: cover;
       }
+    }
+
+    .recommend-link {
+      @include flex-box-center(row, space-between, center);
+      height: 100%;
+      padding: 1rem;
     }
 
     .meta {

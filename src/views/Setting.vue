@@ -96,14 +96,14 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 import UploadAvatar from 'components/UploadAvatar'
 import Markdown from 'components/markdown/Index'
 import { isLegalUrl, isLegalNick, getCurrentDate, getCurrentDateHMS } from './../helper/tool'
 
 export default {
   name: 'Setting',
-
-  mixins: [],
 
   components: {
     UploadAvatar,
@@ -157,7 +157,7 @@ export default {
     initFetch() {
       const userInfoId = this.userInfo._id
       this.$apis
-        .getProfile({ _id: userInfoId, wechat: this.userInfo.wechat })
+        .getProfile({ _id: userInfoId, wechat: this.isWechatUser() })
         .then((result) => {
           Object.assign(this.fillForm, result)
           let currentDateStr = new Date(getCurrentDate()).Format('yyyy-MM-dd')
@@ -201,13 +201,19 @@ export default {
       }
     },
 
+    isWechatUser() {
+      const wechat = Cookies.get('is-wechat')
+      return this.userInfo.wechat || wechat
+    },
+
+    /* -----------------------onClickEvent-----------------------Start */
     onSaveClick() {
       this.$gtagTracking('save-setting', 'setting')
       this.$refs['fillForm'].validate((valid) => {
         if (valid) {
           this.isLoading = true
           let params = this.$cloneDeep(this.fillForm)
-          params.wechat = this.userInfo.wechat
+          params.wechat = this.isWechatUser()
           delete params.username
           this.$apis
             .setProfile(params)

@@ -14,20 +14,37 @@
               </div>
 
               <div class="user-profile-nav">
-                <router-link v-if="isShowBaseInfo" key="base'" class="nav-item" @click.native="onMemberClick('base')"
-                  :to="'/member/' + currentUser">
+                <router-link
+                  v-if="isShowBaseInfo"
+                  key="base'"
+                  class="nav-item"
+                  @click.native="onMemberClick('base')"
+                  :to="'/member/' + currentUser"
+                >
                   {{ $t('baseInfo') }}
                 </router-link>
-                <router-link key="posts" class="nav-item" @click.native="onMemberClick('posts')"
-                  :to="'/member/' + currentUser + '/posts'">
+                <router-link
+                  key="posts"
+                  class="nav-item"
+                  @click.native="onMemberClick('posts')"
+                  :to="'/member/' + currentUser + '/posts'"
+                >
                   {{ isUserSelf ? $t('myPublish') : $t('hisPublish') }}
                 </router-link>
-                <router-link key="likes" @click.native="onMemberClick('likes')" class="nav-item"
-                  :to="'/member/' + currentUser + '/likes'">
+                <router-link
+                  key="likes"
+                  @click.native="onMemberClick('likes')"
+                  class="nav-item"
+                  :to="'/member/' + currentUser + '/likes'"
+                >
                   {{ isUserSelf ? $t('myLikes') : $t('hisLikes') }}
                 </router-link>
-                <router-link key="dislikes" @click.native="onMemberClick('dislikes')" class="nav-item"
-                  :to="'/member/' + currentUser + '/dislikes'">
+                <router-link
+                  key="dislikes"
+                  @click.native="onMemberClick('dislikes')"
+                  class="nav-item"
+                  :to="'/member/' + currentUser + '/dislikes'"
+                >
                   {{ isUserSelf ? $t('myDislikes') : $t('hisDislikes') }}
                 </router-link>
               </div>
@@ -181,7 +198,7 @@ export default {
 
     onMemberClick(action) {
       this.$gtagTracking(action, 'member')
-    }
+    },
   },
 
   locales: {

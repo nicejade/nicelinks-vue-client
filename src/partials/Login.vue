@@ -309,7 +309,7 @@ export default {
       if (lastPathUrl) {
         document.location.href = lastPathUrl
       } else {
-        this.$router.push('/')
+        this.$router.push('/setting')
       }
     },
 

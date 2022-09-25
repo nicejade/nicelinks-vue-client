@@ -1,6 +1,5 @@
-<template>
+<template functional>
   <div id="jade-gg-position">
-    <h2 class="aside-widget-title">{{ $t('adPosition') }}</h2>
     <el-carousel
       trigger="click"
       class="jade-gg-body"
@@ -8,7 +7,7 @@
       :interval="5000"
       height="255px"
     >
-      <el-carousel-item v-for="item in advertsList" :key="item.item">
+      <el-carousel-item v-for="item in props.advertsList || []" :key="item.item">
         <a class="link" :href="item.path" target="_blank" rel="noopener">
           <img class="img" :src="item.image" :alt="item.alt" />
         </a>
@@ -16,19 +15,6 @@
     </el-carousel>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'AdsPosition',
-
-  props: {
-    advertsList: {
-      type: [Array],
-      default: [],
-    },
-  },
-}
-</script>
 
 <style lang="scss" scoped>
 #jade-gg-position {

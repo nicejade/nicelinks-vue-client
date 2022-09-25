@@ -1,6 +1,7 @@
 <template>
   <aside class="aside-list">
-    <ads-position :adverts-list="advertsList"></ads-position>
+    <h2 class="aside-widget-title">广而告之</h2>
+    <AdsPosition :adverts-list="advertsList" />
     <h2 class="aside-widget-title">推荐投稿</h2>
     <SitesRecommend class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('awesomeSentence') }}</h2>
@@ -9,8 +10,11 @@
     <friendship-links class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
     <div class="sub-content">
-      <img class="miniprogram" alt="倾城之链.小程序"
-        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1" />
+      <img
+        class="miniprogram"
+        alt="倾城之链.小程序"
+        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
+      />
     </div>
     <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
     <reward-me class="sub-content" />
@@ -29,6 +33,7 @@ export default {
 
   data() {
     return {
+      advertsList: [],
       activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'friendshipLinks'],
       sentence: '',
     }

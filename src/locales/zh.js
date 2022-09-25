@@ -83,7 +83,6 @@ export default {
   saveSeting: '保存设置',
   updateAvatar: '更新头像',
 
-  adPosition: '广而告之',
   awesomeSentence: '箴言锦语',
   miniprogramCode: '🎉小程序',
   visitCount: '网站统计',
@@ -98,5 +97,5 @@ export default {
 
   keywords:
     '倾城之链, nice links, 资源之家, 新媒体导航, 网站, 利器, 新世界, 技术, 产品, 有趣, 人文, 历史, 工具, 社区, 旅行, 美图, 历史, 人文, 娱乐, 抠图, 高效, 搜商, 搜索, 引擎, 思谷搜, 快应用, 翁天信, 天空之城, 夸人生成器',
-  description: DESCRIPTION
+  description: DESCRIPTION,
 }

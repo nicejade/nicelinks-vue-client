@@ -36,8 +36,6 @@ export default {
     }
   },
 
-  components: {},
-
   watch: {
     payWay(newVal, oldVal) {
       let $reward = document.getElementById('reward')

@@ -39,28 +39,12 @@
 export default {
   name: 'Heart',
 
-  data() {
-    return {}
-  },
-
   props: {
     isDown: {
       type: Boolean,
       default: false,
     },
   },
-
-  computed: {},
-
-  watch: {},
-
-  components: {},
-
-  created() {},
-
-  mounted() {},
-
-  methods: {},
 }
 </script>
 

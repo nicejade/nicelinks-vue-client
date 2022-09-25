@@ -132,8 +132,6 @@ export default {
     }
   },
 
-  components: {},
-
   watch: {
     $route: function (to, from) {
       // this.updateNavActive()
@@ -164,8 +162,6 @@ export default {
       return `https://nicelinks.site/about?utm_source=nicelinks.site`
     },
   },
-
-  mounted() {},
 
   methods: {
     // updateNavActive() {

@@ -21,14 +21,6 @@
 export default {
   name: 'ManageIndex',
 
-  data() {
-    return {}
-  },
-
-  components: {},
-
-  created() {},
-
   methods: {
     onJumpClick(i) {
       this.$router.push(`/manage/${i}`)

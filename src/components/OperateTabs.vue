@@ -51,10 +51,6 @@ export default {
     },
   },
 
-  components: {},
-
-  created() {},
-
   mounted() {
     const currentRouteQuery = this.$route.query
     const sortTypeArray = ['latest', 'hottest', 'earliest']
@@ -69,8 +65,6 @@ export default {
       this.$emit('switch-tabs', currentItem)
     }
   },
-
-  methods: {},
 
   locales: {
     zh: {

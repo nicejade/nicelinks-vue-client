@@ -89,13 +89,9 @@ export default {
     }
   },
 
-  components: {},
-
   created() {
     this.initFetch()
   },
-
-  watch: {},
 
   methods: {
     initFetch() {

@@ -1,6 +1,12 @@
 <template>
   <div id="friendship-links">
-    <a target="_blank" class="friendship-links" rel="noopener" @click="onFriendshipClick" href="/friendlink">🤝友情链接
+    <a
+      target="_blank"
+      class="friendship-links"
+      rel="noopener"
+      @click="onFriendshipClick"
+      href="/friendlink"
+      >🤝友情链接
     </a>
   </div>
 </template>
@@ -8,10 +14,6 @@
 <script>
 export default {
   name: 'FriendshipLinks',
-
-  data() {
-    return {}
-  },
 
   methods: {
     onFriendshipClick() {

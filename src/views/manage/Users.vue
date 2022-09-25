@@ -82,8 +82,6 @@ export default {
     }
   },
 
-  components: {},
-
   created() {
     this.initFetch()
   },

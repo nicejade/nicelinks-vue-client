@@ -184,6 +184,7 @@ export default {
             this.wechatQrCode = result.url || NICE_LINKS
             this.checkAndLogin(result.ticket)
             this.handleQrcodeExpired()
+            this.$gtagTracking('get-qrcode-success', 'login')
           } else {
             this.$message.error(`${result.errmsg}`)
           }
@@ -191,6 +192,7 @@ export default {
         .catch((error) => {
           console.log(`error：`, error)
           this.$message.error(`${error}`)
+          this.$gtagTracking('get-qrcode-fail', 'login')
         })
         .finally(() => {
           this.resetWxLoginCounter()
@@ -210,11 +212,13 @@ export default {
 
     checkAndLogin(ticket) {
       if (gRetryNum > gRetryLimit) return
-
       this.$apis
         .checkIsSubscribe({ ticket })
         .then((result) => {
-          if (result) this.route2lastpath(result)
+          if (result) {
+            this.$gtagTracking('wx-login-success', 'login')
+            this.route2lastpath(result)
+          }
         })
         .catch(async (error) => {
           gRetryNum += 1
@@ -329,10 +333,12 @@ export default {
       isToWechat ? this.initWechatQrCode() : this.stopWechatQrCode()
       toggleClass(this.$refs['wechat-box'], 'display-none')
       toggleClass(this.$refs['login-box'], 'display-none')
+      this.$gtagTracking('switch-mode', 'login', isToWechat)
     },
 
     onGetQrcode() {
       this.initWechatQrCode()
+      this.$gtagTracking('get-qrcode', 'login')
     },
 
     onKeyEnterClick() {
@@ -354,11 +360,13 @@ export default {
           this.$apis
             .login(params)
             .then((result) => {
+              this.$gtagTracking('ac-login-success', 'login')
               // save user-id into vuex-state(& localStorage)
               this.route2lastpath(result)
             })
             .catch((error) => {
               this.isLoading = false
+              this.$gtagTracking('ac-login-fail', 'login')
               this.setMessageTip(error)
             })
         } else {
@@ -413,7 +421,7 @@ export default {
     },
 
     onLogoClick() {
-      this.$gtagTracking('login-logo-link', 'login')
+      this.$gtagTracking('login2main', 'login')
     },
   },
 

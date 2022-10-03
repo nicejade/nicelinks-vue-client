@@ -59,6 +59,7 @@ export default {
   linkThemeStr: '链接主题',
   linkTagsStr: '链接标签',
   createdDateStr: '创建日期',
+  isActived: '是否激活',
   beLikedStr: '喜欢程度',
   beDisikedStr: '厌恶程度',
   loadMoreStr: '加载更多',

@@ -140,6 +140,7 @@ export default {
       headers: {
         imgname: '',
         username: '',
+        wechat: '',
       },
       imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg',
     }
@@ -168,6 +169,7 @@ export default {
 
           this.headers.imgname = [currentDateStr, currentTimeHMS, userInfoId].join('-')
           this.headers.username = this.userInfo.username || ''
+          this.headers.wechat = this.isWechatUser()
         })
         .catch((error) => {
           this.errorAlertTip(`Err: ${error}`, 'error')

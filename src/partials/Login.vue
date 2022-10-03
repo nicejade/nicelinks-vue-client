@@ -193,8 +193,19 @@ export default {
           this.$message.error(`${error}`)
         })
         .finally(() => {
+          this.resetWxLoginCounter()
           this.resetQrcodeExpired()
         })
+    },
+
+    resetWxLoginCounter() {
+      gRetryNum = 0
+      gTimeCount = 0
+    },
+
+    stopWechatQrCode() {
+      gRetryNum = gRetryLimit
+      gTimeCount = gExpiredTime
     },
 
     checkAndLogin(ticket) {
@@ -315,7 +326,7 @@ export default {
 
     // ----------------------------onClickEvent-----------------------------
     switchLoginMode(isToWechat) {
-      isToWechat && this.initWechatQrCode()
+      isToWechat ? this.initWechatQrCode() : this.stopWechatQrCode()
       toggleClass(this.$refs['wechat-box'], 'display-none')
       toggleClass(this.$refs['login-box'], 'display-none')
     },
@@ -440,7 +451,7 @@ export default {
 .login-wrap {
   width: 40rem;
   margin: 0 auto;
-  padding-top: 10rem;
+  padding-top: 12rem;
   position: relative;
 
   .forgot-pwd {

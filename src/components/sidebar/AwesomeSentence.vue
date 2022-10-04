@@ -60,8 +60,6 @@ export default {
     PreviewMd,
   },
 
-  mounted() {},
-
   watch: {
     'sentence.content': function (val = '') {
       this.currentSentenceStr = val

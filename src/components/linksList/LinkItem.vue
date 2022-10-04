@@ -249,8 +249,6 @@ export default {
     },
   },
 
-  watch: {},
-
   components: {
     EditDialog,
     PreviewMd,

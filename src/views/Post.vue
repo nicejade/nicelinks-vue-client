@@ -31,8 +31,6 @@ export default {
     }
   },
 
-  watch: {},
-
   components: {
     SimilarRecommend,
     Waline,

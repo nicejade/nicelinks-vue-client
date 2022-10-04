@@ -35,11 +35,9 @@ export default {
     }
   },
 
-  watch: {},
-
   components: {
     PreviewMd,
-    Waline
+    Waline,
   },
 
   mounted() {
@@ -54,5 +52,4 @@ export default {
 }
 </script>
 
-<style type="text/css" lang="scss">
-</style>
+<style type="text/css" lang="scss"></style>

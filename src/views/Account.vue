@@ -32,10 +32,6 @@ export default {
     }
   },
 
-  watch: {},
-
-  components: {},
-
   mounted() {
     this.$setPageTitle('账号激活')
     this.dispatchActivate()

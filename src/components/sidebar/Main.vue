@@ -46,8 +46,6 @@ export default {
     },
   },
 
-  watch: {},
-
   components: {
     AdsPosition,
     FriendshipLinks,

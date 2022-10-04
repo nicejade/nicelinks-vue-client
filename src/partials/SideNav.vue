@@ -72,13 +72,12 @@ import { openAuthorSite } from './../helper/tool'
 
 export default {
   name: 'SideNav',
+
   data() {
     return {
       navList: Object.freeze(classify),
     }
   },
-
-  components: {},
 
   computed: {
     isAdminFlag() {
@@ -87,8 +86,6 @@ export default {
       }
     },
   },
-
-  mounted() {},
 
   methods: {
     onShareNewLinkClick() {

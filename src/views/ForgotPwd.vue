@@ -56,8 +56,6 @@ import { encryptPwd, isLegalEmail, isLegalPassword } from './../helper/tool'
 export default {
   name: 'ForgotPwd',
 
-  components: {},
-
   data() {
     return {
       isLoading: false,

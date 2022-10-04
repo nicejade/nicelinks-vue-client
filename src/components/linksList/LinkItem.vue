@@ -190,7 +190,6 @@
 </template>
 
 <script>
-import mediumZoom from 'medium-zoom'
 import { parse } from 'helper/marked'
 
 import EditDialog from 'components/dialog/EditDialog'
@@ -265,9 +264,6 @@ export default {
     if (!this.isAbstract) {
       this.getUserInfoByUsername()
     }
-    this.$nextTick((_) => {
-      mediumZoom('[data-zoomable]')
-    })
   },
 
   methods: {

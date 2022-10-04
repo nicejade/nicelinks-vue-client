@@ -19,6 +19,7 @@
 import SimilarRecommend from 'components/SimilarRecommend'
 import Waline from 'components/Waline'
 import Mark from 'mark.js'
+import mediumZoom from 'medium-zoom'
 
 export default {
   name: 'Post',
@@ -63,6 +64,7 @@ export default {
               this.addCanonicalForSEO(this.niceLinksDetail)
               this.addHeaderNavActive()
               this.highlightKeyword()
+              mediumZoom('[data-zoomable]')
             })
           } else {
             this.$router.push('/404')

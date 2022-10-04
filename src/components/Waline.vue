@@ -21,7 +21,7 @@ export default {
         el: '#waline',
         serverURL: 'https://comment.nicelinks.site/',
         copyright: false,
-        wordLimit: [10, 500],
+        wordLimit: [10, 600],
         requiredMeta: ['nick', 'mail'],
       })
     })
@@ -43,7 +43,6 @@ export default {
   .wl-comment {
     .wl-panel {
       .wl-header {
-
         label,
         input {
           font-size: 1.2rem;

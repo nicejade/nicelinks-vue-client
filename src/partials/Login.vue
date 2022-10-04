@@ -196,13 +196,13 @@ export default {
         })
         .finally(() => {
           this.resetWxLoginCounter()
-          this.resetQrcodeExpired()
         })
     },
 
     resetWxLoginCounter() {
       gRetryNum = 0
       gTimeCount = 0
+      this.isQrcodeExpired = false
     },
 
     stopWechatQrCode() {
@@ -211,7 +211,7 @@ export default {
     },
 
     checkAndLogin(ticket) {
-      if (gRetryNum > gRetryLimit) return
+      if (gRetryNum >= gRetryLimit) return
       this.$apis
         .checkIsSubscribe({ ticket })
         .then((result) => {
@@ -221,10 +221,12 @@ export default {
           }
         })
         .catch(async (error) => {
-          gRetryNum += 1
           await waitForTimeout(2000)
           this.checkAndLogin(ticket)
           console.log(`error：`, error)
+        })
+        .finally(() => {
+          gRetryNum += 1
         })
     },
 
@@ -236,11 +238,6 @@ export default {
       await waitForTimeout(1000)
       gTimeCount += 1
       this.handleQrcodeExpired()
-    },
-
-    resetQrcodeExpired() {
-      gTimeCount = 0
-      this.isQrcodeExpired = false
     },
 
     updatePageMeta(val) {

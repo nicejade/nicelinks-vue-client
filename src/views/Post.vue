@@ -18,6 +18,7 @@
 <script>
 import SimilarRecommend from 'components/SimilarRecommend'
 import Waline from 'components/Waline'
+import Mark from 'mark.js'
 
 export default {
   name: 'Post',
@@ -61,6 +62,7 @@ export default {
               this.updatePageMeta(this.niceLinksDetail)
               this.addCanonicalForSEO(this.niceLinksDetail)
               this.addHeaderNavActive()
+              this.highlightKeyword()
             })
           } else {
             this.$router.push('/404')
@@ -93,6 +95,17 @@ export default {
       link.setAttribute('rel', 'canonical')
       link.setAttribute('href', `https://nicelinks.site/post/${details._id}`)
       document.head.appendChild(link)
+    },
+
+    highlightKeyword() {
+      const { keyword } = this.$route.query
+      if (!keyword) return
+
+      const targetDomNode = document.querySelector(`#app .main .content`)
+      new Mark(targetDomNode).mark(keyword, {
+        exclude: ['h1', 'h2'],
+        className: 'mark-highlight',
+      })
     },
 
     updatePageSentence() {

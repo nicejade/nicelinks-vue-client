@@ -42,7 +42,6 @@ export default {
 
   methods: {
     onExploreAll() {
-      debugger
       this.$gtagTracking('mian-explore-all', 'index')
     },
   },

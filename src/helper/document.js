@@ -32,3 +32,8 @@ export const removeClass = (el = {}, className) => {
     )
   }
 }
+
+export const greyOutWebsite = (isGrey = true) => {
+  const action = isGrey ? 'add' : 'remove'
+  document.getElementById('app').classList[action]('filter-grayscale')
+}

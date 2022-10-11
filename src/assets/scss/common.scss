@@ -18,6 +18,11 @@ html {
   height: 100%;
 }
 
+.filter-grayscale {
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
+}
+
 @media (max-width: 960px) {
   html {
     font-size: 65%;

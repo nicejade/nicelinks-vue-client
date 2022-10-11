@@ -22,7 +22,8 @@
           >
         </div>
         <div class="meta-box">
-          <span class="item">分享于 {{ dateOffset(item.created) }}</span>
+          <span class="item" v-if="!$isMobile">分享于 {{ item.created | dateConvert }}</span>
+          <span class="item" v-else>分享于 {{ dateOffset(item.created) }}</span>
           <span>阅读数 {{ item.countup + 1 }}</span>
         </div>
       </div>

@@ -190,6 +190,12 @@
 .markdown-body em {
   font-style: italic;
 }
+.markdown-body hr {
+  border: 0;
+  height: 1px;
+  background: #606266;
+  background-image: linear-gradient(to right, #97a8be, #606266, #97a8be);
+}
 .markdown-body del {
   text-decoration: line-through;
 }

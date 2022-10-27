@@ -15,7 +15,7 @@
       >
     </h1>
     <div class="jump-to-area" :style="websiteBgStyle">
-      <div class="card">
+      <div class="card blur-effect">
         <h2 class="title">
           即将从<a
             rel="home"
@@ -144,8 +144,6 @@ $primary: #ea552d;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: hsla(0, 0%, 100%, 0.38);
     border-radius: 12px;
     border: 1px solid rgba(209, 213, 219, 0.3);

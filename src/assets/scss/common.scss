@@ -272,3 +272,8 @@ input:-ms-input-placeholder {
 .text-center {
   text-align: center;
 }
+
+.blur-effect {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}

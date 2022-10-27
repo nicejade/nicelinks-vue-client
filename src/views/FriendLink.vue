@@ -9,22 +9,42 @@
                 <strong>{{ $t('manageFriends') }}</strong>
               </h2>
               <div class="friend-hint">
-                如果，您有自己的<strong>网站</strong>或者<strong>博客</strong>，非常欢迎您和<a href="https://nicelinks.site"
-                  target="_blank">倾城之链</a>交换<strong>友情链接</strong>，
+                如果，您有自己的<strong>网站</strong>或者<strong>博客</strong>，非常欢迎您和<a
+                  href="https://nicelinks.site"
+                  target="_blank"
+                  >倾城之链</a
+                >交换<strong>友情链接</strong>，
                 <div class="tooltip">
                   <img :src="niceLinksServerStr" alt="倾城客服微信" class="tooltip-img" />
                   请添加<a :href="niceLinksServerStr" target="_blank">倾城客服微信</a>
                 </div>
-                ，进行详细沟通（当然，如果您如果喜欢，也可以通过<a target="_blank" href="mailto:yunjeff#163.com">邮件</a>）。
+                ，进行详细沟通（当然，如果您如果喜欢，也可以通过<a
+                  target="_blank"
+                  href="mailto:yunjeff#163.com"
+                  >邮件</a
+                >）。
               </div>
             </div>
             <div class="friends-list">
-              <a class="item" @click="onFriendItemClick(item)" target="_blank" :href="item.path + '?ref=nicelinks.site'"
-                v-for="item in tableData" :key="item.path" rel="external noopener">
-                <img class="icon" :src="getSiteIcon(item)"
+              <a
+                class="item blur-effect"
+                @click="onFriendItemClick(item)"
+                target="_blank"
+                :href="item.path + '?ref=nicelinks.site'"
+                v-for="item in tableData"
+                :key="item.path"
+                rel="external noopener"
+              >
+                <img
+                  class="icon"
+                  :src="getSiteIcon(item)"
                   onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/no-image.png';"
-                  :alt="item.desc" />
-                <div class="content hint--rounded hint--info hint--top hint--medium" :aria-label="item.desc">
+                  :alt="item.desc"
+                />
+                <div
+                  class="content hint--rounded hint--info hint--top hint--medium"
+                  :aria-label="item.desc"
+                >
                   <h2 class="title">
                     {{ item.title }}
                   </h2>
@@ -56,7 +76,7 @@ export default {
   },
 
   components: {
-    Waline
+    Waline,
   },
 
   created() {
@@ -93,7 +113,7 @@ export default {
 
     onFriendItemClick(item) {
       this.$gtagTracking(`link-${item.title}`, 'friend')
-    }
+    },
   },
 }
 </script>
@@ -103,16 +123,16 @@ export default {
 @import './../assets/scss/mixins.scss';
 
 .hint--info:after {
-  background-color: $border-grey  !important;
+  background-color: $border-grey !important;
 }
 
 [class*='hint--']:after {
-  color: $black  !important;
-  text-shadow: 0 -1px 0px $white  !important;
+  color: $black !important;
+  text-shadow: 0 -1px 0px $white !important;
 }
 
 .hint--info.hint--top:before {
-  border-top-color: $border-grey  !important;
+  border-top-color: $border-grey !important;
 }
 
 .entry-list {
@@ -174,8 +194,6 @@ export default {
     // max-width: 280px;
     padding: 15px;
     color: $common-link;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 12px;
     border: 1px solid rgba(209, 213, 219, 0.3);

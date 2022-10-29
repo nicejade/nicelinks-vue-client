@@ -25,6 +25,7 @@
         margin: auto;
 
         .entry-list {
+          position: relative;
           display: inline-block;
           float: left;
           background-color: $white;

@@ -6,7 +6,7 @@
           <div class="entry-list">
             <search class="mobile-search" v-if="$isMobile" />
             <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
-            <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs" />
+            <operate-tabs class="operate-tabs-space" />
             <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
             <load-more></load-more>
@@ -78,21 +78,3 @@ export default {
   },
 }
 </script>
-
-<style type="text/css" lang="scss" scoped>
-@import '../assets/scss/variables.scss';
-
-.entry-list {
-  .operate-tabs-space {
-    margin-bottom: -15px;
-  }
-}
-
-@media screen and (max-width: $mobile-screen) {
-  .entry-list {
-    .operate-tabs-space {
-      padding-top: 9rem;
-    }
-  }
-}
-</style>

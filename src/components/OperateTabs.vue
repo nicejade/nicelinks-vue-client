@@ -1,14 +1,15 @@
 <template>
   <div class="operate-tabs" id="operate-tabs">
-    <el-tabs v-model="activeName" type="card">
-      <el-tab-pane
-        v-for="(item, index) in operateTabList"
-        :key="item.name"
-        :label="$t(item.name)"
-        :name="item.name"
-      >
-      </el-tab-pane>
-    </el-tabs>
+    <div class="nav-wrap">
+      <a
+        v-for="item in items"
+        class="link"
+        :class="{ active: item === activeName }"
+        :href="getAssembleRoute(item)"
+        :key="item"
+        >{{ $t(item) }}
+      </a>
+    </div>
   </div>
 </template>
 
@@ -19,51 +20,24 @@ export default {
   data() {
     return {
       activeName: 'latest',
-      operateTabList: [
-        {
-          name: 'latest',
-          sortTarget: 'created',
-          sortType: -1,
-        },
-        {
-          name: 'hottest',
-          sortTarget: 'likes',
-          sortType: -1,
-        },
-        {
-          name: 'earliest',
-          sortTarget: 'created',
-          sortType: 1,
-        },
-      ],
     }
   },
 
-  watch: {
-    activeName(val) {
-      const currentRoutePath = this.$route.paths
-      this.$router.push({ path: currentRoutePath, query: { sort: val } })
-
-      let currentItem = this.operateTabList.find((item) => {
-        return item.name === val
-      })
-      this.$emit('switch-tabs', currentItem)
+  computed: {
+    items() {
+      return ['latest', 'hottest', 'earliest']
     },
   },
 
   mounted() {
-    const currentRouteQuery = this.$route.query
-    const sortTypeArray = ['latest', 'hottest', 'earliest']
-    const isWithSort = sortTypeArray.indexOf(currentRouteQuery.sort) > -1
-    this.activeName = isWithSort ? currentRouteQuery.sort : 'latest'
+    this.activeName = this.$route.query.sort || this.activeName
+  },
 
-    // Fixed: 解决 activeName: 'latest'，导致 sort=latest，相同值无法触发 watch 问题；
-    if (currentRouteQuery.sort === 'latest') {
-      let currentItem = this.operateTabList.find((item) => {
-        return item.name === 'latest'
-      })
-      this.$emit('switch-tabs', currentItem)
-    }
+  methods: {
+    getAssembleRoute(sort) {
+      const path = this.$route.path
+      return `${path}?sort=${sort}`
+    },
   },
 
   locales: {
@@ -78,12 +52,33 @@ export default {
 
 <style lang="scss">
 @import './../assets/scss/variables.scss';
+@import '../assets/scss/mixins.scss';
 
 .operate-tabs {
   padding-top: 15px;
-  margin-bottom: -15px;
-  .el-tabs__item {
-    font-size: $font-small;
+  .nav-wrap {
+    @include flex-box-center(row, start, center);
+    overflow: hidden;
+    margin-bottom: -1px;
+    :first-child {
+      border-top-left-radius: 0.5rem;
+    }
+    :last-child {
+      border-top-right-radius: 0.5rem;
+    }
+    .link {
+      font-weight: 500;
+      color: $link-title;
+      padding: 1rem;
+      border: 1px solid $moudle-border-color;
+    }
+    .link + .link {
+      border-left: 0;
+    }
+    .active {
+      color: $brand;
+      border-bottom-color: $white;
+    }
   }
 }
 </style>

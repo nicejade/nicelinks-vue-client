@@ -6,7 +6,7 @@
           <div class="entry-list">
             <search class="mobile-search" v-if="$isMobile" />
             <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
-            <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs"> </operate-tabs>
+            <operate-tabs class="operate-tabs-space" />
             <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
             <pagination :count="linksCount" :page="currentPage" />
@@ -24,7 +24,6 @@ import Pagination from 'components/Pagination'
 import CLASSIFY_CONF from './../config/classify'
 import THEME_CONF from './../config/theme'
 import partsMixin from 'mixins/partsMixin.js'
-import toNumber from 'lodash/toNumber'
 
 export default {
   name: 'NiceLinks',
@@ -44,17 +43,11 @@ export default {
   },
 
   created() {
-    this.currentPage = toNumber(this.$util.getUrlParam('page')) || 1
+    this.currentPage = parseInt(this.$util.getUrlParam('page')) || 1
 
     this.updatePageMeta()
-    this.setFetchData()
-
-    const sortVal = this.$util.getUrlParam('sort')
-    const sortTypeArray = ['hottest', 'latest', 'earliest']
-    if (sortTypeArray.indexOf(sortVal) < 0) {
-      this.$fetchSearch({}, true)
-    }
-    this.renderPagination()
+    this.setThemeList()
+    this.$fetchSearch()
   },
 
   mounted() {
@@ -63,6 +56,7 @@ export default {
       if (classify !== 'all') {
         this.$gtagReport(`from-explore-${classify}`)
       }
+      this.renderPagination()
     })
   },
 
@@ -71,26 +65,6 @@ export default {
       const classify = this.$route.params.classify
       const localesKey = classify === 'all' ? 'exploreNice' : classify
       this.$setPageTitle(this.$t(localesKey))
-    },
-
-    setFetchData() {
-      const currentClassify = this.$route.params.classify
-      const currentItem = CLASSIFY_CONF.find((item) => {
-        return currentClassify === item.name
-      })
-
-      if (currentItem && currentItem['value']) {
-        this.$vuexSetRequestParamList({
-          alive: 1,
-          classify: currentItem ? currentItem['value'] : '',
-          // 当切换 classify 时候，要更新 requestParamList(vuex) 中的字段为初始值;
-          pageCount: this.currentPage,
-          sortType: -1,
-          sortTarget: 'created',
-          theme: null,
-        })
-      }
-      this.setThemeList()
     },
 
     setThemeList() {
@@ -126,23 +100,3 @@ export default {
   },
 }
 </script>
-
-<style type="text/css" lang="scss" scoped>
-@import '../assets/scss/variables.scss';
-
-.entry-list {
-  position: relative;
-
-  .operate-tabs-space {
-    margin-bottom: -15px;
-  }
-}
-
-@media screen and (max-width: $mobile-screen) {
-  .entry-list {
-    .operate-tabs-space {
-      padding-top: 9rem;
-    }
-  }
-}
-</style>

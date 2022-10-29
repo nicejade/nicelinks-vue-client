@@ -13,6 +13,9 @@
 }
 
 @media screen and (max-width: $mobile-screen) {
+  .operate-tabs-space {
+    padding-top: 9rem;
+  }
   .icons {
     width: 2.5rem;
     height: 2.5rem;

@@ -95,6 +95,7 @@ export default {
 
 .main {
   .links-list {
+    border-top: 1px solid $item-border-color;
     .single-moudle {
       aspect-ratio: 2.8 / 1;
 

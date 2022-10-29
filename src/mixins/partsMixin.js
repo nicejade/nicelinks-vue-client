@@ -64,10 +64,11 @@ export default {
         delete params.classify
       }
 
-      const sortVal = this.$util.getUrlParam('sort')
-      if (sortVal) {
-        Object.assign(params, this.getMatchSortTarget(sortVal))
-      }
+      const sortVal = this.$util.getUrlParam('sort') || 'latest'
+      Object.assign(params, this.getMatchSortTarget(sortVal))
+
+      const pageVal = parseInt(this.$util.getUrlParam('page')) || 1
+      params.pageCount = pageVal
 
       if (this.$route.params.theme) {
         params.theme = decodeURIComponent(this.$route.params.theme)
@@ -84,8 +85,6 @@ export default {
     $fetchSearch(params = {}, isLoadMore = false) {
       // Update the LoadMore Button State(true);
       this.$vuexUpdateLoadMoreState(true)
-
-      !isLoadMore ? (params.pageCount = 1) : ''
       this.$vuexSetRequestParamList(params)
 
       params = this.assembleAjaxParams()
@@ -118,16 +117,6 @@ export default {
         .finally(() => {
           this.isLoading = false
         })
-    },
-
-    $onSwitchTabs(item = {}) {
-      const params = {
-        pageCount: 1,
-        sortTarget: item.sortTarget,
-        sortType: item.sortType,
-      }
-      this.$vuexSetRequestParamList(params)
-      this.$fetchSearch()
     },
   },
 }

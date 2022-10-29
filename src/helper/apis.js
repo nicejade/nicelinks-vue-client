@@ -25,6 +25,10 @@ export default {
     return $ajax.get(requestUrl('getAllLinksCount'), data)
   },
 
+  getAllClassifyCount(data) {
+    return $ajax.get(requestUrl('getAllClassifyCount'), data)
+  },
+
   getAllUsers(data) {
     return $ajax.get(requestUrl('getAllUsers'), data)
   },

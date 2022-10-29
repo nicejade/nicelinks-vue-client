@@ -9,7 +9,7 @@
             <operate-tabs class="operate-tabs-space" @switch-tabs="$onSwitchTabs"> </operate-tabs>
             <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
             </links-list>
-            <load-more></load-more>
+            <pagination :count="linksCount" :page="currentPage" />
           </div>
           <aside-list></aside-list>
         </div>
@@ -19,9 +19,12 @@
 </template>
 
 <script>
+import Pagination from 'components/Pagination'
+
 import CLASSIFY_CONF from './../config/classify'
 import THEME_CONF from './../config/theme'
 import partsMixin from 'mixins/partsMixin.js'
+import toNumber from 'lodash/toNumber'
 
 export default {
   name: 'NiceLinks',
@@ -31,26 +34,27 @@ export default {
   data() {
     return {
       themeList: [],
+      linksCount: 100,
+      currentPage: 1,
     }
   },
 
-  // 只是别名变化, Vue 无法监听到 @17-07-18;
-  /*
-  watch: {
-    $route: function (to, from) {
-    },
+  components: {
+    Pagination,
   },
-  */
 
   created() {
+    this.currentPage = toNumber(this.$util.getUrlParam('page')) || 1
+
     this.updatePageMeta()
     this.setFetchData()
 
     const sortVal = this.$util.getUrlParam('sort')
     const sortTypeArray = ['hottest', 'latest', 'earliest']
     if (sortTypeArray.indexOf(sortVal) < 0) {
-      this.$fetchSearch()
+      this.$fetchSearch({}, true)
     }
+    this.renderPagination()
   },
 
   mounted() {
@@ -70,8 +74,8 @@ export default {
     },
 
     setFetchData() {
-      let currentClassify = this.$route.params.classify
-      let currentItem = CLASSIFY_CONF.find((item) => {
+      const currentClassify = this.$route.params.classify
+      const currentItem = CLASSIFY_CONF.find((item) => {
         return currentClassify === item.name
       })
 
@@ -80,7 +84,7 @@ export default {
           alive: 1,
           classify: currentItem ? currentItem['value'] : '',
           // 当切换 classify 时候，要更新 requestParamList(vuex) 中的字段为初始值;
-          pageCount: 1,
+          pageCount: this.currentPage,
           sortType: -1,
           sortTarget: 'created',
           theme: null,
@@ -96,6 +100,28 @@ export default {
       })
       let classify = this.$requestParamList.classify
       this.themeList = Object.freeze(classify ? THEME_CONF[classify] : allThemeList)
+    },
+
+    renderPagination() {
+      this.$apis
+        .getAllClassifyCount()
+        .then((result) => {
+          this.genPaginationData(result)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+
+    genPaginationData(params) {
+      const pageCountObj = { all: 0 }
+      params.forEach((item) => {
+        pageCountObj['all'] += item.count
+        const tempArr = CLASSIFY_CONF.find((classify) => classify.value === item._id)
+        pageCountObj[tempArr.name] = item.count
+      })
+      const classify = this.$route.params.classify
+      this.linksCount = pageCountObj[classify]
     },
   },
 }

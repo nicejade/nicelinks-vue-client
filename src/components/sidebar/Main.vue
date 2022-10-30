@@ -8,6 +8,8 @@
     <awesome-sentence class="sub-content" :sentence="sentence" :index="index" />
     <h2 class="aside-widget-title">推荐投稿</h2>
     <SitesRecommend class="sub-content" />
+    <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
+    <reward-me class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
     <div class="sub-content">
       <img
@@ -16,8 +18,11 @@
         src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
       />
     </div>
-    <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
-    <reward-me class="sub-content" />
+    <h2 class="aside-widget-title">{{ $t('aboutNiceLinks') }}</h2>
+    <div class="sub-content about-us">
+      <a href="/explore/all?sort=hottest">倾城之链</a
+      >，优质网站导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。
+    </div>
   </aside>
 </template>
 
@@ -112,6 +117,14 @@ export default {
     width: 25rem;
     height: auto;
     aspect-ratio: 1 / 1;
+  }
+
+  .about-us {
+    color: $black;
+    font-size: $font-small;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
   }
 }
 </style>

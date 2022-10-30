@@ -1,13 +1,13 @@
 <template>
   <aside class="aside-list">
-    <h2 class="aside-widget-title">广而告之</h2>
+    <h2 class="aside-widget-title" style="margin-top: 1rem;padding: 0.3rem; 0">广而告之</h2>
     <AdsPosition :adverts-list="advertsList" />
-    <h2 class="aside-widget-title">推荐投稿</h2>
-    <SitesRecommend class="sub-content" />
-    <h2 class="aside-widget-title">{{ $t('awesomeSentence') }}</h2>
-    <awesome-sentence class="sub-content" :sentence="sentence" :index="index" />
     <h2 class="aside-widget-title">{{ $t('friendshipLinks') }}</h2>
     <friendship-links class="sub-content" />
+    <h2 class="aside-widget-title">{{ $t('awesomeSentence') }}</h2>
+    <awesome-sentence class="sub-content" :sentence="sentence" :index="index" />
+    <h2 class="aside-widget-title">推荐投稿</h2>
+    <SitesRecommend class="sub-content" />
     <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
     <div class="sub-content">
       <img
@@ -87,14 +87,14 @@ export default {
 .aside-list {
   background-color: $white;
   display: inline-block;
-  max-width: 360px;
-  width: 32%;
+  max-width: 32rem;
+  width: 31%;
   text-align: left;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   padding: 0 1.5rem;
 
   .sub-content {
-    margin: 2rem auto;
+    margin: 1rem auto;
     text-align: center;
   }
 

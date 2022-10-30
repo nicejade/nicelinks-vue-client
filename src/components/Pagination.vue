@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="pagination" v-if="items.length > 0">
     <ul class="pager">
       <li class="item" :class="{ disabled: item === '...' }" v-for="item in items">
         <a class="link" :class="{ active: item === page }" :href="getLinkPath(item)">{{ item }}</a>
@@ -68,8 +68,6 @@ export default {
     },
   },
 
-  mounted() {},
-
   methods: {
     range(from, to) {
       const range = []
@@ -86,7 +84,8 @@ export default {
 
       const path = this.$route.path
       const sort = this.$route.query.sort || 'latest'
-      return sort === 'latest' ? `${path}?page=${page}` : `${path}?sort=${sort}&page=${page}`
+      const pills = sort === 'latest' ? '' : `sort=${sort}&`
+      return `${path}?$${pills}page=${page}`
     },
   },
 }

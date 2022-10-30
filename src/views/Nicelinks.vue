@@ -5,10 +5,9 @@
         <div class="main-container">
           <div class="entry-list">
             <search class="mobile-search" v-if="$isMobile" />
-            <sub-head :theme-list="themeList" @fetch-search="$fetchSearch"> </sub-head>
+            <sub-head :theme-list="themeList" @fetch-search="$fetchSearch" />
             <operate-tabs class="operate-tabs-space" />
-            <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading">
-            </links-list>
+            <links-list :is-abstract="true" :pdata="$niceLinksArray" :is-loading="isLoading" />
             <pagination :count="linksCount" :page="currentPage" />
           </div>
           <aside-list></aside-list>

@@ -21,7 +21,7 @@
 
       .main-container {
         width: 100%;
-        max-width: 960px;
+        max-width: 100rem;
         margin: auto;
 
         .entry-list {
@@ -125,10 +125,10 @@
 
 .aside-list {
   .aside-widget-title {
-    font-weight: 700;
-    margin: 10px 0;
-    padding-top: 10px;
     font-size: $font-medium;
+    font-weight: 800;
+    margin: 3rem 0 1rem 0;
+    padding: 0;
   }
 }
 

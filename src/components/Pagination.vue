@@ -85,7 +85,7 @@ export default {
       const path = this.$route.path
       const sort = this.$route.query.sort || 'latest'
       const pills = sort === 'latest' ? '' : `sort=${sort}&`
-      return `${path}?$${pills}page=${page}`
+      return `${path}?${pills}page=${page}`
     },
   },
 }

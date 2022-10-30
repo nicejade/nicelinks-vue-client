@@ -12,4 +12,4 @@ export const REDIRECT_PATH = `${NICE_LINKS}/redirect?url=`
 
 export const REPORT_PATH = `${REDIRECT_PATH}https://support.qq.com/products/340357&isauto=true`
 
-export const PAGE_SIZE = 15 // 每次请求 NICE LINK S数组的条数 @2022.10.29；
+export const PAGE_SIZE = 10 // 每次请求 NICE LINK S数组的条数 @2022.10.29；

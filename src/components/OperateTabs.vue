@@ -69,7 +69,7 @@ export default {
     .link {
       font-weight: 500;
       color: $link-title;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       border: 1px solid $moudle-border-color;
     }
     .link + .link {

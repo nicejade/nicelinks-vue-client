@@ -39,14 +39,13 @@ export default {
   data() {
     return {
       advertsList: [],
-      activeNames: ['awesomeSentence', 'recommend', 'miniprogramCode', 'friendshipLinks'],
       sentence: '',
     }
   },
 
   props: {
     index: {
-      type: [Number],
+      type: Number,
       default: 1,
     },
   },
@@ -73,11 +72,6 @@ export default {
       .catch((error) => {
         this.$message.error(`${error}`)
       })
-  },
-
-  mounted() {
-    const isMobile = window.innerWidth <= 768
-    isMobile && this.activeNames.push('rewardme')
   },
 }
 </script>

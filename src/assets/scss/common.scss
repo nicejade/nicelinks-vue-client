@@ -16,6 +16,14 @@ body {
 html {
   font-size: 62.5%;
   height: 100%;
+  transition: color 300ms, background-color 300ms;
+}
+
+body[theme='dark'] {
+  filter: invert(1) hue-rotate(180deg);
+}
+body[theme='dark'] img{
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .filter-grayscale {

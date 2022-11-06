@@ -74,6 +74,8 @@
           </el-dropdown>
         </div>
 
+        <SwitchTheme />
+
         <div class="search-area" id="search-area" v-if="!$isMobile">
           <search />
         </div>
@@ -117,6 +119,7 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 
+import SwitchTheme from '../components/SwitchTheme.vue'
 import CLASSIFY_CONF from './../config/classify'
 import THEME_CONF from './../config/theme'
 import { REPORT_PATH } from 'config/constant'
@@ -130,6 +133,10 @@ export default {
       isShowDlgFlag: false,
       navList: CLASSIFY_CONF,
     }
+  },
+
+  components: {
+    SwitchTheme,
   },
 
   watch: {

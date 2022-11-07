@@ -68,13 +68,13 @@
                 <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="isAdminFlag" command="Manage">
-                <i class="vector-icon el-icon-setting"></i>{{ $t('management') }}
+                <icon class="vector-icon" name="setting"></icon>{{ $t('management') }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
 
-        <SwitchTheme />
+        <SwitchTheme v-if="!$isMobile" />
 
         <div class="search-area" id="search-area" v-if="!$isMobile">
           <search />
@@ -322,7 +322,8 @@ export default {
 .header {
   position: fixed;
   width: 100%;
-  @include height-center($header-height);
+  height: $header-height;
+  line-height: $header-height;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.1);
   z-index: 999;
@@ -373,7 +374,7 @@ export default {
       .share-link {
         @include flex-box-center(row, space-around, center);
         color: transparent;
-        background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 60%);
+        background-image: linear-gradient(0deg, #ff6768 38%, #fcaf17 60%);
         background-clip: text;
         -webkit-background-clip: text;
         font-weight: bold;
@@ -458,6 +459,7 @@ export default {
     width: 2rem;
     height: 2rem;
     margin: 0.1rem 0.5rem 0.1rem 0.1rem;
+    color: #130c0e;
   }
 
   .vector-icon {

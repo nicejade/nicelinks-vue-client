@@ -193,8 +193,9 @@
 .markdown-body hr {
   border: 0;
   height: 1px;
+  margin: 1rem auto;
   background: #606266;
-  background-image: linear-gradient(to right, #97a8be, #606266, #97a8be);
+  background-image: linear-gradient(to right, #f4f6fa, #d1d5da, #f4f6fa);
 }
 .markdown-body del {
   text-decoration: line-through;

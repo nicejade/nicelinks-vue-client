@@ -9,25 +9,6 @@
   }
 }
 
-@mixin height-center($header-height) {
-  height: $header-height;
-  line-height: $header-height;
-}
-
-@mixin absolute-center() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin absolute-fixed-center() {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 @mixin flex-box-center($direction: row, $justify: center, $align-items: center) {
   flex-direction: $direction;
   display: -webkit-box;
@@ -46,35 +27,6 @@
   justify-content: $justify;
 }
 
-// Responsive image
-// Keep images from scaling beyond the width of their parents.
-@mixin img-responsive($display: block) {
-  display: $display;
-  max-width: 100%;
-  height: auto;
-}
-
-// Resize anything
-@mixin resizable($direction) {
-  resize: $direction;
-  overflow: auto;
-}
-
-// Text overflow
-// Requires inline-block or block for proper styling
-@mixin text-overflow() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-// Center-align a block level element
-@mixin center-block() {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 // 根据参数声称渐变色：https://uigradients.com/#Moonrise
 @mixin get-gradient-background($front, $back, $direction: bottom) {
   background: $front;
@@ -84,7 +36,7 @@
 
 @mixin text-ellipsis-multiline($num: 3) {
   display: -webkit-box;
-  -webkit-line-clamp: $num;;
+  -webkit-line-clamp: $num;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

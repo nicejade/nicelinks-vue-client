@@ -32,6 +32,7 @@ export default {
       this.isDarkMode = !this.isDarkMode
       const mode = this.isDarkMode ? 'dark' : 'light'
       window.localStorage.setItem(THEME_MODE, mode)
+      this.$gtagTracking('theme-mode', 'header', mode)
     },
   },
 }
@@ -63,7 +64,7 @@ export default {
     transform: rotate(-135deg) scale(var(--ggs, 1));
     width: 20px;
     height: 20px;
-    border: 2px solid;
+    border: 2px solid #17223b;
     border-bottom-color: transparent;
   }
 

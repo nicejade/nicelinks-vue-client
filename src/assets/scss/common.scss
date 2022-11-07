@@ -95,19 +95,23 @@ a:link {
 }
 
 input::-webkit-input-placeholder {
-  color: $border-grey  !important;
+  color: $input-placeholder  !important;
 }
 
 input::-moz-placeholder {
-  color: $border-grey  !important;
+  color: $input-placeholder  !important;
 }
 
 input:-moz-placeholder {
-  color: $border-grey  !important;
+  color: $input-placeholder  !important;
 }
 
 input:-ms-input-placeholder {
-  color: $border-grey  !important;
+  color: $input-placeholder  !important;
+}
+
+.el-input__icon {
+  color: $input-placeholder !important;
 }
 
 .panel-body {

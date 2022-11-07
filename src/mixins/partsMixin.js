@@ -52,7 +52,7 @@ export default {
       return sortTargetMapping[sortVal] || {}
     },
 
-    assembleAjaxParams() {
+    assembleAjaxParams(isLoadMore) {
       let params = this.$cloneDeep(this.$requestParamList)
       params.active = true
       params.userId = (this.userInfo && this.userInfo._id) || ''
@@ -68,7 +68,7 @@ export default {
       Object.assign(params, this.getMatchSortTarget(sortVal))
 
       const pageVal = parseInt(this.$util.getUrlParam('page')) || 1
-      params.pageCount = pageVal
+      params.pageCount = isLoadMore ? params.pageCount : pageVal
 
       if (this.$route.params.theme) {
         params.theme = decodeURIComponent(this.$route.params.theme)
@@ -87,8 +87,8 @@ export default {
       this.$vuexUpdateLoadMoreState(true)
       this.$vuexSetRequestParamList(params)
 
-      params = this.assembleAjaxParams()
-      let apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
+      params = this.assembleAjaxParams(isLoadMore)
+      const apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
 
       this.isLoading = true
       this.$apis[apiName](params)

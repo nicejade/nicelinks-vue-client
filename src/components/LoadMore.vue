@@ -1,8 +1,12 @@
 <template>
   <div class="load-more">
-    <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore" @click="onLoadMoreClick">{{
-        $t('loadMoreStr')
-    }}
+    <el-button
+      type="primary"
+      icon="plus"
+      size="large"
+      v-if="isShowLoadMore"
+      @click="onLoadMoreClick"
+      >{{ $t('loadMoreStr') }}
     </el-button>
     <el-alert v-else :title="$t('noMoreDataTip')" type="info"> </el-alert>
   </div>
@@ -24,10 +28,8 @@ export default {
 
   methods: {
     onLoadMoreClick() {
-      this.$vuexSetRequestParamList({
-        pageCount: this.$requestParamList.pageCount + 1,
-      })
-      this.$fetchSearch({}, true)
+      const pageCount = this.$requestParamList.pageCount + 1
+      this.$fetchSearch({ pageCount }, true)
     },
   },
 

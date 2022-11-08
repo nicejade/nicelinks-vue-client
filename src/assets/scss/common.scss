@@ -20,9 +20,12 @@ html {
 }
 
 body[theme='dark'] {
+  overflow: auto;
   filter: invert(1) hue-rotate(180deg);
 }
-body[theme='dark'] img{
+body[theme='dark'] img,
+body[theme='dark'] iframe img,
+body[theme='dark'] canvas {
   filter: invert(1) hue-rotate(180deg);
 }
 

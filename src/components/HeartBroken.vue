@@ -1,7 +1,7 @@
-<template>
+<template functional>
   <div class="heart-wrap">
     <svg
-      v-if="isDown"
+      v-if="props.isDown"
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-heart-broken"
       width="22"
@@ -36,24 +36,3 @@
     </svg>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'HeartBroken',
-
-  props: {
-    isDown: {
-      type: Boolean,
-      default: false,
-    },
-  },
-}
-</script>
-
-<style media="screen" lang="scss">
-.heart-wrap {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-}
-</style>

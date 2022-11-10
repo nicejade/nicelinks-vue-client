@@ -292,3 +292,9 @@ input:-ms-input-placeholder {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
+
+.heart-wrap {
+  display: inline-block;
+  width: 2.2rem;
+  height: 2.2rem;
+}

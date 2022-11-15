@@ -155,6 +155,10 @@ export default {
   transition: all 0.2s ease-out;
 }
 
+body[theme='dark'] .flower-container {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .flower-container .part {
   position: absolute;
   top: 50%;

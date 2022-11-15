@@ -73,7 +73,7 @@ $factor: 1rem;
 
 .elevator {
   position: fixed;
-  bottom: 36 * $factor;
+  bottom: 38 * $factor;
   right: 3 * $factor;
   display: flex;
   flex-direction: column;

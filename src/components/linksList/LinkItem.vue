@@ -108,7 +108,14 @@
     </div>
     <div class="operate-area" v-if="!isAbstract">
       <el-button class="btn" @click="onCopyLinkClick(item)">复制地址</el-button>
-      <el-button class="btn" type="primary" @click="onVisitLinkClick(item)">立即访问</el-button>
+      <a
+        class="el-button--primary btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        @click="onVisitLinkClick"
+        :href="item.urlPath + '?ref=nicelinks.site'"
+        >立即访问
+      </a>
     </div>
     <div class="action-list">
       <div class="action-item" @click.stop.prevent="onLikeClick(item)">
@@ -122,7 +129,7 @@
       <div class="action-item" v-if="isAbstract">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-eye"
+          class="icons icon-tabler icon-tabler-eye"
           width="22"
           height="22"
           viewBox="0 0 24 24"
@@ -143,7 +150,7 @@
       <div class="action-item" @click.stop.prevent="onEditClick(item)" v-if="isAdminFlag()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-settings"
+          class="icons icon-tabler icon-tabler-settings"
           width="22"
           height="22"
           viewBox="0 0 24 24"
@@ -455,12 +462,9 @@ export default {
       this.$gtagReport('from-copy-link')
     },
 
-    onVisitLinkClick(item) {
+    onVisitLinkClick() {
       this.$gtagTracking('visit-link', 'post')
       this.$gtagReport('from-visit-link')
-
-      const targetLink = this.getRedirectLink(item.urlPath, item.alive, true)
-      window.open(targetLink, item.title)
     },
 
     onUpdateSuccess() {},
@@ -519,16 +523,6 @@ export default {
       &:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         transform: scale(1.05) rotate(-1deg);
-      }
-    }
-
-    .el-button--primary {
-      color: $brand;
-      background-color: transparent;
-      border-color: $brand;
-
-      &:hover {
-        color: $white;
       }
     }
   }
@@ -635,7 +629,7 @@ export default {
 
     .tag + .tag {
       &:before {
-        margin: 0 0.4em;
+        margin: 0 1rem;
         content: '/';
         color: $silver-grey;
       }
@@ -655,10 +649,10 @@ export default {
       min-width: 3.6rem;
 
       .icons {
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 2.2rem;
+        height: 2.2rem;
         margin-left: 0;
-        margin-right: 5px;
+        margin-right: 0.5rem;
       }
 
       .icon-green {

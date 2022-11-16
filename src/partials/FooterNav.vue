@@ -65,26 +65,6 @@
           >
         </div>
       </div>
-      <div class="contact">
-        <div class="tooltip">
-          <div class="pannel">
-            <img class="qr-code" src="https://image.nicelinks.site/qrcode_jqx.jpg" alt="静晴轩" />
-          </div>
-          <icon class="icons" name="weixin"></icon>
-        </div>
-        <a
-          v-for="item in contactArray"
-          @click="onReortEvent(`social-${item.class}`)"
-          target="_blank"
-          :href="assembleExternalLink(item.path + item.name)"
-          :title="item.title"
-          rel="external noopener"
-          :class="item.class"
-          class="social-btn"
-        >
-          <icon class="icons" :name="item.class"></icon>
-        </a>
-      </div>
       <div class="icp">
         <span>{{ copyright }}</span>
         <a
@@ -92,7 +72,7 @@
           target="_blank"
           @click="onReortEvent('link-jeffjade')"
           rel="external noopener"
-          :href="assembleExternalLink('https://www.jeffjade.com')"
+          :href="assembleExternalLink('https://www.jeffjade.com/')"
           >晚晴幽草轩</a
         >
         出品
@@ -112,8 +92,6 @@
 </template>
 
 <script>
-import endsWith from 'lodash/endsWith'
-import CONTACT_CONF from './../config/contact'
 import { getCurrentDate } from './../helper/tool'
 
 export default {
@@ -122,7 +100,6 @@ export default {
   data() {
     return {
       copyright: '',
-      contactArray: Object.freeze(this.filterEntryInMobile(CONTACT_CONF)),
     }
   },
 
@@ -132,16 +109,8 @@ export default {
   },
 
   methods: {
-    filterEntryInMobile(sourceData) {
-      const isMobile = this.$isMobile
-      return sourceData.filter((item) => {
-        return isMobile ? !item.notInMobile : true
-      })
-    },
-
     assembleExternalLink(url) {
-      const separator = endsWith(url, '/') ? '' : '/'
-      return `${url}${separator}?ref=nicelinks.site`
+      return `${url}?ref=nicelinks.site`
     },
 
     onReortEvent(action) {
@@ -171,8 +140,7 @@ export default {
     color: $footer-grey;
 
     .container,
-    .icp,
-    .contact {
+    .icp {
       margin: 6px auto;
     }
 

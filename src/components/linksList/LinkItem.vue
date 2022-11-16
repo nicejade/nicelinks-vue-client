@@ -672,4 +672,10 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: $mobile-screen) {
+  .content .operate-area .btn {
+    padding: 1rem 2rem;
+  }
+}
 </style>

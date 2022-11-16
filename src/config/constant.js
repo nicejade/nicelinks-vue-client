@@ -10,6 +10,6 @@ export const DESCRIPTION = `倾城之链，作为一个开放平台，旨在云�
 
 export const REDIRECT_PATH = `${NICE_LINKS}/redirect?url=`
 
-export const REPORT_PATH = `${REDIRECT_PATH}https://support.qq.com/products/340357&isauto=true`
+export const REPORT_PATH = `https://support.qq.com/products/340357?ref=nicelinks.site`
 
 export const PAGE_SIZE = 10 // 每次请求 NICE LINK S数组的条数 @2022.10.29；

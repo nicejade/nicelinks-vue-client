@@ -1,6 +1,12 @@
 <template>
   <div id="sites-recommend">
-    <a target="_blank" class="nice-link-recommend" rel="noopener" @click="onRecommendClick" :href="reportPath">👍优质网站推荐
+    <a
+      target="_blank"
+      class="nice-link-recommend"
+      rel="noopener noreferrer"
+      @click="onRecommendClick"
+      :href="reportPath"
+      >👍优质网站推荐
     </a>
   </div>
 </template>

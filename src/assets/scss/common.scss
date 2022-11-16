@@ -23,9 +23,9 @@ body[theme='dark'] {
   overflow: auto;
   filter: invert(1) hue-rotate(180deg);
 }
+
 body[theme='dark'] img,
-body[theme='dark'] iframe img,
-body[theme='dark'] canvas {
+body[theme='dark'] iframe {
   filter: invert(1) hue-rotate(180deg);
 }
 

@@ -7,7 +7,7 @@
     <RewardMe />
     <aside class="sidebar-aside">
       <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
-      <div>
+      <div class="text-center">
         <img
           class="miniprogram"
           alt="倾城之链.小程序"

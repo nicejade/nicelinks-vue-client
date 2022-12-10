@@ -56,7 +56,7 @@ export default {
       font-size: $font-small;
       color: $common-link;
       &:hover {
-        color: $common-link-hover;
+        color: $brand;
         font-weight: 600;
       }
     }

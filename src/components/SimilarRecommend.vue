@@ -140,7 +140,7 @@ export default {
 
 .similar-recommend {
   width: 100%;
-  padding: 0 20px;
+  padding: 0 2rem;
 
   .list-item {
     width: 100%;

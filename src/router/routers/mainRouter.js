@@ -103,7 +103,8 @@ export default {
       component: (resolve) => require(['views/Cemetery'], resolve),
     },
     {
-      path: 'friendlink',
+      path: 'friends',
+      alias: 'friendlink',
       meta: {
         isNeedLogin: false,
       },

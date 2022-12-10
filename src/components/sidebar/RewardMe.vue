@@ -1,5 +1,6 @@
 <template>
-  <div id="reward-me">
+  <aside class="sidebar-aside" id="reward-me">
+    <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
     <div id="reward" @click="onTurnClick">
       <div class="front">
         <img class="reward-img" :src="rewardArr[0].imgPath" :alt="rewardArr[0].altText" />
@@ -16,7 +17,7 @@
         <icon class="icons" name="pay-zhifubao"></icon>
       </el-radio>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -64,9 +65,7 @@ export default {
 
 #reward-me {
   width: 100%;
-  height: 300px;
   opacity: 1;
-  margin: auto;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
@@ -137,7 +136,7 @@ export default {
 }
 
 .reward-select {
-  height: 45px;
+  height: 2rem;
   width: 100%;
   text-align: center;
 

@@ -37,6 +37,18 @@
                   </el-switch>
                 </template>
               </el-table-column>
+              <el-table-column prop="index" label="是否首页" width="100">
+                <template slot-scope="scope">
+                  <el-switch
+                    v-model="scope.row.index"
+                    :on-text="$t('yes')"
+                    :off-text="$t('no')"
+                    on-color="#13ce66"
+                    off-color="#ff4949"
+                  >
+                  </el-switch>
+                </template>
+              </el-table-column>
               <el-table-column prop="modifyTime" label="修改时间" width="160">
                 <template slot-scope="scope">
                   {{ scope.row.created | dateConvert }}
@@ -98,7 +110,7 @@ export default {
       this.isLoading = true
       this.$apis
         .updateFriendsLinks(row)
-        .then((result) => {
+        .then(() => {
           this.isLoading = false
           this.$message({ message: `已成功保存`, type: 'success' })
         })

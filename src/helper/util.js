@@ -62,7 +62,7 @@ export default {
         path: 'sentences',
       },
       {
-        name: 'manageFriends',
+        name: 'friendsLinks',
         path: 'friends',
       },
     ]
@@ -76,5 +76,5 @@ export default {
     } else {
       return null
     }
-  }
+  },
 }

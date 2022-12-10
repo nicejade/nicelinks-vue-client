@@ -1,45 +1,45 @@
 <template>
-  <aside class="aside-list">
-    <h2 class="aside-widget-title" style="margin-top: 1rem;padding: 0.3rem; 0">广而告之</h2>
+  <div class="sidebar">
     <AdsPosition :adverts-list="advertsList" />
-    <h2 class="aside-widget-title">{{ $t('friendshipLinks') }}</h2>
-    <friendship-links class="sub-content" />
-    <h2 class="aside-widget-title">{{ $t('awesomeSentence') }}</h2>
-    <awesome-sentence class="sub-content" :sentence="sentence" :index="index" />
-    <h2 class="aside-widget-title">推荐投稿</h2>
-    <SitesRecommend class="sub-content" />
-    <h2 class="aside-widget-title">{{ $t('rewardme') }}</h2>
-    <reward-me class="sub-content" />
-    <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
-    <div class="sub-content">
-      <img
-        class="miniprogram"
-        alt="倾城之链.小程序"
-        src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-      />
-    </div>
-    <h2 class="aside-widget-title">{{ $t('aboutNiceLinks') }}</h2>
-    <div class="sub-content about-us">
-      <a href="/explore/all?sort=hottest">倾城之链</a
-      >，优质网站导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。
-    </div>
-  </aside>
+    <AwesomeSentence :sentence="sentence" :index="index" />
+    <SitesRecommend />
+    <FriendsLinks :friends-list="friendsList" />
+    <RewardMe />
+    <aside class="sidebar-aside">
+      <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
+      <div>
+        <img
+          class="miniprogram"
+          alt="倾城之链.小程序"
+          src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
+        />
+      </div>
+    </aside>
+    <aside class="sidebar-aside" style="margin-bottom: 0;">
+      <h2 class="aside-widget-title">{{ $t('aboutNiceLinks') }}</h2>
+      <div class="about-us">
+        <a href="/explore/all?sort=hottest">倾城之链</a
+        >，优质网站导航平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。
+      </div>
+    </aside>
+  </div>
 </template>
 
 <script>
 import AdsPosition from './AdsPosition'
-import FriendshipLinks from './FriendshipLinks'
+import FriendsLinks from './FriendsLinks'
 import RewardMe from './RewardMe'
 import AwesomeSentence from './AwesomeSentence'
 import SitesRecommend from './SitesRecommend'
 
 export default {
-  name: 'Main',
+  name: 'Sidebar',
 
   data() {
     return {
       advertsList: [],
       sentence: '',
+      friendsList: [],
     }
   },
 
@@ -52,7 +52,7 @@ export default {
 
   components: {
     AdsPosition,
-    FriendshipLinks,
+    FriendsLinks,
     RewardMe,
     AwesomeSentence,
     SitesRecommend,
@@ -68,6 +68,7 @@ export default {
 
         this.advertsList = Object.freeze(cAdvertsList)
         this.sentence = Object.freeze(result.sentence)
+        this.friendsList = Object.freeze(result.friendsList)
       })
       .catch((error) => {
         this.$message.error(`${error}`)
@@ -83,28 +84,14 @@ export default {
   text-align: center;
 }
 
-.aside-list {
+.sidebar {
   background-color: $white;
   display: inline-block;
   max-width: 32rem;
   width: 31%;
   text-align: left;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  padding: 0 1.5rem;
-
-  .sub-content {
-    margin: 1rem auto;
-    text-align: center;
-  }
-
-  .aside-list-li {
-    list-style-type: bengali;
-  }
-
-  .aside-list-a {
-    color: $common-link;
-    font-size: $font-medium;
-  }
+  padding: 1.5rem;
 
   .miniprogram {
     display: inline-block;

@@ -123,11 +123,12 @@
   margin: 0 10px;
 }
 
-.aside-list {
+.sidebar-aside {
+  margin-bottom: 3rem;
   .aside-widget-title {
     font-size: $font-medium;
     font-weight: 800;
-    margin: 3rem 0 1rem 0;
+    margin: 2rem 0;
     padding: 0;
   }
 }

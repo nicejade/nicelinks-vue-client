@@ -61,11 +61,12 @@
           padding: 2.1rem 1rem;
         }
       }
-      .aside-list {
+      .sidebar {
         display: block;
         width: 100%;
+        max-width: 36rem;
         float: none;
-        margin: auto;
+        margin: 2rem auto;
         border-bottom: 1px solid $moudle-border-color;
       }
       .page-responsive {

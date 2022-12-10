@@ -6,7 +6,7 @@
           <div class="entry-list">
             <div class="friends-desc">
               <h2 align="left" class="subtitle">
-                <strong>{{ $t('manageFriends') }}</strong>
+                <strong>{{ $t('friendsLinks') }}</strong>
               </h2>
               <div class="friend-hint">
                 如果，您有自己的<strong>网站</strong>或者<strong>博客</strong>，非常欢迎您和<a

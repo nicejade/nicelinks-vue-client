@@ -1,5 +1,6 @@
 <template>
-  <div id="sites-recommend">
+  <aside class="sidebar-aside" id="sites-recommend">
+    <h2 class="aside-widget-title">推荐投稿</h2>
     <a
       target="_blank"
       class="nice-link-recommend"
@@ -8,7 +9,7 @@
       :href="reportPath"
       >👍优质网站推荐
     </a>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -41,6 +42,8 @@ export default {
   font-size: $font-large;
   color: $jade;
   font-weight: 500;
+  margin: 1rem auto;
+  text-align: center;
   letter-spacing: 1px;
   user-select: none;
   text-transform: uppercase;

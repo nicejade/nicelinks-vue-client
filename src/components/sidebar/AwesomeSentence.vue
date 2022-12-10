@@ -1,5 +1,6 @@
 <template>
-  <div id="awesome-sentence" class="awesome-sentence">
+  <aside class="sidebar-aside" id="awesome-sentence">
+    <h2 class="aside-widget-title">{{ $t('awesomeSentence') }}</h2>
     <div class="lined-paper" v-show="currentSentenceStr" v-loading="isLoading">
       <preview-md class="sentence" id="sentence" :value="currentSentenceStr || $t('noFill')" />
     </div>
@@ -14,7 +15,7 @@
         <icon class="icon" name="copy"></icon>
       </el-button>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -38,7 +39,7 @@ export default {
   props: {
     sentence: {
       type: [Object],
-      default: '',
+      default: {},
     },
     index: {
       type: [Number],
@@ -167,116 +168,112 @@ export default {
 @import './../../assets/scss/variables.scss';
 @import './../../assets/scss/mixins.scss';
 
-.awesome-sentence {
-  margin: 0 15px;
-  margin-bottom: -10px;
+.lined-paper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 6px 10px;
+  position: relative;
+  color: #444;
+  text-align: left;
+  line-height: 26px;
+  background: #fff;
+  background: -webkit-linear-gradient(top, $border-grey 0%, $white 6%) 0 6px;
+  -webkit-background-size: 100% 26px;
+  -moz-background-size: 100% 26px;
+  -ms-background-size: 100% 26px;
+  -o-background-size: 100% 26px;
+  background-size: 100% 26px;
 
-  .lined-paper {
+  .sentence {
     width: 100%;
-    margin: 0 auto;
-    padding: 6px 10px;
-    position: relative;
-    color: #444;
-    text-align: left;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  div,
+  p {
     line-height: 26px;
-    background: #fff;
-    background: -webkit-linear-gradient(top, $border-grey 0%, $white 6%) 0 6px;
-    -webkit-background-size: 100% 26px;
-    -moz-background-size: 100% 26px;
-    -ms-background-size: 100% 26px;
-    -o-background-size: 100% 26px;
-    background-size: 100% 26px;
-
-    .sentence {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-    }
-
-    div,
-    p {
-      line-height: 26px;
-    }
-
-    div:last-child,
-    p:last-child {
-      margin: 0;
-    }
   }
 
-  .btn-group {
-    margin-top: 10px;
-
-    .common-btn {
-      display: inline-block;
-      position: relative;
-      width: 4.3rem;
-      height: 4.3rem;
-      vertical-align: middle;
-      text-align: center;
-      border: 1px solid #efefef;
-      border-radius: 50%;
-      margin: 0 15px;
-
-      .icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 2rem;
-        height: 2rem;
-        margin: auto;
-      }
-    }
+  div:last-child,
+  p:last-child {
+    margin: 0;
   }
+}
 
-  .button-ripple {
-    @include flex-box-center(column);
-    margin: auto;
-    overflow: hidden;
+.btn-group {
+  margin-top: 1rem;
+  text-align: center;
+
+  .common-btn {
+    display: inline-block;
     position: relative;
-    background-color: #efefef;
+    width: 4.3rem;
+    height: 4.3rem;
+    vertical-align: middle;
     text-align: center;
-    cursor: pointer;
-    border-radius: 50%;
     border: 1px solid #efefef;
-    transition: background-color 0.3s linear, border 0.3s linear;
-    box-shadow: 0 0 0 rgba(52, 223, 165, 0.4);
-    animation: pulse 2s infinite;
+    border-radius: 50%;
+    margin: 0 15px;
 
-    &:after {
-      content: '';
-      display: block;
-      width: 3.1rem;
-      height: 3.1rem;
+    .icon {
       position: absolute;
-      top: 0;
-      left: 0;
-      background-image: radial-gradient(circle, #000 10%, rgba(0, 0, 0, 0.2) 10.01%);
-      background-repeat: no-repeat;
-      background-position: 50%;
-      transform: scale(10);
-      opacity: 0;
-      transition: transform 0.5s, opacity 1s;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2rem;
+      height: 2rem;
+      margin: auto;
     }
   }
+}
 
-  @keyframes pulse {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
-      box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
-      border-color: rgba(52, 223, 165, 0.6);
-    }
+.button-ripple {
+  @include flex-box-center(column);
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  background-color: #efefef;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid #efefef;
+  transition: background-color 0.3s linear, border 0.3s linear;
+  box-shadow: 0 0 0 rgba(52, 223, 165, 0.4);
+  animation: pulse 2s infinite;
 
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
-      box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
-    }
+  &:after {
+    content: '';
+    display: block;
+    width: 3.1rem;
+    height: 3.1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(circle, #000 10%, rgba(0, 0, 0, 0.2) 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+  }
+}
 
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
-      box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
-    }
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
+    box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
+    border-color: rgba(52, 223, 165, 0.6);
+  }
+
+  80% {
+    -moz-box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
+    box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
+    box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
   }
 }
 </style>

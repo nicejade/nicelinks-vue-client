@@ -1,5 +1,6 @@
 <template functional>
-  <div id="jade-gg-position">
+  <aside class="sidebar-aside" id="jade-gg-position">
+    <h2 class="aside-widget-title" style="margin-top: 0;">广而告之</h2>
     <el-carousel
       trigger="click"
       class="jade-gg-body"
@@ -13,7 +14,7 @@
         </a>
       </el-carousel-item>
     </el-carousel>
-  </div>
+  </aside>
 </template>
 
 <style lang="scss" scoped>

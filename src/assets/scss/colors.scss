@@ -1,7 +1,7 @@
 $emotion: $jade;
 $encourage: #0099ff;
 $entertainment: #ff6666;
-$self-cultivation: #cccc99;
+$self-cultivation: #8552a1;
 $aestheticism: #2edfa3;
 $philosophy: #333366;
 
@@ -36,22 +36,6 @@ $philosophy: #333366;
     fill: #ffffcc;
     background-color: $encourage;
     border: 1px solid $encourage !important;
-    box-shadow: 0 0 10px rgba(0, 99, 255, 0.4);
-    animation: pulseEncourage 2s infinite;
-  }
-  @keyframes pulseEncourage {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
-      box-shadow: 0 0 0 0px rgba(0, 99, 255, 0.8);
-    }
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(0, 99, 255, 0);
-      box-shadow: 0 0 0 10px rgba(0, 99, 255, 0);
-    }
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(0, 99, 255, 0);
-      box-shadow: 0 0 0 0 rgba(0, 99, 255, 0);
-    }
   }
 
   .entertainment-colors {
@@ -59,47 +43,13 @@ $philosophy: #333366;
     fill: #ffff00;
     background-color: $entertainment;
     border: 1px solid #ffff00;
-    box-shadow: 0 0 0 rgba(255, 66, 66, 0.4);
-    animation: pulseEntertainment 2s infinite;
-  }
-  @keyframes pulseEntertainment {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
-      box-shadow: 0 0 0 0px rgba(255, 66, 66, 0.8);
-      border-color: rgba(255, 66, 66, 0.6);
-    }
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
-      box-shadow: 0 0 0 10px rgba(255, 66, 66, 0);
-    }
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
-      box-shadow: 0 0 0 0 rgba(255, 66, 66, 0);
-    }
   }
 
   .self-cultivation-colors {
-    color: #333333;
-    fill: #333333;
+    color: #fefefe;
+    fill: #fefefe;
     background-color: $self-cultivation;
     border: 1px solid #333333;
-    box-shadow: 0 0 0 rgba(204, 204, 99, 0.4);
-    animation: pulseSelfCultivation 2s infinite;
-  }
-  @keyframes pulseSelfCultivation {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(204, 204, 99, 0.8);
-      box-shadow: 0 0 0 0px rgba(204, 204, 99, 0.8);
-      border-color: rgba(204, 204, 99, 0.6);
-    }
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(204, 204, 99, 0);
-      box-shadow: 0 0 0 10px rgba(204, 204, 99, 0);
-    }
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(204, 204, 99, 0);
-      box-shadow: 0 0 0 0 rgba(204, 204, 99, 0);
-    }
   }
 
   .aestheticism-colors {
@@ -107,23 +57,6 @@ $philosophy: #333366;
     fill: #ffffff;
     background-color: $aestheticism;
     border: 1px solid #ffffff;
-    box-shadow: 0 0 0 rgba(46, 223, 123, 0.4);
-    animation: pulseAestheticism 2s infinite;
-  }
-  @keyframes pulseAestheticism {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(46, 223, 123, 0.8);
-      box-shadow: 0 0 0 0px rgba(46, 223, 123, 0.8);
-      border-color: rgba(46, 223, 123, 0.6);
-    }
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(46, 223, 123, 0);
-      box-shadow: 0 0 0 10px rgba(46, 223, 123, 0);
-    }
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(46, 223, 123, 0);
-      box-shadow: 0 0 0 0 rgba(46, 223, 123, 0);
-    }
   }
 
   .philosophy-colors {
@@ -131,22 +64,5 @@ $philosophy: #333366;
     fill: #fefefe;
     background-color: $philosophy;
     border: 1px solid #fefefe;
-    box-shadow: 0 0 0 rgba(33, 33, 66, 0.4);
-    animation: pulsePhilosophy 2s infinite;
-  }
-  @keyframes pulsePhilosophy {
-    0% {
-      -moz-box-shadow: 0 0 0 0px rgba(33, 33, 66, 0.8);
-      box-shadow: 0 0 0 0px rgba(33, 33, 66, 0.8);
-      border-color: rgba(33, 33, 66, 0.6);
-    }
-    80% {
-      -moz-box-shadow: 0 0 0 10px rgba(33, 33, 66, 0);
-      box-shadow: 0 0 0 10px rgba(33, 33, 66, 0);
-    }
-    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(33, 33, 66, 0);
-      box-shadow: 0 0 0 0 rgba(33, 33, 66, 0);
-    }
   }
 }

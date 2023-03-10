@@ -204,7 +204,6 @@ export default {
 .btn-group {
   margin-top: 1rem;
   text-align: center;
-
   .common-btn {
     display: inline-block;
     position: relative;
@@ -233,47 +232,30 @@ export default {
   margin: auto;
   overflow: hidden;
   position: relative;
-  background-color: #efefef;
+  background-color: #ffffff;
   text-align: center;
   cursor: pointer;
   border-radius: 50%;
   border: 1px solid #efefef;
-  transition: background-color 0.3s linear, border 0.3s linear;
-  box-shadow: 0 0 0 rgba(52, 223, 165, 0.4);
-  animation: pulse 2s infinite;
-
-  &:after {
-    content: '';
-    display: block;
-    width: 3.1rem;
-    height: 3.1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: radial-gradient(circle, #000 10%, rgba(0, 0, 0, 0.2) 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10);
-    opacity: 0;
-    transition: transform 0.5s, opacity 1s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  &:hover {
+    animation: jelly 0.5s;
   }
 }
 
-@keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
-    box-shadow: 0 0 0 0px rgba(52, 223, 165, 0.8);
-    border-color: rgba(52, 223, 165, 0.6);
-  }
-
-  80% {
-    -moz-box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
-    box-shadow: 0 0 0 10px rgba(52, 223, 165, 0);
-  }
-
+@keyframes jelly {
+  0%,
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
-    box-shadow: 0 0 0 0 rgba(52, 223, 165, 0);
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
   }
 }
 </style>

@@ -10,7 +10,7 @@
         <p class="not-found-page-message" v-html="$t('errPromptMessage')" />
         <div class="error-404-btns">
           <el-button size="large" round @click="onGoHomeClick">
-            {{ $t('backToHomePage') }}
+            返回主页
           </el-button>
         </div>
       </el-card>
@@ -22,6 +22,13 @@
 export default {
   name: 'Error404',
 
+  data() {
+    return {
+      errPromptMessage:
+    '<strong><a rel="home" href="/">倾城之链</a></strong> ── 倾心缔造，痴心为你；<br>纵然情意无限，可世事难料又易变，请原谅这份情偶尔的被失联；<br>你可以操作如下按钮，穿越回倾城爱的主场：<br>那里充盈各类优秀网站，等着您与之厮磨缠绵。',
+    }
+  },
+
   methods: {
     onBackPageClick() {
       this.$router.go(-1)
@@ -30,15 +37,7 @@ export default {
     onGoHomeClick() {
       this.$router.push('/')
     },
-  },
-
-  locales: {
-    zh: {
-      errPromptMessage:
-        '<strong><a rel="home" href="/">倾城之链</a></strong> ── 倾心缔造，痴心为你；<br>纵然情意无限，可世事难料又易变，请原谅这份情偶尔的被失联；<br>你可以操作如下按钮，穿越回倾城爱的主场：<br>那里充盈各类优秀网站，等着您与之厮磨缠绵。',
-      backToHomePage: '返回主页',
-    },
-  },
+  }
 }
 </script>
 

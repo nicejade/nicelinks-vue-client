@@ -67,14 +67,7 @@ export default {
     },
 
     onHandleClick() {},
-  },
-
-  locales: {
-    zh: {
-      write: '编写',
-      preview: '预览',
-    },
-  },
+  }
 }
 </script>
 

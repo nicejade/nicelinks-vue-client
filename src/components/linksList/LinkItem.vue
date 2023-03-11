@@ -433,12 +433,12 @@ export default {
     },
 
     onDislikeClick(row) {
-      this.$confirm(this.$t('dislikesTips'), this.$t('warmReminder'), {
+      const dislikesTips =  '如果你确定这是一个很(/不)需要改进的网站，那么你可以尽情点击确定；否则，还请三思；毕竟这可能间接影响到别人对此网站的评判。'
+      this.$confirm(dislikesTips, this.$t('warmReminder'), {
         confirmButtonText: this.$t('confirm'),
         cancelButtonText: this.$t('cancel'),
         type: 'warning',
-      })
-        .then(() => {
+      }).then(() => {
           this.dispatchAction(row, 'dislikes')
         })
         .catch(() => {})
@@ -467,7 +467,7 @@ export default {
       this.$gtagReport('from-visit-link')
     },
 
-    onUpdateSuccess() {},
+    onUpdateSuccess() {}
   },
 }
 </script>

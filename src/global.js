@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
 import clone from 'lodash/clone'
 import cloneDeep from 'lodash/cloneDeep'
 import {
@@ -51,7 +50,6 @@ Vue.use(Card)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
 Vue.use(Loading.directive)
-Vue.use(VueI18n)
 
 import { $apis, $util } from 'helper'
 import { NICE_LINKS_NAME } from './config/constant'
@@ -89,19 +87,19 @@ Vue.prototype.$gtagReport = (scene = '') => {
   }
 }
 
-import locales from './locales'
+import localesConf from './locales/zh'
 import filters from './filters'
 
 Vue.config.lang = 'zh'
-Object.keys(locales).forEach((lang) => {
-  Vue.locale(lang, locales[lang])
-})
+Vue.prototype.$t = (key) => {
+  return localesConf[key]
+}
 
 import Icon from 'components/Icon/Icon.vue'
 Vue.component('icon', Icon)
 
-import Sidebar from 'components/sidebar/Main.vue'
-Vue.component('aside-list', Sidebar)
+import AsideList from 'components/sidebar/Main.vue'
+Vue.component('aside-list', AsideList)
 
 import LinksList from 'components/linksList/Index.vue'
 Vue.component('links-list', LinksList)

@@ -421,16 +421,6 @@ export default {
       this.$gtagTracking('login2main', 'login')
     },
   },
-
-  locales: {
-    zh: {
-      enterUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
-      enterUserinfoTip: '请输入账号 ID 或邮箱',
-      enterLegalUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
-      signupBottomTip: `您已拥有一个账号？`,
-      signinBottomTip: `您还未拥有一个账号？`,
-    },
-  },
 }
 </script>
 

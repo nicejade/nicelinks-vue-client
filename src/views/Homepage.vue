@@ -199,21 +199,7 @@ export default {
     onMemberClick(action) {
       this.$gtagTracking(action, 'member')
     },
-  },
-
-  locales: {
-    zh: {
-      baseInfo: '基本信息',
-      myPublish: '我的发布',
-      myLikes: '我的点赞',
-      myDislikes: '我的狂踩',
-      hisPublish: '他的发布',
-      hisLikes: '他的点赞',
-      hisDislikes: '他的狂踩',
-      nicerNumText: `<a href='/'>倾城之链</a>第 @X 号成员，加入于 @TIME`,
-      noFill: '暂未填写',
-    },
-  },
+  }
 }
 </script>
 

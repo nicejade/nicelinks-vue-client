@@ -162,7 +162,7 @@ export default {
               this.isLoading = false
               this.isShowDlgFlag = false
               this.$message({
-                message: this.$t('successAddTip'),
+                message: '干的漂亮，您已成功更新该箴言',
                 type: 'success',
               })
               this.$emit('update-success')
@@ -175,13 +175,7 @@ export default {
         }
       })
     },
-  },
-
-  locales: {
-    zh: {
-      successAddTip: '干的漂亮，您已成功更新该箴言',
-    },
-  },
+  }
 }
 </script>
 

@@ -38,15 +38,7 @@ export default {
       const path = this.$route.path
       return `${path}?sort=${sort}`
     },
-  },
-
-  locales: {
-    zh: {
-      hottest: '热门分享',
-      latest: '最新分享',
-      earliest: '最早分享',
-    },
-  },
+  }
 }
 </script>
 

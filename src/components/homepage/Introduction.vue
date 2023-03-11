@@ -1,12 +1,12 @@
 <template>
   <section>
     <article class="introduction">
-      <h2 class="find-title medium-font">{{ $t('forFindMoreTitle') }}</h2>
-      <p class="desc" v-html="$t('forFindMoreDesc')"></p>
+      <h2 class="find-title medium-font">探索更广阔的世界，为您</h2>
+      <p class="desc" v-html="forFindMoreDesc"></p>
     </article>
     <article class="introduction share-more">
-      <h2 class="share-title medium-font">{{ $t('forShareMoreTitle') }}</h2>
-      <p class="desc" v-html="$t('forShareMoreDesc')"></p>
+      <h2 class="share-title medium-font">分享，为您所欢喜的网站</h2>
+      <p class="desc" v-html="forShareMoreDesc"></p>
     </article>
   </section>
 </template>
@@ -15,14 +15,12 @@
 export default {
   name: 'Introduction',
 
-  locales: {
-    zh: {
-      forFindMoreTitle: '探索更广阔的世界，为您',
+  data() {
+    return {
       forFindMoreDesc: `在这个信息化的世界，海量的讯息可能让您不知所措；担心错过她而努力汲取的同时，却可能错过更多；<br><a href="/explore/all"><strong>「倾城之链」</strong></a>的存在，即是为您解决这种困扰；在这里，您可以浏览全球各类智慧的结晶；<br>丰富视野的同时，可以标注抑或分享您喜欢的站点，从而为更多挖掘讯息的人提供建设性参考。`,
-      forShareMoreTitle: '分享，为您所欢喜的网站',
       forShareMoreDesc: `<mark>在当今这信息化时代，即便是再小的个体，也当有自己的品牌。</mark>然而，独立的才是自己的。<br><a href="/explore/all">「倾城之链」</a>作为一个开放平台，鼓励您创造属于您的个人品牌，烙印着自己的风格，替自己代言、发声。<br>如果您已经这样做了，您可以尽情分享在这里，让更多人知道，且从中受益。<br>当然，您也可以分享出您欢喜的其他有意思站点，让您的见识惠及更多人。`,
-    },
-  },
+    }
+  }
 }
 </script>
 

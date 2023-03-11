@@ -2,19 +2,6 @@
   <strong class="countup"></strong>
 </template>
 
-<style lang="scss" scoped>
-.countup {
-  font-size: 8.8rem;
-  font-weight: 400;
-  background: #212121;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 3px 3px rgba(255, 255, 255, 0.5);
-}
-</style>
-
 <script>
 import CountUpJs from 'countup'
 
@@ -83,6 +70,7 @@ export default {
         })
       }
     },
+    
     destroy() {
       this.instance = null
     },
@@ -92,36 +80,21 @@ export default {
     this.init()
   },
 
-  beforeDestroy() {
-    this.destroy()
-  },
-
-  destroyed() {},
-
-  start(callback) {
-    if (this.instance && this.instance.start) {
-      this.instance.start(function () {
-        callback && callback(this.instance)
-      })
-    }
-  },
-
-  pauseResume() {
-    if (this.instance && this.instance.pauseResume) {
-      this.instance.pauseResume()
-    }
-  },
-
-  reset() {
-    if (this.instance && this.instance.reset) {
-      this.instance.reset()
-    }
-  },
-
-  update(newEndVal) {
-    if (this.instance && this.instance.update) {
-      this.instance.update(newEndVal)
-    }
-  },
+  destroyed() {
+    this.destroy() 
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.countup {
+  font-size: 8.8rem;
+  font-weight: 400;
+  background: #212121;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 3px 3px rgba(255, 255, 255, 0.5);
+}
+</style>

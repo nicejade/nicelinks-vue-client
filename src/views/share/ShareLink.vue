@@ -286,7 +286,7 @@ export default {
             .then((result) => {
               this.isLoading = false
               this.$message({
-                message: this.$t('successAddTip'),
+                message: '很好，您已成功添加该链接，正在待审核中.',
                 type: 'success',
               })
               this.resetForm()
@@ -299,13 +299,7 @@ export default {
         }
       })
     },
-  },
-
-  locales: {
-    zh: {
-      successAddTip: '很好，您已成功添加该链接，正在待审核中.',
-    },
-  },
+  }
 }
 </script>
 

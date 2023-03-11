@@ -26,11 +26,38 @@ export default {
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 
+  approved: '已审核',
+  unapproved: '未审核',
+  isActived: '是否已激活',
+  creater: '创建者',
+  write: '编写',
+  preview: '预览',
+
+  baseInfo: '基本信息',
+  myPublish: '我的发布',
+  myLikes: '我的点赞',
+  myDislikes: '我的狂踩',
+  hisPublish: '他的发布',
+  hisLikes: '他的点赞',
+  hisDislikes: '他的狂踩',
+  nicerNumText: `<a href='/'>倾城之链</a>第 @X 号成员，加入于 @TIME`,
+  noFill: '暂未填写',
+  
+  enterUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
+  enterUserinfoTip: '请输入账号 ID 或邮箱',
+  enterLegalUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
+  signupBottomTip: `您已拥有一个账号？`,
+  signinBottomTip: `您还未拥有一个账号？`,
+
   all: '全部',
   skill: '技术客栈',
   resource: '资源之家',
   life: '写意人生',
   info: '信息快讯',
+
+  hottest: '热门分享',
+  latest: '最新分享',
+  earliest: '最早分享',
 
   exploreNice: '探索美好',
   shareNewLink: '分享新链',
@@ -65,12 +92,6 @@ export default {
   aboutNiceLinks: '关于倾城',
   sponsorNiceLinks: '倾情捐赠',
   niceComment: '精彩绝伦的评论',
-
-  validateFailure: '验证失败',
-  noResultTip:
-    '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至<a class="no-result-tip-a" href="/">倾城之链</a>主页 。',
-  dislikesTips:
-    '如果你确定这是一个很(/不)需要改进的网站，那么你可以尽情点击确定；否则，还请三思；毕竟这可能间接影响到别人对此网站的评判。',
 
   firstPage: '首页',
   homepage: '个人主页',

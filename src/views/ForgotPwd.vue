@@ -8,7 +8,7 @@
               <div slot="header" class="clearfix">
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item :to="{ path: '/' }">{{ $t('firstPage') }}</el-breadcrumb-item>
-                  <el-breadcrumb-item>{{ $t('resetPwd') }}</el-breadcrumb-item>
+                  <el-breadcrumb-item>重设密码</el-breadcrumb-item>
                 </el-breadcrumb>
               </div>
               <div class="form-group" v-if="tipMessageObj.message">
@@ -16,7 +16,7 @@
               </div>
               <el-form :model="fillForm" :rules="rules" ref="validateForm">
                 <div class="form-group" v-if="isShowFillPwd">
-                  <label class="col-sm-3 control-label">{{ $t('resetNewPwd') }}:</label>
+                  <label class="col-sm-3 control-label">设新密码：</label>
                   <div class="col-sm-9">
                     <el-form-item prop="password">
                       <el-input
@@ -28,7 +28,7 @@
                   </div>
                 </div>
                 <div class="form-group" v-else>
-                  <label class="col-sm-3 control-label">{{ $t('registeredMailbox') }}:</label>
+                  <label class="col-sm-3 control-label">注册邮箱：</label>
                   <div class="col-sm-9">
                     <el-form-item prop="email">
                       <el-input placeholder="" v-model.trim="fillForm.email"></el-input>
@@ -150,14 +150,6 @@ export default {
     onResetClick() {
       this[this.operateFun[this.$route.path]]()
     },
-  },
-
-  locales: {
-    zh: {
-      resetPwd: '重设密码',
-      registeredMailbox: '注册邮箱',
-      resetNewPwd: '设新密码',
-    },
-  },
+  }
 }
 </script>

@@ -189,7 +189,7 @@ export default {
 
     isTheLegalNick(rule, value, callback) {
       if (value && !isLegalNick(value)) {
-        callback(new Error(this.$t('enterLegalNick')))
+        callback(new Error('请输入 3 ～ 15 位任意字符'))
       } else {
         callback()
       }
@@ -256,13 +256,7 @@ export default {
       this.$getUserInfo()
       this.isShowUploadAvatar = false
     },
-  },
-
-  locales: {
-    zh: {
-      enterLegalNick: '请输入 3 ～ 15 位任意字符',
-    },
-  },
+  }
 }
 </script>
 

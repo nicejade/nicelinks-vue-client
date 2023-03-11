@@ -8,7 +8,7 @@
       @click="onLoadMoreClick"
       >{{ $t('loadMoreStr') }}
     </el-button>
-    <el-alert v-else :title="$t('noMoreDataTip')" type="info"> </el-alert>
+    <el-alert v-else title="嘿，云集美好，我是有底线的" type="info"> </el-alert>
   </div>
 </template>
 
@@ -31,13 +31,7 @@ export default {
       const pageCount = this.$requestParamList.pageCount + 1
       this.$fetchSearch({ pageCount }, true)
     },
-  },
-
-  locales: {
-    zh: {
-      noMoreDataTip: '嘿，云集美好，我是有底线的',
-    },
-  },
+  }
 }
 </script>
 

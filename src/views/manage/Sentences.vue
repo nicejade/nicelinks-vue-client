@@ -224,16 +224,7 @@ export default {
     onCreaterClick(username) {
       this.$router.push(`/member/${username}`)
     },
-  },
-
-  locales: {
-    zh: {
-      approved: '已审核',
-      unapproved: '未审核',
-      isActived: '是否已激活',
-      creater: '创建者',
-    },
-  },
+  }
 }
 </script>
 

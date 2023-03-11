@@ -12,7 +12,7 @@
               src="https://image.nicelinks.site/no-result.svg"
               :alt="$t('description')"
             />
-            <div v-html="$t('noResultTip')"></div>
+            <div v-html="noResultTip"></div>
           </div>
         </el-card>
         <content-placeholder v-else slot="link-desc" :rows="placeholderRows" />
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       placeholderRows: Object.freeze(PLACEHOLDER_CONF),
+      noResultTip: '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至<a class="no-result-tip-a" href="/">倾城之链</a>主页 。',
     }
   },
 

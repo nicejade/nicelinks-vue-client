@@ -1,7 +1,7 @@
 <template>
   <div class="countup-area">
     <div class="top-crescent" v-if="!$isMobile"></div>
-    <h2 class="countup-title medium-font">{{ $t('countupText') }}</h2>
+    <h2 class="countup-title medium-font">已经收录优质网站个数</h2>
     <CountUp
       id="countup-number"
       class="countup-number"
@@ -73,13 +73,7 @@ export default {
     onCountUpCallback: (ins) => {
       // ins.update(ins.endVal + 100)
     },
-  },
-
-  locales: {
-    zh: {
-      countupText: '已经收录优质网站个数',
-    },
-  },
+  }
 }
 </script>
 

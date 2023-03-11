@@ -1,5 +1,3 @@
-![倾城之链 | 洞见](https://repobeats.axiom.co/api/embed/3ecd7de7d847f42aca1816802bb7761910a7d534.svg)
-
 <h1 align="center"><a href="https://nicelinks.site?utm_source=github-nicelinks"><img src="https://image.nicelinks.site/nice-links-logo.png" alt="倾城之链 | NICE LINKS"></a></h1>
 
 <div align="center">
@@ -9,7 +7,7 @@
 </div>
 
 <div align="center">
- 🐬 使用 Vue2 (Webpack4, Es6, Element-Ui...) 构建的 Web 应用程序客户端。
+ 🐬 使用 Vue2 (vuex、vue-router、Webpack4, axios、ES6, Element-Ui...) 构建的 Web 应用程序客户端。
 </div>
 
 <br>
@@ -75,8 +73,9 @@ nativefier --name "倾城之链" "https://nicelinks.site/"
 ## 相关链接
 
 - [**倾城之链**](https://nicelinks.site?utm_source=github-nicelinks)
-- [About Me](https://about.me/nicejade?utm_source=github-nicelinks)
 - [个人博客](https://jeffjade.com/nicelinks?utm_source=github-nicelinks)
+- [半缘修道观](https://memo.lovejade.cn/?utm_source=github-nicelinks)
+- [玉桃文飨轩](https://share.lovejade.cn/?utm_source=github-nicelinks)
 - [静轩之别苑](https://quickapp.lovejade.cn/?utm_source=github-nicelinks)
 - [静晴轩别苑](https://nice.lovejade.cn/?utm_source=github-nicelinks)
 - [吾意静晴轩](https://docz.lovejade.cn/?utm_source=github-nicelinks)
@@ -97,4 +96,4 @@ nativefier --name "倾城之链" "https://nicelinks.site/"
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2018-present, [nicejade](https://about.me/nicejade)
+Copyright (c) 2017-present, [nicejade](https://nicelinks.site/member/admin)

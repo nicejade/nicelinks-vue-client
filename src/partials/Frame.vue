@@ -79,11 +79,12 @@ export default {
     runAdsChecker() {
       if (this.$isMobile || this.isShowAutoDlgFlag) return
 
-      const elem = document.createElement('div')
+      let elem = document.createElement('div')
       elem.className = 'adsbox google-ad'
       document.body.appendChild(elem)
       this.isInstallAdBlock = 'none' === getComputedStyle(elem).display
       document.body.removeChild(elem)
+      elem = null
       if (this.isInstallAdBlock) {
         this.$gtagTracking('ad-block-dialog', 'global')
       }

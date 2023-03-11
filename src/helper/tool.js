@@ -75,7 +75,7 @@ export const queryUrl2Obj = (search) => {
 
 export const loadScript = (url, isAsyncFlag) => {
   return new Promise((resolve, reject) => {
-    var script = document.createElement('script')
+    const script = document.createElement('script')
     script.type = 'text/javascript'
 
     if (script.readyState) {

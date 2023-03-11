@@ -45,12 +45,26 @@ export default {
       .wl-header {
         label,
         input {
-          font-size: 1.2rem;
+          font-size: 1.4rem;
         }
       }
-
       .wl-editor {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+      }
+      .wl-preview {
+        h4 {
+          font-size: 1.6rem;
+        }
+        .wl-content {
+          h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+          }
+          p {
+            margin-top: 1rem;
+            font-size: 1.6rem;
+          }
+        }
       }
     }
   }
@@ -60,12 +74,12 @@ export default {
   .wl-nick,
   .wl-time,
   .wl-content {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .wl-count,
   .wl-empty {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .wl-action:nth-child(1),

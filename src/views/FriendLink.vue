@@ -191,7 +191,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: row;
-    // max-width: 280px;
+    justify-content: space-between;
     padding: 15px;
     color: $common-link;
     background-color: rgba(255, 255, 255, 0.75);
@@ -209,7 +209,7 @@ export default {
     }
 
     .content {
-      width: 100%;
+      width: calc(100% - 60px);
       text-align: left;
 
       .title {

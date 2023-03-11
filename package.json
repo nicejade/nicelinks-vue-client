@@ -1,6 +1,6 @@
 {
   "name": "nicelinks-vue-client",
-  "version": "3.8.0",
+  "version": "3.8.1",
   "description": "A nice website for assembling nice links created using Vue.js",
   "author": "jeffjade <jeffygisgreat@gmail.com>",
   "private": true,
@@ -35,7 +35,7 @@
     ]
   },
   "dependencies": {
-    "@waline/client": "2.6.4",
+    "@waline/client": "2.10.0",
     "axios": "^0.18.1",
     "countup": "^1.8.2",
     "crypto-js": "^3.1.9-1",
@@ -45,7 +45,7 @@
     "lodash": "^4.17.21",
     "mark.js": "^8.11.1",
     "marked": "^4.1.0",
-    "medium-zoom": "^1.0.6",
+    "medium-zoom": "^1.0.8",
     "qrcode.vue": "1.7.0",
     "raven-js": "^3.19.1",
     "vue": "2.7.10",

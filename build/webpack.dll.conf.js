@@ -16,6 +16,9 @@ module.exports = {
       'crypto-js/md5',
       'raven-js',
       'vue-content-placeholder',
+      'mark.js',
+      'marked',
+      'medium-zoom'
     ],
   },
   output: {

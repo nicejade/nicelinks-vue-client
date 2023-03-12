@@ -4,7 +4,6 @@
     <AwesomeSentence :sentence="sentence" :index="index" />
     <SitesRecommend />
     <FriendsLinks :friends-list="friendsList" />
-    <RewardMe />
     <aside class="sidebar-aside">
       <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
       <div class="text-center">
@@ -28,7 +27,6 @@
 <script>
 import AdsPosition from './AdsPosition'
 import FriendsLinks from './FriendsLinks'
-import RewardMe from './RewardMe'
 import AwesomeSentence from './AwesomeSentence'
 import SitesRecommend from './SitesRecommend'
 
@@ -53,7 +51,6 @@ export default {
   components: {
     AdsPosition,
     FriendsLinks,
-    RewardMe,
     AwesomeSentence,
     SitesRecommend,
   },

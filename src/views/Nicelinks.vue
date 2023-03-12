@@ -18,6 +18,10 @@
 </template>
 
 <script>
+import Vue from 'vue' 
+import SubHead from 'components/SubHead'
+Vue.component('sub-head', SubHead)
+
 import Pagination from 'components/Pagination'
 
 import CLASSIFY_CONF from './../config/classify'

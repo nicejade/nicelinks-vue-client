@@ -120,20 +120,20 @@ const webpackConfig = merge(baseWebpackConfig, {
       cacheGroups: {
         // 设置为 false 以禁用默认缓存组
         default: true,
-        // element: {
-        //   name: 'element',
-        //   test: /[\\/]node_modules[\\/]element-ui[\\/]/,
-        //   chunks: 'initial',
-        //   // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
-        //   priority: -10,
-        // },
-        // lodash: {
-        //   name: 'lodash',
-        //   test: /[\\/]node_modules[\\/]lodash[\\/]/,
-        //   chunks: 'initial',
-        //   // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
-        //   priority: -10,
-        // },
+        element: {
+          name: 'element',
+          test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+          chunks: 'initial',
+          // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
+          priority: 1000,
+        },
+        lodash: {
+          name: 'lodash',
+          test: /[\\/]node_modules[\\/]lodash[\\/]/,
+          chunks: 'initial',
+          // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
+          priority: 1000,
+        },
       },
     }),
 

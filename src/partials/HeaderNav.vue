@@ -115,6 +115,9 @@
 <script>
 import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
 import Vue from 'vue'
+import 'element-ui/lib/theme-chalk/dropdown.css'
+import 'element-ui/lib/theme-chalk/dropdown-menu.css'
+import 'element-ui/lib/theme-chalk/dropdown-item.css'
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)

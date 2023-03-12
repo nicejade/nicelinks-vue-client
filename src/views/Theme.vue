@@ -18,6 +18,10 @@
 </template>
 
 <script>
+import Vue from 'vue' 
+import SubHead from 'components/SubHead'
+Vue.component('sub-head', SubHead)
+
 import partsMixin from 'mixins/partsMixin.js'
 import THEME_CONF from './../config/theme'
 

@@ -62,6 +62,9 @@
 <script>
 import Vue from 'vue'
 import { Menu, Submenu, MenuItem } from 'element-ui'
+import 'element-ui/lib/theme-chalk/menu.css'
+import 'element-ui/lib/theme-chalk/submenu.css'
+import 'element-ui/lib/theme-chalk/menu-item.css'
 Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItem)

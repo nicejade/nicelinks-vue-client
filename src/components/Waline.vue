@@ -51,6 +51,9 @@ export default {
       .wl-editor {
         font-size: 1.6rem;
       }
+      .wl-actions {
+        flex: 1;
+      }
       .wl-preview {
         h4 {
           font-size: 1.6rem;
@@ -74,6 +77,10 @@ export default {
   .wl-nick,
   .wl-time,
   .wl-content {
+    font-size: 1.2rem;
+  }
+
+  .wl-sort li {
     font-size: 1.4rem;
   }
 

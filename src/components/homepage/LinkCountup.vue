@@ -35,6 +35,7 @@ export default {
         prefix: '',
         suffix: '',
       },
+      handleScrollEvent: null
     }
   },
 
@@ -60,19 +61,21 @@ export default {
   methods: {
     handleDisplayCount() {
       const countupNumberNode = document.getElementById('countup-number')
-      const handleScrollEvent = (element) => {
+      this.handleScrollEvent = (element) => {
         const isInViewport = isElementInViewport(countupNumberNode)
         if (isInViewport) {
           this.theDisplayCount = this.totalLinksCount
         }
       }
-      window.addEventListener('scroll', handleScrollEvent)
+      window.addEventListener('scroll', this.handleScrollEvent)
     },
 
     /* -----------------------on***Event----------------------- */
-    onCountUpCallback: (ins) => {
-      // ins.update(ins.endVal + 100)
-    },
+    onCountUpCallback: () => {},
+  },
+
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScrollEvent)
   }
 }
 </script>

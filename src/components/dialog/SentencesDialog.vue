@@ -21,7 +21,7 @@
                   <el-option
                     v-for="item in sentencesTypeList"
                     :key="item.value"
-                    :label="$t(item.text)"
+                    :label="item.text"
                     :value="item.value"
                   >
                   </el-option>
@@ -75,6 +75,7 @@ export default {
     return {
       isShowDlgFlag: false,
       isLoading: false,
+      sentencesTypeList: Object.freeze(SENTENCES_CONF),
       fillForm: {
         type: '',
         content: '',
@@ -111,17 +112,6 @@ export default {
     pdata: {
       type: Object,
       default: {},
-    },
-  },
-
-  computed: {
-    sentencesTypeList() {
-      return SENTENCES_CONF.map((item) => {
-        return {
-          text: item.text[this.$lang],
-          value: item.value,
-        }
-      })
     },
   },
 

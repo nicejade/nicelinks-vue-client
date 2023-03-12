@@ -81,22 +81,12 @@ export default {
         sortTarget: 'createTime',
       },
       currentRowData: {},
+      sentencesTypeList: Object.freeze(SENTENCES_CONF)
     }
   },
 
   components: {
     SentencesDialog,
-  },
-
-  computed: {
-    sentencesTypeList() {
-      return SENTENCES_CONF.map((item) => {
-        return {
-          text: item.text[this.$lang],
-          value: item.value,
-        }
-      })
-    },
   },
 
   created() {

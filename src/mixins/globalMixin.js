@@ -5,11 +5,6 @@ import { isLegalUrl } from './../helper/tool'
 
 Vue.mixin({
   computed: {
-    // Element-UI this.$confirm/this.$msgbox 等会激发 this.$store 为 undefined;
-    // 导致报错如下：Cannot read property 'state' of undefined;所以如下 hack 处理如下;
-    // ...mapState([
-    //   'userInfo'
-    // ])
     userInfo() {
       return (this.$store && this.$store.state.userInfo) || null
     },

@@ -97,6 +97,7 @@ export default {
       link.setAttribute('rel', 'canonical')
       link.setAttribute('href', `https://nicelinks.site/post/${details._id}`)
       document.head.appendChild(link)
+      link = null
     },
 
     highlightKeyword() {

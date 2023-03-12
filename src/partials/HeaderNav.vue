@@ -333,7 +333,7 @@ export default {
     padding: 0 15px;
 
     .header-logo {
-      display: inline-block;
+      display: block;
       float: left;
       margin: 20px 0;
       width: 180px;
@@ -346,10 +346,10 @@ export default {
     }
 
     .operate-area {
-      display: inline-block;
+      display: block;
       position: relative;
-      margin-right: 12px;
       float: left;
+      margin-right: 12px;
       font-size: $font-small;
 
       .nav-item {
@@ -392,10 +392,10 @@ export default {
 
     .share-btn,
     .find-more {
+      display: block;
+      float: left;
       cursor: pointer;
       margin: 0 1.5rem;
-      display: inline-block;
-      float: left;
     }
 
     .find-more,
@@ -418,9 +418,9 @@ export default {
     }
 
     .user-account {
-      cursor: pointer;
-      display: inline-block;
+      display: block;
       float: right;
+      cursor: pointer;
 
       .avatar {
         display: block;
@@ -437,7 +437,7 @@ export default {
 
     .not-loggedin,
     .el-dropdown {
-      display: inline-block;
+      display: block;
       float: right;
       margin-right: 15px;
 
@@ -551,7 +551,7 @@ export default {
 .search-area {
   display: block;
   position: absolute;
-  right: 22rem;
+  right: 23rem;
 
   .el-autocomplete {
     .el-input {

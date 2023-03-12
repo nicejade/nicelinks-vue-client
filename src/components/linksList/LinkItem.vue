@@ -106,7 +106,7 @@
         <preview-md :value="getReviewContent(item)"></preview-md>
       </div>
     </div>
-    <div class="operate-area" v-if="!isAbstract">
+    <div class="btns-group" v-if="!isAbstract">
       <el-button class="btn" @click="onCopyLinkClick(item)">复制地址</el-button>
       <a
         class="el-button--primary btn"
@@ -487,10 +487,10 @@ export default {
     line-height: 1.2;
     text-decoration: none;
     color: $link-title;
-    transition: color 0.3s ease-in;
+    transition: color 0.5s ease-in;
 
     &:hover {
-      transition: color 0.3s ease-out;
+      transition: color 0.4s ease-out;
       color: $link-title-hover;
     }
   }
@@ -504,7 +504,7 @@ export default {
     @include text-ellipsis-multiline(3);
   }
 
-  .operate-area {
+  .btns-group {
     @include flex-box-center(row, center, center);
     margin: 2.1rem auto;
 
@@ -521,8 +521,7 @@ export default {
       box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
       &:hover {
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        transform: scale(1.05) rotate(-1deg);
+        transform: scale(1.1) rotate(-1deg);
       }
     }
   }
@@ -674,7 +673,7 @@ export default {
 }
 
 @media screen and (max-width: $mobile-screen) {
-  .content .operate-area .btn {
+  .content .btns-group .btn {
     padding: 1rem 2rem;
   }
 }

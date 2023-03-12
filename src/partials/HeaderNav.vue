@@ -326,9 +326,7 @@ export default {
   line-height: $header-height;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-  transition: border 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955),
-    background 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  z-index: 9999;
 
   .nav {
     height: 100%;

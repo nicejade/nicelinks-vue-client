@@ -174,15 +174,15 @@ export default {
   background-color: $white;
   text-align: left;
   z-index: $zindex-side-nav;
-  transition: all 0.5s ease;
+  transition: background-color 0.5s ease;
 
   &::-webkit-scrollbar {
-    background: transparent;
+    background-color: transparent;
     width: 0px;
   }
 
   &:hover::-webkit-scrollbar {
-    background: transparent;
+    background-color: transparent;
     width: 0px;
   }
 

@@ -44,9 +44,8 @@ export default {
   padding: 2rem 0;
 
   .el-button {
-    background-color: #ffffff;
     color: $black;
-    transition: 1s border ease-in;
+    background-color: #ffffff;
     border-radius: 20px;
     border: 1px solid $entry-btn-grey;
     width: 80%;

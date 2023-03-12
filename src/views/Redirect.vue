@@ -197,7 +197,7 @@ $primary: #ea552d;
       border: 2px solid #ea552d;
       color: #ea552d;
       font-weight: bold;
-      transition: all 0.2s ease;
+      transition: background-color 0.2s ease;
       box-sizing: border-box;
 
       &:hover {

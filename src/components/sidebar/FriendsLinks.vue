@@ -78,11 +78,6 @@ export default {
   letter-spacing: 1px;
   user-select: none;
   text-transform: uppercase;
-  text-shadow: -15px 5px 20px $producthunt;
-  transition: all 0.3s ease-out;
-}
-
-.other-friends:hover {
-  text-shadow: 0px 6px 20px $producthunt;
+  text-shadow: -10px 5px 30px $producthunt;
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "nicelinks-vue-client",
-  "version": "3.8.1",
+  "version": "3.9.0",
   "description": "A nice website for assembling nice links created using Vue.js",
   "author": "jeffjade <jeffygisgreat@gmail.com>",
   "private": true,
@@ -33,6 +33,12 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 100,
+    "proseWrap": "never"
   },
   "dependencies": {
     "@waline/client": "2.10.0",
@@ -128,12 +134,13 @@
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false,
-    "printWidth": 100,
-    "proseWrap": "never"
-  },
+  "keywords": [
+    "倾城之链",
+    "NICE LINKS",
+    "开放平台",
+    "网址大全",
+    "网址导航"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

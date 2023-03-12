@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import clone from 'lodash/clone'
 import cloneDeep from 'lodash/cloneDeep'
 import {
   Pagination,
@@ -57,17 +56,11 @@ import $errorReport from './helper/errorReport'
 // Initialize the sentry error reporting @2017-10-29
 $errorReport.init()
 
-Vue.prototype.$loading = Loading.service
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$message = Message
 
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
-
-Vue.prototype.$clone = clone
 Vue.prototype.$cloneDeep = cloneDeep
 
 Vue.prototype.$isMobile = window.innerWidth <= 960

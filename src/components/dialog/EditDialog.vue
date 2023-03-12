@@ -182,7 +182,7 @@ export default {
         if (valid) {
           this.isLoading = true
 
-          let params = this.$clone(this.fillForm, true)
+          let params = this.$cloneDeep(this.fillForm, true)
           // 其基本信息不能改变，只是加上管理者 Id & Role @17-10-02；
           params.managerId = this.userInfo && this.userInfo._id
           params.managerRole = this.userInfo && this.userInfo.role

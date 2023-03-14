@@ -127,13 +127,13 @@ const webpackConfig = merge(baseWebpackConfig, {
           // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
           priority: 1000,
         },
-        lodash: {
-          name: 'lodash',
-          test: /[\\/]node_modules[\\/]lodash[\\/]/,
-          chunks: 'initial',
-          // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
-          priority: 1000,
-        },
+        // lodash: {
+        //   name: 'lodash',
+        //   test: /[\\/]node_modules[\\/]lodash[\\/]/,
+        //   chunks: 'initial',
+        //   // 默认组的优先级为负数，以允许任何自定义缓存组具有更高的优先级（默认值为0）
+        //   priority: 1000,
+        // },
       },
     }),
 

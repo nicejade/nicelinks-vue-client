@@ -1,6 +1,6 @@
 <template>
   <section class="lotus fade-in animated" id="lotus">
-    <article class="twelve columns cssanimations">
+    <article class="twelve columns lotus-animations">
       <div class="flower-container">
         <div class="flower">
           <span class="part"></span>
@@ -357,67 +357,67 @@ body[theme='dark'] .flower-container {
   transform: rotate(315deg);
 }
 
-.cssanimations .flower-container .part {
+.lotus-animations .flower-container .part {
   opacity: 0;
   animation: linear forwards 2s;
 }
 
-.cssanimations .part:nth-child(1) {
+.lotus-animations .part:nth-child(1) {
   animation-name: show-large-leaf;
   animation-delay: 0.5s;
 }
 
-.cssanimations .part:nth-child(2) {
+.lotus-animations .part:nth-child(2) {
   animation-name: show-large-leaf;
   animation-delay: 1s;
 }
 
-.cssanimations .part:nth-child(3) {
+.lotus-animations .part:nth-child(3) {
   animation-name: show-large-leaf;
   animation-delay: 1.5s;
 }
 
-.cssanimations .part:nth-child(4) {
+.lotus-animations .part:nth-child(4) {
   animation-name: show-large-leaf;
   animation-delay: 2s;
 }
 
-.cssanimations .part:nth-child(5) {
+.lotus-animations .part:nth-child(5) {
   animation-name: show-small-leaf;
   animation-delay: 0.25s;
 }
 
-.cssanimations .part:nth-child(6) {
+.lotus-animations .part:nth-child(6) {
   animation-name: show-small-leaf;
   animation-delay: 0.5s;
 }
 
-.cssanimations .part:nth-child(7) {
+.lotus-animations .part:nth-child(7) {
   animation-name: show-small-leaf;
   animation-delay: 0.75s;
 }
 
-.cssanimations .part:nth-child(8) {
+.lotus-animations .part:nth-child(8) {
   animation-name: show-small-leaf;
   animation-delay: 1s;
 }
 
-.cssanimations .part:nth-child(9) {
+.lotus-animations .part:nth-child(9) {
   animation-name: show-small-leaf;
   animation-delay: 1.25s;
 }
 
-.cssanimations .part:nth-child(10) {
+.lotus-animations .part:nth-child(10) {
   animation-name: show-small-leaf;
   animation-delay: 1.5s;
 }
 
-.cssanimations .part:nth-child(11) {
+.lotus-animations .part:nth-child(11) {
   animation-name: show-small-leaf;
   animation-delay: 1.75s;
 }
 
-.cssanimations .part:nth-child(12) {
+.lotus-animations .part:nth-child(12) {
   animation-name: show-small-leaf;
   animation-delay: 2s;
 }

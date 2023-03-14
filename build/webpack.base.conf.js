@@ -40,7 +40,10 @@ function createHappyPlugin(id, loaders) {
 }
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    app: './src/main.js',
+    element: ['element-ui'],
+  },
   mode: env === 'production' ? 'production' : 'development',
   output: {
     path: config.build.assetsRoot,

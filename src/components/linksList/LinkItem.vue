@@ -646,10 +646,11 @@ export default {
       height: 100%;
       text-align: center;
       min-width: 3.6rem;
+      font-size: $font-small;
 
       .icons {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 2.5rem;
+        height: 2.5rem;
         margin-left: 0;
         margin-right: 0.5rem;
       }

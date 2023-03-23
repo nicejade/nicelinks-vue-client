@@ -91,7 +91,6 @@ export default {
   loadMoreStr: '加载更多',
   aboutNiceLinks: '关于倾城',
   sponsorNiceLinks: '倾情捐赠',
-  niceComment: '精彩绝伦的评论',
 
   firstPage: '首页',
   homepage: '个人主页',

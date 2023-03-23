@@ -1,7 +1,7 @@
 <template>
   <div class="nice-comment">
     <h2 class="page-second-title">
-      <strong>{{ $t('niceComment') }}</strong>
+      <strong>精彩绝伦的评论</strong>
     </h2>
     <div id="waline"></div>
   </div>
@@ -40,43 +40,43 @@ export default {
   padding: 15px 0;
   aspect-ratio: 3 / 2;
 
-  .wl-comment {
-    .wl-panel {
-      .wl-header {
-        label,
-        input {
-          font-size: 1.4rem;
-        }
+  .wl-panel {
+    font-size: 1.4rem;
+    .wl-header {
+      label,
+      input {
+        font-size: 1.4rem;
       }
-      .wl-editor {
+    }
+    .wl-editor {
+      font-size: 1.6rem;
+    }
+    .wl-actions {
+      flex: 1;
+    }
+    .wl-preview {
+      h4 {
         font-size: 1.6rem;
       }
-      .wl-actions {
-        flex: 1;
-      }
-      .wl-preview {
-        h4 {
-          font-size: 1.6rem;
-        }
-        .wl-content {
-          h3 {
-            font-size: 1.6rem;
-            font-weight: 500;
-          }
-          p {
-            margin-top: 1rem;
-            font-size: 1.6rem;
-          }
-        }
-      }
+    }
+  }
+
+  .wl-content {
+    font-size: 1.4rem;
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+    p {
+      margin-top: 1rem;
+      font-size: 1.6rem;
     }
   }
 
   .wl-btn,
   .wl-text-number,
   .wl-nick,
-  .wl-time,
-  .wl-content {
+  .wl-time {
     font-size: 1.2rem;
   }
 

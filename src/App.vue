@@ -27,6 +27,8 @@ import 'element-ui/lib/theme-chalk/tag.css'
 import 'element-ui/lib/theme-chalk/alert.css'
 import 'element-ui/lib/theme-chalk/card.css'
 import 'element-ui/lib/theme-chalk/carousel.css'
+import 'element-ui/lib/theme-chalk/message.css'
+import 'element-ui/lib/theme-chalk/message-box.css'
 import 'element-ui/lib/theme-chalk/carousel-item.css'
 import './assets/scss/style.scss'
 

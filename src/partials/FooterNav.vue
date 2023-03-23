@@ -59,9 +59,9 @@
           <a
             class="nice-link"
             target="_blank"
-            @click="onReortEvent('wiki-lovejade')"
-            :href="assembleExternalLink('https://wiki.lovejade.cn/')"
-            >清风明月阁</a
+            @click="onReortEvent('chatgpt')"
+            :href="assembleExternalLink('https://chatgpt.nicelinks.site/')"
+            >素问智聊斋</a
           >
         </div>
       </div>

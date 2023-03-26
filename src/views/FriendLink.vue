@@ -8,22 +8,7 @@
               <h2 align="left" class="subtitle">
                 <strong>{{ $t('friendsLinks') }}</strong>
               </h2>
-              <div class="friend-hint">
-                如果，您有自己的<strong>网站</strong>或者<strong>博客</strong>，非常欢迎您和<a
-                  href="https://nicelinks.site"
-                  target="_blank"
-                  >倾城之链</a
-                >交换<strong>友情链接</strong>，
-                <div class="tooltip">
-                  <img :src="niceLinksServerStr" alt="倾城客服微信" class="tooltip-img" />
-                  请添加<a :href="niceLinksServerStr" target="_blank">倾城客服微信</a>
-                </div>
-                ，进行详细沟通（当然，如果您如果喜欢，也可以通过<a
-                  target="_blank"
-                  href="mailto:yunjeff#163.com"
-                  >邮件</a
-                >）。
-              </div>
+              <div class="friend-hint" v-html="recommendTextStr"></div>
             </div>
             <div class="friends-list">
               <a
@@ -63,7 +48,9 @@
 
 <script>
 import Waline from 'components/Waline'
-import 'hint.css'
+import { parse } from './../helper/marked'
+
+const recommendMdText = `如果您拥有属于自己的网站或博客，非常欢迎您与[倾城之链](/)建立**友情链接**。请添加[倾城客服微信](https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks-service.jpeg)并进行详细沟通，也可以在评论区中找到邮件地址。如果您喜欢<mark>倾城之链</mark>，请不要犹豫，期待您的互动。`
 
 export default {
   name: 'FriendLink',
@@ -71,7 +58,7 @@ export default {
   data() {
     return {
       tableData: [],
-      niceLinksServerStr: 'https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks-service.jpeg',
+      recommendTextStr: parse(recommendMdText),
     }
   },
 
@@ -148,31 +135,11 @@ export default {
 
     .friend-hint {
       text-align: left;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-      line-height: 18px;
+      margin-bottom: 2rem;
+      line-height: 2.4rem;
       color: $common-link;
-
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-
-      .tooltip .tooltip-img {
-        position: absolute;
-        top: 20px;
-        left: -35px;
-        z-index: 1;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-        visibility: hidden;
-        width: 160px;
-        height: 160px;
-        padding: 0;
-      }
-
-      .tooltip:hover .tooltip-img {
-        visibility: visible;
-      }
+      font-size: 1.6rem;
+      letter-spacing: 1px;
     }
   }
 }

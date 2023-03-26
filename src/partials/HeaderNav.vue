@@ -27,7 +27,7 @@
 
         <div class="share-btn" @mouseenter="onShareBtnMouseover" @mouseout="onShareBtnMouseout">
           <router-link to="/share-link" class="share-link" @click.native="onShareClick">
-            🕊 {{ $t('shareNewLink') }}
+            <span class="gradient-text">🕊 {{ $t('shareNewLink') }}</span>
           </router-link>
         </div>
 
@@ -374,21 +374,22 @@ export default {
 
       .share-link {
         @include flex-box-center(row, space-around, center);
-        color: transparent;
-        background-image: linear-gradient(0deg, #ff6768 38%, #fcaf17 60%);
-        background-clip: text;
-        -webkit-background-clip: text;
         font-weight: bold;
+        .gradient-text {
+          -webkit-text-fill-color: transparent;
+          background: linear-gradient(90deg,#d3c357,#f1a76a,#cc6d2e);
+          background-clip: text;
+          -webkit-background-clip: text;
+          &:hover {
+            background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 81%);
+          }
+        }
 
         .icon-share {
           width: 16px;
           height: 16px;
           margin: 0 0.3rem;
           vertical-align: middle;
-        }
-
-        &:hover {
-          background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 81%);
         }
       }
     }

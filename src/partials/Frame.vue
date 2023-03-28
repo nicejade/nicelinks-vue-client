@@ -30,6 +30,7 @@ export default {
 
   data() {
     return {
+      adsboxElemNode: null,
       isShowAutoDlgFlag: false,
       isInstallAdBlock: false,
     }
@@ -79,12 +80,12 @@ export default {
     runAdsChecker() {
       if (this.$isMobile || this.isShowAutoDlgFlag) return
 
-      let elem = document.createElement('div')
-      elem.className = 'adsbox google-ad'
-      document.body.appendChild(elem)
-      this.isInstallAdBlock = 'none' === getComputedStyle(elem).display
-      document.body.removeChild(elem)
-      elem = null
+      this.adsboxElemNode = document.createElement('div')
+      this.adsboxElemNode.className = 'adsbox google-ad'
+      this.adsboxElemNode.style.height = "1px"
+      document.body.appendChild(this.adsboxElemNode)
+      const adsboxCssStyle = getComputedStyle(this.adsboxElemNode)
+      this.isInstallAdBlock = 'none' === adsboxCssStyle.display || adsboxCssStyle.height === '0px'
       if (this.isInstallAdBlock) {
         this.$gtagTracking('ad-block-dialog', 'global')
       }
@@ -106,8 +107,10 @@ export default {
     },
 
     onHandleAdBlockClose() {
-      this.isInstallAdBlock = false
       this.$gtagTracking('close-ad-block-dialog', 'global')
+      this.isInstallAdBlock = false
+      document.body.removeChild(this.adsboxElemNode)
+      this.adsboxElemNode = null
     },
 
     /*

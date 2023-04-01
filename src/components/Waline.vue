@@ -62,14 +62,26 @@ export default {
   }
 
   .wl-content {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     h3 {
-      font-size: 1.6rem;
-      font-weight: 500;
+      font-size: 1.8rem;
+      font-weight: 600;
     }
     p {
       margin-top: 1rem;
       font-size: 1.6rem;
+    }
+    ul {
+      margin: 1.6rem 0 1.6rem 3.2rem;
+      li {
+        list-style: disc;
+      }
+    }
+    ol {
+      margin: 1.6rem 0 1.6rem 3.2rem;
+      li {
+        list-style: decimal;
+      }
     }
   }
 
@@ -77,7 +89,7 @@ export default {
   .wl-text-number,
   .wl-nick,
   .wl-time {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .wl-sort li {

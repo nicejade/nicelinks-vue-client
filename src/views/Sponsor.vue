@@ -19,7 +19,7 @@
                     <strong>微信扫码赞助</strong>
                   </h3>
                   <img
-                    src="https://nicelinks.site/static/img/reward_wexin.jpg"
+                    src="https://image.nicelinks.site/赞赏码.jpeg?imageView2/1/w/600/h/600/interlace/1/ignore-error/1"
                     :alt="$t('niceLinksStr')"
                   />
                 </div>
@@ -50,7 +50,7 @@ import { DESCRIPTION, NICE_LINKS_NAME, NICE_LINKS } from './../config/constant'
 
 const SsWords = `${DESCRIPTION} 自 2017 年建设以来，完全免费使用；并始终坚持：**收录有价值内容**，打造人性化体验。
 
-截止目前，[${NICE_LINKS_NAME}](${NICE_LINKS})从网站设计、编码，到运维、运营，涉及所有工作，皆有[@轩帅](/member/admin)在工作之余，利用碎片化时间完成；“**月黑见渔灯，孤光一点萤；微微风簇浪，散作满河星**”；您如果愿意，可通过下面两种方式，给予适当赞助/打赏，以协助「${NICE_LINKS_NAME}」持续健康运作。
+截止目前，[${NICE_LINKS_NAME}](${NICE_LINKS})从网站策划、设计、编码，运维、到运营推广，涉及所有工作，皆有 [@轩帅](/member/admin) 在工作之余，利用碎片化时间完成；“**月黑见渔灯，孤光一点萤；微微风簇浪，散作满河星**”；您如果愿意，可通过下面两种方式，给予适当赞助 / 捐赠，以协助「${NICE_LINKS_NAME}」持续健康运作。
 `
 
 export default {

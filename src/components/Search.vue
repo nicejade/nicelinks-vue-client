@@ -45,7 +45,7 @@ export default {
   },
 
   methods: {
-    requestSearchTarget(queryString, callback) {
+    requestSearchTarget(queryString = '', callback) {
       return debounce(() => {
         this.$apis
           .searchNiceLinks({
@@ -112,11 +112,11 @@ export default {
     },
 
     styleForDesc(item) {
-      const tempDesc = item && item.stype ? item[item.stype] : item.review || item.desc
-      let niceDesc = parse(tempDesc)
-      niceDesc = filterHtmlTag(niceDesc)
-      niceDesc = sliceToAheadTarget(niceDesc, this.keyword)
-      return niceDesc.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
+      const tempDescText = item && item.stype ? item[item.stype] : item.desc || item.review
+      let descTextStr = parse(tempDescText)
+      descTextStr = filterHtmlTag(descTextStr)
+      descTextStr = sliceToAheadTarget(descTextStr, this.keyword)
+      return descTextStr.replace(this.keyword, `<i class="keyword">${this.keyword}</i>`)
     },
   },
 }
@@ -182,19 +182,19 @@ export default {
     line-height: 18px;
 
     .item-title {
+      font-weight: 400;
       font-size: $font-medium;
+      line-height: 18px;
+      padding: 1rem 0;
       color: $black;
       text-overflow: ellipsis;
       overflow: hidden;
-      line-height: 18px;
-      padding-top: 10px;
     }
 
     .item-desc {
-      display: inline-block;
+      display: block;
       line-height: 18px;
-      padding-top: 5px;
-      padding-bottom: 10px;
+      padding: 1rem 0;
       color: $silver-grey;
       font-size: $font-small;
       text-overflow: ellipsis;

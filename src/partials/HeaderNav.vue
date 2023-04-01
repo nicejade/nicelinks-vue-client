@@ -352,7 +352,6 @@ export default {
       display: block;
       position: relative;
       float: left;
-      margin-right: 12px;
       font-size: $font-small;
 
       .nav-item {

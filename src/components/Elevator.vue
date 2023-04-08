@@ -73,8 +73,9 @@ $factor: 1rem;
 
 .elevator {
   position: fixed;
-  bottom: 38 * $factor;
+  top: 50%;
   right: 3 * $factor;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;

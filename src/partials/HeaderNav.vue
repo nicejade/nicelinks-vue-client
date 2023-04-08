@@ -1,115 +1,102 @@
 <template>
-  <div id="header-nav">
-    <header class="header blur-effect">
-      <nav class="nav">
-        <div class="header-logo">
-          <a href="/" rel="home" class="header-logo-a nicelinks-logo" @click="onHomeClick">
-            <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
-            <h1 class="title">{{ $t('niceLinksStr') }}</h1>
-          </a>
-        </div>
-
-        <a href="javascript:;" class="menu" @click="onToggleMenuClick">
-          <span></span>
+  <header class="header blur-effect">
+    <nav class="nav">
+      <div class="header-logo">
+        <a href="/" rel="home" class="header-logo-a nicelinks-logo" @click="onHomeClick">
+          <img src="/static/img/favicons/safari-pinned-tab.svg" :alt="$t('niceLinksStr')" />
+          <h1 class="title">{{ $t('niceLinksStr') }}</h1>
         </a>
+      </div>
 
-        <div class="operate-area">
-          <router-link
-            @click.native="onExploreClick(item)"
-            v-for="item in navList"
-            :key="item.value"
-            :to="'/explore/' + item.name"
-            :class="makeClassName(item.name)"
-          >
-            {{ $t(item.name) }}
-          </router-link>
-        </div>
+      <a href="javascript:;" class="menu" @click="onToggleMenuClick">
+        <span></span>
+      </a>
 
-        <div class="share-btn" @mouseenter="onShareBtnMouseover" @mouseout="onShareBtnMouseout">
-          <router-link to="/share-link" class="share-link" @click.native="onShareClick">
-            <span class="gradient-text">🕊 {{ $t('shareNewLink') }}</span>
-          </router-link>
-        </div>
+      <div class="operate-area">
+        <router-link @click.native="onExploreClick(item)" v-for="item in navList" :key="item.value"
+          :to="'/explore/' + item.name" :class="makeClassName(item.name)">
+          {{ $t(item.name) }}
+        </router-link>
+      </div>
 
-        <div class="find-more">
-          <el-dropdown @command="handleCommand" trigger="click">
-            <span class="el-dropdown-link">
-              {{ $t('findMore') }}<i class="el-icon-caret-bottom el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown" class="find-more-dropdown-menu">
-              <el-dropdown-item command="ThemeCollection">
-                <icon class="vector-icon" name="theme"></icon>{{ $t('themeCollection') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="TagsCollection">
-                <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="" divided> </el-dropdown-item>
-              <el-dropdown-item command="Recommend">
-                <icon class="vector-icon" name="likes"></icon>优站推荐
-              </el-dropdown-item>
-              <el-dropdown-item command="" divided> </el-dropdown-item>
-              <el-dropdown-item command="ProductCemetery">
-                <icon class="vector-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="" divided> </el-dropdown-item>
-              <el-dropdown-item command="">
-                <icon class="vector-icon" name="about-website"></icon>
-                <a
-                  class="about-website"
-                  @click="onAboutSiteClick"
-                  target="_blank"
-                  rel="noopener"
-                  :href="getAboutWebsiteLink"
-                >
-                  {{ $t('aboutWebsite') }}
-                </a>
-              </el-dropdown-item>
-              <el-dropdown-item command="AboutAuthor">
-                <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
-              </el-dropdown-item>
-              <el-dropdown-item v-if="isAdminFlag" command="Manage">
-                <icon class="vector-icon" name="setting"></icon>{{ $t('management') }}
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
+      <div class="share-btn" @mouseenter="onShareBtnMouseover" @mouseout="onShareBtnMouseout">
+        <router-link to="/share-link" class="share-link" @click.native="onShareClick">
+          <span class="gradient-text">🕊 {{ $t('shareNewLink') }}</span>
+        </router-link>
+      </div>
 
-        <SwitchTheme v-if="!$isMobile" />
+      <div class="find-more">
+        <el-dropdown @command="handleCommand" trigger="click">
+          <span class="el-dropdown-link">
+            {{ $t('findMore') }}<i class="el-icon-caret-bottom el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown" class="find-more-dropdown-menu">
+            <el-dropdown-item command="ThemeCollection">
+              <icon class="vector-icon" name="theme"></icon>{{ $t('themeCollection') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="TagsCollection">
+              <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="" divided> </el-dropdown-item>
+            <el-dropdown-item command="Recommend">
+              <icon class="vector-icon" name="likes"></icon>优站推荐
+            </el-dropdown-item>
+            <el-dropdown-item command="" divided> </el-dropdown-item>
+            <el-dropdown-item command="ProductCemetery">
+              <icon class="vector-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="" divided> </el-dropdown-item>
+            <el-dropdown-item command="">
+              <icon class="vector-icon" name="about-website"></icon>
+              <a class="about-website" @click="onAboutSiteClick" target="_blank" rel="noopener"
+                :href="getAboutWebsiteLink">
+                {{ $t('aboutWebsite') }}
+              </a>
+            </el-dropdown-item>
+            <el-dropdown-item command="AboutAuthor">
+              <icon class="vector-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
+            </el-dropdown-item>
+            <el-dropdown-item v-if="isAdminFlag" command="Manage">
+              <icon class="vector-icon" name="setting"></icon>{{ $t('management') }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
 
-        <div class="search-area" id="search-area" v-if="!$isMobile">
-          <search />
-        </div>
+      <SwitchTheme v-if="!$isMobile" />
 
-        <div class="user-account" v-if="$isLogin()">
-          <el-dropdown @command="handleCommand" trigger="click">
-            <span class="el-dropdown-link">
-              <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
-              <span>{{ userSign }} </span>
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown" class="user-account-dropdown-menu">
-              <el-dropdown-item command="MainPage">
-                <icon class="icons" name="main-page"></icon>{{ $t('homepage') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="Setting" divided>
-                <icon class="icons" name="setting"></icon>{{ $t('accountSetting') }}
-              </el-dropdown-item>
-              <el-dropdown-item command="Logout" divided>
-                <icon class="icons" name="logout"></icon>{{ $t('signOut') }}
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
-        <div v-else class="not-loggedin">
-          <el-button type="text" @click="onGotoLoginClick">{{ $t('signIn') }}</el-button>
-          <span>/</span>
-          <el-button type="text" @click="onGotoSignUpClick">
-            {{ $t('signUp') }}
-          </el-button>
-        </div>
-      </nav>
-    </header>
-  </div>
+      <div class="search-area" id="search-area" v-if="!$isMobile">
+        <search />
+      </div>
+      <div class="user-account" v-if="$isLogin()">
+        <el-dropdown @command="handleCommand" trigger="click">
+          <span class="el-dropdown-link">
+            <img class="avatar" :src="userAvatar" :alt="$t('niceLinksStr')" />
+            <span>{{ userSign }} </span>
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown" class="user-account-dropdown-menu">
+            <el-dropdown-item command="MainPage">
+              <icon class="icons" name="main-page"></icon>{{ $t('homepage') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="Setting" divided>
+              <icon class="icons" name="setting"></icon>{{ $t('accountSetting') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="Logout" divided>
+              <icon class="icons" name="logout"></icon>{{ $t('signOut') }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+      <div v-else class="not-loggedin">
+        <el-button type="text" @click="onGotoLoginClick">{{ $t('signIn') }}</el-button>
+        <span>/</span>
+        <el-button type="text" @click="onGotoSignUpClick">
+          {{ $t('signUp') }}
+        </el-button>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -324,22 +311,24 @@ export default {
 
 .header {
   position: fixed;
+  @include flex-box-center(row, space-between, start);
   width: 100%;
   height: $header-height;
   line-height: $header-height;
+  padding: 0 2rem;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.1);
   z-index: 9999;
 
-  .nav {
+  .nav {  
+    @include flex-box-center(row, start, center);
+    width: 100%;
+    position: relative;
     height: 100%;
-    padding: 0 15px;
 
     .header-logo {
-      display: block;
-      float: left;
-      margin: 20px 0;
-      width: 180px;
+      @include flex-box-center(row, center, center);
+      margin-right: 2rem;
 
       .header-logo-a {
         @include flex-box-center;
@@ -351,7 +340,6 @@ export default {
     .operate-area {
       display: block;
       position: relative;
-      float: left;
       font-size: $font-small;
 
       .nav-item {
@@ -374,11 +362,13 @@ export default {
       .share-link {
         @include flex-box-center(row, space-around, center);
         font-weight: bold;
+
         .gradient-text {
           -webkit-text-fill-color: transparent;
-          background: linear-gradient(90deg,#d3c357,#f1a76a,#cc6d2e);
+          background: linear-gradient(90deg, #d3c357, #f1a76a, #cc6d2e);
           background-clip: text;
           -webkit-background-clip: text;
+
           &:hover {
             background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 81%);
           }
@@ -396,9 +386,8 @@ export default {
     .share-btn,
     .find-more {
       display: block;
-      float: left;
       cursor: pointer;
-      margin: 0 1.5rem;
+      margin: 0 0 0 2rem;
     }
 
     .find-more,
@@ -422,7 +411,6 @@ export default {
 
     .user-account {
       display: block;
-      float: right;
       cursor: pointer;
 
       .avatar {
@@ -441,12 +429,14 @@ export default {
     .not-loggedin,
     .el-dropdown {
       display: block;
-      float: right;
-      margin-right: 15px;
-
       .el-button {
         font-size: $font-small;
       }
+    }
+
+    .not-loggedin, .user-account {
+      position: absolute;
+      right: 0;
     }
   }
 }
@@ -499,17 +489,18 @@ export default {
   #app .header {
     height: $header-mobile-height;
     z-index: $zindex-header-mobile;
+    padding: 0;
 
     .nav {
       padding: 0;
 
       .header-logo {
-        float: none !important;
-        text-align: center;
         position: absolute;
         left: 50%;
         right: 50%;
+        width: 15rem;
         transform: translate(-50%);
+        text-align: center;
         margin: 0px;
       }
 
@@ -536,6 +527,7 @@ export default {
         align-items: center !important;
         line-height: $header-mobile-height;
         height: $header-mobile-height;
+        margin-right: 1rem;
       }
 
       .operate-area {

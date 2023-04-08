@@ -42,10 +42,10 @@ export default {
 @import './../assets/scss/mixins.scss';
 
 .toggle-wrapper {
+  @include flex-box-center(row, center, center);
   width: 3rem;
   height: 100%;
-  @include flex-box-center(row, center, center);
-  float: left;
+  margin-left: 2rem;
   .btn {
     cursor: pointer;
   }

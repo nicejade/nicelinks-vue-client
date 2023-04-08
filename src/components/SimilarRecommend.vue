@@ -127,8 +127,7 @@ export default {
     },
 
     onSimilarClick() {
-      this.$gtagTracking('route-entry', 'recommend')
-      this.$gtagReport('from-similar-recommend')
+      this.$gtagTracking('similar-recommend', 'post')
     },
   },
 }

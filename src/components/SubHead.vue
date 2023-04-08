@@ -58,12 +58,12 @@ export default {
     },
 
     onAllTheme() {
-      this.$gtagTracking('all-theme', 'sub-head')
+      this.$gtagTracking('all-theme', 'explore')
     },
 
     onExploreTheme(item) {
-      this.$gtagTracking(`sub-${item.value}`, 'sub-head')
-      this.$gtagReport(`from-sub-${item.value}`)
+      this.$gtagTracking(`sub-${item.value}`, 'explore')
+      this.$adsConversionReport('from-explore-theme')
     },
 
     /* ------------变更 SubHead ”按钮“触发后展示方案(18-07-01)------------ */

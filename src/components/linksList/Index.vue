@@ -84,7 +84,7 @@ export default {
 
     onListClick() {
       this.$gtagTracking('list-entry', 'list')
-      this.$gtagReport('from-list-entry')
+      this.$adsConversionReport('from-list-entry')
     },
   },
 }

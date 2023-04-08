@@ -55,10 +55,6 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      const classify = this.$route.params.classify
-      if (classify !== 'all') {
-        this.$gtagReport(`from-explore-${classify}`)
-      }
       this.renderPagination()
     })
   },

@@ -286,12 +286,13 @@ export default {
     },
 
     onExploreClick(item) {
-      this.$gtagTracking(`explore-${item.name}`, 'header', `p-explore-${item.name}`)
-      this.$gtagReport(`from-explore-${item.name}`)
+      this.$gtagTracking(`explore-${item.name}`, 'header')
+      this.$adsConversionReport(`from-explore-${item.name}`)
     },
 
     onShareClick() {
-      this.$gtagTracking('share-link', 'header', 'p-share-link')
+      this.$gtagTracking('share-link', 'header')
+      this.$adsConversionReport('from-share-link')
     },
 
     onAboutSiteClick() {
@@ -300,6 +301,7 @@ export default {
 
     onHomeClick() {
       this.$gtagTracking('logo-link', 'header')
+      this.$adsConversionReport('from-logo-link')
     },
   },
 }
@@ -309,7 +311,7 @@ export default {
 @import './../assets/scss/variables.scss';
 @import './../assets/scss/mixins.scss';
 
-.header {
+#app .header {
   position: fixed;
   @include flex-box-center(row, space-between, start);
   width: 100%;
@@ -320,10 +322,13 @@ export default {
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.1);
   z-index: 9999;
 
-  .nav {  
-    @include flex-box-center(row, start, center);
-    width: 100%;
+  .nav {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: start !important;
+    align-items: center;
+    width: 100%;
     height: 100%;
 
     .header-logo {

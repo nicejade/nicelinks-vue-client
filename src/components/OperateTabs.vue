@@ -5,6 +5,7 @@
         v-for="item in items"
         class="link"
         :class="{ active: item === activeName }"
+        @click="onTabsClick(item)"
         :href="getAssembleRoute(item)"
         :key="item"
         >{{ $t(item) }}
@@ -38,6 +39,11 @@ export default {
       const path = this.$route.path
       return `${path}?sort=${sort}`
     },
+
+    onTabsClick(item) {
+      this.$gtagTracking(`explore-tabs-${item}`, 'explore')
+      this.$adsConversionReport('explore-tabs')
+    }
   }
 }
 </script>

@@ -424,7 +424,7 @@ export default {
     onStopPropagationClick(action, category = 'post') {
       this.$gtagTracking(action, category, action)
       if ('list-title' === action || 'tags' === action) {
-        this.$gtagReport(`from-${action}`)
+        this.$adsConversionReport(`from-${action}`)
       }
     },
 
@@ -459,12 +459,12 @@ export default {
       this.copySuccessPrompt()
 
       this.$gtagTracking('copy-link', 'post')
-      this.$gtagReport('from-copy-link')
+      this.$adsConversionReport('from-copy-link')
     },
 
     onVisitLinkClick() {
       this.$gtagTracking('visit-link', 'post')
-      this.$gtagReport('from-visit-link')
+      this.$adsConversionReport('from-visit-link')
     },
 
     onUpdateSuccess() {}

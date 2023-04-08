@@ -65,7 +65,7 @@ Vue.prototype.$isMobile = window.innerWidth <= 960
 Vue.prototype.$setPageTitle = (title = '') => {
   document.title = `${title} - ${NICE_LINKS_NAME}`
 }
-Vue.prototype.$gtagReport = (scene = '') => {
+Vue.prototype.$adsConversionReport = (scene = '') => {
   if (window.IS_FROM_GOOGLE_ADS) {
     window.gtag_report_conversion()
     window.IS_FROM_GOOGLE_ADS = false

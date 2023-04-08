@@ -112,7 +112,7 @@ export default {
           this.isCanLookBack = true
           this.currentSentence = result || {}
           this.currentSentenceStr = result.content
-          this.$gtagReport('from-random-sentence')
+          this.$adsConversionReport('from-random-sentence')
         })
         .catch((error) => {
           this.$message.error(`${error}`)

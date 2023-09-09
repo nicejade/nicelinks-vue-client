@@ -160,3 +160,79 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+
+/* Recommend Seal */
+.recommend-seal {
+  position: absolute;
+  right: 0;
+  top: -120px;
+
+  .seal {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform: rotate(-60deg);
+    color: $jade;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 12px;
+    border: 2px solid $jade;
+    outline: 6px solid $jade;
+    outline-offset: 5px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: rotate(-2deg) scale(2);
+    animation: seal 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+    &::after {
+      content: '官方推荐';
+      font-weight: 900;
+      font-size: 20px;
+    }
+  }
+}
+
+.offline-seal {
+  position: absolute;
+  right: 0;
+  top: -120px;
+  .seal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 60px;
+    border: solid 4px $silver-grey;
+    border-radius: 0.2em;
+    color: $silver-grey;
+    content: 'Draft';
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0;
+    padding: 0.1em 0.5em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: rotate(-2deg) scale(5);
+    animation: seal 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+    &::before {
+      position: absolute;
+      content: '';
+      inset: 3px;
+      border: 2px solid $silver-grey;
+      z-index: 0;
+    }
+    &::after {
+      content: '网站已离线';
+      font-weight: 900;
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes seal {
+  100% {
+    opacity: 1;
+    transform: rotate(-30deg) scale(1);
+  }
+}

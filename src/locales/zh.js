@@ -42,7 +42,7 @@ export default {
   hisDislikes: '他的狂踩',
   nicerNumText: `<a href='/'>倾城之链</a>第 @X 号成员，加入于 @TIME`,
   noFill: '暂未填写',
-  
+
   enterUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
   enterUserinfoTip: '请输入账号 ID 或邮箱',
   enterLegalUsernameTip: '请输入账号 ID(仅限字母、数字、-，3至16位)',
@@ -75,6 +75,7 @@ export default {
   shareNewSentences: '分享新箴言',
   isAcive: '是否给激活',
   isAlive: '是否可访问',
+  isRecommend: '是否要推荐',
 
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',

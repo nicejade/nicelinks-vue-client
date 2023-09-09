@@ -30,7 +30,7 @@ body[theme='dark'] iframe {
 }
 
 .filter-grayscale {
-  -webkit-filter: grayscale(100%); 
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
 
@@ -98,19 +98,19 @@ a:link {
 }
 
 input::-webkit-input-placeholder {
-  color: $input-placeholder  !important;
+  color: $input-placeholder !important;
 }
 
 input::-moz-placeholder {
-  color: $input-placeholder  !important;
+  color: $input-placeholder !important;
 }
 
 input:-moz-placeholder {
-  color: $input-placeholder  !important;
+  color: $input-placeholder !important;
 }
 
 input:-ms-input-placeholder {
-  color: $input-placeholder  !important;
+  color: $input-placeholder !important;
 }
 
 .el-input__icon {
@@ -210,7 +210,6 @@ input:-ms-input-placeholder {
 }
 
 @keyframes jelly {
-
   0%,
   100% {
     transform: scale(1, 1);
@@ -297,4 +296,8 @@ input:-ms-input-placeholder {
   display: inline-block;
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.relative {
+  position: relative;
 }

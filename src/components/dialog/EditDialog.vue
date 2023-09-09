@@ -81,6 +81,13 @@
               off-color="#ff4949">
             </el-switch>
           </div>
+
+          <div class="form-group">
+            <label class="control-label"> {{ this.$t('isRecommend') }} ：</label>
+            <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.recommend" on-color="#13ce66"
+              off-color="#ff4949">
+            </el-switch>
+          </div>
         </el-form>
       </div>
 
@@ -115,6 +122,7 @@ export default {
         review: '',
         alive: true,
         active: false,
+        recommend: false
       },
       themeList: [],
       tagsList: TAG_CONF,

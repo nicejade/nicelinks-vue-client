@@ -100,9 +100,15 @@
   padding: 10px 15px;
   z-index: $zindex-mobile-search;
 }
+
 .mobile-search-serving {
   margin-top: 60px;
 }
+
 .el-form-item {
   margin-bottom: 0;
+}
+
+#app .el-dialog__headerbtn .el-dialog__close {
+  font-size: 24px;
 }

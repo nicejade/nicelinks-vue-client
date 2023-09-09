@@ -434,12 +434,14 @@ export default {
     .not-loggedin,
     .el-dropdown {
       display: block;
+
       .el-button {
         font-size: $font-small;
       }
     }
 
-    .not-loggedin, .user-account {
+    .not-loggedin,
+    .user-account {
       position: absolute;
       right: 0;
     }
@@ -470,6 +472,7 @@ export default {
   .el-dropdown-menu__item {
     display: flex !important;
     align-items: center !important;
+    justify-content: space-evenly;
     padding: 0 20px;
   }
 }

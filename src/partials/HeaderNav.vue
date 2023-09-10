@@ -38,8 +38,12 @@
               <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
             </el-dropdown-item>
             <el-dropdown-item command="" divided> </el-dropdown-item>
+            <el-dropdown-item command="OfficialRecommend">
+              <icon class="vector-icon" name="heart"></icon>{{ $t('officialRecommend') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="" divided> </el-dropdown-item>
             <el-dropdown-item command="Recommend">
-              <icon class="vector-icon" name="likes"></icon>优站推荐
+              <icon class="vector-icon" name="likes"></icon>{{ $t('RecommendGoodWebsite') }}
             </el-dropdown-item>
             <el-dropdown-item command="" divided> </el-dropdown-item>
             <el-dropdown-item command="ProductCemetery">
@@ -283,6 +287,11 @@ export default {
     onRecommendClick() {
       this.$gtagTracking('site-recommend', 'header')
       window.open(REPORT_PATH)
+    },
+
+    onOfficialRecommendClick() {
+      this.$gtagTracking('official-recommend', 'header')
+      this.$router.push('/recommend')
     },
 
     onExploreClick(item) {

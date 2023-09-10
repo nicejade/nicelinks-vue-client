@@ -73,6 +73,10 @@ export default {
     return $ajax.get(requestUrl('getRandomLinks'), data)
   },
 
+  getRecommendLinks(data) {
+    return $ajax.get(requestUrl('getRecommendLinks'), data)
+  },
+
   /* auth */
   checkIsExisted(data) {
     return $ajax.post(requestUrl('checkIsExisted'), data)

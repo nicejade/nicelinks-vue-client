@@ -1,23 +1,12 @@
 <template>
   <div class="side-nav">
-    <el-menu
-      :default-openeds="[]"
-      default-active="1"
-      :unique-opened="true"
-      @open="handleOpen"
-      @close="handleClose"
-      theme="light"
-    >
+    <el-menu :default-openeds="[]" default-active="1" :unique-opened="true" @open="handleOpen" @close="handleClose"
+      theme="light">
       <el-submenu index="1">
         <template slot="title">
           <i class="sidenav-icon el-icon-menu"></i>{{ $t('niceLinksStr') }}
         </template>
-        <el-menu-item
-          v-for="(item, index) in navList"
-          :key="item.value"
-          @click="handleClick(item)"
-          :index="item.name"
-        >
+        <el-menu-item v-for="(item, index) in navList" :key="item.value" @click="handleClick(item)" :index="item.name">
           {{ $t(item.name) }}
         </el-menu-item>
       </el-submenu>
@@ -30,28 +19,27 @@
       <el-menu-item index="4" @click="onTagsClick">
         <icon class="sidenav-icon" name="tag"></icon>{{ $t('tagsCollection') }}
       </el-menu-item>
-      <el-menu-item index="5" @click="onRecommendClick">
-        <icon class="sidenav-icon" name="likes"></icon>优站推荐
+      <el-menu-item index="5" @click="onOfficialRecommendClick">
+        <icon class="sidenav-icon" name="heart"></icon>{{ $t('officialRecommend') }}
       </el-menu-item>
-      <el-menu-item index="6" @click="onProductCemeteryClick">
+      <el-menu-item index="6" @click="onRecommendClick">
+        <icon class="sidenav-icon" name="likes"></icon>{{ $t('RecommendGoodWebsite') }}
+      </el-menu-item>
+      <el-menu-item index="7" @click="onProductCemeteryClick">
         <icon class="sidenav-icon" name="product-cemetery"></icon>{{ $t('productCemetery') }}
       </el-menu-item>
-      <el-menu-item index="7" @click="onJump2WebsiteClick">
+      <el-menu-item index="8" @click="onJump2WebsiteClick">
         <icon class="sidenav-icon" name="about-website"></icon>{{ $t('aboutWebsite') }}
       </el-menu-item>
-      <el-menu-item index="8" @click="onJump2AuthorClick">
+      <el-menu-item index="9" @click="onJump2AuthorClick">
         <icon class="sidenav-icon" name="about-author"></icon>{{ $t('aboutAuthor') }}
       </el-menu-item>
-      <el-submenu index="9" v-if="isAdminFlag">
+      <el-submenu index="10" v-if="isAdminFlag">
         <template slot="title">
           <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
         </template>
-        <el-menu-item
-          v-for="(item, index) in $util.getManageList()"
-          :key="index"
-          @click="handleManageClick(item)"
-          :index="item.path"
-        >
+        <el-menu-item v-for="(item, index) in $util.getManageList()" :key="index" @click="handleManageClick(item)"
+          :index="item.path">
           {{ $t(item.name) }}
         </el-menu-item>
       </el-submenu>
@@ -115,8 +103,13 @@ export default {
       this.$gtagTracking('cemetery', 'sidebar', 'm-cemetery')
     },
 
+    onOfficialRecommendClick() {
+      this.$gtagTracking('official-recommend', 'sidebar')
+      this.$router.push('/recommend')
+    },
+
     onRecommendClick() {
-      this.$gtagTracking('cemetery', 'sidebar', 'm-recommend')
+      this.$gtagTracking('recommend-website', 'sidebar', 'm-recommend')
       this.triggerSideNav()
       window.open(REPORT_PATH)
     },
@@ -153,9 +146,9 @@ export default {
       this.$triggerSidenav()
     },
 
-    handleOpen() {},
+    handleOpen() { },
 
-    handleClose() {},
+    handleClose() { },
   },
 }
 </script>
@@ -197,7 +190,7 @@ export default {
   .sidenav-icon {
     width: 16px;
     height: 16px;
-    margin-right: 10px;
+    margin: 1rem;
     color: #130c0e;
   }
 

@@ -65,6 +65,8 @@ export default {
   themeCollection: '倾城主题',
   tagsCollection: '倾城标签',
   productCemetery: '产品公墓',
+  officialRecommend: '官方推荐',
+  RecommendGoodWebsite: '优站推荐',
   management: '后台管理',
   aboutWebsite: '关于网站',
   aboutAuthor: '关于作者',

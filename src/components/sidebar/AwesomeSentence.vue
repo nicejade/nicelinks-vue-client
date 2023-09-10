@@ -91,37 +91,6 @@ export default {
       window.getSelection().removeAllRanges()
     },
 
-    /* ---------------------Click Event--------------------- */
-    onPreviousClick() {
-      if (!this.isCanLookBack) {
-        return this.$message({
-          type: 'info',
-          message: `错过，许是永恒，只可回首前一条`,
-        })
-      }
-      this.currentSentenceStr = this.lastSentenceStr
-      this.isCanLookBack = false
-    },
-
-    onRandomClick() {
-      this.isLoading = true
-      this.$apis
-        .getRandomSentence()
-        .then((result) => {
-          this.lastSentenceStr = this.currentSentenceStr
-          this.isCanLookBack = true
-          this.currentSentence = result || {}
-          this.currentSentenceStr = result.content
-          this.$adsConversionReport('from-random-sentence')
-        })
-        .catch((error) => {
-          this.$message.error(`${error}`)
-        })
-        .finally(() => {
-          this.isLoading = false
-        })
-    },
-
     updateSentence(index) {
       const params = {
         pageCount: index,
@@ -149,7 +118,41 @@ export default {
         })
     },
 
+    /* ---------------------Click Event--------------------- */
+    onPreviousClick() {
+      this.$gtagTracking('previous-sentence', 'aside')
+      if (!this.isCanLookBack) {
+        return this.$message({
+          type: 'info',
+          message: `错过，许是永恒，只可回首前一条`,
+        })
+      }
+      this.currentSentenceStr = this.lastSentenceStr
+      this.isCanLookBack = false
+    },
+
+    onRandomClick() {
+      this.$gtagTracking('random-sentence', 'aside')
+      this.isLoading = true
+      this.$apis
+        .getRandomSentence()
+        .then((result) => {
+          this.lastSentenceStr = this.currentSentenceStr
+          this.isCanLookBack = true
+          this.currentSentence = result || {}
+          this.currentSentenceStr = result.content
+          this.$adsConversionReport('from-random-sentence')
+        })
+        .catch((error) => {
+          this.$message.error(`${error}`)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
+
     onCopy2ClipboardClick() {
+      this.$gtagTracking('copy2clipboard-sentence', 'aside')
       const sentenceId = this.currentSentence._id || this.sentence._id
       const readLinkPath = `https://read.lovejade.cn/p/${sentenceId}`
       const tempStr = parse(this.currentSentenceStr, {}) + `── 倾城之链 · 箴言锦语 ${readLinkPath}`
@@ -204,6 +207,7 @@ export default {
 .btn-group {
   margin-top: 1rem;
   text-align: center;
+
   .common-btn {
     display: inline-block;
     position: relative;
@@ -238,22 +242,27 @@ export default {
   border-radius: 50%;
   border: 1px solid #efefef;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
   &:hover {
     animation: jelly 0.5s;
   }
 }
 
 @keyframes jelly {
+
   0%,
   100% {
     transform: scale(1, 1);
   }
+
   25% {
     transform: scale(0.9, 1.1);
   }
+
   50% {
     transform: scale(1.1, 0.9);
   }
+
   75% {
     transform: scale(0.95, 1.05);
   }

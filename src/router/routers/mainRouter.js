@@ -110,5 +110,12 @@ export default {
       },
       component: (resolve) => require(['views/FriendLink'], resolve),
     },
+    {
+      path: 'recommend',
+      meta: {
+        isNeedLogin: false,
+      },
+      component: (resolve) => require(['views/Recommend'], resolve),
+    },
   ],
 }

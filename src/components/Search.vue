@@ -1,18 +1,8 @@
 <template>
-  <el-autocomplete
-    id="search-nice"
-    popper-class="search-autocomplete"
-    placement="bottom-start"
-    :select-when-unmatched="isSelectWhenUnmatched"
-    :trigger-on-focus="isTriggerFocus"
-    :popper-append-to-body="isPopperToBody"
-    v-model="keyword"
-    :fetch-suggestions="handleFetchNiceLinks"
-    placeholder="搜您想要，探索美好"
-    @select="handleSearchSelect"
-    @focus="handleSearchFocus"
-    @blur="handleSearchBlur"
-  >
+  <el-autocomplete id="search-nice" popper-class="search-autocomplete" placement="bottom-start"
+    :select-when-unmatched="isSelectWhenUnmatched" :trigger-on-focus="isTriggerFocus"
+    :popper-append-to-body="isPopperToBody" v-model="keyword" :fetch-suggestions="handleFetchNiceLinks"
+    placeholder="搜您想要，探索美好" @select="handleSearchSelect" @focus="handleSearchFocus" @blur="handleSearchBlur">
     <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"> </i>
     <template slot-scope="{ item }">
       <p class="item-title" v-html="styleForTitle(item)"></p>
@@ -57,7 +47,7 @@ export default {
           .catch((error) => {
             this.$message.error(`${error}`)
           })
-      }, 500)
+      }, 600)
     },
 
     handleFetchNiceLinks(queryString, callback) {
@@ -85,7 +75,7 @@ export default {
       this.$router.push(`/post/${item._id}${paramStr}`)
     },
 
-    handleIconClick() {},
+    handleIconClick() { },
 
     handleSearchFocus() {
       if (this.$isMobile) {

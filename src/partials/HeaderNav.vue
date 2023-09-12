@@ -79,7 +79,7 @@
             <span>{{ userSign }} </span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown" class="user-account-dropdown-menu">
+          <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="MainPage">
               <icon class="icons" name="main-page"></icon>{{ $t('homepage') }}
             </el-dropdown-item>
@@ -379,13 +379,9 @@ export default {
 
         .gradient-text {
           -webkit-text-fill-color: transparent;
-          background: linear-gradient(90deg, #d3c357, #f1a76a, #cc6d2e);
+          background: linear-gradient(90deg, #f7acbc, #ffc20e, #ed1941);
           background-clip: text;
           -webkit-background-clip: text;
-
-          &:hover {
-            background-image: linear-gradient(0deg, #ff6768 38%, #a3cd39 81%);
-          }
         }
 
         .icon-share {
@@ -460,6 +456,7 @@ export default {
 .el-dropdown-menu {
   min-width: 15rem;
   margin: 0;
+  text-align: center;
 
   .icons {
     vertical-align: middle;
@@ -482,6 +479,7 @@ export default {
     display: flex !important;
     align-items: center !important;
     justify-content: space-evenly;
+    text-align: center;
     padding: 0 20px;
   }
 }

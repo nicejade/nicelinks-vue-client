@@ -3,7 +3,7 @@ import { DESCRIPTION } from './../config/constant'
 export default {
   signIn: '登录',
   signUp: '注册',
-  signOut: '登出',
+  signOut: '退出登录',
   forgetPwd: '忘记了密码？',
 
   yes: '是',

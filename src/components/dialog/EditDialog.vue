@@ -1,6 +1,7 @@
 <template>
   <div id="edit-dialog">
-    <el-dialog stripe :title="$t('shareNewLink')" :visible.sync="isShowDlgFlag" size="small" v-loading.body="isLoading">
+    <el-dialog stripe :title="$t('shareNewLink')" :visible.sync="isShowDlgFlag" v-if="isShowDlgFlag" size="small"
+      v-loading.body="isLoading">
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">

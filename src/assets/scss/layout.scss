@@ -183,9 +183,12 @@
     border-radius: 50%;
     opacity: 0;
     transform: rotate(-2deg) scale(2);
-    animation: seal 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+    animation: seal 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
     &::after {
-      content: '官方推荐';
+      content: '官方\A推荐';
+      white-space: pre;
+      line-height: 24px;
+      letter-spacing: 4px;
       font-weight: 900;
       font-size: 20px;
     }
@@ -213,8 +216,8 @@
     padding: 0.1em 0.5em;
     text-transform: uppercase;
     opacity: 0;
-    transform: rotate(-2deg) scale(5);
-    animation: seal 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+    transform: rotate(-2deg) scale(2);
+    animation: seal 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
     &::before {
       position: absolute;
       content: '';
@@ -234,5 +237,22 @@
   100% {
     opacity: 1;
     transform: rotate(-30deg) scale(1);
+  }
+}
+
+@media screen and (max-width: $mobile-screen) {
+  .recommend-seal {
+    top: -100px;
+    .seal {
+      width: 60px;
+      height: 60px;
+      outline: 4px solid $jade;
+      &::after {
+        line-height: 18px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
   }
 }

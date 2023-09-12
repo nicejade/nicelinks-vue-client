@@ -37,7 +37,8 @@
       <a class="item classify" @click.stop="onStopPropagationClick('classify')"
         :href="'/theme/' + item.theme.toLocaleLowerCase()">{{ fillThemeName(item.classify, item.theme) }}</a>
       <a class="tag" v-for="iitem in item.tags" :key="iitem._id" :href="getTagPath(iitem)"
-        @click.stop="onStopPropagationClick('tags')" target="_blank" rel="tag">{{ iitem }}</a>
+        @click.stop="onStopPropagationClick('tags')" target="_blank" rel="tag">#{{ iitem }}
+      </a>
     </div>
     <!-- list is abstract: 是否显示摘要内容  -->
     <div class="abstract mb-normal" style="-webkit-box-orient: vertical;" v-if="isAbstract">
@@ -243,7 +244,7 @@ export default {
 
     getAbstractContent(item) {
       const content = !!item.review ? parse(item.review).replace(/<[^>]*>/g, '') : item.desc
-      return interceptString(content)
+      return interceptString(content, 300)
     },
 
     isAdminFlag() {
@@ -570,10 +571,6 @@ export default {
         height: 2.5rem;
         margin-left: 0;
         margin-right: 0.5rem;
-      }
-
-      .icon-green {
-        color: $green;
       }
 
       .item-num {

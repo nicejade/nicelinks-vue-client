@@ -1,29 +1,16 @@
 <template>
   <div class="sentences-dialog">
-    <el-dialog
-      stripe
-      :title="$t('shareNewSentences')"
-      :visible.sync="isShowDlgFlag"
-      size="small"
-      v-loading.body="isLoading"
-    >
+    <el-dialog stripe :title="$t('shareNewSentences')" :visible.sync="isShowDlgFlag" v-if="isShowDlgFlag" size="small"
+      v-loading.body="isLoading">
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('type') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="type">
-                <el-select
-                  class="wrap-block"
-                  v-model="fillForm.type"
-                  :placeholder="this.$t('pleaseSelect') + this.$t('type')"
-                >
-                  <el-option
-                    v-for="item in sentencesTypeList"
-                    :key="item.value"
-                    :label="item.text"
-                    :value="item.value"
-                  >
+                <el-select class="wrap-block" v-model="fillForm.type"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('type')">
+                  <el-option v-for="item in sentencesTypeList" :key="item.value" :label="item.text" :value="item.value">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -33,23 +20,15 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('content') }} ：</label>
             <div class="col-sm-8">
-              <markdown
-                v-model="fillForm.content"
-                :placeholder="this.$t('pleaseSelect') + this.$t('content')"
-              />
+              <markdown v-model="fillForm.content" :placeholder="this.$t('pleaseSelect') + this.$t('content')" />
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} ：</label>
             <div class="col-sm-8">
-              <el-switch
-                :on-text="$t('yes')"
-                :off-text="$t('no')"
-                v-model="fillForm.active"
-                on-color="#13ce66"
-                off-color="#ff4949"
-              >
+              <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.active" on-color="#13ce66"
+                off-color="#ff4949">
               </el-switch>
             </div>
           </div>
@@ -171,6 +150,7 @@ export default {
 
 <style lang="scss">
 @import './../../assets/scss/variables.scss';
+
 .sentences-dialog {
   .form-group {
     .control-label {

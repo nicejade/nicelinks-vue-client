@@ -27,7 +27,7 @@ import PreviewMd from 'components/markdown/PreviewMd.vue'
 import DEFAULT_CONF from './../config/default'
 import { parse } from 'helper/marked'
 
-const pageDescStr = ` [倾城之链](https://nicelinks.site/) ：旨在云集全球**优秀网站**，探索互联网中更广阔的世界；年与时驰间，已经收录优质网站千余款；历经岁月洗礼，或与当初有颇大变化； [倾城之链 - 官方推荐](https://nicelinks.site/recommend) ，将其中持续更新，给用户带来价值的部分，汇聚在此，以示赞许。`
+const pageDescStr = ` [倾城之链](https://nicelinks.site/) ：旨在云集全球**优秀网站**，探索互联网中更广阔的世界；年与时驰间，已经收录优质网站千余款；历经岁月洗礼，或与当初有颇大变化； [倾城之链 - 官方推荐](https://nicelinks.site/recommend) ，将其中持续更新，给用户带来价值的部分，汇聚在此，以做推荐。`
 
 export default {
   name: 'Recommend',

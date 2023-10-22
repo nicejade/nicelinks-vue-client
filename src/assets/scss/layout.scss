@@ -164,23 +164,23 @@
 /* Recommend Seal */
 .recommend-seal {
   position: absolute;
-  right: 0;
+  right: 20px;
   top: -120px;
 
   .seal {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     transform: rotate(-60deg);
-    color: $jade;
+    color: $brand;
     display: grid;
     place-content: center;
     text-align: center;
     font-size: 12px;
-    border: 2px solid $jade;
-    outline: 6px solid $jade;
+    outline: 6px solid $brand;
     outline-offset: 5px;
-    border-radius: 50%;
+    border: 3px solid $brand;
+    border-radius: 6px;
     opacity: 0;
     transform: rotate(-2deg) scale(2);
     animation: seal 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
@@ -235,7 +235,7 @@
 
 @keyframes seal {
   100% {
-    opacity: 1;
+    opacity: 0.8;
     transform: rotate(-30deg) scale(1);
   }
 }
@@ -246,7 +246,8 @@
     .seal {
       width: 60px;
       height: 60px;
-      outline: 4px solid $jade;
+      outline: 4px solid $brand;
+      border: 2px solid $brand;
       &::after {
         line-height: 18px;
         letter-spacing: 2px;

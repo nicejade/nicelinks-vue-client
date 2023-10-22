@@ -25,12 +25,10 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('isAcive') }} ：</label>
-            <div class="col-sm-8">
-              <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.active" on-color="#13ce66"
-                off-color="#ff4949">
-              </el-switch>
-            </div>
+            <label class="control-label"> {{ this.$t('isAcive') }} ：</label>
+            <el-switch :on-text="$t('yes')" :off-text="$t('no')" v-model="fillForm.active" on-color="#13ce66"
+              off-color="#ff4949">
+            </el-switch>
           </div>
         </el-form>
       </div>

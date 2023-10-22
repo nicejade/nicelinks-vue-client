@@ -293,9 +293,26 @@ input:-ms-input-placeholder {
 }
 
 .heart-wrap {
-  display: inline-block;
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 2.5rem;
   height: 2.5rem;
+  &:hover {
+    .circle {
+      display: block;
+    }
+  }
+  .circle {
+    display: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    background-color: rgba($color: $brand, $alpha: 0.2);
+    border-radius: 50%;
+  }
 }
 
 .relative {

@@ -1,34 +1,14 @@
 <template functional>
   <div class="heart-wrap">
-    <svg
-      v-if="props.isDown"
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-heart"
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#ff2826"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+    <div class="circle"></div>
+    <svg v-if="props.isDown" class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+      height="24">
+      <path
+        d="M923.022 283.591a260.01 260.01 0 0 0-56.917-82.773 265.33 265.33 0 0 0-186.397-75.805A267.093 267.093 0 0 0 512 184.064a267.093 267.093 0 0 0-167.708-59.108c-35.5 0-69.888 6.827-102.4 20.31a263.85 263.85 0 0 0-83.997 55.495 258.446 258.446 0 0 0-77.91 184.718c0 33.28 6.827 67.982 20.31 103.282 11.293 29.497 27.506 60.103 48.213 91.022 32.797 48.868 77.881 99.869 133.888 151.609 92.815 85.675 184.719 144.868 188.587 147.285l23.723 15.19c10.496 6.713 23.978 6.713 34.503 0l23.694-15.19c3.897-2.503 95.687-61.61 188.587-147.313 56.035-51.712 101.12-102.685 133.916-151.61 20.68-30.89 36.978-61.496 48.185-90.993 13.511-35.271 20.31-69.973 20.31-103.31a254.578 254.578 0 0 0-20.907-101.888z"
+        fill="#ef4136" fill-opacity="1" />
     </svg>
-    <svg
-      v-else
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-heart"
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#9393aa"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
+    <svg v-else xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="22" height="22"
+      viewBox="0 0 24 24" stroke-width="1.5" stroke="#9393aa" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
     </svg>

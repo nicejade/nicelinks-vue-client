@@ -4,7 +4,7 @@ export const AUTO_DIALOG = `auto-dialog-${new Date().getFullYear()}`
 
 export const NICE_LINKS_NAME = '倾城之链'
 
-export const NICE_LINKS = 'https://nicelinks.site'
+export const NICE_LINKS = 'https://site.lovejade.cn'
 
 export const DESCRIPTION = `倾城之链，作为一个开放平台，旨在云集全球优秀网站，探索互联网中更广阔的世界；在这里，你可以轻松发现、学习、分享更多有用或有趣的事物。`
 

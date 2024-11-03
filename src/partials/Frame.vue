@@ -147,7 +147,7 @@ export default {
 
       const shareTitle = window.document.title
       const shareLink = window.document.location.href
-      const shareImgUrl = 'https://nicelinks.site/static/img/favicons/android-chrome-192x192.png'
+      const shareImgUrl = 'https://site.lovejade.cn/static/img/favicons/android-chrome-192x192.png'
       window.wx.onMenuShareTimeline({
         title: shareTitle,
         link: shareLink,

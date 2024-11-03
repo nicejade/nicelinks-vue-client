@@ -121,7 +121,7 @@ export default {
 
     onJump2WebsiteClick() {
       this.triggerSideNav()
-      const websitePath = 'https://nicelinks.site/about?utm_source=nicelinks.site'
+      const websitePath = 'https://site.lovejade.cn/about?utm_source=nicelinks.site'
       window.open(websitePath)
     },
 

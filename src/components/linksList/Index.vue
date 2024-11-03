@@ -7,11 +7,7 @@
             <h4>{{ $t('warmReminder') }}</h4>
           </div>
           <div class="no-result-tip">
-            <img
-              class="no-result-img"
-              src="https://image.nicelinks.site/no-result.svg"
-              :alt="$t('description')"
-            />
+            <img class="no-result-img" src="https://image.lovejade.cn/no-result.svg" :alt="$t('description')" />
             <div v-html="noResultTip"></div>
           </div>
         </el-card>
@@ -19,13 +15,7 @@
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
-      <a
-        v-if="isAbstract"
-        :href="getAssembleRoute(item)"
-        @click="onListClick"
-        target="_blank"
-        rel="bookmark"
-      >
+      <a v-if="isAbstract" :href="getAssembleRoute(item)" @click="onListClick" target="_blank" rel="bookmark">
         <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
       </a>
       <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
@@ -97,6 +87,7 @@ export default {
 .main {
   .links-list {
     border-top: 1px solid $item-border-color;
+
     .single-moudle {
       aspect-ratio: 2.8 / 1;
 

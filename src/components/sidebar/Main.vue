@@ -15,7 +15,7 @@
       <h2 class="aside-widget-title">{{ $t('miniprogramCode') }}</h2>
       <div class="text-center">
         <img class="miniprogram" alt="倾城之链.小程序"
-          src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1" />
+          src="https://image.lovejade.cn/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1" />
       </div>
     </aside>
     <aside class="sidebar-aside" style="margin-bottom: 0;">

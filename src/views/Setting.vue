@@ -17,11 +17,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{ $t('setUsername') }}<em>*</em>:</label>
                     <div class="col-sm-9">
-                      <el-input
-                        placeholder=""
-                        :disabled="true"
-                        v-model="fillForm.username"
-                      ></el-input>
+                      <el-input placeholder="" :disabled="true" v-model="fillForm.username"></el-input>
                     </div>
                   </div>
                   <div class="form-group">
@@ -52,13 +48,9 @@
               <div class="form-group operation-area">
                 <el-button :loading="isLoading" type="primary" @click="onSaveClick">{{
                   $t('saveSeting')
-                }}</el-button>
+                  }}</el-button>
               </div>
-              <el-alert
-                v-if="tipMessageObj.message"
-                :title="tipMessageObj.message"
-                :type="tipMessageObj.type"
-              >
+              <el-alert v-if="tipMessageObj.message" :title="tipMessageObj.message" :type="tipMessageObj.type">
               </el-alert>
 
               <hr />
@@ -78,19 +70,9 @@
         </div>
       </div>
     </div>
-    <upload-avatar
-      field="image"
-      @crop-success="onCropSuccess"
-      @crop-upload-success="onCropUploadSuccess"
-      @crop-upload-fail="onCropUploadFail"
-      v-model="isShowUploadAvatar"
-      :width="100"
-      :height="100"
-      url="/api/uploadAvatar"
-      :params="params"
-      :headers="headers"
-      img-format="png"
-    >
+    <upload-avatar field="image" @crop-success="onCropSuccess" @crop-upload-success="onCropUploadSuccess"
+      @crop-upload-fail="onCropUploadFail" v-model="isShowUploadAvatar" :width="100" :height="100"
+      url="/api/uploadAvatar" :params="params" :headers="headers" img-format="png">
     </upload-avatar>
   </div>
 </template>
@@ -142,7 +124,7 @@ export default {
         username: '',
         wechat: '',
       },
-      imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg',
+      imgDataUrl: 'https://image.lovejade.cn/default-avatar.jpeg',
     }
   },
 
@@ -277,6 +259,7 @@ export default {
 
 .setting {
   .form-group {
+
     .el-input,
     .el-textarea {
       max-width: 768px;

@@ -95,7 +95,7 @@ export default {
       let link = document.querySelector("link[rel='canonical']")
       link = !!link ? link : document.createElement('link')
       link.setAttribute('rel', 'canonical')
-      link.setAttribute('href', `https://nicelinks.site/post/${details._id}`)
+      link.setAttribute('href', `https://site.lovejade.cn/post/${details._id}`)
       document.head.appendChild(link)
       link = null
     },

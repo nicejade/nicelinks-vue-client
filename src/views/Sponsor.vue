@@ -18,19 +18,14 @@
                   <h3 class="pay-title">
                     <strong>微信扫码赞助</strong>
                   </h3>
-                  <img
-                    src="https://image.nicelinks.site/赞赏码.jpeg?imageView2/1/w/600/h/600/interlace/1/ignore-error/1"
-                    :alt="$t('niceLinksStr')"
-                  />
+                  <img src="https://image.lovejade.cn/赞赏码.jpeg?imageView2/1/w/600/h/600/interlace/1/ignore-error/1"
+                    :alt="$t('niceLinksStr')" />
                 </div>
                 <div class="zhifubao-pay">
                   <h3 class="pay-title">
                     <strong>支付宝扫码赞助</strong>
                   </h3>
-                  <img
-                    src="https://nicelinks.site/static/img/reward_zhifubao.jpg"
-                    :alt="$t('niceLinksStr')"
-                  />
+                  <img src="https://site.lovejade.cn/static/img/reward_zhifubao.jpg" :alt="$t('niceLinksStr')" />
                 </div>
               </div>
             </el-card>
@@ -75,6 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 @import './../assets/scss/variables.scss';
+
 .sponsor {
   .donate {
     .pay-title {

@@ -3,20 +3,14 @@
     <div class="tooltip">
       <div class="pannel">
         <div class="item">
-          <img
-            class="qrcode"
-            src="https://image.nicelinks.site/qrcode_jqx.jpg"
-            alt="晚晴幽草轩-公众号"
-          />
+          <img class="qrcode" src="https://image.lovejade.cn/qrcode_jqx.jpg" alt="晚晴幽草轩-公众号" />
           <span class="font-medium text">晚晴幽草轩</span>
           <span class="text">微信扫码关注</span>
         </div>
         <div class="item">
-          <img
-            class="qrcode"
-            src="https://image.nicelinks.site/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-            alt="倾城之链-小程序"
-          />
+          <img class="qrcode"
+            src="https://image.lovejade.cn/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
+            alt="倾城之链-小程序" />
           <span class="font-medium text">倾城之链</span>
           <span class="text">微信扫码体验</span>
         </div>
@@ -25,21 +19,9 @@
         <icon class="qrcode" name="qrcode"></icon>
       </div>
     </div>
-    <a
-      target="_blank"
-      class="outside-link"
-      @click="onRecommendClick"
-      rel="noopener"
-      :href="reportPath"
-      >投稿
+    <a target="_blank" class="outside-link" @click="onRecommendClick" rel="noopener" :href="reportPath">投稿
     </a>
-    <a
-      target="_blank"
-      class="outside-link"
-      @click="onFeedbackClick"
-      rel="noopener"
-      :href="reportPath"
-      >反馈
+    <a target="_blank" class="outside-link" @click="onFeedbackClick" rel="noopener" :href="reportPath">反馈
     </a>
   </div>
 </template>
@@ -180,6 +162,7 @@ $factor: 1rem;
 }
 
 @keyframes jelly {
+
   0%,
   100% {
     transform: scale(1, 1);

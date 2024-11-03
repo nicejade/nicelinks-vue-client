@@ -14,11 +14,7 @@
               <div class="advertise">
                 <preview-md :value="introduce"></preview-md>
                 <br />
-                <img
-                  class="contact-us"
-                  src="https://image.nicelinks.site/nice-small-store.jpeg"
-                  alt="倾城之链 - 小商店"
-                />
+                <img class="contact-us" src="https://image.lovejade.cn/nice-small-store.jpeg" alt="倾城之链 - 小商店" />
               </div>
             </el-card>
             <Waline />
@@ -37,7 +33,7 @@ import { DESCRIPTION } from './../config/constant'
 
 const introduce = ` ${DESCRIPTION}自 2017 年建设以来，完全免费使用；并始终坚持：**收录有价值内容**，打造人性化体验。除 Web 应用，另有\`小程序\`、\`快应用\`等相关产品矩阵。目前，在产品详情页，开辟两个区域，来支持“广告投放”，如下图所示（广告 A 区、广告 B 区）：
 
-![倾城之链 - 商业合作](https://image.nicelinks.site/nicelinks.site-screenshots.png)
+![倾城之链 - 商业合作](https://image.lovejade.cn/nicelinks.site-screenshots.png)
 
 如果您有意向在此投入广告，可以扫如下「小程序码」购买服务。
 `

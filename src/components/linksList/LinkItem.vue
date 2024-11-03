@@ -54,7 +54,8 @@
       <div class="link-desc" v-html="this.obtainLinkDesc(item)"></div>
       <div class="link-screenshot">
         <img data-zoomable class="screenshot" :src="linkScreenshot"
-          onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';" :alt="item.title + ' 倾城之链'" />
+          onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks.site.png';"
+          :alt="item.title + ' 倾城之链'" />
       </div>
       <div v-if="item.review" class="link-review">
         <preview-md :value="getReviewContent(item)"></preview-md>
@@ -139,7 +140,7 @@ export default {
       isShowDlgFlag: false,
       isRequesting: false,
       currentRowData: {},
-      linkScreenshot: 'https://oss.nicelinks.site/nicelinks.site.png',
+      linkScreenshot: 'https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks.site.png',
       mUserInfo: {
         profile: {},
       },
@@ -165,7 +166,7 @@ export default {
     },
     userAvatar() {
       if (this.mUserInfo && !this.isAbstract) {
-        const defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
+        const defaultAvatar = 'https://image.lovejade.cn/default-avatar.jpeg'
         const userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
@@ -238,7 +239,7 @@ export default {
       return (
         this.reviewPrefix +
         item.review +
-        `── 出自[倾城之链 | ${item.title}](https://nicelinks.site/post/${item._id})。`
+        `── 出自[倾城之链 | ${item.title}](https://site.lovejade.cn/post/${item._id})。`
       )
     },
 
@@ -255,7 +256,7 @@ export default {
 
     updatelinkScreenshot() {
       const hostname = getHostnameByUrl(this.item.urlPath)
-      this.linkScreenshot = `https://oss.nicelinks.site/${hostname}.png?x-oss-process=style/png2jpg`
+      this.linkScreenshot = `https://nicelinks.oss-cn-shenzhen.aliyuncs.com/${hostname}.png?x-oss-process=style/png2jpg`
     },
 
     dispatchAction(row, action) {

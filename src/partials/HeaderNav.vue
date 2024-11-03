@@ -154,13 +154,13 @@ export default {
     },
     userAvatar() {
       if (this.userInfo) {
-        let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
+        let defaultAvatar = 'https://image.lovejade.cn/default-avatar.jpeg'
         let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
     },
     getAboutWebsiteLink() {
-      return `https://nicelinks.site/about?utm_source=nicelinks.site`
+      return `https://site.lovejade.cn/about?utm_source=nicelinks.site`
     },
   },
 

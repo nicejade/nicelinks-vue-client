@@ -102,7 +102,7 @@ export const loadScript = (url, isAsyncFlag) => {
 }
 
 export const openAuthorSite = (p) => {
-  window.open(`https://nicelinks.site/member/admin/?position=${p}`)
+  window.open(`https://site.lovejade.cn/member/admin/?position=${p}`)
 }
 
 export const updateAfterFilterEmptyValue = (obj) => {

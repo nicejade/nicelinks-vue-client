@@ -2,22 +2,13 @@
   <div class="similar-recommend" v-if="linksArr.length > 0">
     <h2 class="page-second-title">猜您可能喜欢</h2>
     <div class="list-item" v-for="item in linksArr" :key="item._id">
-      <router-link
-        @click.native="onSimilarClick"
-        class="recommend-link"
-        :to="getAssembleRoute(item)"
-      >
+      <router-link @click.native="onSimilarClick" class="recommend-link" :to="getAssembleRoute(item)">
         <div class="screenshot">
           <div class="image-placeholder" v-show="isShowPlaceholder">
             <strong>图片加载中...</strong>
           </div>
-          <img
-            v-show="!isShowPlaceholder"
-            class="image"
-            :alt="getImgAlt(item)"
-            :src="getScreenshotPath(item)"
-            onerror="javascript:this.src='https://oss.nicelinks.site/nicelinks.site.png';"
-          />
+          <img v-show="!isShowPlaceholder" class="image" :alt="getImgAlt(item)" :src="getScreenshotPath(item)"
+            onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks.site.png';" />
         </div>
         <div class="meta">
           <h3 class="title">{{ getAssembleTitle(item) }}</h3>
@@ -34,15 +25,15 @@ import { NICE_LINKS, NICE_LINKS_NAME, DESCRIPTION } from './../config/constant'
 import { parse } from 'helper/marked'
 
 const DEFAULT_LINKS_ARR = []
-;[0, 1, 2, 3, 4].map(() => {
-  DEFAULT_LINKS_ARR.push({
-    urlPath: NICE_LINKS,
-    item: NICE_LINKS_NAME,
-    desc: DESCRIPTION,
-    _id: '5aa2579e56ee0d60651820c5',
-    review: DESCRIPTION,
+  ;[0, 1, 2, 3, 4].map(() => {
+    DEFAULT_LINKS_ARR.push({
+      urlPath: NICE_LINKS,
+      item: NICE_LINKS_NAME,
+      desc: DESCRIPTION,
+      _id: '5aa2579e56ee0d60651820c5',
+      review: DESCRIPTION,
+    })
   })
-})
 
 export default {
   name: 'SimilarRecommend',
@@ -101,7 +92,7 @@ export default {
         .catch((error) => {
           console.error(`Something Error @fetchSimilarTagLinks：`, error)
         })
-        .finally(() => {})
+        .finally(() => { })
     },
 
     getImgAlt(item) {
@@ -123,7 +114,7 @@ export default {
 
     getScreenshotPath(item) {
       const urlPath = getHostnameByUrl(item.urlPath)
-      return `https://oss.nicelinks.site/${urlPath}.png?x-oss-process=style/png2jpg&imageView2/1/w/320/h/180/interlace/1/ignore-error/1`
+      return `https://nicelinks.oss-cn-shenzhen.aliyuncs.com/${urlPath}.png?x-oss-process=style/png2jpg&imageView2/1/w/320/h/180/interlace/1/ignore-error/1`
     },
 
     onSimilarClick() {

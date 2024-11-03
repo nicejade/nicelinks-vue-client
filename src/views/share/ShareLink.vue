@@ -10,11 +10,8 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="urlPath">
-                      <el-input
-                        v-model="fillForm.urlPath"
-                        @blur="getLinkPageData"
-                        :placeholder="$t('pleaseEnter') + $t('linkAddressStr')"
-                      >
+                      <el-input v-model="fillForm.urlPath" @blur="getLinkPageData"
+                        :placeholder="$t('pleaseEnter') + $t('linkAddressStr')">
                       </el-input>
                     </el-form-item>
                   </div>
@@ -23,10 +20,7 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="title">
-                      <el-input
-                        v-model="fillForm.title"
-                        :placeholder="$t('pleaseEnter') + $t('linkNameStr')"
-                      >
+                      <el-input v-model="fillForm.title" :placeholder="$t('pleaseEnter') + $t('linkNameStr')">
                       </el-input>
                     </el-form-item>
                   </div>
@@ -35,17 +29,10 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="classify">
-                      <el-select
-                        class="wrap-block"
-                        v-model="fillForm.classify"
-                        :placeholder="$t('pleaseSelect') + $t('linkClassifyStr')"
-                      >
-                        <el-option
-                          v-for="item in classifyList"
-                          :key="item.value"
-                          :label="$t(item.name)"
-                          :value="item.value"
-                        >
+                      <el-select class="wrap-block" v-model="fillForm.classify"
+                        :placeholder="$t('pleaseSelect') + $t('linkClassifyStr')">
+                        <el-option v-for="item in classifyList" :key="item.value" :label="$t(item.name)"
+                          :value="item.value">
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -55,17 +42,9 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="theme">
-                      <el-select
-                        class="wrap-block"
-                        v-model="fillForm.theme"
-                        :placeholder="$t('pleaseSelect') + $t('linkThemeStr')"
-                      >
-                        <el-option
-                          v-for="item in themeList"
-                          :key="item.key"
-                          :label="item.key"
-                          :value="item.value"
-                        >
+                      <el-select class="wrap-block" v-model="fillForm.theme"
+                        :placeholder="$t('pleaseSelect') + $t('linkThemeStr')">
+                        <el-option v-for="item in themeList" :key="item.key" :label="item.key" :value="item.value">
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -75,21 +54,9 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="tags">
-                      <el-select
-                        class="wrap-block"
-                        v-model="fillForm.tags"
-                        allow-create
-                        multiple
-                        filterable
-                        :multiple-limit="3"
-                        :placeholder="$t('pleaseSelect') + $t('linkTagsStr')"
-                      >
-                        <el-option
-                          v-for="(item, index) in tagsList"
-                          :key="index"
-                          :label="item"
-                          :value="item"
-                        >
+                      <el-select class="wrap-block" v-model="fillForm.tags" allow-create multiple filterable
+                        :multiple-limit="3" :placeholder="$t('pleaseSelect') + $t('linkTagsStr')">
+                        <el-option v-for="(item, index) in tagsList" :key="index" :label="item" :value="item">
                         </el-option>
                       </el-select>
                     </el-form-item>
@@ -99,13 +66,8 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="keywords">
-                      <el-input
-                        type="textarea"
-                        :maxlength="360"
-                        :autosize="{ minRows: 3, maxRows: 10 }"
-                        :placeholder="$t('linkKeywordStr')"
-                        v-model="fillForm.keywords"
-                      >
+                      <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10 }"
+                        :placeholder="$t('linkKeywordStr')" v-model="fillForm.keywords">
                       </el-input>
                     </el-form-item>
                   </div>
@@ -114,13 +76,8 @@
                 <div class="form-group">
                   <div class="col-sm-12">
                     <el-form-item prop="desc">
-                      <el-input
-                        type="textarea"
-                        :maxlength="360"
-                        :autosize="{ minRows: 5, maxRows: 10 }"
-                        :placeholder="$t('linkDescStr')"
-                        v-model="fillForm.desc"
-                      >
+                      <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 5, maxRows: 10 }"
+                        :placeholder="$t('linkDescStr')" v-model="fillForm.desc">
                       </el-input>
                     </el-form-item>
                   </div>
@@ -135,9 +92,8 @@
                 </div>
               </el-form>
               <p class="tip">
-                <strong>备注</strong
-                >：倾城仅收录网站（拥有域名），而非某网站麾下具体链接，详情可参见
-                <a href="https://nicelinks.site/about" target="_blank">关于倾城 </a>。
+                <strong>备注</strong>：倾城仅收录网站（拥有域名），而非某网站麾下具体链接，详情可参见
+                <a href="https://site.lovejade.cn/about" target="_blank">关于倾城 </a>。
               </p>
             </section>
             <div class="operate-area">
@@ -318,6 +274,7 @@ export default {
   .operate-area {
     padding-bottom: 40px;
   }
+
   .tip {
     margin: 2rem auto;
     text-align: left;

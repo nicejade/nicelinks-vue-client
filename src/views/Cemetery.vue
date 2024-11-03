@@ -12,11 +12,7 @@
                 <preview-md v-once :value="cemeteryDescStr"></preview-md>
               </mark>
             </div>
-            <links-list
-              :is-abstract="true"
-              :pdata="pastLinksArray"
-              :is-loading="isLoading"
-            ></links-list>
+            <links-list :is-abstract="true" :pdata="pastLinksArray" :is-loading="isLoading"></links-list>
           </div>
           <aside-list></aside-list>
         </div>
@@ -31,7 +27,7 @@ import { parse } from 'helper/marked'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 import { greyOutWebsite } from './../helper/document'
 
-const cemeteryDescStr = `天地不仁，以万物为刍狗。年与时驰间，[倾城之链](https://nicelinks.site/)所收录的优质网站，也难逃时间洗礼；其中诸多内容，因为各种缘由而消隐逝去；[倾城之链 - 产品公墓](https://nicelinks.site/cemetery)，就是将不再能访问的、可能永远被人遗忘的产品列出来，留个纪念，缅怀过往。`
+const cemeteryDescStr = `天地不仁，以万物为刍狗。年与时驰间，[倾城之链](https://site.lovejade.cn/)所收录的优质网站，也难逃时间洗礼；其中诸多内容，因为各种缘由而消隐逝去；[倾城之链 - 产品公墓](https://site.lovejade.cn/cemetery)，就是将不再能访问的、可能永远被人遗忘的产品列出来，留个纪念，缅怀过往。`
 
 export default {
   name: 'Cemetery',

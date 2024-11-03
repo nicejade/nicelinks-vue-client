@@ -12,7 +12,7 @@ export default {
 
   computed: {
     niceImageSrc() {
-      const primaryPath = `//image.nicelinks.site/jpg/nice-links-@#.jpg`
+      const primaryPath = `//image.lovejade.cn/jpg/nice-links-@#.jpg`
       const randomNum = getRandomInt(0, 149)
       const thePathKey = specifiedPadding(randomNum, 3, '0')
       const smallScreenParam = '?imageView2/1/w/640/h/360/interlace/1/ignore-error/1'

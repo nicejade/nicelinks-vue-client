@@ -155,8 +155,9 @@ export default {
     userAvatar() {
       if (this.userInfo) {
         let defaultAvatar = 'https://image.lovejade.cn/default-avatar.jpeg'
-        let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
-        return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
+        return defaultAvatar
+        // let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
+        // return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
     },
     getAboutWebsiteLink() {

@@ -15,9 +15,9 @@
       </div>
     </el-card>
     <el-card v-else :class="cardClassName" shadow="hover" :key="item._id" v-for="item in pdata">
-      <a v-if="isAbstract" :href="getAssembleRoute(item)" @click="onListClick" target="_blank" rel="bookmark">
+      <router-link v-if="isAbstract" :to="getAssembleRoute(item)" @click.native="onListClick" rel="bookmark">
         <LinkItem :pitem="item" :is-abstract="isAbstract"> </LinkItem>
-      </a>
+      </router-link>
       <LinkItem v-else :pitem="item" :is-abstract="isAbstract"></LinkItem>
       <slot name="link-share"></slot>
     </el-card>

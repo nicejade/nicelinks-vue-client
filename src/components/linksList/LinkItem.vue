@@ -167,8 +167,9 @@ export default {
     userAvatar() {
       if (this.mUserInfo && !this.isAbstract) {
         const defaultAvatar = 'https://image.lovejade.cn/default-avatar.jpeg'
-        const userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
-        return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
+        return defaultAvatar
+        // const userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
+        // return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
     },
   },

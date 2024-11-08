@@ -237,9 +237,9 @@ export default {
     },
 
     getReviewContent(item) {
+      const review = item.review.replace('https://nicelinks.site/', 'https://site.lovejade.cn/')
       return (
-        this.reviewPrefix +
-        item.review +
+        this.reviewPrefix + review +
         `── 出自[倾城之链 | ${item.title}](https://site.lovejade.cn/post/${item._id})。`
       )
     },

@@ -25,14 +25,14 @@
         </div>
         <div class="list-item">
           <p class="title">推荐</p>
+          <a class="nice-link" target="_blank" @click="onReortEvent('chatgpt')"
+            :href="assembleExternalLink('https://www.niceshare.site/')">逍遥自在轩</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('jeffjade-com')"
             :href="assembleExternalLink('https://www.jeffjade.com/')">晚晴幽草轩</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('quickapp-lovejade')"
             :href="assembleExternalLink('https://quickapp.lovejade.cn/')">静轩之别苑</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('forum-lovejade')"
             :href="assembleExternalLink('https://forum.lovejade.cn/')">悠然宜想亭</a>
-          <a class="nice-link" target="_blank" @click="onReortEvent('chatgpt')"
-            :href="assembleExternalLink('https://chatgpt.nicelinks.site/')">素问智聊斋</a>
         </div>
       </div>
       <div class="icp">
@@ -42,7 +42,7 @@
         出品
         <br class="show-on-small-screen" />
         <a class="beian-link" target="_blank" @click="onReortEvent('beian')"
-          :href="assembleExternalLink('https://beian.miit.gov.cn/')" rel="external noopener">粤ICP备17099767号</a>
+          :href="assembleExternalLink('https://beian.miit.gov.cn/')" rel="external noopener">粤ICP备17099767号-2</a>
         <img class="zero" src="/static/img/zero.gif" alt="深圳市市场监督管理局企业主体身份公示" />
       </div>
     </div>

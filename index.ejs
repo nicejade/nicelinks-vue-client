@@ -61,25 +61,370 @@
     <link rel="mask-icon" href="/static/img/favicons/safari-pinned-tab.svg" color="#27a0cf">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+      @media (min-width: 550px) {
+        .twelve.columns {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+
+      .flower-container {
+        position: relative;
+        padding-bottom: 8em;
+        margin: 0em 0 -6em;
+        overflow: hidden;
+      }
+
+      .flower-container .unit-wrapper {
+        position: absolute;
+        width: 66%;
+        top: 0;
+        bottom: 25%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0;
+        animation-delay: 2.75s;
+        animation: show-text 1s 2.5s forwards cubic-bezier(0.1, 0.95, 0.59, 1.22);
+      }
+
+      .flower-container .unit-wrapper .headline {
+        position: absolute;
+        top: calc(50% - 2em);
+        left: -10em;
+        right: -10em;
+        text-align: center;
+        font-weight: 400;
+        text-shadow: 0 0 2em #fff;
+      }
+
+      .flower-container .unit-wrapper .hero-description {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        font-size: 18px;
+        line-height: 18px;
+        text-align: center;
+        text-shadow: 0 0 2em #fff;
+      }
+
+      .flower-container .unit-wrapper .hero-description .desc-text {
+        display: block;
+        font-weight: bold;
+        line-height: 2.6rem;
+      }
+
+      .flower-container .unit-wrapper .hero-description .function {
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(50deg, #17223b, #ff6768);
+        -webkit-background-clip: text;
+      }
+
+      .flower-container .unit-wrapper .hero-description .objective {
+        margin-top: 1.8rem;
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(220deg, #17223b, #ff6768);
+        -webkit-background-clip: text;
+      }
+
+      .flower-container .unit-wrapper .hero-description .objective .mark {
+        background-color: transparent;
+      }
+
+      .flower-container .unit-wrapper .hero-description .explore-all-link {
+        display: inline-block;
+        border: 2px solid #da552f;
+        padding: 2rem 8rem;
+        margin-top: 3.6rem;
+        color: #da552f;
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+        border-radius: 4rem;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      .flower-container .unit-wrapper .hero-description .explore-all-link:hover {
+        color: #fff;
+        background-color: #da552f;
+      }
+
+      .flower-container .flower {
+        position: relative;
+        display: block;
+        height: 14em;
+        width: 14em;
+        font-size: 22px;
+        margin: 5em auto 4.25em;
+        transition: all 0.2s ease-out;
+      }
+
+      body[theme='dark'] .flower-container {
+        filter: invert(1) hue-rotate(180deg);
+      }
+
+      .flower-container .part {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+
+      /* Large Petals */
+      .flower-container .part:nth-child(1),
+      .flower-container .part:nth-child(2),
+      .flower-container .part:nth-child(3),
+      .flower-container .part:nth-child(4) {
+        height: 10em;
+        width: 10em;
+        margin: -10em 0 0;
+        border-radius: 100% 0;
+        background-color: rgba(199, 212, 227, 0.5) !important;
+        opacity: 1;
+        transform-origin: 0 100% 0;
+      }
+
+      .flower-container .part:nth-child(1) {
+        transform: rotate(0deg);
+        box-shadow: 0 2.75em 4.5em rgba(0, 0, 0, 0.2);
+      }
+
+      .flower-container .part:nth-child(2) {
+        transform: rotate(90deg);
+        box-shadow: 2.75em 0 4.5em rgba(0, 0, 0, 0.2);
+      }
+
+      .flower-container .part:nth-child(3) {
+        transform: rotate(180deg);
+        box-shadow: 0 -2.75em 4.5em rgba(0, 0, 0, 0.2);
+      }
+
+      .flower-container .part:nth-child(4) {
+        transform: rotate(270deg);
+        box-shadow: -2.75em 0 4.5em rgba(0, 0, 0, 0.2);
+      }
+
+      /* Small Petals */
+      .flower-container .part:nth-child(n+5) {
+        background-color: rgba(121, 103, 158, 0.5) !important;
+        height: 6em;
+        width: 6em;
+        opacity: 0.7;
+        border-radius: 100% 0;
+        margin-top: -6em;
+        margin-left: 0em;
+        transform-origin: 0 100% 0;
+      }
+
+      .flower-container .part:nth-child(5) {
+        transform: rotate(0deg);
+      }
+
+      .flower-container .part:nth-child(6) {
+        transform: rotate(45deg);
+      }
+
+      .flower-container .part:nth-child(7) {
+        transform: rotate(90deg);
+      }
+
+      .flower-container .part:nth-child(8) {
+        transform: rotate(135deg);
+      }
+
+      .flower-container .part:nth-child(9) {
+        transform: rotate(180deg);
+      }
+
+      .flower-container .part:nth-child(10) {
+        transform: rotate(225deg);
+      }
+
+      .flower-container .part:nth-child(11) {
+        transform: rotate(270deg);
+      }
+
+      .flower-container .part:nth-child(12) {
+        transform: rotate(315deg);
+      }
+
+      /* Animations */
+      .lotus-animations .flower-container .part {
+        opacity: 0;
+        animation: linear forwards 2s;
+      }
+
+      .lotus-animations .part:nth-child(1) {
+        animation: show-large-leaf 2s 0.5s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(2) {
+        animation: show-large-leaf 2s 1.0s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(3) {
+        animation: show-large-leaf 2s 1.5s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(4) {
+        animation: show-large-leaf 2s 2.0s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(5) {
+        animation: show-small-leaf 2s 0.25s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(6) {
+        animation: show-small-leaf 2s 0.50s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(7) {
+        animation: show-small-leaf 2s 0.75s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(8) {
+        animation: show-small-leaf 2s 1.00s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(9) {
+        animation: show-small-leaf 2s 1.25s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(10) {
+        animation: show-small-leaf 2s 1.50s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(11) {
+        animation: show-small-leaf 2s 1.75s forwards linear;
+      }
+
+      .lotus-animations .part:nth-child(12) {
+        animation: show-small-leaf 2s 2.00s forwards linear;
+      }
+
+      @keyframes show-large-leaf {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes show-small-leaf {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes show-text {
+        0% {
+          opacity: 0;
+          transform: translateY(1em);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .flower-container .flower {
+          font-size: 1.8rem !important;
+        }
+
+        .flower-container .unit-wrapper {
+          width: 100%;
+        }
+
+        .flower-container .unit-wrapper .hero-description {
+          font-size: 2.2rem;
+          padding: 0px 20px;
+          line-height: 2.6rem;
+        }
+
+        .flower-container .unit-wrapper .hero-description .explore-all-link {
+          padding: 1rem 4rem;
+          margin: 1.8rem auto;
+          line-height: 2.6rem;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .flower-container .unit-wrapper .hero-description {
+          font-size: 2rem;
+          padding: 0px 10px;
+        }
+      }
+
+      @media (max-width: 414px) {
+        .flower-container .flower {
+          font-size: 1.8rem !important;
+        }
+
+        .flower-container .unit-wrapper .hero-description {
+          font-size: 1.8rem;
+          padding: 0px 10px;
+        }
+      }
+
+      @media (max-width: 375px) {
+        .flower-container .flower {
+          font-size: 1.6rem !important;
+        }
+      }
+
+      /* Animation Classes */
+      .fade-in {
+        animation-name: fade-in;
+      }
+
+      .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        visibility: visible;
+        animation-name: fade-in;
+      }
+
+      .animated.infinite {
+        animation-iteration-count: infinite;
+      }
+
+      .animated.hinge {
+        animation-duration: 6s;
+      }
+    </style>
+
     <% for (var chunk of webpack.chunks) { for (var file of chunk.files) { if (file.match(/\.(css)$/)) { %>
       <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>"
         as="<%= file.match(/\.css$/)?'style':'script' %>">
       <% }}} %>
         <% } %>
-
-          <script type="text/javascript">
-            (function (c, l, a, r, i, t, y) {
-              c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) }
-              t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i
-              y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y)
-            })(window, document, "clarity", "script", "ksgtwkg7t0");
-          </script>
 </head>
 
 <body>
   <div id="app"></div>
   <!-- built files will be auto injected -->
-  <script src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v=20230311"></script>
+  <script src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js?v=20250227"></script>
   <!--[if lt IE 9]>
       <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
     <![endif]-->

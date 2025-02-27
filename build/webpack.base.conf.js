@@ -91,12 +91,6 @@ module.exports = {
         include: [resolve('src')],
         loader: 'happypack/loader?id=happy-babel-js',
       },
-      // inject loader for @waline/dist
-      {
-        test: /\.js[x]?$/,
-        include: [/node_modules\/@waline/],
-        loader: 'babel-loader',
-      },
       {
         test: /\.svg$/,
         loader: 'happypack/loader?id=happy-svg',

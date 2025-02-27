@@ -8,11 +8,9 @@
           <span class="text">微信扫码关注</span>
         </div>
         <div class="item">
-          <img class="qrcode"
-            src="https://image.lovejade.cn/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-            alt="倾城之链-小程序" />
+          <img class="qrcode" src="https://image.lovejade.cn/%20曼妙句子.jpg" alt="倾城之链-小程序" />
           <span class="font-medium text">倾城之链</span>
-          <span class="text">微信扫码体验</span>
+          <span class="text">微信扫码关注</span>
         </div>
       </div>
       <div class="connect outside-link">

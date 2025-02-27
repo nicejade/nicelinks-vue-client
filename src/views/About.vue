@@ -12,7 +12,7 @@
               </div>
               <preview-md :value="aboutMarkdown"></preview-md>
             </el-card>
-            <Waline />
+            <LinkCard />
           </div>
           <aside-list></aside-list>
         </div>
@@ -23,7 +23,7 @@
 
 <script>
 import PreviewMd from 'components/markdown/PreviewMd.vue'
-import Waline from 'components/Waline'
+import LinkCard from 'components/LinkCard'
 import ABOUT_CONF from './../config/about'
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
   components: {
     PreviewMd,
-    Waline,
+    LinkCard,
   },
 
   mounted() {

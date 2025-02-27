@@ -3,8 +3,7 @@
     <div class="dlg-header">
       <h2 class="title">
         订阅倾城
-        <a target="_blank" rel="noopener" @click="onOpenWeekly"
-          href="https://blog.nicelinks.site/?ref=nicelinks.site">每周精要
+        <a target="_blank" rel="noopener" @click="onOpenWeekly" href="https://link.niceshare.site/">每周精要
         </a>
       </h2>
       <button type="button" class="btn-close" @click="onCloseClick">
@@ -16,13 +15,6 @@
         <img class="qrcode" src="https://image.lovejade.cn/qrcode_jqx.jpg" alt="晚晴幽草轩-公众号" />
         <span class="text font-medium">晚晴幽草轩</span>
         <span class="text">微信扫码关注</span>
-      </div>
-      <div class="item">
-        <img class="qrcode"
-          src="https://image.lovejade.cn/nicelinks-miniprogram-code.jpeg?imageView2/1/w/250/h/250/interlace/1/ignore-error/1"
-          alt="倾城之链-小程序" />
-        <span class="text font-medium">倾城之链</span>
-        <span class="text">微信扫码体验</span>
       </div>
     </div>
   </div>

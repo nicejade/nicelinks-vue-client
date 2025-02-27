@@ -20,7 +20,7 @@
           <a class="nice-link" @click="onReortEvent('business')" href="/business">广告投放</a>
           <a class="nice-link" @click="onReortEvent('sponsor')" href="/sponsor">倾情捐赠</a>
           <a target="_blank" rel="archives bookmark" class="nice-link" @click="onReortEvent('blog')"
-            :href="assembleExternalLink('https://blog.nicelinks.site/')">倾城博客
+            :href="assembleExternalLink('https://link.niceshare.site/')">倾城博客
           </a>
         </div>
         <div class="list-item">
@@ -28,7 +28,7 @@
           <a class="nice-link" target="_blank" @click="onReortEvent('chatgpt')"
             :href="assembleExternalLink('https://www.niceshare.site/')">逍遥自在轩</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('jeffjade-com')"
-            :href="assembleExternalLink('https://www.jeffjade.com/')">晚晴幽草轩</a>
+            :href="assembleExternalLink('https://www.thebettersites.com/')">清风明月轩</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('quickapp-lovejade')"
             :href="assembleExternalLink('https://quickapp.lovejade.cn/')">静轩之别苑</a>
           <a class="nice-link" target="_blank" @click="onReortEvent('forum-lovejade')"

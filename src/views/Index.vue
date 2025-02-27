@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <search class="mobile-search" v-if="$isMobile" />
-    <HomeLotus :class="{ 'mobile-search-serving': $isMobile }"></HomeLotus>
+    <div :class="{ 'mobile-search-serving': $isMobile }"></div>
+    <HomeLotus></HomeLotus>
     <NiceFantasy></NiceFantasy>
     <Introduction></Introduction>
     <LinkCountup></LinkCountup>

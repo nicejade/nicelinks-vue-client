@@ -107,7 +107,7 @@ export default {
   updateAvatar: '更新头像',
 
   awesomeSentence: '箴言锦语',
-  miniprogramCode: '🎉小程序',
+  miniprogramCode: '🎉微信公众号',
   visitCount: '网站统计',
   friendsLinks: '友情链接',
 

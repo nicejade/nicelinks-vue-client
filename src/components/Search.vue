@@ -15,7 +15,7 @@
 import Vue from 'vue'
 import { Autocomplete } from 'element-ui'
 import 'element-ui/lib/theme-chalk/autocomplete.css'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import { parse } from './../helper/marked'
 import { filterHtmlTag, sliceToAheadTarget } from './../helper/tool'
 import { isAndroidSystem } from './../helper/system'

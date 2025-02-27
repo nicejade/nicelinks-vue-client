@@ -29,7 +29,7 @@
                 </div>
               </div>
             </el-card>
-            <Waline />
+            <LinkCard />
           </div>
           <aside-list></aside-list>
         </div>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Waline from 'components/Waline'
+import LinkCard from 'components/LinkCard'
 import PreviewMd from 'components/markdown/PreviewMd.vue'
 import { DESCRIPTION, NICE_LINKS_NAME, NICE_LINKS } from './../config/constant'
 
@@ -58,7 +58,7 @@ export default {
   },
 
   components: {
-    Waline,
+    LinkCard,
     PreviewMd,
   },
 

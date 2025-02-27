@@ -6,7 +6,7 @@
           <div class="entry-list">
             <links-list :pdata="niceLinksArr" :is-loading="isLoading" />
             <SimilarRecommend :pdata="niceLinksArr[0]" />
-            <Waline />
+            <LinkCard />
           </div>
           <aside-list :index="index"></aside-list>
         </div>
@@ -17,7 +17,7 @@
 
 <script>
 import SimilarRecommend from 'components/SimilarRecommend'
-import Waline from 'components/Waline'
+import LinkCard from 'components/LinkCard'
 import Mark from 'mark.js'
 import mediumZoom from 'medium-zoom'
 
@@ -35,7 +35,7 @@ export default {
 
   components: {
     SimilarRecommend,
-    Waline,
+    LinkCard,
   },
 
   created() {

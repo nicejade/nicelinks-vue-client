@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import endsWith from 'lodash/endsWith'
+import { endsWith } from 'lodash'
 
 import CLASSIFY_CONF from './../../config/classify'
 import THEME_CONF from './../../config/theme'

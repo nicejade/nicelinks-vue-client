@@ -11,25 +11,13 @@
               <div class="friend-hint" v-html="recommendTextStr"></div>
             </div>
             <div class="friends-list">
-              <a
-                class="item blur-effect"
-                @click="onFriendItemClick(item)"
-                target="_blank"
-                :href="item.path + '?ref=nicelinks.site'"
-                v-for="item in tableData"
-                :key="item.path"
-                rel="external noopener"
-              >
-                <img
-                  class="icon"
-                  :src="getSiteIcon(item)"
+              <a class="item blur-effect" @click="onFriendItemClick(item)" target="_blank"
+                :href="item.path + '?ref=nicelinks.site'" v-for="item in tableData" :key="item.path"
+                rel="external noopener">
+                <img class="icon" :src="getSiteIcon(item)"
                   onerror="javascript:this.src='https://nicelinks.oss-cn-shenzhen.aliyuncs.com/no-image.png';"
-                  :alt="item.desc"
-                />
-                <div
-                  class="content hint--rounded hint--info hint--top hint--medium"
-                  :aria-label="item.desc"
-                >
+                  :alt="item.desc" />
+                <div class="content hint--rounded hint--info hint--top hint--medium" :aria-label="item.desc">
                   <h2 class="title">
                     {{ item.title }}
                   </h2>
@@ -37,7 +25,7 @@
                 </div>
               </a>
             </div>
-            <Waline />
+            <LinkCard />
           </div>
           <aside-list></aside-list>
         </div>
@@ -47,7 +35,7 @@
 </template>
 
 <script>
-import Waline from 'components/Waline'
+import LinkCard from 'components/LinkCard'
 import { parse } from './../helper/marked'
 
 const recommendMdText = `如果您拥有属于自己的网站或博客，非常欢迎您与[倾城之链](/)建立**友情链接**。请添加[倾城客服微信](https://nicelinks.oss-cn-shenzhen.aliyuncs.com/nicelinks-service.jpeg)并进行详细沟通，也可以在评论区中找到邮件地址。如果您喜欢<mark>倾城之链</mark>，请不要犹豫，期待您的互动。`
@@ -63,7 +51,7 @@ export default {
   },
 
   components: {
-    Waline,
+    LinkCard,
   },
 
   created() {

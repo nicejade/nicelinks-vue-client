@@ -17,7 +17,7 @@
                 <img class="contact-us" src="https://image.lovejade.cn/nice-small-store.jpeg" alt="倾城之链 - 小商店" />
               </div>
             </el-card>
-            <Waline />
+            <LinkCard />
           </div>
           <aside-list />
         </div>
@@ -28,7 +28,7 @@
 
 <script>
 import PreviewMd from 'components/markdown/PreviewMd.vue'
-import Waline from 'components/Waline'
+import LinkCard from 'components/LinkCard'
 import { DESCRIPTION } from './../config/constant'
 
 const introduce = ` ${DESCRIPTION}自 2017 年建设以来，完全免费使用；并始终坚持：**收录有价值内容**，打造人性化体验。除 Web 应用，另有\`小程序\`、\`快应用\`等相关产品矩阵。目前，在产品详情页，开辟两个区域，来支持“广告投放”，如下图所示（广告 A 区、广告 B 区）：
@@ -48,7 +48,7 @@ export default {
 
   components: {
     PreviewMd,
-    Waline,
+    LinkCard,
   },
 
   mounted() {

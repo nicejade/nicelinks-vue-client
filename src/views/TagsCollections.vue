@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import flattenDepth from 'lodash/flattenDepth'
+import { flattenDepth } from 'lodash'
 export default {
   name: 'TagsCollections',
 

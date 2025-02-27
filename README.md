@@ -1,4 +1,8 @@
-<h1 align="center"><a href="https://site.lovejade.cn?utm_source=github-nicelinks"><img src="https://image.lovejade.cn/nice-links-logo.png" alt="倾城之链 | NICE LINKS"></a></h1>
+<h1 align="center">
+  <a href="https://site.lovejade.cn?utm_source=github-nicelinks">
+  <img src="https://image.lovejade.cn/nice-links-logo.png" alt="倾城之链 | NICE LINKS">
+  </a>
+</h1>
 
 <div align="center">
   <strong>
@@ -22,12 +26,14 @@
   <a href="https://www.jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/">
     <img src="https://img.shields.io/badge/chat-on%20blog-brightgreen.svg" alt="Chat On My Blog">
   </a>
-  <a href="https://about.me/nicejade"><img src="https://img.shields.io/badge/Author-nicejade-%23a696c8.svg" alt="Author nicejade"></a>
+  <a href="https://www.thebettersites.com/">
+    <img src="https://img.shields.io/badge/Author-nicejade-%23a696c8.svg" alt="Author nicejade">
+  </a>
 </div>
 
 ## 目标与哲学
 
-您知道，如今这时代，无法估量的信息，广阔无垠且散乱无际；担心错过她而努力汲取的同时，却可能错过更多。当上进心充盈之时，难免会因此感到焦虑与惶恐；故此，有意打造一款优良开放型平台，用来承载信息之入口，并对其进行分门别类、过滤排序，从而为获取、发布信息的双方提供便利 —— 此即为[**「倾城之链」**](https://site.lovejade.cn?utm_source=github-nicelinks)，其旨在云集全球优秀网站，让您更为便捷地探索互联网中那更广阔的世界；在这里，您可以轻松发现、学习、分享更多`有用`或`有趣`的事物。更多关于此项目的动机，详见博客文章：[云集优站，尽在「倾城之链」](https://jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/)。
+您知道，如今这时代，无法估量的信息，广阔无垠且散乱无际；担心错过她而努力汲取的同时，却可能错过更多。当上进心充盈之时，难免会因此感到焦虑与惶恐；故此，有意打造一款优良开放型平台，用来承载信息之入口，并对其进行分门别类、过滤排序，从而为获取、发布信息的双方提供便利 —— 此即为[**「倾城之链」**](https://site.lovejade.cn?utm_source=github-nicelinks)，其旨在云集全球优秀网站，让您更为便捷地探索互联网中那更广阔的世界；在这里，您可以轻松发现、学习、分享更多`有用`或`有趣`的事物。更多关于此项目的动机，详见博客文章：[云集优站，尽在「倾城之链」](https://www.jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/)。
 
 ## 作用与价值
 
@@ -72,28 +78,19 @@ nativefier --name "倾城之链" "https://site.lovejade.cn/"
 
 ## 相关链接
 
-- [**倾城之链**](https://site.lovejade.cn?utm_source=github-nicelinks)
-- [个人博客](https://jeffjade.com/nicelinks?utm_source=github-nicelinks)
-- [半缘修道观](https://memo.lovejade.cn/?utm_source=github-nicelinks)
+- [逍遥自在轩](https://www.niceshare.site/?utm_source=github-nicelinks)
+- [晚晴幽草轩](https://www.jeffjade.com/nicelinks?utm_source=github-nicelinks)
 - [玉桃文飨轩](https://share.lovejade.cn/?utm_source=github-nicelinks)
+- [半缘修道观](https://memo.lovejade.cn/?utm_source=github-nicelinks)
 - [静轩之别苑](https://quickapp.lovejade.cn/?utm_source=github-nicelinks)
-- [静晴轩别苑](https://nice.lovejade.cn/?utm_source=github-nicelinks)
-- [吾意静晴轩](https://docz.lovejade.cn/?utm_source=github-nicelinks)
-- [天意人间舫](https://blog.lovejade.cn/?utm_source=github-nicelinks)
 - [新浪微博](https://weibo.com/jeffjade?utm_source=github-nicelinks)
-- [知乎主页](https://www.zhihu.com/people/yang-qiong-pu/)
 - [简书主页](https://www.jianshu.com/u/9aae3d8f4c3d)
 - [SegmentFault](https://segmentfault.com/u/jeffjade)
-- [Twitter](https://twitter.com/nicejadeyang)
+- [X | Twitter](https://x.com/intent/user?screen_name=MarshalXuan)
 - [Facebook](https://www.facebook.com/nice.jade.yang)
-
-| 微信公众号 | 前端微信群 | 推荐 Web 应用 |
-| --- | --- | --- |
-| 😉 静晴轩 | ✨ 大前端联盟 | 🎉 倾城之链 |
-| ![静晴轩](https://image.nicelinks.site/qrcode_jqx.jpg) | ![倾城之链](https://image.nicelinks.site/wqycx-weixin.png?ver=1) | <img src="https://image.nicelinks.site/nice-links.png" width="300px" alt="倾城之链"></img> |
 
 ## 许可执照
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2017-present, [nicejade](https://site.lovejade.cn/member/admin)
+Copyright (c) 2017-present, [清风明月轩](https://www.thebettersites.com/)
